@@ -14,16 +14,18 @@ about:
 
 ## About Me
 
-我是南开大学的一名学生, 对低维拓扑和量子拓扑感兴趣
-I am a graduate student in Mathematics at [Your University], interested in **Low-Dimensional Topology** and **Quantum Topology**.
 
-My current research focuses on 3-manifold invariants arising from non-semisimple tensor categories. I am particularly interested in the connections between:
+I am a graduate student in Mathematics at Bilibili university, interested in **Low-Dimensional Topology** and **Quantum Topology**.
 
+My current research focuses on topology. I am particularly interested in the connections between:
+
+
+* Khovanov homology
+* H-cobordism
 * Turaev-Viro type invariants
-* Kuperberg invariants (and their relation to Reidemeister torsion)
-* Skein modules
+
 
 ## Recent Updates
 
-* **Dec 2025**: Started reading Costantino-Geer-Patureau-Mirand's paper on non-unimodular categories.
-* **Oct 2025**: Attended the *Workshop on Quantum Topology*.
+* **Dec 2025**: 
+* **Oct 2025**: 

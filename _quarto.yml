@@ -16,7 +16,7 @@ website:
       - href: notes.qmd
         text: Notes
       - icon: github
-        href: https://github.com/yourusername
+        href: https://github.com/cyw6130
       - icon: envelope
         href: mailto:your.email@university.edu
 
@@ -33,6 +33,7 @@ website:
           - section: "Quantum Invariants"
             contents:
               - notes/turaev-viro.qmd  # 我们一会儿创建这个
+              - notes/Khovanov.qmd     # 还有这个
               # - notes/kuperberg.qmd    # 还有这个
 
 format:

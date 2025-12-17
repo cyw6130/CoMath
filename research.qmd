@@ -1,0 +1,19 @@
+---
+title: "Research Interests"
+---
+
+## Current Projects
+
+My research focuses on the intersection of **Quantum Topology** and **Representation Theory**.
+
+### 1. Non-Semisimple TQFTs
+I am investigating the modified traces in non-unimodular categories and their associated 3-manifold invariants.
+
+### 2. Geometric Topology
+* Heegaard splittings and their relation to algebraic structures.
+* Triangulations and Pachner moves.
+
+## Publications & Preprints
+
+* **On the Kuperberg Invariant** (In preparation)
+  * Brief description of what this paper is about.

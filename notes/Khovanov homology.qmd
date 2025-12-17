@@ -1,3 +1,11 @@
+---
+title: "Khovanov homology"
+description: "An introduction to khovanov homology and s-invariant."
+date: "2025-12-18"
+categories: [homology, knot]
+---
+
+
 # Khovanov homology 的定义
 
 ## 基本定义
