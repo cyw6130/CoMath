@@ -1,0 +1,10 @@
+---
+title: "Notes"
+listing:
+  contents: notes # 告诉它去抓取 notes 文件夹里的内容
+  type: table     # 以表格形式展示 (也可以改成 default 或 grid)
+  sort: "date desc"
+  categories: true
+---
+
+Here is a collection of my study notes and expository articles.

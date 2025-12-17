@@ -1,0 +1,29 @@
+{
+  "index.qmd": {
+    "index.html": "c2d9d12f"
+  },
+  "about.qmd": {
+    "about.html": "428e3777"
+  },
+  "page.qmd": {
+    "page.html": "19cf039d"
+  },
+  "math_note.qmd": {
+    "math_note.html": "b0d26273"
+  },
+  "note/turaev-viro.qmd": {
+    "turaev-viro.html": "868a6bd9"
+  },
+  "research.qmd": {
+    "research.html": "e597b810"
+  },
+  "notes.qmd": {
+    "notes.html": "20984c15"
+  },
+  "notes/turaev-viro.qmd": {
+    "turaev-viro.html": "89d6235f"
+  },
+  "notes/3-mfld.qmd": {
+    "3-mfld.html": "e725d41e"
+  }
+}

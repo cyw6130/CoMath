@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Chen's Topology Notes" # 改成你的名字
+  description: "Personal academic website and digital garden."
+  
+  # 顶部导航栏：用于放“大”页面
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: notes.qmd
+        text: Notes
+      - icon: github
+        href: https://github.com/yourusername
+      - icon: envelope
+        href: mailto:your.email@university.edu
+
+  # 侧边栏：专门用于 Notes 部分的目录导航
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Notes"
+        contents:
+          - href: notes.qmd
+            text: "Overview"
+          - section: "Quantum Invariants"
+            contents:
+              - notes/turaev-viro.qmd  # 我们一会儿创建这个
+              # - notes/kuperberg.qmd    # 还有这个
+
+format:
+  html:
+    theme: cosmo # 推荐 cosmo, litera, 或 flatly (学术感强)
+    css: styles.css
+    toc: true
+    html-math-method: mathjax
