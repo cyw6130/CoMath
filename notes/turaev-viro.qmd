@@ -12,6 +12,24 @@ The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the W
 
 ### The Construction
 
+> A manifold is a topological space...
+
+::: {.callout-note}
+## Definition 1.1 (Manifold)
+A topological space $M$ is called a **locally Euclidean** of dimension $n$ if every point has a neighborhood homeomorphic to an open subset of $\mathbb{R}^n$.
+:::
+
+::: {.callout-tip}
+## Theorem (Invariance of Domain)
+If $U \subset \mathbb{R}^n$ is open and $f: U \to \mathbb{R}^n$ is continuous and injective, then $f(U)$ is open.
+:::
+
+::: {.callout-warning appearance="simple"}
+## Caution
+This invariant only works for *closed* 3-manifolds.
+:::
+
+
 Let $\mathcal{C}$ be a spherical fusion category. For a triangulation $\mathcal{T}$ of a closed 3-manifold $M$, the invariant is defined as:
 
 $$

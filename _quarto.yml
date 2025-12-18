@@ -15,11 +15,24 @@ website:
         text: Research
       - href: notes.qmd
         text: Notes
+      # --- 新增这一项 ---
+      - href: gallery.qmd
+        text: Gallery
+      
       - icon: github
         href: https://github.com/cyw6130
       - icon: envelope
         href: mailto:your.email@university.edu
 
+  # 添加页脚
+  page-footer:
+    left: "Copyright 2025, Chen"
+    center:
+      - icon: github
+        href: https://github.com/cyw6130
+      - icon: twitter
+        href: https://twitter.com
+    right: "Built with Quarto"
   # 侧边栏：专门用于 Notes 部分的目录导航
   sidebar:
     style: "docked"
@@ -33,12 +46,22 @@ website:
           - section: "Quantum Invariants"
             contents:
               - notes/turaev-viro.qmd  # 我们一会儿创建这个
-              - notes/Khovanov.qmd     # 还有这个
+              - notes/Khovanov_homology.qmd     # 还有这个
               # - notes/kuperberg.qmd    # 还有这个
-
 format:
   html:
-    theme: cosmo # 推荐 cosmo, litera, 或 flatly (学术感强)
-    css: styles.css
+    # 启用双主题：白天用 flatly (扁平化)，晚上自动/手动切换为 darkly (暗黑风)
+    theme:
+      light: flatly
+      dark: darkly
+    
+    # 启用代码高亮配色
+    highlight-style: github
+    
+    # 让目录(TOC)在左侧悬浮，阅读长文体验更好
     toc: true
-    html-math-method: mathjax
+    toc-location: left
+    toc-title: "Contents"
+    
+    # 开启平滑滚动
+    smooth-scroll: true

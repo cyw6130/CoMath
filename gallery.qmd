@@ -1,0 +1,65 @@
+---
+title: "摄影馈敐"
+subtitle: "时光捕捉的片段。"
+filters:
+   - lightbox
+lightbox:
+  match: auto
+  effect: fade
+  loop: true
+---
+
+<style>
+  .quarto-figure img {
+    border-radius: 8px;              /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 柔和阴影 */
+    transition: transform 0.3s ease; /* 动画过渡 */
+  }
+  .quarto-figure img:hover {
+    transform: translateY(-5px);     /* 鼠标悬停时上浮 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 悬停时阴影加深 */
+  }
+  /* 隐藏原本在图片下方的文字(文件名)，除非你在[]里写了特定的描述 */
+  figcaption {
+    display: none; 
+  }
+</style>
+
+Welcome to my gallery.
+
+欢迎来到我的照片馆。
+
+### 风景与城市景观
+
+::: {layout-ncol=2}
+
+![](images/gallery/gallery-01.jpeg){group="my-gallery"}
+
+![](images/gallery/gallery-04.jpeg){group="my-gallery"}
+
+![](images/gallery/gallery-05.jpeg){group="my-gallery"}
+
+![](images/gallery/gallery-06.jpeg){group="my-gallery"}
+
+![](images/gallery/gallery-07.jpeg){group="my-gallery"}
+
+![](images/gallery/gallery-02.jpeg){group="my-gallery"}
+
+:::
+
+<br>
+
+### 竖体透视
+
+::: {layout-ncol=3}
+
+
+![](images/gallery/gallery-03.jpeg){group="my-gallery"}
+
+:::
+
+<br>
+
+::: {.callout-tip appearance="minimal"}
+点击任何图片以展开。
+:::

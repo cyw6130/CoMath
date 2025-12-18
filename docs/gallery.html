@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-24">
-<meta name="description" content="An introduction to state-sum invariants for 3-manifolds.">
 
-<title>Turaev-Viro Invariants – Chen’s Topology Notes</title>
+<title>摄影馈敐 – Chen’s Topology Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,28 +23,31 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-2216960441f5bf954dac2bf5ae1eb9c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-2216960441f5bf954dac2bf5ae1eb9c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,35 +77,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -277,7 +249,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Chen’s Topology Notes</span>
     </a>
   </div>
@@ -288,19 +260,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes.html" aria-current="page"> 
+    <a class="nav-link active" href="./notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../gallery.html"> 
+    <a class="nav-link" href="./gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item compact">
@@ -325,7 +297,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Turaev-Viro Invariants</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">摄影馈敐</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -347,37 +319,37 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes.html" class="sidebar-item-text sidebar-link">
+  <a href="./notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Quantum Invariants</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Turaev-Viro Invariants</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+  <a href="./notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Khovanov homology</span></a>
   </div>
 </li>
@@ -391,12 +363,8 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#the-construction" id="toc-the-construction" class="nav-link" data-scroll-target="#the-construction">The Construction</a></li>
-  </ul></li>
-  <li><a href="#relation-to-wrt-invariants" id="toc-relation-to-wrt-invariants" class="nav-link" data-scroll-target="#relation-to-wrt-invariants">Relation to WRT Invariants</a></li>
-  <li><a href="#connection-to-kuperberg-invariant" id="toc-connection-to-kuperberg-invariant" class="nav-link" data-scroll-target="#connection-to-kuperberg-invariant">Connection to Kuperberg Invariant</a></li>
+  <li><a href="#风景与城市景观" id="toc-风景与城市景观" class="nav-link active" data-scroll-target="#风景与城市景观">风景与城市景观</a></li>
+  <li><a href="#竖体透视" id="toc-竖体透视" class="nav-link" data-scroll-target="#竖体透视">竖体透视</a></li>
   </ul>
 </nav>
 </nav>
@@ -408,31 +376,17 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Turaev-Viro Invariants</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Turaev-Viro Invariants</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">TQFT</div>
-    <div class="quarto-category">3-Manifolds</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    An introduction to state-sum invariants for 3-manifolds.
-  </div>
+<h1 class="title">摄影馈敐</h1>
+<p class="subtitle lead">时光捕捉的片段。</p>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 24, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -442,92 +396,73 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the Witten-Reshetikhin-Turaev (WRT) invariant, it does not require a framing of the manifold.</p>
-<section id="the-construction" class="level3">
-<h3 class="anchored" data-anchor-id="the-construction">The Construction</h3>
-<blockquote class="blockquote">
-<p>A manifold is a topological space…</p>
-</blockquote>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<style>
+  .quarto-figure img {
+    border-radius: 8px;              /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 柔和阴影 */
+    transition: transform 0.3s ease; /* 动画过渡 */
+  }
+  .quarto-figure img:hover {
+    transform: translateY(-5px);     /* 鼠标悬停时上浮 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 悬停时阴影加深 */
+  }
+  /* 隐藏原本在图片下方的文字(文件名)，除非你在[]里写了特定的描述 */
+  figcaption {
+    display: none; 
+  }
+</style>
+<p>Welcome to my gallery.</p>
+<p>欢迎来到我的照片馆。</p>
+<section id="风景与城市景观" class="level3">
+<h3 class="anchored" data-anchor-id="风景与城市景观">风景与城市景观</h3>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-01.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-01.jpeg" class="img-fluid"></a></p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition 1.1 (Manifold)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A topological space <span class="math inline">\(M\)</span> is called a <strong>locally Euclidean</strong> of dimension <span class="math inline">\(n\)</span> if every point has a neighborhood homeomorphic to an open subset of <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Theorem (Invariance of Domain)
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-04.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-04.jpeg" class="img-fluid"></a></p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(U \subset \mathbb{R}^n\)</span> is open and <span class="math inline">\(f: U \to \mathbb{R}^n\)</span> is continuous and injective, then <span class="math inline">\(f(U)\)</span> is open.</p>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-05.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-05.jpeg" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-06.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-06.jpeg" class="img-fluid"></a></p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-07.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-07.jpeg" class="img-fluid"></a></p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This invariant only works for <em>closed</em> 3-manifolds.</p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/gallery/gallery-02.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-02.jpeg" class="img-fluid"></a></p>
 </div>
 </div>
-<p>Let <span class="math inline">\(\mathcal{C}\)</span> be a spherical fusion category. For a triangulation <span class="math inline">\(\mathcal{T}\)</span> of a closed 3-manifold <span class="math inline">\(M\)</span>, the invariant is defined as:</p>
-<p><span class="math display">\[
-Z_{TV}(M, \mathcal{C}) = \mathcal{D}^{-2|V|} \sum_{\varphi} \prod_{t \in T} |t|_{\varphi}
-\]</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Definition: Quantum Dimension
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The scalar <span class="math inline">\(\mathcal{D}\)</span> is the <strong>total quantum dimension</strong> of the category, defined by <span class="math inline">\(\mathcal{D}^2 = \sum_{i \in Irr(\mathcal{C})} d_i^2\)</span>.</p>
-</div>
-</div>
+<p><br></p>
 </section>
-</section>
-<section id="relation-to-wrt-invariants" class="level2">
-<h2 class="anchored" data-anchor-id="relation-to-wrt-invariants">Relation to WRT Invariants</h2>
-<p>It is a well-known theorem that the Turaev-Viro invariant is essentially the square of the modulus of the WRT invariant.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<section id="竖体透视" class="level3">
+<h3 class="anchored" data-anchor-id="竖体透视">竖体透视</h3>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><a href="images/gallery/gallery-03.jpeg" class="lightbox" data-gallery="my-gallery"><img src="images/gallery/gallery-03.jpeg" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Theorem (Turaev, 1994)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For a modular tensor category <span class="math inline">\(\mathcal{C}\)</span>, we have: <span class="math display">\[Z_{TV}(M, \mathcal{C}) = |Z_{WRT}(M, \mathcal{C})|^2\]</span></p>
+<div class="callout-body-container">
+<p>点击任何图片以展开。</p>
 </div>
 </div>
-</section>
-<section id="connection-to-kuperberg-invariant" class="level2">
-<h2 class="anchored" data-anchor-id="connection-to-kuperberg-invariant">Connection to Kuperberg Invariant</h2>
-<p>As discussed in my <a href="kuperberg.qmd">Kuperberg Notes</a>, when the category is non-semisimple, the standard definition fails because <span class="math inline">\(\mathcal{D}\)</span> might be zero. Kuperberg’s construction solves this for involutory Hopf algebras.</p>
+</div>
 
 
 </section>
@@ -973,9 +908,41 @@ Z_{TV}(M, \mathcal{C}) = \mathcal{D}^{-2|V|} \sum_{\varphi} \prod_{t \in T} |t|_
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"bottom","loop":true,"openEffect":"fade","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

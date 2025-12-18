@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "关于"
 ---
 
-About this site
+关于此网站
