@@ -1,9 +1,31 @@
 ---
-title: "Khovanov homology"
-description: "An introduction to khovanov homology and s-invariant."
+title: "An introduction to khovanov homology and s-invariant"
+author: "Cyw"
 date: "2025-12-18"
-categories: [homology, knot]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    html-math-method: mathjax
+  pdf:
+    toc: true
+    number-sections: true
+    documentclass: ctexart
+    pdf-engine: xelatex
+    CJKmainfont: "STSong"
+    geometry: margin=1in
+    fig-pos: 'H'
+    include-in-header:
+      text: |
+        \usepackage{float}
+        \usepackage{unicode-math}
+        \floatplacement{figure}{H}
+tags: [homology, knot]
 ---
+
+
 
 
 # Khovanov homology 的定义
@@ -208,18 +230,18 @@ $$s_{max}=s_{min}+2$$
 - Lemma 3.5 ![](pic_khovanov_homology/Note%20on%20Khovanov%20homology-24.png)
 	- 引理的推论: 
 		- $s_{min}<s_{max}$:  我们为这两个直和项各自找到了一个生成元, 故两个直和项都不是 0. 且显然这两个直和项中生成元的 $\text{gr}_s$ 不一样: 一个 mod 4 余 1, 一个 mod 4 余 3, 从而 $s_{min}<s_{max}$.
-		- $s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)$: 我们知道 $\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_\bar{o}$ 有不同的 $\text{gr}_s$, 设它们分别为 $a_1+\cdots, b_1+\cdots$, 其中首项是 $\text{gr}_q$ 最小的. 那么 $a_1=\pm b_1$. 于是 $s_{min}=\text{gr}_q\left(a_1\right)$. 从而 $s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)$
+		- $s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)$: 我们知道 $\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}$ 有不同的 $\text{gr}_s$, 设它们分别为 $a_1+\cdots, b_1+\cdots$, 其中首项是 $\text{gr}_q$ 最小的. 那么 $a_1=\pm b_1$. 于是 $s_{min}=\text{gr}_q\left(a_1\right)$. 从而 $s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)$
 	- 引理的证明: 
 		- 即证它们属于不同的 mod 4 同余类.
 		- 定义映射 $i$ ($\text{Kh}'$ level)
 			- 定义 $i: v_{-}\mapsto v_{-}, v_+\mapsto -v_+$ 
 			- 上述映射 $i$ 可以诱导链映射 (复形自同态) $i:\text{CKh}'\to \text{CKh}'$, 从而可以做到同调上去
 			- 由定义, 自然有 $i$ 交换 $a,b$. 
-			- 将 $i$ 限制到 $\text{CKh}'\left(D_{o}\right)$ 上, 则 $i$ 将 $\mathfrak{s}_o$ 映到 $\mathfrak{s}_\bar{o}$ 
+			- 将 $i$ 限制到 $\text{CKh}'\left(D_{o}\right)$ 上, 则 $i$ 将 $\mathfrak{s}_o$ 映到 $\mathfrak{s}_{\bar{o}}$ 
 		- $i$ 将 $\text{CKh}'$ 中的元素分为两类, 恰好对应于 $\text{CKh}'$ 中的 mod 4 同余类.
 			- 定义 $\text{CKh}'_{odd}$ 和 $\text{CKh}'_{even}$: 注意到对于 $\text{CKh}'\left(D_o\right)$ 上的元素 $x$, 若其上有奇数个 $v_+$, 则 $i\left(x\right)=-x$, 这类元素的集合记为 $\text{CKh}'_{odd}$ 反之则 $i\left(x\right)=x$, 记为 $\text{CKh}'_{even}$; 这给出了 $\text{CKh}'$ 上的一个直和分解. 
 			- 由于 $D_o$ 上 circle 的数量是固定的, $\text{CKh}'_{even}$ 和 $\text{CKh}'_{odd}$ 属于不同的 mod 4 同余类中. 从而这个直和分解恰好对应于 mod 4 同余类的直和分解. 
-		- $\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_\bar{o}$ 属于不同的 mod 4 同余类.
+		- $\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}$ 属于不同的 mod 4 同余类.
 			- 只要说明它们在 $i$ 下的表现不同
 			- 事实上, 我们有: 
 				-  $i\left(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\right)=\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}$

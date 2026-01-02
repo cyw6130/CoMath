@@ -11,6 +11,7 @@ My research focuses on the beautiful interplay between **algebra** and **topolog
 
 ::: {.callout-tip appearance="simple"}
 **Current Focus**: Non-semisimple TQFTs and their applications to 3-manifold invariants.
+
 :::
 
 ---

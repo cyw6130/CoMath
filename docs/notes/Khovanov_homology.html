@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cyw">
 <meta name="dcterms.date" content="2025-12-18">
-<meta name="description" content="An introduction to khovanov homology and s-invariant.">
 
-<title>Khovanov homology – Chen’s Topology Notes</title>
+<title>An introduction to khovanov homology and s-invariant – Chen’s Topology Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,14 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8a36787d37a309c00503ce8984a43a6b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-154f9eb9ce1df96744e77b4b96314675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3eef784f197782a367fb7a11e576c67c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,169 +104,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -290,10 +124,6 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
-<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../notes.html" aria-current="page"> 
@@ -325,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Khovanov homology</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">An introduction to khovanov homology and s-invariant</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -378,7 +208,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Khovanov homology</span></a>
+ <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
   </div>
 </li>
       </ul>
@@ -391,39 +221,39 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#khovanov-homology-的定义" id="toc-khovanov-homology-的定义" class="nav-link active" data-scroll-target="#khovanov-homology-的定义">Khovanov homology 的定义</a>
+  <li><a href="#khovanov-homology-的定义" id="toc-khovanov-homology-的定义" class="nav-link active" data-scroll-target="#khovanov-homology-的定义"><span class="header-section-number">1</span> Khovanov homology 的定义</a>
   <ul class="collapse">
-  <li><a href="#基本定义" id="toc-基本定义" class="nav-link" data-scroll-target="#基本定义">基本定义</a>
+  <li><a href="#基本定义" id="toc-基本定义" class="nav-link" data-scroll-target="#基本定义"><span class="header-section-number">1.1</span> 基本定义</a>
   <ul class="collapse">
-  <li><a href="#不定向的版本-khovanov-bracket" id="toc-不定向的版本-khovanov-bracket" class="nav-link" data-scroll-target="#不定向的版本-khovanov-bracket">不定向的版本: Khovanov bracket</a></li>
-  <li><a href="#定向的版本" id="toc-定向的版本" class="nav-link" data-scroll-target="#定向的版本">定向的版本</a></li>
-  <li><a href="#锥复形" id="toc-锥复形" class="nav-link" data-scroll-target="#锥复形">锥复形</a></li>
+  <li><a href="#不定向的版本-khovanov-bracket" id="toc-不定向的版本-khovanov-bracket" class="nav-link" data-scroll-target="#不定向的版本-khovanov-bracket"><span class="header-section-number">1.1.1</span> 不定向的版本: Khovanov bracket</a></li>
+  <li><a href="#定向的版本" id="toc-定向的版本" class="nav-link" data-scroll-target="#定向的版本"><span class="header-section-number">1.1.2</span> 定向的版本</a></li>
+  <li><a href="#锥复形" id="toc-锥复形" class="nav-link" data-scroll-target="#锥复形"><span class="header-section-number">1.1.3</span> 锥复形</a></li>
   </ul></li>
-  <li><a href="#良定义-link-不变量" id="toc-良定义-link-不变量" class="nav-link" data-scroll-target="#良定义-link-不变量">良定义 (link 不变量)</a></li>
+  <li><a href="#良定义-link-不变量" id="toc-良定义-link-不变量" class="nav-link" data-scroll-target="#良定义-link-不变量"><span class="header-section-number">1.2</span> 良定义 (link 不变量)</a></li>
   </ul></li>
-  <li><a href="#函子性" id="toc-函子性" class="nav-link" data-scroll-target="#函子性">函子性</a>
+  <li><a href="#函子性" id="toc-函子性" class="nav-link" data-scroll-target="#函子性"><span class="header-section-number">2</span> 函子性</a>
   <ul class="collapse">
-  <li><a href="#lee-同调" id="toc-lee-同调" class="nav-link" data-scroll-target="#lee-同调">Lee 同调</a>
+  <li><a href="#lee-同调" id="toc-lee-同调" class="nav-link" data-scroll-target="#lee-同调"><span class="header-section-number">2.1</span> Lee 同调</a>
   <ul class="collapse">
-  <li><a href="#基本定义-1" id="toc-基本定义-1" class="nav-link" data-scroll-target="#基本定义-1">基本定义</a></li>
-  <li><a href="#分次结构" id="toc-分次结构" class="nav-link" data-scroll-target="#分次结构">分次结构</a></li>
-  <li><a href="#基本性质" id="toc-基本性质" class="nav-link" data-scroll-target="#基本性质">基本性质</a></li>
+  <li><a href="#基本定义-1" id="toc-基本定义-1" class="nav-link" data-scroll-target="#基本定义-1"><span class="header-section-number">2.1.1</span> 基本定义</a></li>
+  <li><a href="#分次结构" id="toc-分次结构" class="nav-link" data-scroll-target="#分次结构"><span class="header-section-number">2.1.2</span> 分次结构</a></li>
+  <li><a href="#基本性质" id="toc-基本性质" class="nav-link" data-scroll-target="#基本性质"><span class="header-section-number">2.1.3</span> 基本性质</a></li>
   </ul></li>
-  <li><a href="#s-invariant" id="toc-s-invariant" class="nav-link" data-scroll-target="#s-invariant">s-invariant</a>
+  <li><a href="#s-invariant" id="toc-s-invariant" class="nav-link" data-scroll-target="#s-invariant"><span class="header-section-number">2.2</span> s-invariant</a>
   <ul class="collapse">
-  <li><a href="#定义-s-分次-textgr_s" id="toc-定义-s-分次-textgr_s" class="nav-link" data-scroll-target="#定义-s-分次-textgr_s">定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></a></li>
-  <li><a href="#s_maxs_min2" id="toc-s_maxs_min2" class="nav-link" data-scroll-target="#s_maxs_min2"><span class="math inline">\(s_{max}=s_{min}+2\)</span></a></li>
-  <li><a href="#s-不变量的性质" id="toc-s-不变量的性质" class="nav-link" data-scroll-target="#s-不变量的性质">s 不变量的性质</a></li>
-  <li><a href="#配边函子性质" id="toc-配边函子性质" class="nav-link" data-scroll-target="#配边函子性质">配边/函子性质</a></li>
+  <li><a href="#定义-s-分次-textgr_s" id="toc-定义-s-分次-textgr_s" class="nav-link" data-scroll-target="#定义-s-分次-textgr_s"><span class="header-section-number">2.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></a></li>
+  <li><a href="#s_maxs_min2" id="toc-s_maxs_min2" class="nav-link" data-scroll-target="#s_maxs_min2"><span class="header-section-number">2.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></a></li>
+  <li><a href="#s-不变量的性质" id="toc-s-不变量的性质" class="nav-link" data-scroll-target="#s-不变量的性质"><span class="header-section-number">2.2.3</span> s 不变量的性质</a></li>
+  <li><a href="#配边函子性质" id="toc-配边函子性质" class="nav-link" data-scroll-target="#配边函子性质"><span class="header-section-number">2.2.4</span> 配边/函子性质</a></li>
   </ul></li>
-  <li><a href="#应用-slice-knot-exotic-mathbbr4" id="toc-应用-slice-knot-exotic-mathbbr4" class="nav-link" data-scroll-target="#应用-slice-knot-exotic-mathbbr4">应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></a>
+  <li><a href="#应用-slice-knot-exotic-mathbbr4" id="toc-应用-slice-knot-exotic-mathbbr4" class="nav-link" data-scroll-target="#应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">2.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></a>
   <ul class="collapse">
-  <li><a href="#from-slice-knot-to-exotic-mathbbr4" id="toc-from-slice-knot-to-exotic-mathbbr4" class="nav-link" data-scroll-target="#from-slice-knot-to-exotic-mathbbr4">from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></a></li>
-  <li><a href="#topologically-slice-but-not-smoothly-knots" id="toc-topologically-slice-but-not-smoothly-knots" class="nav-link" data-scroll-target="#topologically-slice-but-not-smoothly-knots">topologically slice but not smoothly knots</a></li>
+  <li><a href="#from-slice-knot-to-exotic-mathbbr4" id="toc-from-slice-knot-to-exotic-mathbbr4" class="nav-link" data-scroll-target="#from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">2.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></a></li>
+  <li><a href="#topologically-slice-but-not-smoothly-knots" id="toc-topologically-slice-but-not-smoothly-knots" class="nav-link" data-scroll-target="#topologically-slice-but-not-smoothly-knots"><span class="header-section-number">2.3.2</span> topologically slice but not smoothly knots</a></li>
   </ul></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Khovanov_homology.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -432,25 +262,21 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Khovanov homology</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">An introduction to khovanov homology and s-invariant</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Khovanov homology</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">homology</div>
-    <div class="quarto-category">knot</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    An introduction to khovanov homology and s-invariant.
-  </div>
+<h1 class="title">An introduction to khovanov homology and s-invariant</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cyw </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -467,10 +293,10 @@ window.Quarto = {
 </header>
 
 
-<section id="khovanov-homology-的定义" class="level1">
-<h1>Khovanov homology 的定义</h1>
-<section id="基本定义" class="level2">
-<h2 class="anchored" data-anchor-id="基本定义">基本定义</h2>
+<section id="khovanov-homology-的定义" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Khovanov homology 的定义</h1>
+<section id="基本定义" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="基本定义"><span class="header-section-number">1.1</span> 基本定义</h2>
 <p>我们对于 link diagram 定义 Khovanov homology</p>
 <ul>
 <li>smoothing (cube resolution)
@@ -479,8 +305,8 @@ window.Quarto = {
 <li>1: 右转</li>
 </ul></li>
 </ul>
-<section id="不定向的版本-khovanov-bracket" class="level3">
-<h3 class="anchored" data-anchor-id="不定向的版本-khovanov-bracket">不定向的版本: Khovanov bracket</h3>
+<section id="不定向的版本-khovanov-bracket" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="不定向的版本-khovanov-bracket"><span class="header-section-number">1.1.1</span> 不定向的版本: Khovanov bracket</h3>
 <ul>
 <li><p>Def (Khovanov bracket): 给一个不定向的 link diagram <span class="math inline">\(L\)</span> , 我们定义(上)链复形 <span class="math inline">\([[L]]\)</span>:</p>
 <ul>
@@ -515,8 +341,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="定向的版本" class="level3">
-<h3 class="anchored" data-anchor-id="定向的版本">定向的版本</h3>
+<section id="定向的版本" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="定向的版本"><span class="header-section-number">1.1.2</span> 定向的版本</h3>
 <p>定向的版本只要对不定向的版本做 shift. <img src="pic_khovanov_homology/Note on Khovanov homology-13.png" class="img-fluid"></p>
 <ul>
 <li><strong>Remark:</strong> 纽结的 Khovanov 同调不区分定向
@@ -572,8 +398,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="锥复形" class="level3">
-<h3 class="anchored" data-anchor-id="锥复形">锥复形</h3>
+<section id="锥复形" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="锥复形"><span class="header-section-number">1.1.3</span> 锥复形</h3>
 <ul>
 <li>锥复形 <span class="math inline">\(C\left(f\right)\)</span>
 <ul>
@@ -601,30 +427,30 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="良定义-link-不变量" class="level2">
-<h2 class="anchored" data-anchor-id="良定义-link-不变量">良定义 (link 不变量)</h2>
+<section id="良定义-link-不变量" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="良定义-link-不变量"><span class="header-section-number">1.2</span> 良定义 (link 不变量)</h2>
 <p>主要检查上面定义的同调 <span class="math inline">\(\text{Kh}\)</span> 是 link 不变量, 而不仅仅是 link diagram 的不变量. 即我们要检查对于相差若干 R moves 的 diagram <span class="math inline">\(D_0,D_1\)</span>, 它们的同调 <span class="math inline">\(\text{Kh}\left(D_0\right)=\text{Kh}\left(D_1\right)\)</span>. 我们可以通过证明链复形 <span class="math inline">\(\text{CKh}\left(D_0\right),\text{CKh}\left(D_1\right)\)</span> 同伦等价来做到这一点. (事实上, 这个同伦等价在 BN 的范畴上就成立了)</p>
 </section>
 </section>
-<section id="函子性" class="level1">
-<h1>函子性</h1>
+<section id="函子性" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 函子性</h1>
 <p>先挖坑… # 形变: Lee 同调</p>
 <p>这一部分我们介绍 Lee 同调和 s-invariant 以及它们在 4-mfld 中的应用.</p>
-<section id="lee-同调" class="level2">
-<h2 class="anchored" data-anchor-id="lee-同调">Lee 同调</h2>
-<section id="基本定义-1" class="level3">
-<h3 class="anchored" data-anchor-id="基本定义-1">基本定义</h3>
+<section id="lee-同调" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="lee-同调"><span class="header-section-number">2.1</span> Lee 同调</h2>
+<section id="基本定义-1" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="基本定义-1"><span class="header-section-number">2.1.1</span> 基本定义</h3>
 <p>相对于 Khovanov 同调, Lee 的同调只是改变了 TQFT <span class="math inline">\(\mathcal{A}\)</span> 上的 modular functor, 即仅仅改变了 <span class="math inline">\(m: V\otimes V\to V, \Delta: V\to V\otimes V\)</span>. 我们将 Lee 定义的 TQFT 记为 <span class="math inline">\(\mathcal{A'}\)</span>.</p>
 <p>我们将 Lee 的链复形记为 <span class="math inline">\(\text{CKh}'\)</span>, 则这个复形的每个分次都和 <span class="math inline">\(\text{CKh}\)</span> 是一样的, 改变的只是微分映射. <img src="pic_khovanov_homology/Note on Khovanov homology-18.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-19.png" class="img-fluid"><img src="pic_khovanov_homology/Note on Khovanov homology-20.png" class="img-fluid"></p>
 <p>在这组基底下很丑, 但如果我们暂时忽略 q 分次, 选取另一组基底: <span class="math inline">\(a:=v_{-}+v_+,b=v_{-}-v_{+}\)</span> 则微分映射可以被写得非常简单: <img src="pic_khovanov_homology/Note on Khovanov homology-21.png" class="img-fluid"> 这预示着 <span class="math inline">\(\text{CKh}'\)</span> 的同调 <span class="math inline">\(\text{Kh}'\)</span> 会有很好的结果. (当我们不考虑 <span class="math inline">\(q\)</span> 分次时).</p>
 </section>
-<section id="分次结构" class="level3">
-<h3 class="anchored" data-anchor-id="分次结构">分次结构</h3>
+<section id="分次结构" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="分次结构"><span class="header-section-number">2.1.2</span> 分次结构</h3>
 <p>这里的”分次”是广义的分次, 同时涵盖了滤过等概念.</p>
 <p>与 <span class="math inline">\(\text{CKh}\)</span> 不同, 复形 <span class="math inline">\(\text{CKh}'\)</span> 有较为丰富(复杂)的分次结构. 这是因为形变之后的微分 <span class="math inline">\(d_{\text{Lee}}\)</span> 不再是 <span class="math inline">\(\text{gr}_q\)</span> 齐次的了.</p>
 <p><strong>idea 是让 <span class="math inline">\(d_{\text{Lee}}\)</span> 重新变成保持 some q-分次的.</strong> 有两种办法: 1. 考虑 <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 2. 用 filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span> #### <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span> - <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span> - Recall: 在复形 <span class="math inline">\(\text{CKh}\)</span> 上, 我们定义了量子分次 <span class="math inline">\(\text{gr}_q\)</span>, 可以把它视为映射 <span class="math inline">\(\text{gr}_q:\text{CKh}\to \mathbb{Z}\)</span> (更严格的, 定义在齐次元上) - 我们将定义 <span class="math inline">\(\text{gr}_q':\text{CKh}'\to \mathbb{Z}/4\)</span>. - 这是因为虽然 <span class="math inline">\(d_{\text{Lee}}\)</span> 不保持 <span class="math inline">\(\text{gr}_q\)</span> (因为 <span class="math inline">\(\phi\)</span> 的存在), 但由于 <span class="math inline">\(\phi\)</span> 是 4-齐次的: 它将 <span class="math inline">\(\text{gr}_q\)</span> 增加 4. 这意味着, 在 mod 4 意义下, 微分 <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q\)</span> . 严格写, <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q'\)</span> 分次. 基于分次 <span class="math inline">\(\text{gr}_q'\)</span>, 我们可以给出 <span class="math inline">\(\text{CKh}'\)</span> 的直和分解: <span class="math inline">\(0,1,2,3\)</span>. 当 <span class="math inline">\(L\)</span> 只有一个分支时, 根据我们之前的分析 (claim), 这个余数只能是奇数, 即: <img src="pic_khovanov_homology/Note on Khovanov homology-22.png" class="img-fluid"></p>
-<section id="filtration-fplefttextckhright" class="level4">
-<h4 class="anchored" data-anchor-id="filtration-fplefttextckhright">filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span></h4>
+<section id="filtration-fplefttextckhright" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="filtration-fplefttextckhright"><span class="header-section-number">2.1.2.1</span> filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span></h4>
 <p>第二个让 <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 q-分次的办法是取 filtration.</p>
 <ul>
 <li>定义 <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span>
@@ -643,16 +469,16 @@ window.Quarto = {
 <p>不仅如此, 这个谱序列还是 link 不变量: <img src="pic_khovanov_homology/Note on Khovanov homology-23.png" class="img-fluid"> (这里指标的差异是因为他的谱序列是从第一页开始读的)</p>
 </section>
 </section>
-<section id="基本性质" class="level3">
-<h3 class="anchored" data-anchor-id="基本性质">基本性质</h3>
+<section id="基本性质" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="基本性质"><span class="header-section-number">2.1.3</span> 基本性质</h3>
 <p>Lee 的同调非常简单: 只依赖于 link 分支的数量. - <span class="math inline">\(\text{Kh}'\)</span> 的生成元 (典则生成元) - 定理: <img src="pic_khovanov_homology/Note on Khovanov homology-3.png" class="img-fluid"> - <span class="math inline">\(\text{Kh}'\)</span> 的生成元与 <span class="math inline">\(L\)</span> 上所有可能的定向一一对应. 下面我们构造这个双射. - 构造这个双射时我们需要考虑 <span class="math inline">\(L\)</span> 上所有可能的定向, 如果 <span class="math inline">\(L\)</span> 本身是一个定向 link, 这种操作就很奇怪. 但根据我们上面的讨论, 如果我们只是将”定向”看作一种 shift, 那就完全可以接受了. (Lee在证明上述定理时也是这样做的: 考虑不定向的情形) - 给一个定向 <span class="math inline">\({o}\)</span>, 我们指出生成元 <span class="math inline">\(\mathfrak{s}_o\)</span> - 给定定向 <span class="math inline">\({o}\)</span>, 我们有唯一的定向的 smoothing: <span class="math inline">\(D_{{o}}\)</span>. - 给 <span class="math inline">\(D_{{o}}\)</span> 中的每个 circle 赋值一个 <span class="math inline">\(\mathbb{Z}/2\mathbb{Z}\)</span> 中的数, 对于给定的 circle <span class="math inline">\(\alpha\)</span> : - 从 <span class="math inline">\(\alpha\)</span> 中的一个点出发, 走到无穷远至少要穿过几个其他的 circle, 记这个数为 <span class="math inline">\(k_1\)</span> - 根据 <span class="math inline">\(\alpha\)</span> 的定向, 赋值第二个数 <span class="math inline">\(k_2\)</span>: 如果逆时针, 赋值 1; 否则赋值 0. - 取 <span class="math inline">\((k_1+k_2)/\mathbb{Z}\)</span>. - 例子: <img src="pic_khovanov_homology/Note on Khovanov homology-4.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-5.png" class="img-fluid"> 这三个 circle 的取值为 0,1,0. - 如果 circle <span class="math inline">\(\alpha\)</span> 上的数是 0, 则用 <span class="math inline">\(a\)</span> 赋值 (染色); 如果为 1, 则用 <span class="math inline">\(b\)</span> 赋值.</p>
 </section>
 </section>
-<section id="s-invariant" class="level2">
-<h2 class="anchored" data-anchor-id="s-invariant">s-invariant</h2>
+<section id="s-invariant" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="s-invariant"><span class="header-section-number">2.2</span> s-invariant</h2>
 <p>s-invariant 是从 Khovanov homology 出发, 定义的<strong>最重要的</strong>数值不变量.</p>
-<section id="定义-s-分次-textgr_s" class="level3">
-<h3 class="anchored" data-anchor-id="定义-s-分次-textgr_s">定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></h3>
+<section id="定义-s-分次-textgr_s" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="定义-s-分次-textgr_s"><span class="header-section-number">2.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></h3>
 <ul>
 <li>s-invariant 究竟指的是哪个分次?
 <ul>
@@ -681,9 +507,9 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="s_maxs_min2" class="level3">
-<h3 class="anchored" data-anchor-id="s_maxs_min2"><span class="math inline">\(s_{max}=s_{min}+2\)</span></h3>
-<p>这一小节的目标是证明 lemma 3.3: <span class="math display">\[s_{max}=s_{min}+2\]</span> - Lemma 3.5 <img src="pic_khovanov_homology/Note on Khovanov homology-24.png" class="img-fluid"> - 引理的推论: - <span class="math inline">\(s_{min}&lt;s_{max}\)</span>: 我们为这两个直和项各自找到了一个生成元, 故两个直和项都不是 0. 且显然这两个直和项中生成元的 <span class="math inline">\(\text{gr}_s\)</span> 不一样: 一个 mod 4 余 1, 一个 mod 4 余 3, 从而 <span class="math inline">\(s_{min}&lt;s_{max}\)</span>. - <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)\)</span>: 我们知道 <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_\bar{o}\)</span> 有不同的 <span class="math inline">\(\text{gr}_s\)</span>, 设它们分别为 <span class="math inline">\(a_1+\cdots, b_1+\cdots\)</span>, 其中首项是 <span class="math inline">\(\text{gr}_q\)</span> 最小的. 那么 <span class="math inline">\(a_1=\pm b_1\)</span>. 于是 <span class="math inline">\(s_{min}=\text{gr}_q\left(a_1\right)\)</span>. 从而 <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)\)</span> - 引理的证明: - 即证它们属于不同的 mod 4 同余类. - 定义映射 <span class="math inline">\(i\)</span> (<span class="math inline">\(\text{Kh}'\)</span> level) - 定义 <span class="math inline">\(i: v_{-}\mapsto v_{-}, v_+\mapsto -v_+\)</span> - 上述映射 <span class="math inline">\(i\)</span> 可以诱导链映射 (复形自同态) <span class="math inline">\(i:\text{CKh}'\to \text{CKh}'\)</span>, 从而可以做到同调上去 - 由定义, 自然有 <span class="math inline">\(i\)</span> 交换 <span class="math inline">\(a,b\)</span>. - 将 <span class="math inline">\(i\)</span> 限制到 <span class="math inline">\(\text{CKh}'\left(D_{o}\right)\)</span> 上, 则 <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\mathfrak{s}_o\)</span> 映到 <span class="math inline">\(\mathfrak{s}_\bar{o}\)</span> - <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\text{CKh}'\)</span> 中的元素分为两类, 恰好对应于 <span class="math inline">\(\text{CKh}'\)</span> 中的 mod 4 同余类. - 定义 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 和 <span class="math inline">\(\text{CKh}'_{even}\)</span>: 注意到对于 <span class="math inline">\(\text{CKh}'\left(D_o\right)\)</span> 上的元素 <span class="math inline">\(x\)</span>, 若其上有奇数个 <span class="math inline">\(v_+\)</span>, 则 <span class="math inline">\(i\left(x\right)=-x\)</span>, 这类元素的集合记为 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 反之则 <span class="math inline">\(i\left(x\right)=x\)</span>, 记为 <span class="math inline">\(\text{CKh}'_{even}\)</span>; 这给出了 <span class="math inline">\(\text{CKh}'\)</span> 上的一个直和分解. - 由于 <span class="math inline">\(D_o\)</span> 上 circle 的数量是固定的, <span class="math inline">\(\text{CKh}'_{even}\)</span> 和 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 属于不同的 mod 4 同余类中. 从而这个直和分解恰好对应于 mod 4 同余类的直和分解. - <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_\bar{o}\)</span> 属于不同的 mod 4 同余类. - 只要说明它们在 <span class="math inline">\(i\)</span> 下的表现不同 - 事实上, 我们有: - <span class="math inline">\(i\left(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\right)=\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\)</span> - <span class="math inline">\(i\left(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\right)=-(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}})\)</span></p>
+<section id="s_maxs_min2" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="s_maxs_min2"><span class="header-section-number">2.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></h3>
+<p>这一小节的目标是证明 lemma 3.3: <span class="math display">\[s_{max}=s_{min}+2\]</span> - Lemma 3.5 <img src="pic_khovanov_homology/Note on Khovanov homology-24.png" class="img-fluid"> - 引理的推论: - <span class="math inline">\(s_{min}&lt;s_{max}\)</span>: 我们为这两个直和项各自找到了一个生成元, 故两个直和项都不是 0. 且显然这两个直和项中生成元的 <span class="math inline">\(\text{gr}_s\)</span> 不一样: 一个 mod 4 余 1, 一个 mod 4 余 3, 从而 <span class="math inline">\(s_{min}&lt;s_{max}\)</span>. - <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)\)</span>: 我们知道 <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 有不同的 <span class="math inline">\(\text{gr}_s\)</span>, 设它们分别为 <span class="math inline">\(a_1+\cdots, b_1+\cdots\)</span>, 其中首项是 <span class="math inline">\(\text{gr}_q\)</span> 最小的. 那么 <span class="math inline">\(a_1=\pm b_1\)</span>. 于是 <span class="math inline">\(s_{min}=\text{gr}_q\left(a_1\right)\)</span>. 从而 <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)\)</span> - 引理的证明: - 即证它们属于不同的 mod 4 同余类. - 定义映射 <span class="math inline">\(i\)</span> (<span class="math inline">\(\text{Kh}'\)</span> level) - 定义 <span class="math inline">\(i: v_{-}\mapsto v_{-}, v_+\mapsto -v_+\)</span> - 上述映射 <span class="math inline">\(i\)</span> 可以诱导链映射 (复形自同态) <span class="math inline">\(i:\text{CKh}'\to \text{CKh}'\)</span>, 从而可以做到同调上去 - 由定义, 自然有 <span class="math inline">\(i\)</span> 交换 <span class="math inline">\(a,b\)</span>. - 将 <span class="math inline">\(i\)</span> 限制到 <span class="math inline">\(\text{CKh}'\left(D_{o}\right)\)</span> 上, 则 <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\mathfrak{s}_o\)</span> 映到 <span class="math inline">\(\mathfrak{s}_{\bar{o}}\)</span> - <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\text{CKh}'\)</span> 中的元素分为两类, 恰好对应于 <span class="math inline">\(\text{CKh}'\)</span> 中的 mod 4 同余类. - 定义 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 和 <span class="math inline">\(\text{CKh}'_{even}\)</span>: 注意到对于 <span class="math inline">\(\text{CKh}'\left(D_o\right)\)</span> 上的元素 <span class="math inline">\(x\)</span>, 若其上有奇数个 <span class="math inline">\(v_+\)</span>, 则 <span class="math inline">\(i\left(x\right)=-x\)</span>, 这类元素的集合记为 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 反之则 <span class="math inline">\(i\left(x\right)=x\)</span>, 记为 <span class="math inline">\(\text{CKh}'_{even}\)</span>; 这给出了 <span class="math inline">\(\text{CKh}'\)</span> 上的一个直和分解. - 由于 <span class="math inline">\(D_o\)</span> 上 circle 的数量是固定的, <span class="math inline">\(\text{CKh}'_{even}\)</span> 和 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 属于不同的 mod 4 同余类中. 从而这个直和分解恰好对应于 mod 4 同余类的直和分解. - <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 属于不同的 mod 4 同余类. - 只要说明它们在 <span class="math inline">\(i\)</span> 下的表现不同 - 事实上, 我们有: - <span class="math inline">\(i\left(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\right)=\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\)</span> - <span class="math inline">\(i\left(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\right)=-(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}})\)</span></p>
 <ul>
 <li><strong>Lemma 3.8 (映射锥)</strong> <img src="pic_khovanov_homology/Note on Khovanov homology-25.png" class="img-fluid">
 <ul>
@@ -729,8 +555,8 @@ window.Quarto = {
 <li>定义: s-invariant<img src="pic_khovanov_homology/Note on Khovanov homology-38.png" class="img-fluid"></li>
 </ul>
 </section>
-<section id="s-不变量的性质" class="level3">
-<h3 class="anchored" data-anchor-id="s-不变量的性质">s 不变量的性质</h3>
+<section id="s-不变量的性质" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="s-不变量的性质"><span class="header-section-number">2.2.3</span> s 不变量的性质</h3>
 <p>下面两个 Prop 暗示 <span class="math inline">\(s\)</span> 不变量将诱导群同态: <span class="math inline">\(s:\text{Conc}\left(S^3\right)\to \mathbb{Z}, K\mapsto s\left(K\right)\)</span></p>
 <ul>
 <li>定义 <span class="math inline">\(\text{Conc}\left(S^3\right)\)</span>
@@ -767,8 +593,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="配边函子性质" class="level3">
-<h3 class="anchored" data-anchor-id="配边函子性质">配边/函子性质</h3>
+<section id="配边函子性质" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="配边函子性质"><span class="header-section-number">2.2.4</span> 配边/函子性质</h3>
 <p>我们考虑 <span class="math inline">\(\mathbb{R}^3\)</span> 中的纽结, 它们在 <span class="math inline">\(\mathbb{R}^4\)</span> (<span class="math inline">\(\mathbb{R}^3\times I\)</span>)中配边. 我们希望研究函子性质 首先要指出范畴是谁.</p>
 <ul>
 <li>拓扑的一边: <span class="math inline">\(\mathbb{R}^{3+1}\)</span> 中的定向的 link 的范畴
@@ -800,8 +626,8 @@ window.Quarto = {
 <li>这说明 <span class="math inline">\(\mathfrak{s}_o\)</span> 有很好的函子性.</li>
 </ul></li>
 </ul>
-<section id="prop-4.1-的推论" class="level4">
-<h4 class="anchored" data-anchor-id="prop-4.1-的推论">Prop 4.1 的推论:</h4>
+<section id="prop-4.1-的推论" class="level4" data-number="2.2.4.1">
+<h4 data-number="2.2.4.1" class="anchored" data-anchor-id="prop-4.1-的推论"><span class="header-section-number">2.2.4.1</span> Prop 4.1 的推论:</h4>
 <ul>
 <li>Coro 4.2 <img src="pic_khovanov_homology/Note on Khovanov homology-56.png" class="img-fluid"></li>
 <li>Thm 1 <img src="pic_khovanov_homology/Note on Khovanov homology-57.png" class="img-fluid">
@@ -820,8 +646,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="prop-4.1-的证明-仍然没写好" class="level4">
-<h4 class="anchored" data-anchor-id="prop-4.1-的证明-仍然没写好">Prop 4.1 的证明 (仍然没写好):</h4>
+<section id="prop-4.1-的证明-仍然没写好" class="level4" data-number="2.2.4.2">
+<h4 data-number="2.2.4.2" class="anchored" data-anchor-id="prop-4.1-的证明-仍然没写好"><span class="header-section-number">2.2.4.2</span> Prop 4.1 的证明 (仍然没写好):</h4>
 <p>本小节的主要目标是证明 Prop 4.1, 事实上, 我们有下面更一般的结果: <img src="pic_khovanov_homology/Note on Khovanov homology-54.png" class="img-fluid"> %% 先讨论几个概念: 证明的过程 我们要证的步骤是归纳假设 即若配边 <span class="math inline">\(S\)</span> 满足 claim, 我们要证明 <span class="math inline">\(S_e\circ S\)</span> 也满足 claim. <span class="math inline">\(S\)</span> 满足 claim 就是说 <span class="math inline">\(\phi_S\left(\mathfrak{s}_{o_0}\right)\)</span> 由 <span class="math inline">\(S\)</span> 上所有 permissible 的定向 <span class="math inline">\(I\)</span> 代表的生成元组成.</p>
 <p>我们要考虑在这些定向代表的生成元 <span class="math inline">\(\mathfrak{s}_{o_I}\)</span> 上作用 <span class="math inline">\(\phi_{S_e}\)</span> 会得到什么.</p>
 <p><img src="pic_khovanov_homology/Note on Khovanov homology-4.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-5.png" class="img-fluid"></p>
@@ -854,16 +680,16 @@ window.Quarto = {
 </section>
 </section>
 </section>
-<section id="应用-slice-knot-exotic-mathbbr4" class="level2">
-<h2 class="anchored" data-anchor-id="应用-slice-knot-exotic-mathbbr4">应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></h2>
-<section id="from-slice-knot-to-exotic-mathbbr4" class="level3">
-<h3 class="anchored" data-anchor-id="from-slice-knot-to-exotic-mathbbr4">from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></h3>
+<section id="应用-slice-knot-exotic-mathbbr4" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">2.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></h2>
+<section id="from-slice-knot-to-exotic-mathbbr4" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">2.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></h3>
 <p>相关内容详见：<a href="pic_khovanov_homology/Note on Khovanov homology-1.pdf">Khovanov homology 应用笔记 PDF</a></p>
 </section>
-<section id="topologically-slice-but-not-smoothly-knots" class="level3">
-<h3 class="anchored" data-anchor-id="topologically-slice-but-not-smoothly-knots">topologically slice but not smoothly knots</h3>
-<section id="alexander-n.-shumakovitch-的计算结果-2004.11" class="level4">
-<h4 class="anchored" data-anchor-id="alexander-n.-shumakovitch-的计算结果-2004.11">ALEXANDER N. SHUMAKOVITCH 的计算结果 (2004.11)</h4>
+<section id="topologically-slice-but-not-smoothly-knots" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="topologically-slice-but-not-smoothly-knots"><span class="header-section-number">2.3.2</span> topologically slice but not smoothly knots</h3>
+<section id="alexander-n.-shumakovitch-的计算结果-2004.11" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="alexander-n.-shumakovitch-的计算结果-2004.11"><span class="header-section-number">2.3.2.1</span> ALEXANDER N. SHUMAKOVITCH 的计算结果 (2004.11)</h4>
 <ul>
 <li><strong>topologically slice knot</strong>
 <ul>
@@ -884,8 +710,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="计算-s-invariant" class="level4">
-<h4 class="anchored" data-anchor-id="计算-s-invariant">计算 s invariant</h4>
+<section id="计算-s-invariant" class="level4" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="计算-s-invariant"><span class="header-section-number">2.3.2.2</span> 计算 s invariant</h4>
 <ul>
 <li>Rasmussen 的结果: <img src="pic_khovanov_homology/Note on Khovanov homology-67.png" class="img-fluid">
 <ul>
@@ -937,19 +763,6 @@ window.Quarto = {
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
-    }
-    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

@@ -13,9 +13,9 @@ toc: false
 ---
 
 ::: {.callout-note appearance="minimal" icon=false}
-这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、范畴论、3-流形不变量等主题。
+这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、高维流形、低维拓扑等主题。
 
-笔记主要面向有代数拓扑背景的研究生，希望能对同样在学习这些内容的朋友有所帮助。
+
 :::
 
 ---
@@ -29,9 +29,9 @@ toc: false
 ::: {.card-body}
 ### 🎯 量子不变量
 
-Turaev-Viro, Reshetikhin-Turaev, Khovanov homology
+Khovanov homology, Turaev-Viro, Reshetikhin-Turaev
 
-[浏览 →](notes/turaev-viro.qmd)
+[浏览 →](notes/Khovanov_homology.qmd)
 :::
 :::
 :::
@@ -39,10 +39,11 @@ Turaev-Viro, Reshetikhin-Turaev, Khovanov homology
 ::: {.g-col-12 .g-col-md-4}
 ::: {.card .text-center .h-100}
 ::: {.card-body}
-### 📐 范畴论
+### 📐 高维流形
+ 
+ h-cobordism, surgery theory, algebraic topology
 
-Tensor categories, fusion categories, modular categories
-
+[浏览 →](notes/h_cobordism_4.qmd)
 [即将更新]
 :::
 :::
@@ -51,9 +52,9 @@ Tensor categories, fusion categories, modular categories
 ::: {.g-col-12 .g-col-md-4}
 ::: {.card .text-center .h-100}
 ::: {.card-body}
-### 🔷 几何拓扑
+### 🔷 低维拓扑
 
-Heegaard splittings, triangulations, handle theory
+2-manifold (mapping class group), 3-manifold, 4-manifold, Gauge theory
 
 [即将更新]
 :::
