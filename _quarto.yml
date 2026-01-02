@@ -2,14 +2,6 @@ project:
   type: website
   output-dir: docs
 
-format:
-  pdf:
-    pdf-engine: xelatex
-    include-in-header:
-      text: |
-        \usepackage{graphicx}
-        \usepackage{grffile}
-
 website:
   title: "Chen's Topology Notes"
   description: "Personal academic website exploring the beautiful world of topology."
@@ -66,7 +58,6 @@ format:
       dark: 
         - darkly
         - custom-dark.scss
-    
     highlight-style: github
     toc: true
     toc-location: left
@@ -74,3 +65,5 @@ format:
     smooth-scroll: true
     mainfont: "Source Serif Pro"
     monofont: "JetBrains Mono"
+
+

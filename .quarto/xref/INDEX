@@ -1,6 +1,7 @@
 {
   "index.qmd": {
-    "index.html": "c2d9d12f"
+    "index.html": "c2d9d12f",
+    "index.tex": "daf26c6d"
   },
   "about.qmd": {
     "about.html": "428e3777"
@@ -15,10 +16,12 @@
     "turaev-viro.html": "868a6bd9"
   },
   "research.qmd": {
-    "research.html": "e597b810"
+    "research.html": "e597b810",
+    "research.tex": "cd2a277f"
   },
   "notes.qmd": {
-    "notes.html": "20984c15"
+    "notes.html": "20984c15",
+    "notes.tex": "996800d0"
   },
   "notes/turaev-viro.qmd": {
     "turaev-viro.html": "89d6235f"
@@ -40,7 +43,8 @@
     "h_cobordism.tex": "f6ef5672"
   },
   "h-cobordism/smale_h_cobordism_v4.md": {
-    "smale_h_cobordism_v4.html": "1e11284d"
+    "smale_h_cobordism_v4.html": "1e11284d",
+    "smale_h_cobordism_v4.tex": "85fe1ee8"
   },
   "h-cobordism/smale_h_cobordism_v2.md": {
     "smale_h_cobordism_v2.html": "df65cdff"
@@ -63,9 +67,15 @@
     "gallery2.html": "5c3b53b5"
   },
   "quarto-website-beautified/notes/Khovanov_homology.qmd": {
-    "Khovanov_homology.html": "21ddc090"
+    "Khovanov_homology.html": "21ddc090",
+    "Khovanov_homology.tex": "40d00c51"
   },
   "quarto-website-beautified/notes/turaev-viro.qmd": {
-    "turaev-viro.html": "2ff42caf"
+    "turaev-viro.html": "2ff42caf",
+    "turaev-viro.tex": "306b8fbc"
+  },
+  "notes/note-template.qmd": {
+    "note-template.html": "6dbdf225",
+    "note-template.tex": "6ff891bb"
   }
 }
