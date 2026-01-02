@@ -1,0 +1,8 @@
+上传三部曲
+
+1. quarto render
+
+2. git add .
+git commit -m "add photography gallery with new layout"
+
+3. git push

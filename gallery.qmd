@@ -1,65 +1,224 @@
 ---
-title: "摄影馈敐"
-subtitle: "时光捕捉的片段。"
+title: "Gallery"
+subtitle: "光影之间 · Moments in Light"
 filters:
    - lightbox
 lightbox:
   match: auto
   effect: fade
   loop: true
+toc: false
+page-layout: full
 ---
 
 <style>
-  .quarto-figure img {
-    border-radius: 8px;              /* 圆角 */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 柔和阴影 */
-    transition: transform 0.3s ease; /* 动画过渡 */
+/* ========== 全局背景 ========== */
+.quarto-container {
+  background: linear-gradient(180deg, 
+    var(--bs-body-bg) 0%, 
+    color-mix(in srgb, var(--bs-body-bg) 95%, var(--bs-primary)) 100%
+  );
+}
+
+/* ========== 优雅分隔线 ========== */
+.elegant-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0 2.5rem;
+  gap: 1.5rem;
+}
+
+.elegant-divider::before,
+.elegant-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--bs-secondary), 
+    transparent
+  );
+}
+
+.divider-symbol {
+  font-size: 1.2rem;
+  color: var(--bs-secondary);
+  letter-spacing: 8px;
+}
+
+/* ========== 章节标题 ========== */
+.section-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 2rem 0 1.5rem;
+  color: var(--bs-heading-color);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--bs-primary), 
+    transparent
+  );
+  margin: 0.8rem auto 0;
+}
+
+/* ========== 介绍文字 ========== */
+.intro-text {
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* ========== 画廊容器 ========== */
+.gallery-wrapper {
+  background: var(--bs-tertiary-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  box-shadow: 
+    0 4px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* ========== 图片样式 ========== */
+.quarto-figure {
+  margin: 0.75rem;
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+}
+
+.quarto-figure img {
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.95) saturate(1.05);
+}
+
+.quarto-figure img:hover {
+  transform: scale(1.03);
+  filter: brightness(1) saturate(1.1);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.2),
+    0 0 0 1px rgba(255,255,255,0.1);
+}
+
+/* ========== 隐藏默认标题 ========== */
+figcaption {
+  display: none; 
+}
+
+/* ========== 提示框 ========== */
+.gallery-tip {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    var(--bs-tertiary-bg) 0%, 
+    transparent 100%
+  );
+}
+
+/* ========== 页脚装饰 ========== */
+.footer-ornament {
+  text-align: center;
+  margin: 3rem 0 1rem;
+  font-size: 1.8rem;
+  letter-spacing: 12px;
+  color: var(--bs-secondary);
+  opacity: 0.5;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  .gallery-wrapper {
+    padding: 1rem;
+    border-radius: 12px;
   }
-  .quarto-figure img:hover {
-    transform: translateY(-5px);     /* 鼠标悬停时上浮 */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* 悬停时阴影加深 */
+  
+  .intro-text {
+    font-size: 1.05rem;
+    padding: 0 1rem;
   }
-  /* 隐藏原本在图片下方的文字(文件名)，除非你在[]里写了特定的描述 */
-  figcaption {
-    display: none; 
+  
+  .section-title {
+    font-size: 1.6rem;
   }
+}
 </style>
 
-Welcome to my gallery.
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-欢迎来到我的照片馆。
+::: {.intro-text}
+A curated collection of moments — from sweeping landscapes to intimate urban scenes.  
+Each photograph tells its own quiet story.
+:::
 
-### 风景与城市景观
+<div class="elegant-divider"><span class="divider-symbol">✦</span></div>
 
+::: {.section-title}
+Landscapes & Cityscapes
+:::
+
+::: {.gallery-wrapper}
 ::: {layout-ncol=2}
 
-![](images/gallery/gallery-01.jpeg){group="my-gallery"}
+![](images/gallery/gallery-01.jpeg){group="main-gallery"}
 
-![](images/gallery/gallery-04.jpeg){group="my-gallery"}
+![](images/gallery/gallery-04.jpeg){group="main-gallery"}
 
-![](images/gallery/gallery-05.jpeg){group="my-gallery"}
+![](images/gallery/gallery-05.jpeg){group="main-gallery"}
 
-![](images/gallery/gallery-06.jpeg){group="my-gallery"}
+![](images/gallery/gallery-06.jpeg){group="main-gallery"}
 
-![](images/gallery/gallery-07.jpeg){group="my-gallery"}
+![](images/gallery/gallery-07.jpeg){group="main-gallery"}
 
-![](images/gallery/gallery-02.jpeg){group="my-gallery"}
+![](images/gallery/gallery-02.jpeg){group="main-gallery"}
 
 :::
+:::
 
-<br>
+<div class="elegant-divider"><span class="divider-symbol">✦</span></div>
 
-### 竖体透视
+::: {.section-title}
+Vertical Perspectives
+:::
 
+::: {.gallery-wrapper}
 ::: {layout-ncol=3}
 
-
-![](images/gallery/gallery-03.jpeg){group="my-gallery"}
+![](images/gallery/gallery-03.jpeg){group="main-gallery"}
 
 :::
+:::
 
-<br>
+<div class="elegant-divider"><span class="divider-symbol">· · ·</span></div>
 
-::: {.callout-tip appearance="minimal"}
-点击任何图片以展开。
+::: {.gallery-tip}
+✨ Click on any image to view in full screen
+:::
+
+::: {.footer-ornament}
+◆
 :::

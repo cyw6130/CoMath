@@ -1,31 +1,103 @@
 ---
-title: "Welcome"
+title: "Chen"
+subtitle: "Mathematics · Topology · Quantum Invariants"
 about:
-  template: jolla # 这是一个非常漂亮的个人简介模板
-  image: profile.jpg # 请在文件夹里放一张你的照片，命名为 profile.jpg
+  template: trestles
+  image: profile.jpg
+  image-shape: rounded
+  image-width: 12em
   links:
     - icon: github
-      text: Github
-      href: https://github.com
+      text: GitHub
+      href: https://github.com/cyw6130
     - icon: envelope
       text: Email
       href: mailto:your_email@edu.com
+    - icon: mortarboard
+      text: Google Scholar
+      href: https://scholar.google.com
+page-layout: full
+toc: false
 ---
+
+::: {.column-page}
 
 ## About Me
 
+I am a graduate student in Mathematics at **Bilibili University**, passionate about exploring the elegant structures that connect algebra, geometry, and topology.
 
-I am a graduate student in Mathematics at Bilibili university, interested in **Low-Dimensional Topology** and **Quantum Topology**.
+My research lies at the intersection of **Low-Dimensional Topology** and **Quantum Topology**, where I investigate how algebraic structures give rise to powerful invariants of knots and 3-manifolds.
 
-My current research focuses on topology. I am particularly interested in the connections between:
+::: {.callout-note appearance="minimal" icon=false}
+### Research Interests
 
+:::: {.columns}
 
-* Khovanov homology
-* H-cobordism
-* Turaev-Viro type invariants
+::: {.column width="50%"}
+- **Khovanov Homology**  
+  Categorification of the Jones polynomial
+  
+- **Turaev-Viro Invariants**  
+  State-sum models from spherical fusion categories
+:::
 
+::: {.column width="50%"}
+- **H-Cobordism**  
+  Manifold structures and smooth topology
+  
+- **Non-Semisimple TQFTs**  
+  Modified traces in non-unimodular categories
+:::
+
+::::
+:::
+
+---
 
 ## Recent Updates
 
-* **Dec 2025**: 
-* **Oct 2025**: 
+::: {.timeline}
+
+| Date | Event |
+|:-----|:------|
+| **Dec 2025** | Presented at the Topology Seminar |
+| **Oct 2025** | Started working on Kuperberg invariants |
+| **Sep 2025** | Joined Prof. X's research group |
+
+:::
+
+---
+
+## Selected Notes
+
+探索拓扑学的美丽世界，从量子不变量到流形结构：
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body}
+### [Turaev-Viro 不变量](notes/turaev-viro.qmd)
+
+State-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.
+
+`Quantum Topology` `3-Manifolds`
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body}
+### [Khovanov 同调](notes/Khovanov_homology.qmd)
+
+A categorification of the Jones polynomial that provides strictly stronger invariants for links.
+
+`Categorification` `Knot Theory`
+:::
+:::
+:::
+
+:::
+
+:::

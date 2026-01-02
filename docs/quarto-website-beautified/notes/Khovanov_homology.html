@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Chen">
+<meta name="dcterms.date" content="2025-11-15">
+<meta name="description" content="Jones多项式的范畴化，提供了更强的纽结不变量">
+
+<title>Khovanov 同调 – Chen’s Topology Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8a36787d37a309c00503ce8984a43a6b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-154f9eb9ce1df96744e77b4b96314675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Chen’s Topology Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Khovanov 同调</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turaev-Viro Invariants</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov homology</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#引言" id="toc-引言" class="nav-link active" data-scroll-target="#引言"><span class="header-section-number">1</span> 引言</a></li>
+  <li><a href="#jones-多项式回顾" id="toc-jones-多项式回顾" class="nav-link" data-scroll-target="#jones-多项式回顾"><span class="header-section-number">2</span> Jones 多项式回顾</a>
+  <ul class="collapse">
+  <li><a href="#kauffman-括号" id="toc-kauffman-括号" class="nav-link" data-scroll-target="#kauffman-括号"><span class="header-section-number">2.1</span> Kauffman 括号</a></li>
+  <li><a href="#jones-多项式" id="toc-jones-多项式" class="nav-link" data-scroll-target="#jones-多项式"><span class="header-section-number">2.2</span> Jones 多项式</a></li>
+  </ul></li>
+  <li><a href="#khovanov-复形的构造" id="toc-khovanov-复形的构造" class="nav-link" data-scroll-target="#khovanov-复形的构造"><span class="header-section-number">3</span> Khovanov 复形的构造</a>
+  <ul class="collapse">
+  <li><a href="#立方体结构" id="toc-立方体结构" class="nav-link" data-scroll-target="#立方体结构"><span class="header-section-number">3.1</span> 立方体结构</a></li>
+  <li><a href="#分次向量空间" id="toc-分次向量空间" class="nav-link" data-scroll-target="#分次向量空间"><span class="header-section-number">3.2</span> 分次向量空间</a></li>
+  <li><a href="#边映射" id="toc-边映射" class="nav-link" data-scroll-target="#边映射"><span class="header-section-number">3.3</span> 边映射</a></li>
+  <li><a href="#双分次结构" id="toc-双分次结构" class="nav-link" data-scroll-target="#双分次结构"><span class="header-section-number">3.4</span> 双分次结构</a></li>
+  </ul></li>
+  <li><a href="#主要性质" id="toc-主要性质" class="nav-link" data-scroll-target="#主要性质"><span class="header-section-number">4</span> 主要性质</a>
+  <ul class="collapse">
+  <li><a href="#不变性" id="toc-不变性" class="nav-link" data-scroll-target="#不变性"><span class="header-section-number">4.1</span> 不变性</a></li>
+  <li><a href="#与-jones-多项式的关系" id="toc-与-jones-多项式的关系" class="nav-link" data-scroll-target="#与-jones-多项式的关系"><span class="header-section-number">4.2</span> 与 Jones 多项式的关系</a></li>
+  <li><a href="#kh-检测平凡结" id="toc-kh-检测平凡结" class="nav-link" data-scroll-target="#kh-检测平凡结"><span class="header-section-number">4.3</span> Kh 检测平凡结</a></li>
+  </ul></li>
+  <li><a href="#计算例子" id="toc-计算例子" class="nav-link" data-scroll-target="#计算例子"><span class="header-section-number">5</span> 计算例子</a>
+  <ul class="collapse">
+  <li><a href="#平凡结" id="toc-平凡结" class="nav-link" data-scroll-target="#平凡结"><span class="header-section-number">5.1</span> 平凡结</a></li>
+  <li><a href="#三叶结" id="toc-三叶结" class="nav-link" data-scroll-target="#三叶结"><span class="header-section-number">5.2</span> 三叶结</a></li>
+  </ul></li>
+  <li><a href="#推广与变体" id="toc-推广与变体" class="nav-link" data-scroll-target="#推广与变体"><span class="header-section-number">6</span> 推广与变体</a>
+  <ul class="collapse">
+  <li><a href="#奇-khovanov-同调" id="toc-奇-khovanov-同调" class="nav-link" data-scroll-target="#奇-khovanov-同调"><span class="header-section-number">6.1</span> 奇 Khovanov 同调</a></li>
+  <li><a href="#khovanov-rozansky-同调" id="toc-khovanov-rozansky-同调" class="nav-link" data-scroll-target="#khovanov-rozansky-同调"><span class="header-section-number">6.2</span> Khovanov-Rozansky 同调</a></li>
+  <li><a href="#缆绑公式" id="toc-缆绑公式" class="nav-link" data-scroll-target="#缆绑公式"><span class="header-section-number">6.3</span> 缆绑公式</a></li>
+  </ul></li>
+  <li><a href="#开放问题" id="toc-开放问题" class="nav-link" data-scroll-target="#开放问题"><span class="header-section-number">7</span> 开放问题</a></li>
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献"><span class="header-section-number">8</span> 参考文献</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Khovanov 同调</h1>
+<p class="subtitle lead">A categorification of the Jones polynomial</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Categorification</div>
+    <div class="quarto-category">Knot Theory</div>
+    <div class="quarto-category">Homology</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Jones多项式的范畴化，提供了更强的纽结不变量
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chen </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 15, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="引言" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="引言"><span class="header-section-number">1</span> 引言</h2>
+<p><strong>Khovanov 同调</strong>是 Mikhail Khovanov 在 1999 年引入的一种链不变量。它”范畴化”了著名的 Jones 多项式，即从一个多项式不变量提升到一个（双分次）链复形。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>为什么重要？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Khovanov 同调比 Jones 多项式严格更强：存在 Jones 多项式相同但 Khovanov 同调不同的纽结！</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="jones-多项式回顾" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="jones-多项式回顾"><span class="header-section-number">2</span> Jones 多项式回顾</h2>
+<section id="kauffman-括号" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="kauffman-括号"><span class="header-section-number">2.1</span> Kauffman 括号</h3>
+<p>对于一个链环图 <span class="math inline">\(D\)</span>，<strong>Kauffman 括号</strong> <span class="math inline">\(\langle D \rangle\)</span> 通过以下规则递归定义：</p>
+<p><span class="math display">\[
+\langle \,\raisebox{-0.4ex}{\includegraphics[height=1em]{crossing.png}}\, \rangle = A \langle \,\raisebox{-0.4ex}{\includegraphics[height=1em]{0-smoothing.png}}\, \rangle + A^{-1} \langle \,\raisebox{-0.4ex}{\includegraphics[height=1em]{1-smoothing.png}}\, \rangle
+\]</span></p>
+<p>并规定 <span class="math inline">\(\langle \bigcirc \rangle = -A^2 - A^{-2}\)</span>。</p>
+</section>
+<section id="jones-多项式" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="jones-多项式"><span class="header-section-number">2.2</span> Jones 多项式</h3>
+<p>取 <span class="math inline">\(A = q^{-1/4}\)</span>，得到<strong>Jones 多项式</strong>： <span class="math display">\[
+V_L(q) = (-1)^{n_-} q^{\frac{n_+ - 2n_-}{4}} \langle D \rangle
+\]</span></p>
+<p>其中 <span class="math inline">\(n_+, n_-\)</span> 是正负交叉数。</p>
+<hr>
+</section>
+</section>
+<section id="khovanov-复形的构造" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="khovanov-复形的构造"><span class="header-section-number">3</span> Khovanov 复形的构造</h2>
+<section id="立方体结构" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="立方体结构"><span class="header-section-number">3.1</span> 立方体结构</h3>
+<p>对于有 <span class="math inline">\(n\)</span> 个交叉的链环图 <span class="math inline">\(D\)</span>，考虑 <span class="math inline">\(n\)</span>-维立方体 <span class="math inline">\(\{0,1\}^n\)</span>。</p>
+<p>每个顶点 <span class="math inline">\(v \in \{0,1\}^n\)</span> 对应一个<strong>平滑</strong> <span class="math inline">\(D_v\)</span>，即将每个交叉按 0-平滑或 1-平滑解开。</p>
+</section>
+<section id="分次向量空间" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="分次向量空间"><span class="header-section-number">3.2</span> 分次向量空间</h3>
+<p>对每个平滑 <span class="math inline">\(D_v\)</span>（它是若干不交圆的并），赋予向量空间： <span class="math display">\[
+V(D_v) = V^{\otimes k}
+\]</span> 其中 <span class="math inline">\(k\)</span> 是圆的个数，<span class="math inline">\(V = \mathbb{Z}[x]/(x^2)\)</span> 是一个 2 维分次向量空间，生成元为 <span class="math inline">\(1\)</span>（次数 1）和 <span class="math inline">\(x\)</span>（次数 -1）。</p>
+</section>
+<section id="边映射" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="边映射"><span class="header-section-number">3.3</span> 边映射</h3>
+<p>立方体的每条边对应一个映射：</p>
+<ul>
+<li><strong>合并 (merge)</strong>: 两个圆变一个，<span class="math inline">\(m: V \otimes V \to V\)</span></li>
+<li><strong>分裂 (split)</strong>: 一个圆变两个，<span class="math inline">\(\Delta: V \to V \otimes V\)</span></li>
+</ul>
+<p>具体地： <span class="math display">\[
+\begin{aligned}
+m(1 \otimes 1) &amp;= 1, &amp; m(1 \otimes x) &amp;= x \\
+m(x \otimes 1) &amp;= x, &amp; m(x \otimes x) &amp;= 0
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\Delta(1) &amp;= 1 \otimes x + x \otimes 1 \\
+\Delta(x) &amp;= x \otimes x
+\end{aligned}
+\]</span></p>
+</section>
+<section id="双分次结构" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="双分次结构"><span class="header-section-number">3.4</span> 双分次结构</h3>
+<p>定义<strong>同调次数</strong> <span class="math inline">\(i\)</span> 和<strong>量子次数</strong> <span class="math inline">\(j\)</span>：</p>
+<ul>
+<li><span class="math inline">\(i = |v| - n_-\)</span>，其中 <span class="math inline">\(|v|\)</span> 是 <span class="math inline">\(v\)</span> 中 1 的个数</li>
+<li><span class="math inline">\(j\)</span> 由张量积分次计算</li>
+</ul>
+<p><strong>Khovanov 链复形</strong>是 <span class="math inline">\(C^{i,j}(D)\)</span> 的双分次复形，微分 <span class="math inline">\(d: C^{i,j} \to C^{i+1,j}\)</span> 由边映射给出。</p>
+<hr>
+</section>
+</section>
+<section id="主要性质" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="主要性质"><span class="header-section-number">4</span> 主要性质</h2>
+<section id="不变性" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="不变性"><span class="header-section-number">4.1</span> 不变性</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>定理 (Khovanov)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Khovanov 同调 <span class="math inline">\(\text{Kh}^{i,j}(L) = H^{i,j}(C(D))\)</span> 是链环 <span class="math inline">\(L\)</span> 的不变量，不依赖于图的选取。</p>
+</div>
+</div>
+<p>证明通过验证 <strong>Reidemeister 移动</strong>的不变性。</p>
+</section>
+<section id="与-jones-多项式的关系" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="与-jones-多项式的关系"><span class="header-section-number">4.2</span> 与 Jones 多项式的关系</h3>
+<p>取<strong>分次 Euler 特征</strong>： <span class="math display">\[
+\chi_q(\text{Kh}(L)) = \sum_{i,j} (-1)^i q^j \dim \text{Kh}^{i,j}(L) = V_L(q)
+\]</span></p>
+<p>这正是 Jones 多项式！这解释了”范畴化”的含义。</p>
+</section>
+<section id="kh-检测平凡结" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="kh-检测平凡结"><span class="header-section-number">4.3</span> Kh 检测平凡结</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>定理 (Kronheimer-Mrowka, 2011)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>如果 <span class="math inline">\(K\)</span> 是一个纽结且 <span class="math inline">\(\text{Kh}(K) \cong \text{Kh}(\text{unknot})\)</span>，则 <span class="math inline">\(K\)</span> 是平凡结。</p>
+</div>
+</div>
+<p>这是 Khovanov 同调最著名的应用之一！证明使用了<strong>规范理论</strong>的深刻结果。</p>
+<hr>
+</section>
+</section>
+<section id="计算例子" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="计算例子"><span class="header-section-number">5</span> 计算例子</h2>
+<section id="平凡结" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="平凡结"><span class="header-section-number">5.1</span> 平凡结</h3>
+<p>平凡结的 Khovanov 同调非常简单： <span class="math display">\[
+\text{Kh}^{0,1}(\bigcirc) = \mathbb{Z}, \quad \text{Kh}^{0,-1}(\bigcirc) = \mathbb{Z}
+\]</span></p>
+<p>其他双分次均为零。</p>
+</section>
+<section id="三叶结" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="三叶结"><span class="header-section-number">5.2</span> 三叶结</h3>
+<p>右手三叶结 <span class="math inline">\(3_1\)</span> 的 Khovanov 同调：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">\(j \backslash i\)</span></th>
+<th style="text-align: center;">-3</th>
+<th style="text-align: center;">-2</th>
+<th style="text-align: center;">-1</th>
+<th style="text-align: center;">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>-1</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>-3</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>-5</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>-7</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}_2\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>-9</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>注意出现了<strong>挠元</strong> <span class="math inline">\(\mathbb{Z}_2\)</span>！这说明整系数 Khovanov 同调比有理系数更精细。</p>
+<hr>
+</section>
+</section>
+<section id="推广与变体" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="推广与变体"><span class="header-section-number">6</span> 推广与变体</h2>
+<section id="奇-khovanov-同调" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="奇-khovanov-同调"><span class="header-section-number">6.1</span> 奇 Khovanov 同调</h3>
+<p>Ozsváth-Rasmussen-Szabó 引入了<strong>奇 Khovanov 同调</strong>，使用外代数替代多项式环，得到不同的不变量。</p>
+</section>
+<section id="khovanov-rozansky-同调" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="khovanov-rozansky-同调"><span class="header-section-number">6.2</span> Khovanov-Rozansky 同调</h3>
+<p><span class="math inline">\(\mathfrak{sl}_n\)</span> 版本的 Khovanov 同调，范畴化了 HOMFLY-PT 多项式。</p>
+</section>
+<section id="缆绑公式" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="缆绑公式"><span class="header-section-number">6.3</span> 缆绑公式</h3>
+<p>存在将 Khovanov 同调与<strong>缆绕纽结</strong>联系起来的公式，这在计算中非常有用。</p>
+<hr>
+</section>
+</section>
+<section id="开放问题" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="开放问题"><span class="header-section-number">7</span> 开放问题</h2>
+<ol type="1">
+<li><strong>三叶结检测</strong>: Khovanov 同调是否检测三叶结？</li>
+<li><strong>切片亏格界</strong>: 能否从 Khovanov 同调给出最优的切片亏格下界？</li>
+<li><strong>物理解释</strong>: Khovanov 同调的物理意义是什么？（与 BPS 态的联系）</li>
+</ol>
+<hr>
+</section>
+<section id="参考文献" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="参考文献"><span class="header-section-number">8</span> 参考文献</h2>
+<ul>
+<li>Khovanov, M. (2000). <em>A categorification of the Jones polynomial</em>. Duke Math. J.</li>
+<li>Bar-Natan, D. (2002). <em>On Khovanov’s categorification of the Jones polynomial</em>. Algebr. Geom. Topol.</li>
+<li>Kronheimer, P., &amp; Mrowka, T. (2011). <em>Khovanov homology is an unknot-detector</em>. Publ. Math. IHES.</li>
+</ul>
+<hr>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>上一篇</strong>: <a href="../../quarto-website-beautified/notes/turaev-viro.html">Turaev-Viro 不变量</a> — 3-流形的状态和模型</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chen · Mathematics &amp; Topology</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

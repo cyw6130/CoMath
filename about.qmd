@@ -1,5 +1,51 @@
 ---
-title: "关于"
+title: "About This Site"
+subtitle: "A digital garden for mathematical exploration"
+toc: false
 ---
 
-关于此网站
+## 关于本站
+
+这是我的个人学术网站，用于记录和分享我在拓扑学学习过程中的思考与笔记。
+
+::: {.callout-note appearance="minimal" icon=false}
+### 🌱 数字花园理念
+
+这个网站采用"数字花园 (Digital Garden)"的理念——笔记不一定完美，而是持续生长和迭代的。你可能会看到一些标记为"施工中"的内容，这是正常的！
+:::
+
+---
+
+## 技术栈
+
+本站使用以下技术构建：
+
+| 工具 | 用途 |
+|:-----|:-----|
+| [Quarto](https://quarto.org) | 文档生成系统 |
+| LaTeX / KaTeX | 数学公式渲染 |
+| GitHub Pages | 静态网站托管 |
+| SCSS | 自定义样式 |
+
+---
+
+## 联系方式
+
+如有任何问题或建议，欢迎通过以下方式联系我：
+
+- 📧 **Email**: [your_email@edu.com](mailto:your_email@edu.com)
+- 🐙 **GitHub**: [@cyw6130](https://github.com/cyw6130)
+
+---
+
+## 致谢
+
+感谢所有在学术道路上给予我帮助的老师、同学和朋友。
+
+特别感谢开源社区提供的优秀工具，让学术分享变得更加容易。
+
+---
+
+::: {.callout-tip appearance="minimal"}
+**License**: 除特别注明外，本站内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可。
+:::

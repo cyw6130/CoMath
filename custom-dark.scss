@@ -1,0 +1,419 @@
+/*-- scss:defaults --*/
+
+// ========== 字体导入 ==========
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// ========== 深色主题颜色变量 ==========
+$primary: #90cdf4;        // 柔和的天蓝
+$secondary: #a0aec0;      // 银灰
+$accent: #fc8181;         // 珊瑚红
+$success: #68d391;
+$info: #63b3ed;
+$warning: #f6ad55;
+$danger: #fc8181;
+
+$body-bg: #0d1117;        // GitHub 风格深色背景
+$body-color: #e2e8f0;     // 柔和白色文字
+
+$link-color: #90cdf4;
+$link-hover-color: #bee3f8;
+
+// ========== 字体设置 ==========
+$font-family-sans-serif: "Source Serif Pro", Georgia, "Times New Roman", serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", monospace;
+$headings-font-family: "Cormorant Garamond", Georgia, serif;
+$headings-font-weight: 600;
+
+// ========== 间距与圆角 ==========
+$border-radius: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+/*-- scss:rules --*/
+
+// ========== 全局样式 ==========
+body {
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+  min-height: 100vh;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+// ========== 导航栏美化 ==========
+.navbar {
+  background: linear-gradient(135deg, #161b22 0%, #21262d 100%) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #30363d;
+  padding: 1rem 2rem;
+  
+  .navbar-brand {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #f0f6fc !important;
+  }
+  
+  .nav-link {
+    font-family: "Source Serif Pro", serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #c9d1d9 !important;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: $primary;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    &:hover {
+      color: #f0f6fc !important;
+      
+      &::after {
+        width: 80%;
+      }
+    }
+  }
+}
+
+// ========== 主内容区域 ==========
+.quarto-title {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 2rem;
+  
+  h1.title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    
+    background: linear-gradient(135deg, #90cdf4 0%, #bee3f8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .subtitle {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #8b949e;
+  }
+}
+
+// ========== 标题层级 ==========
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant Garamond", serif;
+  color: #f0f6fc;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #30363d;
+  
+  &::before {
+    content: '§ ';
+    color: #6e7681;
+    font-weight: 400;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #c9d1d9;
+}
+
+// ========== 链接样式 ==========
+a {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: $link-hover-color;
+    border-bottom-color: $link-hover-color;
+  }
+}
+
+// ========== 代码块 ==========
+pre {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: $border-radius-lg;
+  padding: 1.5rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  
+  code {
+    font-family: $font-family-monospace;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+  }
+}
+
+code {
+  font-family: $font-family-monospace;
+  background: #21262d;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #fc8181;
+}
+
+// ========== 数学公式 ==========
+.math {
+  font-size: 1.1em;
+  color: #f0f6fc;
+}
+
+// ========== 引用块 ==========
+blockquote {
+  border-left: 4px solid $primary;
+  background: linear-gradient(90deg, #161b22 0%, transparent 100%);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #8b949e;
+  border-radius: 0 $border-radius $border-radius 0;
+  
+  p {
+    margin: 0;
+  }
+}
+
+// ========== 列表样式 ==========
+ul, ol {
+  li {
+    margin-bottom: 0.5rem;
+    
+    &::marker {
+      color: $primary;
+    }
+  }
+}
+
+// ========== 侧边栏美化 ==========
+.sidebar {
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  
+  .sidebar-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: #f0f6fc;
+  }
+  
+  .sidebar-item {
+    transition: all 0.2s ease;
+    border-radius: $border-radius;
+    
+    &:hover {
+      background: #21262d;
+    }
+  }
+  
+  .sidebar-item-text {
+    font-family: "Source Serif Pro", serif;
+    color: #c9d1d9;
+  }
+}
+
+// ========== 目录(TOC)美化 ==========
+#TOC {
+  background: transparent;
+  padding: 1rem;
+  
+  .toc-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: #f0f6fc;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: #8b949e;
+    border-bottom: none;
+    padding: 0.3rem 0;
+    display: block;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: $primary;
+      transform: translateX(5px);
+    }
+  }
+  
+  .active {
+    color: $primary;
+    font-weight: 600;
+    border-left: 3px solid $primary;
+    padding-left: 0.5rem;
+  }
+}
+
+// ========== 页脚美化 ==========
+.nav-footer {
+  background: linear-gradient(135deg, #161b22 0%, #21262d 100%) !important;
+  border-top: 1px solid #30363d;
+  padding: 2rem;
+  margin-top: 4rem;
+  
+  a {
+    color: #8b949e !important;
+    border-bottom: none;
+    
+    &:hover {
+      color: #f0f6fc !important;
+    }
+  }
+}
+
+// ========== 卡片组件 ==========
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    border-color: #484f58;
+  }
+}
+
+// ========== Callout 美化 ==========
+.callout {
+  border-radius: $border-radius-lg;
+  border: 1px solid #30363d;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  
+  &.callout-tip {
+    background: linear-gradient(135deg, #0d1f0d 0%, #1a2f1a 100%);
+    border-left: 4px solid $success;
+  }
+  
+  &.callout-note {
+    background: linear-gradient(135deg, #0d1a2f 0%, #1a2a3f 100%);
+    border-left: 4px solid $info;
+  }
+  
+  &.callout-warning {
+    background: linear-gradient(135deg, #2f1a0d 0%, #3f2a1a 100%);
+    border-left: 4px solid $warning;
+  }
+  
+  &.callout-important {
+    background: linear-gradient(135deg, #2f0d0d 0%, #3f1a1a 100%);
+    border-left: 4px solid $danger;
+  }
+}
+
+// ========== 表格美化 ==========
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  
+  th {
+    background: #21262d;
+    color: #f0f6fc;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid $primary;
+  }
+  
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid #30363d;
+    color: #c9d1d9;
+  }
+  
+  tr:hover {
+    background: #161b22;
+  }
+}
+
+// ========== 图片美化 ==========
+.quarto-figure {
+  margin: 2rem 0;
+  
+  img {
+    border-radius: $border-radius-lg;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+  }
+  
+  figcaption {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: #8b949e;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+}
+
+// ========== 滚动条美化 ==========
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161b22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+  
+  &:hover {
+    background: #484f58;
+  }
+}
+
+// ========== 选中文字样式 ==========
+::selection {
+  background: rgba(144, 205, 244, 0.3);
+  color: #f0f6fc;
+}
+
+// ========== About 页面特殊样式 ==========
+.about-entity {
+  .about-link {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9 !important;
+    
+    &:hover {
+      background: #30363d;
+      color: #f0f6fc !important;
+    }
+  }
+}

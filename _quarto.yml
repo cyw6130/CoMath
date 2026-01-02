@@ -2,12 +2,21 @@ project:
   type: website
   output-dir: docs
 
+format:
+  pdf:
+    pdf-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{graphicx}
+        \usepackage{grffile}
+
 website:
-  title: "Chen's Topology Notes" # 改成你的名字
-  description: "Personal academic website and digital garden."
+  title: "Chen's Topology Notes"
+  description: "Personal academic website exploring the beautiful world of topology."
   
-  # 顶部导航栏：用于放“大”页面
+  # 顶部导航栏
   navbar:
+    background: dark
     right:
       - href: index.qmd
         text: Home
@@ -15,25 +24,25 @@ website:
         text: Research
       - href: notes.qmd
         text: Notes
-      # --- 新增这一项 ---
       - href: gallery.qmd
         text: Gallery
-      
       - icon: github
         href: https://github.com/cyw6130
       - icon: envelope
         href: mailto:your.email@university.edu
 
-  # 添加页脚
+  # 页脚
   page-footer:
-    left: "Copyright 2025, Chen"
+    background: dark
+    left: "© 2025 Chen · Mathematics & Topology"
     center:
       - icon: github
         href: https://github.com/cyw6130
       - icon: twitter
         href: https://twitter.com
     right: "Built with Quarto"
-  # 侧边栏：专门用于 Notes 部分的目录导航
+
+  # 侧边栏
   sidebar:
     style: "docked"
     search: true
@@ -45,23 +54,23 @@ website:
             text: "Overview"
           - section: "Quantum Invariants"
             contents:
-              - notes/turaev-viro.qmd  # 我们一会儿创建这个
-              - notes/Khovanov_homology.qmd     # 还有这个
-              # - notes/kuperberg.qmd    # 还有这个
+              - notes/turaev-viro.qmd
+              - notes/Khovanov_homology.qmd
+
 format:
   html:
-    # 启用双主题：白天用 flatly (扁平化)，晚上自动/手动切换为 darkly (暗黑风)
     theme:
-      light: flatly
-      dark: darkly
+      light: 
+        - flatly
+        - custom.scss
+      dark: 
+        - darkly
+        - custom-dark.scss
     
-    # 启用代码高亮配色
     highlight-style: github
-    
-    # 让目录(TOC)在左侧悬浮，阅读长文体验更好
     toc: true
     toc-location: left
     toc-title: "Contents"
-    
-    # 开启平滑滚动
     smooth-scroll: true
+    mainfont: "Source Serif Pro"
+    monofont: "JetBrains Mono"

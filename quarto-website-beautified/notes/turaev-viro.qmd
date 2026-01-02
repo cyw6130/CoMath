@@ -1,0 +1,153 @@
+---
+title: "Turaev-Viro 不变量"
+subtitle: "State-sum construction of 3-manifold invariants"
+description: "从球面融合范畴构造3-流形不变量的状态和模型"
+author: "Chen"
+date: "2025-12-01"
+categories: [Quantum Topology, 3-Manifolds, State-Sum]
+toc: true
+toc-depth: 3
+number-sections: true
+bibliography: references.bib
+---
+
+## 引言
+
+Turaev-Viro 不变量是 3-流形的一类重要拓扑不变量，由 Vladimir Turaev 和 Oleg Viro 在 1992 年引入。这类不变量通过**状态和模型 (state-sum model)** 构造，从球面融合范畴的代数数据出发，对 3-流形的三角剖分进行着色并求和。
+
+::: {.callout-tip}
+## 核心思想
+将流形的拓扑性质"编码"为代数数据的组合求和，使得不变量可以通过局部计算得到。
+:::
+
+---
+
+## 预备知识
+
+### 球面融合范畴
+
+设 $\mathcal{C}$ 是一个**球面融合范畴 (spherical fusion category)**，具有以下结构：
+
+- 有限多个单纯对象 $\{X_0 = \mathbf{1}, X_1, \ldots, X_n\}$
+- 张量积 $\otimes$ 和对偶 $X^*$
+- 球面结构：$\dim(X) = \dim(X^*)$
+
+**量子维数**定义为：
+$$
+\dim(X_i) = \text{tr}(\text{id}_{X_i}) \in \mathbb{C}
+$$
+
+范畴的**总维数**为：
+$$
+\mathcal{D}^2 = \sum_{i} (\dim X_i)^2
+$$
+
+### 6j-符号
+
+6j-符号是融合范畴的关键代数数据。对于六个单纯对象 $i, j, k, l, m, n$，6j-符号记作：
+
+$$
+\begin{Bmatrix}
+i & j & m \\
+k & l & n
+\end{Bmatrix}
+$$
+
+它们满足**五边形恒等式 (pentagon identity)**，保证了构造的一致性。
+
+---
+
+## 构造
+
+### 三角剖分与着色
+
+设 $M$ 是一个闭定向 3-流形，$\mathcal{T}$ 是 $M$ 的一个三角剖分。
+
+**着色**是一个映射：
+$$
+\sigma: \{\text{edges of } \mathcal{T}\} \to \{\text{simple objects of } \mathcal{C}\}
+$$
+
+满足在每个面上的融合条件。
+
+### 状态和公式
+
+Turaev-Viro 不变量定义为：
+
+$$
+\text{TV}_\mathcal{C}(M) = \mathcal{D}^{-2v} \sum_{\sigma} \prod_{\text{edges } e} \dim(\sigma(e)) \prod_{\text{tetrahedra } t} |6j_t(\sigma)|^2
+$$
+
+其中：
+
+- $v$ 是顶点数
+- 求和遍历所有合法着色 $\sigma$
+- $|6j_t(\sigma)|^2$ 是四面体 $t$ 对应的 6j-符号的模方
+
+::: {.callout-note}
+## 定理 (Turaev-Viro)
+$\text{TV}_\mathcal{C}(M)$ 不依赖于三角剖分的选取，是 $M$ 的拓扑不变量。
+:::
+
+---
+
+## 与其他不变量的关系
+
+### Reshetikhin-Turaev 不变量
+
+对于**模范畴 (modular category)** $\mathcal{C}$，有著名的关系：
+
+$$
+\text{TV}_\mathcal{C}(M) = |\text{RT}_\mathcal{C}(M)|^2
+$$
+
+这说明 Turaev-Viro 不变量可以视为 Reshetikhin-Turaev 不变量的"实部"。
+
+### Witten-Chern-Simons 理论
+
+在物理上，Turaev-Viro 不变量对应于 **BF 理论**的配分函数，而 RT 不变量对应于 Chern-Simons 理论。
+
+---
+
+## 例子
+
+### 来自 $\text{SU}(2)_k$ 的不变量
+
+取 $\mathcal{C} = \text{Rep}(U_q(\mathfrak{sl}_2))$，其中 $q = e^{i\pi/(k+2)}$。
+
+单纯对象为 $V_0, V_1, \ldots, V_k$，量子维数：
+$$
+\dim(V_j) = \frac{\sin\left(\frac{(j+1)\pi}{k+2}\right)}{\sin\left(\frac{\pi}{k+2}\right)} = [j+1]_q
+$$
+
+对于透镜空间 $L(p,q)$，可以显式计算出闭形式的表达式。
+
+---
+
+## Pachner 移动不变性
+
+构造的独立性通过**Pachner 移动**证明：
+
+| 移动 | 描述 |
+|:-----|:-----|
+| 2-3 | 两个四面体 $\leftrightarrow$ 三个四面体 |
+| 1-4 | 一个四面体 $\leftrightarrow$ 四个四面体 |
+
+::: {.callout-important}
+## 关键
+6j-符号的五边形恒等式正好保证了 2-3 移动的不变性！
+:::
+
+---
+
+## 进一步阅读
+
+- Turaev, V., & Viro, O. (1992). *State sum invariants of 3-manifolds and quantum 6j-symbols*
+- Barrett, J. W., & Westbury, B. W. (1996). *Invariants of piecewise-linear 3-manifolds*
+- Turaev, V. (2010). *Quantum Invariants of Knots and 3-Manifolds* (2nd ed.)
+
+---
+
+::: {.callout-tip appearance="minimal"}
+**下一篇**: [Khovanov 同调](Khovanov_homology.qmd) — Jones 多项式的范畴化
+:::

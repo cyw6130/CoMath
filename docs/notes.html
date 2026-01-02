@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>笔记 – Chen’s Topology Notes</title>
+<title>Notes – Chen’s Topology Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,14 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8a36787d37a309c00503ce8984a43a6b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-f938f6e5ca7bfbd6305a7d1113a49c1d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2216960441f5bf954dac2bf5ae1eb9c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-a3d754b1ed752f2c13b52d91e36e7823.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-154f9eb9ce1df96744e77b4b96314675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d6cf998c51d178a2d144b3a911c01042.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -421,14 +421,15 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="My1NYW5pZm9sZHM=">3-Manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aG9tb2xvZ3k=">homology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25vdA==">knot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VFFGVA==">TQFT <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="My1NYW5pZm9sZHM=">3-Manifolds <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2F0ZWdvcmlmaWNhdGlvbg==">Categorification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aG9tb2xvZ3k=">homology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SG9tb2xvZ3k=">Homology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25vdA==">knot <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S25vdCUyMFRoZW9yeQ==">Knot Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhbnR1bSUyMFRvcG9sb2d5">Quantum Topology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RhdGUtU3Vt">State-Sum <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VFFGVA==">TQFT <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./notes.html">Notes</a></li><li class="breadcrumb-item"><a href="./notes.html">Overview</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">笔记</h1>
+<h1 class="title">Notes</h1>
+<p class="subtitle lead">学习笔记与数学随想</p>
 </div>
 
 
@@ -445,85 +446,183 @@ window.Quarto = {
 </header>
 
 
-<p>这是我的学习笔记和版财航文章的一个集合。</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
+<div class="callout-body-container">
+<p>这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、范畴论、3-流形不变量等主题。</p>
+<p>笔记主要面向有代数拓扑背景的研究生，希望能对同样在学习这些内容的朋友有所帮助。</p>
+</div>
+</div>
+</div>
+<hr>
+<section id="主题分类" class="level2">
+<h2 class="anchored" data-anchor-id="主题分类">主题分类</h2>
+<div class="grid">
+<div class="g-col-12 g-col-md-4">
+<div class="card text-center h-100">
+<section id="量子不变量" class="level3 card-body">
+<h3 class="anchored" data-anchor-id="量子不变量">🎯 量子不变量</h3>
+<p>Turaev-Viro, Reshetikhin-Turaev, Khovanov homology</p>
+<p><a href="./notes/turaev-viro.html">浏览 →</a></p>
+</section>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="card text-center h-100">
+<section id="范畴论" class="level3 card-body">
+<h3 class="anchored" data-anchor-id="范畴论">📐 范畴论</h3>
+<p>Tensor categories, fusion categories, modular categories</p>
+<p>[即将更新]</p>
+</section>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="card text-center h-100">
+<section id="几何拓扑" class="level3 card-body">
+<h3 class="anchored" data-anchor-id="几何拓扑">🔷 几何拓扑</h3>
+<p>Heegaard splittings, triangulations, handle theory</p>
+<p>[即将更新]</p>
+</section>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="所有笔记" class="level2">
+<h2 class="anchored" data-anchor-id="所有笔记">所有笔记</h2>
 
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
 
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
 
-<th>
-<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
-</th>
+</section>
 
-</tr>
-</thead>
-<tbody class="list">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1767283200000" data-listing-file-modified-sort="1767358910708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1699">
+<a href="./notes/h_cobordism_4.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Smale 的工作：h-Cobordism 定理与广义庞加莱猜想
+</h5>
+<div class="card-text listing-description delink">
+<strong>参考书目</strong>：<em>Introductory Lectures on Manifold Topology Signposts</em> (Thomas Farrell &amp; Yang Su) — 一本非常舒适的入门书
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jan 2, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="aG9tb2xvZ3klMkNrbm90" data-listing-date-sort="1765987200000" data-listing-file-modified-sort="1767355729703" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1854">
+<a href="./notes/Khovanov_homology.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Khovanov homology
+</h5>
+<div class="listing-categories">
 
-<tr data-index="0" data-categories="aG9tb2xvZ3klMkNrbm90" data-listing-date-sort="1765987200000" data-listing-file-modified-sort="1765992329849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1852" data-listing-title-sort="Khovanov homology" data-listing-filename-sort="Khovanov_homology.qmd">
-<td>
-<span class="listing-date">Dec 18, 2025</span>
-</td>
-<td>
-<a href="./notes/Khovanov_homology.html" class="title listing-title">Khovanov homology</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
+<div class="listing-category" onclick="window.quartoListingCategory('aG9tb2xvZ3k='); return false;">homology</div>
 
-</tr>
+<div class="listing-category" onclick="window.quartoListingCategory('a25vdA=='); return false;">knot</div>
 
-<tr data-index="1" data-categories="VFFGVCUyQzMtTWFuaWZvbGRz" data-listing-date-sort="1761235200000" data-listing-file-modified-sort="1765993035400" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211" data-listing-title-sort="Turaev-Viro Invariants" data-listing-filename-sort="turaev-viro.qmd">
-<td>
-<span class="listing-date">Oct 24, 2025</span>
-</td>
-<td>
-<a href="./notes/turaev-viro.html" class="title listing-title">Turaev-Viro Invariants</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
+</div>
+<div class="card-text listing-description delink">
+<p>An introduction to khovanov homology and s-invariant.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Dec 18, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="UXVhbnR1bSUyMFRvcG9sb2d5JTJDMy1NYW5pZm9sZHMlMkNTdGF0ZS1TdW0=" data-listing-date-sort="1764518400000" data-listing-file-modified-sort="1767358167000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
+<a href="./quarto-website-beautified/notes/turaev-viro.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Turaev-Viro 不变量
+</h5>
+<div class="listing-categories">
 
-</tr>
+<div class="listing-category" onclick="window.quartoListingCategory('UXVhbnR1bSUyMFRvcG9sb2d5'); return false;">Quantum Topology</div>
 
-</tbody>
-</table>
+<div class="listing-category" onclick="window.quartoListingCategory('My1NYW5pZm9sZHM='); return false;">3-Manifolds</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGUtU3Vt'); return false;">State-Sum</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>从球面融合范畴构造3-流形不变量的状态和模型</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Dec 1, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="Q2F0ZWdvcmlmaWNhdGlvbiUyQ0tub3QlMjBUaGVvcnklMkNIb21vbG9neQ==" data-listing-date-sort="1763136000000" data-listing-file-modified-sort="1767358167000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="356">
+<a href="./quarto-website-beautified/notes/Khovanov_homology.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Khovanov 同调
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2F0ZWdvcmlmaWNhdGlvbg=='); return false;">Categorification</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('S25vdCUyMFRoZW9yeQ=='); return false;">Knot Theory</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SG9tb2xvZ3k='); return false;">Homology</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Jones多项式的范畴化，提供了更强的纽结不变量</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Nov 15, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="VFFGVCUyQzMtTWFuaWZvbGRz" data-listing-date-sort="1761235200000" data-listing-file-modified-sort="1765993035400" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
+<a href="./notes/turaev-viro.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Turaev-Viro Invariants
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VFFGVA=='); return false;">TQFT</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('My1NYW5pZm9sZHM='); return false;">3-Manifolds</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>An introduction to state-sum invariants for 3-manifolds.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Oct 24, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -943,7 +1042,7 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2025, Chen</p>
+<p>© 2025 Chen · Mathematics &amp; Topology</p>
 </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">

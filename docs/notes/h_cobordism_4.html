@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cyw">
+<meta name="dcterms.date" content="2026-01-02">
+
+<title>Smale 的工作：h-Cobordism 定理与广义庞加莱猜想 – Chen’s Topology Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-3eef784f197782a367fb7a11e576c67c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen’s Topology Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turaev-Viro Invariants</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov homology</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#第一部分拓扑广义庞加莱猜想" id="toc-第一部分拓扑广义庞加莱猜想" class="nav-link active" data-scroll-target="#第一部分拓扑广义庞加莱猜想"><span class="header-section-number">1</span> 第一部分：拓扑广义庞加莱猜想</a>
+  <ul class="collapse">
+  <li><a href="#主要结果" id="toc-主要结果" class="nav-link" data-scroll-target="#主要结果"><span class="header-section-number">1.1</span> 主要结果</a>
+  <ul class="collapse">
+  <li><a href="#smale-定理-gpc-拓扑广义庞加莱猜想" id="toc-smale-定理-gpc-拓扑广义庞加莱猜想" class="nav-link" data-scroll-target="#smale-定理-gpc-拓扑广义庞加莱猜想"><span class="header-section-number">1.1.1</span> Smale 定理 (GPC: 拓扑广义庞加莱猜想)</a></li>
+  <li><a href="#怪球与-h-cobordism-类" id="toc-怪球与-h-cobordism-类" class="nav-link" data-scroll-target="#怪球与-h-cobordism-类"><span class="header-section-number">1.1.2</span> 怪球与 h-Cobordism 类</a></li>
+  </ul></li>
+  <li><a href="#gpc-的证明" id="toc-gpc-的证明" class="nav-link" data-scroll-target="#gpc-的证明"><span class="header-section-number">1.2</span> GPC 的证明</a>
+  <ul class="collapse">
+  <li><a href="#h-cobordism-的定义" id="toc-h-cobordism-的定义" class="nav-link" data-scroll-target="#h-cobordism-的定义"><span class="header-section-number">1.2.1</span> h-Cobordism 的定义</a></li>
+  <li><a href="#h-cobordism-定理-1" id="toc-h-cobordism-定理-1" class="nav-link" data-scroll-target="#h-cobordism-定理-1"><span class="header-section-number">1.2.2</span> h-Cobordism 定理</a></li>
+  <li><a href="#gpc-的证明-n-geq-6" id="toc-gpc-的证明-n-geq-6" class="nav-link" data-scroll-target="#gpc-的证明-n-geq-6"><span class="header-section-number">1.2.3</span> GPC 的证明 (<span class="math inline">\(n \geq 6\)</span>)</a></li>
+  <li><a href="#附whitehead-定理" id="toc-附whitehead-定理" class="nav-link" data-scroll-target="#附whitehead-定理"><span class="header-section-number">1.2.4</span> 附：Whitehead 定理</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#第二部分h-cobordism-定理的证明" id="toc-第二部分h-cobordism-定理的证明" class="nav-link" data-scroll-target="#第二部分h-cobordism-定理的证明"><span class="header-section-number">2</span> 第二部分：h-Cobordism 定理的证明</a>
+  <ul class="collapse">
+  <li><a href="#预备知识" id="toc-预备知识" class="nav-link" data-scroll-target="#预备知识"><span class="header-section-number">2.1</span> 预备知识</a>
+  <ul class="collapse">
+  <li><a href="#isotopy同痕" id="toc-isotopy同痕" class="nav-link" data-scroll-target="#isotopy同痕"><span class="header-section-number">2.1.1</span> Isotopy（同痕）</a></li>
+  </ul></li>
+  <li><a href="#handle-分解" id="toc-handle-分解" class="nav-link" data-scroll-target="#handle-分解"><span class="header-section-number">2.2</span> Handle 分解</a></li>
+  <li><a href="#handle-运算法则" id="toc-handle-运算法则" class="nav-link" data-scroll-target="#handle-运算法则"><span class="header-section-number">2.3</span> Handle 运算法则</a>
+  <ul class="collapse">
+  <li><a href="#同痕不变性" id="toc-同痕不变性" class="nav-link" data-scroll-target="#同痕不变性"><span class="header-section-number">2.3.1</span> 同痕不变性</a></li>
+  <li><a href="#粘接顺序的交换性" id="toc-粘接顺序的交换性" class="nav-link" data-scroll-target="#粘接顺序的交换性"><span class="header-section-number">2.3.2</span> 粘接顺序的交换性</a></li>
+  <li><a href="#几何与代数消解" id="toc-几何与代数消解" class="nav-link" data-scroll-target="#几何与代数消解"><span class="header-section-number">2.3.3</span> 几何与代数消解</a></li>
+  <li><a href="#handle-addition" id="toc-handle-addition" class="nav-link" data-scroll-target="#handle-addition"><span class="header-section-number">2.3.4</span> Handle Addition</a></li>
+  <li><a href="#h-cobordism-定理的证明" id="toc-h-cobordism-定理的证明" class="nav-link" data-scroll-target="#h-cobordism-定理的证明"><span class="header-section-number">2.3.5</span> h-Cobordism 定理的证明</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="h_cobordism_4.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cyw </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 2, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>参考书目</strong>：<em>Introductory Lectures on Manifold Topology Signposts</em> (Thomas Farrell &amp; Yang Su) — 一本非常舒适的入门书</p>
+</div>
+</div>
+<section id="第一部分拓扑广义庞加莱猜想" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 第一部分：拓扑广义庞加莱猜想</h1>
+<section id="主要结果" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="主要结果"><span class="header-section-number">1.1</span> 主要结果</h2>
+<section id="smale-定理-gpc-拓扑广义庞加莱猜想" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="smale-定理-gpc-拓扑广义庞加莱猜想"><span class="header-section-number">1.1.1</span> Smale 定理 (GPC: 拓扑广义庞加莱猜想)</h3>
+<div id="thm-gpc" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (广义庞加莱猜想)</strong></span> 设 <span class="math inline">\(M^m\)</span> 是闭光滑流形，维数 <span class="math inline">\(m \geq 5\)</span>。若 <span class="math inline">\(M\)</span> 是同伦球面，则 <span class="math inline">\(M\)</span> 同胚于球面。</p>
+</div>
+<p><strong>主要工具</strong> (<span class="math inline">\(m \geq 5\)</span>)：h-Cobordism 定理</p>
+<div id="thm-hcobordism" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (h-Cobordism 定理)</strong></span> 设 <span class="math inline">\(W^m\)</span> 是光滑的 h-cobordism，若 <span class="math inline">\(W\)</span> 单连通且维数 <span class="math inline">\(m \geq 6\)</span>，则配边 <span class="math inline">\(W\)</span> 微分同胚于 <span class="math inline">\(\partial^- W \times [0,1]\)</span>（相对于边界 <span class="math inline">\(\partial^- W\)</span>）。</p>
+</div>
+</section>
+<section id="怪球与-h-cobordism-类" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="怪球与-h-cobordism-类"><span class="header-section-number">1.1.2</span> 怪球与 h-Cobordism 类</h3>
+<p>利用 h-cobordism 定理，对于单连通光滑流形（特别是光滑同伦球面），当 <span class="math inline">\(n \geq 5\)</span> 时有双射：</p>
+<p><span class="math display">\[\frac{\{S^n \text{ 上的光滑结构}\}}{\text{微分同胚}} \longleftrightarrow \frac{\{n \text{ 维同伦球面}\}}{\{\text{h-cobordism}\}}\]</span></p>
+<ul>
+<li><strong>左边</strong>：球面上所有光滑结构，即所有怪球构成的集合</li>
+<li><strong>右边</strong>：所有同伦球面的配边类，记为 <span class="math inline">\(\Theta^n\)</span></li>
+</ul>
+<p><strong><span class="math inline">\(\Theta^n\)</span> 的群结构</strong>：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">运算</th>
+<th style="text-align: left;">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">乘法</td>
+<td style="text-align: left;">连通和</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">单位元</td>
+<td style="text-align: left;"><span class="math inline">\(S^n\)</span> 上的标准光滑结构</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">逆元</td>
+<td style="text-align: left;">反转定向，记为 <span class="math inline">\(-\Sigma\)</span>（在柱 <span class="math inline">\(\Sigma \times I\)</span> 的内部挖去 <span class="math inline">\(D^{n+1}\)</span> 即得所需配边）</td>
+</tr>
+</tbody>
+</table>
+<p><strong><span class="math inline">\(\Theta^n\)</span> 的阶数</strong>：</p>
+<div id="fig-exotic-spheres" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exotic-spheres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/2-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exotic-spheres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: 怪异球面个数表
+</figcaption>
+</figure>
+</div>
+<p>这个表格给出了各维数上怪异球面的个数（<span class="math inline">\(n \neq 4\)</span>），与伯努利数（数论中的量）密切相关。</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>由于 h-cobordism 定理在 4 维失效（h-cobordism 类中的元素未必微分同胚），<span class="math inline">\(\Theta^4\)</span> 的阶数为 1 不能推出 4 维光滑庞加莱猜想。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="gpc-的证明" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="gpc-的证明"><span class="header-section-number">1.2</span> GPC 的证明</h2>
+<p>本节假设 h-cobordism 定理成立，在此基础上给出 GPC 的证明。</p>
+<section id="h-cobordism-的定义" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="h-cobordism-的定义"><span class="header-section-number">1.2.1</span> h-Cobordism 的定义</h3>
+<div id="def-cobordism" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Cobordism)</strong></span> 一个 <span class="math inline">\((m+1)\)</span> 维 cobordism 是流形 <span class="math inline">\(W^{m+1}\)</span>，其边界可写成两部分的不交并： <span class="math display">\[\partial W = \partial^- W \sqcup \partial^+ W\]</span> 此时称 <span class="math inline">\(W\)</span> 是从 <span class="math inline">\(\partial^- W\)</span> 到 <span class="math inline">\(\partial^+ W\)</span> 的配边。</p>
+</div>
+<div id="fig-cobordism-not-h" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cobordism-not-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/3-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cobordism-not-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: 配边但不是 h-配边的例子
+</figcaption>
+</figure>
+</div>
+<div id="def-h-cobordism" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2 (h-Cobordism)</strong></span> <span class="math inline">\((m+1)\)</span> 维的 h-cobordism 是配边 <span class="math inline">\(W^{m+1}\)</span>，满足含入映射 <span class="math display">\[\partial^- W \hookrightarrow W, \quad \partial^+ W \hookrightarrow W\]</span> 都是同伦等价。</p>
+</div>
+<div id="fig-trivial-cobordism" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trivial-cobordism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/4-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trivial-cobordism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: 平凡配边
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="h-cobordism-定理-1" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="h-cobordism-定理-1"><span class="header-section-number">1.2.2</span> h-Cobordism 定理</h3>
+<div id="thm-hcobordism-formal" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3 (h-Cobordism 定理（完整表述）)</strong></span> 设 <span class="math inline">\(W^{m+1}\)</span> 是光滑的 h-cobordism。若 <span class="math inline">\(W\)</span> 单连通且 <span class="math inline">\(m \geq 5\)</span>，则 <span class="math display">\[W \cong_{\text{diff}} \partial^- W \times [0,1] \quad (\text{rel } \partial^- W)\]</span></p>
+</div>
+</section>
+<section id="gpc-的证明-n-geq-6" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="gpc-的证明-n-geq-6"><span class="header-section-number">1.2.3</span> GPC 的证明 (<span class="math inline">\(n \geq 6\)</span>)</h3>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设 <span class="math inline">\(M^m\)</span> 是光滑流形，维数 <span class="math inline">\(\geq 6\)</span> 且是同伦球面。</p>
+<p><strong>Step 1.</strong> 在 <span class="math inline">\(M^m\)</span> 上挖去两个隔开的 disk，得到配边 <span class="math inline">\(W^m\)</span>。</p>
+<div id="fig-remove-disks" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-remove-disks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/5-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-remove-disks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: 挖去两个 disk
+</figcaption>
+</figure>
+</div>
+<p><strong>Step 2.</strong> 由 <a href="#lem-homotopy-sphere-cobordism" class="quarto-xref">Lemma&nbsp;1</a>，<span class="math inline">\(W\)</span> 单连通且是光滑 h-cobordism。</p>
+<p><strong>Step 3.</strong> 应用 h-cobordism 定理： <span class="math display">\[W \cong_{\text{diff}} \partial^- W \times [0,1] = S^{m-1} \times [0,1] \quad (\text{rel } \partial^- W = S^{m-1})\]</span></p>
+<p><strong>Step 4.</strong> 重新粘回挖去的 disk：</p>
+<ul>
+<li>利用相对微分同胚，将底部 disk 通过边界球面上的 identity 映射粘回，得到 <span class="math inline">\(\mathbb{D}^m\)</span></li>
+<li>将顶部 disk 粘回（边界上的粘接映射可以是任意的）：
+<ul>
+<li>这会影响光滑结构</li>
+<li>但不影响拓扑结构——仍同胚于 <span class="math inline">\(S^m\)</span></li>
+</ul></li>
+</ul>
+<div id="fig-homeomorphism-construction" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-homeomorphism-construction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/1-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homeomorphism-construction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: 同胚的构造
+</figcaption>
+</figure>
+</div>
+<p><strong>结论</strong>：<span class="math inline">\(M \approx S^m\)</span>。</p>
+</div>
+<div id="lem-homotopy-sphere-cobordism" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 1 (同伦球面上挖去两个 disk 得到 h-cobordism (<span class="math inline">\(n \geq 6\)</span>))</strong></span> <strong>设置</strong>：从同伦球面 <span class="math inline">\(M\)</span> 出发，挖去两个 disk <span class="math inline">\(D^+, D^-\)</span>，得到配边 <span class="math inline">\(W\)</span>。</p>
+<div id="fig-remove-disk-diagram" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-remove-disk-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/7-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-remove-disk-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: 挖去 disk 的示意图
+</figcaption>
+</figure>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><strong>(I) 证明 <span class="math inline">\(W\)</span> 单连通</strong></p>
+<p>需要从「<span class="math inline">\(M\)</span> 单连通」推出「<span class="math inline">\(W\)</span> 单连通」。</p>
+<ol type="1">
+<li><p><strong><span class="math inline">\(M\)</span> 单连通 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(W \cup D^+\)</span> 单连通</strong>：<br>
+对 triple <span class="math inline">\((M, W \cup D^+, D^-)\)</span> 使用 Van Kampen 定理<br>
+（注意 <span class="math inline">\(D^-\)</span> 单连通，<span class="math inline">\(D^- \cap (W \cup D^+) = S^{m-1}\)</span> 单连通）</p></li>
+<li><p><strong><span class="math inline">\(W \cup D^+\)</span> 单连通 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(W\)</span> 单连通</strong>：<br>
+对 triple <span class="math inline">\((W \cup D^+, W, D^+)\)</span> 使用 Van Kampen 定理</p></li>
+</ol>
+<p><strong>(II) 证明 <span class="math inline">\(\partial^+ W \hookrightarrow W\)</span> 是同伦等价</strong></p>
+<ol type="1">
+<li><p><strong>诱导同调群同构</strong>：<br>
+对 triple <span class="math inline">\((W \cup D^+, W, D^+)\)</span> 使用 Mayer-Vietoris 序列（注意 <span class="math inline">\(W \cap D^+ = \partial^+ W\)</span>）</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>这里需要 <span class="math inline">\(W \cup D^+\)</span> 的同调群为 0，由 triple <span class="math inline">\((M, W \cup D^+, D^-)\)</span> 的 Mayer-Vietoris 序列得到。</p>
+</div>
+</div></li>
+<li><p><strong>使用 Homology Whitehead 定理</strong>：</p>
+<div id="fig-homology-whitehead" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-homology-whitehead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/9-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homology-whitehead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Homology Whitehead 定理
+</figcaption>
+</figure>
+</div>
+<p>单连通 + 同调等价 <span class="math inline">\(\Rightarrow\)</span> 同伦等价</p></li>
+<li><p><strong>结论</strong>：<span class="math inline">\(\partial^+ W \hookrightarrow W\)</span> 是同伦等价</p></li>
+</ol>
+<p><strong>(III)</strong> <span class="math inline">\(\partial^- W \hookrightarrow W\)</span> 是同伦等价的证明类似。</p>
+</div>
+</div>
+</section>
+<section id="附whitehead-定理" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="附whitehead-定理"><span class="header-section-number">1.2.4</span> 附：Whitehead 定理</h3>
+<p><strong>问题</strong>：如何证明两个拓扑空间同伦等价？</p>
+<div id="def-weak-homotopy-equiv" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3 (弱同伦等价)</strong></span> 称空间 <span class="math inline">\(X, Y\)</span> 弱同伦等价，如果存在映射 <span class="math inline">\(f: X \to Y\)</span>，使得 <span class="math display">\[f_*: \pi_i(X) \xrightarrow{\cong} \pi_i(Y) \quad \forall i\]</span></p>
+</div>
+<div id="thm-whitehead" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4 (Whitehead 定理)</strong></span> 任意两个 CW 复形 <span class="math inline">\(X, Y\)</span>，若弱同伦等价，则同伦等价。</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>弱同伦等价不仅要求同伦群同构，还要求存在映射 <span class="math inline">\(f\)</span> 实现之。存在同伦群同构但不同伦等价的例子。</p>
+</div>
+</div>
+<div id="thm-homology-whitehead" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5 (Homology Whitehead 定理)</strong></span> 对于单连通空间，同调等价（映射诱导同调群同构）即可得到同伦等价。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="第二部分h-cobordism-定理的证明" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 第二部分：h-Cobordism 定理的证明</h1>
+<section id="预备知识" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="预备知识"><span class="header-section-number">2.1</span> 预备知识</h2>
+<section id="isotopy同痕" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="isotopy同痕"><span class="header-section-number">2.1.1</span> Isotopy（同痕）</h3>
+<div id="fig-isotopy-def" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-isotopy-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/10-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Isotopy 定义
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>我们讨论的同痕总是<strong>光滑同痕</strong></li>
+<li>连续同痕不能区分纽结：</li>
+</ul>
+<div id="fig-continuous-isotopy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-continuous-isotopy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/11-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-continuous-isotopy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: 连续同痕不能区分纽结
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="handle-分解" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="handle-分解"><span class="header-section-number">2.2</span> Handle 分解</h2>
+<p>（粘接映射的内容略）</p>
+</section>
+<section id="handle-运算法则" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="handle-运算法则"><span class="header-section-number">2.3</span> Handle 运算法则</h2>
+<section id="同痕不变性" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="同痕不变性"><span class="header-section-number">2.3.1</span> 同痕不变性</h3>
+<div id="prp-isotopy-extension" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1 (同痕扩张定理)</strong></span> &nbsp;</p>
+<div id="fig-isotopy-extension" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-isotopy-extension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/12-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-extension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: 同痕扩张定理
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="lem-isotopy" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 2 (同痕引理)</strong></span> 将 handle <span class="math inline">\(h\)</span> 粘到流形 <span class="math inline">\(M\)</span> 上时，若使用同痕的粘接映射 <span class="math inline">\(f, g: \partial^- h \to \partial M\)</span>，则得到的流形同胚： <span class="math display">\[M +_f h \cong M +_g h\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div id="fig-isotopy-lemma-proof" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-isotopy-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/13-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: 同痕引理的证明
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="粘接顺序的交换性" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="粘接顺序的交换性"><span class="header-section-number">2.3.2</span> 粘接顺序的交换性</h3>
+<section id="基本概念" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="基本概念"><span class="header-section-number">2.3.2.1</span> 基本概念</h4>
+<div id="def-attaching-complementary" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4 (Attaching sphere 与 Complementary sphere)</strong></span> Handle 一般写成乘积 <span class="math inline">\(D^i \times D^{n-i}\)</span>：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">部分</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">子空间</th>
+<th style="text-align: center;">边界</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">第一分量</td>
+<td style="text-align: center;">Attaching part</td>
+<td style="text-align: center;"><span class="math inline">\(D^i \times \{0\}\)</span> (attaching disk)</td>
+<td style="text-align: center;">Attaching sphere <span class="math inline">\(\mathscr{S}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">第二分量</td>
+<td style="text-align: center;">Complementary part</td>
+<td style="text-align: center;"><span class="math inline">\(\{0\} \times D^{n-i}\)</span> (complementary disk)</td>
+<td style="text-align: center;">Complementary sphere <span class="math inline">\(\mathcal{S}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fig-attaching-complementary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-attaching-complementary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/14-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-attaching-complementary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Attaching 和 Complementary 部分
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="thom-横截性定理" class="level4" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="thom-横截性定理"><span class="header-section-number">2.3.2.2</span> Thom 横截性定理</h4>
+<p>考虑三元组 <span class="math inline">\((W, M, N)\)</span>，其中 <span class="math inline">\(M, N\)</span> 是 <span class="math inline">\(W\)</span> 的子流形。</p>
+<div id="thm-thom-transversality" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6 (Thom 横截性定理)</strong></span> &nbsp;</p>
+<ol type="1">
+<li>可在 <span class="math inline">\(W\)</span> 内做微小扰动（同痕），使 <span class="math inline">\(M, N\)</span> 横截相交</li>
+<li>若 <span class="math inline">\(M, N\)</span> 横截相交，则 <span class="math display">\[\dim M + \dim N = \dim W + \dim(M \cap N)\]</span></li>
+</ol>
+</div>
+<div id="exm-thom" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1</strong></span> 设 <span class="math inline">\(\dim W = 3\)</span>，<span class="math inline">\(\dim M = \dim N = 1\)</span>。由定理，可扰动使 <span class="math inline">\(M, N\)</span> 横截相交，此时 <span class="math display">\[\dim(M \cap N) = 1 + 1 - 3 = -1 \implies M \cap N = \varnothing\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>启示
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>可通过控制维数保证子流形不相交。</p>
+</div>
+</div>
+</section>
+<section id="lem-order" class="level4" data-number="2.3.2.3">
+<h4 data-number="2.3.2.3" class="anchored" data-anchor-id="lem-order"><span class="header-section-number">2.3.2.3</span> Lemma：顺序引理</h4>
+<div id="lem-order-lemma" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 3 (顺序引理)</strong></span> 考虑 <span class="math inline">\((M + h_1) + h_2\)</span>。若 <span class="math inline">\(h_2\)</span> 的粘接球面 <span class="math inline">\(\mathscr{S}\)</span> 与 <span class="math inline">\(h_1\)</span> 的补球面 <span class="math inline">\(\mathcal{S}\)</span> 不相交（它们都是 <span class="math inline">\(\partial^+(M + h_1)\)</span> 的子流形），则可交换粘接顺序： <span class="math display">\[(M + h_1) + h_2 \cong (M + h_2) + h_1\]</span> 此时记作 <span class="math inline">\(M + (h_1 \sqcup h_2)\)</span>。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>若不相交，可在 <span class="math inline">\(\partial(M + h_1)\)</span> 上挖去补球面 <span class="math inline">\(\mathcal{S}\)</span>，将 <span class="math inline">\(\partial^- h_2\)</span> 收缩到 <span class="math inline">\(\partial M\)</span> 上。</p>
+<div id="fig-order-lemma-proof" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-order-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/17-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-order-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: 顺序引理的证明
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="cor-index-order" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 1</strong></span> 若 <span class="math inline">\(\mathrm{index}(h_2) \leq \mathrm{index}(h_1)\)</span>，则 <span class="math display">\[M + h_1 + h_2 = M + (h_1 \sqcup h_2) = M + h_2 + h_1\]</span> 即总可从 index 更小的 handle 开始粘接。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设 <span class="math inline">\(\mathrm{index}(h_1) = i_1\)</span>，<span class="math inline">\(\mathrm{index}(h_2) = i_2\)</span>，<span class="math inline">\(i_2 \leq i_1\)</span>。</p>
+<ul>
+<li>补球面维数：<span class="math inline">\((n - i_1) - 1\)</span></li>
+<li>粘接球面维数：<span class="math inline">\(i_2 - 1\)</span></li>
+<li>维数之和：<span class="math inline">\(n - i_1 + i_2 - 2 \leq n - 2\)</span></li>
+</ul>
+<p>两者都是 <span class="math inline">\(\partial(M + h_1)\)</span>（维数 <span class="math inline">\(n-1\)</span>）的子流形。由 Thom 横截性定理，相交维数为 <span class="math inline">\((n-2) - (n-1) = -1\)</span>，即可做同痕使两者不相交。由 <a href="#lem-order-lemma" class="quarto-xref">Lemma&nbsp;3</a> 得证。</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>约定
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>以后总假设按 index 从小到大粘接。Index 相同时，粘接顺序可交换（或认为同时进行）。</p>
+</div>
+</div>
+<p><strong>标准分解</strong>：</p>
+<div id="fig-standard-decomp-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standard-decomp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/24-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-decomp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: 标准分解示意图 1
+</figcaption>
+</figure>
+</div>
+<div id="fig-standard-decomp-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standard-decomp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/26-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-decomp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: 标准分解示意图 2
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="几何与代数消解" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="几何与代数消解"><span class="header-section-number">2.3.3</span> 几何与代数消解</h3>
+<section id="几何消解的例子" class="level4" data-number="2.3.3.1">
+<h4 data-number="2.3.3.1" class="anchored" data-anchor-id="几何消解的例子"><span class="header-section-number">2.3.3.1</span> 几何消解的例子</h4>
+<p>粘接相邻维数的 handle 时，有时会出现消解现象：</p>
+<div id="fig-geometric-cancel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometric-cancel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/15-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometric-cancel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: 几何消解例 1
+</figcaption>
+</figure>
+</div>
+<p>在 <span class="math inline">\(M\)</span> 上粘接 0-handle <span class="math inline">\(h_1\)</span> 和 1-handle <span class="math inline">\(h_2\)</span>，结果可收缩到 <span class="math inline">\(M\)</span>。关键观察：<span class="math inline">\(h_1\)</span> 的补球面与 <span class="math inline">\(h_2\)</span> 的粘接球面恰好相交于 <strong>1 点</strong>。</p>
+<div id="fig-geometric-cancel-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometric-cancel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/16-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometric-cancel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: 几何消解例 2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="几何消解" class="level4" data-number="2.3.3.2">
+<h4 data-number="2.3.3.2" class="anchored" data-anchor-id="几何消解"><span class="header-section-number">2.3.3.2</span> 几何消解</h4>
+<div id="lem-geometric-cancel" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 4 (几何消解)</strong></span> 对于 <span class="math inline">\(M + h_1 + h_2\)</span>，若 <span class="math inline">\(h_2\)</span> 的粘接球面 <span class="math inline">\(\mathscr{S}\)</span> 与 <span class="math inline">\(h_1\)</span> 的补球面 <span class="math inline">\(\mathcal{S}\)</span> <strong>恰好横截相交于一点</strong>，则 <span class="math display">\[M + h_1 + h_2 \cong M\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>由 Thom 横截定理，这只发生在 <span class="math inline">\(\mathrm{index}(h_2) = \mathrm{index}(h_1) + 1\)</span> 时。</p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>将 handle <span class="math inline">\(h_1\)</span> 分割成两部分，于是 <span class="math inline">\(h_1, h_2\)</span> 被分割成三部分 <span class="math inline">\(A, B, C\)</span>（都是 <span class="math inline">\(D^3\)</span>）：</p>
+<div id="fig-split-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-split-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/18-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: 分割示意图 1
+</figcaption>
+</figure>
+</div>
+<div id="fig-split-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-split-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/19-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: 分割示意图 2
+</figcaption>
+</figure>
+</div>
+<p>粘接两个 handle 等同于 <span class="math inline">\(((M \cup A) \cup B) \cup C\)</span>。关注交集：</p>
+<div id="fig-intersection" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-intersection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/21-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intersection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: 交集示意图
+</figcaption>
+</figure>
+</div>
+<p>沿 <span class="math inline">\(D^2\)</span> 粘 <span class="math inline">\(D^3\)</span> 不改变拓扑（想象立方体放在桌面上）：</p>
+<div id="fig-topology-unchanged" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/22-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: 拓扑不变
+</figcaption>
+</figure>
+</div>
+<p>故 <span class="math inline">\(M + h_1 + h_2 \cong M\)</span>。</p>
+</div>
+</section>
+<section id="代数消解-whitney-trick" class="level4" data-number="2.3.3.3">
+<h4 data-number="2.3.3.3" class="anchored" data-anchor-id="代数消解-whitney-trick"><span class="header-section-number">2.3.3.3</span> 代数消解 / Whitney Trick</h4>
+<p>考虑 <a href="#lem-geometric-cancel" class="quarto-xref">Lemma&nbsp;4</a> 的情形，但改为考虑<strong>代数相交数</strong>： <span class="math display">\[\sigma(\mathcal{S}, \mathscr{S}) := \sum_{x \in \mathscr{S} \cap \mathcal{S}} \sigma(x)\]</span></p>
+<div id="lem-algebraic-cancel" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 5 (代数消解（Whitney Trick）)</strong></span> <strong>条件</strong>：设 <span class="math inline">\(N = \partial(M + h_1)\)</span> 单连通，<span class="math inline">\(\dim M = n \geq 6\)</span>，<span class="math inline">\(\mathrm{index}(h_1) = i\)</span> 满足 <span class="math inline">\(2 \leq i \leq n - 3\)</span>。</p>
+<p><strong>结论</strong>：若代数相交数为 <span class="math inline">\(\pm 1\)</span>，则粘接映射 <span class="math inline">\(f: \partial^- h_2 \to N^{n-1}\)</span> 可同痕到 <span class="math inline">\(f'\)</span>，使新粘接球面 <span class="math inline">\(\mathscr{S}'\)</span> 与 <span class="math inline">\(\mathcal{S}\)</span> 的<strong>几何相交数为 1</strong>。</p>
+</div>
+<p>由 <a href="#lem-geometric-cancel" class="quarto-xref">Lemma&nbsp;4</a>，得 <span class="math inline">\(M + h_1 + h_2 \cong M\)</span>。</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>只需证明可消去相邻的、符号相反的两个交点。设这两点为 <span class="math inline">\(x, y\)</span>：</p>
+<div id="fig-whitney-trick" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-whitney-trick-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/23-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-whitney-trick-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Whitney trick
+</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><p>分别在 <span class="math inline">\(\mathscr{S}\)</span> 和 <span class="math inline">\(\mathcal{S}\)</span> 上用 arc 连接 <span class="math inline">\(x, y\)</span>，使两 arc 在 <span class="math inline">\(x, y\)</span> 外无交点，得到一个 loop</p></li>
+<li><p>由 <span class="math inline">\(N\)</span> 单连通，此 loop bounds 一个拓扑 disk <span class="math inline">\(D^2\)</span></p></li>
+<li><p>由 Whitney 嵌入定理（Thom 横截性定理）及 <span class="math inline">\(n \geq 6\)</span>，可假设 <span class="math inline">\(D^2\)</span> 光滑嵌入 <span class="math inline">\(N\)</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>嵌入的说明
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>要证不自交，将 <span class="math inline">\(D^2\)</span> 微小平移得 <span class="math inline">\((D^2)'\)</span>，需保证 <span class="math inline">\(D^2 \cap (D^2)' = \varnothing\)</span>。由于 <span class="math inline">\(\dim N = n - 1 \geq 5\)</span>，两 disk 维数和为 <span class="math inline">\(4\)</span>，相交维数为 <span class="math inline">\(4 - 5 = -1\)</span>，即无交点。</p>
+</div>
+</div></li>
+<li><p>沿 embedded <span class="math inline">\(D^2\)</span> 将 <span class="math inline">\(\mathscr{S}\)</span> 落入 <span class="math inline">\(\mathcal{S}\)</span> 的部分”划出去”，交点减少两个，代数相交数不变</p></li>
+<li><p>从最里面的交点对开始，逐步往外操作，最终将交点减少到 1 个</p></li>
+<li><p>使用 <a href="#lem-geometric-cancel" class="quarto-xref">Lemma&nbsp;4</a> 完成证明。</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="handle-addition" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="handle-addition"><span class="header-section-number">2.3.4</span> Handle Addition</h3>
+<p>限制到只有 <span class="math inline">\(i\)</span>-handle 和 <span class="math inline">\((i+1)\)</span>-handle 的情形。</p>
+<section id="复杂情形的处理" class="level4" data-number="2.3.4.1">
+<h4 data-number="2.3.4.1" class="anchored" data-anchor-id="复杂情形的处理"><span class="header-section-number">2.3.4.1</span> 复杂情形的处理</h4>
+<p>对于 <span class="math inline">\(M + h_1 + h_2\)</span>（<span class="math inline">\(\mathrm{index}(h_2) = \mathrm{index}(h_1) + 1\)</span>），已有几何/代数相交数的方法。</p>
+<p>但实际情形更复杂：有若干 <span class="math inline">\(i\)</span>-handle 和若干 <span class="math inline">\((i+1)\)</span>-handle，相交方式复杂。</p>
+<p><strong>问题</strong>：考虑 <span class="math inline">\(M + h_1^i + h_2^i + h_3^{i+1}\)</span>，若 <span class="math inline">\(h_1, h_2\)</span> 满足消解条件，可得 <span class="math display">\[M + h_1 + h_2 + h_3 = (M + h_1 + h_2) + h_3 = M + h_3\]</span> 但 <strong><span class="math inline">\(h_3\)</span> 的粘接球面如何变化</strong>？</p>
+<p>答案由 <strong>incidence matrix</strong>（关联矩阵）<span class="math inline">\(D^{i+1}\)</span> 给出。</p>
+</section>
+<section id="定义incidence-matrix-di1" class="level4" data-number="2.3.4.2">
+<h4 data-number="2.3.4.2" class="anchored" data-anchor-id="定义incidence-matrix-di1"><span class="header-section-number">2.3.4.2</span> 定义：Incidence Matrix <span class="math inline">\(D^{i+1}\)</span></h4>
+<p>设有 <span class="math inline">\(m_i\)</span> 个 <span class="math inline">\(i\)</span>-handle，补球面为 <span class="math inline">\(\mathcal{S}_1, \ldots, \mathcal{S}_{m_i}\)</span>；有 <span class="math inline">\(m_{i+1}\)</span> 个 <span class="math inline">\((i+1)\)</span>-handle，粘接球面为 <span class="math inline">\(\mathscr{S}_1, \ldots, \mathscr{S}_{m_{i+1}}\)</span>。</p>
+<div id="def-incidence-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5 (Incidence Matrix)</strong></span> <span class="math display">\[D^{i+1}_{j,k} := \sigma(\mathcal{S}_j, \mathscr{S}_k) \quad \text{(代数相交数)}\]</span> 得到 <span class="math inline">\(m_i \times m_{i+1}\)</span> 矩阵 <span class="math inline">\(D^{i+1}\)</span>。</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Incidence matrix 蕴含了 handle 分解的全部信息。</p>
+</div>
+</div>
+<p><strong>与同调群的联系</strong>：</p>
+<ul>
+<li>流形的 handle 分解形变收缩后得到 cell 分解</li>
+<li>链复形由 <span class="math inline">\(n\)</span>-handle 生成的自由 Abel 群构成</li>
+<li>微分映射 <span class="math inline">\(C_{i+1} \to C_i\)</span> 恰为 incidence matrix <span class="math inline">\(D^{i+1}\)</span></li>
+</ul>
+</section>
+<section id="handle-addition-1" class="level4" data-number="2.3.4.3">
+<h4 data-number="2.3.4.3" class="anchored" data-anchor-id="handle-addition-1"><span class="header-section-number">2.3.4.3</span> Handle Addition</h4>
+<div id="lem-handle-addition" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 6 (Handle Addition)</strong></span> 可改变 <span class="math inline">\((i+1)\)</span>-handle 的 attaching sphere，保持粘出结果不变。例如，将 <span class="math inline">\(\mathscr{S}_1\)</span> 改为 <span class="math display">\[\mathscr{S}_1' = \mathscr{S}_1 \mathbin{\#} \mathscr{S}_2\]</span> 则 <span class="math inline">\(M +_{\mathscr{S}_1} h_1 + \cdots \cong M +_{\mathscr{S}_1'} h_1 + \cdots\)</span></p>
+</div>
+<div id="fig-handle-addition" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-handle-addition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/30-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-addition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;23: Handle addition
+</figcaption>
+</figure>
+</div>
+<p><strong>对关联矩阵的影响</strong>：第三类基本列变换（第一列加上第二列）。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>条件</strong>：当 index 为 <span class="math inline">\(i, i+1\)</span> 时，要求 <span class="math inline">\(2 \leq i \leq n - 3\)</span>。</p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<div id="fig-handle-add-proof-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-handle-add-proof-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/27-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-add-proof-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24: Handle addition 证明 1
+</figcaption>
+</figure>
+</div>
+<div id="fig-handle-add-proof-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-handle-add-proof-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/28-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-add-proof-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;25: Handle addition 证明 2
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>不仅可以加法，还可以减法（与反定向粘接球面做连通和）。因此 <strong><a href="#lem-handle-addition" class="quarto-xref">Lemma&nbsp;6</a> 允许对关联矩阵做第三类基本变换</strong>。</p>
+</div>
+</div>
+<p><strong>关于 index 限制的说明</strong>：</p>
+<p>证明的关键步骤是找 arc <span class="math inline">\(\alpha\)</span>，需要 <span class="math inline">\(\alpha\)</span> 与其他粘接球面、补球面都不相交。</p>
+<ul>
+<li><strong>粘接球面</strong>（维数 <span class="math inline">\(i - 1\)</span>）：需 <span class="math inline">\(n - 1 &gt; 1 + (i - 1)\)</span>，即 <span class="math inline">\(i \leq n - 2\)</span></li>
+<li><strong>补球面</strong>（维数 <span class="math inline">\(n - i\)</span>）：需 <span class="math inline">\(n - 1 &gt; (n - i) + 1\)</span>，即 <span class="math inline">\(i \geq 3\)</span></li>
+</ul>
+<p>综合得 <span class="math inline">\(3 \leq i \leq n - 2\)</span>，即对 <span class="math inline">\((i-1)\)</span>-handle 有 <span class="math inline">\(2 \leq i - 1 \leq n - 3\)</span>。</p>
+</section>
+</section>
+<section id="h-cobordism-定理的证明" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="h-cobordism-定理的证明"><span class="header-section-number">2.3.5</span> h-Cobordism 定理的证明</h3>
+<section id="propositionregular-handle-分解的存在性" class="level4" data-number="2.3.5.1">
+<h4 data-number="2.3.5.1" class="anchored" data-anchor-id="propositionregular-handle-分解的存在性"><span class="header-section-number">2.3.5.1</span> Proposition：Regular Handle 分解的存在性</h4>
+<div id="prp-regular-decomposition" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2 (Regular Handle 分解的存在性)</strong></span> &nbsp;</p>
+<div id="fig-prop-2-42" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prop-2-42-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/33-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop-2-42-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;26: Prop 2.42
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>动机</strong>：在 <a href="#lem-algebraic-cancel" class="quarto-xref">Lemma&nbsp;5</a> 和 <a href="#lem-handle-addition" class="quarto-xref">Lemma&nbsp;6</a> 中，考虑 <span class="math inline">\(i, i+1\)</span> handle 时要求 <span class="math inline">\(2 \leq i \leq n - 3\)</span>。因此 handle 的 index 落在 <span class="math inline">\([2, n-2]\)</span> 区间内，需先排除区间外的 handle——这就是 regular form 的意义。</p>
+</section>
+<section id="h-cobordism-定理的证明-1" class="level4" data-number="2.3.5.2">
+<h4 data-number="2.3.5.2" class="anchored" data-anchor-id="h-cobordism-定理的证明-1"><span class="header-section-number">2.3.5.2</span> h-Cobordism 定理的证明</h4>
+<p>设 <span class="math inline">\(W^n\)</span> 是 h-cobordism，取 <span class="math inline">\(W\)</span> 的 regular handle 分解： <span class="math display">\[W = \partial^- W \times [0,1] + h_1 + h_2 + \cdots + h_m\]</span></p>
+<p><strong>核心命题</strong>：若 <span class="math inline">\(m &gt; 0\)</span>，则存在另一个 regular handle 分解，具有更少的 handle。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>若此命题成立，取 <span class="math inline">\(m\)</span> 最小的 regular 分解，则 <span class="math inline">\(m = 0\)</span>，即 <span class="math inline">\(W = \partial^- W \times [0,1]\)</span>。</p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (核心命题的证明). </span><strong>Step 1.</strong> 设所有 handle 中 index 最小者为 <span class="math inline">\(i - 1\)</span>，考虑所有 <span class="math inline">\((i-1)\)</span>-handle 和 <span class="math inline">\(i\)</span>-handle。</p>
+<p><strong>Step 2.</strong> 考虑 <span class="math inline">\(H_{i-1}(W, \partial^- W)\)</span>：</p>
+<ul>
+<li>由同伦等价 <span class="math inline">\(\partial^- W \hookrightarrow W\)</span> 及相对长正合序列，此同调群为 0</li>
+<li>由胞腔同调，<span class="math inline">\(H_{i-1} = C_{i-1} / \mathrm{Im}(D^i)\)</span>，故 <span class="math inline">\(D^i\)</span> 是满射，即<strong>满秩</strong></li>
+</ul>
+<p><strong>Step 3.</strong> 对矩阵 <span class="math inline">\(D^i\)</span> 做初等变换：</p>
+<ul>
+<li>第一类基本行列变换 + 第三类基本列变换 → 上三角矩阵 <span class="math inline">\(\mathscr{D}^i\)</span></li>
+<li>由满射性，对角元为 <span class="math inline">\(\pm 1\)</span></li>
+<li>再做第三类列变换 → <strong>对角矩阵</strong></li>
+</ul>
+<p><strong>例</strong>：</p>
+<div id="fig-matrix-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrix-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/32-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;27: 矩阵变换例 1
+</figcaption>
+</figure>
+</div>
+<div id="fig-matrix-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrix-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/31-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28: 矩阵变换例 2
+</figcaption>
+</figure>
+</div>
+<p><strong>Step 4.</strong> 在对角矩阵上使用 <a href="#lem-geometric-cancel" class="quarto-xref">Lemma&nbsp;4</a> 和 <a href="#lem-algebraic-cancel" class="quarto-xref">Lemma&nbsp;5</a>，减少 handle 个数。</p>
+</div>
+</section>
+<section id="补充命题" class="level4" data-number="2.3.5.3">
+<h4 data-number="2.3.5.3" class="anchored" data-anchor-id="补充命题"><span class="header-section-number">2.3.5.3</span> 补充命题</h4>
+<p>为使证明完整，需补充：</p>
+<div id="prp-supplement-1" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3 (命题 1 (Prop 2.42))</strong></span> 任意 h-cobordism <span class="math inline">\(W\)</span> 都有 regular handle 分解（不含 0, 1, <span class="math inline">\(n-1\)</span>, <span class="math inline">\(n\)</span>-handle）。</p>
+</div>
+<div id="prp-supplement-2" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4 (命题 2)</strong></span> <span class="math inline">\(\pi_1(N_{i-1}) = 1\)</span>。</p>
+</div>
+</section>
+<section id="lemma-2.45" class="level4" data-number="2.3.5.4">
+<h4 data-number="2.3.5.4" class="anchored" data-anchor-id="lemma-2.45"><span class="header-section-number">2.3.5.4</span> Lemma 2.45</h4>
+<div id="lem-2-45" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 7</strong></span> &nbsp;</p>
+<div id="fig-lemma-2-45" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lemma-2-45-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/34-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lemma-2-45-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29: Lemma 2.45
+</figcaption>
+</figure>
+</div>
+</div>
+<p>取 <span class="math inline">\(X = A - \{0\} \simeq B\)</span>（<span class="math inline">\(0\)</span> 为粘接 cell 的中心），<span class="math inline">\(Y = \mathrm{int}(D^s)\)</span>，则 <span class="math display">\[X \cap Y = S^{s-1}, \quad X \cup Y = A\]</span> 对 triple <span class="math inline">\((A, A - \{0\}, \mathrm{int}(D^s))\)</span> 使用 Van Kampen 定理即证。</p>
+</section>
+<section id="命题-2-的证明pi_1n_i-1-1" class="level4" data-number="2.3.5.5">
+<h4 data-number="2.3.5.5" class="anchored" data-anchor-id="命题-2-的证明pi_1n_i-1-1"><span class="header-section-number">2.3.5.5</span> 命题 2 的证明：<span class="math inline">\(\pi_1(N_{i-1}) = 1\)</span></h4>
+<p>粘接 <span class="math inline">\(i\)</span>-handle 在同伦上等同于粘接 <span class="math inline">\(i\)</span>-cell，可用 <a href="#lem-2-45" class="quarto-xref">Lemma&nbsp;7</a>。</p>
+<p><strong>策略</strong>：分别将 <span class="math inline">\(N_{i-1}\)</span> 和 <span class="math inline">\(W\)</span> 与 <span class="math inline">\(W_{i-1}\)</span> 联系起来。</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><strong>(I) <span class="math inline">\(W\)</span> 与 <span class="math inline">\(W_{i-1}\)</span></strong>：</p>
+<p><span class="math inline">\(W\)</span> 是在 <span class="math inline">\(W_{i-1}\)</span> 上粘接若干 index <span class="math inline">\(\geq i\)</span> 的 handle。由 <span class="math inline">\(i - 1 \geq 2\)</span>，有 <span class="math inline">\(i \geq 3\)</span>，故 <span class="math display">\[\pi_1(W) \cong \pi_1(W_{i-1})\]</span></p>
+<p><strong>(II) <span class="math inline">\(N_{i-1}\)</span> 与 <span class="math inline">\(W_{i-1}\)</span></strong>：</p>
+<p>由于只关心同伦型，考虑 <span class="math inline">\(N_{i-1} \times I\)</span> 与 <span class="math inline">\(W_{i-1}\)</span>。</p>
+<ul>
+<li><span class="math inline">\(W_{i-1}\)</span> 是在 <span class="math inline">\(\partial^- W \times I\)</span> 上粘接若干 <span class="math inline">\((i-1)\)</span>-handle</li>
+<li>取对偶：<span class="math inline">\(W_{i-1}\)</span> 是在 <span class="math inline">\(N_{i-1} \times I\)</span> 上粘接若干 index 为 <span class="math inline">\(n - (i-1) = (n-i) + 1 \geq 3\)</span> 的 handle</li>
+</ul>
+<p>故 <span class="math inline">\(\pi_1(N_{i-1}) \cong \pi_1(W_{i-1})\)</span>。</p>
+<p><strong>(III)</strong> 由 <span class="math inline">\(W\)</span> 单连通，综合得 <span class="math inline">\(\pi_1(N_{i-1}) = 1\)</span>。</p>
+</div>
+</section>
+<section id="命题-1-的证明regular-handle-分解总存在" class="level4" data-number="2.3.5.6">
+<h4 data-number="2.3.5.6" class="anchored" data-anchor-id="命题-1-的证明regular-handle-分解总存在"><span class="header-section-number">2.3.5.6</span> 命题 1 的证明：Regular Handle 分解总存在</h4>
+<p><strong>策略</strong>：</p>
+<ol type="1">
+<li>证明 0, 1-handle 可消解</li>
+<li>利用对偶原理，<span class="math inline">\((n-1)\)</span>, <span class="math inline">\(n\)</span>-handle 也可消解</li>
+</ol>
+<p><strong>对偶论证框架</strong>：给定任意 handle 分解 <span class="math inline">\(t\)</span>：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">步骤</th>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">在 <span class="math inline">\(t\)</span> 中消解 0, 1-handle</td>
+<td style="text-align: left;"><span class="math inline">\(t_1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">对 <span class="math inline">\(t_1\)</span> 做对偶</td>
+<td style="text-align: left;"><span class="math inline">\(t_2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">在 <span class="math inline">\(t_2\)</span> 中消解 0, 1-handle（= 消解 <span class="math inline">\(t_1\)</span> 的 <span class="math inline">\(n{-}1\)</span>, <span class="math inline">\(n\)</span>-handle）</td>
+<td style="text-align: left;"><span class="math inline">\(t_3\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">对 <span class="math inline">\(t_3\)</span> 做对偶</td>
+<td style="text-align: left;"><span class="math inline">\(t_4\)</span>（不含 0, 1, <span class="math inline">\(n{-}1\)</span>, <span class="math inline">\(n\)</span>-handle）</td>
+</tr>
+</tbody>
+</table>
+<section id="消解-0-handle" class="level5" data-number="2.3.5.6.1">
+<h5 data-number="2.3.5.6.1" class="anchored" data-anchor-id="消解-0-handle"><span class="header-section-number">2.3.5.6.1</span> 消解 0-Handle</h5>
+<p>由 <span class="math inline">\(W\)</span> 是 h-cobordism，有 <span class="math inline">\(H_0(W, \partial^- W) = 0\)</span>，即空间连通。</p>
+<p>因此，对于任意 0-handle，都有<strong>唯一的</strong> 1-handle 将其与 <span class="math inline">\(\partial^- W \times I\)</span> 所在的”主要部分”连接（其他 index 的 handle 无法使空间连通）。</p>
+<p>这意味着 <span class="math inline">\(D^1\)</span> 天然是对角矩阵（事实上是单位阵），可直接消解所有 0-handle。</p>
+</section>
+<section id="消解-1-handle-handle-trading" class="level5" data-number="2.3.5.6.2">
+<h5 data-number="2.3.5.6.2" class="anchored" data-anchor-id="消解-1-handle-handle-trading"><span class="header-section-number">2.3.5.6.2</span> 消解 1-Handle (Handle Trading)</h5>
+<p><strong>核心思想</strong>：用 <strong>handle trading</strong> 消解所有 1-handle。过程不改变 handle 总数——用 3-handle 替换 1-handle。</p>
+<p><strong>准备工作</strong>：</p>
+<ul>
+<li>由于 0-handle 已消解，1-handle 直接粘接到 <span class="math inline">\(\partial^- W \times I\)</span> 上</li>
+<li>每个 1-handle 给出一个 loop</li>
+<li>在 <span class="math inline">\(W_2\)</span> 上考虑（与 <span class="math inline">\(W\)</span> 差若干 index <span class="math inline">\(\geq 3\)</span> 的 handle，基本群一致）</li>
+<li>由 <a href="#prp-supplement-2" class="quarto-xref">Proposition&nbsp;4</a> 的策略，<span class="math inline">\(\partial^+ W_2\)</span> 单连通</li>
+</ul>
+<p><strong>构造过程</strong>：</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><strong>Step 1.</strong> 对任意 1-handle <span class="math inline">\(h_1\)</span>，考虑其在 <span class="math inline">\(\partial^+ W_2\)</span> 上形成的 loop。</p>
+<p><strong>Step 2.</strong> 由 <span class="math inline">\(\pi_1(\partial^+ W) = 1\)</span>，此 loop bounds a disk <span class="math inline">\(D^2\)</span>。</p>
+<p>由 Thom 横截性定理 + dimension argument，可假设 <span class="math inline">\(D^2\)</span> 嵌入到 <span class="math inline">\(\partial^+ W\)</span> 中。记 <span class="math inline">\(\partial D^2 = \mathscr{S}_0\)</span>。</p>
+<p><strong>Step 3.</strong> 由 <a href="#lem-geometric-cancel" class="quarto-xref">Lemma&nbsp;4</a>，引入一对互相消解（几何相交数为 1）的 handle：</p>
+<ul>
+<li>2-handle <span class="math inline">\(h_2\)</span></li>
+<li>3-handle <span class="math inline">\(h_3\)</span></li>
+</ul>
+<p>使得 <span class="math inline">\(W_2 = W_2 + h_2 + h_3\)</span>。同时要求 <span class="math inline">\(h_2\)</span> 避开 <span class="math inline">\(D^2\)</span> 和 <span class="math inline">\(W_2\)</span> 上其他 2-handle。</p>
+<p>记 <span class="math inline">\(h_2\)</span> 的粘接球面为 <span class="math inline">\(\mathscr{S}_2\)</span>。</p>
+<p><strong>Step 4.</strong> 取连通和 <span class="math display">\[\mathscr{S}_2' := \mathscr{S}_2 \mathbin{\#} \mathscr{S}_0\]</span> 记对应的 2-handle 为 <span class="math inline">\(h_2'\)</span>。</p>
+<div id="fig-handle-trading" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-handle-trading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pic_h_cobordism/37-Smale_s_work.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-trading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;30: Handle trading 示意图
+</figcaption>
+</figure>
+</div>
+<p><strong>关键观察</strong>：</p>
+<ol type="1">
+<li>由于 <span class="math inline">\(\mathscr{S}_0\)</span> bounds a disk，有 <span class="math inline">\(\mathscr{S}_2' \sim \mathscr{S}_2\)</span></li>
+<li><span class="math inline">\(\mathscr{S}_2'\)</span> 与 <span class="math inline">\(h_1\)</span> 的补球面<strong>几何相交数为 1</strong></li>
+</ol>
+<p><strong>消解计算</strong>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+W_2 &amp;= W_2 + h_2 + h_3 \\[6pt]
+    &amp;= W_2 + h_2' + h_3 \\[6pt]
+    &amp;= \partial^- W \times I + \cdots + (h_1 + h_2') + \cdots + h_3 \\[6pt]
+    &amp;= \partial^- W \times I + \cdots + h_3
+\end{aligned}
+\]</span></p>
+<p><strong>结论</strong>：1-handle <span class="math inline">\(h_1\)</span> 被替换为 3-handle <span class="math inline">\(h_3\)</span>。</p>
+</div>
+
+
+</section>
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chen · Mathematics &amp; Topology</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

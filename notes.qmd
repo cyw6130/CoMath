@@ -1,10 +1,67 @@
 ---
-title: "笔记"
+title: "Notes"
+subtitle: "学习笔记与数学随想"
 listing:
   contents: notes
-  type: table
+  type: grid
   sort: "date desc"
   categories: true
+  fields: [title, description, categories, date]
+  grid-columns: 2
+  page-size: 10
+toc: false
 ---
 
-这是我的学习笔记和版财航文章的一个集合。
+::: {.callout-note appearance="minimal" icon=false}
+这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、范畴论、3-流形不变量等主题。
+
+笔记主要面向有代数拓扑背景的研究生，希望能对同样在学习这些内容的朋友有所帮助。
+:::
+
+---
+
+## 主题分类
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .text-center .h-100}
+::: {.card-body}
+### 🎯 量子不变量
+
+Turaev-Viro, Reshetikhin-Turaev, Khovanov homology
+
+[浏览 →](notes/turaev-viro.qmd)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .text-center .h-100}
+::: {.card-body}
+### 📐 范畴论
+
+Tensor categories, fusion categories, modular categories
+
+[即将更新]
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .text-center .h-100}
+::: {.card-body}
+### 🔷 几何拓扑
+
+Heegaard splittings, triangulations, handle theory
+
+[即将更新]
+:::
+:::
+:::
+
+:::
+
+---
+
+## 所有笔记

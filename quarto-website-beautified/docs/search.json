@@ -1,0 +1,371 @@
+[
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、范畴论、3-流形不变量等主题。\n笔记主要面向有代数拓扑背景的研究生，希望能对同样在学习这些内容的朋友有所帮助。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "notes.html#主题分类",
+    "href": "notes.html#主题分类",
+    "title": "Notes",
+    "section": "主题分类",
+    "text": "主题分类\n\n\n\n\n🎯 量子不变量\nTuraev-Viro, Reshetikhin-Turaev, Khovanov homology\n浏览 →\n\n\n\n\n\n\n📐 范畴论\nTensor categories, fusion categories, modular categories\n[即将更新]\n\n\n\n\n\n\n🔷 几何拓扑\nHeegaard splittings, triangulations, handle theory\n[即将更新]",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "notes.html#所有笔记",
+    "href": "notes.html#所有笔记",
+    "title": "Notes",
+    "section": "所有笔记",
+    "text": "所有笔记",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About This Site",
+    "section": "",
+    "text": "这是我的个人学术网站，用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 数字花园理念\n\n\n\n这个网站采用”数字花园 (Digital Garden)“的理念——笔记不一定完美，而是持续生长和迭代的。你可能会看到一些标记为”施工中”的内容，这是正常的！"
+  },
+  {
+    "objectID": "about.html#关于本站",
+    "href": "about.html#关于本站",
+    "title": "About This Site",
+    "section": "",
+    "text": "这是我的个人学术网站，用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 数字花园理念\n\n\n\n这个网站采用”数字花园 (Digital Garden)“的理念——笔记不一定完美，而是持续生长和迭代的。你可能会看到一些标记为”施工中”的内容，这是正常的！"
+  },
+  {
+    "objectID": "about.html#技术栈",
+    "href": "about.html#技术栈",
+    "title": "About This Site",
+    "section": "技术栈",
+    "text": "技术栈\n本站使用以下技术构建：\n\n\n\n工具\n用途\n\n\n\n\nQuarto\n文档生成系统\n\n\nLaTeX / KaTeX\n数学公式渲染\n\n\nGitHub Pages\n静态网站托管\n\n\nSCSS\n自定义样式"
+  },
+  {
+    "objectID": "about.html#联系方式",
+    "href": "about.html#联系方式",
+    "title": "About This Site",
+    "section": "联系方式",
+    "text": "联系方式\n如有任何问题或建议，欢迎通过以下方式联系我：\n\n📧 Email: your_email@edu.com\n🐙 GitHub: @cyw6130"
+  },
+  {
+    "objectID": "about.html#致谢",
+    "href": "about.html#致谢",
+    "title": "About This Site",
+    "section": "致谢",
+    "text": "致谢\n感谢所有在学术道路上给予我帮助的老师、同学和朋友。\n特别感谢开源社区提供的优秀工具，让学术分享变得更加容易。\n\n\n\n\n\n\n\nLicense: 除特别注明外，本站内容采用 CC BY-NC-SA 4.0 许可。"
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html",
+    "href": "notes/Khovanov_homology.html",
+    "title": "Khovanov 同调",
+    "section": "",
+    "text": "Khovanov 同调是 Mikhail Khovanov 在 1999 年引入的一种链不变量。它”范畴化”了著名的 Jones 多项式，即从一个多项式不变量提升到一个（双分次）链复形。\n\n\n\n\n\n\nNote为什么重要？\n\n\n\nKhovanov 同调比 Jones 多项式严格更强：存在 Jones 多项式相同但 Khovanov 同调不同的纽结！",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#引言",
+    "href": "notes/Khovanov_homology.html#引言",
+    "title": "Khovanov 同调",
+    "section": "",
+    "text": "Khovanov 同调是 Mikhail Khovanov 在 1999 年引入的一种链不变量。它”范畴化”了著名的 Jones 多项式，即从一个多项式不变量提升到一个（双分次）链复形。\n\n\n\n\n\n\nNote为什么重要？\n\n\n\nKhovanov 同调比 Jones 多项式严格更强：存在 Jones 多项式相同但 Khovanov 同调不同的纽结！",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#jones-多项式回顾",
+    "href": "notes/Khovanov_homology.html#jones-多项式回顾",
+    "title": "Khovanov 同调",
+    "section": "2 Jones 多项式回顾",
+    "text": "2 Jones 多项式回顾\n\n2.1 Kauffman 括号\n对于一个链环图 \\(D\\)，Kauffman 括号 \\(\\langle D \\rangle\\) 通过以下规则递归定义：\n\\[\n\\langle \\,\\raisebox{-0.4ex}{\\includegraphics[height=1em]{crossing.png}}\\, \\rangle = A \\langle \\,\\raisebox{-0.4ex}{\\includegraphics[height=1em]{0-smoothing.png}}\\, \\rangle + A^{-1} \\langle \\,\\raisebox{-0.4ex}{\\includegraphics[height=1em]{1-smoothing.png}}\\, \\rangle\n\\]\n并规定 \\(\\langle \\bigcirc \\rangle = -A^2 - A^{-2}\\)。\n\n\n2.2 Jones 多项式\n取 \\(A = q^{-1/4}\\)，得到Jones 多项式： \\[\nV_L(q) = (-1)^{n_-} q^{\\frac{n_+ - 2n_-}{4}} \\langle D \\rangle\n\\]\n其中 \\(n_+, n_-\\) 是正负交叉数。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#khovanov-复形的构造",
+    "href": "notes/Khovanov_homology.html#khovanov-复形的构造",
+    "title": "Khovanov 同调",
+    "section": "3 Khovanov 复形的构造",
+    "text": "3 Khovanov 复形的构造\n\n3.1 立方体结构\n对于有 \\(n\\) 个交叉的链环图 \\(D\\)，考虑 \\(n\\)-维立方体 \\(\\{0,1\\}^n\\)。\n每个顶点 \\(v \\in \\{0,1\\}^n\\) 对应一个平滑 \\(D_v\\)，即将每个交叉按 0-平滑或 1-平滑解开。\n\n\n3.2 分次向量空间\n对每个平滑 \\(D_v\\)（它是若干不交圆的并），赋予向量空间： \\[\nV(D_v) = V^{\\otimes k}\n\\] 其中 \\(k\\) 是圆的个数，\\(V = \\mathbb{Z}[x]/(x^2)\\) 是一个 2 维分次向量空间，生成元为 \\(1\\)（次数 1）和 \\(x\\)（次数 -1）。\n\n\n3.3 边映射\n立方体的每条边对应一个映射：\n\n合并 (merge): 两个圆变一个，\\(m: V \\otimes V \\to V\\)\n分裂 (split): 一个圆变两个，\\(\\Delta: V \\to V \\otimes V\\)\n\n具体地： \\[\n\\begin{aligned}\nm(1 \\otimes 1) &= 1, & m(1 \\otimes x) &= x \\\\\nm(x \\otimes 1) &= x, & m(x \\otimes x) &= 0\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\n\\Delta(1) &= 1 \\otimes x + x \\otimes 1 \\\\\n\\Delta(x) &= x \\otimes x\n\\end{aligned}\n\\]\n\n\n3.4 双分次结构\n定义同调次数 \\(i\\) 和量子次数 \\(j\\)：\n\n\\(i = |v| - n_-\\)，其中 \\(|v|\\) 是 \\(v\\) 中 1 的个数\n\\(j\\) 由张量积分次计算\n\nKhovanov 链复形是 \\(C^{i,j}(D)\\) 的双分次复形，微分 \\(d: C^{i,j} \\to C^{i+1,j}\\) 由边映射给出。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#主要性质",
+    "href": "notes/Khovanov_homology.html#主要性质",
+    "title": "Khovanov 同调",
+    "section": "4 主要性质",
+    "text": "4 主要性质\n\n4.1 不变性\n\n\n\n\n\n\nImportant定理 (Khovanov)\n\n\n\nKhovanov 同调 \\(\\text{Kh}^{i,j}(L) = H^{i,j}(C(D))\\) 是链环 \\(L\\) 的不变量，不依赖于图的选取。\n\n\n证明通过验证 Reidemeister 移动的不变性。\n\n\n4.2 与 Jones 多项式的关系\n取分次 Euler 特征： \\[\n\\chi_q(\\text{Kh}(L)) = \\sum_{i,j} (-1)^i q^j \\dim \\text{Kh}^{i,j}(L) = V_L(q)\n\\]\n这正是 Jones 多项式！这解释了”范畴化”的含义。\n\n\n4.3 Kh 检测平凡结\n\n\n\n\n\n\nTip定理 (Kronheimer-Mrowka, 2011)\n\n\n\n如果 \\(K\\) 是一个纽结且 \\(\\text{Kh}(K) \\cong \\text{Kh}(\\text{unknot})\\)，则 \\(K\\) 是平凡结。\n\n\n这是 Khovanov 同调最著名的应用之一！证明使用了规范理论的深刻结果。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#计算例子",
+    "href": "notes/Khovanov_homology.html#计算例子",
+    "title": "Khovanov 同调",
+    "section": "5 计算例子",
+    "text": "5 计算例子\n\n5.1 平凡结\n平凡结的 Khovanov 同调非常简单： \\[\n\\text{Kh}^{0,1}(\\bigcirc) = \\mathbb{Z}, \\quad \\text{Kh}^{0,-1}(\\bigcirc) = \\mathbb{Z}\n\\]\n其他双分次均为零。\n\n\n5.2 三叶结\n右手三叶结 \\(3_1\\) 的 Khovanov 同调：\n\n\n\n\\(j \\backslash i\\)\n-3\n-2\n-1\n0\n\n\n\n\n-1\n\n\n\n\\(\\mathbb{Z}\\)\n\n\n-3\n\n\n\\(\\mathbb{Z}\\)\n\n\n\n-5\n\n\\(\\mathbb{Z}\\)\n\n\n\n\n-7\n\n\\(\\mathbb{Z}_2\\)\n\n\n\n\n-9\n\\(\\mathbb{Z}\\)\n\n\n\n\n\n\n注意出现了挠元 \\(\\mathbb{Z}_2\\)！这说明整系数 Khovanov 同调比有理系数更精细。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#推广与变体",
+    "href": "notes/Khovanov_homology.html#推广与变体",
+    "title": "Khovanov 同调",
+    "section": "6 推广与变体",
+    "text": "6 推广与变体\n\n6.1 奇 Khovanov 同调\nOzsváth-Rasmussen-Szabó 引入了奇 Khovanov 同调，使用外代数替代多项式环，得到不同的不变量。\n\n\n6.2 Khovanov-Rozansky 同调\n\\(\\mathfrak{sl}_n\\) 版本的 Khovanov 同调，范畴化了 HOMFLY-PT 多项式。\n\n\n6.3 缆绑公式\n存在将 Khovanov 同调与缆绕纽结联系起来的公式，这在计算中非常有用。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#开放问题",
+    "href": "notes/Khovanov_homology.html#开放问题",
+    "title": "Khovanov 同调",
+    "section": "7 开放问题",
+    "text": "7 开放问题\n\n三叶结检测: Khovanov 同调是否检测三叶结？\n切片亏格界: 能否从 Khovanov 同调给出最优的切片亏格下界？\n物理解释: Khovanov 同调的物理意义是什么？（与 BPS 态的联系）",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "notes/Khovanov_homology.html#参考文献",
+    "href": "notes/Khovanov_homology.html#参考文献",
+    "title": "Khovanov 同调",
+    "section": "8 参考文献",
+    "text": "8 参考文献\n\nKhovanov, M. (2000). A categorification of the Jones polynomial. Duke Math. J.\nBar-Natan, D. (2002). On Khovanov’s categorification of the Jones polynomial. Algebr. Geom. Topol.\nKronheimer, P., & Mrowka, T. (2011). Khovanov homology is an unknot-detector. Publ. Math. IHES.\n\n\n\n\n\n\n\n\n上一篇: Turaev-Viro 不变量 — 3-流形的状态和模型",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Khovanov 同调"
+    ]
+  },
+  {
+    "objectID": "gallery.html",
+    "href": "gallery.html",
+    "title": "Gallery",
+    "section": "",
+    "text": "A curated collection of moments — from sweeping landscapes to intimate urban scenes.\nEach photograph tells its own quiet story.\n\n\n✦\n\n\nLandscapes & Cityscapes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n✦\n\n\nVertical Perspectives\n\n\n\n\n\n\n\n\n\n\n\n· · ·\n\n\n✨ Click on any image to view in full screen\n\n\n◆"
+  },
+  {
+    "objectID": "notes/turaev-viro.html",
+    "href": "notes/turaev-viro.html",
+    "title": "Turaev-Viro 不变量",
+    "section": "",
+    "text": "Turaev-Viro 不变量是 3-流形的一类重要拓扑不变量，由 Vladimir Turaev 和 Oleg Viro 在 1992 年引入。这类不变量通过状态和模型 (state-sum model) 构造，从球面融合范畴的代数数据出发，对 3-流形的三角剖分进行着色并求和。\n\n\n\n\n\n\nTip核心思想\n\n\n\n将流形的拓扑性质”编码”为代数数据的组合求和，使得不变量可以通过局部计算得到。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#引言",
+    "href": "notes/turaev-viro.html#引言",
+    "title": "Turaev-Viro 不变量",
+    "section": "",
+    "text": "Turaev-Viro 不变量是 3-流形的一类重要拓扑不变量，由 Vladimir Turaev 和 Oleg Viro 在 1992 年引入。这类不变量通过状态和模型 (state-sum model) 构造，从球面融合范畴的代数数据出发，对 3-流形的三角剖分进行着色并求和。\n\n\n\n\n\n\nTip核心思想\n\n\n\n将流形的拓扑性质”编码”为代数数据的组合求和，使得不变量可以通过局部计算得到。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#预备知识",
+    "href": "notes/turaev-viro.html#预备知识",
+    "title": "Turaev-Viro 不变量",
+    "section": "2 预备知识",
+    "text": "2 预备知识\n\n2.1 球面融合范畴\n设 \\(\\mathcal{C}\\) 是一个球面融合范畴 (spherical fusion category)，具有以下结构：\n\n有限多个单纯对象 \\(\\{X_0 = \\mathbf{1}, X_1, \\ldots, X_n\\}\\)\n张量积 \\(\\otimes\\) 和对偶 \\(X^*\\)\n球面结构：\\(\\dim(X) = \\dim(X^*)\\)\n\n量子维数定义为： \\[\n\\dim(X_i) = \\text{tr}(\\text{id}_{X_i}) \\in \\mathbb{C}\n\\]\n范畴的总维数为： \\[\n\\mathcal{D}^2 = \\sum_{i} (\\dim X_i)^2\n\\]\n\n\n2.2 6j-符号\n6j-符号是融合范畴的关键代数数据。对于六个单纯对象 \\(i, j, k, l, m, n\\)，6j-符号记作：\n\\[\n\\begin{Bmatrix}\ni & j & m \\\\\nk & l & n\n\\end{Bmatrix}\n\\]\n它们满足五边形恒等式 (pentagon identity)，保证了构造的一致性。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#构造",
+    "href": "notes/turaev-viro.html#构造",
+    "title": "Turaev-Viro 不变量",
+    "section": "3 构造",
+    "text": "3 构造\n\n3.1 三角剖分与着色\n设 \\(M\\) 是一个闭定向 3-流形，\\(\\mathcal{T}\\) 是 \\(M\\) 的一个三角剖分。\n着色是一个映射： \\[\n\\sigma: \\{\\text{edges of } \\mathcal{T}\\} \\to \\{\\text{simple objects of } \\mathcal{C}\\}\n\\]\n满足在每个面上的融合条件。\n\n\n3.2 状态和公式\nTuraev-Viro 不变量定义为：\n\\[\n\\text{TV}_\\mathcal{C}(M) = \\mathcal{D}^{-2v} \\sum_{\\sigma} \\prod_{\\text{edges } e} \\dim(\\sigma(e)) \\prod_{\\text{tetrahedra } t} |6j_t(\\sigma)|^2\n\\]\n其中：\n\n\\(v\\) 是顶点数\n求和遍历所有合法着色 \\(\\sigma\\)\n\\(|6j_t(\\sigma)|^2\\) 是四面体 \\(t\\) 对应的 6j-符号的模方\n\n\n\n\n\n\n\nNote定理 (Turaev-Viro)\n\n\n\n\\(\\text{TV}_\\mathcal{C}(M)\\) 不依赖于三角剖分的选取，是 \\(M\\) 的拓扑不变量。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#与其他不变量的关系",
+    "href": "notes/turaev-viro.html#与其他不变量的关系",
+    "title": "Turaev-Viro 不变量",
+    "section": "4 与其他不变量的关系",
+    "text": "4 与其他不变量的关系\n\n4.1 Reshetikhin-Turaev 不变量\n对于模范畴 (modular category) \\(\\mathcal{C}\\)，有著名的关系：\n\\[\n\\text{TV}_\\mathcal{C}(M) = |\\text{RT}_\\mathcal{C}(M)|^2\n\\]\n这说明 Turaev-Viro 不变量可以视为 Reshetikhin-Turaev 不变量的”实部”。\n\n\n4.2 Witten-Chern-Simons 理论\n在物理上，Turaev-Viro 不变量对应于 BF 理论的配分函数，而 RT 不变量对应于 Chern-Simons 理论。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#例子",
+    "href": "notes/turaev-viro.html#例子",
+    "title": "Turaev-Viro 不变量",
+    "section": "5 例子",
+    "text": "5 例子\n\n5.1 来自 \\(\\text{SU}(2)_k\\) 的不变量\n取 \\(\\mathcal{C} = \\text{Rep}(U_q(\\mathfrak{sl}_2))\\)，其中 \\(q = e^{i\\pi/(k+2)}\\)。\n单纯对象为 \\(V_0, V_1, \\ldots, V_k\\)，量子维数： \\[\n\\dim(V_j) = \\frac{\\sin\\left(\\frac{(j+1)\\pi}{k+2}\\right)}{\\sin\\left(\\frac{\\pi}{k+2}\\right)} = [j+1]_q\n\\]\n对于透镜空间 \\(L(p,q)\\)，可以显式计算出闭形式的表达式。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#pachner-移动不变性",
+    "href": "notes/turaev-viro.html#pachner-移动不变性",
+    "title": "Turaev-Viro 不变量",
+    "section": "6 Pachner 移动不变性",
+    "text": "6 Pachner 移动不变性\n构造的独立性通过Pachner 移动证明：\n\n\n\n移动\n描述\n\n\n\n\n2-3\n两个四面体 \\(\\leftrightarrow\\) 三个四面体\n\n\n1-4\n一个四面体 \\(\\leftrightarrow\\) 四个四面体\n\n\n\n\n\n\n\n\n\nImportant关键\n\n\n\n6j-符号的五边形恒等式正好保证了 2-3 移动的不变性！",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#进一步阅读",
+    "href": "notes/turaev-viro.html#进一步阅读",
+    "title": "Turaev-Viro 不变量",
+    "section": "7 进一步阅读",
+    "text": "7 进一步阅读\n\nTuraev, V., & Viro, O. (1992). State sum invariants of 3-manifolds and quantum 6j-symbols\nBarrett, J. W., & Westbury, B. W. (1996). Invariants of piecewise-linear 3-manifolds\nTuraev, V. (2010). Quantum Invariants of Knots and 3-Manifolds (2nd ed.)\n\n\n\n\n\n\n\n\n下一篇: Khovanov 同调 — Jones 多项式的范畴化",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro 不变量"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Chen",
+    "section": "",
+    "text": "I am a graduate student in Mathematics at Bilibili University, passionate about exploring the elegant structures that connect algebra, geometry, and topology.\nMy research lies at the intersection of Low-Dimensional Topology and Quantum Topology, where I investigate how algebraic structures give rise to powerful invariants of knots and 3-manifolds.\n\n\n\n\n\n\nNoteResearch Interests\n\n\n\n\n\n\nKhovanov Homology\nCategorification of the Jones polynomial\nTuraev-Viro Invariants\nState-sum models from spherical fusion categories\n\n\n\nH-Cobordism\nManifold structures and smooth topology\nNon-Semisimple TQFTs\nModified traces in non-unimodular categories\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nEvent\n\n\n\n\nDec 2025\nPresented at the Topology Seminar\n\n\nOct 2025\nStarted working on Kuperberg invariants\n\n\nSep 2025\nJoined Prof. X’s research group\n\n\n\n\n\n\n\n\n探索拓扑学的美丽世界，从量子不变量到流形结构：\n\n\n\n\n\nState-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.\nQuantum Topology 3-Manifolds\n\n\n\n\n\n\n\nA categorification of the Jones polynomial that provides strictly stronger invariants for links.\nCategorification Knot Theory"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Chen",
+    "section": "",
+    "text": "I am a graduate student in Mathematics at Bilibili University, passionate about exploring the elegant structures that connect algebra, geometry, and topology.\nMy research lies at the intersection of Low-Dimensional Topology and Quantum Topology, where I investigate how algebraic structures give rise to powerful invariants of knots and 3-manifolds.\n\n\n\n\n\n\nNoteResearch Interests\n\n\n\n\n\n\nKhovanov Homology\nCategorification of the Jones polynomial\nTuraev-Viro Invariants\nState-sum models from spherical fusion categories\n\n\n\nH-Cobordism\nManifold structures and smooth topology\nNon-Semisimple TQFTs\nModified traces in non-unimodular categories"
+  },
+  {
+    "objectID": "index.html#recent-updates",
+    "href": "index.html#recent-updates",
+    "title": "Chen",
+    "section": "",
+    "text": "Date\nEvent\n\n\n\n\nDec 2025\nPresented at the Topology Seminar\n\n\nOct 2025\nStarted working on Kuperberg invariants\n\n\nSep 2025\nJoined Prof. X’s research group"
+  },
+  {
+    "objectID": "index.html#selected-notes",
+    "href": "index.html#selected-notes",
+    "title": "Chen",
+    "section": "",
+    "text": "探索拓扑学的美丽世界，从量子不变量到流形结构：\n\n\n\n\n\nState-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.\nQuantum Topology 3-Manifolds\n\n\n\n\n\n\n\nA categorification of the Jones polynomial that provides strictly stronger invariants for links.\nCategorification Knot Theory"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
+  },
+  {
+    "objectID": "research.html#overview",
+    "href": "research.html#overview",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
+  },
+  {
+    "objectID": "research.html#research-areas",
+    "href": "research.html#research-areas",
+    "title": "Research",
+    "section": "Research Areas",
+    "text": "Research Areas\n\nQuantum Topology\nQuantum topology studies topological invariants arising from quantum groups and related algebraic structures. These invariants often have deep connections to:\n\nMathematical Physics: Chern-Simons theory, conformal field theory\nRepresentation Theory: Quantum groups at roots of unity\nCategory Theory: Tensor categories, braided monoidal categories\n\n\n\n\nTuraev-Viro Invariants\nThe Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation \\(\\mathcal{T}\\) of a 3-manifold \\(M\\):\n\\[\nTV(M) = \\sum_{\\text{colorings}} \\prod_{\\text{tetrahedra}} |6j|^2\n\\]\nThese invariants are:\n\nTopologically invariant (independent of triangulation)\nComputable (via state-sum formulas)\nRelated to Reshetikhin-Turaev invariants via the Turaev-Walker theorem\n\n\n\n\nNon-Semisimple Extensions\nWhen working with non-semisimple categories, new phenomena emerge:\n\nModified Traces: The usual categorical trace fails; we need renormalized traces\nLogarithmic CFT: Physical interpretation involves non-unitary theories\nNew Invariants: Potentially stronger invariants than the semisimple case\n\nThis is an active area with many open questions!\n\n\n\n\n\n\nKnot Theory & Categorification\nKhovanov homology categorifies the Jones polynomial \\(V_L(q)\\) of a link \\(L\\):\n\\[\nV_L(q) = \\sum_{i,j} (-1)^i q^j \\dim \\text{Kh}^{i,j}(L)\n\\]\nThe categorified invariant \\(\\text{Kh}(L)\\) is a bigraded chain complex that:\n\nDetects the unknot (Kronheimer-Mrowka, 2011)\nProvides bounds on slice genus\nHas connections to symplectic geometry and gauge theory\n\n\n\n\n\n\n\nNote\n\n\n\nOpen Problem: Does Khovanov homology detect the trefoil knot?\n\n\n\n\n\nGeometric Topology\n\nHeegaard Splittings\nEvery closed, orientable 3-manifold \\(M\\) admits a Heegaard splitting: \\[\nM = H_g \\cup_\\phi H_g\n\\] where \\(H_g\\) is a genus-\\(g\\) handlebody and \\(\\phi\\) is a gluing homeomorphism of the boundary.\nKey Questions:\n\nHow does the Heegaard genus relate to other complexity measures?\nWhat is the relationship between Heegaard diagrams and quantum invariants?\n\n\n\nTriangulations & Pachner Moves\nThe Pachner moves provide a finite set of local modifications that connect any two triangulations of a manifold:\n\n\n\nDimension\nMoves\n\n\n\n\n2D\n2-2 flip\n\n\n3D\n1-4, 2-3, and their inverses\n\n\n4D\n1-5, 2-4, 3-3, and their inverses\n\n\n\nThese moves are fundamental for:\n\nProving topological invariance of state-sum models\nComputational topology algorithms\nUnderstanding the geometry of the space of triangulations"
+  },
+  {
+    "objectID": "research.html#publications-preprints",
+    "href": "research.html#publications-preprints",
+    "title": "Research",
+    "section": "Publications & Preprints",
+    "text": "Publications & Preprints\n\nIn Preparation\n\nOn the Kuperberg Invariant for Hopf Superalgebras\nChen (Expected 2026)\nWe extend Kuperberg’s G-invariant to the setting of Hopf superalgebras, obtaining new invariants of 3-manifolds with additional structure.\n\n\n\nExpository\n\nAn Introduction to Turaev-Viro Theory\nNotes for the Graduate Topology Seminar (2025)\nA gentle introduction to the Turaev-Viro construction, suitable for graduate students with background in algebraic topology.\n📄 PDF"
+  },
+  {
+    "objectID": "research.html#talks-presentations",
+    "href": "research.html#talks-presentations",
+    "title": "Research",
+    "section": "Talks & Presentations",
+    "text": "Talks & Presentations\n\n\n\n\n\n\n\n\nDate\nTitle\nVenue\n\n\n\n\nDec 2025\nTuraev-Viro Invariants: An Introduction\nTopology Seminar\n\n\nOct 2025\nWhat is a TQFT?\nGraduate Student Colloquium"
+  },
+  {
+    "objectID": "research.html#collaborators-mentors",
+    "href": "research.html#collaborators-mentors",
+    "title": "Research",
+    "section": "Collaborators & Mentors",
+    "text": "Collaborators & Mentors\nI am fortunate to learn from and work with wonderful mathematicians:\n\nProf. X (Advisor) — Non-semisimple TQFTs\nDr. Y — Khovanov homology\n\n\n\n\n\n\n\nAlways open to discussions and collaborations! Feel free to reach out via email."
+  }
+]

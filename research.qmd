@@ -1,19 +1,157 @@
 ---
-title: "Research Interests"
+title: "Research"
+subtitle: "Exploring the topology of low-dimensional spaces"
+toc: true
+toc-depth: 2
 ---
 
-## Current Projects
+## Overview
 
-My research focuses on the intersection of **Quantum Topology** and **Representation Theory**.
+My research focuses on the beautiful interplay between **algebra** and **topology**, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.
 
-### 1. Non-Semisimple TQFTs
-I am investigating the modified traces in non-unimodular categories and their associated 3-manifold invariants.
+::: {.callout-tip appearance="simple"}
+**Current Focus**: Non-semisimple TQFTs and their applications to 3-manifold invariants.
+:::
 
-### 2. Geometric Topology
-* Heegaard splittings and their relation to algebraic structures.
-* Triangulations and Pachner moves.
+---
+
+## Research Areas
+
+### Quantum Topology
+
+Quantum topology studies topological invariants arising from quantum groups and related algebraic structures. These invariants often have deep connections to:
+
+- **Mathematical Physics**: Chern-Simons theory, conformal field theory
+- **Representation Theory**: Quantum groups at roots of unity
+- **Category Theory**: Tensor categories, braided monoidal categories
+
+::: {.columns}
+
+::: {.column width="50%"}
+#### Turaev-Viro Invariants
+
+The Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation $\mathcal{T}$ of a 3-manifold $M$:
+
+$$
+TV(M) = \sum_{\text{colorings}} \prod_{\text{tetrahedra}} |6j|^2
+$$
+
+These invariants are:
+
+- Topologically invariant (independent of triangulation)
+- Computable (via state-sum formulas)
+- Related to Reshetikhin-Turaev invariants via the Turaev-Walker theorem
+:::
+
+::: {.column width="50%"}
+#### Non-Semisimple Extensions
+
+When working with non-semisimple categories, new phenomena emerge:
+
+- **Modified Traces**: The usual categorical trace fails; we need renormalized traces
+- **Logarithmic CFT**: Physical interpretation involves non-unitary theories
+- **New Invariants**: Potentially stronger invariants than the semisimple case
+
+This is an active area with many open questions!
+:::
+
+:::
+
+---
+
+### Knot Theory & Categorification
+
+Khovanov homology categorifies the Jones polynomial $V_L(q)$ of a link $L$:
+
+$$
+V_L(q) = \sum_{i,j} (-1)^i q^j \dim \text{Kh}^{i,j}(L)
+$$
+
+The categorified invariant $\text{Kh}(L)$ is a bigraded chain complex that:
+
+- Detects the unknot (Kronheimer-Mrowka, 2011)
+- Provides bounds on slice genus
+- Has connections to symplectic geometry and gauge theory
+
+::: {.callout-note}
+**Open Problem**: Does Khovanov homology detect the trefoil knot?
+:::
+
+---
+
+### Geometric Topology
+
+#### Heegaard Splittings
+
+Every closed, orientable 3-manifold $M$ admits a Heegaard splitting:
+$$
+M = H_g \cup_\phi H_g
+$$
+where $H_g$ is a genus-$g$ handlebody and $\phi$ is a gluing homeomorphism of the boundary.
+
+**Key Questions**:
+
+- How does the Heegaard genus relate to other complexity measures?
+- What is the relationship between Heegaard diagrams and quantum invariants?
+
+#### Triangulations & Pachner Moves
+
+The Pachner moves provide a finite set of local modifications that connect any two triangulations of a manifold:
+
+| Dimension | Moves |
+|:----------|:------|
+| 2D | 2-2 flip |
+| 3D | 1-4, 2-3, and their inverses |
+| 4D | 1-5, 2-4, 3-3, and their inverses |
+
+These moves are fundamental for:
+
+- Proving topological invariance of state-sum models
+- Computational topology algorithms
+- Understanding the geometry of the space of triangulations
+
+---
 
 ## Publications & Preprints
 
-* **On the Kuperberg Invariant** (In preparation)
-  * Brief description of what this paper is about.
+### In Preparation
+
+::: {.publication}
+**On the Kuperberg Invariant for Hopf Superalgebras**  
+*Chen* (Expected 2026)
+
+We extend Kuperberg's G-invariant to the setting of Hopf superalgebras, obtaining new invariants of 3-manifolds with additional structure.
+:::
+
+### Expository
+
+::: {.publication}
+**An Introduction to Turaev-Viro Theory**  
+*Notes for the Graduate Topology Seminar* (2025)
+
+A gentle introduction to the Turaev-Viro construction, suitable for graduate students with background in algebraic topology.
+
+[📄 PDF](notes/turaev-viro.qmd)
+:::
+
+---
+
+## Talks & Presentations
+
+| Date | Title | Venue |
+|:-----|:------|:------|
+| Dec 2025 | *Turaev-Viro Invariants: An Introduction* | Topology Seminar |
+| Oct 2025 | *What is a TQFT?* | Graduate Student Colloquium |
+
+---
+
+## Collaborators & Mentors
+
+I am fortunate to learn from and work with wonderful mathematicians:
+
+- **Prof. X** (Advisor) — Non-semisimple TQFTs
+- **Dr. Y** — Khovanov homology
+
+::: {.callout-tip appearance="minimal"}
+Always open to discussions and collaborations! Feel free to reach out via email.
+:::

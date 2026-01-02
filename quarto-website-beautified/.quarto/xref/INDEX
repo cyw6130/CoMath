@@ -1,0 +1,23 @@
+{
+  "notes.qmd": {
+    "notes.html": "d9ac6774"
+  },
+  "research.qmd": {
+    "research.html": "fad458eb"
+  },
+  "gallery.qmd": {
+    "gallery.html": "321123aa"
+  },
+  "about.qmd": {
+    "about.html": "110b6db4"
+  },
+  "notes/Khovanov_homology.qmd": {
+    "Khovanov_homology.html": "86d5add9"
+  },
+  "notes/turaev-viro.qmd": {
+    "turaev-viro.html": "963d2c1f"
+  },
+  "index.qmd": {
+    "index.html": "71865490"
+  }
+}
