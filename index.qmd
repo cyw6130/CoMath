@@ -67,7 +67,7 @@ My research lies at the intersection of **Low-Dimensional Topology** and **Algeb
 
 | Date | Event |
 |:-----|:------|
-| **Mon 2026** | 准备解析数论期末考试, 我的 [pre]() |
+| **Mon 2026** | 准备解析数论期末考试, 我的 [pre](notes/bernoulli.qmd) |
 | **Dec 2025** | 学习 h-cobordism, surgery theory |
 | **Nov 2025** | 学习 khovanov homology 及相关的 topics |
 | **Oct 2025** | 计算 torus bundle 的非半单 RT 不变量 |
@@ -102,7 +102,7 @@ State-sum construction of 3-manifold invariants using 6j-symbols from spherical 
 
 A categorification of the Jones polynomial that provides strictly stronger invariants for links.
 
-`Categorification` `Knot Theory` '4-manifold'
+`Categorification` `Knot Theory` `4-manifold`
 :::
 :::
 :::

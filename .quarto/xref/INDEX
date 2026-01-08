@@ -78,5 +78,18 @@
   "notes/note-template.qmd": {
     "note-template.html": "6dbdf225",
     "note-template.tex": "6ff891bb"
+  },
+  "notes/Kh2.qmd": {
+    "Kh2.html": "43632352",
+    "Kh2.tex": "be90748c"
+  },
+  "notes/bernoulli.qmd": {
+    "bernoulli.html": "b197c451"
+  },
+  "translations.qmd": {
+    "translations.html": "2294b135"
+  },
+  "translations/milnor.qmd": {
+    "milnor.html": "6b941a86"
   }
 }
