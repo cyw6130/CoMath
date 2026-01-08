@@ -1,11 +1,17 @@
 [
   {
+    "listing": "/translations.html",
+    "items": [
+      "/translations/milnor.html"
+    ]
+  },
+  {
     "listing": "/notes.html",
     "items": [
+      "/notes/bernoulli.html",
       "/notes/h_cobordism_4.html",
       "/notes/Khovanov_homology.html",
-      "/notes/turaev-viro.html",
-      "/notes/note-template.html"
+      "/notes/turaev-viro.html"
     ]
   }
 ]

@@ -130,6 +130,10 @@ window.Quarto = {
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
@@ -213,6 +217,29 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli Number, Zeta Function and Exotic Spheres</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -231,25 +258,26 @@ window.Quarto = {
   </ul></li>
   <li><a href="#良定义-link-不变量" id="toc-良定义-link-不变量" class="nav-link" data-scroll-target="#良定义-link-不变量"><span class="header-section-number">1.2</span> 良定义 (link 不变量)</a></li>
   </ul></li>
-  <li><a href="#函子性" id="toc-函子性" class="nav-link" data-scroll-target="#函子性"><span class="header-section-number">2</span> 函子性</a>
+  <li><a href="#函子性" id="toc-函子性" class="nav-link" data-scroll-target="#函子性"><span class="header-section-number">2</span> 函子性</a></li>
+  <li><a href="#形变-lee-同调" id="toc-形变-lee-同调" class="nav-link" data-scroll-target="#形变-lee-同调"><span class="header-section-number">3</span> 形变: Lee 同调</a>
   <ul class="collapse">
-  <li><a href="#lee-同调" id="toc-lee-同调" class="nav-link" data-scroll-target="#lee-同调"><span class="header-section-number">2.1</span> Lee 同调</a>
+  <li><a href="#lee-同调" id="toc-lee-同调" class="nav-link" data-scroll-target="#lee-同调"><span class="header-section-number">3.1</span> Lee 同调</a>
   <ul class="collapse">
-  <li><a href="#基本定义-1" id="toc-基本定义-1" class="nav-link" data-scroll-target="#基本定义-1"><span class="header-section-number">2.1.1</span> 基本定义</a></li>
-  <li><a href="#分次结构" id="toc-分次结构" class="nav-link" data-scroll-target="#分次结构"><span class="header-section-number">2.1.2</span> 分次结构</a></li>
-  <li><a href="#基本性质" id="toc-基本性质" class="nav-link" data-scroll-target="#基本性质"><span class="header-section-number">2.1.3</span> 基本性质</a></li>
+  <li><a href="#基本定义-1" id="toc-基本定义-1" class="nav-link" data-scroll-target="#基本定义-1"><span class="header-section-number">3.1.1</span> 基本定义</a></li>
+  <li><a href="#分次结构" id="toc-分次结构" class="nav-link" data-scroll-target="#分次结构"><span class="header-section-number">3.1.2</span> 分次结构</a></li>
+  <li><a href="#基本性质" id="toc-基本性质" class="nav-link" data-scroll-target="#基本性质"><span class="header-section-number">3.1.3</span> 基本性质</a></li>
   </ul></li>
-  <li><a href="#s-invariant" id="toc-s-invariant" class="nav-link" data-scroll-target="#s-invariant"><span class="header-section-number">2.2</span> s-invariant</a>
+  <li><a href="#s-invariant" id="toc-s-invariant" class="nav-link" data-scroll-target="#s-invariant"><span class="header-section-number">3.2</span> s-invariant</a>
   <ul class="collapse">
-  <li><a href="#定义-s-分次-textgr_s" id="toc-定义-s-分次-textgr_s" class="nav-link" data-scroll-target="#定义-s-分次-textgr_s"><span class="header-section-number">2.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></a></li>
-  <li><a href="#s_maxs_min2" id="toc-s_maxs_min2" class="nav-link" data-scroll-target="#s_maxs_min2"><span class="header-section-number">2.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></a></li>
-  <li><a href="#s-不变量的性质" id="toc-s-不变量的性质" class="nav-link" data-scroll-target="#s-不变量的性质"><span class="header-section-number">2.2.3</span> s 不变量的性质</a></li>
-  <li><a href="#配边函子性质" id="toc-配边函子性质" class="nav-link" data-scroll-target="#配边函子性质"><span class="header-section-number">2.2.4</span> 配边/函子性质</a></li>
+  <li><a href="#定义-s-分次-textgr_s" id="toc-定义-s-分次-textgr_s" class="nav-link" data-scroll-target="#定义-s-分次-textgr_s"><span class="header-section-number">3.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></a></li>
+  <li><a href="#s_maxs_min2" id="toc-s_maxs_min2" class="nav-link" data-scroll-target="#s_maxs_min2"><span class="header-section-number">3.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></a></li>
+  <li><a href="#s-不变量的性质" id="toc-s-不变量的性质" class="nav-link" data-scroll-target="#s-不变量的性质"><span class="header-section-number">3.2.3</span> s 不变量的性质</a></li>
+  <li><a href="#配边函子性质" id="toc-配边函子性质" class="nav-link" data-scroll-target="#配边函子性质"><span class="header-section-number">3.2.4</span> 配边/函子性质</a></li>
   </ul></li>
-  <li><a href="#应用-slice-knot-exotic-mathbbr4" id="toc-应用-slice-knot-exotic-mathbbr4" class="nav-link" data-scroll-target="#应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">2.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></a>
+  <li><a href="#应用-slice-knot-exotic-mathbbr4" id="toc-应用-slice-knot-exotic-mathbbr4" class="nav-link" data-scroll-target="#应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">3.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></a>
   <ul class="collapse">
-  <li><a href="#from-slice-knot-to-exotic-mathbbr4" id="toc-from-slice-knot-to-exotic-mathbbr4" class="nav-link" data-scroll-target="#from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">2.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></a></li>
-  <li><a href="#topologically-slice-but-not-smoothly-knots" id="toc-topologically-slice-but-not-smoothly-knots" class="nav-link" data-scroll-target="#topologically-slice-but-not-smoothly-knots"><span class="header-section-number">2.3.2</span> topologically slice but not smoothly knots</a></li>
+  <li><a href="#from-slice-knot-to-exotic-mathbbr4" id="toc-from-slice-knot-to-exotic-mathbbr4" class="nav-link" data-scroll-target="#from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">3.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></a></li>
+  <li><a href="#topologically-slice-but-not-smoothly-knots" id="toc-topologically-slice-but-not-smoothly-knots" class="nav-link" data-scroll-target="#topologically-slice-but-not-smoothly-knots"><span class="header-section-number">3.3.2</span> topologically slice but not smoothly knots</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -308,7 +336,7 @@ window.Quarto = {
 <section id="不定向的版本-khovanov-bracket" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="不定向的版本-khovanov-bracket"><span class="header-section-number">1.1.1</span> 不定向的版本: Khovanov bracket</h3>
 <ul>
-<li><p>Def (Khovanov bracket): 给一个不定向的 link diagram <span class="math inline">\(L\)</span> , 我们定义(上)链复形 <span class="math inline">\([[L]]\)</span>:</p>
+<li>Def (Khovanov bracket): 给一个不定向的 link diagram <span class="math inline">\(L\)</span> , 我们定义(上)链复形 <span class="math inline">\([[L]]\)</span>:
 <ul>
 <li>cochain: smoothing 分解 <span class="math inline">\(L\)</span>, 给每个 circle 一个向量空间 <span class="math inline">\(V\)</span>. 并根据字符串指数的求和来分次 chain.</li>
 <li>微分: 利用取定的映射 <span class="math inline">\(m: V\otimes V\to V\)</span></li>
@@ -319,7 +347,7 @@ window.Quarto = {
 </ul></li>
 <li>微分映射是 q-齐次的(指保持 q 分次), 故可以写成 q 分次的直和.</li>
 </ul></li>
-<li><p>Notation: bigraded</p>
+<li>Notation: bigraded
 <ul>
 <li><span class="math inline">\(\text{gr}_h\)</span>: 同调分次</li>
 <li><span class="math inline">\(\text{gr}_q\)</span>: 量子分次</li>
@@ -329,21 +357,24 @@ window.Quarto = {
 <li>问题: 若 <span class="math inline">\(C^1=C[1]^i\)</span> , <span class="math inline">\(i=?\)</span> 答案: <span class="math inline">\(i=2\)</span> !</li>
 </ul></li>
 </ul></li>
-<li><p>例子: 复形 <span class="math inline">\([[H]]\)</span> <img src="pic_khovanov_homology/Note on Khovanov homology-12.png" class="img-fluid"></p></li>
-<li><p>用同调语言给出的公理化定义: <img src="pic_khovanov_homology/Note on Khovanov homology-11.png" class="img-fluid"></p>
+<li>例子: 复形 <span class="math inline">\([[H]]\)</span></li>
+</ul>
+<ul>
+<li>用同调语言给出的公理化定义:</li>
+</ul>
 <ul>
 <li>拓扑语言与同调语言的对应:
 <ul>
 <li>smoothing: 锥复形</li>
 <li>disjoint circle: 张量积</li>
-<li>空集: “平凡”复形 这是我们</li>
-</ul></li>
+<li>空集: “平凡”复形</li>
 </ul></li>
 </ul>
+<p>这是我们</p>
 </section>
 <section id="定向的版本" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="定向的版本"><span class="header-section-number">1.1.2</span> 定向的版本</h3>
-<p>定向的版本只要对不定向的版本做 shift. <img src="pic_khovanov_homology/Note on Khovanov homology-13.png" class="img-fluid"></p>
+<p>定向的版本只要对不定向的版本做 shift.</p>
 <ul>
 <li><strong>Remark:</strong> 纽结的 Khovanov 同调不区分定向
 <ul>
@@ -354,31 +385,28 @@ window.Quarto = {
 <li>例子: positive hopf link
 <ul>
 <li>我们先考虑不定向的版本, 然后再 shift q 分次.</li>
-<li>cube resolution <img src="pic_khovanov_homology/Note on Khovanov homology-6.png" class="img-fluid">
+<li>cube resolution</li>
+</ul></li>
+</ul>
+<pre><code>- 首先排序两个交叉点
+- 按照 $\text{gr}_h$ 排列各 resolution 并且给每个 resolution 标记 $u,v,w,x$ 
+- 给每个 resolution 上的每个 circle 一个排序, 比如给 $u$ 上的两个 circles 分别标记了 $1,2$.  (为了更方便的表示每个 resolution 上的基底)</code></pre>
 <ul>
-<li>首先排序两个交叉点</li>
-<li>按照 <span class="math inline">\(\text{gr}_h\)</span> 排列各 resolution 并且给每个 resolution 标记 <span class="math inline">\(u,v,w,x\)</span></li>
-<li>给每个 resolution 上的每个 circle 一个排序, 比如给 <span class="math inline">\(u\)</span> 上的两个 circles 分别标记了 <span class="math inline">\(1,2\)</span>. (为了更方便的表示每个 resolution 上的基底)</li>
-</ul></li>
-<li>differential map <img src="pic_khovanov_homology/Note on Khovanov homology-7.png" class="img-fluid">
+<li>differential map</li>
+</ul>
+<pre><code>- 我们按照上面 resolution 上 circle 的排序, 用形如 $u_{+-}$ 的记号表示基底 (比如这个记号表示 $u$ 上的元素 $v_+\otimes v_{-}$).
+- 用微分映射将对应的基底连起来. 
+- 标记微分映射的符号: 如果是正的, 用绿色箭头表示, 如果是负的用红色箭头表示. 
+- 粉色标志每个生成元的双分次. (此时已经将定向导致的 shift 加进来了) 可以看到微分映射总是保持 $\text{gr}_q$ 的.</code></pre>
 <ul>
-<li>我们按照上面 resolution 上 circle 的排序, 用形如 <span class="math inline">\(u_{+-}\)</span> 的记号表示基底 (比如这个记号表示 <span class="math inline">\(u\)</span> 上的元素 <span class="math inline">\(v_+\otimes v_{-}\)</span>).</li>
-<li>用微分映射将对应的基底连起来.</li>
-<li>标记微分映射的符号: 如果是正的, 用绿色箭头表示, 如果是负的用红色箭头表示.</li>
-<li>粉色标志每个生成元的双分次. (此时已经将定向导致的 shift 加进来了) 可以看到微分映射总是保持 <span class="math inline">\(\text{gr}_q\)</span> 的.</li>
-</ul></li>
-<li>compute the homology <img src="pic_khovanov_homology/Note on Khovanov homology-9.png" class="img-fluid"> (第二行, 第四列同调生成元错了?)
+<li>compute the homology (第二行, 第四列同调生成元错了?)</li>
+</ul>
+<pre><code>- 在每个 $\text{gr}_h$ 上算 kerner 和 image, 只要看它们的生成元是被怎么映的.  
+- 从这里可以看到非平凡的  $\text{gr}_h$ 要么是奇数要么是偶数
+  - 注意, 在复形 $\text{CKh}$ 的微分中, $\Delta,m$ 总是交互出现 (比如若 $d_i=m$, 则 $d_{i+1},d_{i-1}=\Delta$ )
+  - $m$ 的 kernel 总是不平凡的, 从而同调不平凡
+  - $\Delta$ 的 kernel 总是平凡的, 从而同调是 0.</code></pre>
 <ul>
-<li>在每个 <span class="math inline">\(\text{gr}_h\)</span> 上算 kerner 和 image, 只要看它们的生成元是被怎么映的.<br>
-</li>
-<li>从这里可以看到非平凡的 <span class="math inline">\(\text{gr}_h\)</span> 要么是奇数要么是偶数
-<ul>
-<li>注意, 在复形 <span class="math inline">\(\text{CKh}\)</span> 的微分中, <span class="math inline">\(\Delta,m\)</span> 总是交互出现 (比如若 <span class="math inline">\(d_i=m\)</span>, 则 <span class="math inline">\(d_{i+1},d_{i-1}=\Delta\)</span> )</li>
-<li><span class="math inline">\(m\)</span> 的 kernel 总是不平凡的, 从而同调不平凡</li>
-<li><span class="math inline">\(\Delta\)</span> 的 kernel 总是平凡的, 从而同调是 0.</li>
-</ul></li>
-</ul></li>
-</ul></li>
 <li>另一个相似的结论:
 <ul>
 <li>非平凡的 <span class="math inline">\(\text{gr}_q\)</span> 要么是奇数要么是偶数.
@@ -393,9 +421,11 @@ window.Quarto = {
 </ul></li>
 <li><span class="math inline">\(\text{Kh}\)</span> 存在简化算法 (BN 07)
 <ul>
-<li>简化算法: 利用Cancellation lemma<img src="pic_khovanov_homology/Note on Khovanov homology-10.png" class="img-fluid"></li>
-<li>跟上面的结果大致(在两个分次上)能对上</li>
+<li>简化算法: 利用Cancellation lemma</li>
 </ul></li>
+</ul>
+<ul>
+<li>跟上面的结果大致(在两个分次上)能对上</li>
 </ul>
 </section>
 <section id="锥复形" class="level3" data-number="1.1.3">
@@ -404,25 +434,29 @@ window.Quarto = {
 <li>锥复形 <span class="math inline">\(C\left(f\right)\)</span>
 <ul>
 <li>对于任意 triple <span class="math inline">\(\left(A^*,B^*,f\right)\)</span>, 其中 <span class="math inline">\(f:A^*\to B^*\)</span> a chain map. 我们可以一个新的链复形 <span class="math inline">\(C\left(f\right)\)</span> , 称为锥复形 (mapping cone).</li>
-<li>定义: <img src="pic_khovanov_homology/Note on Khovanov homology-14.png" class="img-fluid">
-<ul>
-<li>注意: <span class="math inline">\(C\left(f\right)^0=A^1\oplus B^0=A\{-1\}^0\oplus B^0=(A\{-1\}\oplus B)^1\)</span>. 即我们有 <span class="math inline">\(C\left(f\right)^i=\left(A\{-1\}\oplus B\right)^i\)</span>. (这里的 shift 是 <span class="math inline">\(-1\)</span>, 而不是 <span class="math inline">\(1\)</span> !)</li>
-<li>锥复形作为全复形:
-<ul>
-<li>先找到双复形: 只有两行不是 0, <img src="pic_khovanov_homology/Note on Khovanov homology-15.png" class="img-fluid"> 并按照上图标记 bigrade (我们的标记使得 <span class="math inline">\(B^0\)</span> 是基点, 同时两个分次上的微分都使 deg <span class="math inline">\(+1\)</span>)</li>
-<li>按照标准办法, 将双复形变成复形 (全复形).</li>
-<li>得到的全复形就是我们的锥复形 <span class="math inline">\(C\left(f\right)\)</span>.</li>
+<li>定义:</li>
 </ul></li>
-</ul></li>
+</ul>
+<pre><code>- 注意: $C\left(f\right)^0=A^1\oplus B^0=A\{-1\}^0\oplus B^0=(A\{-1\}\oplus B)^1$. 即我们有 $C\left(f\right)^i=\left(A\{-1\}\oplus B\right)^i$. (这里的 shift 是 $-1$, 而不是 $1$ !)
+- 锥复形作为全复形: 
+  - 先找到双复形: 只有两行不是 0,  
+  </code></pre>
+<pre><code>  并按照上图标记 bigrade (我们的标记使得 $B^0$ 是基点, 同时两个分次上的微分都使 deg $+1$)
+  - 按照标准办法, 将双复形变成复形 (全复形).
+  - 得到的全复形就是我们的锥复形 $C\left(f\right)$.</code></pre>
+<ul>
 <li>正合列:
 <ul>
-<li>我们的锥复形包含在如下短正合列中: <img src="pic_khovanov_homology/Note on Khovanov homology-16.png" class="img-fluid"> <span class="math inline">\(B\)</span> 是 <span class="math inline">\(C\left(f\right)\)</span> 的子复形, 而 <span class="math inline">\(A\{-1\}\)</span> 不是!</li>
-<li>诱导长正合列: <img src="pic_khovanov_homology/Note on Khovanov homology-17.png" class="img-fluid"> 注意这个长正合列上的 <span class="math inline">\(\delta\)</span> 映射的位置上写了 <span class="math inline">\(f\)</span>, 即对应的 chain map.</li>
+<li>我们的锥复形包含在如下短正合列中:</li>
 </ul></li>
-</ul></li>
+</ul>
+<pre><code>$B$ 是 $C\left(f\right)$ 的子复形, 而 $A\{-1\}$ 不是!
+- 诱导长正合列: </code></pre>
+<pre><code>注意这个长正合列上的 $\delta$ 映射的位置上写了 $f$, 即对应的 chain map. </code></pre>
+<ul>
 <li>应用: smoothing 有锥复形结构
 <ul>
-<li>例子: <img src="pic_khovanov_homology/Note on Khovanov homology-29.png" class="img-fluid"></li>
+<li>例子:</li>
 </ul></li>
 </ul>
 </section>
@@ -434,23 +468,43 @@ window.Quarto = {
 </section>
 <section id="函子性" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> 函子性</h1>
-<p>先挖坑… # 形变: Lee 同调</p>
-<p>这一部分我们介绍 Lee 同调和 s-invariant 以及它们在 4-mfld 中的应用.</p>
-<section id="lee-同调" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="lee-同调"><span class="header-section-number">2.1</span> Lee 同调</h2>
-<section id="基本定义-1" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="基本定义-1"><span class="header-section-number">2.1.1</span> 基本定义</h3>
-<p>相对于 Khovanov 同调, Lee 的同调只是改变了 TQFT <span class="math inline">\(\mathcal{A}\)</span> 上的 modular functor, 即仅仅改变了 <span class="math inline">\(m: V\otimes V\to V, \Delta: V\to V\otimes V\)</span>. 我们将 Lee 定义的 TQFT 记为 <span class="math inline">\(\mathcal{A'}\)</span>.</p>
-<p>我们将 Lee 的链复形记为 <span class="math inline">\(\text{CKh}'\)</span>, 则这个复形的每个分次都和 <span class="math inline">\(\text{CKh}\)</span> 是一样的, 改变的只是微分映射. <img src="pic_khovanov_homology/Note on Khovanov homology-18.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-19.png" class="img-fluid"><img src="pic_khovanov_homology/Note on Khovanov homology-20.png" class="img-fluid"></p>
-<p>在这组基底下很丑, 但如果我们暂时忽略 q 分次, 选取另一组基底: <span class="math inline">\(a:=v_{-}+v_+,b=v_{-}-v_{+}\)</span> 则微分映射可以被写得非常简单: <img src="pic_khovanov_homology/Note on Khovanov homology-21.png" class="img-fluid"> 这预示着 <span class="math inline">\(\text{CKh}'\)</span> 的同调 <span class="math inline">\(\text{Kh}'\)</span> 会有很好的结果. (当我们不考虑 <span class="math inline">\(q\)</span> 分次时).</p>
+<p>先挖坑…</p>
 </section>
-<section id="分次结构" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="分次结构"><span class="header-section-number">2.1.2</span> 分次结构</h3>
+<section id="形变-lee-同调" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 形变: Lee 同调</h1>
+<p>这一部分我们介绍 Lee 同调和 s-invariant 以及它们在 4-mfld 中的应用.</p>
+<section id="lee-同调" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="lee-同调"><span class="header-section-number">3.1</span> Lee 同调</h2>
+<section id="基本定义-1" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="基本定义-1"><span class="header-section-number">3.1.1</span> 基本定义</h3>
+<p>相对于 Khovanov 同调, Lee 的同调只是改变了 TQFT <span class="math inline">\(\mathcal{A}\)</span> 上的 modular functor, 即仅仅改变了 <span class="math inline">\(m: V\otimes V\to V, \Delta: V\to V\otimes V\)</span>. 我们将 Lee 定义的 TQFT 记为 <span class="math inline">\(\mathcal{A'}\)</span>.</p>
+<p>我们将 Lee 的链复形记为 <span class="math inline">\(\text{CKh}'\)</span>, 则这个复形的每个分次都和 <span class="math inline">\(\text{CKh}\)</span> 是一样的, 改变的只是微分映射.</p>
+<p>在这组基底下很丑, 但如果我们暂时忽略 q 分次, 选取另一组基底: <span class="math inline">\(a:=v_{-}+v_+,b=v_{-}-v_{+}\)</span> 则微分映射可以被写得非常简单:</p>
+<p>这预示着 <span class="math inline">\(\text{CKh}'\)</span> 的同调 <span class="math inline">\(\text{Kh}'\)</span> 会有很好的结果. (当我们不考虑 <span class="math inline">\(q\)</span> 分次时).</p>
+</section>
+<section id="分次结构" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="分次结构"><span class="header-section-number">3.1.2</span> 分次结构</h3>
 <p>这里的”分次”是广义的分次, 同时涵盖了滤过等概念.</p>
 <p>与 <span class="math inline">\(\text{CKh}\)</span> 不同, 复形 <span class="math inline">\(\text{CKh}'\)</span> 有较为丰富(复杂)的分次结构. 这是因为形变之后的微分 <span class="math inline">\(d_{\text{Lee}}\)</span> 不再是 <span class="math inline">\(\text{gr}_q\)</span> 齐次的了.</p>
-<p><strong>idea 是让 <span class="math inline">\(d_{\text{Lee}}\)</span> 重新变成保持 some q-分次的.</strong> 有两种办法: 1. 考虑 <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 2. 用 filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span> #### <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span> - <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span> - Recall: 在复形 <span class="math inline">\(\text{CKh}\)</span> 上, 我们定义了量子分次 <span class="math inline">\(\text{gr}_q\)</span>, 可以把它视为映射 <span class="math inline">\(\text{gr}_q:\text{CKh}\to \mathbb{Z}\)</span> (更严格的, 定义在齐次元上) - 我们将定义 <span class="math inline">\(\text{gr}_q':\text{CKh}'\to \mathbb{Z}/4\)</span>. - 这是因为虽然 <span class="math inline">\(d_{\text{Lee}}\)</span> 不保持 <span class="math inline">\(\text{gr}_q\)</span> (因为 <span class="math inline">\(\phi\)</span> 的存在), 但由于 <span class="math inline">\(\phi\)</span> 是 4-齐次的: 它将 <span class="math inline">\(\text{gr}_q\)</span> 增加 4. 这意味着, 在 mod 4 意义下, 微分 <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q\)</span> . 严格写, <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q'\)</span> 分次. 基于分次 <span class="math inline">\(\text{gr}_q'\)</span>, 我们可以给出 <span class="math inline">\(\text{CKh}'\)</span> 的直和分解: <span class="math inline">\(0,1,2,3\)</span>. 当 <span class="math inline">\(L\)</span> 只有一个分支时, 根据我们之前的分析 (claim), 这个余数只能是奇数, 即: <img src="pic_khovanov_homology/Note on Khovanov homology-22.png" class="img-fluid"></p>
-<section id="filtration-fplefttextckhright" class="level4" data-number="2.1.2.1">
-<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="filtration-fplefttextckhright"><span class="header-section-number">2.1.2.1</span> filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span></h4>
+<p><strong>idea 是让 <span class="math inline">\(d_{\text{Lee}}\)</span> 重新变成保持 some q-分次的.</strong> 有两种办法:</p>
+<ol type="1">
+<li>考虑 <span class="math inline">\(\mathbb{Z}/4\)</span> 分次</li>
+<li>用 filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span></li>
+</ol>
+<section id="mathbbz4-分次-textgr_q" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="mathbbz4-分次-textgr_q"><span class="header-section-number">3.1.2.1</span> <span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span></h4>
+<ul>
+<li><span class="math inline">\(\mathbb{Z}/4\)</span> 分次 <span class="math inline">\(\text{gr}_q'\)</span>
+<ul>
+<li>Recall: 在复形 <span class="math inline">\(\text{CKh}\)</span> 上, 我们定义了量子分次 <span class="math inline">\(\text{gr}_q\)</span>, 可以把它视为映射 <span class="math inline">\(\text{gr}_q:\text{CKh}\to \mathbb{Z}\)</span> (更严格的, 定义在齐次元上)</li>
+<li>我们将定义 <span class="math inline">\(\text{gr}_q':\text{CKh}'\to \mathbb{Z}/4\)</span>.</li>
+<li>这是因为虽然 <span class="math inline">\(d_{\text{Lee}}\)</span> 不保持 <span class="math inline">\(\text{gr}_q\)</span> (因为 <span class="math inline">\(\phi\)</span> 的存在), 但由于 <span class="math inline">\(\phi\)</span> 是 4-齐次的: 它将 <span class="math inline">\(\text{gr}_q\)</span> 增加 4. 这意味着, 在 mod 4 意义下, 微分 <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q\)</span> . 严格写, <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 <span class="math inline">\(\text{gr}_q'\)</span> 分次.</li>
+</ul></li>
+</ul>
+<p>基于分次 <span class="math inline">\(\text{gr}_q'\)</span>, 我们可以给出 <span class="math inline">\(\text{CKh}'\)</span> 的直和分解: <span class="math inline">\(0,1,2,3\)</span>. 当 <span class="math inline">\(L\)</span> 只有一个分支时, 根据我们之前的分析 (claim), 这个余数只能是奇数, 即:</p>
+</section>
+<section id="filtration-fplefttextckhright" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="filtration-fplefttextckhright"><span class="header-section-number">3.1.2.2</span> filtration <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span></h4>
 <p>第二个让 <span class="math inline">\(d_{\text{Lee}}\)</span> 保持 q-分次的办法是取 filtration.</p>
 <ul>
 <li>定义 <span class="math inline">\(F^p\left(\text{CKh}'\right)\)</span>
@@ -466,19 +520,45 @@ window.Quarto = {
 <li>我们将看到, 这个谱序列的第一页 <span class="math inline">\(E_1^{q,i}\)</span> 就是 Khovanov 同调 <span class="math inline">\(\text{Kh}\)</span>. 于是, 粗糙的说, Lee 同调 <span class="math inline">\(\text{Kh}'\)</span> 是 Khovanov 同调 <span class="math inline">\(\text{Kh}\)</span> 的”极限”</li>
 </ul></li>
 </ul>
-<p>不仅如此, 这个谱序列还是 link 不变量: <img src="pic_khovanov_homology/Note on Khovanov homology-23.png" class="img-fluid"> (这里指标的差异是因为他的谱序列是从第一页开始读的)</p>
+<p>不仅如此, 这个谱序列还是 link 不变量:</p>
+<p>(这里指标的差异是因为他的谱序列是从第一页开始读的)</p>
 </section>
 </section>
-<section id="基本性质" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="基本性质"><span class="header-section-number">2.1.3</span> 基本性质</h3>
-<p>Lee 的同调非常简单: 只依赖于 link 分支的数量. - <span class="math inline">\(\text{Kh}'\)</span> 的生成元 (典则生成元) - 定理: <img src="pic_khovanov_homology/Note on Khovanov homology-3.png" class="img-fluid"> - <span class="math inline">\(\text{Kh}'\)</span> 的生成元与 <span class="math inline">\(L\)</span> 上所有可能的定向一一对应. 下面我们构造这个双射. - 构造这个双射时我们需要考虑 <span class="math inline">\(L\)</span> 上所有可能的定向, 如果 <span class="math inline">\(L\)</span> 本身是一个定向 link, 这种操作就很奇怪. 但根据我们上面的讨论, 如果我们只是将”定向”看作一种 shift, 那就完全可以接受了. (Lee在证明上述定理时也是这样做的: 考虑不定向的情形) - 给一个定向 <span class="math inline">\({o}\)</span>, 我们指出生成元 <span class="math inline">\(\mathfrak{s}_o\)</span> - 给定定向 <span class="math inline">\({o}\)</span>, 我们有唯一的定向的 smoothing: <span class="math inline">\(D_{{o}}\)</span>. - 给 <span class="math inline">\(D_{{o}}\)</span> 中的每个 circle 赋值一个 <span class="math inline">\(\mathbb{Z}/2\mathbb{Z}\)</span> 中的数, 对于给定的 circle <span class="math inline">\(\alpha\)</span> : - 从 <span class="math inline">\(\alpha\)</span> 中的一个点出发, 走到无穷远至少要穿过几个其他的 circle, 记这个数为 <span class="math inline">\(k_1\)</span> - 根据 <span class="math inline">\(\alpha\)</span> 的定向, 赋值第二个数 <span class="math inline">\(k_2\)</span>: 如果逆时针, 赋值 1; 否则赋值 0. - 取 <span class="math inline">\((k_1+k_2)/\mathbb{Z}\)</span>. - 例子: <img src="pic_khovanov_homology/Note on Khovanov homology-4.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-5.png" class="img-fluid"> 这三个 circle 的取值为 0,1,0. - 如果 circle <span class="math inline">\(\alpha\)</span> 上的数是 0, 则用 <span class="math inline">\(a\)</span> 赋值 (染色); 如果为 1, 则用 <span class="math inline">\(b\)</span> 赋值.</p>
+<section id="基本性质" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="基本性质"><span class="header-section-number">3.1.3</span> 基本性质</h3>
+<p>Lee 的同调非常简单: 只依赖于 link 分支的数量.</p>
+<ul>
+<li><span class="math inline">\(\text{Kh}'\)</span> 的生成元 (典则生成元)
+<ul>
+<li>定理:</li>
+</ul></li>
+</ul>
+<ul>
+<li><span class="math inline">\(\text{Kh}'\)</span> 的生成元与 <span class="math inline">\(L\)</span> 上所有可能的定向一一对应. 下面我们构造这个双射.
+<ul>
+<li>构造这个双射时我们需要考虑 <span class="math inline">\(L\)</span> 上所有可能的定向, 如果 <span class="math inline">\(L\)</span> 本身是一个定向 link, 这种操作就很奇怪. 但根据我们上面的讨论, 如果我们只是将”定向”看作一种 shift, 那就完全可以接受了. (Lee在证明上述定理时也是这样做的: 考虑不定向的情形)</li>
+</ul></li>
+<li>给一个定向 <span class="math inline">\({o}\)</span>, 我们指出生成元 <span class="math inline">\(\mathfrak{s}_o\)</span>
+<ul>
+<li>给定定向 <span class="math inline">\({o}\)</span>, 我们有唯一的定向的 smoothing: <span class="math inline">\(D_{{o}}\)</span>.</li>
+<li>给 <span class="math inline">\(D_{{o}}\)</span> 中的每个 circle 赋值一个 <span class="math inline">\(\mathbb{Z}/2\mathbb{Z}\)</span> 中的数, 对于给定的 circle <span class="math inline">\(\alpha\)</span> :
+<ul>
+<li>从 <span class="math inline">\(\alpha\)</span> 中的一个点出发, 走到无穷远至少要穿过几个其他的 circle, 记这个数为 <span class="math inline">\(k_1\)</span></li>
+<li>根据 <span class="math inline">\(\alpha\)</span> 的定向, 赋值第二个数 <span class="math inline">\(k_2\)</span>: 如果逆时针, 赋值 1; 否则赋值 0.</li>
+<li>取 <span class="math inline">\((k_1+k_2)/\mathbb{Z}\)</span>.</li>
+<li>例子:</li>
+</ul></li>
+</ul></li>
+</ul>
+<pre><code>  这三个 circle 的取值为 0,1,0.
+- 如果 circle $\alpha$ 上的数是 0, 则用 $a$ 赋值 (染色); 如果为 1, 则用 $b$ 赋值. </code></pre>
 </section>
 </section>
-<section id="s-invariant" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="s-invariant"><span class="header-section-number">2.2</span> s-invariant</h2>
+<section id="s-invariant" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="s-invariant"><span class="header-section-number">3.2</span> s-invariant</h2>
 <p>s-invariant 是从 Khovanov homology 出发, 定义的<strong>最重要的</strong>数值不变量.</p>
-<section id="定义-s-分次-textgr_s" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="定义-s-分次-textgr_s"><span class="header-section-number">2.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></h3>
+<section id="定义-s-分次-textgr_s" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="定义-s-分次-textgr_s"><span class="header-section-number">3.2.1</span> 定义 s 分次 <span class="math inline">\(\text{gr}_s\)</span></h3>
 <ul>
 <li>s-invariant 究竟指的是哪个分次?
 <ul>
@@ -507,94 +587,148 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="s_maxs_min2" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="s_maxs_min2"><span class="header-section-number">2.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></h3>
-<p>这一小节的目标是证明 lemma 3.3: <span class="math display">\[s_{max}=s_{min}+2\]</span> - Lemma 3.5 <img src="pic_khovanov_homology/Note on Khovanov homology-24.png" class="img-fluid"> - 引理的推论: - <span class="math inline">\(s_{min}&lt;s_{max}\)</span>: 我们为这两个直和项各自找到了一个生成元, 故两个直和项都不是 0. 且显然这两个直和项中生成元的 <span class="math inline">\(\text{gr}_s\)</span> 不一样: 一个 mod 4 余 1, 一个 mod 4 余 3, 从而 <span class="math inline">\(s_{min}&lt;s_{max}\)</span>. - <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)\)</span>: 我们知道 <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 有不同的 <span class="math inline">\(\text{gr}_s\)</span>, 设它们分别为 <span class="math inline">\(a_1+\cdots, b_1+\cdots\)</span>, 其中首项是 <span class="math inline">\(\text{gr}_q\)</span> 最小的. 那么 <span class="math inline">\(a_1=\pm b_1\)</span>. 于是 <span class="math inline">\(s_{min}=\text{gr}_q\left(a_1\right)\)</span>. 从而 <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)\)</span> - 引理的证明: - 即证它们属于不同的 mod 4 同余类. - 定义映射 <span class="math inline">\(i\)</span> (<span class="math inline">\(\text{Kh}'\)</span> level) - 定义 <span class="math inline">\(i: v_{-}\mapsto v_{-}, v_+\mapsto -v_+\)</span> - 上述映射 <span class="math inline">\(i\)</span> 可以诱导链映射 (复形自同态) <span class="math inline">\(i:\text{CKh}'\to \text{CKh}'\)</span>, 从而可以做到同调上去 - 由定义, 自然有 <span class="math inline">\(i\)</span> 交换 <span class="math inline">\(a,b\)</span>. - 将 <span class="math inline">\(i\)</span> 限制到 <span class="math inline">\(\text{CKh}'\left(D_{o}\right)\)</span> 上, 则 <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\mathfrak{s}_o\)</span> 映到 <span class="math inline">\(\mathfrak{s}_{\bar{o}}\)</span> - <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\text{CKh}'\)</span> 中的元素分为两类, 恰好对应于 <span class="math inline">\(\text{CKh}'\)</span> 中的 mod 4 同余类. - 定义 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 和 <span class="math inline">\(\text{CKh}'_{even}\)</span>: 注意到对于 <span class="math inline">\(\text{CKh}'\left(D_o\right)\)</span> 上的元素 <span class="math inline">\(x\)</span>, 若其上有奇数个 <span class="math inline">\(v_+\)</span>, 则 <span class="math inline">\(i\left(x\right)=-x\)</span>, 这类元素的集合记为 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 反之则 <span class="math inline">\(i\left(x\right)=x\)</span>, 记为 <span class="math inline">\(\text{CKh}'_{even}\)</span>; 这给出了 <span class="math inline">\(\text{CKh}'\)</span> 上的一个直和分解. - 由于 <span class="math inline">\(D_o\)</span> 上 circle 的数量是固定的, <span class="math inline">\(\text{CKh}'_{even}\)</span> 和 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 属于不同的 mod 4 同余类中. 从而这个直和分解恰好对应于 mod 4 同余类的直和分解. - <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 属于不同的 mod 4 同余类. - 只要说明它们在 <span class="math inline">\(i\)</span> 下的表现不同 - 事实上, 我们有: - <span class="math inline">\(i\left(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\right)=\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\)</span> - <span class="math inline">\(i\left(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\right)=-(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}})\)</span></p>
+<section id="s_maxs_min2" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="s_maxs_min2"><span class="header-section-number">3.2.2</span> <span class="math inline">\(s_{max}=s_{min}+2\)</span></h3>
+<p>这一小节的目标是证明 lemma 3.3: <span class="math display">\[s_{max}=s_{min}+2\]</span></p>
 <ul>
-<li><strong>Lemma 3.8 (映射锥)</strong> <img src="pic_khovanov_homology/Note on Khovanov homology-25.png" class="img-fluid">
+<li>Lemma 3.5</li>
+</ul>
+<ul>
+<li>引理的推论:
+<ul>
+<li><span class="math inline">\(s_{min}&lt;s_{max}\)</span>: 我们为这两个直和项各自找到了一个生成元, 故两个直和项都不是 0. 且显然这两个直和项中生成元的 <span class="math inline">\(\text{gr}_s\)</span> 不一样: 一个 mod 4 余 1, 一个 mod 4 余 3, 从而 <span class="math inline">\(s_{min}&lt;s_{max}\)</span>.</li>
+<li><span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)\)</span>: 我们知道 <span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 有不同的 <span class="math inline">\(\text{gr}_s\)</span>, 设它们分别为 <span class="math inline">\(a_1+\cdots, b_1+\cdots\)</span>, 其中首项是 <span class="math inline">\(\text{gr}_q\)</span> 最小的. 那么 <span class="math inline">\(a_1=\pm b_1\)</span>. 于是 <span class="math inline">\(s_{min}=\text{gr}_q\left(a_1\right)\)</span>. 从而 <span class="math inline">\(s_{min}=\text{gr}_s\left(\mathfrak{s_{0}}\right)=\text{gr}_{s}\left(\mathfrak{s}_{\bar{o}}\right)=\text{gr}_q\left(a_1\right)=\text{gr}_q\left(b_1\right)\)</span></li>
+</ul></li>
+<li>引理的证明:
+<ul>
+<li>即证它们属于不同的 mod 4 同余类.</li>
+<li>定义映射 <span class="math inline">\(i\)</span> (<span class="math inline">\(\text{Kh}'\)</span> level)
+<ul>
+<li>定义 <span class="math inline">\(i: v_{-}\mapsto v_{-}, v_+\mapsto -v_+\)</span></li>
+<li>上述映射 <span class="math inline">\(i\)</span> 可以诱导链映射 (复形自同态) <span class="math inline">\(i:\text{CKh}'\to \text{CKh}'\)</span>, 从而可以做到同调上去</li>
+<li>由定义, 自然有 <span class="math inline">\(i\)</span> 交换 <span class="math inline">\(a,b\)</span>.</li>
+<li>将 <span class="math inline">\(i\)</span> 限制到 <span class="math inline">\(\text{CKh}'\left(D_{o}\right)\)</span> 上, 则 <span class="math inline">\(i\)</span> 将 <span class="math inline">\(\mathfrak{s}_o\)</span> 映到 <span class="math inline">\(\mathfrak{s}_{\bar{o}}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(i\)</span> 将 <span class="math inline">\(\text{CKh}'\)</span> 中的元素分为两类, 恰好对应于 <span class="math inline">\(\text{CKh}'\)</span> 中的 mod 4 同余类.
+<ul>
+<li>定义 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 和 <span class="math inline">\(\text{CKh}'_{even}\)</span>: 注意到对于 <span class="math inline">\(\text{CKh}'\left(D_o\right)\)</span> 上的元素 <span class="math inline">\(x\)</span>, 若其上有奇数个 <span class="math inline">\(v_+\)</span>, 则 <span class="math inline">\(i\left(x\right)=-x\)</span>, 这类元素的集合记为 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 反之则 <span class="math inline">\(i\left(x\right)=x\)</span>, 记为 <span class="math inline">\(\text{CKh}'_{even}\)</span>; 这给出了 <span class="math inline">\(\text{CKh}'\)</span> 上的一个直和分解.</li>
+<li>由于 <span class="math inline">\(D_o\)</span> 上 circle 的数量是固定的, <span class="math inline">\(\text{CKh}'_{even}\)</span> 和 <span class="math inline">\(\text{CKh}'_{odd}\)</span> 属于不同的 mod 4 同余类中. 从而这个直和分解恰好对应于 mod 4 同余类的直和分解.</li>
+</ul></li>
+<li><span class="math inline">\(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}, \mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\)</span> 属于不同的 mod 4 同余类.
+<ul>
+<li>只要说明它们在 <span class="math inline">\(i\)</span> 下的表现不同</li>
+<li>事实上, 我们有:
+<ul>
+<li><span class="math inline">\(i\left(\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\right)=\mathfrak{s}_o+\mathfrak{s}_{\bar{o}}\)</span></li>
+<li><span class="math inline">\(i\left(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}}\right)=-(\mathfrak{s}_o-\mathfrak{s}_{\bar{o}})\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>Lemma 3.8 (映射锥)</strong></li>
+</ul>
 <ul>
 <li><em>卡死我了</em> 😅</li>
-<li>idea 是将交叉点理解为映射锥: <img src="pic_khovanov_homology/Note on Khovanov homology-27.png" class="img-fluid">
+<li>idea 是将交叉点理解为映射锥:</li>
+</ul>
+<pre><code>- 在不定向的情形下, 我们已经对上图有了很好的看法
+- 定向的情形呢? 如何选取 $K_1,K_2$ 上的定向? 这是最容易产生误解的地方. 
+- 但我们在之前的 remark 中指出: knot 的 $\text{CKh},\text{CKh}'$ 不依赖于 knot 的定向! 于是这里三个图的定向是可以任意取的!!! 同时注意到 $X$ 上交叉点处的 crossing number 一定是 $+1$. 
+- 比如可以这样取定向 (随便取) </code></pre>
 <ul>
-<li>在不定向的情形下, 我们已经对上图有了很好的看法</li>
-<li>定向的情形呢? 如何选取 <span class="math inline">\(K_1,K_2\)</span> 上的定向? 这是最容易产生误解的地方.</li>
-<li>但我们在之前的 remark 中指出: knot 的 <span class="math inline">\(\text{CKh},\text{CKh}'\)</span> 不依赖于 knot 的定向! 于是这里三个图的定向是可以任意取的!!! 同时注意到 <span class="math inline">\(X\)</span> 上交叉点处的 crossing number 一定是 <span class="math inline">\(+1\)</span>.</li>
-<li>比如可以这样取定向 (随便取) <img src="pic_khovanov_homology/Note on Khovanov homology-33.png" class="img-fluid"></li>
-</ul></li>
 <li>证明:
 <ul>
 <li>先考虑不定向的情形
 <ul>
-<li>得到短正合列: <img src="pic_khovanov_homology/Note on Khovanov homology-30.png" class="img-fluid"></li>
-<li>诱导长正合列+截取短正合列: <img src="pic_khovanov_homology/Note on Khovanov homology-31.png" class="img-fluid"> 蓝框里的三项满足第 2 项的维数恰好是 1,3 项维数的和, 正合性质保证这里裂开, 即可以从长正合列中截出短的(蓝色), 简写为 <span class="math inline">\(0 \xrightarrow{}X\xrightarrow{p}A\xrightarrow{m}B\{1\}\to 0\)</span> (这些映射保持 <span class="math inline">\(\text{gr}_s\)</span>, 复形 level)</li>
+<li>得到短正合列:</li>
 </ul></li>
-<li>考虑定向:
+</ul></li>
+</ul>
+<pre><code>  - 诱导长正合列+截取短正合列:  
+  </code></pre>
+<pre><code>  蓝框里的三项满足第 2 项的维数恰好是 1,3 项维数的和, 正合性质保证这里裂开, 即可以从长正合列中截出短的(蓝色), 简写为 $0 \xrightarrow{}X\xrightarrow{p}A\xrightarrow{m}B\{1\}\to 0$ (这些映射保持 $\text{gr}_s$, 复形 level)
+
+- 考虑定向: 
+  - 考虑定向时, 由于 $X$ 比 $A,B$ 都多了一个 $+1$ 交叉点, 我们需要修正各项的 q-shift:  
+  </code></pre>
+<pre><code>  得到蓝色的短正合列, 简写为: $$0\to \text{Kh}'\left(X\right)\xrightarrow{\tilde{p}}\text{Kh}'\left(A\right)\{1\}\xrightarrow{\tilde{m}}\text{Kh}'\left(B\right)\{2\}\to 0$$ 这些映射保持 $\text{gr}_s$ ($\text{Kh}'$ level). 
+
+- 我们扔掉上述正合列中的 shift, 写为: $$0\to \text{Kh}'\left(X\right)\xrightarrow{{p_*}}\text{Kh}'\left(A\right)\xrightarrow{{m_*}}\text{Kh}'\left(B\right)\to 0$$ 那么这里 $\text{gr}_s\left(p_*\right)=\text{gr}_s\left(m_*\right)=-1$. 证毕. </code></pre>
 <ul>
-<li>考虑定向时, 由于 <span class="math inline">\(X\)</span> 比 <span class="math inline">\(A,B\)</span> 都多了一个 <span class="math inline">\(+1\)</span> 交叉点, 我们需要修正各项的 q-shift: <img src="pic_khovanov_homology/Note on Khovanov homology-32.png" class="img-fluid"> 得到蓝色的短正合列, 简写为: <span class="math display">\[0\to \text{Kh}'\left(X\right)\xrightarrow{\tilde{p}}\text{Kh}'\left(A\right)\{1\}\xrightarrow{\tilde{m}}\text{Kh}'\left(B\right)\{2\}\to 0\]</span> 这些映射保持 <span class="math inline">\(\text{gr}_s\)</span> (<span class="math inline">\(\text{Kh}'\)</span> level).</li>
-</ul></li>
-<li>我们扔掉上述正合列中的 shift, 写为: <span class="math display">\[
-0\to \text{Kh}'\left(X\right)\xrightarrow{{p_*}}\text{Kh}'\left(A\right)\xrightarrow{{m_*}}\text{Kh}'\left(B\right)\to 0
-\]</span> 那么这里 <span class="math inline">\(\text{gr}_s\left(p_*\right)=\text{gr}_s\left(m_*\right)=-1\)</span>. 证毕.</li>
-</ul></li>
-</ul></li>
-<li>Lemma 3.3<img src="pic_khovanov_homology/Note on Khovanov homology-34.png" class="img-fluid">
+<li>Lemma 3.3</li>
+</ul>
 <ul>
 <li>主要的 idea: 我们利用 <span class="math inline">\(\text{gr}_s(m_*)=-1\)</span> 将 <span class="math inline">\(\mathfrak{s}_{min}\)</span> 和 <span class="math inline">\(\mathfrak{s}_{max}\)</span> 联系起来.</li>
-<li>定义 <span class="math inline">\(\mathfrak{s}_a,\mathfrak{s}_b\)</span>: <img src="pic_khovanov_homology/Note on Khovanov homology-36.png" class="img-fluid"> 不失一般性, 我们假设 <span class="math inline">\(\mathfrak{s}_a-\mathfrak{s}_b=\mathfrak{s}_{max}\)</span>.</li>
-<li><span class="math inline">\(\partial\left(\left(\mathfrak{s}_a-\mathfrak{s}_b\right)\otimes a\right)=\mathfrak{s}_a\)</span>
+<li>定义 <span class="math inline">\(\mathfrak{s}_a,\mathfrak{s}_b\)</span>:</li>
+</ul>
+<p>不失一般性, 我们假设 <span class="math inline">\(\mathfrak{s}_a-\mathfrak{s}_b=\mathfrak{s}_{max}\)</span>. - <span class="math inline">\(\partial\left(\left(\mathfrak{s}_a-\mathfrak{s}_b\right)\otimes a\right)=\mathfrak{s}_a\)</span> - 这个 <span class="math inline">\(\partial\)</span> 就是 <span class="math inline">\(m\)</span>, 由于 <span class="math inline">\(\mathfrak{s_b}\)</span> 和 <span class="math inline">\(a\)</span> 的定向不匹配, 得到的是 0 (<span class="math inline">\(a,b\)</span> 相互正交! )</p>
+<pre><code>- 利用 $\partial$ 的滤过分次为 $-1$,  image 的 $\text{gr}_q$ 有下界:  $s\left(\mathfrak{s}_a\right)\geq s\left(\left(\mathfrak{s}_a-\mathfrak{s}_b\right)\otimes a\right)-1$
+- 上式左手边是 $s_{min}$, 右手边是 $s_{max}-1-1$
+  - 第一个 $-1$ 来自 $\otimes a=\otimes\left(v_{-}+v_+\right)$ 中的 $\otimes v_-$
+- 于是有 $s_{min}\geq s_{max}-2$, 但都是奇数, $s_{max}=s_{min}+2k$, 又俩人不相等, $k$ 只能取 $1$.</code></pre>
 <ul>
-<li>这个 <span class="math inline">\(\partial\)</span> 就是 <span class="math inline">\(m\)</span>, 由于 <span class="math inline">\(\mathfrak{s_b}\)</span> 和 <span class="math inline">\(a\)</span> 的定向不匹配, 得到的是 0 (<span class="math inline">\(a,b\)</span> 相互正交! ) <img src="pic_khovanov_homology/Note on Khovanov homology-37.png" class="img-fluid"></li>
-<li>利用 <span class="math inline">\(\partial\)</span> 的滤过分次为 <span class="math inline">\(-1\)</span>, image 的 <span class="math inline">\(\text{gr}_q\)</span> 有下界: <span class="math inline">\(s\left(\mathfrak{s}_a\right)\geq s\left(\left(\mathfrak{s}_a-\mathfrak{s}_b\right)\otimes a\right)-1\)</span></li>
-<li>上式左手边是 <span class="math inline">\(s_{min}\)</span>, 右手边是 <span class="math inline">\(s_{max}-1-1\)</span>
-<ul>
-<li>第一个 <span class="math inline">\(-1\)</span> 来自 <span class="math inline">\(\otimes a=\otimes\left(v_{-}+v_+\right)\)</span> 中的 <span class="math inline">\(\otimes v_-\)</span></li>
-</ul></li>
-<li>于是有 <span class="math inline">\(s_{min}\geq s_{max}-2\)</span>, 但都是奇数, <span class="math inline">\(s_{max}=s_{min}+2k\)</span>, 又俩人不相等, <span class="math inline">\(k\)</span> 只能取 <span class="math inline">\(1\)</span>.</li>
-</ul></li>
-</ul></li>
-<li>定义: s-invariant<img src="pic_khovanov_homology/Note on Khovanov homology-38.png" class="img-fluid"></li>
+<li>定义: s-invariant</li>
 </ul>
 </section>
-<section id="s-不变量的性质" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="s-不变量的性质"><span class="header-section-number">2.2.3</span> s 不变量的性质</h3>
+<section id="s-不变量的性质" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="s-不变量的性质"><span class="header-section-number">3.2.3</span> s 不变量的性质</h3>
 <p>下面两个 Prop 暗示 <span class="math inline">\(s\)</span> 不变量将诱导群同态: <span class="math inline">\(s:\text{Conc}\left(S^3\right)\to \mathbb{Z}, K\mapsto s\left(K\right)\)</span></p>
 <ul>
 <li>定义 <span class="math inline">\(\text{Conc}\left(S^3\right)\)</span>
 <ul>
-<li><span class="math inline">\(\text{Conc}\left(S^3\right)\)</span> 是 <span class="math inline">\(S^3\)</span> 上的纽结 (不定向) 的concordence 等价类构成的群. <img src="pic_khovanov_homology/Note on Khovanov homology-77.png" class="img-fluid"></li>
+<li><span class="math inline">\(\text{Conc}\left(S^3\right)\)</span> 是 <span class="math inline">\(S^3\)</span> 上的纽结 (不定向) 的concordence 等价类构成的群.</li>
+</ul></li>
+</ul>
+<ul>
 <li>乘法是连通和</li>
 <li>逆映射是取镜像对称</li>
 <li>单位元 unknot
 <ul>
-<li>等价地, 单位元是 bound disk 的 knot, 即 smoothly slice knot <img src="pic_khovanov_homology/Note on Khovanov homology-55.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-61.png" class="img-fluid"> <span class="math inline">\(s\)</span> 在不定向的纽结上也是良定义的.</li>
+<li>等价地, 单位元是 bound disk 的 knot, 即 smoothly slice knot</li>
 </ul></li>
-</ul></li>
-<li>Prop 3.9 (镜像性质) <img src="pic_khovanov_homology/Note on Khovanov homology-39.png" class="img-fluid"></li>
+</ul>
+<pre><code>$s$ 在不定向的纽结上也是良定义的.</code></pre>
+<ul>
+<li>Prop 3.9 (镜像性质)</li>
+</ul>
+<ul>
 <li>证明 (part 1): 我们有同构 <span class="math inline">\(\text{CKh}'\left(\bar{K}\right)\stackrel{R}\cong \text{CKh}'\left(K\right)^*\)</span>, 且 <span class="math inline">\(R\)</span> 反转 <span class="math inline">\(\text{gr}_q\)</span>.
 <ul>
-<li>一图胜千言: <img src="pic_khovanov_homology/Note on Khovanov homology-45.png" class="img-fluid"></li>
-<li>在上图中, 我们指出了向量空间同构, <span class="math inline">\(R_0:\text{CKh}'\left(\bar{K}\right)\to \text{CKh}'\left(K\right),\bar{v}_\pm\mapsto {v}_\mp\)</span> (黄色虚线), 为了得到同调上的映射, 我们还需要让 <span class="math inline">\(R_0\)</span> 是链映射. 但这是不对的(黄色箭头). 为了得到链映射, 我们需要将黄色的箭头反转过来 (紫色箭头), 这恰好对应于 hopf 代数的对偶!</li>
-<li>定义映射 <span class="math inline">\(R:\text{CKh}'\left(\bar{K}\right)\to \text{CKh}'\left(K\right)^*, \bar{v}_\pm\mapsto {v}_\mp^*\)</span>, 这是链映射 (只要证明 hopf 代数同构): <img src="pic_khovanov_homology/Note on Khovanov homology-42.png" class="img-fluid"></li>
-<li>同时, 由于做对偶不改变 <span class="math inline">\(\text{gr}_q\)</span>, 映射 <span class="math inline">\(R\)</span> 仍然反转 <span class="math inline">\(\text{gr}_q\)</span>.</li>
+<li>一图胜千言:</li>
 </ul></li>
-<li>证明 (part 2):
+</ul>
+<ul>
+<li>在上图中, 我们指出了向量空间同构, <span class="math inline">\(R_0:\text{CKh}'\left(\bar{K}\right)\to \text{CKh}'\left(K\right),\bar{v}_\pm\mapsto {v}_\mp\)</span> (黄色虚线), 为了得到同调上的映射, 我们还需要让 <span class="math inline">\(R_0\)</span> 是链映射. 但这是不对的(黄色箭头). 为了得到链映射, 我们需要将黄色的箭头反转过来 (紫色箭头), 这恰好对应于 hopf 代数的对偶!</li>
+<li>定义映射 <span class="math inline">\(R:\text{CKh}'\left(\bar{K}\right)\to \text{CKh}'\left(K\right)^*, \bar{v}_\pm\mapsto {v}_\mp^*\)</span>, 这是链映射 (只要证明 hopf 代数同构):</li>
+</ul>
+<ul>
+<li><p>同时, 由于做对偶不改变 <span class="math inline">\(\text{gr}_q\)</span>, 映射 <span class="math inline">\(R\)</span> 仍然反转 <span class="math inline">\(\text{gr}_q\)</span>.</p></li>
+<li><p>证明 (part 2):</p>
 <ul>
 <li><span class="math inline">\(\text{CKh}'\left(K\right)\)</span> 上的滤过结构诱导 <span class="math inline">\(\text{CKh}'\left(K\right)^*\)</span> 上的滤过结构
 <ul>
-<li>利用内积定义:<img src="pic_khovanov_homology/Note on Khovanov homology-46.png" class="img-fluid"></li>
+<li>利用内积定义:</li>
 </ul></li>
-<li>利用结果: 滤过对偶则谱序列对偶 <img src="pic_khovanov_homology/Note on Khovanov homology-47.png" class="img-fluid"></li>
-<li>由于 <span class="math inline">\(\text{gr}_s\)</span> 是用谱序列的极限定义的, 这推出 <span class="math inline">\(\text{CKh}'\left(K\right)^*\)</span> 算出的 <span class="math inline">\(\text{gr}_s\)</span> 等于 <span class="math inline">\(K\)</span> 的 <span class="math inline">\(\text{gr}_s\)</span> , 又显然这个和 <span class="math inline">\(\bar{K}\)</span> 的 <span class="math inline">\(\text{gr}_s\)</span> 相反.</li>
-</ul></li>
-<li>Prop 3.11 (连通和性质) <img src="pic_khovanov_homology/Note on Khovanov homology-48.png" class="img-fluid">
-<ul>
-<li>使用 lemma 3.8 <img src="pic_khovanov_homology/Note on Khovanov homology-49.png" class="img-fluid"></li>
-<li>利用 Prop 3.9 中的结果 <img src="pic_khovanov_homology/Note on Khovanov homology-51.png" class="img-fluid"> (1) 式和 (2) 式得到 (3) 式. (3) 式代入 <span class="math inline">\(s_{max}=s_{min}+2\)</span> 得到(4) 式.</li>
 </ul></li>
 </ul>
+<ul>
+<li>利用结果: 滤过对偶则谱序列对偶</li>
+</ul>
+<ul>
+<li><p>由于 <span class="math inline">\(\text{gr}_s\)</span> 是用谱序列的极限定义的, 这推出 <span class="math inline">\(\text{CKh}'\left(K\right)^*\)</span> 算出的 <span class="math inline">\(\text{gr}_s\)</span> 等于 <span class="math inline">\(K\)</span> 的 <span class="math inline">\(\text{gr}_s\)</span> , 又显然这个和 <span class="math inline">\(\bar{K}\)</span> 的 <span class="math inline">\(\text{gr}_s\)</span> 相反.</p></li>
+<li><p>Prop 3.11 (连通和性质)</p></li>
+</ul>
+<ul>
+<li>使用 lemma 3.8</li>
+</ul>
+<ul>
+<li>利用 Prop 3.9 中的结果</li>
+</ul>
+<ol type="1">
+<li>式和 (2) 式得到 (3) 式. (3) 式代入 <span class="math inline">\(s_{max}=s_{min}+2\)</span> 得到(4) 式.</li>
+</ol>
 </section>
-<section id="配边函子性质" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="配边函子性质"><span class="header-section-number">2.2.4</span> 配边/函子性质</h3>
+<section id="配边函子性质" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="配边函子性质"><span class="header-section-number">3.2.4</span> 配边/函子性质</h3>
 <p>我们考虑 <span class="math inline">\(\mathbb{R}^3\)</span> 中的纽结, 它们在 <span class="math inline">\(\mathbb{R}^4\)</span> (<span class="math inline">\(\mathbb{R}^3\times I\)</span>)中配边. 我们希望研究函子性质 首先要指出范畴是谁.</p>
 <ul>
 <li>拓扑的一边: <span class="math inline">\(\mathbb{R}^{3+1}\)</span> 中的定向的 link 的范畴
@@ -621,36 +755,48 @@ window.Quarto = {
 <li>函子: 从 <span class="math inline">\(\text{OLink}\)</span> 打到 <span class="math inline">\(\text{Mod}\)</span>
 <ul>
 <li>我们只要定义”关键帧”被映成谁.</li>
-<li>R move 是几乎平凡的: <img src="pic_khovanov_homology/Note on Khovanov homology-52.png" class="img-fluid"></li>
-<li>M move 有如下结果: <img src="pic_khovanov_homology/Note on Khovanov homology-53.png" class="img-fluid"></li>
-<li>这说明 <span class="math inline">\(\mathfrak{s}_o\)</span> 有很好的函子性.</li>
+<li>R move 是几乎平凡的:</li>
 </ul></li>
 </ul>
-<section id="prop-4.1-的推论" class="level4" data-number="2.2.4.1">
-<h4 data-number="2.2.4.1" class="anchored" data-anchor-id="prop-4.1-的推论"><span class="header-section-number">2.2.4.1</span> Prop 4.1 的推论:</h4>
 <ul>
-<li>Coro 4.2 <img src="pic_khovanov_homology/Note on Khovanov homology-56.png" class="img-fluid"></li>
-<li>Thm 1 <img src="pic_khovanov_homology/Note on Khovanov homology-57.png" class="img-fluid">
+<li>M move 有如下结果:</li>
+</ul>
 <ul>
-<li>证明: <img src="pic_khovanov_homology/Note on Khovanov homology-59.png" class="img-fluid"></li>
-<li>我的证明: <img src="pic_khovanov_homology/Note on Khovanov homology-78.png" class="img-fluid"><img src="pic_khovanov_homology/Note on Khovanov homology-79.png" class="img-fluid"><img src="pic_khovanov_homology/Note on Khovanov homology-80.png" class="img-fluid"></li>
-</ul></li>
-<li>Thm 2 <img src="pic_khovanov_homology/Note on Khovanov homology-58.png" class="img-fluid">
+<li>这说明 <span class="math inline">\(\mathfrak{s}_o\)</span> 有很好的函子性.</li>
+</ul>
+<section id="prop-4.1-的推论" class="level4" data-number="3.2.4.1">
+<h4 data-number="3.2.4.1" class="anchored" data-anchor-id="prop-4.1-的推论"><span class="header-section-number">3.2.4.1</span> Prop 4.1 的推论:</h4>
 <ul>
-<li>证明: 只要证良定义<img src="pic_khovanov_homology/Note on Khovanov homology-60.png" class="img-fluid"></li>
-</ul></li>
-<li>Coro 4.3 (skein 不等式) <img src="pic_khovanov_homology/Note on Khovanov homology-62.png" class="img-fluid">
+<li>Coro 4.2</li>
+</ul>
+<ul>
+<li>Thm 1</li>
+</ul>
+<ul>
+<li>证明:</li>
+</ul>
+<ul>
+<li>我的证明:</li>
+</ul>
+<ul>
+<li>Thm 2</li>
+</ul>
+<ul>
+<li>证明: 只要证良定义</li>
+</ul>
+<ul>
+<li>Coro 4.3 (skein 不等式)</li>
+</ul>
 <ul>
 <li>证明: 任意满足 Thm 1, Thm 2 的纽结上的数值函数都满足 skein 不等式</li>
 <li>利用这个不等式可以用 s invariant 限制纽结的上的 crossing number</li>
-</ul></li>
 </ul>
 </section>
-<section id="prop-4.1-的证明-仍然没写好" class="level4" data-number="2.2.4.2">
-<h4 data-number="2.2.4.2" class="anchored" data-anchor-id="prop-4.1-的证明-仍然没写好"><span class="header-section-number">2.2.4.2</span> Prop 4.1 的证明 (仍然没写好):</h4>
-<p>本小节的主要目标是证明 Prop 4.1, 事实上, 我们有下面更一般的结果: <img src="pic_khovanov_homology/Note on Khovanov homology-54.png" class="img-fluid"> %% 先讨论几个概念: 证明的过程 我们要证的步骤是归纳假设 即若配边 <span class="math inline">\(S\)</span> 满足 claim, 我们要证明 <span class="math inline">\(S_e\circ S\)</span> 也满足 claim. <span class="math inline">\(S\)</span> 满足 claim 就是说 <span class="math inline">\(\phi_S\left(\mathfrak{s}_{o_0}\right)\)</span> 由 <span class="math inline">\(S\)</span> 上所有 permissible 的定向 <span class="math inline">\(I\)</span> 代表的生成元组成.</p>
+<section id="prop-4.1-的证明-仍然没写好" class="level4" data-number="3.2.4.2">
+<h4 data-number="3.2.4.2" class="anchored" data-anchor-id="prop-4.1-的证明-仍然没写好"><span class="header-section-number">3.2.4.2</span> Prop 4.1 的证明 (仍然没写好):</h4>
+<p>本小节的主要目标是证明 Prop 4.1, 事实上, 我们有下面更一般的结果:</p>
+<p>证明的过程：我们要证的步骤是归纳假设，即若配边 <span class="math inline">\(S\)</span> 满足 claim, 我们要证明 <span class="math inline">\(S_e\circ S\)</span> 也满足 claim. <span class="math inline">\(S\)</span> 满足 claim 就是说 <span class="math inline">\(\phi_S\left(\mathfrak{s}_{o_0}\right)\)</span> 由 <span class="math inline">\(S\)</span> 上所有 permissible 的定向 <span class="math inline">\(I\)</span> 代表的生成元组成.</p>
 <p>我们要考虑在这些定向代表的生成元 <span class="math inline">\(\mathfrak{s}_{o_I}\)</span> 上作用 <span class="math inline">\(\phi_{S_e}\)</span> 会得到什么.</p>
-<p><img src="pic_khovanov_homology/Note on Khovanov homology-4.png" class="img-fluid"> <img src="pic_khovanov_homology/Note on Khovanov homology-5.png" class="img-fluid"></p>
 <p><strong>粘 1-handle 就是做连通和, 但定向 knot 之间的连通和不是随便做的, 还得保证连通和之后也是定向的</strong></p>
 <ol type="1">
 <li>如果 <span class="math inline">\(L_1\)</span> 上的典则生成元的定向和 <span class="math inline">\(S\)</span> 的定向匹配, 那么 <span class="math inline">\(\phi_{S_e}\left(\mathfrak{s}_{o_I}\right)\)</span> 是某个典则生成元.</li>
@@ -658,62 +804,53 @@ window.Quarto = {
 <ol type="1">
 <li>在第一中情形下, 圈出来的两段 arc 有相反的方向, 从而相同的 label, 于是作用 m’ 算出来的数不是零.</li>
 <li>在第二种情形下, 圈出来的两段 arc 有相同的方向, 从而不同的 label, m’算出来是零.</li>
-<li><strong><span class="math inline">\(S_e\)</span> 决定了做连通和的方法, 如果定向与 <span class="math inline">\(S_e\)</span> 不匹配, 这意味着, 在这个定向上, 无论怎么做连通和, 都得不到 <span class="math inline">\(S_e\)</span></strong> <img src="pic_khovanov_homology/Note on Khovanov homology-63.png" class="img-fluid"> 这个例子中, 如果沿红色线做连通和, 那么图中的定向就与 <span class="math inline">\(S_e\)</span> 不匹配. 这个确实被 m’ 映到零.</li>
-<li>之前 y 这个位置是可以自由定向的, 但做完 <span class="math inline">\(S_e\)</span> 之后, 就不能了.</li>
-</ol></li>
-<li><strong>这两条好像懂了… 到这里应该就证明完了</strong></li>
-<li>另一个观察: 连通和, 或者说粘 1-handle 只能连相邻的 arc, 不能穿过中间的 arc 去连其他的 arc, 比如 <img src="pic_khovanov_homology/Note on Khovanov homology-64.png" class="img-fluid"> 这种应该不允许: <strong>因为局部上看不标准.</strong></li>
-<li>假设 <span class="math inline">\(S_e\)</span> 分裂了某个分支, 那这个作用是 delta(不一定), 且不消失 (<em>每个定向都存活下来, 且不产生新的</em> )</li>
-<li>假设 <span class="math inline">\(S_e\)</span> 融合了某两个分支 <span class="math inline">\(L\)</span>
-<ol type="1">
-<li>如果两个 <span class="math inline">\(L\)</span> 属于 <span class="math inline">\(S\)</span> 的同一个分支 (它们定向一致): 这种情况是平凡的. (<em>每个定向都存活下来, 且不产生新的</em> )</li>
-<li>如果两个 <span class="math inline">\(L\)</span> 属于 <span class="math inline">\(S\)</span> 的不同分支 (它们定向未必一致)
-<ol type="1">
-<li>如果两个 <span class="math inline">\(S\)</span> 的分支都是 type A 的(<em>每个定向都存活下来, 且不产生新的</em> )</li>
-<li>如果存在一个是 type B 的: 这会固定 type B 的定向, 即会消去某些定向 <span class="math inline">\(I\)</span>.</li>
-</ol></li>
+<li><strong><span class="math inline">\(S_e\)</span> 决定了做连通和的方法, 如果定向与 <span class="math inline">\(S_e\)</span> 不匹配, 这意味着, 在这个定向上, 无论怎么做连通和, 都得不到 <span class="math inline">\(S_e\)</span></strong></li>
 </ol></li>
 </ol>
-<ul>
-<li>群同态 %%</li>
-</ul>
+<p>这个例子中, 如果沿红色线做连通和, 那么图中的定向就与 <span class="math inline">\(S_e\)</span> 不匹配. 这个确实被 m’ 映到零. 4. 之前 y 这个位置是可以自由定向的, 但做完 <span class="math inline">\(S_e\)</span> 之后, 就不能了. 3. <strong>这两条好像懂了… 到这里应该就证明完了</strong> 4. 另一个观察: 连通和, 或者说粘 1-handle 只能连相邻的 arc, 不能穿过中间的 arc 去连其他的 arc, 比如</p>
+<p>这种应该不允许: <strong>因为局部上看不标准.</strong> 5. 假设 <span class="math inline">\(S_e\)</span> 分裂了某个分支, 那这个作用是 delta(不一定), 且不消失 (<em>每个定向都存活下来, 且不产生新的</em> ) 6. 假设 <span class="math inline">\(S_e\)</span> 融合了某两个分支 <span class="math inline">\(L\)</span> 1. 如果两个 <span class="math inline">\(L\)</span> 属于 <span class="math inline">\(S\)</span> 的同一个分支 (它们定向一致): 这种情况是平凡的. (<em>每个定向都存活下来, 且不产生新的</em> ) 2. 如果两个 <span class="math inline">\(L\)</span> 属于 <span class="math inline">\(S\)</span> 的不同分支 (它们定向未必一致) 1. 如果两个 <span class="math inline">\(S\)</span> 的分支都是 type A 的(<em>每个定向都存活下来, 且不产生新的</em> ) 2. 如果存在一个是 type B 的: 这会固定 type B 的定向, 即会消去某些定向 <span class="math inline">\(I\)</span>.</p>
 </section>
 </section>
 </section>
-<section id="应用-slice-knot-exotic-mathbbr4" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">2.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></h2>
-<section id="from-slice-knot-to-exotic-mathbbr4" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">2.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></h3>
+<section id="应用-slice-knot-exotic-mathbbr4" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="应用-slice-knot-exotic-mathbbr4"><span class="header-section-number">3.3</span> 应用: slice knot &amp; exotic <span class="math inline">\(\mathbb{R}^4\)</span></h2>
+<section id="from-slice-knot-to-exotic-mathbbr4" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="from-slice-knot-to-exotic-mathbbr4"><span class="header-section-number">3.3.1</span> from slice knot to exotic <span class="math inline">\(\mathbb{R}^4\)</span></h3>
 <p>相关内容详见：<a href="pic_khovanov_homology/Note on Khovanov homology-1.pdf">Khovanov homology 应用笔记 PDF</a></p>
 </section>
-<section id="topologically-slice-but-not-smoothly-knots" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="topologically-slice-but-not-smoothly-knots"><span class="header-section-number">2.3.2</span> topologically slice but not smoothly knots</h3>
-<section id="alexander-n.-shumakovitch-的计算结果-2004.11" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="alexander-n.-shumakovitch-的计算结果-2004.11"><span class="header-section-number">2.3.2.1</span> ALEXANDER N. SHUMAKOVITCH 的计算结果 (2004.11)</h4>
+<section id="topologically-slice-but-not-smoothly-knots" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="topologically-slice-but-not-smoothly-knots"><span class="header-section-number">3.3.2</span> topologically slice but not smoothly knots</h3>
+<section id="alexander-n.-shumakovitch-的计算结果-2004.11" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="alexander-n.-shumakovitch-的计算结果-2004.11"><span class="header-section-number">3.3.2.1</span> ALEXANDER N. SHUMAKOVITCH 的计算结果 (2004.11)</h4>
 <ul>
 <li><strong>topologically slice knot</strong>
 <ul>
-<li>充分条件: <img src="pic_khovanov_homology/Note on Khovanov homology-66.png" class="img-fluid"></li>
+<li>充分条件:</li>
 </ul></li>
+</ul>
+<ul>
 <li><strong>not smoothly slice knot</strong>
 <ul>
 <li>充分条件: <span class="math inline">\(s\left(K\right)\neq0\)</span>
 <ul>
 <li>纽结 <span class="math inline">\(K\)</span> smoothly slice 当且仅当 <span class="math inline">\(g_*(K)=0\left(g_*=g_4\right)\)</span></li>
-<li>利用 Thm 1:<br>
-<img src="pic_khovanov_homology/Note on Khovanov homology-57.png" class="img-fluid"> 我们发现 <span class="math inline">\(g_*\left(K\right)&gt;0\)</span> 的一个充分条件: <span class="math inline">\(s\left(K\right)\neq 0\)</span>.</li>
+<li>利用 Thm 1:</li>
 </ul></li>
 </ul></li>
+</ul>
+<pre><code>我们发现 $g_*\left(K\right)&gt;0$ 的一个充分条件: $s\left(K\right)\neq 0$.</code></pre>
+<ul>
 <li><strong>交叉数小于 16 的纽结:</strong>
 <ul>
-<li>下表在交叉数小于 15 的纽结中, 找到了所有满足上述两个充分条件的纽结. <img src="pic_khovanov_homology/Note on Khovanov homology-65.png" class="img-fluid"></li>
+<li>下表在交叉数小于 15 的纽结中, 找到了所有满足上述两个充分条件的纽结.</li>
 </ul></li>
 </ul>
 </section>
-<section id="计算-s-invariant" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="计算-s-invariant"><span class="header-section-number">2.3.2.2</span> 计算 s invariant</h4>
+<section id="计算-s-invariant" class="level4" data-number="3.3.2.2">
+<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="计算-s-invariant"><span class="header-section-number">3.3.2.2</span> 计算 s invariant</h4>
 <ul>
-<li>Rasmussen 的结果: <img src="pic_khovanov_homology/Note on Khovanov homology-67.png" class="img-fluid">
+<li>Rasmussen 的结果:</li>
+</ul>
 <ul>
 <li>第二条: 群 <span class="math inline">\(Conc\left(S^3\right)\)</span> 上的乘法运算是连通和, 这条说明, <span class="math inline">\(s\)</span> invariant 在连通和运算下具有可加性.</li>
 <li>第三条: 补: <em>什么是 alternating?</em></li>
@@ -735,24 +872,32 @@ window.Quarto = {
 <li>例子: torus knot
 <ul>
 <li>torus knot 是由辫群的生成元构成的, 故 positive</li>
-<li>(2,5)<img src="pic_khovanov_homology/Note on Khovanov homology-75.png" class="img-fluid"></li>
-<li>(3,5) <img src="pic_khovanov_homology/Note on Khovanov homology-74.png" class="img-fluid"></li>
-</ul></li>
-<li>torus knot 上的结果可以写成: <img src="pic_khovanov_homology/Note on Khovanov homology-76.png" class="img-fluid"></li>
-</ul></li>
-</ul></li>
-<li>Generalization of positive:
-<ul>
-<li>定义 quasipositive knot: <img src="pic_khovanov_homology/Note on Khovanov homology-68.png" class="img-fluid"></li>
-<li>quasipositive knot 的 s invariant 也可以用第四条计算: <img src="pic_khovanov_homology/Note on Khovanov homology-69.png" class="img-fluid"></li>
-<li>例子: a strongly quasipositive knot
-<ul>
-<li>(-3,5,7)-pretzel <img src="pic_khovanov_homology/Note on Khovanov homology-71.png" class="img-fluid"> 容易看到, 它 not positive</li>
-<li>strongly quasipositive: <img src="pic_khovanov_homology/Note on Khovanov homology-72.png" class="img-fluid"> 写成辫群: <img src="pic_khovanov_homology/Note on Khovanov homology-73.png" class="img-fluid"></li>
-<li>这里 <span class="math inline">\(b=7,k=6\)</span>, 于是 <span class="math inline">\(s\left(K\right)=7-6+1=2\)</span>. 于是 not smoothly slice.</li>
+<li>(2,5)</li>
 </ul></li>
 </ul></li>
 </ul>
+<pre><code>  - (3,5) 
+  </code></pre>
+<pre><code>- torus knot 上的结果可以写成: </code></pre>
+<ul>
+<li>Generalization of positive:
+<ul>
+<li>定义 quasipositive knot:</li>
+</ul></li>
+</ul>
+<ul>
+<li>quasipositive knot 的 s invariant 也可以用第四条计算:</li>
+</ul>
+<ul>
+<li>例子: a strongly quasipositive knot
+<ul>
+<li>(-3,5,7)-pretzel</li>
+</ul></li>
+</ul>
+<pre><code>容易看到, 它 not positive
+- strongly quasipositive: </code></pre>
+<pre><code>写成辫群: </code></pre>
+<pre><code>- 这里 $b=7,k=6$, 于是 $s\left(K\right)=7-6+1=2$. 于是 not smoothly slice.</code></pre>
 
 
 </section>

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bernoulli Number, Zeta Function and Exotic Spheres – Chen’s Topology Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen’s Topology Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">Bernoulli Number, Zeta Function and Exotic Spheres</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turaev-Viro Invariants</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bernoulli Number, Zeta Function and Exotic Spheres</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#伯努利数的定义" id="toc-伯努利数的定义" class="nav-link active" data-scroll-target="#伯努利数的定义">1 伯努利数的定义</a></li>
+  <li><a href="#伯努利数的计算" id="toc-伯努利数的计算" class="nav-link" data-scroll-target="#伯努利数的计算">2 伯努利数的计算</a></li>
+  <li><a href="#伯努利数的分母" id="toc-伯努利数的分母" class="nav-link" data-scroll-target="#伯努利数的分母">3 伯努利数的分母</a></li>
+  <li><a href="#伯努利数和-zeta-函数" id="toc-伯努利数和-zeta-函数" class="nav-link" data-scroll-target="#伯努利数和-zeta-函数">4 伯努利数和 zeta 函数</a></li>
+  <li><a href="#伯努利数与怪球" id="toc-伯努利数与怪球" class="nav-link" data-scroll-target="#伯努利数与怪球">5 伯努利数与怪球</a>
+  <ul class="collapse">
+  <li><a href="#庞加莱猜想和怪球" id="toc-庞加莱猜想和怪球" class="nav-link" data-scroll-target="#庞加莱猜想和怪球">5.1 庞加莱猜想和怪球</a></li>
+  <li><a href="#怪球与球面的稳定同伦群" id="toc-怪球与球面的稳定同伦群" class="nav-link" data-scroll-target="#怪球与球面的稳定同伦群">5.2 怪球与球面的稳定同伦群</a></li>
+  <li><a href="#计算-怪球和伯努利数" id="toc-计算-怪球和伯努利数" class="nav-link" data-scroll-target="#计算-怪球和伯努利数">5.3 计算: 怪球和伯努利数</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">Bernoulli Number, Zeta Function and Exotic Spheres</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Bernoulli Number, Zeta Function and Exotic Spheres</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="伯努利数的定义" class="level1">
+<h1>1 伯努利数的定义</h1>
+<ul>
+<li><p>motivation: try to compute <span class="math inline">\(S_k(n) = \sum_{m=0}^{n-1} m^k\)</span> 的通项公式</p>
+<ul>
+<li>when k=0, 1, 2, we already know that
+<ul>
+<li><span class="math inline">\(S_0(n) = n\)</span></li>
+<li><span class="math inline">\(S_1(n) = \frac{n(n-1)}{2}\)</span></li>
+<li><span class="math inline">\(S_2(n) = \frac{n(n-1)(2n-1)}{6}\)</span></li>
+</ul></li>
+<li>but for general k, how to compute <span class="math inline">\(S_k(n)\)</span>?</li>
+</ul></li>
+<li><p>Another question: what is the relation between this 离散 sum and the 积分 <span class="math inline">\(\int_0^n x^k dx\)</span>?</p>
+<ul>
+<li>we know that <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span></li>
+<li>can we express <span class="math inline">\(S_k(n)\)</span> in terms of <span class="math inline">\(\int_0^n x^k dx\)</span> plus some correction terms?</li>
+</ul></li>
+<li><p>To answer these questions, we introduce the Bernoulli numbers.</p></li>
+<li><p>Defintion: generating function</p>
+<ul>
+<li><p>定义: 形式幂级数环<span class="math inline">\(\mathbb{C}[[x]]\)</span>. 它是对多项式环的推广, 但是这里, 我们允许无穷多项式项存在, 同时我们不要求这个无穷求和是收敛的. 形式幂级数环中的元素被称为形式幂级数, 它们的形式为:</p>
+<p><span class="math display">\[
+f(x) = \sum_{n=0}^{\infty} a_n x^n
+\]</span></p>
+<p>其中, <span class="math inline">\(a_n\)</span> 是系数, 可以是任意复数. 形式幂级数的加法和乘法与多项式类似, 但是我们不关心收敛性问题.</p></li>
+<li><p>定义: 指数生成函数</p>
+<ul>
+<li>给定一个数列 <span class="math inline">\(\{a_n\}\)</span>, 它的指数生成函数定义为:</li>
+</ul>
+<p><span class="math display">\[
+A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
+\]</span></p>
+<p>这里, <span class="math inline">\(t\)</span> 是一个形式变量. 即指数生成函数作为映射: {数列} <span class="math inline">\(\to\)</span> {形式幂级数}, 给出了数列和形式幂级数之间的一一对应.- 上述对应将形式幂级数之间的乘法映射为数列之间的运算, 即如果</p>
+<p><span class="math display">\[
+A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{  \infty} b_n \frac{t^n}{n!}\]</span><br>
+那么它们的乘积 <span class="math display">\[C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
+\]</span></p>
+<p>其中, <span class="math inline">\(c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}\)</span>.我们将这个运算称为数列之间的<strong>卷积运算</strong>.</p></li>
+</ul></li>
+<li><p>Definition: The Bernoulli numbers <span class="math inline">\(B_n\)</span> are defined by the generating function</p>
+<p><span class="math display">\[
+\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
+\]</span></p></li>
+<li><p>although it is difficult to compute <span class="math inline">\(S_k(n)\)</span> directly, we can compute its generating function firstly:</p>
+<p><span class="math display">\[
+\mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
+\]</span></p></li>
+</ul>
+<p>for the RHS, we can rewrite it as</p>
+<p><span class="math display">\[
+\mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
+\]</span></p>
+<p>for the first part of the RHS, we have the taylor expansion</p>
+<p><span class="math display">\[
+\frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
+\]</span></p>
+<p>the coefficient of this generating function is just the integral term <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span>.</p>
+<p>for the second part of the RHS, by the definition of Bernoulli number, we have</p>
+<p><span class="math display">\[
+\frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
+\]</span></p>
+<p>于是, 我们实际上有:</p>
+<p><span class="math display">\[
+\underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
+\]</span></p>
+<p>即伯努利项衡量了离散求和项和积分项之间的偏差.</p>
+<p>我们将等式两边展开, 得到:</p>
+<p><span class="math display">\[
+\sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
+\]</span></p>
+<p>比较等式两边的 <span class="math inline">\(t^k\)</span> 系数, 我们得到:</p>
+<p><span class="math display">\[
+S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
+\]</span></p>
+<p>我们得到了我们想要的通项公式.</p>
+<ul>
+<li><p>如果我们引入伯努利多项式的定义, 它对应于生成函数<span class="math inline">\(\frac{t}{e^t-1}\)</span>在平移算子下的平移<span class="math inline">\(\frac{e^{xt}t}{e^t-1}\)</span>, 即</p>
+<p><span class="math display">\[
+\sum_{k=0}^\infty B_k(x) \frac{t^k}{k!} = \frac{t e^{xt}}{e^t - 1} = e^{xt} \cdot \left( \frac{t}{e^t - 1} \right)
+\]</span></p>
+<p>那么我们可以将上面的结果更简洁地表示为:</p>
+<p><span class="math display">\[
+S_k(n) = \frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}
+\]</span></p></li>
+</ul>
+</section>
+<section id="伯努利数的计算" class="level1">
+<h1>2 伯努利数的计算</h1>
+<p>根据伯努利数的定义: <span class="math inline">\(\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}\)</span>，两边同乘 <span class="math inline">\(e^t - 1\)</span>，我们有:</p>
+<p><span class="math display">\[
+t = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot (e^t - 1) = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot \left( \sum_{m=1}^{\infty} \frac{t^m}{m!} \right)
+\]</span></p>
+<p>比较两边 <span class="math inline">\(t^n\)</span> 的系数（<span class="math inline">\(n \geq 2\)</span> 时左边系数为 0），我们得到:</p>
+<p><span class="math display">\[
+\sum_{k=0}^n \binom{n}{k} B_k = 0, \quad \text{for } n \geq 2
+\]</span></p>
+<p>并且 <span class="math inline">\(B_0 = 1, B_1 = -\frac{1}{2}\)</span>。由此，我们可以递推地计算出所有的伯努利数，是有理数。</p>
+<p>伯努利数表：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(B_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><span class="math inline">\(-\frac{1}{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math inline">\(-\frac{1}{30}\)</span></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td><span class="math inline">\(\frac{1}{42}\)</span></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span class="math inline">\(-\frac{1}{30}\)</span></td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td><span class="math inline">\(\frac{5}{66}\)</span></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td><span class="math inline">\(-\frac{691}{2730}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>同时注意到，<span class="math inline">\(\frac{t}{e^t - 1} + \frac{t}{2} = \frac{t}{2} \cdot \frac{e^t + 1}{e^t - 1}\)</span> 是一个偶函数，因此所有奇数项的系数（除了 <span class="math inline">\(B_1\)</span>）都为零，即:</p>
+<p><span class="math display">\[
+B_3 = B_5 = B_7 = \cdots = 0
+\]</span></p>
+<p>一些计算结果:</p>
+<p>利用递推公式 <span class="math inline">\(\sum_{k=0}^n \binom{n}{k} B_k = 0\)</span>，可以计算： - <span class="math inline">\(S_1(n) = \frac{n(n-1)}{2}\)</span> - <span class="math inline">\(S_2(n) = \frac{n(n-1)(2n-1)}{6}\)</span> - <span class="math inline">\(S_3(n) = \frac{n^2(n-1)^2}{4}\)</span></p>
+</section>
+<section id="伯努利数的分母" class="level1">
+<h1>3 伯努利数的分母</h1>
+<ul>
+<li><p>经过上面的计算, 我们发现伯努利数的分母满足:</p>
+<ul>
+<li><p><span class="math inline">\(B_1: 2=2, B_2: 6=2\times3, B_4: 30=5\times3\times2,B_6: 42=7\times3\times2\cdots\)</span></p></li>
+<li><p>事实上我们有命题:</p>
+<p><strong>Von Staudt-Clausen 定理</strong>: 对于正偶数 <span class="math inline">\(k\)</span>，有 <span class="math display">\[B_k + \sum_{p-1 | k} \frac{1}{p} \in \mathbb{Z}\]</span> 其中求和取遍所有满足 <span class="math inline">\(p-1 | k\)</span> 的素数 <span class="math inline">\(p\)</span>。</p>
+<p>作为它的推论: 伯努利数 <span class="math inline">\(B_k, k \text{ even or 1}\)</span> 的分母总可以写成 <span class="math inline">\(\prod_{p:p-1|k}p\)</span>.</p></li>
+</ul></li>
+<li><p>p-integers 与局部环</p>
+<ul>
+<li>定义: 局部环
+<ul>
+<li>设 <span class="math inline">\(p\)</span> 是一个素数，考虑整数环 <span class="math inline">\(\mathbb{Z}\)</span> 中的素理想 <span class="math inline">\(\mathfrak{p} = (p) = p\mathbb{Z}\)</span>。定义乘法封闭集 (Multiplicative Set) <span class="math inline">\(S\)</span> 为所有不在 <span class="math inline">\(\mathfrak{p}\)</span> 中的整数： <span class="math display">\[
+S = \mathbb{Z} \setminus \mathfrak{p} = \{ n \in \mathbb{Z} \mid p \nmid n \}
+\]</span> 那么<span class="math inline">\(\mathbb{Z}_{(p)}\)</span> 定义为 <span class="math inline">\(\mathbb{Z}\)</span> 关于 <span class="math inline">\(S\)</span> 的局部化： <span class="math display">\[
+\mathbb{Z}_{(p)} := S^{-1}\mathbb{Z} = \left\{ \frac{a}{b} \in \mathbb{Q} \;\middle|\; a \in \mathbb{Z}, \, b \in \mathbb{Z}, \, p \nmid b \right\}
+\]</span></li>
+<li>直观上, 这就是整数环<span class="math inline">\(\mathbb{Z}\)</span> 中让那些不是 <span class="math inline">\(p\)</span> 的倍数的数可逆.</li>
+<li>定义: p-integers
+<ul>
+<li>对于有理数 <span class="math inline">\(x\in \mathbb{Q}\)</span>, 称它是 p-integer 如果 <span class="math inline">\(x\in \mathbb{Z}_{\left(p\right)}\)</span>.</li>
+<li>直观的定义: 将 <span class="math inline">\(x\in \mathbb{Q}\)</span> 写成既约分数 <span class="math inline">\(x=\frac{a}{b}\)</span>, 若 <span class="math inline">\(b\)</span> 中不含素因子 <span class="math inline">\(p\)</span>, 则称 <span class="math inline">\(x\)</span> 是 p-integer.</li>
+</ul></li>
+<li>命题: <span class="math display">\[
+\mathbb{Z} = \bigcap_{p \text{ is prime}} \mathbb{Z}_{(p)}
+\]</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>利用上面的命题, 要证明</p>
+<p><span class="math display">\[
+x=B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z},\forall k \text{ even}
+\]</span></p>
+<p>只要证对于任意的<span class="math inline">\(p\)</span> ,<span class="math inline">\(x\)</span> 是一个 p-integer.</p>
+<p>利用伯努利多项式的性质, 我们有等式</p>
+<p><span class="math display">\[
+S_k(X) = \frac{X^{k+1}}{k+1} + B_1 X^k + \dots + \frac{k}{2}B_{k-1}X^2 + B_k X
+\]</span></p>
+<p><span class="math display">\[
+p^{-e}S_k(p^e) = \frac{p^{ke}}{k+1} + B_1 p^{(k-1)e} + \dots + B_k
+\]</span></p>
+<p>我们有:</p>
+<p><span class="math display">\[
+B_k - p^{-e}S_k(p^e)= - \frac{p^{ke}}{k+1} - B_1 p^{(k-1)e} - \dots - \frac{k}{2} B_{k-1} p^e
+\]</span></p>
+<p>注意到当 e 充分大时, 等式右边是 p-整的, 故此时</p>
+<p><span class="math display">\[
+B_k - p^{-e}S_k(p^e) \quad \text{是 } p\text{-整的}
+\]</span></p>
+<ul>
+<li><p>我们的证明分为如下的步骤:</p>
+<ol type="1">
+<li><p>先证明<span class="math inline">\(B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}\)</span></p></li>
+<li><p>然后证明<span class="math inline">\(p^{-1}S_k(p)\)</span>的 p整的性质, 组合它们, 我们得到<span class="math inline">\(B_k\)</span>是 p 整的.</p></li>
+</ol></li>
+<li><p><span class="math inline">\(B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}\)</span></p>
+<ul>
+<li>证明: 先做分解 <span class="math display">\[
+B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \underbrace{\sum_{d=2}^{e} (A_d - A_{d-1})}_{\text{Part 2: 伸缩项}}
+\]</span> 这里 <strong><span class="math inline">\(A_e = p^{-e}S_k(p^e)\)</span></strong></li>
+</ul></li>
+</ul>
+<p>我们已经知道, 当 <span class="math inline">\(e\)</span>充分大, part1是 p 整的. 齐次, 我们可以证明, 对于 part2 中的伸缩项, 每一项都是整数.</p>
+<ul>
+<li>伸缩项是整数:
+<ul>
+<li>我们证明<span class="math inline">\(p^{-d}S_k(p^d) - p^{-(d-1)}S_k(p^{d-1})\)</span>是整数.</li>
+<li>将<span class="math inline">\(S^k(p^d)\)</span>中的求和指标 <span class="math inline">\(m\)</span> 写成 <span class="math inline">\(r + qp^{d-1}\)</span> 的形, 我们有:</li>
+<li><span class="math display">\[S_k(p^d) = \sum_{r=0}^{p^{d-1}-1} \sum_{q=0}^{p-1} (r + qp^{d-1})^k\]</span></li>
+<li>将求和项用二项式定理展开, 我们有: <span class="math inline">\((r + qp^{d-1})^k \equiv r^k + k r^{k-1} q p^{d-1} \pmod{p^{d}}\)</span>, 对等式右边的第一项求和, 我们得到 <span class="math inline">\(p S_k(p^{d-1})\)</span>; 对等式右边的第二项求和, 由于 <span class="math inline">\(\sum_{q=0}^{p-1} q = \frac{p(p-1)}{2}\)</span>, 它至少含有 <span class="math inline">\(p^d\)</span> 因子, 因此对 <span class="math inline">\(p^d\)</span> 取模时, 该项为零.</li>
+<li>我们得到<span class="math display">\[S_k(p^d) \equiv p S_k(p^{d-1}) \pmod{p^d}\]</span></li>
+<li>两边同时除以<span class="math inline">\(p^d\)</span>, 得到:<span class="math display">\[\frac{S_k(p^d)}{p^d} - \frac{S_k(p^{d-1})}{p^{d-1}} \in \mathbb{Z}\]</span></li>
+<li>这说明伸缩项是整数.证毕.</li>
+</ul></li>
+<li>最后, 我们证明<span class="math inline">\(p^{-1}S_k(p)\)</span>的 p 整的性质. 设<span class="math display">\[S_k(p) \equiv \sum_{i=0}^{p-2} (g^k)^i \pmod p\]</span>
+<ul>
+<li>如果<span class="math inline">\(p-1 | k\)</span> :
+<ul>
+<li>由费马小定理, 对于任意的正整数 <span class="math inline">\(m\)</span> , 有 <span class="math inline">\(m^{p-1} \equiv 1 \pmod{p}\)</span>, 因此当 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(p-1 | k\)</span> 时, 有 <span class="math inline">\(m^k \equiv 1 \pmod{p}\)</span>.</li>
+<li>我们有: <span class="math display">\[1/pS_k(p)+1/p =1/p(S_k(p)+1)= 1/p(\sum_{m=0}^{p-1} m^k+1) \in \mathbb{Z}\]</span></li>
+<li>因此, <span class="math display">\[\frac{S_k(p)}{p}+1/p \in \mathbb{Z}\]</span></li>
+</ul></li>
+<li>如果 <span class="math inline">\(p-1 \nmid k\)</span>，则公比 <span class="math inline">\(g^k \not\equiv 1 \pmod p\)</span>，根据等比求和公式，和为 <span class="math inline">\(\frac{(g^k)^{p-1}-1}{g^k-1} \equiv 0 \pmod p\)</span>。<br>
+</li>
+<li>结合上述步骤：若 <span class="math inline">\(p-1 \nmid k\)</span>，则 <span class="math inline">\(B_k - 0\)</span> 是 <span class="math inline">\(p\)</span>-整的 <span class="math inline">\(\implies B_k \in \mathbb{Z}_p\)</span>。若 <span class="math inline">\(p-1 \mid k\)</span>，则 <span class="math inline">\(B_k - (-1/p)\)</span> 是 <span class="math inline">\(p\)</span>-整的 <span class="math inline">\(\implies B_k + \frac{1}{p} \in \mathbb{Z}_p\)</span></li>
+</ul></li>
+</ul>
+<p>综上,对于任意素数 <span class="math inline">\(p\)</span>，都有：<span class="math display">\[B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}\]</span>是 p 整数, 最后再利用 <span class="math inline">\(\mathbb{Z}=\cap \mathbb{Z}_{(p)}\)</span>, 我们得到: <span class="math display">\[B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}, \forall k \text{ positive even}\]</span></p>
+</section>
+<section id="伯努利数和-zeta-函数" class="level1">
+<h1>4 伯努利数和 zeta 函数</h1>
+<ul>
+<li><p>这一小节, 我们给出伯努利数和 zeta 函数之间的关系, 主要有两个结果:</p>
+<ul>
+<li><span class="math display">\[\zeta(k) = - \frac{(2\pi i)^k}{2 k!} B_k, \quad (k \ge 2, \text{even})\]</span></li>
+<li><span class="math display">\[\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 1)\]</span></li>
+</ul></li>
+<li><p>定义: zeta 函数</p></li>
+<li><p>定义: Riemann zeta 函数 <span class="math inline">\(\zeta(s)\)</span> 定义为:</p>
+<p><span class="math display">\[
+\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \text{for } \text{Re}(s) &gt; 1.
+\]</span></p></li>
+</ul>
+<p>我们考虑函数 <span class="math inline">\(\pi z\cot(\pi z)\)</span></p>
+<ul>
+<li><p>它有两种多项式展开:</p>
+<ul>
+<li>留数展开：利用 <span class="math inline">\(\cot(\pi z) = \frac{\cos(\pi z)}{\sin(\pi z)}\)</span> 在 <span class="math inline">\(z = n\)</span> (<span class="math inline">\(n \in \mathbb{Z}\)</span>) 处有单极点，留数为 <span class="math inline">\(\frac{1}{\pi}\)</span>，我们有部分分式展开： <span class="math display">\[\pi \cot(\pi z) = \frac{1}{z} + \sum_{n=1}^{\infty} \left( \frac{1}{z-n} + \frac{1}{z+n} \right) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}\]</span> 因此 <span class="math display">\[\pi z \cot(\pi z) = 1 + \sum_{n=1}^{\infty} \frac{2z^2}{z^2 - n^2} = 1 - 2 \sum_{n=1}^{\infty} \frac{z^2}{n^2 - z^2}\]</span> 将 <span class="math inline">\(\frac{z^2}{n^2 - z^2} = -\sum_{k=1}^{\infty} \frac{z^{2k}}{n^{2k}}\)</span> 代入，得到： <span class="math display">\[\pi z \cot(\pi z) = 1 - 2 \sum_{k=1}^{\infty} \zeta(2k) z^{2k}\]</span></li>
+<li>指数函数展开：利用 <span class="math inline">\(\cot(\pi z) = i \frac{e^{i\pi z} + e^{-i\pi z}}{e^{i\pi z} - e^{-i\pi z}} = i \frac{e^{2\pi i z} + 1}{e^{2\pi i z} - 1} = i + \frac{2i}{e^{2\pi i z} - 1}\)</span>，我们有 <span class="math display">\[\pi z \cot(\pi z) = \pi i z + \frac{2\pi i z}{e^{2\pi i z} - 1}\]</span> 由伯努利数的生成函数定义（令 <span class="math inline">\(t = 2\pi i z\)</span>），得到： <span class="math display">\[\pi z \cot(\pi z) = \sum_{k=0}^{\infty} \frac{(2\pi i)^k}{k!} B_k z^k\]</span></li>
+<li>比较两侧的 <span class="math inline">\(z^{2k}\)</span> 系数，我们得到: <span class="math display">\[\zeta(2k) = - \frac{(2\pi i)^{2k}}{2 (2k)!} B_{2k} = (-1)^{k+1} \frac{(2\pi)^{2k}}{2 (2k)!} B_{2k}, \quad (k \ge 1)\]</span></li>
+</ul></li>
+<li><p>定义: 完备 zeta 函数</p></li>
+<li><p>定义: 完备 zeta 函数 <span class="math inline">\(\xi(s)\)</span> 定义为:</p></li>
+</ul>
+<p><span class="math display">\[
+  \xi(s) = \pi^{-s/2} \Gamma\left(\frac{s}{2}\right) \zeta(s).
+  \]</span></p>
+<ul>
+<li>完备 zeta 函数满足函数方程:</li>
+</ul>
+<p><span class="math display">\[
+  \xi(s) = \xi(1-s).
+  \]</span> 利用完备 zeta 函数的对称性, 得到: <span class="math display">\[\zeta(1-s) = 2(2\pi)^{-s} \Gamma(s) \cos\left(\frac{\pi s}{2}\right) \zeta(s)\]</span> 于是我们容易从上面的结果导出: <span class="math display">\[\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 2,\text{even})\]</span></p>
+<p>更强的结果: 该等式对于所有的正整数 <span class="math inline">\(k \ge 1\)</span> 都成立. 这个结果依赖于 zeta 函数的解析延拓. - 回顾: zeta 函数的解析延拓.</p>
+<ul>
+<li>对于 <span class="math inline">\(Re(s) &gt; 1\)</span>，我们有恒等式：<span class="math display">\[\Gamma(s) \zeta(s) = \int_{0}^{\infty} \frac{t^s}{e^t - 1} \frac{dt}{t}\]</span></li>
+<li>为了将 zeta 函数延拓到整个复平面, 使用hankel 围道 <span class="math inline">\(H_{\epsilon}\)</span>:
+<ul>
+<li>切割 (Branch Cut)： 沿正实轴 <span class="math inline">\([0, +\infty)\)</span> 切开。</li>
+<li>围道 <span class="math inline">\(H_{\epsilon}\)</span>：上岸： 从 <span class="math inline">\(+\infty\)</span> 沿实轴上方走到 <span class="math inline">\(\epsilon\)</span>（幅角 <span class="math inline">\(\arg z = 0\)</span>）。圆环： 绕原点逆时针旋转一周（半径 <span class="math inline">\(\epsilon \to 0\)</span>）。下岸： 从 <span class="math inline">\(\epsilon\)</span> 沿实轴下方回到 <span class="math inline">\(+\infty\)</span>（幅角 <span class="math inline">\(\arg z = 2\pi\)</span>）。</li>
+</ul></li>
+<li>我们有:<span class="math display">\[\zeta(s) = \frac{1}{\Gamma(s)(e^{2\pi i s} - 1)} \int_{H_{\epsilon}} \frac{z^s}{e^z - 1} \frac{dz}{z}\]</span></li>
+<li>这里, 我们令 <span class="math inline">\(s\to 1-k\)</span>, 此时前面的系数 <span class="math inline">\(\frac{1}{\Gamma(s)(e^{2\pi i s} - 1)}\)</span> 会出现 “<span class="math inline">\(0/0\)</span>” 型极限，利用洛必达法则或极限性质可算得系数极限为：<span class="math display">\[\frac{(-1)^{k-1}(k-1)!}{2\pi i}\]</span></li>
+<li>对于积分项, 当 <span class="math inline">\(s=1-k\)</span> 是整数时，<span class="math inline">\(z^s = z^{1-k}\)</span> 变成了单值函数。射线抵消： 上岸和下岸的积分值完全相同但方向相反，互相抵消 5。圆环贡献： 积分仅剩下绕原点的小圆圈 <span class="math inline">\(\oint_{|z|=\epsilon}\)</span>。此时，围道积分退化为计算留数 (Residue)：<span class="math display">\[\int_{H_\epsilon} \frac{z^{1-k}}{e^z - 1} \frac{dz}{z} = \oint \frac{z^{-k}}{e^z - 1} dz = 2\pi i \cdot \text{Res}_{z=0} \left( \frac{z^{-k}}{e^z - 1} \right)\]</span></li>
+<li>注意到这个被积函数恰好和伯努利数的生成函数相关: <span class="math inline">\(\frac{z^{-k}}{e^z-1} = z^{-k-1} \frac{z}{e^z-1}\)</span> 的 <span class="math inline">\(z^{-1}\)</span> 系数正是 <span class="math inline">\(\frac{B_k}{k!}\)</span>, 于是我们得到: <span class="math display">\[\zeta(1-k) = (-1)^{k-1} \frac{B_k}{k}, \quad (k \ge 1)\]</span></li>
+</ul>
+</section>
+<section id="伯努利数与怪球" class="level1">
+<h1>5 伯努利数与怪球</h1>
+<p>现在, 我们转向拓扑学的世界。</p>
+<section id="庞加莱猜想和怪球" class="level2">
+<h2 class="anchored" data-anchor-id="庞加莱猜想和怪球">5.1 庞加莱猜想和怪球</h2>
+<ul>
+<li>拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)</li>
+<li>代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类?
+<ul>
+<li>这就是著名的 (广义) 庞加莱猜想: 设 <span class="math inline">\(M^n\)</span> 是闭流形, 若 <span class="math inline">\(M\)</span> 是同伦球面 (即同伦等价于 <span class="math inline">\(S^n\)</span>), 则 <span class="math inline">\(M^n\)</span> 同胚意义下也是球面.
+<ul>
+<li>庞加莱猜想是对的:
+<ul>
+<li><span class="math inline">\(n\geq5\)</span>: smale h-cobordism</li>
+<li><span class="math inline">\(n=4\)</span>: freedman</li>
+<li><span class="math inline">\(n=3\)</span>: perelman</li>
+</ul></li>
+</ul></li>
+<li>更进一步: 光滑庞加莱猜想: 设 <span class="math inline">\(M^n\)</span> 是光滑闭流形, 若 <span class="math inline">\(M\)</span> 是同伦球面 (由 GPC, 也是同胚球面), 那么 <span class="math inline">\(M^n\)</span> 也是光滑球面.
+<ul>
+<li>光滑庞加莱猜想是错的:
+<ul>
+<li>milnor 找到了第一个怪球: 7 维</li>
+<li>既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 <span class="math inline">\(n\)</span> 维怪球的集合记为 <span class="math inline">\(S_n\)</span></li>
+</ul></li>
+<li><span class="math inline">\(S_n\)</span> 是 Abel 群 (<span class="math inline">\(n\neq4\)</span>): 利用 h-cobordism 定理 (<span class="math inline">\(n\neq4\)</span>), 我们有同构: <span class="math display">\[\{  S^n \text{上的光滑结构}\}/\{微分同胚\}\longleftrightarrow\{n\text{维同伦球面}\}/\{\text{h-cobordism}\}\]</span> 注意到右边恰为 <span class="math inline">\(S_n\)</span>, 即 <span class="math inline">\(n\)</span> 维怪球的集合, 而左边是配边类, 它有群结构:
+<ul>
+<li>乘法: 连通和</li>
+<li>单位元: <span class="math inline">\(S^n\)</span> 上的标准光滑结构</li>
+<li>逆元: 反转定向, 记为 <span class="math inline">\(-\Sigma\)</span>. 在柱 <span class="math inline">\(\Sigma\times I\)</span> 的内部挖去一个 disk <span class="math inline">\(D^{n+1}\)</span> 即可得到所需配边.</li>
+<li>这说明 <span class="math inline">\(S_n\)</span> 是一个群.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="怪球与球面的稳定同伦群" class="level2">
+<h2 class="anchored" data-anchor-id="怪球与球面的稳定同伦群">5.2 怪球与球面的稳定同伦群</h2>
+<ul>
+<li>定义: 球面的稳定同伦群
+<ul>
+<li>同伦群的稳定现象: 球面的 suspension thm
+<ul>
+<li><p>当 <span class="math inline">\(k\)</span> 充分大时 <span class="math inline">\(\Sigma:\pi_{n+k}\left(S^k\right)\to \pi_{n+k+1}\left(S^{k+1}\right)\)</span> 是群同构.</p></li>
+<li><p>球面同伦群的稳定性质: <span class="math inline">\(\Sigma:\pi_n\left(S^n\right)\to \pi_{n+1}\left(S^{n+1}\right)\)</span> 是群同构。</p></li>
+<li><p>球面稳定同伦群: 定义为 <span class="math inline">\(\Pi_n:=\lim_{ k \to \infty }\pi_{n+k}\left(S^{k}\right)\)</span></p></li>
+</ul></li>
+</ul></li>
+<li>稳定同伦群和 framed cobordism class
+<ul>
+<li>Pontrjagin-Thom 定理: <span class="math inline">\(\Pi_n \cong \Omega_n^{fr}\)</span>，即球面稳定同伦群同构于 framed cobordism 群。</li>
+<li>直观理解：一个 <span class="math inline">\(n\)</span> 维 framed 流形 <span class="math inline">\(M^n \subset \mathbb{R}^{n+k}\)</span>（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 <span class="math inline">\(S^{n+k} \to S^k\)</span>。</li>
+</ul></li>
+<li>J-同态 (J-homomorphism)
+<ul>
+<li>定义：J-同态 <span class="math inline">\(J: \pi_n(SO) \to \Pi_n\)</span> 定义如下：给定 <span class="math inline">\(\alpha \in \pi_n(SO)\)</span>，即一个映射 <span class="math inline">\(\alpha: S^n \to SO\)</span>，我们可以用它来”扭转” <span class="math inline">\(S^n\)</span> 上的标准 framing，从而得到一个新的 framed <span class="math inline">\(n\)</span>-球面，它对应于 <span class="math inline">\(\Pi_n\)</span> 中的一个元素。</li>
+<li><span class="math inline">\(J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)\)</span> 是 J-同态的像。</li>
+<li>Adams 定理：<span class="math inline">\(|J_{4k-1}| = \text{denominator}\left(\frac{B_{2k}}{4k}\right)\)</span>，这是伯努利数与怪球联系的关键。</li>
+</ul></li>
+<li>正合列 <span class="math inline">\(0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\)</span>
+<ul>
+<li>定义: <span class="math inline">\(S_n\to \Pi_n\)</span>, 即把 <span class="math inline">\(S_n\)</span> 中的同伦球面映射成它所在的 framed cobordism class.</li>
+<li>change of frame: 如果我们选择 <span class="math inline">\(S_n\)</span> 上不同的 frame 对应的 framed cobordism class, 那么两个 <span class="math inline">\(\Pi_n\)</span> 中的元素会相差 <span class="math inline">\(J: \pi_n(SO) \rightarrow \Pi_n\)</span> 的作用, 我们把 <span class="math inline">\(J\)</span> 映射的像集记为 <span class="math inline">\(J_n\)</span>, 则我们可以定义映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span></li>
+<li>这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 <span class="math inline">\(\Pi_n\)</span> 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 <span class="math inline">\(S_n^{bp}\)</span> 为 <span class="math inline">\(S_n\)</span> 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span> 的 kernel.</li>
+<li>至此, 我们得到了正合列 <span class="math inline">\(0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\)</span></li>
+</ul></li>
+<li>我们还需要讨论映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span> 的满射性质, 即是否 <span class="math inline">\(\Pi_n\)</span> 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:
+<ul>
+<li>对于 <span class="math inline">\(n\not\equiv 2 \pmod{4}\)</span>, 每个 <span class="math inline">\(\Pi_n\)</span> 中的元素都可以被同伦球面实现, 即 <span class="math inline">\(S_n\to\Pi_n/J_n\)</span> 是满射, 于是我们有正合列: <span class="math display">\[
+0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0
+\]</span></li>
+<li>对于 <span class="math inline">\(n \equiv 2\pmod{4}\)</span>, (此时 <span class="math inline">\(S_n^{bp}=0\)</span>) 映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span> 是否为满射由 Kervaire 不变量决定, 即我们有正合列 <span class="math display">\[0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2\]</span> 这里多数情况 <span class="math inline">\(\Phi_k=0\)</span>, <span class="math inline">\(\Phi_k\neq0\)</span> 当且仅当 <span class="math inline">\(k=1,2,4,8,16,32\)</span>, 对应的流形维数为 <span class="math inline">\(2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="计算-怪球和伯努利数" class="level2">
+<h2 class="anchored" data-anchor-id="计算-怪球和伯努利数">5.3 计算: 怪球和伯努利数</h2>
+<ul>
+<li><span class="math inline">\(|J_n|\)</span> 的计算:</li>
+</ul>
+<p><span class="math display">\[
+|J_n| = \begin{cases}
+\text{denominator}\left(\frac{B_k}{4k}\right) &amp; \text{for } n = 4k-1, \\
+2 &amp; \text{for } n \equiv 0, 1 \pmod{8}, \\
+1 &amp; \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
+\end{cases}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(|S_n^{bp}|\)</span> 的计算 (Theorem 5):</p>
+<p>对于 <span class="math inline">\(n \neq 4\)</span>，群 <span class="math inline">\(S_n^{bp}\)</span> 是有限循环群，且有显式的生成元。具体地：</p>
+<ul>
+<li>当 <span class="math inline">\(n\)</span> 为偶数时，<span class="math inline">\(S_n^{bp}\)</span> 是平凡群；</li>
+<li>当 <span class="math inline">\(n = 4k - 3\)</span> 时，<span class="math inline">\(S_n^{bp}\)</span> 是平凡群或 2 阶循环群；</li>
+<li>当 <span class="math inline">\(n = 4k - 1 &gt; 3\)</span> 时，<span class="math inline">\(S_n^{bp}\)</span> 是阶为 <span class="math inline">\(2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_k}{k}\right)\)</span> 的循环群。</li>
+</ul></li>
+<li><p>例子: 计算 <span class="math inline">\(S_7\)</span></p></li>
+</ul>
+<p>让我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">\(S_7\)</span>)。 1. 检查维度：<span class="math inline">\(n=7 = 4(2)-1\)</span>，属于第一种情况（<span class="math inline">\(n \equiv 3 \pmod 4\)</span>），正合列分裂。</p>
+<pre><code>$$|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|$$</code></pre>
+<ol start="2" type="1">
+<li><p>计算 <span class="math inline">\(|S_7^{bp}|\)</span>：</p>
+<p>代入公式 <span class="math inline">\(k=2\)</span>：</p>
+<p><span class="math display">\[|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)\]</span></p>
+<ul>
+<li><p>第一部分：<span class="math inline">\(2^2 (2^3 - 1) = 4 \times 7 = 28\)</span></p></li>
+<li><p>第二部分：<span class="math inline">\(B_2 = 1/30\)</span>，所以 <span class="math inline">\(\frac{4(1/30)}{2} = \frac{1}{15}\)</span>。分子是 1。</p></li>
+<li><p>结果：<span class="math inline">\(|S_7^{bp}| = 28 \times 1 = 28\)</span>。</p></li>
+</ul></li>
+<li><p><strong>计算 <span class="math inline">\(|\Pi_7 / J_7|\)</span></strong>：</p>
+<ul>
+<li><p>查阅同伦群表，<span class="math inline">\(\Pi_7 \cong \mathbb{Z}_{240}\)</span>。</p></li>
+<li><p><span class="math inline">\(J_7\)</span> 的阶数由 <span class="math inline">\(\text{denominator}(B_2/4)\)</span> 决定… （实际上对于 <span class="math inline">\(n=4k-1\)</span>，<span class="math inline">\(\Pi_n = J_n\)</span> 是常见的，或者说 <span class="math inline">\(\Pi_n/J_n\)</span> 通常较小）。</p></li>
+<li><p>可以看到对于 <span class="math inline">\(n=7\)</span>，<span class="math inline">\(|S_7|\)</span> 对应的值就是 <span class="math inline">\(b_2 = 28\)</span>。这意味着对于 <span class="math inline">\(n=7\)</span>，<span class="math inline">\(\Pi_7/J_7\)</span> 是平凡的（或者说 <span class="math inline">\(\Pi_7 = J_7\)</span>）。</p></li>
+</ul></li>
+<li><p><strong>最终结果</strong>：<span class="math inline">\(|S_7| = 28 \times 1 = 28\)</span>。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chen · Mathematics &amp; Topology</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
