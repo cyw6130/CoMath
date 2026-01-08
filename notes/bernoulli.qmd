@@ -1,0 +1,426 @@
+---
+title: "Bernoulli Number, Zeta Function and Exotic Spheres"
+output:
+  pdf_document:
+    latex_engine: xelatex
+CJKmainfont: "PingFang SC"
+---
+# 1 伯努利数的定义
+
+- motivation: try to compute $S_k(n) = \sum_{m=0}^{n-1} m^k$ 的通项公式
+
+  - when k=0, 1, 2, we already know that
+    - $S_0(n) = n$
+    - $S_1(n) = \frac{n(n-1)}{2}$
+    - $S_2(n) = \frac{n(n-1)(2n-1)}{6}$
+  - but for general k, how to compute $S_k(n)$?
+- Another question: what is the relation between this 离散 sum and the 积分 $\int_0^n x^k dx$?
+
+  - we know that $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$
+  - can we express $S_k(n)$ in terms of $\int_0^n x^k dx$ plus some correction terms?
+- To answer these questions, we introduce the Bernoulli numbers.
+- Defintion: generating function
+
+  - 定义: 形式幂级数环$\mathbb{C}[[x]]$. 它是对多项式环的推广, 但是这里, 我们允许无穷多项式项存在, 同时我们不要求这个无穷求和是收敛的. 形式幂级数环中的元素被称为形式幂级数, 它们的形式为:
+
+    $$
+    f(x) = \sum_{n=0}^{\infty} a_n x^n
+    $$
+
+    其中, $a_n$ 是系数, 可以是任意复数. 形式幂级数的加法和乘法与多项式类似, 但是我们不关心收敛性问题.
+  - 定义: 指数生成函数
+
+    - 给定一个数列 $\{a_n\}$, 它的指数生成函数定义为:
+
+    $$
+    A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
+    $$
+
+    这里, $t$ 是一个形式变量. 即指数生成函数作为映射: {数列} $\to$ {形式幂级数},
+    给出了数列和形式幂级数之间的一一对应.- 上述对应将形式幂级数之间的乘法映射为数列之间的运算, 即如果
+
+    $$
+    A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{  \infty} b_n \frac{t^n}{n!}$$  
+    那么它们的乘积
+    $$C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
+    $$
+
+    其中, $c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}$.我们将这个运算称为数列之间的**卷积运算**.
+- Definition: The Bernoulli numbers $B_n$ are defined by the generating function
+
+  $$
+  \frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
+  $$
+- although it is difficult to compute $S_k(n)$ directly, we can compute its generating function firstly:
+
+  $$
+  \mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
+  $$
+
+for the RHS, we can rewrite it as
+
+$$
+\mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
+$$
+
+for the first part of the RHS, we have the taylor expansion
+
+$$
+\frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
+$$
+
+the coefficient of this generating function is just the integral term $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$.
+
+ for the second part of the RHS, by the definition of Bernoulli number, we have
+
+$$
+\frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
+$$
+
+于是, 我们实际上有:
+
+$$
+\underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
+$$
+
+即伯努利项衡量了离散求和项和积分项之间的偏差.
+
+我们将等式两边展开, 得到:
+
+$$
+\sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
+$$
+
+比较等式两边的 $t^k$ 系数, 我们得到:
+
+$$
+S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
+$$
+
+我们得到了我们想要的通项公式.
+
+- 如果我们引入伯努利多项式的定义, 它对应于生成函数$\frac{t}{e^t-1}$在平移算子下的平移$\frac{e^{xt}t}{e^t-1}$, 即
+
+  $$
+  \sum_{k=0}^\infty B_k(x) \frac{t^k}{k!} = \frac{t e^{xt}}{e^t - 1} = e^{xt} \cdot \left( \frac{t}{e^t - 1} \right)
+  $$
+
+  那么我们可以将上面的结果更简洁地表示为:
+
+  $$
+  S_k(n) = \frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}
+  $$
+
+# 2 伯努利数的计算
+
+根据伯努利数的定义: $\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}$，两边同乘 $e^t - 1$，我们有:
+
+$$
+t = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot (e^t - 1) = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot \left( \sum_{m=1}^{\infty} \frac{t^m}{m!} \right)
+$$
+
+比较两边 $t^n$ 的系数（$n \geq 2$ 时左边系数为 0），我们得到:
+
+$$
+\sum_{k=0}^n \binom{n}{k} B_k = 0, \quad \text{for } n \geq 2
+$$
+
+并且 $B_0 = 1, B_1 = -\frac{1}{2}$。由此，我们可以递推地计算出所有的伯努利数，是有理数。
+
+伯努利数表：
+
+| $n$ | $B_n$ |
+|-----|-------|
+| 0 | 1 |
+| 1 | $-\frac{1}{2}$ |
+| 2 | $\frac{1}{6}$ |
+| 4 | $-\frac{1}{30}$ |
+| 6 | $\frac{1}{42}$ |
+| 8 | $-\frac{1}{30}$ |
+| 10 | $\frac{5}{66}$ |
+| 12 | $-\frac{691}{2730}$ |
+
+同时注意到，$\frac{t}{e^t - 1} + \frac{t}{2} = \frac{t}{2} \cdot \frac{e^t + 1}{e^t - 1}$ 是一个偶函数，因此所有奇数项的系数（除了 $B_1$）都为零，即:
+
+$$
+B_3 = B_5 = B_7 = \cdots = 0
+$$
+
+一些计算结果:
+
+利用递推公式 $\sum_{k=0}^n \binom{n}{k} B_k = 0$，可以计算：
+- $S_1(n) = \frac{n(n-1)}{2}$
+- $S_2(n) = \frac{n(n-1)(2n-1)}{6}$
+- $S_3(n) = \frac{n^2(n-1)^2}{4}$
+
+# 3 伯努利数的分母
+
+- 经过上面的计算, 我们发现伯努利数的分母满足:
+
+  - $B_1: 2=2, B_2: 6=2\times3, B_4: 30=5\times3\times2,B_6: 42=7\times3\times2\cdots$
+  - 事实上我们有命题:
+
+    **Von Staudt-Clausen 定理**: 对于正偶数 $k$，有
+    $$B_k + \sum_{p-1 | k} \frac{1}{p} \in \mathbb{Z}$$
+    其中求和取遍所有满足 $p-1 | k$ 的素数 $p$。
+
+    作为它的推论: 伯努利数 $B_k, k \text{ even or 1}$ 的分母总可以写成 $\prod_{p:p-1|k}p$.
+- p-integers 与局部环
+
+  - 定义: 局部环
+    - 设 $p$ 是一个素数，考虑整数环 $\mathbb{Z}$ 中的素理想 $\mathfrak{p} = (p) = p\mathbb{Z}$。定义乘法封闭集 (Multiplicative Set) $S$ 为所有不在 $\mathfrak{p}$ 中的整数：
+$$
+S = \mathbb{Z} \setminus \mathfrak{p} = \{ n \in \mathbb{Z} \mid p \nmid n \}
+$$
+    那么$\mathbb{Z}_{(p)}$ 定义为 $\mathbb{Z}$ 关于 $S$ 的局部化：
+$$
+\mathbb{Z}_{(p)} := S^{-1}\mathbb{Z} = \left\{ \frac{a}{b} \in \mathbb{Q} \;\middle|\; a \in \mathbb{Z}, \, b \in \mathbb{Z}, \, p \nmid b \right\}
+$$
+    - 直观上,  这就是整数环$\mathbb{Z}$ 中让那些不是 $p$ 的倍数的数可逆.
+	- 定义: p-integers
+		- 对于有理数 $x\in \mathbb{Q}$, 称它是 p-integer 如果 $x\in \mathbb{Z}_{\left(p\right)}$.
+		- 直观的定义: 将 $x\in \mathbb{Q}$ 写成既约分数 $x=\frac{a}{b}$, 若 $b$ 中不含素因子 $p$, 则称 $x$ 是 p-integer.
+	- 命题: 
+$$
+\mathbb{Z} = \bigcap_{p \text{ is prime}} \mathbb{Z}_{(p)}
+$$
+
+利用上面的命题, 要证明 
+
+$$
+x=B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z},\forall k \text{ even}
+$$
+
+
+
+只要证对于任意的$p$ ,$x$ 是一个 p-integer.
+
+利用伯努利多项式的性质, 我们有等式 
+
+$$
+S_k(X) = \frac{X^{k+1}}{k+1} + B_1 X^k + \dots + \frac{k}{2}B_{k-1}X^2 + B_k X
+$$
+
+$$
+p^{-e}S_k(p^e) = \frac{p^{ke}}{k+1} + B_1 p^{(k-1)e} + \dots + B_k
+$$
+
+
+我们有: 
+
+$$
+B_k - p^{-e}S_k(p^e)= - \frac{p^{ke}}{k+1} - B_1 p^{(k-1)e} - \dots - \frac{k}{2} B_{k-1} p^e
+$$
+
+ 注意到当 e 充分大时, 等式右边是 p-整的, 故此时
+
+$$
+B_k - p^{-e}S_k(p^e) \quad \text{是 } p\text{-整的}
+$$
+
+-  我们的证明分为如下的步骤:
+
+   1.  先证明$B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}$
+
+   2. 然后证明$p^{-1}S_k(p)$的 p整的性质, 组合它们, 我们得到$B_k$是 p 整的. 
+
+
+- $B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}$
+
+    - 证明: 先做分解
+$$
+B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \underbrace{\sum_{d=2}^{e} (A_d - A_{d-1})}_{\text{Part 2: 伸缩项}}
+$$
+这里 **$A_e = p^{-e}S_k(p^e)$**
+
+我们已经知道, 当 $e$充分大, part1是 p 整的. 齐次, 我们可以证明, 对于 part2 中的伸缩项, 每一项都是整数.
+
+- 伸缩项是整数:
+  - 我们证明$p^{-d}S_k(p^d) - p^{-(d-1)}S_k(p^{d-1})$是整数.
+  - 将$S^k(p^d)$中的求和指标 $m$ 写成 $r + qp^{d-1}$ 的形, 我们有: 
+  - $$S_k(p^d) = \sum_{r=0}^{p^{d-1}-1} \sum_{q=0}^{p-1} (r + qp^{d-1})^k$$
+  - 将求和项用二项式定理展开, 我们有: $(r + qp^{d-1})^k \equiv r^k + k r^{k-1} q p^{d-1} \pmod{p^{d}}$, 对等式右边的第一项求和, 我们得到 $p S_k(p^{d-1})$; 对等式右边的第二项求和, 由于 $\sum_{q=0}^{p-1} q = \frac{p(p-1)}{2}$, 它至少含有 $p^d$ 因子, 因此对 $p^d$ 取模时, 该项为零.
+  - 我们得到$$S_k(p^d) \equiv p S_k(p^{d-1}) \pmod{p^d}$$
+  - 两边同时除以$p^d$, 得到:$$\frac{S_k(p^d)}{p^d} - \frac{S_k(p^{d-1})}{p^{d-1}} \in \mathbb{Z}$$
+  - 这说明伸缩项是整数.证毕. 
+
+
+-  最后, 我们证明$p^{-1}S_k(p)$的 p 整的性质.
+设$$S_k(p) \equiv \sum_{i=0}^{p-2} (g^k)^i \pmod p$$
+     - 如果$p-1 | k$ :
+       - 由费马小定理, 对于任意的正整数 $m$ , 有 $m^{p-1} \equiv 1 \pmod{p}$, 因此当 $k$ 满足 $p-1 | k$ 时, 有 $m^k \equiv 1 \pmod{p}$.
+       - 我们有: $$1/pS_k(p)+1/p =1/p(S_k(p)+1)= 1/p(\sum_{m=0}^{p-1} m^k+1) \in \mathbb{Z}$$
+       - 因此, $$\frac{S_k(p)}{p}+1/p \in \mathbb{Z}$$
+   - 如果 $p-1 \nmid k$，则公比 $g^k \not\equiv 1 \pmod p$，根据等比求和公式，和为 $\frac{(g^k)^{p-1}-1}{g^k-1} \equiv 0 \pmod p$。  
+    - 结合上述步骤：若 $p-1 \nmid k$，则 $B_k - 0$ 是 $p$-整的 $\implies B_k \in \mathbb{Z}_p$。若 $p-1 \mid k$，则 $B_k - (-1/p)$ 是 $p$-整的 $\implies B_k + \frac{1}{p} \in \mathbb{Z}_p$
+
+
+综上,对于任意素数 $p$，都有：$$B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}$$是 p 整数, 最后再利用 $\mathbb{Z}=\cap \mathbb{Z}_{(p)}$, 我们得到: $$B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}, \forall k \text{ positive even}$$
+
+
+
+# 4 伯努利数和 zeta 函数
+
+- 这一小节, 我们给出伯努利数和 zeta 函数之间的关系, 主要有两个结果: 
+  - $$\zeta(k) = - \frac{(2\pi i)^k}{2 k!} B_k, \quad (k \ge 2, \text{even})$$
+  - $$\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 1)$$
+
+- 定义: zeta 函数
+
+- 定义: Riemann zeta 函数 $\zeta(s)$ 定义为:
+
+  $$
+  \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \text{for } \text{Re}(s) > 1.
+  $$
+
+我们考虑函数 $\pi z\cot(\pi z)$
+
+- 它有两种多项式展开:
+  - 留数展开：利用 $\cot(\pi z) = \frac{\cos(\pi z)}{\sin(\pi z)}$ 在 $z = n$ ($n \in \mathbb{Z}$) 处有单极点，留数为 $\frac{1}{\pi}$，我们有部分分式展开：
+    $$\pi \cot(\pi z) = \frac{1}{z} + \sum_{n=1}^{\infty} \left( \frac{1}{z-n} + \frac{1}{z+n} \right) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}$$
+    因此
+    $$\pi z \cot(\pi z) = 1 + \sum_{n=1}^{\infty} \frac{2z^2}{z^2 - n^2} = 1 - 2 \sum_{n=1}^{\infty} \frac{z^2}{n^2 - z^2}$$
+    将 $\frac{z^2}{n^2 - z^2} = -\sum_{k=1}^{\infty} \frac{z^{2k}}{n^{2k}}$ 代入，得到：
+    $$\pi z \cot(\pi z) = 1 - 2 \sum_{k=1}^{\infty} \zeta(2k) z^{2k}$$
+  - 指数函数展开：利用 $\cot(\pi z) = i \frac{e^{i\pi z} + e^{-i\pi z}}{e^{i\pi z} - e^{-i\pi z}} = i \frac{e^{2\pi i z} + 1}{e^{2\pi i z} - 1} = i + \frac{2i}{e^{2\pi i z} - 1}$，我们有
+    $$\pi z \cot(\pi z) = \pi i z + \frac{2\pi i z}{e^{2\pi i z} - 1}$$
+    由伯努利数的生成函数定义（令 $t = 2\pi i z$），得到：
+    $$\pi z \cot(\pi z) = \sum_{k=0}^{\infty} \frac{(2\pi i)^k}{k!} B_k z^k$$
+  - 比较两侧的 $z^{2k}$ 系数，我们得到: $$\zeta(2k) = - \frac{(2\pi i)^{2k}}{2 (2k)!} B_{2k} = (-1)^{k+1} \frac{(2\pi)^{2k}}{2 (2k)!} B_{2k}, \quad (k \ge 1)$$
+
+
+-  定义: 完备 zeta 函数
+
+  - 定义: 完备 zeta 函数 $\xi(s)$ 定义为:
+
+  $$
+  \xi(s) = \pi^{-s/2} \Gamma\left(\frac{s}{2}\right) \zeta(s).
+  $$
+
+  - 完备 zeta 函数满足函数方程:
+
+  $$
+  \xi(s) = \xi(1-s).
+  $$
+  利用完备 zeta 函数的对称性, 得到: $$\zeta(1-s) = 2(2\pi)^{-s} \Gamma(s) \cos\left(\frac{\pi s}{2}\right) \zeta(s)$$
+  于是我们容易从上面的结果导出: $$\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 2,\text{even})$$
+
+
+
+  更强的结果: 该等式对于所有的正整数 $k \ge 1$ 都成立. 这个结果依赖于 zeta 函数的解析延拓.
+-  回顾: zeta 函数的解析延拓.
+
+   -  对于 $Re(s) > 1$，我们有恒等式：$$\Gamma(s) \zeta(s) = \int_{0}^{\infty} \frac{t^s}{e^t - 1} \frac{dt}{t}$$
+   -  为了将 zeta 函数延拓到整个复平面, 使用hankel 围道 $H_{\epsilon}$: 
+      -  切割 (Branch Cut)： 沿正实轴 $[0, +\infty)$ 切开。
+      -  围道 $H_{\epsilon}$：上岸： 从 $+\infty$ 沿实轴上方走到 $\epsilon$（幅角 $\arg z = 0$）。圆环： 绕原点逆时针旋转一周（半径 $\epsilon \to 0$）。下岸： 从 $\epsilon$ 沿实轴下方回到 $+\infty$（幅角 $\arg z = 2\pi$）。 
+   -  我们有:$$\zeta(s) = \frac{1}{\Gamma(s)(e^{2\pi i s} - 1)} \int_{H_{\epsilon}} \frac{z^s}{e^z - 1} \frac{dz}{z}$$
+   -  这里, 我们令 $s\to 1-k$, 此时前面的系数 $\frac{1}{\Gamma(s)(e^{2\pi i s} - 1)}$ 会出现 "$0/0$" 型极限，利用洛必达法则或极限性质可算得系数极限为：$$\frac{(-1)^{k-1}(k-1)!}{2\pi i}$$
+   -  对于积分项, 当 $s=1-k$ 是整数时，$z^s = z^{1-k}$ 变成了单值函数。射线抵消： 上岸和下岸的积分值完全相同但方向相反，互相抵消 5。圆环贡献： 积分仅剩下绕原点的小圆圈 $\oint_{|z|=\epsilon}$。此时，围道积分退化为计算留数 (Residue)：$$\int_{H_\epsilon} \frac{z^{1-k}}{e^z - 1} \frac{dz}{z} = \oint \frac{z^{-k}}{e^z - 1} dz = 2\pi i \cdot \text{Res}_{z=0} \left( \frac{z^{-k}}{e^z - 1} \right)$$
+   -  注意到这个被积函数恰好和伯努利数的生成函数相关: $\frac{z^{-k}}{e^z-1} = z^{-k-1} \frac{z}{e^z-1}$ 的 $z^{-1}$ 系数正是 $\frac{B_k}{k!}$, 于是我们得到: $$\zeta(1-k) = (-1)^{k-1} \frac{B_k}{k}, \quad (k \ge 1)$$
+
+
+
+
+# 5 伯努利数与怪球
+
+现在, 我们转向拓扑学的世界。
+
+## 5.1 庞加莱猜想和怪球
+- 拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)
+- 代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类? 
+	- 这就是著名的 (广义) 庞加莱猜想: 设 $M^n$ 是闭流形, 若 $M$ 是同伦球面 (即同伦等价于 $S^n$), 则 $M^n$ 同胚意义下也是球面. 
+		- 庞加莱猜想是对的: 
+			- $n\geq5$: smale h-cobordism
+			- $n=4$: freedman
+			- $n=3$: perelman
+	- 更进一步: 光滑庞加莱猜想: 设 $M^n$ 是光滑闭流形, 若 $M$ 是同伦球面 (由 GPC, 也是同胚球面), 那么 $M^n$ 也是光滑球面. 
+		- 光滑庞加莱猜想是错的: 
+			- milnor 找到了第一个怪球: 7 维
+			- 既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 $n$ 维怪球的集合记为 $S_n$
+		-  $S_n$ 是 Abel 群 ($n\neq4$): 利用 h-cobordism 定理 ($n\neq4$), 我们有同构: $$\{  S^n \text{上的光滑结构}\}/\{微分同胚\}\longleftrightarrow\{n\text{维同伦球面}\}/\{\text{h-cobordism}\}$$ 注意到右边恰为 $S_n$, 即 $n$ 维怪球的集合, 而左边是配边类, 它有群结构: 
+			- 乘法: 连通和
+			- 单位元: $S^n$ 上的标准光滑结构
+			- 逆元: 反转定向, 记为 $-\Sigma$. 在柱 $\Sigma\times I$ 的内部挖去一个 disk $D^{n+1}$ 即可得到所需配边. 
+			- 这说明 $S_n$ 是一个群. 
+
+
+
+## 5.2 怪球与球面的稳定同伦群
+
+
+- 定义: 球面的稳定同伦群
+	- 同伦群的稳定现象: 球面的 suspension thm
+		- 当 $k$ 充分大时 $\Sigma:\pi_{n+k}\left(S^k\right)\to \pi_{n+k+1}\left(S^{k+1}\right)$ 是群同构. 
+		- 球面同伦群的稳定性质: $\Sigma:\pi_n\left(S^n\right)\to \pi_{n+1}\left(S^{n+1}\right)$ 是群同构。
+
+		- 球面稳定同伦群: 定义为 $\Pi_n:=\lim_{ k \to \infty }\pi_{n+k}\left(S^{k}\right)$
+
+- 稳定同伦群和 framed cobordism class
+	- Pontrjagin-Thom 定理: $\Pi_n \cong \Omega_n^{fr}$，即球面稳定同伦群同构于 framed cobordism 群。
+	- 直观理解：一个 $n$ 维 framed 流形 $M^n \subset \mathbb{R}^{n+k}$（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 $S^{n+k} \to S^k$。
+
+- J-同态 (J-homomorphism)
+	- 定义：J-同态 $J: \pi_n(SO) \to \Pi_n$ 定义如下：给定 $\alpha \in \pi_n(SO)$，即一个映射 $\alpha: S^n \to SO$，我们可以用它来"扭转" $S^n$ 上的标准 framing，从而得到一个新的 framed $n$-球面，它对应于 $\Pi_n$ 中的一个元素。
+	- $J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)$ 是 J-同态的像。
+	- Adams 定理：$|J_{4k-1}| = \text{denominator}\left(\frac{B_{2k}}{4k}\right)$，这是伯努利数与怪球联系的关键。
+
+- 正合列 $0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n$
+	- 定义: $S_n\to \Pi_n$, 即把 $S_n$ 中的同伦球面映射成它所在的 framed cobordism class. 
+	- change of frame: 如果我们选择 $S_n$ 上不同的 frame 对应的 framed cobordism class, 那么两个 $\Pi_n$ 中的元素会相差 $J: \pi_n(SO) \rightarrow \Pi_n$ 的作用, 我们把 $J$ 映射的像集记为 $J_n$, 则我们可以定义映射 $S_n\to \Pi_n/J_n$
+	- 这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 $\Pi_n$ 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 $S_n^{bp}$ 为 $S_n$ 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 $S_n\to \Pi_n/J_n$ 的 kernel. 
+	- 至此, 我们得到了正合列 $0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n$
+
+- 我们还需要讨论映射 $S_n\to \Pi_n/J_n$ 的满射性质, 即是否 $\Pi_n$ 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果: 
+	- 对于 $n\not\equiv 2 \pmod{4}$, 每个 $\Pi_n$ 中的元素都可以被同伦球面实现, 即 $S_n\to\Pi_n/J_n$ 是满射, 于是我们有正合列: $$
+0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0
+$$
+	- 对于 $n \equiv 2\pmod{4}$, (此时 $S_n^{bp}=0$) 映射 $S_n\to \Pi_n/J_n$ 是否为满射由 Kervaire 不变量决定, 即我们有正合列 $$0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2$$ 这里多数情况 $\Phi_k=0$, $\Phi_k\neq0$ 当且仅当 $k=1,2,4,8,16,32$, 对应的流形维数为 $2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)$.
+
+## 5.3 计算: 怪球和伯努利数
+
+- $|J_n|$ 的计算:
+
+$$
+|J_n| = \begin{cases}
+\text{denominator}\left(\frac{B_k}{4k}\right) & \text{for } n = 4k-1, \\
+2 & \text{for } n \equiv 0, 1 \pmod{8}, \\
+1 & \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
+\end{cases}
+$$
+
+- $|S_n^{bp}|$ 的计算 (Theorem 5):
+
+  对于 $n \neq 4$，群 $S_n^{bp}$ 是有限循环群，且有显式的生成元。具体地：
+  - 当 $n$ 为偶数时，$S_n^{bp}$ 是平凡群；
+  - 当 $n = 4k - 3$ 时，$S_n^{bp}$ 是平凡群或 2 阶循环群；
+  - 当 $n = 4k - 1 > 3$ 时，$S_n^{bp}$ 是阶为 $2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_k}{k}\right)$ 的循环群。
+
+- 例子: 计算 $S_7$
+
+让我们用这个方法计算一下著名的 7 维怪球数量 ($S_7$)。
+1. 检查维度：$n=7 = 4(2)-1$，属于第一种情况（$n \equiv 3 \pmod 4$），正合列分裂。
+    
+    $$|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|$$
+    
+2. 计算 $|S_7^{bp}|$：
+    
+    代入公式 $k=2$：
+    
+    $$|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)$$
+    - 第一部分：$2^2 (2^3 - 1) = 4 \times 7 = 28$
+        
+    - 第二部分：$B_2 = 1/30$，所以 $\frac{4(1/30)}{2} = \frac{1}{15}$。分子是 1。
+        
+    - 结果：$|S_7^{bp}| = 28 \times 1 = 28$。
+        
+3. **计算 $|\Pi_7 / J_7|$**：
+    
+    - 查阅同伦群表，$\Pi_7 \cong \mathbb{Z}_{240}$。
+        
+    - $J_7$ 的阶数由 $\text{denominator}(B_2/4)$ 决定... （实际上对于 $n=4k-1$，$\Pi_n = J_n$ 是常见的，或者说 $\Pi_n/J_n$ 通常较小）。
+        
+    - 可以看到对于 $n=7$，$|S_7|$ 对应的值就是 $b_2 = 28$。这意味着对于 $n=7$，$\Pi_7/J_7$ 是平凡的（或者说 $\Pi_7 = J_7$）。
+        
+4. **最终结果**：$|S_7| = 28 \times 1 = 28$。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。
+

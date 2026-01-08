@@ -1,0 +1,15 @@
+{
+  "quarto.render.previewType": "internal",
+  "quarto.path": "/usr/local/bin/quarto",
+  "[quarto]": {
+    "editor.defaultFormatter": "quarto.quarto",
+    "editor.experimental.pasteActions.enabled": true
+  },
+  "markdown.copyFiles.destination": {
+    "**/*.qmd": "images/${documentBaseName}/",
+    "**/*.md": "images/${documentBaseName}/"
+  },
+  "editor.pasteAs.enabled": true,
+  "markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
+  "markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles"
+}

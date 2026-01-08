@@ -16,6 +16,8 @@ website:
       #   text: Research
       - href: notes.qmd
         text: Notes
+      - href: translations.qmd
+        text: Translations
       - href: gallery.qmd
         text: Gallery
       - icon: github
@@ -48,16 +50,15 @@ website:
             contents:
               - notes/turaev-viro.qmd
               - notes/Khovanov_homology.qmd
-
+          - section: "High-dimensional Manifolds"
+            contents:
+              - notes/h_cobordism_4.qmd
+              - notes/bernoulli.qmd
 format:
   html:
     theme:
-      light: 
-        - flatly
-        - custom.scss
-      dark: 
-        - darkly
-        - custom-dark.scss
+      light: flatly
+      dark: darkly
     highlight-style: github
     toc: true
     toc-location: left
