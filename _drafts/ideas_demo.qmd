@@ -1,0 +1,113 @@
+---
+title: "同调代数入门"
+date: "2025-01-10"
+categories: [Algebra, Topology]
+---
+
+::: {.callout-note icon=false collapse=true}
+## 全景指南 (10 分钟了解全貌)
+
+**定位坐标**：同调代数是代数学的核心工具，横跨代数拓扑、代数几何、表示论等多个领域。它提供了一套统一的语言来研究"洞"、"障碍"和"不变量"。
+
+**历史与动机**：19 世纪末，庞加莱在研究流形时发现：不同的空间可以有相同的"洞"的结构。如何精确描述这些"洞"？
+
+- 传统方法：直接计算，依赖具体空间的几何性质
+- 问题：不同空间的计算方法不统一，难以比较
+- 解决方案：引入链复形和同调群，将"洞"的计算转化为代数问题
+
+**核心对象**：链复形 $\cdots \xrightarrow{d} C_{n+1} \xrightarrow{d} C_n \xrightarrow{d} C_{n-1} \xrightarrow{d} \cdots$，满足 $d \circ d = 0$。同调群 $H_n = \ker d / \text{im } d$ 测量"闭但不是边缘"的链。
+
+**高光时刻**：万有系数定理、长正合列、导出函子（Ext 和 Tor）
+
+**前置与后续**：
+
+- 先修：抽象代数（群、环、模）、点集拓扑
+- 后修：代数拓扑、层论、导出范畴、谱序列
+:::
+
+---
+
+# 1. 正合列与蛇引理
+
+## Storyline
+
+问题：给定交换图中的短正合列，如何得到同调群之间的联系？
+
+## 定义
+
+::: {.callout-note icon=false}
+## 定义：短正合列
+称序列 $0 \to A \xrightarrow{f} B \xrightarrow{g} C \to 0$ 是短正合列，若 $f$ 单射，$g$ 满射，且 $\ker g = \text{im } f$。
+:::
+
+为什么这样定义？短正合列刻画了 $B$ 是 $A$ 和 $C$ 的"扩张"：$A$ 嵌入 $B$，商掉 $A$ 得到 $C$。
+
+## 定理
+
+::: {.callout-tip icon=false}
+## 蛇引理 (Snake Lemma)
+设有交换图，其中行是正合列：
+$$
+\begin{CD}
+  @. A @>f>> B @>g>> C @>>> 0 \\
+  @. @VV\alpha V @VV\beta V @VV\gamma V \\
+  0 @>>> A' @>f'>> B' @>g'>> C'
+\end{CD}
+$$
+则存在正合列：
+$$
+\ker \alpha \to \ker \beta \to \ker \gamma \xrightarrow{\delta} \text{coker } \alpha \to \text{coker } \beta \to \text{coker } \gamma
+$$
+:::
+
+## 证明思路 (Sketch)
+
+关键是构造连接同态 $\delta: \ker \gamma \to \text{coker } \alpha$。
+
+1. 取 $c \in \ker \gamma$，由 $g$ 满射，存在 $b \in B$ 使 $g(b) = c$
+2. 由 $\gamma(c) = 0$ 和交换性，$g'(\beta(b)) = 0$
+3. 由 $\ker g' = \text{im } f'$，存在唯一 $a' \in A'$ 使 $f'(a') = \beta(b)$
+4. 定义 $\delta(c) = [a'] \in \text{coker } \alpha$
+
+::: {.callout-warning icon=false}
+## 陷阱提示
+$\delta$ 的良定义性需要验证：不同的 $b$ 选取给出相同的 $[a']$。
+:::
+
+## 典型例子
+
+考虑 $\mathbb{Z}$-模的短正合列 $0 \to \mathbb{Z} \xrightarrow{\times 2} \mathbb{Z} \to \mathbb{Z}/2 \to 0$，张量 $\mathbb{Z}/2$ 后：
+$$
+\mathbb{Z}/2 \xrightarrow{0} \mathbb{Z}/2 \to \mathbb{Z}/2 \to 0
+$$
+不再正合！这说明张量积不保持正合性，引出 Tor 函子的必要性。
+
+---
+
+# 2. 长正合列
+
+## Storyline
+
+问题：短正合列如何诱导同调群之间的长正合列？
+
+## 定理
+
+::: {.callout-tip icon=false}
+## 长正合列定理
+设 $0 \to A_\bullet \to B_\bullet \to C_\bullet \to 0$ 是链复形的短正合列，则存在长正合列：
+$$
+\cdots \to H_n(A) \to H_n(B) \to H_n(C) \xrightarrow{\partial} H_{n-1}(A) \to \cdots
+$$
+:::
+
+## 证明思路 (Sketch)
+
+本质上是蛇引理的迭代应用。连接同态 $\partial$ 的构造与蛇引理中 $\delta$ 的构造完全类似。
+
+---
+
+## 参考资料
+
+- Weibel, *An Introduction to Homological Algebra*
+- Rotman, *An Introduction to Homological Algebra*
+- Hatcher, *Algebraic Topology*, Chapter 2

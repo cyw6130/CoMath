@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-01-09">
 
-<title>Bernoulli Number, Zeta Function and Exotic Spheres – Chen’s Topology Notes</title>
+<title>伯努利数、Zeta 函数与怪球 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -276,7 +277,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Chen’s Topology Notes</span>
+    <span class="navbar-title">Chen 的拓扑笔记</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -323,7 +324,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">Bernoulli Number, Zeta Function and Exotic Spheres</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -399,7 +400,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Bernoulli Number, Zeta Function and Exotic Spheres</span></a>
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
       </ul>
@@ -433,16 +434,27 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">Bernoulli Number, Zeta Function and Exotic Spheres</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bernoulli Number, Zeta Function and Exotic Spheres</h1>
-</div>
+<h1 class="title">伯努利数、Zeta 函数与怪球</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Number Theory</div>
+    <div class="quarto-category">Exotic Spheres</div>
+    <div class="quarto-category">Differential Topology</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 9, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -455,79 +467,64 @@ window.Quarto = {
 <section id="伯努利数的定义" class="level1">
 <h1>1 伯努利数的定义</h1>
 <ul>
-<li><p>motivation: try to compute <span class="math inline">\(S_k(n) = \sum_{m=0}^{n-1} m^k\)</span> 的通项公式</p>
+<li>动机：尝试计算 <span class="math inline">\(S_k(n) = \sum_{m=0}^{n-1} m^k\)</span> 的通项公式
 <ul>
-<li>when k=0, 1, 2, we already know that
+<li>当 k=0, 1, 2 时，我们已经知道
 <ul>
 <li><span class="math inline">\(S_0(n) = n\)</span></li>
 <li><span class="math inline">\(S_1(n) = \frac{n(n-1)}{2}\)</span></li>
 <li><span class="math inline">\(S_2(n) = \frac{n(n-1)(2n-1)}{6}\)</span></li>
 </ul></li>
-<li>but for general k, how to compute <span class="math inline">\(S_k(n)\)</span>?</li>
+<li>但对于一般的 k，如何计算 <span class="math inline">\(S_k(n)\)</span>？</li>
 </ul></li>
-<li><p>Another question: what is the relation between this 离散 sum and the 积分 <span class="math inline">\(\int_0^n x^k dx\)</span>?</p>
+<li>另一个问题：这个离散求和与积分 <span class="math inline">\(\int_0^n x^k dx\)</span> 之间有什么关系？
 <ul>
-<li>we know that <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span></li>
-<li>can we express <span class="math inline">\(S_k(n)\)</span> in terms of <span class="math inline">\(\int_0^n x^k dx\)</span> plus some correction terms?</li>
+<li>我们知道 <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span></li>
+<li>我们能否将 <span class="math inline">\(S_k(n)\)</span> 表示为 <span class="math inline">\(\int_0^n x^k dx\)</span> 加上一些修正项？</li>
 </ul></li>
-<li><p>To answer these questions, we introduce the Bernoulli numbers.</p></li>
-<li><p>Defintion: generating function</p>
+<li>为了回答这些问题，我们引入伯努利数。</li>
+<li>定义：生成函数
 <ul>
-<li><p>定义: 形式幂级数环<span class="math inline">\(\mathbb{C}[[x]]\)</span>. 它是对多项式环的推广, 但是这里, 我们允许无穷多项式项存在, 同时我们不要求这个无穷求和是收敛的. 形式幂级数环中的元素被称为形式幂级数, 它们的形式为:</p>
-<p><span class="math display">\[
+<li>定义：形式幂级数环 <span class="math inline">\(\mathbb{C}[[x]]\)</span>。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为： <span class="math display">\[
 f(x) = \sum_{n=0}^{\infty} a_n x^n
-\]</span></p>
-<p>其中, <span class="math inline">\(a_n\)</span> 是系数, 可以是任意复数. 形式幂级数的加法和乘法与多项式类似, 但是我们不关心收敛性问题.</p></li>
-<li><p>定义: 指数生成函数</p>
+\]</span> 其中，<span class="math inline">\(a_n\)</span> 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。</li>
+<li>定义：指数生成函数
 <ul>
-<li>给定一个数列 <span class="math inline">\(\{a_n\}\)</span>, 它的指数生成函数定义为:</li>
-</ul>
-<p><span class="math display">\[
+<li>给定一个数列 <span class="math inline">\(\{a_n\}\)</span>，它的指数生成函数定义为： <span class="math display">\[
 A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
-\]</span></p>
-<p>这里, <span class="math inline">\(t\)</span> 是一个形式变量. 即指数生成函数作为映射: {数列} <span class="math inline">\(\to\)</span> {形式幂级数}, 给出了数列和形式幂级数之间的一一对应.- 上述对应将形式幂级数之间的乘法映射为数列之间的运算, 即如果</p>
-<p><span class="math display">\[
-A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{  \infty} b_n \frac{t^n}{n!}\]</span><br>
-那么它们的乘积 <span class="math display">\[C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
-\]</span></p>
-<p>其中, <span class="math inline">\(c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}\)</span>.我们将这个运算称为数列之间的<strong>卷积运算</strong>.</p></li>
+\]</span> 这里，<span class="math inline">\(t\)</span> 是一个形式变量。即指数生成函数作为映射：{数列} <span class="math inline">\(\to\)</span> {形式幂级数}，给出了数列和形式幂级数之间的一一对应。</li>
+<li>上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果 <span class="math display">\[
+A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{\infty} b_n \frac{t^n}{n!}
+\]</span> 那么它们的乘积 <span class="math display">\[
+C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
+\]</span> 其中，<span class="math inline">\(c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}\)</span>。我们将这个运算称为数列之间的<strong>卷积运算</strong>。</li>
 </ul></li>
-<li><p>Definition: The Bernoulli numbers <span class="math inline">\(B_n\)</span> are defined by the generating function</p>
-<p><span class="math display">\[
+</ul></li>
+<li>定义：伯努利数 <span class="math inline">\(B_n\)</span> 由以下生成函数定义 <span class="math display">\[
 \frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
-\]</span></p></li>
-<li><p>although it is difficult to compute <span class="math inline">\(S_k(n)\)</span> directly, we can compute its generating function firstly:</p>
-<p><span class="math display">\[
+\]</span></li>
+<li>虽然直接计算 <span class="math inline">\(S_k(n)\)</span> 很困难，但我们可以先计算它的生成函数： <span class="math display">\[
 \mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
-\]</span></p></li>
-</ul>
-<p>for the RHS, we can rewrite it as</p>
-<p><span class="math display">\[
+\]</span> 对于右边，我们可以将其改写为 <span class="math display">\[
 \mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
-\]</span></p>
-<p>for the first part of the RHS, we have the taylor expansion</p>
-<p><span class="math display">\[
+\]</span> 对于右边的第一部分，我们有泰勒展开 <span class="math display">\[
 \frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
-\]</span></p>
-<p>the coefficient of this generating function is just the integral term <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span>.</p>
-<p>for the second part of the RHS, by the definition of Bernoulli number, we have</p>
-<p><span class="math display">\[
+\]</span> 这个生成函数的系数正是积分项 <span class="math inline">\(\int_0^n x^k dx = \frac{n^{k+1}}{k+1}\)</span>。 对于右边的第二部分，根据伯努利数的定义，我们有 <span class="math display">\[
 \frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
-\]</span></p>
-<p>于是, 我们实际上有:</p>
+\]</span> 于是，我们实际上有：</li>
+</ul>
 <p><span class="math display">\[
 \underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
 \]</span></p>
-<p>即伯努利项衡量了离散求和项和积分项之间的偏差.</p>
-<p>我们将等式两边展开, 得到:</p>
+<p>即伯努利项衡量了离散求和项和积分项之间的偏差。 我们将等式两边展开，得到：</p>
 <p><span class="math display">\[
 \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
 \]</span></p>
-<p>比较等式两边的 <span class="math inline">\(t^k\)</span> 系数, 我们得到:</p>
+<p>比较等式两边的 <span class="math inline">\(t^k\)</span> 系数，我们得到：</p>
 <p><span class="math display">\[
 S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
 \]</span></p>
-<p>我们得到了我们想要的通项公式.</p>
+<p>我们得到了我们想要的通项公式。</p>
 <ul>
 <li><p>如果我们引入伯努利多项式的定义, 它对应于生成函数<span class="math inline">\(\frac{t}{e^t-1}\)</span>在平移算子下的平移<span class="math inline">\(\frac{e^{xt}t}{e^t-1}\)</span>, 即</p>
 <p><span class="math display">\[
@@ -796,7 +793,6 @@ B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \unde
 <ul>
 <li>定义：J-同态 <span class="math inline">\(J: \pi_n(SO) \to \Pi_n\)</span> 定义如下：给定 <span class="math inline">\(\alpha \in \pi_n(SO)\)</span>，即一个映射 <span class="math inline">\(\alpha: S^n \to SO\)</span>，我们可以用它来”扭转” <span class="math inline">\(S^n\)</span> 上的标准 framing，从而得到一个新的 framed <span class="math inline">\(n\)</span>-球面，它对应于 <span class="math inline">\(\Pi_n\)</span> 中的一个元素。</li>
 <li><span class="math inline">\(J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)\)</span> 是 J-同态的像。</li>
-<li>Adams 定理：<span class="math inline">\(|J_{4k-1}| = \text{denominator}\left(\frac{B_{2k}}{4k}\right)\)</span>，这是伯努利数与怪球联系的关键。</li>
 </ul></li>
 <li>正合列 <span class="math inline">\(0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\)</span>
 <ul>
@@ -807,9 +803,7 @@ B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \unde
 </ul></li>
 <li>我们还需要讨论映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span> 的满射性质, 即是否 <span class="math inline">\(\Pi_n\)</span> 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:
 <ul>
-<li>对于 <span class="math inline">\(n\not\equiv 2 \pmod{4}\)</span>, 每个 <span class="math inline">\(\Pi_n\)</span> 中的元素都可以被同伦球面实现, 即 <span class="math inline">\(S_n\to\Pi_n/J_n\)</span> 是满射, 于是我们有正合列: <span class="math display">\[
-0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0
-\]</span></li>
+<li>对于 <span class="math inline">\(n\not\equiv 2 \pmod{4}\)</span>, 每个 <span class="math inline">\(\Pi_n\)</span> 中的元素都可以被同伦球面实现, 即 <span class="math inline">\(S_n\to\Pi_n/J_n\)</span> 是满射, 于是我们有正合列: <span class="math display">\[0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0\]</span></li>
 <li>对于 <span class="math inline">\(n \equiv 2\pmod{4}\)</span>, (此时 <span class="math inline">\(S_n^{bp}=0\)</span>) 映射 <span class="math inline">\(S_n\to \Pi_n/J_n\)</span> 是否为满射由 Kervaire 不变量决定, 即我们有正合列 <span class="math display">\[0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2\]</span> 这里多数情况 <span class="math inline">\(\Phi_k=0\)</span>, <span class="math inline">\(\Phi_k\neq0\)</span> 当且仅当 <span class="math inline">\(k=1,2,4,8,16,32\)</span>, 对应的流形维数为 <span class="math inline">\(2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)\)</span>.</li>
 </ul></li>
 </ul>
@@ -821,36 +815,39 @@ B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \unde
 </ul>
 <p><span class="math display">\[
 |J_n| = \begin{cases}
-\text{denominator}\left(\frac{B_k}{4k}\right) &amp; \text{for } n = 4k-1, \\
+\text{denominator}\left(\frac{B_{2k}}{4k}\right) &amp; \text{for } n = 4k-1, \\
 2 &amp; \text{for } n \equiv 0, 1 \pmod{8}, \\
 1 &amp; \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
 \end{cases}
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(|S_n^{bp}|\)</span> 的计算 (Theorem 5):</p>
+<li><p><span class="math inline">\(|S_n^{bp}|\)</span> 的计算:</p>
 <p>对于 <span class="math inline">\(n \neq 4\)</span>，群 <span class="math inline">\(S_n^{bp}\)</span> 是有限循环群，且有显式的生成元。具体地：</p>
 <ul>
 <li>当 <span class="math inline">\(n\)</span> 为偶数时，<span class="math inline">\(S_n^{bp}\)</span> 是平凡群；</li>
 <li>当 <span class="math inline">\(n = 4k - 3\)</span> 时，<span class="math inline">\(S_n^{bp}\)</span> 是平凡群或 2 阶循环群；</li>
-<li>当 <span class="math inline">\(n = 4k - 1 &gt; 3\)</span> 时，<span class="math inline">\(S_n^{bp}\)</span> 是阶为 <span class="math inline">\(2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_k}{k}\right)\)</span> 的循环群。</li>
+<li>当 <span class="math inline">\(n = 4k - 1 &gt; 3\)</span> 时，<span class="math inline">\(S_n^{bp}\)</span> 是阶为 <span class="math inline">\(2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_{2k}}{k}\right)\)</span> 的循环群。</li>
 </ul></li>
 <li><p>例子: 计算 <span class="math inline">\(S_7\)</span></p></li>
 </ul>
-<p>让我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">\(S_7\)</span>)。 1. 检查维度：<span class="math inline">\(n=7 = 4(2)-1\)</span>，属于第一种情况（<span class="math inline">\(n \equiv 3 \pmod 4\)</span>），正合列分裂。</p>
-<pre><code>$$|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|$$</code></pre>
+<p>让我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">\(S_7\)</span>)。</p>
+<ol type="1">
+<li>检查维度：<span class="math inline">\(n=7 = 4(2)-1\)</span>，属于第一种情况（<span class="math inline">\(n \equiv 3 \pmod 4\)</span>），正合列分裂。</li>
+</ol>
+<p><span class="math display">\[|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|\]</span></p>
 <ol start="2" type="1">
 <li><p>计算 <span class="math inline">\(|S_7^{bp}|\)</span>：</p>
 <p>代入公式 <span class="math inline">\(k=2\)</span>：</p>
 <p><span class="math display">\[|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)\]</span></p>
 <ul>
 <li><p>第一部分：<span class="math inline">\(2^2 (2^3 - 1) = 4 \times 7 = 28\)</span></p></li>
-<li><p>第二部分：<span class="math inline">\(B_2 = 1/30\)</span>，所以 <span class="math inline">\(\frac{4(1/30)}{2} = \frac{1}{15}\)</span>。分子是 1。</p></li>
+<li><p>第二部分：<span class="math inline">\(B_4 = -1/30\)</span>，所以 <span class="math inline">\(\frac{4(1/30)}{2} = \frac{1}{15}\)</span>。分子是 1。</p></li>
 <li><p>结果：<span class="math inline">\(|S_7^{bp}| = 28 \times 1 = 28\)</span>。</p></li>
 </ul></li>
 <li><p><strong>计算 <span class="math inline">\(|\Pi_7 / J_7|\)</span></strong>：</p>
 <ul>
 <li><p>查阅同伦群表，<span class="math inline">\(\Pi_7 \cong \mathbb{Z}_{240}\)</span>。</p></li>
-<li><p><span class="math inline">\(J_7\)</span> 的阶数由 <span class="math inline">\(\text{denominator}(B_2/4)\)</span> 决定… （实际上对于 <span class="math inline">\(n=4k-1\)</span>，<span class="math inline">\(\Pi_n = J_n\)</span> 是常见的，或者说 <span class="math inline">\(\Pi_n/J_n\)</span> 通常较小）。</p></li>
+<li><p><span class="math inline">\(J_7\)</span> 的阶数由 <span class="math inline">\(\text{denominator}(B_k/4k)\)</span> 决定（其中 <span class="math inline">\(n=4k-1\)</span>，即 <span class="math inline">\(k=2\)</span>）。<span class="math inline">\(B_2 = \frac{1}{30}\)</span>，所以 <span class="math inline">\(\frac{B_2}{8} = \frac{1}{240}\)</span>，分母是 240，因此 <span class="math inline">\(|J_7| = 240\)</span>。由于 <span class="math inline">\(\Pi_7 \cong \mathbb{Z}_{240}\)</span>，故 <span class="math inline">\(\Pi_7 = J_7\)</span>，即 <span class="math inline">\(\Pi_7/J_7\)</span> 是平凡群。</p></li>
 <li><p>可以看到对于 <span class="math inline">\(n=7\)</span>，<span class="math inline">\(|S_7|\)</span> 对应的值就是 <span class="math inline">\(b_2 = 28\)</span>。这意味着对于 <span class="math inline">\(n=7\)</span>，<span class="math inline">\(\Pi_7/J_7\)</span> 是平凡的（或者说 <span class="math inline">\(\Pi_7 = J_7\)</span>）。</p></li>
 </ul></li>
 <li><p><strong>最终结果</strong>：<span class="math inline">\(|S_7| = 28 \times 1 = 28\)</span>。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。</p></li>
@@ -1278,7 +1275,7 @@ B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \unde
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Chen · Mathematics &amp; Topology</p>
+<p>© 2025 Chen · 数学与拓扑</p>
 </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">

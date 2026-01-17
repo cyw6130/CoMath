@@ -91,5 +91,14 @@
   },
   "translations/milnor.qmd": {
     "milnor.html": "6b941a86"
+  },
+  "notes/demo.qmd": {
+    "demo.html": "81c481aa"
+  },
+  "dream_note.md": {
+    "dream_note.html": "6b7378ec"
+  },
+  "ideas_demo/demo.qmd": {
+    "demo.html": "e849d070"
   }
 }

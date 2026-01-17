@@ -2,6 +2,7 @@
 title: "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
 author: "Cyw"
 date: "2026.1.2"
+categories: [High-Dimensional Manifolds, Surgery Theory, Algebraic Topology]
 format:
   html:
     toc: true
@@ -22,7 +23,6 @@ format:
         \usepackage{float}
         \usepackage{unicode-math}
         \floatplacement{figure}{H}
-tags: [smale, h-cobordism, manifold]
 ---
 
 ::: {.callout-note}

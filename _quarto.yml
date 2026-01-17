@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "Chen's Topology Notes"
-  description: "Personal academic website exploring the beautiful world of topology."
+  title: "Chen 的拓扑笔记"
+  description: "用直觉感受数学,用严谨证明想法"
   
   # 顶部导航栏
   navbar:
@@ -12,13 +12,13 @@ website:
     right:
       - href: index.qmd
         text: Home
-      # - href: research.qmd
+      # - href: pages/research.qmd
       #   text: Research
-      - href: notes.qmd
+      - href: pages/notes.qmd
         text: Notes
-      - href: translations.qmd
+      - href: pages/translations.qmd
         text: Translations
-      - href: gallery.qmd
+      - href: pages/gallery.qmd
         text: Gallery
       - icon: github
         href: https://github.com/cyw6130
@@ -28,7 +28,7 @@ website:
   # 页脚
   page-footer:
     background: dark
-    left: "© 2025 Chen · Mathematics & Topology"
+    left: "© 2025 Chen · 数学与拓扑"
     center:
       - icon: github
         href: https://github.com/cyw6130
@@ -44,7 +44,7 @@ website:
     contents:
       - section: "Notes"
         contents:
-          - href: notes.qmd
+          - href: pages/notes.qmd
             text: "Overview"
           - section: "Quantum Invariants"
             contents:

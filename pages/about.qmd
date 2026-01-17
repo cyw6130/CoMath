@@ -1,0 +1,58 @@
+---
+title: "关于本站"
+subtitle: "数字花园 · 拓扑笔记"
+toc: false
+---
+
+## 关于本站
+
+这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。
+
+::: {.callout-note appearance="minimal" icon=false}
+### 🌱 vibe mathing 理念
+
+我的学习方法是 **vibe mathing**——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。
+
+- **vibe**: 直觉、图像、"感觉应该是这样"
+- **rigor**: 证明、定义、"这就是为什么它成立"
+
+两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。
+
+笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。
+:::
+
+---
+
+## the stack
+
+本站使用以下技术构建：
+
+| 工具 | 用途 |
+|:-----|:-----|
+| [Quarto](https://quarto.org) | 文档生成系统 |
+| LaTeX / KaTeX | 数学公式渲染 |
+| GitHub Pages | 静态网站托管 |
+| SCSS | 自定义样式 |
+
+---
+
+## 联系方式
+
+欢迎交流拓扑、分享想法:
+
+- 📧 **Email**: [your_email@edu.com](mailto:your_email@edu.com)
+- 🐙 **GitHub**: [@cyw6130](https://github.com/cyw6130)
+
+---
+
+## 致谢
+
+感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。
+
+感谢开源社区让知识分享变得如此简单。
+
+---
+
+::: {.callout-tip appearance="minimal"}
+**许可协议**: 除特别注明外,本站内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可。
+:::

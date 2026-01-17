@@ -1,0 +1,166 @@
+title: "数学笔记：紧致性 (Compactness)" format: html: theme: cosmo toc: true page-layout: full  # 关键：允许全宽布局 reference-location: margin # 关键：让注释放到侧边 citation-location: margin css: styles.css    # 引入自定义样式 include-after-body: interaction.js # 引入交互逻辑
+
+<!-- ========================================== -->
+
+<!-- TYPE 1: 全景通识 (通过 HTML Div 包装)       -->
+
+<!-- ========================================== -->
+
+::: {.panorama-section}
+
+紧致性 {.display-3}
+
+分析学的核心：如何捕捉无限空间中的“有限”灵魂？
+
+在初等微积分中，我们依赖闭区间 $[a, b]$ 上的极值定理。但在抽象空间中，这种美好的性质往往失效。我们需要一个能够保证“性质良好”的终极概念——不是具体的距离，而是对于 [开覆盖]{.deep-link data-target="def-compactness"} 的控制能力。
+
+::: {.callout-note appearance="minimal" .intuition-box}
+
+💡 直观隐喻：无穷的守门人
+
+想象你要守卫一个充满宝藏的房间。如果这个房间是紧致的，那么无论你手头有多少个细碎的微型摄像头，哪怕你有无穷多个，你总能从中挑出有限个就能把整个房间无死角覆盖。
+:::
+
+<div class="action-area">
+<button id="unlock-btn" class="btn btn-primary btn-lg">进入深度讲义 (Type 2)</button>
+</div>
+
+:::
+
+<!-- ========================================== -->
+
+<!-- TYPE 2: 精华讲义 (Quarto 原生写法)          -->
+
+<!-- ========================================== -->
+
+::: {#type2-content .locked-content}
+
+核心内容拆解
+
+01 拓扑定义：开覆盖视角
+
+在一般的度量空间中，“有界闭集”并不足以保证良好的性质。例如，在无限维 Hilbert 空间中，闭单位球是有界闭集，但它不紧致。
+
+我们需要一个不依赖距离度量的纯拓扑定义。
+
+::: {.definition #def-compactness}
+定义 1.1 (Compactness)
+
+拓扑空间 $X$ 的子集 $K$ 是紧致的，当且仅当 $K$ 的任意开覆盖 $\{U_\alpha\}$ 都存在有限子覆盖。
+
+$$\forall \{U_\alpha\}, K \subset \cup U_\alpha \implies \exists \text{ finite } \alpha_i, K \subset \cup_{i=1}^n U_{\alpha_i}$$
+
+
+:::
+
+::: {.column-margin}
+💡 为什么叫“紧”？
+
+"Compact" 意为致密。序列紧致性很好地解释了这个词：点在集合里跑不掉（有界），而且跑着跑着必须挤在一起（有收敛子列）。
+:::
+
+02 典型例子
+
+✅ 闭区间 $[0, 1]$：最经典的紧致集。
+
+❌ 开区间 $(0, 1)$：失效原因是边界缺失。
+
+::: {.column-margin}
+构造反例的技巧
+要证明不紧致，就要找到那个“怎么也盖不住”的漏洞（比如 0 点）。
+:::
+
+03 判定定理：Heine-Borel
+
+::: {.theorem}
+Theorem (Heine-Borel)
+
+子集 $K \subset \mathbb{R}^n$ 是紧致的 $\iff$ $K$ 是有界闭集。
+:::
+
+::: {.callout-note collapse="true"}
+
+Proof Sketch: 二分法捕获奇点 (点击展开)
+
+我们重点证明难的一边：有界闭区间 $[a,b] \Rightarrow$ 紧致。
+
+假设失败：假设存在一个开覆盖 $\mathcal{U}$ 无有限子覆盖。
+
+二分切割：把 $[a, b]$ 从中点切开，至少有一半也是“坏的”。
+
+逼近奇点：无限进行，由闭区间套定理，坏区间收缩到点 $\xi$。
+
+最终击破：$\xi$ 被某个开集 $U \in \mathcal{U}$ 包含，这一个开集就盖住了足够小的坏区间。矛盾。
+:::
+
+:::
+
+
+### 2. 配套文件 (CSS & JS)
+
+为了让效果生效，你需要两个小文件放在同一目录下。
+
+**文件 `styles.css` (实现视觉效果)**：
+```css
+/* 让 Type 1 充满屏幕 */
+.panorama-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: radial-gradient(#3b82f6 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-color: #f0f9ff;
+    padding: 2rem;
+    margin: -2rem -2rem 2rem -2rem; /* 抵消 Quarto 默认 padding */
+}
+
+/* 初始隐藏 Type 2 */
+.locked-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.locked-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* 侧边注样式微调 */
+.column-margin {
+    font-size: 0.85em;
+    color: #666;
+    border-left: 2px solid #ddd;
+    padding-left: 1em;
+}
+
+
+文件 interaction.js (实现交互逻辑)：
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btn = document.getElementById("unlock-btn");
+  const type2 = document.getElementById("type2-content");
+  
+  // 解锁功能
+  btn.addEventListener("click", function() {
+    type2.classList.add("visible");
+    type2.scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Deep Link 功能
+  const links = document.querySelectorAll(".deep-link");
+  links.forEach(link => {
+    link.addEventListener("click", function() {
+      type2.classList.add("visible");
+      const targetId = this.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+      if(target) target.scrollIntoView({ behavior: "smooth" });
+    });
+    link.style.cursor = "pointer";
+    link.style.color = "#3b82f6";
+    link.style.borderBottom = "1px dashed #3b82f6";
+  });
+});
+</script>

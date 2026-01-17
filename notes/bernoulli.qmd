@@ -1,5 +1,7 @@
 ---
-title: "Bernoulli Number, Zeta Function and Exotic Spheres"
+title: "伯努利数、Zeta 函数与怪球"
+date: "2026-01-09"
+categories: [Number Theory, Exotic Spheres, Differential Topology]
 output:
   pdf_document:
     latex_engine: xelatex
@@ -7,97 +9,78 @@ CJKmainfont: "PingFang SC"
 ---
 # 1 伯努利数的定义
 
-- motivation: try to compute $S_k(n) = \sum_{m=0}^{n-1} m^k$ 的通项公式
-
-  - when k=0, 1, 2, we already know that
+- 动机：尝试计算 $S_k(n) = \sum_{m=0}^{n-1} m^k$ 的通项公式
+  - 当 k=0, 1, 2 时，我们已经知道
     - $S_0(n) = n$
     - $S_1(n) = \frac{n(n-1)}{2}$
     - $S_2(n) = \frac{n(n-1)(2n-1)}{6}$
-  - but for general k, how to compute $S_k(n)$?
-- Another question: what is the relation between this 离散 sum and the 积分 $\int_0^n x^k dx$?
-
-  - we know that $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$
-  - can we express $S_k(n)$ in terms of $\int_0^n x^k dx$ plus some correction terms?
-- To answer these questions, we introduce the Bernoulli numbers.
-- Defintion: generating function
-
-  - 定义: 形式幂级数环$\mathbb{C}[[x]]$. 它是对多项式环的推广, 但是这里, 我们允许无穷多项式项存在, 同时我们不要求这个无穷求和是收敛的. 形式幂级数环中的元素被称为形式幂级数, 它们的形式为:
-
+  - 但对于一般的 k，如何计算 $S_k(n)$？
+- 另一个问题：这个离散求和与积分 $\int_0^n x^k dx$ 之间有什么关系？
+  - 我们知道 $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$
+  - 我们能否将 $S_k(n)$ 表示为 $\int_0^n x^k dx$ 加上一些修正项？
+- 为了回答这些问题，我们引入伯努利数。
+- 定义：生成函数
+  - 定义：形式幂级数环 $\mathbb{C}[[x]]$。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为：
     $$
     f(x) = \sum_{n=0}^{\infty} a_n x^n
     $$
-
-    其中, $a_n$ 是系数, 可以是任意复数. 形式幂级数的加法和乘法与多项式类似, 但是我们不关心收敛性问题.
-  - 定义: 指数生成函数
-
-    - 给定一个数列 $\{a_n\}$, 它的指数生成函数定义为:
-
-    $$
-    A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
-    $$
-
-    这里, $t$ 是一个形式变量. 即指数生成函数作为映射: {数列} $\to$ {形式幂级数},
-    给出了数列和形式幂级数之间的一一对应.- 上述对应将形式幂级数之间的乘法映射为数列之间的运算, 即如果
-
-    $$
-    A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{  \infty} b_n \frac{t^n}{n!}$$  
-    那么它们的乘积
-    $$C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
-    $$
-
-    其中, $c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}$.我们将这个运算称为数列之间的**卷积运算**.
-- Definition: The Bernoulli numbers $B_n$ are defined by the generating function
-
+    其中，$a_n$ 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。
+  - 定义：指数生成函数
+    - 给定一个数列 $\{a_n\}$，它的指数生成函数定义为：
+      $$
+      A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
+      $$
+      这里，$t$ 是一个形式变量。即指数生成函数作为映射：{数列} $\to$ {形式幂级数}，给出了数列和形式幂级数之间的一一对应。
+    - 上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果
+      $$
+      A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{\infty} b_n \frac{t^n}{n!}
+      $$
+      那么它们的乘积
+      $$
+      C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
+      $$
+      其中，$c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}$。我们将这个运算称为数列之间的**卷积运算**。
+- 定义：伯努利数 $B_n$ 由以下生成函数定义
   $$
   \frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
   $$
-- although it is difficult to compute $S_k(n)$ directly, we can compute its generating function firstly:
-
+- 虽然直接计算 $S_k(n)$ 很困难，但我们可以先计算它的生成函数：
   $$
   \mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
   $$
-
-for the RHS, we can rewrite it as
-
+对于右边，我们可以将其改写为
 $$
 \mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
 $$
-
-for the first part of the RHS, we have the taylor expansion
-
+对于右边的第一部分，我们有泰勒展开
 $$
 \frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
 $$
-
-the coefficient of this generating function is just the integral term $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$.
-
- for the second part of the RHS, by the definition of Bernoulli number, we have
-
+这个生成函数的系数正是积分项 $\int_0^n x^k dx = \frac{n^{k+1}}{k+1}$。
+对于右边的第二部分，根据伯努利数的定义，我们有
 $$
 \frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
 $$
-
-于是, 我们实际上有:
+于是，我们实际上有：
 
 $$
 \underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
 $$
 
-即伯努利项衡量了离散求和项和积分项之间的偏差.
-
-我们将等式两边展开, 得到:
+即伯努利项衡量了离散求和项和积分项之间的偏差。
+我们将等式两边展开，得到：
 
 $$
 \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
 $$
 
-比较等式两边的 $t^k$ 系数, 我们得到:
+比较等式两边的 $t^k$ 系数，我们得到：
 
 $$
 S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
 $$
 
-我们得到了我们想要的通项公式.
+我们得到了我们想要的通项公式。
 
 - 如果我们引入伯努利多项式的定义, 它对应于生成函数$\frac{t}{e^t-1}$在平移算子下的平移$\frac{e^{xt}t}{e^t-1}$, 即
 
@@ -363,7 +346,6 @@ $$
 - J-同态 (J-homomorphism)
 	- 定义：J-同态 $J: \pi_n(SO) \to \Pi_n$ 定义如下：给定 $\alpha \in \pi_n(SO)$，即一个映射 $\alpha: S^n \to SO$，我们可以用它来"扭转" $S^n$ 上的标准 framing，从而得到一个新的 framed $n$-球面，它对应于 $\Pi_n$ 中的一个元素。
 	- $J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)$ 是 J-同态的像。
-	- Adams 定理：$|J_{4k-1}| = \text{denominator}\left(\frac{B_{2k}}{4k}\right)$，这是伯努利数与怪球联系的关键。
 
 - 正合列 $0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n$
 	- 定义: $S_n\to \Pi_n$, 即把 $S_n$ 中的同伦球面映射成它所在的 framed cobordism class. 
@@ -372,9 +354,7 @@ $$
 	- 至此, 我们得到了正合列 $0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n$
 
 - 我们还需要讨论映射 $S_n\to \Pi_n/J_n$ 的满射性质, 即是否 $\Pi_n$ 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果: 
-	- 对于 $n\not\equiv 2 \pmod{4}$, 每个 $\Pi_n$ 中的元素都可以被同伦球面实现, 即 $S_n\to\Pi_n/J_n$ 是满射, 于是我们有正合列: $$
-0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0
-$$
+	- 对于 $n\not\equiv 2 \pmod{4}$, 每个 $\Pi_n$ 中的元素都可以被同伦球面实现, 即 $S_n\to\Pi_n/J_n$ 是满射, 于是我们有正合列: $$0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0$$
 	- 对于 $n \equiv 2\pmod{4}$, (此时 $S_n^{bp}=0$) 映射 $S_n\to \Pi_n/J_n$ 是否为满射由 Kervaire 不变量决定, 即我们有正合列 $$0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2$$ 这里多数情况 $\Phi_k=0$, $\Phi_k\neq0$ 当且仅当 $k=1,2,4,8,16,32$, 对应的流形维数为 $2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)$.
 
 ## 5.3 计算: 怪球和伯努利数
@@ -383,25 +363,27 @@ $$
 
 $$
 |J_n| = \begin{cases}
-\text{denominator}\left(\frac{B_k}{4k}\right) & \text{for } n = 4k-1, \\
+\text{denominator}\left(\frac{B_{2k}}{4k}\right) & \text{for } n = 4k-1, \\
 2 & \text{for } n \equiv 0, 1 \pmod{8}, \\
 1 & \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
 \end{cases}
 $$
 
-- $|S_n^{bp}|$ 的计算 (Theorem 5):
+- $|S_n^{bp}|$ 的计算:
 
   对于 $n \neq 4$，群 $S_n^{bp}$ 是有限循环群，且有显式的生成元。具体地：
   - 当 $n$ 为偶数时，$S_n^{bp}$ 是平凡群；
   - 当 $n = 4k - 3$ 时，$S_n^{bp}$ 是平凡群或 2 阶循环群；
-  - 当 $n = 4k - 1 > 3$ 时，$S_n^{bp}$ 是阶为 $2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_k}{k}\right)$ 的循环群。
+  - 当 $n = 4k - 1 > 3$ 时，$S_n^{bp}$ 是阶为 $2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_{2k}}{k}\right)$ 的循环群。
 
 - 例子: 计算 $S_7$
 
 让我们用这个方法计算一下著名的 7 维怪球数量 ($S_7$)。
+
+
 1. 检查维度：$n=7 = 4(2)-1$，属于第一种情况（$n \equiv 3 \pmod 4$），正合列分裂。
-    
-    $$|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|$$
+
+$$|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|$$
     
 2. 计算 $|S_7^{bp}|$：
     
@@ -410,7 +392,7 @@ $$
     $$|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)$$
     - 第一部分：$2^2 (2^3 - 1) = 4 \times 7 = 28$
         
-    - 第二部分：$B_2 = 1/30$，所以 $\frac{4(1/30)}{2} = \frac{1}{15}$。分子是 1。
+    - 第二部分：$B_4 = -1/30$，所以 $\frac{4(1/30)}{2} = \frac{1}{15}$。分子是 1。
         
     - 结果：$|S_7^{bp}| = 28 \times 1 = 28$。
         
@@ -418,7 +400,7 @@ $$
     
     - 查阅同伦群表，$\Pi_7 \cong \mathbb{Z}_{240}$。
         
-    - $J_7$ 的阶数由 $\text{denominator}(B_2/4)$ 决定... （实际上对于 $n=4k-1$，$\Pi_n = J_n$ 是常见的，或者说 $\Pi_n/J_n$ 通常较小）。
+    - $J_7$ 的阶数由 $\text{denominator}(B_k/4k)$ 决定（其中 $n=4k-1$，即 $k=2$）。$B_2 = \frac{1}{30}$，所以 $\frac{B_2}{8} = \frac{1}{240}$，分母是 240，因此 $|J_7| = 240$。由于 $\Pi_7 \cong \mathbb{Z}_{240}$，故 $\Pi_7 = J_7$，即 $\Pi_7/J_7$ 是平凡群。
         
     - 可以看到对于 $n=7$，$|S_7|$ 对应的值就是 $b_2 = 28$。这意味着对于 $n=7$，$\Pi_7/J_7$ 是平凡的（或者说 $\Pi_7 = J_7$）。
         

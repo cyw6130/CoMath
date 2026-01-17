@@ -2,6 +2,7 @@
 title: "An introduction to khovanov homology and s-invariant"
 author: "Cyw"
 date: "2025-12-18"
+categories: [Quantum Invariants, Knot Theory, Categorification, 4-Manifolds]
 format:
   html:
     toc: true
@@ -20,7 +21,6 @@ format:
       text: |
         \usepackage{float}
         \floatplacement{figure}{H}
-tags: [homology, knot]
 ---
 
 # Khovanov homology 的定义

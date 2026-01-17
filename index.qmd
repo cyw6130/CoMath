@@ -1,11 +1,10 @@
 ---
 title: "Chen"
-subtitle: "Mathematics · Topology · Quantum Invariants"
+subtitle: "数学 · 拓扑 · 量子不变量"
 about:
-  template: trestles
-  image: profile.jpg
-  image-shape: rounded
-  image-width: 12em
+  template: jolla
+  image: 头像.png
+  image-shape: round
   links:
     - icon: github
       text: GitHub
@@ -20,48 +19,53 @@ page-layout: full
 toc: false
 ---
 
-::: {.column-page}
+## 关于我
 
-## About Me
+我是一名数学研究生,热衷于探索代数、几何与拓扑之间的优美结构。
 
-I am a graduate student in Mathematics at **Bilibili University**, passionate about exploring the elegant structures that connect algebra, geometry, and topology.
+我的研究方向是**低维拓扑**与**代数拓扑**的交叉领域,探索代数结构如何产生纽结与流形的强大不变量。
 
-My research lies at the intersection of **Low-Dimensional Topology** and **Algebraic Topology**, where I investigate how algebraic structures give rise to powerful invariants of knots and manifolds.
-
-::: {.callout-note appearance="minimal" icon=false}
-
-### Interests
-
-:::: {.columns}
-
-::: {.column width="50%"}
-- **Khovanov Homology**  
-  khovanov homology 是琼斯多项式的范畴化, 从 khovanov homology的基本定义出发, 发展出了丰富的内容.
-  - 首先, 它是纽结不变量, 可以区分纽结.
-  - 通过形变的 khovanov homology (Lee homology), 我们可以定义s-invariant, 它可以用来限制纽结的亏格, 从而可以证明 $\mathbb{R}^4$上[存在怪异的光滑结构](notes/Khovanov_homology.qmd).
-  - 从 cube 出发, 我们可以定义一个广义空间(谱:spectrum), 它是纽结不变量(可以用来区分 khovanov homology 无法区分的纽结), 这套理论将纽结和稳定同伦论联系起来.
-  - 近些年, skein lasagna module 定义了四维流形的光滑不变量, Qiuyu Ren 等人首次利用这个不变量区分了光滑四维流形的怪异对(两个同胚却不微分同胚的流形).
-  
-:::
-
-::: {.column width="50%"}
-- **H-Cobordism**  
-  这是解决广义庞加莱猜想的关键工具, 也是研究高维流形上面光滑结构的重要起点. h-cobordism 理论给出了研究流形的一般办法, 我们可以在 3 维, 4 维上看到这种方法的实践. 
-  
-- **Non-Semisimple TQFTs**  
-  Modified traces in non-unimodular categories
-:::
-
-::: {.column width="50%"}
-- **4-manifold and Gauge Theory**
-:::
-
-::::
-:::
+我的学习理念是 **vibe mathing**——先用直觉感受数学的本质,再用严谨的证明验证想法。这是证明之前的"啊哈"时刻,是代数之前的几何图像,是验证之前就感觉"这一定是对的"的那种确信。
 
 ---
 
-## Recent Updates
+## 研究兴趣
+
+:::: {.columns style="text-align: left; max-width: 1100px; margin: 0 auto;"}
+
+::: {.column width="48%"}
+**Khovanov Homology**
+
+khovanov homology 是琼斯多项式的范畴化, 从 khovanov homology的基本定义出发, 发展出了丰富的内容.
+
+- 首先, 它是纽结不变量, 可以区分纽结.
+- 通过形变的 khovanov homology (Lee homology), 我们可以定义s-invariant, 它可以用来限制纽结的亏格, 从而可以证明 $\mathbb{R}^4$上[存在怪异的光滑结构](notes/Khovanov_homology.qmd).
+- 从 cube 出发, 我们可以定义一个广义空间(谱:spectrum), 它是纽结不变量(可以用来区分 khovanov homology 无法区分的纽结), 这套理论将纽结和稳定同伦论联系起来.
+- 近些年, skein lasagna module 定义了四维流形的光滑不变量, Qiuyu Ren 等人首次利用这个不变量区分了光滑四维流形的怪异对(两个同胚却不微分同胚的流形).
+
+**Non-Semisimple TQFTs**
+
+Modified traces in non-unimodular categories
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+**H-Cobordism**
+
+这是解决广义庞加莱猜想的关键工具, 也是研究高维流形上面光滑结构的重要起点. h-cobordism 理论给出了研究流形的一般办法, 我们可以在 3 维, 4 维上看到这种方法的实践.
+
+**4-manifold and Gauge Theory**
+
+研究四维流形的微分结构与规范场论的深刻联系.
+:::
+
+::::
+
+---
+
+## 最近动态
 
 ::: {.timeline}
 
@@ -77,9 +81,9 @@ My research lies at the intersection of **Low-Dimensional Topology** and **Algeb
 
 ---
 
-## Selected Notes
+## 精选笔记
 
-探索拓扑学的美丽世界，从量子不变量到流形结构：
+从量子不变量到流形结构,探索拓扑学的美丽世界:
 
 ::: {.grid}
 
