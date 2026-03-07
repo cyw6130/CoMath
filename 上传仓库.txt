@@ -1,0 +1,1 @@
+git add . && git commit -m "Reorganize website structure and update categories" && git push

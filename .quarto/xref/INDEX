@@ -100,5 +100,32 @@
   },
   "ideas_demo/demo.qmd": {
     "demo.html": "e849d070"
+  },
+  "translations/ai_for_knot.qmd": {
+    "ai_for_knot.html": "97baa8a6"
+  },
+  "ai_for_knot.md": {
+    "ai_for_knot.html": "933da143"
+  },
+  "pages/research.qmd": {
+    "research.html": "b68aad12"
+  },
+  "pages/notes.qmd": {
+    "notes.html": "7a492f13"
+  },
+  "pages/gallery.qmd": {
+    "gallery.html": "6a3ecce6"
+  },
+  "pages/about.qmd": {
+    "about.html": "fcf4dd9a"
+  },
+  "pages/translations.qmd": {
+    "translations.html": "b440aee4"
+  },
+  "test_listing.qmd": {
+    "test_listing.html": "89c0ba1d"
+  },
+  "notes/microgpt-math-impl-compare.qmd": {
+    "microgpt-math-impl-compare.html": "e5d0dd45"
   }
 }

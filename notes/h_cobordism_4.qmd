@@ -10,6 +10,9 @@ format:
     number-sections: true
     theme: cosmo
     html-math-method: mathjax
+    filters:
+      - ../filters/lazy-images.lua
+      - ../filters/use-webp-html.lua
   pdf:
     toc: true
     number-sections: true

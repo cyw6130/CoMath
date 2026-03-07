@@ -72,9 +72,36 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -289,15 +316,15 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link" href="./pages/notes.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./translations.html"> 
+    <a class="nav-link" href="./pages/translations.html"> 
 <span class="menu-text">Translations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./gallery.html"> 
+    <a class="nav-link" href="./pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item compact">
@@ -353,7 +380,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notes.html" class="sidebar-item-text sidebar-link">
+  <a href="./pages/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -428,7 +455,7 @@ window.Quarto = {
 <h2 data-anchor-id="关于我">关于我</h2>
 <p>我是一名数学研究生,热衷于探索代数、几何与拓扑之间的优美结构。</p>
 <p>我的研究方向是<strong>低维拓扑</strong>与<strong>代数拓扑</strong>的交叉领域,探索代数结构如何产生纽结与流形的强大不变量。</p>
-<p>我的学习理念是 <strong>vibe mathing</strong>——先用直觉感受数学的本质,再用严谨的证明验证想法。这是证明之前的”啊哈”时刻,是代数之前的几何图像,是验证之前就感觉”这一定是对的”的那种确信。</p>
+<!-- 我的学习理念是 **vibe mathing**——先用直觉感受数学的本质,再用严谨的证明验证想法。这是证明之前的"啊哈"时刻,是代数之前的几何图像,是验证之前就感觉"这一定是对的"的那种确信。 -->
 <hr>
 </section>
 <section id="研究兴趣" class="level2">
@@ -439,7 +466,7 @@ window.Quarto = {
 <p>khovanov homology 是琼斯多项式的范畴化, 从 khovanov homology的基本定义出发, 发展出了丰富的内容.</p>
 <ul>
 <li>首先, 它是纽结不变量, 可以区分纽结.</li>
-<li>通过形变的 khovanov homology (Lee homology), 我们可以定义s-invariant, 它可以用来限制纽结的亏格, 从而可以证明 <span class="math inline">\(\mathbb{R}^4\)</span>上<a href="./notes/Khovanov_homology.html">存在怪异的光滑结构</a>.</li>
+<li>通过形变的 khovanov homology (Lee homology), 我们可以定义s-invariant, 它可以用来限制纽结的亏格, 从而可以证明 <span class="math inline">\mathbb{R}^4</span>上<a href="./notes/Khovanov_homology.html">存在怪异的光滑结构</a>.</li>
 <li>从 cube 出发, 我们可以定义一个广义空间(谱:spectrum), 它是纽结不变量(可以用来区分 khovanov homology 无法区分的纽结), 这套理论将纽结和稳定同伦论联系起来.</li>
 <li>近些年, skein lasagna module 定义了四维流形的光滑不变量, Qiuyu Ren 等人首次利用这个不变量区分了光滑四维流形的怪异对(两个同胚却不微分同胚的流形).</li>
 </ul>

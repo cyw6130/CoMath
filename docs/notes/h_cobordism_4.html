@@ -71,6 +71,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -126,15 +139,15 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes.html" aria-current="page"> 
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../translations.html"> 
+    <a class="nav-link" href="../pages/translations.html"> 
 <span class="menu-text">Translations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../gallery.html"> 
+    <a class="nav-link" href="../pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item compact">
@@ -150,7 +163,6 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -159,7 +171,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +202,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -289,7 +301,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</h1>
   <div class="quarto-categories">
@@ -391,7 +403,7 @@ Note
 <div id="fig-exotic-spheres" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-exotic-spheres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/2-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/2-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exotic-spheres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: 怪异球面个数表
@@ -425,7 +437,7 @@ Warning
 <div id="fig-cobordism-not-h" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cobordism-not-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/3-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/3-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cobordism-not-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: 配边但不是 h-配边的例子
@@ -438,7 +450,7 @@ Figure&nbsp;2: 配边但不是 h-配边的例子
 <div id="fig-trivial-cobordism" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-trivial-cobordism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/4-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/4-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trivial-cobordism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: 平凡配边
@@ -460,7 +472,7 @@ Figure&nbsp;3: 平凡配边
 <div id="fig-remove-disks" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-remove-disks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/5-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/5-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-remove-disks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: 挖去两个 disk
@@ -481,7 +493,7 @@ Figure&nbsp;4: 挖去两个 disk
 <div id="fig-homeomorphism-construction" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-homeomorphism-construction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/1-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/1-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homeomorphism-construction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: 同胚的构造
@@ -495,7 +507,7 @@ Figure&nbsp;5: 同胚的构造
 <div id="fig-remove-disk-diagram" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-remove-disk-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/7-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/7-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-remove-disk-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: 挖去 disk 的示意图
@@ -533,7 +545,7 @@ Tip
 <div id="fig-homology-whitehead" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-homology-whitehead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/9-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/9-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homology-whitehead-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Homology Whitehead 定理
@@ -584,7 +596,7 @@ Important
 <div id="fig-isotopy-def" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-isotopy-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/10-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/10-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-def-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Isotopy 定义
@@ -598,7 +610,7 @@ Figure&nbsp;8: Isotopy 定义
 <div id="fig-continuous-isotopy" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-continuous-isotopy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/11-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/11-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-continuous-isotopy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: 连续同痕不能区分纽结
@@ -620,7 +632,7 @@ Figure&nbsp;9: 连续同痕不能区分纽结
 <div id="fig-isotopy-extension" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-isotopy-extension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/12-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/12-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-extension-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: 同痕扩张定理
@@ -636,7 +648,7 @@ Figure&nbsp;10: 同痕扩张定理
 <div id="fig-isotopy-lemma-proof" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-isotopy-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/13-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/13-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-isotopy-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: 同痕引理的证明
@@ -685,7 +697,7 @@ Figure&nbsp;11: 同痕引理的证明
 <div id="fig-attaching-complementary" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-attaching-complementary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/14-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/14-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-attaching-complementary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Attaching 和 Complementary 部分
@@ -730,7 +742,7 @@ Figure&nbsp;12: Attaching 和 Complementary 部分
 <div id="fig-order-lemma-proof" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-order-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/17-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/17-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-order-lemma-proof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: 顺序引理的证明
@@ -767,7 +779,7 @@ Figure&nbsp;13: 顺序引理的证明
 <div id="fig-standard-decomp-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-standard-decomp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/24-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/24-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-decomp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14: 标准分解示意图 1
@@ -777,7 +789,7 @@ Figure&nbsp;14: 标准分解示意图 1
 <div id="fig-standard-decomp-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-standard-decomp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/26-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/26-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-decomp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: 标准分解示意图 2
@@ -794,7 +806,7 @@ Figure&nbsp;15: 标准分解示意图 2
 <div id="fig-geometric-cancel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-geometric-cancel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/15-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/15-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometric-cancel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: 几何消解例 1
@@ -805,7 +817,7 @@ Figure&nbsp;16: 几何消解例 1
 <div id="fig-geometric-cancel-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-geometric-cancel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/16-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/16-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometric-cancel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: 几何消解例 2
@@ -836,7 +848,7 @@ Note
 <div id="fig-split-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-split-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/18-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/18-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: 分割示意图 1
@@ -846,7 +858,7 @@ Figure&nbsp;18: 分割示意图 1
 <div id="fig-split-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-split-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/19-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/19-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: 分割示意图 2
@@ -857,7 +869,7 @@ Figure&nbsp;19: 分割示意图 2
 <div id="fig-intersection" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-intersection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/21-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/21-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intersection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20: 交集示意图
@@ -868,7 +880,7 @@ Figure&nbsp;20: 交集示意图
 <div id="fig-topology-unchanged" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/22-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/22-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: 拓扑不变
@@ -891,7 +903,7 @@ Figure&nbsp;21: 拓扑不变
 <div id="fig-whitney-trick" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-whitney-trick-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/23-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/23-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-whitney-trick-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: Whitney trick
@@ -966,7 +978,7 @@ Note
 <div id="fig-handle-addition" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-handle-addition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/30-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/30-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-addition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Handle addition
@@ -992,7 +1004,7 @@ Note
 <div id="fig-handle-add-proof-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-handle-add-proof-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/27-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/27-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-add-proof-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: Handle addition 证明 1
@@ -1002,7 +1014,7 @@ Figure&nbsp;24: Handle addition 证明 1
 <div id="fig-handle-add-proof-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-handle-add-proof-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/28-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/28-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-add-proof-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;25: Handle addition 证明 2
@@ -1041,7 +1053,7 @@ Note
 <div id="fig-prop-2-42" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-prop-2-42-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/33-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/33-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop-2-42-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;26: Prop 2.42
@@ -1085,7 +1097,7 @@ Tip
 <div id="fig-matrix-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-matrix-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/32-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/32-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;27: 矩阵变换例 1
@@ -1095,7 +1107,7 @@ Figure&nbsp;27: 矩阵变换例 1
 <div id="fig-matrix-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-matrix-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/31-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/31-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;28: 矩阵变换例 2
@@ -1122,7 +1134,7 @@ Figure&nbsp;28: 矩阵变换例 2
 <div id="fig-lemma-2-45" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lemma-2-45-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/34-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/34-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lemma-2-45-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;29: Lemma 2.45
@@ -1225,7 +1237,7 @@ Figure&nbsp;29: Lemma 2.45
 <div id="fig-handle-trading" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-handle-trading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="pic_h_cobordism/37-Smale_s_work.png" class="img-fluid figure-img">
+<img src="pic_h_cobordism/37-Smale_s_work.png" class="img-fluid figure-img" loading="lazy" decoding="async">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-handle-trading-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;30: Handle trading 示意图

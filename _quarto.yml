@@ -42,6 +42,8 @@ website:
     search: true
     collapse-level: 1
     contents:
+      # - href: notes/Khovanov_homology.pdf
+      #   text: "Download PDF"
       - section: "Notes"
         contents:
           - href: pages/notes.qmd
@@ -56,6 +58,7 @@ website:
               - notes/bernoulli.qmd
 format:
   html:
+    html-math-method: katex
     theme:
       light: flatly
       dark: darkly
@@ -66,5 +69,8 @@ format:
     smooth-scroll: true
     mainfont: "Source Serif Pro"
     monofont: "JetBrains Mono"
-
-
+    include-in-header:
+      - includes/lazy-image-loading.html
+    filters:
+      - filters/lazy-images.lua
+      - filters/use-webp-html.lua

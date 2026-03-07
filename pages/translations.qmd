@@ -1,17 +1,14 @@
 ---
 title: "Translations"
 subtitle: "数学文献翻译"
-listing:
-  contents: translations
-  type: grid
-  sort: "date desc"
-  categories: true
-  fields: [title, description, categories, date]
-  grid-columns: 2
-  page-size: 10
 toc: false
 ---
 
 ::: {.callout-note appearance="minimal" icon=false}
 这里收集了一些优秀的综述性数学文献的中文翻译版本。
 :::
+
+## 翻译列表
+
+- [四十六年后的微分拓扑学](../translations/milnor.qmd) - Milnor 经典综述
+- [人工智能在纽结理论中的应用](../translations/ai_for_knot.qmd) - 神经网络在纽结理论中的应用综述

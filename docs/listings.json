@@ -1,13 +1,8 @@
 [
   {
-    "listing": "/translations.html",
+    "listing": "/pages/notes.html",
     "items": [
-      "/translations/milnor.html"
-    ]
-  },
-  {
-    "listing": "/notes.html",
-    "items": [
+      "/notes/microgpt-math-impl-compare.html",
       "/notes/bernoulli.html",
       "/notes/h_cobordism_4.html",
       "/notes/Khovanov_homology.html",

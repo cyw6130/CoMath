@@ -76,6 +76,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
 <style>
 .callout-tip {
   border-left: 4px solid #198754 !important;
@@ -91,8 +104,22 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -503,8 +530,8 @@ window.Quarto = {
 <section id="主要进展" class="level2">
 <h2 class="anchored" data-anchor-id="主要进展">主要进展</h2>
 <p>首个重大突破由柯比（Kirby）与西本曼（Siebenmann）[1969, 1969a, 1977] 取得，他们为”将给定拓扑流形三角剖分为分片线性流形（PL流形）“这一问题建立了障碍理论。</p>
-<p>设 <span class="math inline">\(B_{\mathrm{Top}}\)</span> 与 <span class="math inline">\(B_{\mathrm{PL}}\)</span> 为讲座中所述的稳定分类空间，他们证明：当 <span class="math inline">\(j=4\)</span> 时，相对同伦群 <span class="math inline">\(\pi_{j}(B_{\mathrm{Top}}, B_{\mathrm{PL}})\)</span> 是2阶循环群，而在其他情况下均为零群。</p>
-<p>对于 <span class="math inline">\(n\)</span> 维拓扑流形 <span class="math inline">\(M^n\)</span>，由此可推出存在一个障碍类 <span class="math inline">\(o \in H^4(M^n ; \mathbb{Z}/2)\)</span>，其决定了 <span class="math inline">\(M^n\)</span> 能否被三角剖分为PL流形。当维数 <span class="math inline">\(n \geq 5\)</span> 时，这是唯一的障碍。若存在这样的三角剖分，则在 <span class="math inline">\(H^3(M^n ; \mathbb{Z}/2)\)</span> 中存在另一个类似的障碍类，其决定了该三角剖分在”拓扑同痕于恒等映射的PL同构”意义下的唯一性。</p>
+<p>设 <span class="math inline">B_{\mathrm{Top}}</span> 与 <span class="math inline">B_{\mathrm{PL}}</span> 为讲座中所述的稳定分类空间，他们证明：当 <span class="math inline">j=4</span> 时，相对同伦群 <span class="math inline">\pi_{j}(B_{\mathrm{Top}}, B_{\mathrm{PL}})</span> 是2阶循环群，而在其他情况下均为零群。</p>
+<p>对于 <span class="math inline">n</span> 维拓扑流形 <span class="math inline">M^n</span>，由此可推出存在一个障碍类 <span class="math inline">o \in H^4(M^n ; \mathbb{Z}/2)</span>，其决定了 <span class="math inline">M^n</span> 能否被三角剖分为PL流形。当维数 <span class="math inline">n \geq 5</span> 时，这是唯一的障碍。若存在这样的三角剖分，则在 <span class="math inline">H^3(M^n ; \mathbb{Z}/2)</span> 中存在另一个类似的障碍类，其决定了该三角剖分在”拓扑同痕于恒等映射的PL同构”意义下的唯一性。</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -515,10 +542,10 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>若无边拓扑流形 <span class="math inline">\(M^n\)</span> 满足 <span class="math inline">\(H^3(M^n ; \mathbb{Z}/2)=H^4(M^n ; \mathbb{Z}/2)=0\)</span> 且 <span class="math inline">\(n&gt;5\)</span>，则 <span class="math inline">\(M^n\)</span> 存在唯一的PL流形结构（在PL同构意义下）。</p>
+<p>若无边拓扑流形 <span class="math inline">M^n</span> 满足 <span class="math inline">H^3(M^n ; \mathbb{Z}/2)=H^4(M^n ; \mathbb{Z}/2)=0</span> 且 <span class="math inline">n&gt;5</span>，则 <span class="math inline">M^n</span> 存在唯一的PL流形结构（在PL同构意义下）。</p>
 </div>
 </div>
-<p>（对于带边流形，需满足<span class="math inline">\(n&gt;5\)</span>。）莫伊泽（Moise）[1952] 更早便证明了所有维数<span class="math inline">\(n \leq 3\)</span>的流形对应的上述定理。然而，我们将看到维数4时的对应结论并不成立。</p>
+<p>（对于带边流形，需满足<span class="math inline">n&gt;5</span>。）莫伊泽（Moise）[1952] 更早便证明了所有维数<span class="math inline">n \leq 3</span>的流形对应的上述定理。然而，我们将看到维数4时的对应结论并不成立。</p>
 <p>此前，芒克雷斯（Munkres）[1960, 1964a, 1964b] 与赫希（Hirsch）[1963] 已为“从PL结构过渡到光滑结构”的问题建立了类似的障碍理论（另见[赫希-马祖尔（Hirsch-Mazur）, 1974]）。此外，塞尔夫（Cerf）通过复杂的几何论证填补了关键空白，证明了三维球面的保向微分同胚空间是连通的（参见1962/63年嘉当讨论班讲义及[塞尔夫, 1968]）。结合其他已知结果，这导出了如下定理：</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -530,14 +557,14 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>所有维数<span class="math inline">\(n \leq 7\)</span>的PL流形均存在相容的光滑结构；且当<span class="math inline">\(n&lt;7\)</span>时，该光滑结构在微分同胚意义下是唯一的。</p>
+<p>所有维数<span class="math inline">n \leq 7</span>的PL流形均存在相容的光滑结构；且当<span class="math inline">n&lt;7</span>时，该光滑结构在微分同胚意义下是唯一的。</p>
 </div>
 </div>
 <p>更多细节参见本文末尾的“补充说明”。</p>
-<p>下一个重大突破是弗里德曼（Freedman）[1982] 对单连通闭4维拓扑流形的分类。他运用高度非可微的方法证明：此类流形由以下两项唯一确定： 1. 对称双线性形式<span class="math inline">\(H^2 \otimes H^2 \to H^4 \cong \mathbb{Z}\)</span>的同构类（其中<span class="math inline">\(H^k=H^k(M^4 ; \mathbb{Z})\)</span>）； 2. 柯比-西本曼不变量 <span class="math display">\[o \in H^4\left(M^4 ; \mathbb{Z}/2\right) \cong \mathbb{Z}/2.\]</span></p>
-<p>这两项可任意指定，但需满足两个限制条件：双线性形式的行列式必须为<span class="math inline">\(\pm 1\)</span>；且在“偶情形”（即对所有<span class="math inline">\(x \in H^2\)</span>，<span class="math inline">\(x \cup x \equiv 0\)</span>（模<span class="math inline">\(2H^4\)</span>））下，柯比-西本曼类必须同余于符号差的1/8。例如，4维拓扑流形的庞加莱猜想便是其直接推论：若<span class="math inline">\(M^4\)</span>是同伦球面，则<span class="math inline">\(H^2\)</span>与障碍类均为零，故<span class="math inline">\(M^4\)</span>同胚于标准4维球面。</p>
-<p>一年后，唐纳森（Donaldson）[1983] 运用规范理论方法证明：上述许多拓扑流形并不存在任何光滑结构（因此由定理2可知，它们无法被三角剖分为PL流形）。更具体地，若<span class="math inline">\(M^4\)</span>是光滑、单连通且具有正定双线性形式的4维流形，则该双线性形式必可对角化，因此<span class="math inline">\(M^4\)</span>必同胚于若干个复射影平面的连通和。存在许多行列式为1、偶情形下符号差可被16整除但不可对角化的正定双线性形式（例如参见[米尔诺-胡塞尔莫勒（Milnor-Husemoller）, 1973]）。每一个这样的双线性形式都对应一个不存在光滑结构的拓扑流形<span class="math inline">\(M^4\)</span>，但<span class="math inline">\(M^4 \times \mathbb{R}\)</span>却存在唯一的光滑结构（在微分同胚意义下）。</p>
-<p>弗里德曼的拓扑结果与唐纳森的分析结果相结合，迅速产生了令人惊叹的推论。例如，<span class="math inline">\(\mathbb{R}^4\)</span>上存在不可数多个互不微分同胚的光滑结构（参见[冈普夫（Gompf）, 1993]）。其他维数的情况则更为良好：对于<span class="math inline">\(n&gt;4\)</span>，斯托林斯（Stallings）[1962] 证明拓扑空间<span class="math inline">\(\mathbb{R}^n\)</span>的PL结构在PL同构意义下是唯一的；结合莫伊泽关于<span class="math inline">\(n&lt;4\)</span>的结果及芒克雷斯-赫希-马祖尔障碍理论，可推出对所有<span class="math inline">\(n \neq 4\)</span>，<span class="math inline">\(\mathbb{R}^n\)</span>的光滑结构在微分同胚意义下是唯一的。</p>
+<p>下一个重大突破是弗里德曼（Freedman）[1982] 对单连通闭4维拓扑流形的分类。他运用高度非可微的方法证明：此类流形由以下两项唯一确定： 1. 对称双线性形式<span class="math inline">H^2 \otimes H^2 \to H^4 \cong \mathbb{Z}</span>的同构类（其中<span class="math inline">H^k=H^k(M^4 ; \mathbb{Z})</span>）； 2. 柯比-西本曼不变量 <span class="math display">o \in H^4\left(M^4 ; \mathbb{Z}/2\right) \cong \mathbb{Z}/2.</span></p>
+<p>这两项可任意指定，但需满足两个限制条件：双线性形式的行列式必须为<span class="math inline">\pm 1</span>；且在“偶情形”（即对所有<span class="math inline">x \in H^2</span>，<span class="math inline">x \cup x \equiv 0</span>（模<span class="math inline">2H^4</span>））下，柯比-西本曼类必须同余于符号差的1/8。例如，4维拓扑流形的庞加莱猜想便是其直接推论：若<span class="math inline">M^4</span>是同伦球面，则<span class="math inline">H^2</span>与障碍类均为零，故<span class="math inline">M^4</span>同胚于标准4维球面。</p>
+<p>一年后，唐纳森（Donaldson）[1983] 运用规范理论方法证明：上述许多拓扑流形并不存在任何光滑结构（因此由定理2可知，它们无法被三角剖分为PL流形）。更具体地，若<span class="math inline">M^4</span>是光滑、单连通且具有正定双线性形式的4维流形，则该双线性形式必可对角化，因此<span class="math inline">M^4</span>必同胚于若干个复射影平面的连通和。存在许多行列式为1、偶情形下符号差可被16整除但不可对角化的正定双线性形式（例如参见[米尔诺-胡塞尔莫勒（Milnor-Husemoller）, 1973]）。每一个这样的双线性形式都对应一个不存在光滑结构的拓扑流形<span class="math inline">M^4</span>，但<span class="math inline">M^4 \times \mathbb{R}</span>却存在唯一的光滑结构（在微分同胚意义下）。</p>
+<p>弗里德曼的拓扑结果与唐纳森的分析结果相结合，迅速产生了令人惊叹的推论。例如，<span class="math inline">\mathbb{R}^4</span>上存在不可数多个互不微分同胚的光滑结构（参见[冈普夫（Gompf）, 1993]）。其他维数的情况则更为良好：对于<span class="math inline">n&gt;4</span>，斯托林斯（Stallings）[1962] 证明拓扑空间<span class="math inline">\mathbb{R}^n</span>的PL结构在PL同构意义下是唯一的；结合莫伊泽关于<span class="math inline">n&lt;4</span>的结果及芒克雷斯-赫希-马祖尔障碍理论，可推出对所有<span class="math inline">n \neq 4</span>，<span class="math inline">\mathbb{R}^n</span>的光滑结构在微分同胚意义下是唯一的。</p>
 <p>3维流形的完善理论则发展得更为缓慢。首个里程碑是瑟斯顿（Thurston）[1982, 1986] 提出的几何化猜想，该猜想为3维流形理论设定了目标。这一猜想最终由佩雷尔曼（Perelman）[2002, 2003a, 2003b] 利用基于“里奇流”偏微分方程的复杂论证得以证实（参见摩根-田刚（Morgan-Tian）[2007] 及克莱纳-洛特（Kleiner-Lott）[2008] 的阐述）。3维庞加莱猜想作为其特殊情形随之得证。</p>
 <section id="庞加莱猜想的三种版本" class="level3">
 <h3 class="anchored" data-anchor-id="庞加莱猜想的三种版本">庞加莱猜想的三种版本</h3>
@@ -555,7 +582,7 @@ window.Quarto = {
 <p>拓扑庞加莱猜想在所有维数下均成立。</p>
 </div>
 </div>
-<p>即每个与<span class="math inline">\(n\)</span>维球面同伦等价的闭拓扑流形，实际上都与<span class="math inline">\(n\)</span>维球面同胚。对于<span class="math inline">\(n&gt;4\)</span>，纽曼（Newman）[1966] 与康奈尔（Connell）[1967] 利用斯托林斯[1960] 的”吞噬法”证明了该结论；对于<span class="math inline">\(n=4\)</span>，其证明当然归功于弗里德曼；对于<span class="math inline">\(n=3\)</span>，佩雷尔曼通过莫伊泽[1952] 的结果将拓扑情形转化为PL情形，再利用芒克雷斯-赫希-马祖尔障碍理论将PL情形转化为光滑情形，从而完成了证明。□</p>
+<p>即每个与<span class="math inline">n</span>维球面同伦等价的闭拓扑流形，实际上都与<span class="math inline">n</span>维球面同胚。对于<span class="math inline">n&gt;4</span>，纽曼（Newman）[1966] 与康奈尔（Connell）[1967] 利用斯托林斯[1960] 的”吞噬法”证明了该结论；对于<span class="math inline">n=4</span>，其证明当然归功于弗里德曼；对于<span class="math inline">n=3</span>，佩雷尔曼通过莫伊泽[1952] 的结果将拓扑情形转化为PL情形，再利用芒克雷斯-赫希-马祖尔障碍理论将PL情形转化为光滑情形，从而完成了证明。□</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -566,12 +593,12 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>分片线性庞加莱猜想在<span class="math inline">\(n \neq 4\)</span>的维数下均成立。</p>
+<p>分片线性庞加莱猜想在<span class="math inline">n \neq 4</span>的维数下均成立。</p>
 </div>
 </div>
-<p>即每个与<span class="math inline">\(n\)</span>维球面同伦等价的闭PL流形（<span class="math inline">\(n \neq 4\)</span>），均与<span class="math inline">\(n\)</span>维球面PL同胚。对于<span class="math inline">\(n&gt;4\)</span>，斯梅尔（Smale）[1962] 证明了该结论；对于<span class="math inline">\(n=3\)</span>，其可由佩雷尔曼的工作结合芒克雷斯-赫希-马祖尔障碍理论推出。□</p>
-<p>光滑庞加莱猜想则更为复杂，它在部分维数下成立，在另一些维数下不成立，而在4维下仍完全未知。我们可更精确地表述这一问题：所有闭光滑同伦<span class="math inline">\(n\)</span>维球面（即与拓扑<span class="math inline">\(n\)</span>维球面同伦等价的闭光滑流形）的保向微分同胚类构成一个交换幺半群<span class="math inline">\(S_n\)</span>（运算为连通和）。事实上，除<span class="math inline">\(n=4\)</span>外，该幺半群均为有限阿贝尔群。以下概述主要基于[克尔瓦雷-米尔诺（Kervaire-Milnor）, 1963]，该文献原则上给出了<span class="math inline">\(n&gt;4\)</span>时如何利用球面的稳定同伦群计算这些群²。遗憾的是，该文的许多证明被推迟至未完成的第二部分，但缺失的论证已在其他文献中补足（尤其参见[莱文（Levine）, 1985]）。</p>
-<p>利用佩雷尔曼关于<span class="math inline">\(n=3\)</span>的结果，低维情形下的群<span class="math inline">\(S_n\)</span>可描述如下（表1）。（例如，<span class="math inline">\(2 \cdot 8\)</span>表示群<span class="math inline">\(\mathbb{Z}/2 \oplus \mathbb{Z}/8\)</span>，<span class="math inline">\(1\)</span>表示平凡群。）</p>
+<p>即每个与<span class="math inline">n</span>维球面同伦等价的闭PL流形（<span class="math inline">n \neq 4</span>），均与<span class="math inline">n</span>维球面PL同胚。对于<span class="math inline">n&gt;4</span>，斯梅尔（Smale）[1962] 证明了该结论；对于<span class="math inline">n=3</span>，其可由佩雷尔曼的工作结合芒克雷斯-赫希-马祖尔障碍理论推出。□</p>
+<p>光滑庞加莱猜想则更为复杂，它在部分维数下成立，在另一些维数下不成立，而在4维下仍完全未知。我们可更精确地表述这一问题：所有闭光滑同伦<span class="math inline">n</span>维球面（即与拓扑<span class="math inline">n</span>维球面同伦等价的闭光滑流形）的保向微分同胚类构成一个交换幺半群<span class="math inline">S_n</span>（运算为连通和）。事实上，除<span class="math inline">n=4</span>外，该幺半群均为有限阿贝尔群。以下概述主要基于[克尔瓦雷-米尔诺（Kervaire-Milnor）, 1963]，该文献原则上给出了<span class="math inline">n&gt;4</span>时如何利用球面的稳定同伦群计算这些群²。遗憾的是，该文的许多证明被推迟至未完成的第二部分，但缺失的论证已在其他文献中补足（尤其参见[莱文（Levine）, 1985]）。</p>
+<p>利用佩雷尔曼关于<span class="math inline">n=3</span>的结果，低维情形下的群<span class="math inline">S_n</span>可描述如下（表1）。（例如，<span class="math inline">2 \cdot 8</span>表示群<span class="math inline">\mathbb{Z}/2 \oplus \mathbb{Z}/8</span>，<span class="math inline">1</span>表示平凡群。）</p>
 <div id="tbl-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -594,7 +621,7 @@ Table&nbsp;1: 表1：低维同伦球面群
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
 <th style="text-align: center;">1</th>
 <th style="text-align: center;">2</th>
 <th style="text-align: center;">3</th>
@@ -609,24 +636,24 @@ Table&nbsp;1: 表1：低维同伦球面群
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(S_n\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">S_n</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
 <td style="text-align: center;">?</td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(28\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2 \cdot 8\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+<td style="text-align: center;"><span class="math inline">28</span></td>
+<td style="text-align: center;"><span class="math inline">2</span></td>
+<td style="text-align: center;"><span class="math inline">2 \cdot 8</span></td>
+<td style="text-align: center;"><span class="math inline">6</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p>由此可知，光滑庞加莱猜想在维数1、2、3、5、6、12下成立，而在4维下未知。我曾猜想它在所有更高维数下均不成立，但马霍瓦尔德（Mahowald）指出至少存在另一个例外情形：群<span class="math inline">\(S_{61}\)</span>也是平凡群（参见下文“补充说明”）。</p>
+<p>由此可知，光滑庞加莱猜想在维数1、2、3、5、6、12下成立，而在4维下未知。我曾猜想它在所有更高维数下均不成立，但马霍瓦尔德（Mahowald）指出至少存在另一个例外情形：群<span class="math inline">S_{61}</span>也是平凡群（参见下文“补充说明”）。</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,16 +664,16 @@ Table&nbsp;1: 表1：低维同伦球面群
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>对于所有<span class="math inline">\(n&gt;6\)</span>且<span class="math inline">\(n \neq 12, 61\)</span>，群<span class="math inline">\(S_n\)</span>是否均为非平凡群？</p>
+<p>对于所有<span class="math inline">n&gt;6</span>且<span class="math inline">n \neq 12, 61</span>，群<span class="math inline">S_n</span>是否均为非平凡群？</p>
 </div>
 </div>
-<p>（目前无法对大维数<span class="math inline">\(n\)</span>进行精确计算，因为球面的稳定同伦群仅被完全计算至维数64。但现有结果可能已足够对该问题作出明确回答。）</p>
-<p>记球面的稳定同伦群为 <span class="math display">\[\Pi_n = \pi_{n+q}(\mathbb{S}^q) \quad (q &gt; n+1),\]</span> 并设<span class="math inline">\(J_n \subset \Pi_n\)</span>为稳定怀特海同态<span class="math inline">\(J: \pi_n(SO) \to \Pi_n\)</span>的像（参见[怀特海（Whitehead）, 1942]）。该子群<span class="math inline">\(J_n\)</span>是循环群，其阶数³为： <span class="math display">\[|J_n| = \begin{cases}
+<p>（目前无法对大维数<span class="math inline">n</span>进行精确计算，因为球面的稳定同伦群仅被完全计算至维数64。但现有结果可能已足够对该问题作出明确回答。）</p>
+<p>记球面的稳定同伦群为 <span class="math display">\Pi_n = \pi_{n+q}(\mathbb{S}^q) \quad (q &gt; n+1),</span> 并设<span class="math inline">J_n \subset \Pi_n</span>为稳定怀特海同态<span class="math inline">J: \pi_n(SO) \to \Pi_n</span>的像（参见[怀特海（Whitehead）, 1942]）。该子群<span class="math inline">J_n</span>是循环群，其阶数³为： <span class="math display">|J_n| = \begin{cases}
 \text{分数 } \dfrac{B_k}{4k} \text{ 的分母} &amp; n=4k-1, \\
 2 &amp; n \equiv 0,1 \pmod{8}, \\
 1 &amp; n \equiv 2,4,5,6 \pmod{8},
-\end{cases}\]</span> 其中<span class="math inline">\(B_k\)</span>为伯努利数，例如： <span class="math display">\[B_1=\frac{1}{6},\ B_2=\frac{1}{30},\ B_3=\frac{1}{42},\]</span> <span class="math display">\[B_4=\frac{1}{30},\ B_5=\frac{5}{66},\ B_6=\frac{691}{2730},\]</span> 且分数<span class="math inline">\(\frac{B_k}{4k}\)</span>需化为既约形式（参见[米尔诺-斯塔谢夫（Milnor-Stasheff）, 1974, 附录B]）。</p>
-<p>根据庞特里亚金（Pontrjagin）与托姆（Thom）的理论，稳定同伦群<span class="math inline">\(\Pi_n\)</span>（即第<span class="math inline">\(n\)</span>个稳定stem）亦可描述为所有配边类构成的群（此处考虑光滑嵌入于高维欧氏空间的流形，配边指法丛的平凡化）。每个同伦球面都是稳定可平行化的，因此均存在这样的配边。若改变配边，则<span class="math inline">\(\Pi_n\)</span>中对应的类将改变一个<span class="math inline">\(J_n\)</span>中的元素。由此得到正合列： <span class="math display">\[(1)\ 0 \to S_n^{bp} \to S_n \to \Pi_n / J_n,\]</span> 其中<span class="math inline">\(S_n^{bp} \subset S_n\)</span>表示由”边界为可平行化流形的同伦球面”所代表的子群。该子群是<span class="math inline">\(S_n\)</span>中被理解最为透彻的部分，其部分性质可描述如下：</p>
+\end{cases}</span> 其中<span class="math inline">B_k</span>为伯努利数，例如： <span class="math display">B_1=\frac{1}{6},\ B_2=\frac{1}{30},\ B_3=\frac{1}{42},</span> <span class="math display">B_4=\frac{1}{30},\ B_5=\frac{5}{66},\ B_6=\frac{691}{2730},</span> 且分数<span class="math inline">\frac{B_k}{4k}</span>需化为既约形式（参见[米尔诺-斯塔谢夫（Milnor-Stasheff）, 1974, 附录B]）。</p>
+<p>根据庞特里亚金（Pontrjagin）与托姆（Thom）的理论，稳定同伦群<span class="math inline">\Pi_n</span>（即第<span class="math inline">n</span>个稳定stem）亦可描述为所有配边类构成的群（此处考虑光滑嵌入于高维欧氏空间的流形，配边指法丛的平凡化）。每个同伦球面都是稳定可平行化的，因此均存在这样的配边。若改变配边，则<span class="math inline">\Pi_n</span>中对应的类将改变一个<span class="math inline">J_n</span>中的元素。由此得到正合列： <span class="math display">(1)\ 0 \to S_n^{bp} \to S_n \to \Pi_n / J_n,</span> 其中<span class="math inline">S_n^{bp} \subset S_n</span>表示由”边界为可平行化流形的同伦球面”所代表的子群。该子群是<span class="math inline">S_n</span>中被理解最为透彻的部分，其部分性质可描述如下：</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -657,16 +684,16 @@ Table&nbsp;1: 表1：低维同伦球面群
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>对于<span class="math inline">\(n \neq 4\)</span>，群<span class="math inline">\(S_n^{bp}\)</span>是有限循环群，且存在明确的生成元。具体而言：</p>
+<p>对于<span class="math inline">n \neq 4</span>，群<span class="math inline">S_n^{bp}</span>是有限循环群，且存在明确的生成元。具体而言：</p>
 <ul>
-<li>当<span class="math inline">\(n\)</span>为偶数时，<span class="math inline">\(S_n^{bp}\)</span>为平凡群；</li>
-<li>当<span class="math inline">\(n=4k-3\)</span>时，<span class="math inline">\(S_n^{bp}\)</span>要么为平凡群，要么为2阶循环群；</li>
-<li>当<span class="math inline">\(n=4k-1&gt;3\)</span>时，<span class="math inline">\(S_n^{bp}\)</span>为阶数等于 <span class="math inline">\(2^{2k-2}(2^{2k-1}-1)\)</span> 乘以分数 <span class="math inline">\(\dfrac{4B_k}{k}\)</span> 的分子的循环群。</li>
+<li>当<span class="math inline">n</span>为偶数时，<span class="math inline">S_n^{bp}</span>为平凡群；</li>
+<li>当<span class="math inline">n=4k-3</span>时，<span class="math inline">S_n^{bp}</span>要么为平凡群，要么为2阶循环群；</li>
+<li>当<span class="math inline">n=4k-1&gt;3</span>时，<span class="math inline">S_n^{bp}</span>为阶数等于 <span class="math inline">2^{2k-2}(2^{2k-1}-1)</span> 乘以分数 <span class="math inline">\dfrac{4B_k}{k}</span> 的分子的循环群。</li>
 </ul>
 </div>
 </div>
-<p>（最后一个数依赖于上述<span class="math inline">\(|J_{4k-1}|\)</span>的计算结果。）在奇数情形下，设<span class="math inline">\(n=2q-1\)</span>，<span class="math inline">\(S_{2q-1}^{bp}\)</span>的明确生成元可通过一个基本构造块（即<span class="math inline">\(q\)</span>维球面的切圆盘丛）结合以下两种图表之一构造： <img src="images/image.png" class="img-fluid" style="width:80.0%" alt="Plumbing diagrams"> （图表说明：每个圆圈代表一个<span class="math inline">\(2q\)</span>维构造块——即带边的<span class="math inline">\(2q\)</span>维可平行化流形；每个圆点代表一个配边构造，即将两个此类流形沿边界粘贴，使得它们的中心<span class="math inline">\(q\)</span>维球面横截相交且相交数为+1。最终得到带角的光滑可平行化流形，将角光滑化后可得到带光滑边界的光滑流形<span class="math inline">\(X^{2q}\)</span>。）</p>
-<p>当<span class="math inline">\(q\)</span>为奇数时使用左图，当<span class="math inline">\(q\)</span>为偶数时使用右图。在两种情形下，若<span class="math inline">\(q \neq 2\)</span>，则所得的光滑边界<span class="math inline">\(\partial X^{2q}\)</span>是一个同伦球面，其代表<span class="math inline">\(S_{2q-1}^{bp}\)</span>的所需生成元（<span class="math inline">\(q=2\)</span>为例外情形，因为<span class="math inline">\(\partial X^4\)</span>仅具有3维球面的同调群；在<span class="math inline">\(S_{2q-1}^{bp}\)</span>为平凡群的所有其他情形下，边界均与标准<span class="math inline">\((2q-1)\)</span>维球面微分同胚）。</p>
+<p>（最后一个数依赖于上述<span class="math inline">|J_{4k-1}|</span>的计算结果。）在奇数情形下，设<span class="math inline">n=2q-1</span>，<span class="math inline">S_{2q-1}^{bp}</span>的明确生成元可通过一个基本构造块（即<span class="math inline">q</span>维球面的切圆盘丛）结合以下两种图表之一构造： <img src="images/image.png" class="img-fluid" style="width:80.0%" loading="lazy" decoding="async" alt="Plumbing diagrams"> （图表说明：每个圆圈代表一个<span class="math inline">2q</span>维构造块——即带边的<span class="math inline">2q</span>维可平行化流形；每个圆点代表一个配边构造，即将两个此类流形沿边界粘贴，使得它们的中心<span class="math inline">q</span>维球面横截相交且相交数为+1。最终得到带角的光滑可平行化流形，将角光滑化后可得到带光滑边界的光滑流形<span class="math inline">X^{2q}</span>。）</p>
+<p>当<span class="math inline">q</span>为奇数时使用左图，当<span class="math inline">q</span>为偶数时使用右图。在两种情形下，若<span class="math inline">q \neq 2</span>，则所得的光滑边界<span class="math inline">\partial X^{2q}</span>是一个同伦球面，其代表<span class="math inline">S_{2q-1}^{bp}</span>的所需生成元（<span class="math inline">q=2</span>为例外情形，因为<span class="math inline">\partial X^4</span>仅具有3维球面的同调群；在<span class="math inline">S_{2q-1}^{bp}</span>为平凡群的所有其他情形下，边界均与标准<span class="math inline">(2q-1)</span>维球面微分同胚）。</p>
 <p>正合列(1)可补充如下信息：</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -678,14 +705,14 @@ Table&nbsp;1: 表1：低维同伦球面群
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>当<span class="math inline">\(n \not\equiv 2 \pmod{4}\)</span>时，<span class="math inline">\(\Pi_n\)</span>中的每个元素均可由一个拓扑球面表示。</p>
+<p>当<span class="math inline">n \not\equiv 2 \pmod{4}</span>时，<span class="math inline">\Pi_n</span>中的每个元素均可由一个拓扑球面表示。</p>
 </div>
 </div>
-<p>因此正合列(1)可表示为更精确的形式： <span class="math display">\[(2)\ 0 \to S_n^{bp} \to S_n \to \Pi_n / J_n \to 0.\]</span></p>
-<p>然而，当<span class="math inline">\(n=4k-2\)</span>时，其拓展为正合列： <span class="math display">\[(3)\ 0 = S_{4k-2}^{bp} \to S_{4k-2} \to \Pi_{4k-2} / J_{4k-2}.\]</span></p>
-<p>布伦菲尔（Brumfiel）[1968, 1969, 1970] 改进了这一结果，证明正合列(2)是分裂正合的，除非<span class="math inline">\(n\)</span>具有形式<span class="math inline">\(2^k - 3\)</span>（事实上，仅当<span class="math inline">\(n=2^k - 3 \geq 125\)</span>时，其可能不分裂，参见下文讨论）。</p>
-<p>(3)中的克尔瓦雷同态<span class="math inline">\(\Phi_k\)</span>由[克尔瓦雷, 1960] 引入（同伦类<span class="math inline">\(\theta\)</span>的像<span class="math inline">\(\Phi_k(\theta) \in \mathbb{Z}/2\)</span>称为克尔瓦雷不变量）。因此存在两种情形： - 若<span class="math inline">\(\Phi_k=0\)</span>，则<span class="math inline">\(S_{4k-3}^{bp} \cong \mathbb{Z}/2\)</span>，其生成元为上述的<span class="math inline">\(\partial X^{4k-2}\)</span>，且<span class="math inline">\(\Pi_{4k-2}\)</span>中的每个元素均可由一个同伦球面表示； - 若<span class="math inline">\(\Phi_k \neq 0\)</span>，则<span class="math inline">\(S_{4k-3}^{bp}=0\)</span>，这意味着<span class="math inline">\(X_{4k-2}\)</span>的边界与标准<span class="math inline">\((4k-3)\)</span>维球面微分同胚。将一个<span class="math inline">\((4k-2)\)</span>维圆盘粘贴至该边界，可得到一个配边类，其不与任何同伦球面的配边类等价。此时<span class="math inline">\(\Phi_k\)</span>的核构成<span class="math inline">\(\Pi_{4k-2}/J_{4k-2}\)</span>的一个指数为2的子群，该子群由可由同伦球面表示的配边类组成。</p>
-<p>克尔瓦雷同态<span class="math inline">\(\Phi_k\)</span>何时为零，是理解同伦球面群的最后一个重大未决问题。近期，希尔（Hill）、霍普金斯（Hopkins）与雷文内尔（Ravenel）解决了除一个情形外的所有情况：</p>
+<p>因此正合列(1)可表示为更精确的形式： <span class="math display">(2)\ 0 \to S_n^{bp} \to S_n \to \Pi_n / J_n \to 0.</span></p>
+<p>然而，当<span class="math inline">n=4k-2</span>时，其拓展为正合列： <span class="math display">(3)\ 0 = S_{4k-2}^{bp} \to S_{4k-2} \to \Pi_{4k-2} / J_{4k-2}.</span></p>
+<p>布伦菲尔（Brumfiel）[1968, 1969, 1970] 改进了这一结果，证明正合列(2)是分裂正合的，除非<span class="math inline">n</span>具有形式<span class="math inline">2^k - 3</span>（事实上，仅当<span class="math inline">n=2^k - 3 \geq 125</span>时，其可能不分裂，参见下文讨论）。</p>
+<p>(3)中的克尔瓦雷同态<span class="math inline">\Phi_k</span>由[克尔瓦雷, 1960] 引入（同伦类<span class="math inline">\theta</span>的像<span class="math inline">\Phi_k(\theta) \in \mathbb{Z}/2</span>称为克尔瓦雷不变量）。因此存在两种情形： - 若<span class="math inline">\Phi_k=0</span>，则<span class="math inline">S_{4k-3}^{bp} \cong \mathbb{Z}/2</span>，其生成元为上述的<span class="math inline">\partial X^{4k-2}</span>，且<span class="math inline">\Pi_{4k-2}</span>中的每个元素均可由一个同伦球面表示； - 若<span class="math inline">\Phi_k \neq 0</span>，则<span class="math inline">S_{4k-3}^{bp}=0</span>，这意味着<span class="math inline">X_{4k-2}</span>的边界与标准<span class="math inline">(4k-3)</span>维球面微分同胚。将一个<span class="math inline">(4k-2)</span>维圆盘粘贴至该边界，可得到一个配边类，其不与任何同伦球面的配边类等价。此时<span class="math inline">\Phi_k</span>的核构成<span class="math inline">\Pi_{4k-2}/J_{4k-2}</span>的一个指数为2的子群，该子群由可由同伦球面表示的配边类组成。</p>
+<p>克尔瓦雷同态<span class="math inline">\Phi_k</span>何时为零，是理解同伦球面群的最后一个重大未决问题。近期，希尔（Hill）、霍普金斯（Hopkins）与雷文内尔（Ravenel）解决了除一个情形外的所有情况：</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -696,18 +723,18 @@ Table&nbsp;1: 表1：低维同伦球面群
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>克尔瓦雷同态<span class="math inline">\(\Phi_k\)</span>在<span class="math inline">\(k=1,2,4,8,16\)</span>时非零，在<span class="math inline">\(k=32\)</span>时可能非零，在所有其他情形下均为零。</p>
+<p>克尔瓦雷同态<span class="math inline">\Phi_k</span>在<span class="math inline">k=1,2,4,8,16</span>时非零，在<span class="math inline">k=32</span>时可能非零，在所有其他情形下均为零。</p>
 </div>
 </div>
-<p>事实上，布劳德（Browder）[1969] 证明<span class="math inline">\(\Phi_k\)</span>仅可能在<span class="math inline">\(n\)</span>为2的幂时非零；巴拉特（Barratt）、琼斯（Jones）与马霍瓦尔德[1984] 证实了<span class="math inline">\(\Phi_k\)</span>在<span class="math inline">\(k=1,2,4,8,16\)</span>时确实非零；最终，希尔、霍普金斯与雷文内尔[2010] 证明当<span class="math inline">\(k&gt;32\)</span>时<span class="math inline">\(\Phi_k=0\)</span>（其核心工具是一个精心构造的周期为256的广义上同调理论）。</p>
-<p>因此，仅<span class="math inline">\(k=32\)</span>（对应<span class="math inline">\(4k-2=126\)</span>）的情形仍未解决。特别地，对于<span class="math inline">\(n \neq 4,125,126\)</span>，若<span class="math inline">\(\Pi_n\)</span>的阶数已知，则可精确计算奇异<span class="math inline">\(n\)</span>维球面的个数<span class="math inline">\(|S_n|\)</span>。事实上，若排除4、126及形式为<span class="math inline">\(2^k - 3 \geq 125\)</span>的数，则当<span class="math inline">\(\Pi_n\)</span>的结构已知时，群<span class="math inline">\(S_n\)</span>可被完全描述⁴。</p>
+<p>事实上，布劳德（Browder）[1969] 证明<span class="math inline">\Phi_k</span>仅可能在<span class="math inline">n</span>为2的幂时非零；巴拉特（Barratt）、琼斯（Jones）与马霍瓦尔德[1984] 证实了<span class="math inline">\Phi_k</span>在<span class="math inline">k=1,2,4,8,16</span>时确实非零；最终，希尔、霍普金斯与雷文内尔[2010] 证明当<span class="math inline">k&gt;32</span>时<span class="math inline">\Phi_k=0</span>（其核心工具是一个精心构造的周期为256的广义上同调理论）。</p>
+<p>因此，仅<span class="math inline">k=32</span>（对应<span class="math inline">4k-2=126</span>）的情形仍未解决。特别地，对于<span class="math inline">n \neq 4,125,126</span>，若<span class="math inline">\Pi_n</span>的阶数已知，则可精确计算奇异<span class="math inline">n</span>维球面的个数<span class="math inline">|S_n|</span>。事实上，若排除4、126及形式为<span class="math inline">2^k - 3 \geq 125</span>的数，则当<span class="math inline">\Pi_n</span>的结构已知时，群<span class="math inline">S_n</span>可被完全描述⁴。</p>
 </section>
 </section>
 <section id="补充说明" class="level2">
 <h2 class="anchored" data-anchor-id="补充说明">补充说明</h2>
-<p>以下简要概述<span class="math inline">\(\Pi_n\)</span>的现有研究成果。由于直和因子<span class="math inline">\(J_n\)</span>已被精确确定，我们只需关注商群<span class="math inline">\(\Pi_n / J_n\)</span>。其中最困难的部分是2局部分支，科赫曼（Kochman）[1990] 计算了<span class="math inline">\(n \leq 64\)</span>的所有情形，科赫曼与马霍瓦尔德[1995] 对其进行了修正；雷文内尔[1986] 计算了更大范围内的3局部与5局部分支；对于<span class="math inline">\(p \geq 7\)</span>，当<span class="math inline">\(n&lt;82\)</span>时，<span class="math inline">\(p\)</span>局部分支均为平凡群（事实上，对于任意素数<span class="math inline">\(p\)</span>，当<span class="math inline">\(n&lt;2p(p-1)-2\)</span>时，<span class="math inline">\(\Pi_n / J_n\)</span>的<span class="math inline">\(p\)</span>局部分支为平凡群；当<span class="math inline">\(n=2p(p-1)-2\)</span>时，其为<span class="math inline">\(p\)</span>阶循环群）。</p>
-<p>因此，稳定同伦群<span class="math inline">\(\Pi_n\)</span>在<span class="math inline">\(n \leq 64\)</span>时已被精确确定，进而群<span class="math inline">\(S_n\)</span>在<span class="math inline">\(n \leq 64\)</span>且<span class="math inline">\(n \neq 4\)</span>时也被精确确定。表2中，<span class="math inline">\(b_k\)</span>表示子群<span class="math inline">\(S_{4k-1}^{bp} \subset S_{4k-1}\)</span>的阶数，诸如<span class="math inline">\(2^3 \cdot 4\)</span>的表示意为三个<span class="math inline">\(\mathbb{Z}/2\)</span>与一个<span class="math inline">\(\mathbb{Z}/4\)</span>的直和，粗点表示平凡群。所有对应子群<span class="math inline">\(S_n^{bp}\)</span>的项均带有下划线（注意<span class="math inline">\(S_{4k-3}^{bp}\)</span>是2阶循环群，在第1列或第5列中标注为2，除非<span class="math inline">\(k=1,2,4,8,16\)</span>）。在该范围内，群<span class="math inline">\(S_n\)</span>仅在以下情形下为平凡群： <span class="math display">\[n=1,2,3,5,6,12,61 \text{ （及可能的 } 4 \text{）}\]</span></p>
-<p><strong>表2：<span class="math inline">\(n \leq 64\)</span> 时的同伦球面群 <span class="math inline">\(S_n\)</span></strong></p>
+<p>以下简要概述<span class="math inline">\Pi_n</span>的现有研究成果。由于直和因子<span class="math inline">J_n</span>已被精确确定，我们只需关注商群<span class="math inline">\Pi_n / J_n</span>。其中最困难的部分是2局部分支，科赫曼（Kochman）[1990] 计算了<span class="math inline">n \leq 64</span>的所有情形，科赫曼与马霍瓦尔德[1995] 对其进行了修正；雷文内尔[1986] 计算了更大范围内的3局部与5局部分支；对于<span class="math inline">p \geq 7</span>，当<span class="math inline">n&lt;82</span>时，<span class="math inline">p</span>局部分支均为平凡群（事实上，对于任意素数<span class="math inline">p</span>，当<span class="math inline">n&lt;2p(p-1)-2</span>时，<span class="math inline">\Pi_n / J_n</span>的<span class="math inline">p</span>局部分支为平凡群；当<span class="math inline">n=2p(p-1)-2</span>时，其为<span class="math inline">p</span>阶循环群）。</p>
+<p>因此，稳定同伦群<span class="math inline">\Pi_n</span>在<span class="math inline">n \leq 64</span>时已被精确确定，进而群<span class="math inline">S_n</span>在<span class="math inline">n \leq 64</span>且<span class="math inline">n \neq 4</span>时也被精确确定。表2中，<span class="math inline">b_k</span>表示子群<span class="math inline">S_{4k-1}^{bp} \subset S_{4k-1}</span>的阶数，诸如<span class="math inline">2^3 \cdot 4</span>的表示意为三个<span class="math inline">\mathbb{Z}/2</span>与一个<span class="math inline">\mathbb{Z}/4</span>的直和，粗点表示平凡群。所有对应子群<span class="math inline">S_n^{bp}</span>的项均带有下划线（注意<span class="math inline">S_{4k-3}^{bp}</span>是2阶循环群，在第1列或第5列中标注为2，除非<span class="math inline">k=1,2,4,8,16</span>）。在该范围内，群<span class="math inline">S_n</span>仅在以下情形下为平凡群： <span class="math display">n=1,2,3,5,6,12,61 \text{ （及可能的 } 4 \text{）}</span></p>
+<p><strong>表2：<span class="math inline">n \leq 64</span> 时的同伦球面群 <span class="math inline">S_n</span></strong></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -718,11 +745,11 @@ Table&nbsp;1: 表1：低维同伦球面群
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(4k\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(4k+1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(4k+2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(4k+3\)</span></th>
+<th style="text-align: center;"><span class="math inline">n</span></th>
+<th style="text-align: center;"><span class="math inline">4k</span></th>
+<th style="text-align: center;"><span class="math inline">4k+1</span></th>
+<th style="text-align: center;"><span class="math inline">4k+2</span></th>
+<th style="text-align: center;"><span class="math inline">4k+3</span></th>
 </tr>
 </thead>
 <tbody>
@@ -738,110 +765,110 @@ Table&nbsp;1: 表1：低维同伦球面群
 <td style="text-align: center;">?</td>
 <td style="text-align: center;">•</td>
 <td style="text-align: center;">•</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{28}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{28}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">8–11</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^3</span></td>
 <td style="text-align: center;">6</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{992}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{992}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">12–15</td>
 <td style="text-align: center;">•</td>
 <td style="text-align: center;">3</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{8128}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{8128}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">16–19</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2 \cdot 4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^5 \cdot b_5}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^4</span></td>
+<td style="text-align: center;"><span class="math inline">2 \cdot 4</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^5 \cdot b_5}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">20–23</td>
 <td style="text-align: center;">24</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^2 \cdot b_6}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^2</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^2 \cdot b_6}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">24–27</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^3</span></td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^4 \cdot b_7}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^4 \cdot b_7}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">28–31</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^4</span></td>
 <td style="text-align: center;">6</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^6 \cdot b_8}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^6 \cdot b_8}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">32–35</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^6 \cdot 4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2 \cdot 12\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^3 \cdot b_9}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^6 \cdot 4</span></td>
+<td style="text-align: center;"><span class="math inline">2 \cdot 12</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^3 \cdot b_9}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">36–39</td>
-<td style="text-align: center;"><span class="math inline">\(2^3 \cdot 3\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^3 \cdot 9\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^4 \cdot b_{10}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">2^3 \cdot 3</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^3 \cdot 9</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^4 \cdot b_{10}}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">40–43</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^7 \cdot 4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^5 \cdot b_{11}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^7 \cdot 4</span></td>
+<td style="text-align: center;"><span class="math inline">2^2</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^5 \cdot b_{11}}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">44–47</td>
-<td style="text-align: center;"><span class="math inline">\(2^2 \cdot 3\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^7 \cdot b_{12}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">2^2 \cdot 3</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^4</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^7 \cdot b_{12}}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">48–51</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^4 \cdot 8\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2 \cdot 6\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^2 \cdot b_{13}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^4 \cdot 8</span></td>
+<td style="text-align: center;"><span class="math inline">2 \cdot 6</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^2 \cdot b_{13}}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">52–55</td>
-<td style="text-align: center;"><span class="math inline">\(2^5 \cdot 3\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^5\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^4 \cdot b_{14}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">2^5 \cdot 3</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^5</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^4 \cdot b_{14}}</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">56–59</td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^8 \cdot 4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(2^2 \cdot 4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^4 \cdot b_{15}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2}</span></td>
+<td style="text-align: center;"><span class="math inline">2^8 \cdot 4</span></td>
+<td style="text-align: center;"><span class="math inline">2^2 \cdot 4</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^4 \cdot b_{15}}</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">60–63</td>
-<td style="text-align: center;"><span class="math inline">\(2 \cdot 24\)</span></td>
+<td style="text-align: center;"><span class="math inline">2 \cdot 24</span></td>
 <td style="text-align: center;">•</td>
-<td style="text-align: center;"><span class="math inline">\(2^6\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\underline{2^8 \cdot b_{16}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">2^6</span></td>
+<td style="text-align: center;"><span class="math inline">\underline{2^8 \cdot b_{16}}</span></td>
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(b_k\)</span>的取值并不难计算，但增长极为迅速（表3给出了<span class="math inline">\(k&gt;5\)</span>时的近似值）。注意，当<span class="math inline">\(k\)</span>的约数较多时，<span class="math inline">\(b_k\)</span>的值往往更大。</p>
-<p><strong>表3：<span class="math inline">\(b_k\)</span> 的近似值（<span class="math inline">\(k &gt; 5\)</span>）</strong></p>
+<p><span class="math inline">b_k</span>的取值并不难计算，但增长极为迅速（表3给出了<span class="math inline">k&gt;5</span>时的近似值）。注意，当<span class="math inline">k</span>的约数较多时，<span class="math inline">b_k</span>的值往往更大。</p>
+<p><strong>表3：<span class="math inline">b_k</span> 的近似值（<span class="math inline">k &gt; 5</span>）</strong></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 8%">
@@ -859,7 +886,7 @@ Table&nbsp;1: 表1：低维同伦球面群
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><span class="math inline">\(k\)</span></th>
+<th style="text-align: center;"><span class="math inline">k</span></th>
 <th style="text-align: center;">6</th>
 <th style="text-align: center;">7</th>
 <th style="text-align: center;">8</th>
@@ -875,18 +902,18 @@ Table&nbsp;1: 表1：低维同伦球面群
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(b_k \approx\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^4\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^5\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^7\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^7\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^9\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{10}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{13}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{12}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{14}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{16}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(10^{19}\)</span></td>
+<td style="text-align: center;"><span class="math inline">b_k \approx</span></td>
+<td style="text-align: center;"><span class="math inline">10^4</span></td>
+<td style="text-align: center;"><span class="math inline">10^5</span></td>
+<td style="text-align: center;"><span class="math inline">10^7</span></td>
+<td style="text-align: center;"><span class="math inline">10^7</span></td>
+<td style="text-align: center;"><span class="math inline">10^9</span></td>
+<td style="text-align: center;"><span class="math inline">10^{10}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{13}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{12}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{14}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{16}</span></td>
+<td style="text-align: center;"><span class="math inline">10^{19}</span></td>
 </tr>
 </tbody>
 </table>
@@ -903,9 +930,9 @@ Table&nbsp;1: 表1：低维同伦球面群
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>不难验证，单位<span class="math inline">\(n\)</span>维球面的保向微分同胚的光滑同痕类构成的群<span class="math inline">\(\pi_0(Diff^+(\mathbb{S}^n))\)</span>是阿贝尔群。定义<span class="math inline">\(\Gamma_n\)</span>为<span class="math inline">\(\pi_0(Diff^+(\mathbb{S}^{n-1}))\)</span>关于”可延拓至闭单位<span class="math inline">\(n\)</span>维圆盘的同痕类”所构成子群的商群。存在自然嵌入<span class="math inline">\(\Gamma_n \subset S_n\)</span>，其将每个<span class="math inline">\((f) \in \Gamma_n\)</span>映射至”通过<span class="math inline">\(f\)</span>粘贴两个<span class="math inline">\(n\)</span>维圆盘边界得到的扭曲<span class="math inline">\(n\)</span>维球面”。由[斯梅尔, 1962] 可知，对于<span class="math inline">\(n \geq 5\)</span>，<span class="math inline">\(\Gamma_n = S_n\)</span>；由[斯梅尔, 1959] 可知，<span class="math inline">\(\Gamma_3=0\)</span>。由于易证<span class="math inline">\(\Gamma_1=0\)</span>且<span class="math inline">\(\Gamma_2=0\)</span>，故对所有<span class="math inline">\(n \neq 4\)</span>，有： <span class="math display">\[\Gamma_n = S_n.\]</span></p>
-<p>另一方面，塞尔夫证明⁵<span class="math inline">\(\pi_0(Diff^+(\mathbb{S}^3))=0\)</span>，因此<span class="math inline">\(\Gamma_4=0\)</span>（尽管<span class="math inline">\(S_4\)</span>完全未知）。结合上述关于<span class="math inline">\(S_n\)</span>的结果，可推出对于<span class="math inline">\(n&lt;7\)</span>，<span class="math inline">\(\Gamma_n=0\)</span>，且对所有<span class="math inline">\(n\)</span>，<span class="math inline">\(\Gamma_n\)</span>是有限阿贝尔群。</p>
-<p>给定PL流形<span class="math inline">\(M^n\)</span>，其光滑结构存在性的芒克雷斯-赫希-马祖尔障碍类位于群<span class="math inline">\(H^k(M^n ; \Gamma_{k-1})\)</span>中，而光滑结构唯一性的障碍类位于<span class="math inline">\(H^k(M^n ; \Gamma_k)\)</span>中（与前文讨论的大多数构造不同，这一结论在4维下同样成立）。显然，定理2由此得证。□</p>
+<p>不难验证，单位<span class="math inline">n</span>维球面的保向微分同胚的光滑同痕类构成的群<span class="math inline">\pi_0(Diff^+(\mathbb{S}^n))</span>是阿贝尔群。定义<span class="math inline">\Gamma_n</span>为<span class="math inline">\pi_0(Diff^+(\mathbb{S}^{n-1}))</span>关于”可延拓至闭单位<span class="math inline">n</span>维圆盘的同痕类”所构成子群的商群。存在自然嵌入<span class="math inline">\Gamma_n \subset S_n</span>，其将每个<span class="math inline">(f) \in \Gamma_n</span>映射至”通过<span class="math inline">f</span>粘贴两个<span class="math inline">n</span>维圆盘边界得到的扭曲<span class="math inline">n</span>维球面”。由[斯梅尔, 1962] 可知，对于<span class="math inline">n \geq 5</span>，<span class="math inline">\Gamma_n = S_n</span>；由[斯梅尔, 1959] 可知，<span class="math inline">\Gamma_3=0</span>。由于易证<span class="math inline">\Gamma_1=0</span>且<span class="math inline">\Gamma_2=0</span>，故对所有<span class="math inline">n \neq 4</span>，有： <span class="math display">\Gamma_n = S_n.</span></p>
+<p>另一方面，塞尔夫证明⁵<span class="math inline">\pi_0(Diff^+(\mathbb{S}^3))=0</span>，因此<span class="math inline">\Gamma_4=0</span>（尽管<span class="math inline">S_4</span>完全未知）。结合上述关于<span class="math inline">S_n</span>的结果，可推出对于<span class="math inline">n&lt;7</span>，<span class="math inline">\Gamma_n=0</span>，且对所有<span class="math inline">n</span>，<span class="math inline">\Gamma_n</span>是有限阿贝尔群。</p>
+<p>给定PL流形<span class="math inline">M^n</span>，其光滑结构存在性的芒克雷斯-赫希-马祖尔障碍类位于群<span class="math inline">H^k(M^n ; \Gamma_{k-1})</span>中，而光滑结构唯一性的障碍类位于<span class="math inline">H^k(M^n ; \Gamma_k)</span>中（与前文讨论的大多数构造不同，这一结论在4维下同样成立）。显然，定理2由此得证。□</p>
 </div>
 </div>
 </div>
@@ -923,18 +950,18 @@ Table&nbsp;1: 表1：低维同伦球面群
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Adams, J. F. (1963, 1965). On the groups <span class="math inline">\(J(X)\)</span> I, II. <em>Topology</em> 2, 3.</li>
+<li>Adams, J. F. (1963, 1965). On the groups <span class="math inline">J(X)</span> I, II. <em>Topology</em> 2, 3.</li>
 <li>Antonelli-Burghelea-Kahn (1972). The non-finite homotopy type of some diffeomorphism groups. <em>Topology</em> 11.</li>
 <li>Barratt-Jones-Mahowald (1984). Relations amongst Toda brackets and the Kervaire invariant in dimension 62. <em>J. London Math. Soc.</em> 30.</li>
 <li>Becker-Gottlieb (1975). The transfer map and fiber bundles. <em>Topology</em> 14.</li>
 <li>Browder, W. (1969). The Kervaire invariant of framed manifolds and its generalization. <em>Ann. Math.</em> 90.</li>
-<li>Brumfiel, G. (1968, 1969, 1970). On the homotopy groups of <span class="math inline">\(BPL\)</span> and <span class="math inline">\(PL/O\)</span>. <em>Ann. Math.</em> 88; <em>Topology</em> 8; <em>Michigan Math. J.</em> 17.</li>
-<li>Cerf, J. (1968). Sur les difféomorphismes de la sphère de dimension trois (<span class="math inline">\(\Gamma_4=0\)</span>). <em>Lecture Notes in Math.</em> 53, Springer.</li>
-<li>Connell, E. H. (1967). A topological <span class="math inline">\(h\)</span>-cobordism theorem for <span class="math inline">\(n \geq 5\)</span>. <em>Illinois J. Math.</em> 11.</li>
+<li>Brumfiel, G. (1968, 1969, 1970). On the homotopy groups of <span class="math inline">BPL</span> and <span class="math inline">PL/O</span>. <em>Ann. Math.</em> 88; <em>Topology</em> 8; <em>Michigan Math. J.</em> 17.</li>
+<li>Cerf, J. (1968). Sur les difféomorphismes de la sphère de dimension trois (<span class="math inline">\Gamma_4=0</span>). <em>Lecture Notes in Math.</em> 53, Springer.</li>
+<li>Connell, E. H. (1967). A topological <span class="math inline">h</span>-cobordism theorem for <span class="math inline">n \geq 5</span>. <em>Illinois J. Math.</em> 11.</li>
 <li>Donaldson, S. K. (1983). An application of gauge theory to four-dimensional topology. <em>J. Diff. Geom.</em> 18.</li>
 <li>Freedman, M. H. (1982). The topology of four-dimensional manifolds. <em>J. Diff. Geom.</em> 17.</li>
 <li>Gompf, R. (1993). An exotic menagerie. <em>J. Diff. Geom.</em> 37.</li>
-<li>Hatcher, A. E. (1983). A proof of the Smale conjecture: <span class="math inline">\(Diff(\mathbb{S}^3) \simeq O(4)\)</span>. <em>Ann. Math.</em> 117.</li>
+<li>Hatcher, A. E. (1983). A proof of the Smale conjecture: <span class="math inline">Diff(\mathbb{S}^3) \simeq O(4)</span>. <em>Ann. Math.</em> 117.</li>
 <li>Hill-Hopkins-Ravenel (2010). On the non-existence of elements of Kervaire invariant one. arXiv 0908.3724v2.</li>
 <li>Hirsch, M. W. (1963). Obstruction theories for smoothing manifolds and maps. <em>Bull. AMS</em> 69.</li>
 <li>Hirsch-Mazur (1974). Smoothings of piecewise linear manifolds. <em>Ann. Math. Studies</em> 80, Princeton.</li>
@@ -945,7 +972,7 @@ Table&nbsp;1: 表1：低维同伦球面群
 <li>Kochman, S. O. (1990). Stable homotopy groups of spheres: A computer-assisted approach. <em>Lecture Notes in Math.</em> 1423.</li>
 <li>Kochman-Mahowald (1995). On the computation of stable stems. <em>Contemp. Math.</em> 181.</li>
 <li>Levine, J. P. (1985). Lectures on groups of homotopy spheres. <em>Lecture Notes in Math.</em> 1126.</li>
-<li>Mahowald, M. (1970). The order of the image of the <span class="math inline">\(J\)</span>-homomorphism. <em>Proc. Adv. Study Inst. Alg. Top.</em> (Aarhus).</li>
+<li>Mahowald, M. (1970). The order of the image of the <span class="math inline">J</span>-homomorphism. <em>Proc. Adv. Study Inst. Alg. Top.</em> (Aarhus).</li>
 <li>Milnor, J. (1999, 2007, 2009). Growing up in the old Fine Hall; Collected Papers III, IV. AMS.</li>
 <li>Milnor-Husemoller (1973). Symmetric bilinear forms. <em>Ergebnisse</em> 73, Springer.</li>
 <li>Milnor-Stasheff (1974). Characteristic classes. <em>Ann. Math. Studies</em> 76, Princeton.</li>
@@ -970,7 +997,7 @@ Table&nbsp;1: 表1：低维同伦球面群
 <hr>
 <section id="注释" class="level3">
 <h3 class="anchored" data-anchor-id="注释">注释</h3>
-<p>¹ 该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。感谢杜萨·麦克杜夫（Dusa McDuff）发掘原始录音带（关于怀尔德（Wilder）的引言，可参见[米尔诺, 1999]）。 ² 克尔瓦雷-米尔诺的论文实际研究的是“<span class="math inline">\(h\)</span>配边意义下的同伦球面群<span class="math inline">\(\Theta_n\)</span>”。仅当<span class="math inline">\(n=4\)</span>时，<span class="math inline">\(\Theta_n\)</span>与<span class="math inline">\(S_n\)</span>存在差异：由斯梅尔[1962] 的<span class="math inline">\(h\)</span>配边定理可知，当<span class="math inline">\(n \neq 4\)</span>时，<span class="math inline">\(S_n \cong \Theta_n\)</span>；而在4维情形下，<span class="math inline">\(\Theta_4\)</span>是平凡群，<span class="math inline">\(S_4\)</span>的结构则是尚未解决的重大问题。 ³ <span class="math inline">\(|J_{4k-1}|\)</span>的这一计算是亚当斯猜想[亚当斯, 1963, 1965] 的特例。马霍瓦尔德[1970] 完成了该特例的证明，奎伦[1971]、沙利文[1974] 及贝克尔-戈特利布[1975] 则证明了完整的亚当斯猜想。亚当斯还证明了<span class="math inline">\(J_n\)</span>始终是<span class="math inline">\(\Pi_n\)</span>的直和因子。 ⁴ 还需用到“<span class="math inline">\(\Phi_k\)</span>的核始终是<span class="math inline">\(\Pi_{4k-2}\)</span>的直和因子”这一事实（至少当<span class="math inline">\(4k-2 \neq 126\)</span>时成立）。马霍瓦尔德告知我，62维情形下该事实成立，其余四个情形则较为直接。 ⁵ 哈彻[1983] 后续证明了更强的结论：嵌入<span class="math inline">\(SO(4) \to Diff^+(\mathbb{S}^3)\)</span>是同伦等价。另一方面，对于<span class="math inline">\(n \geq 7\)</span>，安东内利、布尔盖莱亚与卡恩[1972] 证明<span class="math inline">\(Diff^+(\mathbb{S}^n)\)</span>不具有任何有限复形的同伦型（早期结果参见[诺维科夫, 1963]）。对于<span class="math inline">\(n=6\)</span>，由于<span class="math inline">\(\Gamma_7 \neq 0\)</span>，<span class="math inline">\(Diff(\mathbb{S}^6)\)</span>是不连通的；但我尚未知晓<span class="math inline">\(n=4,5\)</span>时的相关结果。</p>
+<p>¹ 该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。感谢杜萨·麦克杜夫（Dusa McDuff）发掘原始录音带（关于怀尔德（Wilder）的引言，可参见[米尔诺, 1999]）。 ² 克尔瓦雷-米尔诺的论文实际研究的是“<span class="math inline">h</span>配边意义下的同伦球面群<span class="math inline">\Theta_n</span>”。仅当<span class="math inline">n=4</span>时，<span class="math inline">\Theta_n</span>与<span class="math inline">S_n</span>存在差异：由斯梅尔[1962] 的<span class="math inline">h</span>配边定理可知，当<span class="math inline">n \neq 4</span>时，<span class="math inline">S_n \cong \Theta_n</span>；而在4维情形下，<span class="math inline">\Theta_4</span>是平凡群，<span class="math inline">S_4</span>的结构则是尚未解决的重大问题。 ³ <span class="math inline">|J_{4k-1}|</span>的这一计算是亚当斯猜想[亚当斯, 1963, 1965] 的特例。马霍瓦尔德[1970] 完成了该特例的证明，奎伦[1971]、沙利文[1974] 及贝克尔-戈特利布[1975] 则证明了完整的亚当斯猜想。亚当斯还证明了<span class="math inline">J_n</span>始终是<span class="math inline">\Pi_n</span>的直和因子。 ⁴ 还需用到“<span class="math inline">\Phi_k</span>的核始终是<span class="math inline">\Pi_{4k-2}</span>的直和因子”这一事实（至少当<span class="math inline">4k-2 \neq 126</span>时成立）。马霍瓦尔德告知我，62维情形下该事实成立，其余四个情形则较为直接。 ⁵ 哈彻[1983] 后续证明了更强的结论：嵌入<span class="math inline">SO(4) \to Diff^+(\mathbb{S}^3)</span>是同伦等价。另一方面，对于<span class="math inline">n \geq 7</span>，安东内利、布尔盖莱亚与卡恩[1972] 证明<span class="math inline">Diff^+(\mathbb{S}^n)</span>不具有任何有限复形的同伦型（早期结果参见[诺维科夫, 1963]）。对于<span class="math inline">n=6</span>，由于<span class="math inline">\Gamma_7 \neq 0</span>，<span class="math inline">Diff(\mathbb{S}^6)</span>是不连通的；但我尚未知晓<span class="math inline">n=4,5</span>时的相关结果。</p>
 <hr>
 <blockquote class="blockquote">
 <p>原文发表于《美国数学会通报》（<em>Notices of the AMS</em>）第58卷第6期，2011年6-7月，第804-809页</p>

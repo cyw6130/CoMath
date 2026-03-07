@@ -1,0 +1,12 @@
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    documentclass: ctexart
+    pdf-engine: xelatex
+    CJKmainfont: "STSong"
+    geometry: margin=1in
+    include-in-header:
+      text: |
+        \usepackage{float}
+        \floatplacement{figure}{H}
