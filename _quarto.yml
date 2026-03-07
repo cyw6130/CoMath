@@ -56,7 +56,7 @@ website:
             contents:
               - notes/h_cobordism_4.qmd
               - notes/bernoulli.qmd
-          - section: "AI & Machine Learning"
+          - section: "AI for Knot"
             contents:
               - notes/microgpt-math-impl-compare.qmd
 format:
