@@ -2,7 +2,7 @@
 title: "Notes"
 subtitle: "学习笔记与数学随想"
 listing:
-  contents: notes
+  contents: ../notes/*.qmd
   type: grid
   sort: "date desc"
   categories: true
@@ -50,8 +50,8 @@ toc: false
 ::: {.card-body}
 ###  量子不变量
 
-- [Khovanov Homology](notes/Khovanov_homology.qmd)
-- [Turaev-Viro 不变量](notes/turaev-viro.qmd)
+- [Khovanov Homology](../notes/Khovanov_homology.qmd)
+- [Turaev-Viro 不变量](../notes/turaev-viro.qmd)
 :::
 :::
 :::
@@ -61,7 +61,7 @@ toc: false
 ::: {.card-body}
 ###  高维流形
 
-- [h-Cobordism 理论](notes/h_cobordism_4.qmd)
+- [h-Cobordism 理论](../notes/h_cobordism_4.qmd)
 :::
 :::
 :::
@@ -71,7 +71,7 @@ toc: false
 ::: {.card-body}
 ###  其他主题
 
-- [Bernoulli 数](notes/bernoulli.qmd)
+- [Bernoulli 数](../notes/bernoulli.qmd)
 :::
 :::
 :::
