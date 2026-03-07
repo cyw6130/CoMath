@@ -76,6 +76,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
 
 
 </head>
@@ -378,6 +391,23 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -582,26 +612,26 @@ Each photograph tells its own quiet story.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-01.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-01.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-01.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-01.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-04.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-04.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-04.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-04.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-05.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-05.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-05.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-05.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-06.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-06.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-06.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-06.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-07.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-07.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-07.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-07.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="../images/gallery/gallery-02.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-02.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-02.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-02.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 </div>
 </div>
@@ -616,7 +646,7 @@ Each photograph tells its own quiet story.</p>
 <div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><a href="../images/gallery/gallery-03.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-03.jpeg" class="img-fluid"></a></p>
+<p><a href="../images/gallery/gallery-03.jpeg" class="lightbox" data-gallery="main-gallery"><img src="../images/gallery/gallery-03.jpeg" class="img-fluid" loading="lazy" decoding="async"></a></p>
 </div>
 </div>
 </div>

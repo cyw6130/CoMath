@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-03-07">
+<meta name="description" content="极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。">
 
 <title>MicroGPT 数学原理与实现对照 – Chen 的拓扑笔记</title>
 <style>
@@ -385,7 +387,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">MicroGPT 数学原理与实现对照</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">AI for Knot</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">MicroGPT 数学原理与实现对照</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -407,13 +409,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -466,6 +468,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -477,20 +496,18 @@ window.Quarto = {
   <li><a href="#microgpt-数学原理与实现对照" id="toc-microgpt-数学原理与实现对照" class="nav-link active" data-scroll-target="#microgpt-数学原理与实现对照">MicroGPT 数学原理与实现对照</a>
   <ul class="collapse">
   <li><a href="#算法结构" id="toc-算法结构" class="nav-link" data-scroll-target="#算法结构">算法结构</a></li>
-  <li><a href="#概览表格" id="toc-概览表格" class="nav-link" data-scroll-target="#概览表格">概览表格</a>
-  <ul class="collapse">
-  <li><a href="#tokenizer-数据代码化" id="toc-tokenizer-数据代码化" class="nav-link" data-scroll-target="#tokenizer-数据代码化">Tokenizer (数据代码化)</a></li>
+  <li><a href="#概览表格" id="toc-概览表格" class="nav-link" data-scroll-target="#概览表格">概览表格</a></li>
+  <li><a href="#tokenizer数据代码化" id="toc-tokenizer数据代码化" class="nav-link" data-scroll-target="#tokenizer数据代码化">Tokenizer（数据代码化）</a></li>
   <li><a href="#词嵌入与位置嵌入" id="toc-词嵌入与位置嵌入" class="nav-link" data-scroll-target="#词嵌入与位置嵌入">词嵌入与位置嵌入</a></li>
-  <li><a href="#注意力机制-参数投影" id="toc-注意力机制-参数投影" class="nav-link" data-scroll-target="#注意力机制-参数投影">注意力机制 (参数投影)</a></li>
-  <li><a href="#注意力机制-权重计算与汇总" id="toc-注意力机制-权重计算与汇总" class="nav-link" data-scroll-target="#注意力机制-权重计算与汇总">注意力机制 (权重计算与汇总)</a></li>
+  <li><a href="#注意力机制参数投影" id="toc-注意力机制参数投影" class="nav-link" data-scroll-target="#注意力机制参数投影">注意力机制（参数投影）</a></li>
+  <li><a href="#注意力机制权重计算与汇总" id="toc-注意力机制权重计算与汇总" class="nav-link" data-scroll-target="#注意力机制权重计算与汇总">注意力机制（权重计算与汇总）</a></li>
   <li><a href="#多头注意力机制" id="toc-多头注意力机制" class="nav-link" data-scroll-target="#多头注意力机制">多头注意力机制</a></li>
   <li><a href="#mlp-前向传播" id="toc-mlp-前向传播" class="nav-link" data-scroll-target="#mlp-前向传播">MLP 前向传播</a></li>
   <li><a href="#残差连接与归一化" id="toc-残差连接与归一化" class="nav-link" data-scroll-target="#残差连接与归一化">残差连接与归一化</a></li>
   <li><a href="#损失函数计算" id="toc-损失函数计算" class="nav-link" data-scroll-target="#损失函数计算">损失函数计算</a></li>
   <li><a href="#反向传播与梯度计算" id="toc-反向传播与梯度计算" class="nav-link" data-scroll-target="#反向传播与梯度计算">反向传播与梯度计算</a></li>
   <li><a href="#adam-参数更新" id="toc-adam-参数更新" class="nav-link" data-scroll-target="#adam-参数更新">Adam 参数更新</a></li>
-  <li><a href="#推理-文本生成" id="toc-推理-文本生成" class="nav-link" data-scroll-target="#推理-文本生成">推理 (文本生成)</a></li>
-  </ul></li>
+  <li><a href="#推理文本生成" id="toc-推理文本生成" class="nav-link" data-scroll-target="#推理文本生成">推理（文本生成）</a></li>
   <li><a href="#补充说明" id="toc-补充说明" class="nav-link" data-scroll-target="#补充说明">补充说明</a></li>
   </ul></li>
   </ul>
@@ -504,16 +521,32 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">AI for Knot</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">MicroGPT 数学原理与实现对照</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">MicroGPT 数学原理与实现对照</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">GPT</div>
+    <div class="quarto-category">深度学习</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 7, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -525,39 +558,55 @@ window.Quarto = {
 
 <section id="microgpt-数学原理与实现对照" class="level1">
 <h1>MicroGPT 数学原理与实现对照</h1>
-<blockquote class="blockquote">
-<p>[!info] 来源 - 实现参考：[[microgpt]] · <code>/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py</code> - 原理笔记：[[MircoGPT]]</p>
-</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>来源
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>实现参考：<code>/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py</code></li>
+<li>原理笔记：MircoGPT</li>
+</ul>
+</div>
+</div>
+</div>
 <p>这份笔记将《MicroGPT》原理笔记与代码实现逐节对应。代码是极简纯 Python GPT，将词嵌入、注意力机制、Adam 优化等数学概念直接映射到函数和数据结构中。</p>
 <section id="算法结构" class="level2">
 <h2 class="anchored" data-anchor-id="算法结构">算法结构</h2>
 <ul>
-<li><strong>[[#Tokenizer (数据代码化)|Tokenizer]]</strong> — 文本 → token id 序列
+<li><strong>Tokenizer</strong> — 文本 → token id 序列
 <ul>
-<li>[[#词嵌入与位置嵌入|词嵌入 + 位置嵌入]] — <span class="math inline">x = W_{TE}[t] + W_{PE}[p]</span></li>
+<li>词嵌入 + 位置嵌入 — <span class="math inline">x = W_{TE}[t] + W_{PE}[p]</span></li>
 </ul></li>
 <li><strong>GPT 前向传播</strong>（循环 <code>n_layer</code> 次）
 <ul>
 <li><strong>注意力机制</strong>
 <ul>
-<li>[[#注意力机制 (参数投影)|Q / K / V 投影]] — <span class="math inline">q = W_Q x,\; k = W_K x,\; v = W_V x</span></li>
-<li>[[#注意力机制 (权重计算与汇总)|注意力权重计算]] — <span class="math inline">\text{softmax}(qk^\top / \sqrt{d_k})</span>，加权求和</li>
-<li>[[#多头注意力机制|多头注意力]] — 分头计算，拼接后乘 <span class="math inline">W_O</span></li>
-<li>[[#残差连接与归一化|残差 + RMSNorm]]</li>
+<li>Q / K / V 投影 — <span class="math inline">q = W_Q x,\; k = W_K x,\; v = W_V x</span></li>
+<li>注意力权重计算 — <span class="math inline">\text{softmax}(qk^\top / \sqrt{d_k})</span>，加权求和</li>
+<li>多头注意力 — 分头计算，拼接后乘 <span class="math inline">W_O</span></li>
+<li>残差 + RMSNorm</li>
 </ul></li>
-<li><strong>[[#MLP 前向传播|MLP]]</strong> — 升维 → ReLU → 降维
+<li><strong>MLP</strong> — 升维 → ReLU → 降维
 <ul>
-<li>[[#残差连接与归一化|残差 + RMSNorm]]</li>
+<li>残差 + RMSNorm</li>
 </ul></li>
 <li>输出：<span class="math inline">\hat{x}</span>（汇总后的 token 表示） → <code>lm_head</code> → 下一 token 概率</li>
 </ul></li>
 <li><strong>Adam 参数训练</strong>
 <ul>
-<li>[[#损失函数计算|损失函数]] — 交叉熵 <span class="math inline">L = -\log \hat{p}_{y}</span></li>
-<li>[[#反向传播与梯度计算|反向传播]] — 链式法则 + 自动微分（<code>Value</code> 类）</li>
-<li>[[#Adam 参数更新|Adam 更新]] — 一阶矩 + 二阶矩修正</li>
+<li>损失函数 — 交叉熵 <span class="math inline">L = -\log \hat{p}_{y}</span></li>
+<li>反向传播 — 链式法则 + 自动微分（<code>Value</code> 类）</li>
+<li>Adam 更新 — 一阶矩 + 二阶矩修正</li>
 </ul></li>
-<li><strong>[[#推理 (文本生成)|推理]]</strong> — 自回归采样，逐 token 生成</li>
+<li><strong>推理</strong> — 自回归采样，逐 token 生成</li>
 </ul>
 </section>
 <section id="概览表格" class="level2">
@@ -633,11 +682,22 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<section id="tokenizer-数据代码化" class="level3">
-<h3 class="anchored" data-anchor-id="tokenizer-数据代码化">Tokenizer (数据代码化)</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 将文本信息转化为计算机能处理的整数序列（tokens）。<code>vocab_size</code> 是所有可能token的数量。每个token被表示为一个one-hot向量 <span class="math inline">\mathbf{e}_i \in \mathbb{R}^{n_1}</span>。通过词嵌入矩阵 <span class="math inline">W_{TE} \in \mathbb{R}^{n_2 \times n_1}</span> 将其映射为稠密向量 <span class="math inline">\mathbf{x} = W_{TE} \mathbf{e}_i</span>。</p>
-</blockquote>
+</section>
+<section id="tokenizer数据代码化" class="level2">
+<h2 class="anchored" data-anchor-id="tokenizer数据代码化">Tokenizer（数据代码化）</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>将文本信息转化为计算机能处理的整数序列（tokens）。<code>vocab_size</code> 是所有可能token的数量。每个token被表示为一个one-hot向量 <span class="math inline">\mathbf{e}_i \in \mathbb{R}^{n_1}</span>。通过词嵌入矩阵 <span class="math inline">W_{TE} \in \mathbb{R}^{n_2 \times n_1}</span> 将其映射为稠密向量 <span class="math inline">\mathbf{x} = W_{TE} \mathbf{e}_i</span>。</p>
+</div>
+</div>
 <p><strong>代码实现</strong>：数据加载部分</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let there be a Tokenizer to translate strings to sequences of integers ("tokens") and back</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>uchars <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(<span class="st">''</span>.join(docs))) <span class="co"># unique characters in the dataset become token ids 0..n-1</span></span>
@@ -646,74 +706,145 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"vocab size: </span><span class="sc">{</span>vocab_size<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：代码通过提取数据集中所有唯一字符构建词表，将每个字符映射为一个整数token id。<code>vocab_size</code> 对应数学原理中的 <span class="math inline">n_1</span>（词表大小），<code>BOS</code> 是一个额外的特殊token。</p>
 </section>
-<section id="词嵌入与位置嵌入" class="level3">
-<h3 class="anchored" data-anchor-id="词嵌入与位置嵌入">词嵌入与位置嵌入</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 每个token由其内容（词）和位置共同决定。词嵌入矩阵 <span class="math inline">W_{TE}</span> 将token id映射为向量 <span class="math inline">\mathbf{t}</span>。位置嵌入矩阵 <span class="math inline">W_{PE}</span> 将位置id映射为向量 <span class="math inline">\mathbf{p}</span>。最终的输入表示为两者的和：<span class="math inline">\mathbf{x} = \mathbf{t} + \mathbf{p}</span>。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>gpt()</code> 函数开头部分 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<section id="词嵌入与位置嵌入" class="level2">
+<h2 class="anchored" data-anchor-id="词嵌入与位置嵌入">词嵌入与位置嵌入</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>每个token由其内容（词）和位置共同决定。词嵌入矩阵 <span class="math inline">W_{TE}</span> 将token id映射为向量 <span class="math inline">\mathbf{t}</span>。位置嵌入矩阵 <span class="math inline">W_{PE}</span> 将位置id映射为向量 <span class="math inline">\mathbf{p}</span>。最终的输入表示为两者的和：<span class="math inline">\mathbf{x} = \mathbf{t} + \mathbf{p}</span>。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数开头部分（<code>microgpt.py</code> L108）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gpt(token_id, pos_id, keys, values):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    tok_emb <span class="op">=</span> state_dict[<span class="st">'wte'</span>][token_id] <span class="co"># token embedding</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    pos_emb <span class="op">=</span> state_dict[<span class="st">'wpe'</span>][pos_id] <span class="co"># position embedding</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> [t <span class="op">+</span> p <span class="cf">for</span> t, p <span class="kw">in</span> <span class="bu">zip</span>(tok_emb, pos_emb)] <span class="co"># joint token and position embedding</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>state_dict['wte']</code> 和 <code>state_dict['wpe']</code> 分别对应数学原理中的 <span class="math inline">W_{TE}</span> 和 <span class="math inline">W_{PE}</span>。代码通过列表索引取出对应的向量列表，然后逐元素相加，实现了 <span class="math inline">\mathbf{x} = \mathbf{t} + \mathbf{p}</span>。</p>
 </section>
-<section id="注意力机制-参数投影" class="level3">
-<h3 class="anchored" data-anchor-id="注意力机制-参数投影">注意力机制 (参数投影)</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 为每个输入向量 <span class="math inline">\mathbf{x}</span> 计算查询（Query）、键（Key）、值（Value）向量： <span class="math inline">\mathbf{q} = W_Q \mathbf{x}, \quad \mathbf{k} = W_K \mathbf{x}, \quad \mathbf{v} = W_V \mathbf{x}</span> 其中 <span class="math inline">W_Q, W_K, W_V</span> 是可学习的投影矩阵。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 <code>linear()</code> 调用 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a> · <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:94">↗ <code>linear</code> L94</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>        q <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wq'</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wk'</span>])</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wv'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="注意力机制参数投影" class="level2">
+<h2 class="anchored" data-anchor-id="注意力机制参数投影">注意力机制（参数投影）</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>为每个输入向量 <span class="math inline">\mathbf{x}</span> 计算查询（Query）、键（Key）、值（Value）向量：</p>
+<p><span class="math display">\mathbf{q} = W_Q \mathbf{x}, \quad \mathbf{k} = W_K \mathbf{x}, \quad \mathbf{v} = W_V \mathbf{x}</span></p>
+<p>其中 <span class="math inline">W_Q, W_K, W_V</span> 是可学习的投影矩阵。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 <code>linear()</code> 调用</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wq'</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wk'</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wv'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>state_dict[f'layer{li}.attn_wq']</code> 等矩阵对应数学原理中的 <span class="math inline">W_Q, W_K, W_V</span>。<code>linear(x, w)</code> 函数实现了矩阵乘法 <span class="math inline">w \mathbf{x}</span>，将输入向量 <span class="math inline">\mathbf{x}</span> 投影到 Q、K、V 空间。</p>
 </section>
-<section id="注意力机制-权重计算与汇总" class="level3">
-<h3 class="anchored" data-anchor-id="注意力机制-权重计算与汇总">注意力机制 (权重计算与汇总)</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 1. 计算注意力分数（缩放点积）：<span class="math inline">a_t = \frac{\mathbf{q} \cdot \mathbf{k}_t}{\sqrt{d_k}}</span>，其中 <span class="math inline">d_k</span> 是键向量的维度。 2. 应用softmax得到注意力权重：<span class="math inline">w_t = \text{softmax}(a_t)</span>。 3. 对值向量加权求和得到输出：<span class="math inline">\mathbf{o} = \sum_t w_t \mathbf{v}_t</span>。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的注意力计算部分 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>            attn_logits <span class="op">=</span> [<span class="bu">sum</span>(q_h[j] <span class="op">*</span> k_h[t][j] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)) <span class="op">/</span> head_dim<span class="op">**</span><span class="fl">0.5</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(k_h))]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            attn_weights <span class="op">=</span> softmax(attn_logits)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            head_out <span class="op">=</span> [<span class="bu">sum</span>(attn_weights[t] <span class="op">*</span> v_h[t][j] <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(v_h))) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>对应说明</strong>：<code>attn_logits</code> 列表计算了当前查询向量 <code>q_h</code> 与所有历史键向量 <code>k_h[t]</code> 的点积，并除以 <span class="math inline">\sqrt{d_k}</span> (<code>head_dim**0.5</code>)。<code>softmax</code> 函数将其转化为概率分布 <code>attn_weights</code>。<code>head_out</code> 计算了权重 <code>attn_weights[t]</code> 与对应值向量 <code>v_h[t]</code> 的加权和。</p>
+<section id="注意力机制权重计算与汇总" class="level2">
+<h2 class="anchored" data-anchor-id="注意力机制权重计算与汇总">注意力机制（权重计算与汇总）</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>计算注意力分数（缩放点积）：<span class="math inline">a_t = \frac{\mathbf{q} \cdot \mathbf{k}_t}{\sqrt{d_k}}</span>，其中 <span class="math inline">d_k</span> 是键向量的维度。</li>
+<li>应用softmax得到注意力权重：<span class="math inline">w_t = \text{softmax}(a_t)</span>。</li>
+<li>对值向量加权求和得到输出：<span class="math inline">\mathbf{o} = \sum_t w_t \mathbf{v}_t</span>。</li>
+</ol>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的注意力计算部分</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>attn_logits <span class="op">=</span> [<span class="bu">sum</span>(q_h[j] <span class="op">*</span> k_h[t][j] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)) <span class="op">/</span> head_dim<span class="op">**</span><span class="fl">0.5</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(k_h))]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>attn_weights <span class="op">=</span> softmax(attn_logits)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>head_out <span class="op">=</span> [<span class="bu">sum</span>(attn_weights[t] <span class="op">*</span> v_h[t][j] <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(v_h))) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>attn_logits</code> 列表计算了当前查询向量 <code>q_h</code> 与所有历史键向量 <code>k_h[t]</code> 的点积，并除以 <span class="math inline">\sqrt{d_k}</span>（<code>head_dim**0.5</code>）。<code>softmax</code> 函数将其转化为概率分布 <code>attn_weights</code>。<code>head_out</code> 计算了权重 <code>attn_weights[t]</code> 与对应值向量 <code>v_h[t]</code> 的加权和。</p>
 </section>
-<section id="多头注意力机制" class="level3">
-<h3 class="anchored" data-anchor-id="多头注意力机制">多头注意力机制</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 将输入维度 <span class="math inline">n</span> 划分为 <span class="math inline">h</span> 个头，每个头独立进行注意力计算，然后将所有头的输出拼接起来，最后通过一个输出投影矩阵 <span class="math inline">W_O</span> 进行融合：<span class="math inline">\text{MultiHead} = W_O [\text{head}_1; \ldots; \text{head}_h]</span>。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的循环 <code>for h in range(n_head)</code> &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        x_attn <span class="op">=</span> []</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(n_head):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            hs <span class="op">=</span> h <span class="op">*</span> head_dim</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            q_h <span class="op">=</span> q[hs:hs<span class="op">+</span>head_dim] <span class="co"># 分割 Q</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            k_h <span class="op">=</span> [ki[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> ki <span class="kw">in</span> keys[li]] <span class="co"># 分割 K</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            v_h <span class="op">=</span> [vi[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> vi <span class="kw">in</span> values[li]] <span class="co"># 分割 V</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="co"># ... 计算单头注意力 head_out ...</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            x_attn.extend(head_out) <span class="co"># 拼接</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x_attn, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wo'</span>]) <span class="co"># 输出投影</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="多头注意力机制" class="level2">
+<h2 class="anchored" data-anchor-id="多头注意力机制">多头注意力机制</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>将输入维度 <span class="math inline">n</span> 划分为 <span class="math inline">h</span> 个头，每个头独立进行注意力计算，然后将所有头的输出拼接起来，最后通过一个输出投影矩阵 <span class="math inline">W_O</span> 进行融合：</p>
+<p><span class="math display">\text{MultiHead} = W_O [\text{head}_1; \ldots; \text{head}_h]</span></p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的循环 <code>for h in range(n_head)</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_attn <span class="op">=</span> []</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(n_head):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    hs <span class="op">=</span> h <span class="op">*</span> head_dim</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    q_h <span class="op">=</span> q[hs:hs<span class="op">+</span>head_dim] <span class="co"># 分割 Q</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    k_h <span class="op">=</span> [ki[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> ki <span class="kw">in</span> keys[li]] <span class="co"># 分割 K</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    v_h <span class="op">=</span> [vi[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> vi <span class="kw">in</span> values[li]] <span class="co"># 分割 V</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ... 计算单头注意力 head_out ...</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    x_attn.extend(head_out) <span class="co"># 拼接</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> linear(x_attn, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wo'</span>]) <span class="co"># 输出投影</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：代码通过切片操作 <code>[hs:hs+head_dim]</code> 将 Q、K、V 向量按头分割。每个头独立计算注意力得到 <code>head_out</code>，然后通过 <code>extend</code> 拼接所有头的输出。最后通过 <code>linear</code> 函数和 <code>attn_wo</code> 矩阵进行输出投影，对应 <span class="math inline">W_O</span>。</p>
 </section>
-<section id="mlp-前向传播" class="level3">
-<h3 class="anchored" data-anchor-id="mlp-前向传播">MLP 前向传播</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 MLP 块对输入 <span class="math inline">\mathbf{x}</span> 进行非线性变换：<span class="math inline">\text{MLP}(\mathbf{x}) = W_2 \cdot \text{ReLU}(W_1 \mathbf{x})</span>，其中 <span class="math inline">W_1</span> 是升维矩阵，<span class="math inline">W_2</span> 是降维矩阵。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 MLP 块 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc1'</span>]) <span class="co"># 升维</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> [xi.relu() <span class="cf">for</span> xi <span class="kw">in</span> x] <span class="co"># 非线性激活</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc2'</span>]) <span class="co"># 降维</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="mlp-前向传播" class="level2">
+<h2 class="anchored" data-anchor-id="mlp-前向传播">MLP 前向传播</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>MLP 块对输入 <span class="math inline">\mathbf{x}</span> 进行非线性变换：</p>
+<p><span class="math display">\text{MLP}(\mathbf{x}) = W_2 \cdot \text{ReLU}(W_1 \mathbf{x})</span></p>
+<p>其中 <span class="math inline">W_1</span> 是升维矩阵，<span class="math inline">W_2</span> 是降维矩阵。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 MLP 块</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc1'</span>]) <span class="co"># 升维</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [xi.relu() <span class="cf">for</span> xi <span class="kw">in</span> x] <span class="co"># 非线性激活</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc2'</span>]) <span class="co"># 降维</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>mlp_fc1</code> 矩阵对应 <span class="math inline">W_1</span>，将输入从 <code>n_embd</code> 维投影到 <code>4 * n_embd</code> 维。<code>[xi.relu() for xi in x]</code> 对每个元素应用 ReLU 激活函数。<code>mlp_fc2</code> 矩阵对应 <span class="math inline">W_2</span>，将维度投影回 <code>n_embd</code>。</p>
 </section>
-<section id="残差连接与归一化" class="level3">
-<h3 class="anchored" data-anchor-id="残差连接与归一化">残差连接与归一化</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 在每个子层（注意力、MLP）中，采用残差连接：<span class="math inline">\mathbf{x}_{\text{out}} = \mathbf{x}_{\text{in}} + \text{Sublayer}(\text{Norm}(\mathbf{x}_{\text{in}}))</span>。这里使用 RMSNorm 进行归一化：<span class="math inline">\text{RMSNorm}(\mathbf{x}) = \frac{\mathbf{x}}{\sqrt{\text{Mean}(\mathbf{x}^2) + \epsilon}}</span>。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>rmsnorm()</code>, <code>gpt()</code> 函数中的残差连接 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:103">↗ <code>rmsnorm</code> L103</a> · <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<section id="残差连接与归一化" class="level2">
+<h2 class="anchored" data-anchor-id="残差连接与归一化">残差连接与归一化</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>在每个子层（注意力、MLP）中，采用残差连接：</p>
+<p><span class="math display">\mathbf{x}_{\text{out}} = \mathbf{x}_{\text{in}} + \text{Sublayer}(\text{Norm}(\mathbf{x}_{\text{in}}))</span></p>
+<p>这里使用 RMSNorm 进行归一化：<span class="math inline">\text{RMSNorm}(\mathbf{x}) = \dfrac{\mathbf{x}}{\sqrt{\text{Mean}(\mathbf{x}^2) + \epsilon}}</span>。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>rmsnorm()</code> 函数与 <code>gpt()</code> 中的残差连接</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rmsnorm(x):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ms <span class="op">=</span> <span class="bu">sum</span>(xi <span class="op">*</span> xi <span class="cf">for</span> xi <span class="kw">in</span> x) <span class="op">/</span> <span class="bu">len</span>(x) <span class="co"># 计算均方值</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> (ms <span class="op">+</span> <span class="fl">1e-5</span>) <span class="op">**</span> <span class="op">-</span><span class="fl">0.5</span> <span class="co"># 计算缩放因子 1/sqrt(ms+eps)</span></span>
@@ -726,71 +857,115 @@ window.Quarto = {
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [a <span class="op">+</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(x, x_residual)] <span class="co"># 残差连接</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>rmsnorm</code> 函数计算输入列表 <code>x</code> 的均方值 <code>ms</code>，然后计算缩放因子 <code>scale</code>，最后将每个元素乘以该因子，实现了RMSNorm。在注意力块和MLP块中，代码都先保存输入 <code>x_residual</code>，对归一化后的 <code>x</code> 进行变换，最后将结果与 <code>x_residual</code> 相加，实现了残差连接。</p>
 </section>
-<section id="损失函数计算" class="level3">
-<h3 class="anchored" data-anchor-id="损失函数计算">损失函数计算</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 使用交叉熵损失（负对数似然）来衡量模型预测的概率分布 <span class="math inline">\hat{\mathbf{p}}</span> 与真实下一个token的 one-hot 分布 <span class="math inline">\mathbf{y}</span> 之间的差异。对于单个位置：<span class="math inline">L_t = -\log \hat{p}_{y_t}</span>。整个序列的损失是各位置损失的平均：<span class="math inline">L = \frac{1}{T} \sum_{t=1}^{T} L_t</span>。</p>
-</blockquote>
+<section id="损失函数计算" class="level2">
+<h2 class="anchored" data-anchor-id="损失函数计算">损失函数计算</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>使用交叉熵损失（负对数似然）来衡量模型预测的概率分布 <span class="math inline">\hat{\mathbf{p}}</span> 与真实下一个token的 one-hot 分布 <span class="math inline">\mathbf{y}</span> 之间的差异。对于单个位置：</p>
+<p><span class="math display">L_t = -\log \hat{p}_{y_t}</span></p>
+<p>整个序列的损失是各位置损失的平均：<span class="math inline">L = \dfrac{1}{T} \sum_{t=1}^{T} L_t</span>。</p>
+</div>
+</div>
 <p><strong>代码实现</strong>：训练循环中的 <code>loss_t</code> 和 <code>loss</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>        probs <span class="op">=</span> softmax(logits) <span class="co"># 得到预测概率分布 hat{p}</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        loss_t <span class="op">=</span> <span class="op">-</span>probs[target_id].log() <span class="co"># 计算负对数似然 L_t</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        losses.append(loss_t)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> (<span class="dv">1</span> <span class="op">/</span> n) <span class="op">*</span> <span class="bu">sum</span>(losses) <span class="co"># 平均损失 L</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> softmax(logits) <span class="co"># 得到预测概率分布 hat{p}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>loss_t <span class="op">=</span> <span class="op">-</span>probs[target_id].log() <span class="co"># 计算负对数似然 L_t</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>losses.append(loss_t)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> (<span class="dv">1</span> <span class="op">/</span> n) <span class="op">*</span> <span class="bu">sum</span>(losses) <span class="co"># 平均损失 L</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>probs</code> 是模型输出的概率分布 <span class="math inline">\hat{\mathbf{p}}</span>。<code>probs[target_id]</code> 是真实token对应的预测概率 <span class="math inline">\hat{p}_{y_t}</span>。<code>.log()</code> 计算其对数，取负号得到 <span class="math inline">L_t</span>。最后对所有位置的损失求和并除以长度 <code>n</code>，得到平均损失 <span class="math inline">L</span>。</p>
 </section>
-<section id="反向传播与梯度计算" class="level3">
-<h3 class="anchored" data-anchor-id="反向传播与梯度计算">反向传播与梯度计算</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 通过链式法则，从损失 <span class="math inline">L</span> 开始，反向计算损失相对于每个模型参数 <span class="math inline">\theta</span> 的梯度 <span class="math inline">\frac{\partial L}{\partial \theta}</span>。这通过构建计算图并反向遍历实现。</p>
-</blockquote>
-<p><strong>代码实现</strong>：<code>Value.backward()</code>, <code>loss.backward()</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ... 拓扑排序 ...</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.grad <span class="op">=</span> <span class="dv">1</span> <span class="co"># 设置损失节点的梯度为 1</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">reversed</span>(topo): <span class="co"># 反向遍历</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> child, local_grad <span class="kw">in</span> <span class="bu">zip</span>(v._children, v._local_grads):</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                child.grad <span class="op">+=</span> local_grad <span class="op">*</span> v.grad <span class="co"># 链式法则</span></span>
+<section id="反向传播与梯度计算" class="level2">
+<h2 class="anchored" data-anchor-id="反向传播与梯度计算">反向传播与梯度计算</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>通过链式法则，从损失 <span class="math inline">L</span> 开始，反向计算损失相对于每个模型参数 <span class="math inline">\theta</span> 的梯度 <span class="math inline">\frac{\partial L}{\partial \theta}</span>。这通过构建计算图并反向遍历实现。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：<code>Value.backward()</code> 与 <code>loss.backward()</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> backward(<span class="va">self</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ... 拓扑排序 ...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.grad <span class="op">=</span> <span class="dv">1</span> <span class="co"># 设置损失节点的梯度为 1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">reversed</span>(topo): <span class="co"># 反向遍历</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> child, local_grad <span class="kw">in</span> <span class="bu">zip</span>(v._children, v._local_grads):</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            child.grad <span class="op">+=</span> local_grad <span class="op">*</span> v.grad <span class="co"># 链式法则</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 在训练循环中</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    loss.backward() <span class="co"># 触发整个计算图的反向传播</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>对应说明</strong>：<code>Value</code> 类封装了标量值和其梯度，并记录了计算图中的父子关系及局部梯度。<code>backward()</code> 方法首先对计算图进行拓扑排序，然后从损失节点（<code>self</code>）开始，按反向顺序将梯度乘以局部导数后传递给子节点，实现了链式法则。调用 <code>loss.backward()</code> 即计算所有 <code>Value</code> 类型参数的梯度。</p>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>loss.backward() <span class="co"># 触发整个计算图的反向传播</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>Value</code> 类封装了标量值和其梯度，并记录了计算图中的父子关系及局部梯度。<code>backward()</code> 方法首先对计算图进行拓扑排序，然后从损失节点开始，按反向顺序将梯度乘以局部导数后传递给子节点，实现了链式法则。</p>
 </section>
-<section id="adam-参数更新" class="level3">
-<h3 class="anchored" data-anchor-id="adam-参数更新">Adam 参数更新</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 Adam 优化算法结合了动量（一阶矩）和自适应学习率（二阶矩）。对于每个参数 <span class="math inline">\theta</span>，在时间步 <span class="math inline">t</span>： <span class="math inline">\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1) \mathbf{g}_t</span> <span class="math inline">\mathbf{v}_t = \beta_2 \mathbf{v}_{t-1} + (1-\beta_2) \mathbf{g}_t^2</span> <span class="math inline">\hat{\mathbf{m}}_t = \mathbf{m}_t / (1-\beta_1^t)</span> <span class="math inline">\hat{\mathbf{v}}_t = \mathbf{v}_t / (1-\beta_2^t)</span> <span class="math inline">\theta_t = \theta_{t-1} - \eta_t \cdot \hat{\mathbf{m}}_t / (\sqrt{\hat{\mathbf{v}}_t} + \epsilon)</span> 其中 <span class="math inline">\mathbf{g}_t = \nabla_\theta L_t</span> 是梯度，<span class="math inline">\eta_t</span> 是学习率。</p>
-</blockquote>
+<section id="adam-参数更新" class="level2">
+<h2 class="anchored" data-anchor-id="adam-参数更新">Adam 参数更新</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Adam 优化算法结合了动量（一阶矩）和自适应学习率（二阶矩）。对于每个参数 <span class="math inline">\theta</span>，在时间步 <span class="math inline">t</span>：</p>
+<p><span class="math display">\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1) \mathbf{g}_t</span> <span class="math display">\mathbf{v}_t = \beta_2 \mathbf{v}_{t-1} + (1-\beta_2) \mathbf{g}_t^2</span> <span class="math display">\hat{\mathbf{m}}_t = \mathbf{m}_t / (1-\beta_1^t), \quad \hat{\mathbf{v}}_t = \mathbf{v}_t / (1-\beta_2^t)</span> <span class="math display">\theta_t = \theta_{t-1} - \eta_t \cdot \hat{\mathbf{m}}_t / (\sqrt{\hat{\mathbf{v}}_t} + \epsilon)</span></p>
+<p>其中 <span class="math inline">\mathbf{g}_t = \nabla_\theta L_t</span> 是梯度，<span class="math inline">\eta_t</span> 是学习率。</p>
+</div>
+</div>
 <p><strong>代码实现</strong>：训练循环中的参数更新部分</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(params):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        m[i] <span class="op">=</span> beta1 <span class="op">*</span> m[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta1) <span class="op">*</span> p.grad <span class="co"># 更新一阶矩 m_t</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        v[i] <span class="op">=</span> beta2 <span class="op">*</span> v[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta2) <span class="op">*</span> p.grad <span class="op">**</span> <span class="dv">2</span> <span class="co"># 更新二阶矩 v_t</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        m_hat <span class="op">=</span> m[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta1 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 m_hat_t</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        v_hat <span class="op">=</span> v[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta2 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 v_hat_t</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        p.data <span class="op">-=</span> lr_t <span class="op">*</span> m_hat <span class="op">/</span> (v_hat <span class="op">**</span> <span class="fl">0.5</span> <span class="op">+</span> eps_adam) <span class="co"># 参数更新</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(params):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    m[i] <span class="op">=</span> beta1 <span class="op">*</span> m[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta1) <span class="op">*</span> p.grad <span class="co"># 更新一阶矩 m_t</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    v[i] <span class="op">=</span> beta2 <span class="op">*</span> v[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta2) <span class="op">*</span> p.grad <span class="op">**</span> <span class="dv">2</span> <span class="co"># 更新二阶矩 v_t</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    m_hat <span class="op">=</span> m[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta1 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 m_hat_t</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    v_hat <span class="op">=</span> v[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta2 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 v_hat_t</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    p.data <span class="op">-=</span> lr_t <span class="op">*</span> m_hat <span class="op">/</span> (v_hat <span class="op">**</span> <span class="fl">0.5</span> <span class="op">+</span> eps_adam) <span class="co"># 参数更新</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>对应说明</strong>：<code>m</code> 和 <code>v</code> 列表分别对应一阶矩 <span class="math inline">\mathbf{m}</span> 和二阶矩 <span class="math inline">\mathbf{v}</span>。代码严格遵循数学公式：用梯度 <code>p.grad</code> 更新矩估计，计算偏差校正项 <code>m_hat</code> 和 <code>v_hat</code>，最后用校正后的矩和衰减的学习率 <code>lr_t</code> 更新参数值 <code>p.data</code>。</p>
 </section>
-<section id="推理-文本生成" class="level3">
-<h3 class="anchored" data-anchor-id="推理-文本生成">推理 (文本生成)</h3>
-<blockquote class="blockquote">
-<p>[!note] 数学原理 使用训练好的模型参数进行自回归生成。给定起始 token（如 BOS），模型输出下一个 token 的概率分布 <span class="math inline">\hat{\mathbf{p}}</span>。通过采样（通常引入温度 <span class="math inline">\tau</span> 控制随机性：<span class="math inline">p_i = \frac{\exp(z_i / \tau)}{\sum_j \exp(z_j / \tau)}</span>）得到下一个 token，并将其作为输入继续生成，直到达到长度限制或生成结束 token。</p>
-</blockquote>
+<section id="推理文本生成" class="level2">
+<h2 class="anchored" data-anchor-id="推理文本生成">推理（文本生成）</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>使用训练好的模型参数进行自回归生成。给定起始 token（如 BOS），模型输出下一个 token 的概率分布 <span class="math inline">\hat{\mathbf{p}}</span>。通过采样（引入温度 <span class="math inline">\tau</span> 控制随机性）：</p>
+<p><span class="math display">p_i = \frac{\exp(z_i / \tau)}{\sum_j \exp(z_j / \tau)}</span></p>
+<p>得到下一个 token，并将其作为输入继续生成，直到达到长度限制。</p>
+</div>
+</div>
 <p><strong>代码实现</strong>：代码末尾的推理循环</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pos_id <span class="kw">in</span> <span class="bu">range</span>(block_size):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> gpt(token_id, pos_id, keys, values) <span class="co"># 前向传播得到 logits z</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        probs <span class="op">=</span> softmax([l <span class="op">/</span> temperature <span class="cf">for</span> l <span class="kw">in</span> logits]) <span class="co"># 应用温度缩放后 softmax</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        token_id <span class="op">=</span> random.choices(<span class="bu">range</span>(vocab_size), weights<span class="op">=</span>[p.data <span class="cf">for</span> p <span class="kw">in</span> probs])[<span class="dv">0</span>] <span class="co"># 采样</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>对应说明</strong>：推理循环模拟了自回归过程。<code>gpt</code> 函数根据当前 <code>token_id</code> 和 <code>pos_id</code> 计算 logits（未归一化的分数 <span class="math inline">z</span>）。<code>softmax</code> 前先将每个 logits 除以 <code>temperature</code> (<span class="math inline">\tau</span>)，实现温度缩放。<code>random.choices</code> 根据得到的概率分布 <code>probs</code> 进行加权随机采样，得到下一个 <code>token_id</code>。</p>
-</section>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pos_id <span class="kw">in</span> <span class="bu">range</span>(block_size):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> gpt(token_id, pos_id, keys, values) <span class="co"># 前向传播得到 logits z</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> softmax([l <span class="op">/</span> temperature <span class="cf">for</span> l <span class="kw">in</span> logits]) <span class="co"># 应用温度缩放后 softmax</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    token_id <span class="op">=</span> random.choices(<span class="bu">range</span>(vocab_size), weights<span class="op">=</span>[p.data <span class="cf">for</span> p <span class="kw">in</span> probs])[<span class="dv">0</span>] <span class="co"># 采样</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：推理循环模拟了自回归过程。<code>gpt</code> 函数根据当前 <code>token_id</code> 和 <code>pos_id</code> 计算 logits（未归一化的分数 <span class="math inline">z</span>）。<code>softmax</code> 前先将每个 logits 除以 <code>temperature</code>（<span class="math inline">\tau</span>），实现温度缩放。<code>random.choices</code> 根据得到的概率分布 <code>probs</code> 进行加权随机采样，得到下一个 <code>token_id</code>。</p>
 </section>
 <section id="补充说明" class="level2">
 <h2 class="anchored" data-anchor-id="补充说明">补充说明</h2>
-<ol type="1">
-<li><strong>笔记中未详细覆盖的代码细节</strong>：
+<p><strong>笔记中未详细覆盖的代码细节</strong>：</p>
 <ul>
 <li><strong>自动微分框架</strong>：代码实现了一个完整的基于 <code>Value</code> 类的轻量级自动微分框架，用于计算梯度，这是反向传播的核心基础设施。</li>
-<li><strong>参数初始化</strong>：代码使用高斯分布初始化所有参数矩阵（<code>matrix</code></li>
-</ul></li>
-</ol>
+<li><strong>参数初始化</strong>：代码使用高斯分布初始化所有参数矩阵，是训练收敛的重要前提。</li>
+<li><strong>KV Cache</strong>：推理时通过 <code>keys</code> 和 <code>values</code> 缓存历史 token 的键值对，避免重复计算，是 Transformer 推理加速的标准技术。</li>
+</ul>
 <hr>
 <p><em>生成日期：2026-03-07</em></p>
 

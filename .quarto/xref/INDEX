@@ -127,5 +127,8 @@
   },
   "notes/microgpt-math-impl-compare.qmd": {
     "microgpt-math-impl-compare.html": "e5d0dd45"
+  },
+  "pages/ai.qmd": {
+    "ai.html": "9353ffe7"
   }
 }
