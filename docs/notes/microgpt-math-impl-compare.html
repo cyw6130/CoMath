@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MicroGPT 数学原理与实现对照 – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">MicroGPT 数学原理与实现对照</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turaev-Viro Invariants</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#microgpt-数学原理与实现对照" id="toc-microgpt-数学原理与实现对照" class="nav-link active" data-scroll-target="#microgpt-数学原理与实现对照">MicroGPT 数学原理与实现对照</a>
+  <ul class="collapse">
+  <li><a href="#算法结构" id="toc-算法结构" class="nav-link" data-scroll-target="#算法结构">算法结构</a></li>
+  <li><a href="#概览表格" id="toc-概览表格" class="nav-link" data-scroll-target="#概览表格">概览表格</a>
+  <ul class="collapse">
+  <li><a href="#tokenizer-数据代码化" id="toc-tokenizer-数据代码化" class="nav-link" data-scroll-target="#tokenizer-数据代码化">Tokenizer (数据代码化)</a></li>
+  <li><a href="#词嵌入与位置嵌入" id="toc-词嵌入与位置嵌入" class="nav-link" data-scroll-target="#词嵌入与位置嵌入">词嵌入与位置嵌入</a></li>
+  <li><a href="#注意力机制-参数投影" id="toc-注意力机制-参数投影" class="nav-link" data-scroll-target="#注意力机制-参数投影">注意力机制 (参数投影)</a></li>
+  <li><a href="#注意力机制-权重计算与汇总" id="toc-注意力机制-权重计算与汇总" class="nav-link" data-scroll-target="#注意力机制-权重计算与汇总">注意力机制 (权重计算与汇总)</a></li>
+  <li><a href="#多头注意力机制" id="toc-多头注意力机制" class="nav-link" data-scroll-target="#多头注意力机制">多头注意力机制</a></li>
+  <li><a href="#mlp-前向传播" id="toc-mlp-前向传播" class="nav-link" data-scroll-target="#mlp-前向传播">MLP 前向传播</a></li>
+  <li><a href="#残差连接与归一化" id="toc-残差连接与归一化" class="nav-link" data-scroll-target="#残差连接与归一化">残差连接与归一化</a></li>
+  <li><a href="#损失函数计算" id="toc-损失函数计算" class="nav-link" data-scroll-target="#损失函数计算">损失函数计算</a></li>
+  <li><a href="#反向传播与梯度计算" id="toc-反向传播与梯度计算" class="nav-link" data-scroll-target="#反向传播与梯度计算">反向传播与梯度计算</a></li>
+  <li><a href="#adam-参数更新" id="toc-adam-参数更新" class="nav-link" data-scroll-target="#adam-参数更新">Adam 参数更新</a></li>
+  <li><a href="#推理-文本生成" id="toc-推理-文本生成" class="nav-link" data-scroll-target="#推理-文本生成">推理 (文本生成)</a></li>
+  </ul></li>
+  <li><a href="#补充说明" id="toc-补充说明" class="nav-link" data-scroll-target="#补充说明">补充说明</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">MicroGPT 数学原理与实现对照</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="microgpt-数学原理与实现对照" class="level1">
+<h1>MicroGPT 数学原理与实现对照</h1>
+<blockquote class="blockquote">
+<p>[!info] 来源 - 实现参考：[[microgpt]] · <code>/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py</code> - 原理笔记：[[MircoGPT]]</p>
+</blockquote>
+<p>这份笔记将《MicroGPT》原理笔记与代码实现逐节对应。代码是极简纯 Python GPT，将词嵌入、注意力机制、Adam 优化等数学概念直接映射到函数和数据结构中。</p>
+<section id="算法结构" class="level2">
+<h2 class="anchored" data-anchor-id="算法结构">算法结构</h2>
+<ul>
+<li><strong>[[#Tokenizer (数据代码化)|Tokenizer]]</strong> — 文本 → token id 序列
+<ul>
+<li>[[#词嵌入与位置嵌入|词嵌入 + 位置嵌入]] — <span class="math inline">x = W_{TE}[t] + W_{PE}[p]</span></li>
+</ul></li>
+<li><strong>GPT 前向传播</strong>（循环 <code>n_layer</code> 次）
+<ul>
+<li><strong>注意力机制</strong>
+<ul>
+<li>[[#注意力机制 (参数投影)|Q / K / V 投影]] — <span class="math inline">q = W_Q x,\; k = W_K x,\; v = W_V x</span></li>
+<li>[[#注意力机制 (权重计算与汇总)|注意力权重计算]] — <span class="math inline">\text{softmax}(qk^\top / \sqrt{d_k})</span>，加权求和</li>
+<li>[[#多头注意力机制|多头注意力]] — 分头计算，拼接后乘 <span class="math inline">W_O</span></li>
+<li>[[#残差连接与归一化|残差 + RMSNorm]]</li>
+</ul></li>
+<li><strong>[[#MLP 前向传播|MLP]]</strong> — 升维 → ReLU → 降维
+<ul>
+<li>[[#残差连接与归一化|残差 + RMSNorm]]</li>
+</ul></li>
+<li>输出：<span class="math inline">\hat{x}</span>（汇总后的 token 表示） → <code>lm_head</code> → 下一 token 概率</li>
+</ul></li>
+<li><strong>Adam 参数训练</strong>
+<ul>
+<li>[[#损失函数计算|损失函数]] — 交叉熵 <span class="math inline">L = -\log \hat{p}_{y}</span></li>
+<li>[[#反向传播与梯度计算|反向传播]] — 链式法则 + 自动微分（<code>Value</code> 类）</li>
+<li>[[#Adam 参数更新|Adam 更新]] — 一阶矩 + 二阶矩修正</li>
+</ul></li>
+<li><strong>[[#推理 (文本生成)|推理]]</strong> — 自回归采样，逐 token 生成</li>
+</ul>
+</section>
+<section id="概览表格" class="level2">
+<h2 class="anchored" data-anchor-id="概览表格">概览表格</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>算法步骤</th>
+<th>对应函数/位置</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tokenizer (数据代码化)</td>
+<td>数据加载与字符集处理</td>
+<td>将文本数据转化为整数token序列，并构建词表。</td>
+</tr>
+<tr class="even">
+<td>词嵌入与位置嵌入</td>
+<td><code>gpt()</code> 函数中的 <code>tok_emb</code> 和 <code>pos_emb</code></td>
+<td>通过 <code>wte</code> 和 <code>wpe</code> 矩阵将token id和位置id映射为向量。</td>
+</tr>
+<tr class="odd">
+<td>注意力机制 (参数投影)</td>
+<td><code>gpt()</code> 函数中的 <code>linear()</code> 调用</td>
+<td>使用 <code>attn_wq</code>, <code>attn_wk</code>, <code>attn_wv</code> 矩阵计算 Q, K, V。</td>
+</tr>
+<tr class="even">
+<td>注意力机制 (权重计算与汇总)</td>
+<td><code>gpt()</code> 函数中的注意力计算部分</td>
+<td>计算注意力分数，应用softmax得到权重，对V加权求和。</td>
+</tr>
+<tr class="odd">
+<td>多头注意力机制</td>
+<td><code>gpt()</code> 函数中的循环 <code>for h in range(n_head)</code></td>
+<td>将Q, K, V按头分割，并行计算注意力后拼接结果。</td>
+</tr>
+<tr class="even">
+<td>MLP 前向传播</td>
+<td><code>gpt()</code> 函数中的 MLP 块</td>
+<td>通过 <code>mlp_fc1</code> 升维、ReLU激活、<code>mlp_fc2</code> 降维。</td>
+</tr>
+<tr class="odd">
+<td>残差连接与归一化</td>
+<td><code>gpt()</code> 函数中的 <code>x_residual</code> 和 <code>rmsnorm()</code></td>
+<td>在每个注意力块和MLP块前后进行残差连接和RMSNorm。</td>
+</tr>
+<tr class="even">
+<td>损失函数计算</td>
+<td>训练循环中的 <code>loss_t</code> 和 <code>loss</code></td>
+<td>计算预测概率分布与真实token的负对数似然（交叉熵）。</td>
+</tr>
+<tr class="odd">
+<td>反向传播与梯度计算</td>
+<td><code>loss.backward()</code></td>
+<td>通过 <code>Value</code> 类的自动微分机制计算所有参数的梯度。</td>
+</tr>
+<tr class="even">
+<td>Adam 参数更新</td>
+<td>训练循环中的参数更新部分</td>
+<td>使用一阶矩、二阶矩估计和偏差校正来更新每个参数。</td>
+</tr>
+<tr class="odd">
+<td>推理 (文本生成)</td>
+<td>代码末尾的推理循环</td>
+<td>使用训练好的模型，基于概率采样自回归地生成token序列。</td>
+</tr>
+</tbody>
+</table>
+<section id="tokenizer-数据代码化" class="level3">
+<h3 class="anchored" data-anchor-id="tokenizer-数据代码化">Tokenizer (数据代码化)</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 将文本信息转化为计算机能处理的整数序列（tokens）。<code>vocab_size</code> 是所有可能token的数量。每个token被表示为一个one-hot向量 <span class="math inline">\mathbf{e}_i \in \mathbb{R}^{n_1}</span>。通过词嵌入矩阵 <span class="math inline">W_{TE} \in \mathbb{R}^{n_2 \times n_1}</span> 将其映射为稠密向量 <span class="math inline">\mathbf{x} = W_{TE} \mathbf{e}_i</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：数据加载部分</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let there be a Tokenizer to translate strings to sequences of integers ("tokens") and back</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>uchars <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(<span class="st">''</span>.join(docs))) <span class="co"># unique characters in the dataset become token ids 0..n-1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>BOS <span class="op">=</span> <span class="bu">len</span>(uchars) <span class="co"># token id for a special Beginning of Sequence (BOS) token</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>vocab_size <span class="op">=</span> <span class="bu">len</span>(uchars) <span class="op">+</span> <span class="dv">1</span> <span class="co"># total number of unique tokens, +1 is for BOS</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"vocab size: </span><span class="sc">{</span>vocab_size<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：代码通过提取数据集中所有唯一字符构建词表，将每个字符映射为一个整数token id。<code>vocab_size</code> 对应数学原理中的 <span class="math inline">n_1</span>（词表大小），<code>BOS</code> 是一个额外的特殊token。</p>
+</section>
+<section id="词嵌入与位置嵌入" class="level3">
+<h3 class="anchored" data-anchor-id="词嵌入与位置嵌入">词嵌入与位置嵌入</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 每个token由其内容（词）和位置共同决定。词嵌入矩阵 <span class="math inline">W_{TE}</span> 将token id映射为向量 <span class="math inline">\mathbf{t}</span>。位置嵌入矩阵 <span class="math inline">W_{PE}</span> 将位置id映射为向量 <span class="math inline">\mathbf{p}</span>。最终的输入表示为两者的和：<span class="math inline">\mathbf{x} = \mathbf{t} + \mathbf{p}</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数开头部分 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gpt(token_id, pos_id, keys, values):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    tok_emb <span class="op">=</span> state_dict[<span class="st">'wte'</span>][token_id] <span class="co"># token embedding</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    pos_emb <span class="op">=</span> state_dict[<span class="st">'wpe'</span>][pos_id] <span class="co"># position embedding</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> [t <span class="op">+</span> p <span class="cf">for</span> t, p <span class="kw">in</span> <span class="bu">zip</span>(tok_emb, pos_emb)] <span class="co"># joint token and position embedding</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>state_dict['wte']</code> 和 <code>state_dict['wpe']</code> 分别对应数学原理中的 <span class="math inline">W_{TE}</span> 和 <span class="math inline">W_{PE}</span>。代码通过列表索引取出对应的向量列表，然后逐元素相加，实现了 <span class="math inline">\mathbf{x} = \mathbf{t} + \mathbf{p}</span>。</p>
+</section>
+<section id="注意力机制-参数投影" class="level3">
+<h3 class="anchored" data-anchor-id="注意力机制-参数投影">注意力机制 (参数投影)</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 为每个输入向量 <span class="math inline">\mathbf{x}</span> 计算查询（Query）、键（Key）、值（Value）向量： <span class="math inline">\mathbf{q} = W_Q \mathbf{x}, \quad \mathbf{k} = W_K \mathbf{x}, \quad \mathbf{v} = W_V \mathbf{x}</span> 其中 <span class="math inline">W_Q, W_K, W_V</span> 是可学习的投影矩阵。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 <code>linear()</code> 调用 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a> · <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:94">↗ <code>linear</code> L94</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>        q <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wq'</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wk'</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wv'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>state_dict[f'layer{li}.attn_wq']</code> 等矩阵对应数学原理中的 <span class="math inline">W_Q, W_K, W_V</span>。<code>linear(x, w)</code> 函数实现了矩阵乘法 <span class="math inline">w \mathbf{x}</span>，将输入向量 <span class="math inline">\mathbf{x}</span> 投影到 Q、K、V 空间。</p>
+</section>
+<section id="注意力机制-权重计算与汇总" class="level3">
+<h3 class="anchored" data-anchor-id="注意力机制-权重计算与汇总">注意力机制 (权重计算与汇总)</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 1. 计算注意力分数（缩放点积）：<span class="math inline">a_t = \frac{\mathbf{q} \cdot \mathbf{k}_t}{\sqrt{d_k}}</span>，其中 <span class="math inline">d_k</span> 是键向量的维度。 2. 应用softmax得到注意力权重：<span class="math inline">w_t = \text{softmax}(a_t)</span>。 3. 对值向量加权求和得到输出：<span class="math inline">\mathbf{o} = \sum_t w_t \mathbf{v}_t</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的注意力计算部分 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>            attn_logits <span class="op">=</span> [<span class="bu">sum</span>(q_h[j] <span class="op">*</span> k_h[t][j] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)) <span class="op">/</span> head_dim<span class="op">**</span><span class="fl">0.5</span> <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(k_h))]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            attn_weights <span class="op">=</span> softmax(attn_logits)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            head_out <span class="op">=</span> [<span class="bu">sum</span>(attn_weights[t] <span class="op">*</span> v_h[t][j] <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(v_h))) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(head_dim)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>attn_logits</code> 列表计算了当前查询向量 <code>q_h</code> 与所有历史键向量 <code>k_h[t]</code> 的点积，并除以 <span class="math inline">\sqrt{d_k}</span> (<code>head_dim**0.5</code>)。<code>softmax</code> 函数将其转化为概率分布 <code>attn_weights</code>。<code>head_out</code> 计算了权重 <code>attn_weights[t]</code> 与对应值向量 <code>v_h[t]</code> 的加权和。</p>
+</section>
+<section id="多头注意力机制" class="level3">
+<h3 class="anchored" data-anchor-id="多头注意力机制">多头注意力机制</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 将输入维度 <span class="math inline">n</span> 划分为 <span class="math inline">h</span> 个头，每个头独立进行注意力计算，然后将所有头的输出拼接起来，最后通过一个输出投影矩阵 <span class="math inline">W_O</span> 进行融合：<span class="math inline">\text{MultiHead} = W_O [\text{head}_1; \ldots; \text{head}_h]</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的循环 <code>for h in range(n_head)</code> &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        x_attn <span class="op">=</span> []</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(n_head):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            hs <span class="op">=</span> h <span class="op">*</span> head_dim</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            q_h <span class="op">=</span> q[hs:hs<span class="op">+</span>head_dim] <span class="co"># 分割 Q</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            k_h <span class="op">=</span> [ki[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> ki <span class="kw">in</span> keys[li]] <span class="co"># 分割 K</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            v_h <span class="op">=</span> [vi[hs:hs<span class="op">+</span>head_dim] <span class="cf">for</span> vi <span class="kw">in</span> values[li]] <span class="co"># 分割 V</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="co"># ... 计算单头注意力 head_out ...</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            x_attn.extend(head_out) <span class="co"># 拼接</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x_attn, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.attn_wo'</span>]) <span class="co"># 输出投影</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：代码通过切片操作 <code>[hs:hs+head_dim]</code> 将 Q、K、V 向量按头分割。每个头独立计算注意力得到 <code>head_out</code>，然后通过 <code>extend</code> 拼接所有头的输出。最后通过 <code>linear</code> 函数和 <code>attn_wo</code> 矩阵进行输出投影，对应 <span class="math inline">W_O</span>。</p>
+</section>
+<section id="mlp-前向传播" class="level3">
+<h3 class="anchored" data-anchor-id="mlp-前向传播">MLP 前向传播</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 MLP 块对输入 <span class="math inline">\mathbf{x}</span> 进行非线性变换：<span class="math inline">\text{MLP}(\mathbf{x}) = W_2 \cdot \text{ReLU}(W_1 \mathbf{x})</span>，其中 <span class="math inline">W_1</span> 是升维矩阵，<span class="math inline">W_2</span> 是降维矩阵。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>gpt()</code> 函数中的 MLP 块 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc1'</span>]) <span class="co"># 升维</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> [xi.relu() <span class="cf">for</span> xi <span class="kw">in</span> x] <span class="co"># 非线性激活</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> linear(x, state_dict[<span class="ss">f'layer</span><span class="sc">{</span>li<span class="sc">}</span><span class="ss">.mlp_fc2'</span>]) <span class="co"># 降维</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>mlp_fc1</code> 矩阵对应 <span class="math inline">W_1</span>，将输入从 <code>n_embd</code> 维投影到 <code>4 * n_embd</code> 维。<code>[xi.relu() for xi in x]</code> 对每个元素应用 ReLU 激活函数。<code>mlp_fc2</code> 矩阵对应 <span class="math inline">W_2</span>，将维度投影回 <code>n_embd</code>。</p>
+</section>
+<section id="残差连接与归一化" class="level3">
+<h3 class="anchored" data-anchor-id="残差连接与归一化">残差连接与归一化</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 在每个子层（注意力、MLP）中，采用残差连接：<span class="math inline">\mathbf{x}_{\text{out}} = \mathbf{x}_{\text{in}} + \text{Sublayer}(\text{Norm}(\mathbf{x}_{\text{in}}))</span>。这里使用 RMSNorm 进行归一化：<span class="math inline">\text{RMSNorm}(\mathbf{x}) = \frac{\mathbf{x}}{\sqrt{\text{Mean}(\mathbf{x}^2) + \epsilon}}</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>rmsnorm()</code>, <code>gpt()</code> 函数中的残差连接 &gt; <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:103">↗ <code>rmsnorm</code> L103</a> · <a href="vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108">↗ <code>gpt</code> L108</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rmsnorm(x):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ms <span class="op">=</span> <span class="bu">sum</span>(xi <span class="op">*</span> xi <span class="cf">for</span> xi <span class="kw">in</span> x) <span class="op">/</span> <span class="bu">len</span>(x) <span class="co"># 计算均方值</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> (ms <span class="op">+</span> <span class="fl">1e-5</span>) <span class="op">**</span> <span class="op">-</span><span class="fl">0.5</span> <span class="co"># 计算缩放因子 1/sqrt(ms+eps)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [xi <span class="op">*</span> scale <span class="cf">for</span> xi <span class="kw">in</span> x] <span class="co"># 应用缩放</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 在注意力块中</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>x_residual <span class="op">=</span> x</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> rmsnorm(x)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ... 注意力计算 ...</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [a <span class="op">+</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(x, x_residual)] <span class="co"># 残差连接</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>rmsnorm</code> 函数计算输入列表 <code>x</code> 的均方值 <code>ms</code>，然后计算缩放因子 <code>scale</code>，最后将每个元素乘以该因子，实现了RMSNorm。在注意力块和MLP块中，代码都先保存输入 <code>x_residual</code>，对归一化后的 <code>x</code> 进行变换，最后将结果与 <code>x_residual</code> 相加，实现了残差连接。</p>
+</section>
+<section id="损失函数计算" class="level3">
+<h3 class="anchored" data-anchor-id="损失函数计算">损失函数计算</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 使用交叉熵损失（负对数似然）来衡量模型预测的概率分布 <span class="math inline">\hat{\mathbf{p}}</span> 与真实下一个token的 one-hot 分布 <span class="math inline">\mathbf{y}</span> 之间的差异。对于单个位置：<span class="math inline">L_t = -\log \hat{p}_{y_t}</span>。整个序列的损失是各位置损失的平均：<span class="math inline">L = \frac{1}{T} \sum_{t=1}^{T} L_t</span>。</p>
+</blockquote>
+<p><strong>代码实现</strong>：训练循环中的 <code>loss_t</code> 和 <code>loss</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>        probs <span class="op">=</span> softmax(logits) <span class="co"># 得到预测概率分布 hat{p}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        loss_t <span class="op">=</span> <span class="op">-</span>probs[target_id].log() <span class="co"># 计算负对数似然 L_t</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        losses.append(loss_t)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> (<span class="dv">1</span> <span class="op">/</span> n) <span class="op">*</span> <span class="bu">sum</span>(losses) <span class="co"># 平均损失 L</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>probs</code> 是模型输出的概率分布 <span class="math inline">\hat{\mathbf{p}}</span>。<code>probs[target_id]</code> 是真实token对应的预测概率 <span class="math inline">\hat{p}_{y_t}</span>。<code>.log()</code> 计算其对数，取负号得到 <span class="math inline">L_t</span>。最后对所有位置的损失求和并除以长度 <code>n</code>，得到平均损失 <span class="math inline">L</span>。</p>
+</section>
+<section id="反向传播与梯度计算" class="level3">
+<h3 class="anchored" data-anchor-id="反向传播与梯度计算">反向传播与梯度计算</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 通过链式法则，从损失 <span class="math inline">L</span> 开始，反向计算损失相对于每个模型参数 <span class="math inline">\theta</span> 的梯度 <span class="math inline">\frac{\partial L}{\partial \theta}</span>。这通过构建计算图并反向遍历实现。</p>
+</blockquote>
+<p><strong>代码实现</strong>：<code>Value.backward()</code>, <code>loss.backward()</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ... 拓扑排序 ...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.grad <span class="op">=</span> <span class="dv">1</span> <span class="co"># 设置损失节点的梯度为 1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">reversed</span>(topo): <span class="co"># 反向遍历</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> child, local_grad <span class="kw">in</span> <span class="bu">zip</span>(v._children, v._local_grads):</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                child.grad <span class="op">+=</span> local_grad <span class="op">*</span> v.grad <span class="co"># 链式法则</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 在训练循环中</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    loss.backward() <span class="co"># 触发整个计算图的反向传播</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>Value</code> 类封装了标量值和其梯度，并记录了计算图中的父子关系及局部梯度。<code>backward()</code> 方法首先对计算图进行拓扑排序，然后从损失节点（<code>self</code>）开始，按反向顺序将梯度乘以局部导数后传递给子节点，实现了链式法则。调用 <code>loss.backward()</code> 即计算所有 <code>Value</code> 类型参数的梯度。</p>
+</section>
+<section id="adam-参数更新" class="level3">
+<h3 class="anchored" data-anchor-id="adam-参数更新">Adam 参数更新</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 Adam 优化算法结合了动量（一阶矩）和自适应学习率（二阶矩）。对于每个参数 <span class="math inline">\theta</span>，在时间步 <span class="math inline">t</span>： <span class="math inline">\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1) \mathbf{g}_t</span> <span class="math inline">\mathbf{v}_t = \beta_2 \mathbf{v}_{t-1} + (1-\beta_2) \mathbf{g}_t^2</span> <span class="math inline">\hat{\mathbf{m}}_t = \mathbf{m}_t / (1-\beta_1^t)</span> <span class="math inline">\hat{\mathbf{v}}_t = \mathbf{v}_t / (1-\beta_2^t)</span> <span class="math inline">\theta_t = \theta_{t-1} - \eta_t \cdot \hat{\mathbf{m}}_t / (\sqrt{\hat{\mathbf{v}}_t} + \epsilon)</span> 其中 <span class="math inline">\mathbf{g}_t = \nabla_\theta L_t</span> 是梯度，<span class="math inline">\eta_t</span> 是学习率。</p>
+</blockquote>
+<p><strong>代码实现</strong>：训练循环中的参数更新部分</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(params):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        m[i] <span class="op">=</span> beta1 <span class="op">*</span> m[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta1) <span class="op">*</span> p.grad <span class="co"># 更新一阶矩 m_t</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        v[i] <span class="op">=</span> beta2 <span class="op">*</span> v[i] <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> beta2) <span class="op">*</span> p.grad <span class="op">**</span> <span class="dv">2</span> <span class="co"># 更新二阶矩 v_t</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        m_hat <span class="op">=</span> m[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta1 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 m_hat_t</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        v_hat <span class="op">=</span> v[i] <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> beta2 <span class="op">**</span> (step <span class="op">+</span> <span class="dv">1</span>)) <span class="co"># 偏差校正 v_hat_t</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        p.data <span class="op">-=</span> lr_t <span class="op">*</span> m_hat <span class="op">/</span> (v_hat <span class="op">**</span> <span class="fl">0.5</span> <span class="op">+</span> eps_adam) <span class="co"># 参数更新</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>m</code> 和 <code>v</code> 列表分别对应一阶矩 <span class="math inline">\mathbf{m}</span> 和二阶矩 <span class="math inline">\mathbf{v}</span>。代码严格遵循数学公式：用梯度 <code>p.grad</code> 更新矩估计，计算偏差校正项 <code>m_hat</code> 和 <code>v_hat</code>，最后用校正后的矩和衰减的学习率 <code>lr_t</code> 更新参数值 <code>p.data</code>。</p>
+</section>
+<section id="推理-文本生成" class="level3">
+<h3 class="anchored" data-anchor-id="推理-文本生成">推理 (文本生成)</h3>
+<blockquote class="blockquote">
+<p>[!note] 数学原理 使用训练好的模型参数进行自回归生成。给定起始 token（如 BOS），模型输出下一个 token 的概率分布 <span class="math inline">\hat{\mathbf{p}}</span>。通过采样（通常引入温度 <span class="math inline">\tau</span> 控制随机性：<span class="math inline">p_i = \frac{\exp(z_i / \tau)}{\sum_j \exp(z_j / \tau)}</span>）得到下一个 token，并将其作为输入继续生成，直到达到长度限制或生成结束 token。</p>
+</blockquote>
+<p><strong>代码实现</strong>：代码末尾的推理循环</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pos_id <span class="kw">in</span> <span class="bu">range</span>(block_size):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> gpt(token_id, pos_id, keys, values) <span class="co"># 前向传播得到 logits z</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        probs <span class="op">=</span> softmax([l <span class="op">/</span> temperature <span class="cf">for</span> l <span class="kw">in</span> logits]) <span class="co"># 应用温度缩放后 softmax</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        token_id <span class="op">=</span> random.choices(<span class="bu">range</span>(vocab_size), weights<span class="op">=</span>[p.data <span class="cf">for</span> p <span class="kw">in</span> probs])[<span class="dv">0</span>] <span class="co"># 采样</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：推理循环模拟了自回归过程。<code>gpt</code> 函数根据当前 <code>token_id</code> 和 <code>pos_id</code> 计算 logits（未归一化的分数 <span class="math inline">z</span>）。<code>softmax</code> 前先将每个 logits 除以 <code>temperature</code> (<span class="math inline">\tau</span>)，实现温度缩放。<code>random.choices</code> 根据得到的概率分布 <code>probs</code> 进行加权随机采样，得到下一个 <code>token_id</code>。</p>
+</section>
+</section>
+<section id="补充说明" class="level2">
+<h2 class="anchored" data-anchor-id="补充说明">补充说明</h2>
+<ol type="1">
+<li><strong>笔记中未详细覆盖的代码细节</strong>：
+<ul>
+<li><strong>自动微分框架</strong>：代码实现了一个完整的基于 <code>Value</code> 类的轻量级自动微分框架，用于计算梯度，这是反向传播的核心基础设施。</li>
+<li><strong>参数初始化</strong>：代码使用高斯分布初始化所有参数矩阵（<code>matrix</code></li>
+</ul></li>
+</ol>
+<hr>
+<p><em>生成日期：2026-03-07</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

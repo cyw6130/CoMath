@@ -1,0 +1,234 @@
+---
+title: "MicroGPT 数学原理与实现对照"
+tags:
+  - algo-impl
+created: 2026-03-07
+code_ref: "microgpt"
+related_note: "MircoGPT"
+---
+
+# MicroGPT 数学原理与实现对照
+
+> [!info] 来源
+> - 实现参考：[[microgpt]] · `/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py`
+> - 原理笔记：[[MircoGPT]]
+
+这份笔记将《MicroGPT》原理笔记与代码实现逐节对应。代码是极简纯 Python GPT，将词嵌入、注意力机制、Adam 优化等数学概念直接映射到函数和数据结构中。
+
+## 算法结构
+
+- **[[#Tokenizer (数据代码化)|Tokenizer]]** — 文本 → token id 序列
+    - [[#词嵌入与位置嵌入|词嵌入 + 位置嵌入]] — $x = W_{TE}[t] + W_{PE}[p]$
+- **GPT 前向传播**（循环 `n_layer` 次）
+    - **注意力机制**
+        - [[#注意力机制 (参数投影)|Q / K / V 投影]] — $q = W_Q x,\; k = W_K x,\; v = W_V x$
+        - [[#注意力机制 (权重计算与汇总)|注意力权重计算]] — $\text{softmax}(qk^\top / \sqrt{d_k})$，加权求和
+        - [[#多头注意力机制|多头注意力]] — 分头计算，拼接后乘 $W_O$
+        - [[#残差连接与归一化|残差 + RMSNorm]]
+    - **[[#MLP 前向传播|MLP]]** — 升维 → ReLU → 降维
+        - [[#残差连接与归一化|残差 + RMSNorm]]
+    - 输出：$\hat{x}$（汇总后的 token 表示） → `lm_head` → 下一 token 概率
+- **Adam 参数训练**
+    - [[#损失函数计算|损失函数]] — 交叉熵 $L = -\log \hat{p}_{y}$
+    - [[#反向传播与梯度计算|反向传播]] — 链式法则 + 自动微分（`Value` 类）
+    - [[#Adam 参数更新|Adam 更新]] — 一阶矩 + 二阶矩修正
+- **[[#推理 (文本生成)|推理]]** — 自回归采样，逐 token 生成
+
+## 概览表格
+
+| 算法步骤 | 对应函数/位置 | 简要说明 |
+|---|---|---|
+| Tokenizer (数据代码化) | 数据加载与字符集处理 | 将文本数据转化为整数token序列，并构建词表。 |
+| 词嵌入与位置嵌入 | `gpt()` 函数中的 `tok_emb` 和 `pos_emb` | 通过 `wte` 和 `wpe` 矩阵将token id和位置id映射为向量。 |
+| 注意力机制 (参数投影) | `gpt()` 函数中的 `linear()` 调用 | 使用 `attn_wq`, `attn_wk`, `attn_wv` 矩阵计算 Q, K, V。 |
+| 注意力机制 (权重计算与汇总) | `gpt()` 函数中的注意力计算部分 | 计算注意力分数，应用softmax得到权重，对V加权求和。 |
+| 多头注意力机制 | `gpt()` 函数中的循环 `for h in range(n_head)` | 将Q, K, V按头分割，并行计算注意力后拼接结果。 |
+| MLP 前向传播 | `gpt()` 函数中的 MLP 块 | 通过 `mlp_fc1` 升维、ReLU激活、`mlp_fc2` 降维。 |
+| 残差连接与归一化 | `gpt()` 函数中的 `x_residual` 和 `rmsnorm()` | 在每个注意力块和MLP块前后进行残差连接和RMSNorm。 |
+| 损失函数计算 | 训练循环中的 `loss_t` 和 `loss` | 计算预测概率分布与真实token的负对数似然（交叉熵）。 |
+| 反向传播与梯度计算 | `loss.backward()` | 通过 `Value` 类的自动微分机制计算所有参数的梯度。 |
+| Adam 参数更新 | 训练循环中的参数更新部分 | 使用一阶矩、二阶矩估计和偏差校正来更新每个参数。 |
+| 推理 (文本生成) | 代码末尾的推理循环 | 使用训练好的模型，基于概率采样自回归地生成token序列。 |
+
+### Tokenizer (数据代码化)
+> [!note] 数学原理
+> 将文本信息转化为计算机能处理的整数序列（tokens）。`vocab_size` 是所有可能token的数量。每个token被表示为一个one-hot向量 $\mathbf{e}_i \in \mathbb{R}^{n_1}$。通过词嵌入矩阵 $W_{TE} \in \mathbb{R}^{n_2 \times n_1}$ 将其映射为稠密向量 $\mathbf{x} = W_{TE} \mathbf{e}_i$。
+
+**代码实现**：数据加载部分
+```python
+# Let there be a Tokenizer to translate strings to sequences of integers ("tokens") and back
+uchars = sorted(set(''.join(docs))) # unique characters in the dataset become token ids 0..n-1
+BOS = len(uchars) # token id for a special Beginning of Sequence (BOS) token
+vocab_size = len(uchars) + 1 # total number of unique tokens, +1 is for BOS
+print(f"vocab size: {vocab_size}")
+```
+**对应说明**：代码通过提取数据集中所有唯一字符构建词表，将每个字符映射为一个整数token id。`vocab_size` 对应数学原理中的 $n_1$（词表大小），`BOS` 是一个额外的特殊token。
+
+### 词嵌入与位置嵌入
+> [!note] 数学原理
+> 每个token由其内容（词）和位置共同决定。词嵌入矩阵 $W_{TE}$ 将token id映射为向量 $\mathbf{t}$。位置嵌入矩阵 $W_{PE}$ 将位置id映射为向量 $\mathbf{p}$。最终的输入表示为两者的和：$\mathbf{x} = \mathbf{t} + \mathbf{p}$。
+
+**代码实现**：`gpt()` 函数开头部分
+> [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108)
+```python
+def gpt(token_id, pos_id, keys, values):
+    tok_emb = state_dict['wte'][token_id] # token embedding
+    pos_emb = state_dict['wpe'][pos_id] # position embedding
+    x = [t + p for t, p in zip(tok_emb, pos_emb)] # joint token and position embedding
+```
+**对应说明**：`state_dict['wte']` 和 `state_dict['wpe']` 分别对应数学原理中的 $W_{TE}$ 和 $W_{PE}$。代码通过列表索引取出对应的向量列表，然后逐元素相加，实现了 $\mathbf{x} = \mathbf{t} + \mathbf{p}$。
+
+### 注意力机制 (参数投影)
+> [!note] 数学原理
+> 为每个输入向量 $\mathbf{x}$ 计算查询（Query）、键（Key）、值（Value）向量：
+> $\mathbf{q} = W_Q \mathbf{x}, \quad \mathbf{k} = W_K \mathbf{x}, \quad \mathbf{v} = W_V \mathbf{x}$
+> 其中 $W_Q, W_K, W_V$ 是可学习的投影矩阵。
+
+**代码实现**：`gpt()` 函数中的 `linear()` 调用
+> [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108) · [↗ `linear` L94](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:94)
+```python
+        q = linear(x, state_dict[f'layer{li}.attn_wq'])
+        k = linear(x, state_dict[f'layer{li}.attn_wk'])
+        v = linear(x, state_dict[f'layer{li}.attn_wv'])
+```
+**对应说明**：`state_dict[f'layer{li}.attn_wq']` 等矩阵对应数学原理中的 $W_Q, W_K, W_V$。`linear(x, w)` 函数实现了矩阵乘法 $w \mathbf{x}$，将输入向量 $\mathbf{x}$ 投影到 Q、K、V 空间。
+
+### 注意力机制 (权重计算与汇总)
+> [!note] 数学原理
+> 1.  计算注意力分数（缩放点积）：$a_t = \frac{\mathbf{q} \cdot \mathbf{k}_t}{\sqrt{d_k}}$，其中 $d_k$ 是键向量的维度。
+> 2.  应用softmax得到注意力权重：$w_t = \text{softmax}(a_t)$。
+> 3.  对值向量加权求和得到输出：$\mathbf{o} = \sum_t w_t \mathbf{v}_t$。
+
+**代码实现**：`gpt()` 函数中的注意力计算部分
+> [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108)
+```python
+            attn_logits = [sum(q_h[j] * k_h[t][j] for j in range(head_dim)) / head_dim**0.5 for t in range(len(k_h))]
+            attn_weights = softmax(attn_logits)
+            head_out = [sum(attn_weights[t] * v_h[t][j] for t in range(len(v_h))) for j in range(head_dim)]
+```
+**对应说明**：`attn_logits` 列表计算了当前查询向量 `q_h` 与所有历史键向量 `k_h[t]` 的点积，并除以 $\sqrt{d_k}$ (`head_dim**0.5`)。`softmax` 函数将其转化为概率分布 `attn_weights`。`head_out` 计算了权重 `attn_weights[t]` 与对应值向量 `v_h[t]` 的加权和。
+
+### 多头注意力机制
+> [!note] 数学原理
+> 将输入维度 $n$ 划分为 $h$ 个头，每个头独立进行注意力计算，然后将所有头的输出拼接起来，最后通过一个输出投影矩阵 $W_O$ 进行融合：$\text{MultiHead} = W_O [\text{head}_1; \ldots; \text{head}_h]$。
+
+**代码实现**：`gpt()` 函数中的循环 `for h in range(n_head)`
+> [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108)
+```python
+        x_attn = []
+        for h in range(n_head):
+            hs = h * head_dim
+            q_h = q[hs:hs+head_dim] # 分割 Q
+            k_h = [ki[hs:hs+head_dim] for ki in keys[li]] # 分割 K
+            v_h = [vi[hs:hs+head_dim] for vi in values[li]] # 分割 V
+            # ... 计算单头注意力 head_out ...
+            x_attn.extend(head_out) # 拼接
+        x = linear(x_attn, state_dict[f'layer{li}.attn_wo']) # 输出投影
+```
+**对应说明**：代码通过切片操作 `[hs:hs+head_dim]` 将 Q、K、V 向量按头分割。每个头独立计算注意力得到 `head_out`，然后通过 `extend` 拼接所有头的输出。最后通过 `linear` 函数和 `attn_wo` 矩阵进行输出投影，对应 $W_O$。
+
+### MLP 前向传播
+> [!note] 数学原理
+> MLP 块对输入 $\mathbf{x}$ 进行非线性变换：$\text{MLP}(\mathbf{x}) = W_2 \cdot \text{ReLU}(W_1 \mathbf{x})$，其中 $W_1$ 是升维矩阵，$W_2$ 是降维矩阵。
+
+**代码实现**：`gpt()` 函数中的 MLP 块
+> [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108)
+```python
+        x = linear(x, state_dict[f'layer{li}.mlp_fc1']) # 升维
+        x = [xi.relu() for xi in x] # 非线性激活
+        x = linear(x, state_dict[f'layer{li}.mlp_fc2']) # 降维
+```
+**对应说明**：`mlp_fc1` 矩阵对应 $W_1$，将输入从 `n_embd` 维投影到 `4 * n_embd` 维。`[xi.relu() for xi in x]` 对每个元素应用 ReLU 激活函数。`mlp_fc2` 矩阵对应 $W_2$，将维度投影回 `n_embd`。
+
+### 残差连接与归一化
+> [!note] 数学原理
+> 在每个子层（注意力、MLP）中，采用残差连接：$\mathbf{x}_{\text{out}} = \mathbf{x}_{\text{in}} + \text{Sublayer}(\text{Norm}(\mathbf{x}_{\text{in}}))$。这里使用 RMSNorm 进行归一化：$\text{RMSNorm}(\mathbf{x}) = \frac{\mathbf{x}}{\sqrt{\text{Mean}(\mathbf{x}^2) + \epsilon}}$。
+
+**代码实现**：`rmsnorm()`, `gpt()` 函数中的残差连接
+> [↗ `rmsnorm` L103](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:103) · [↗ `gpt` L108](vscode://file/Users/chenyuwen/code/ai_for_math/MicroGPT/microgpt.py:108)
+```python
+def rmsnorm(x):
+    ms = sum(xi * xi for xi in x) / len(x) # 计算均方值
+    scale = (ms + 1e-5) ** -0.5 # 计算缩放因子 1/sqrt(ms+eps)
+    return [xi * scale for xi in x] # 应用缩放
+
+# 在注意力块中
+x_residual = x
+x = rmsnorm(x)
+# ... 注意力计算 ...
+x = [a + b for a, b in zip(x, x_residual)] # 残差连接
+```
+**对应说明**：`rmsnorm` 函数计算输入列表 `x` 的均方值 `ms`，然后计算缩放因子 `scale`，最后将每个元素乘以该因子，实现了RMSNorm。在注意力块和MLP块中，代码都先保存输入 `x_residual`，对归一化后的 `x` 进行变换，最后将结果与 `x_residual` 相加，实现了残差连接。
+
+### 损失函数计算
+> [!note] 数学原理
+> 使用交叉熵损失（负对数似然）来衡量模型预测的概率分布 $\hat{\mathbf{p}}$ 与真实下一个token的 one-hot 分布 $\mathbf{y}$ 之间的差异。对于单个位置：$L_t = -\log \hat{p}_{y_t}$。整个序列的损失是各位置损失的平均：$L = \frac{1}{T} \sum_{t=1}^{T} L_t$。
+
+**代码实现**：训练循环中的 `loss_t` 和 `loss`
+```python
+        probs = softmax(logits) # 得到预测概率分布 hat{p}
+        loss_t = -probs[target_id].log() # 计算负对数似然 L_t
+        losses.append(loss_t)
+    loss = (1 / n) * sum(losses) # 平均损失 L
+```
+**对应说明**：`probs` 是模型输出的概率分布 $\hat{\mathbf{p}}$。`probs[target_id]` 是真实token对应的预测概率 $\hat{p}_{y_t}$。`.log()` 计算其对数，取负号得到 $L_t$。最后对所有位置的损失求和并除以长度 `n`，得到平均损失 $L$。
+
+### 反向传播与梯度计算
+> [!note] 数学原理
+> 通过链式法则，从损失 $L$ 开始，反向计算损失相对于每个模型参数 $\theta$ 的梯度 $\frac{\partial L}{\partial \theta}$。这通过构建计算图并反向遍历实现。
+
+**代码实现**：`Value.backward()`, `loss.backward()`
+```python
+    def backward(self):
+        # ... 拓扑排序 ...
+        self.grad = 1 # 设置损失节点的梯度为 1
+        for v in reversed(topo): # 反向遍历
+            for child, local_grad in zip(v._children, v._local_grads):
+                child.grad += local_grad * v.grad # 链式法则
+
+# 在训练循环中
+    loss.backward() # 触发整个计算图的反向传播
+```
+**对应说明**：`Value` 类封装了标量值和其梯度，并记录了计算图中的父子关系及局部梯度。`backward()` 方法首先对计算图进行拓扑排序，然后从损失节点（`self`）开始，按反向顺序将梯度乘以局部导数后传递给子节点，实现了链式法则。调用 `loss.backward()` 即计算所有 `Value` 类型参数的梯度。
+
+### Adam 参数更新
+> [!note] 数学原理
+> Adam 优化算法结合了动量（一阶矩）和自适应学习率（二阶矩）。对于每个参数 $\theta$，在时间步 $t$：
+> $\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1) \mathbf{g}_t$
+> $\mathbf{v}_t = \beta_2 \mathbf{v}_{t-1} + (1-\beta_2) \mathbf{g}_t^2$
+> $\hat{\mathbf{m}}_t = \mathbf{m}_t / (1-\beta_1^t)$
+> $\hat{\mathbf{v}}_t = \mathbf{v}_t / (1-\beta_2^t)$
+> $\theta_t = \theta_{t-1} - \eta_t \cdot \hat{\mathbf{m}}_t / (\sqrt{\hat{\mathbf{v}}_t} + \epsilon)$
+> 其中 $\mathbf{g}_t = \nabla_\theta L_t$ 是梯度，$\eta_t$ 是学习率。
+
+**代码实现**：训练循环中的参数更新部分
+```python
+    for i, p in enumerate(params):
+        m[i] = beta1 * m[i] + (1 - beta1) * p.grad # 更新一阶矩 m_t
+        v[i] = beta2 * v[i] + (1 - beta2) * p.grad ** 2 # 更新二阶矩 v_t
+        m_hat = m[i] / (1 - beta1 ** (step + 1)) # 偏差校正 m_hat_t
+        v_hat = v[i] / (1 - beta2 ** (step + 1)) # 偏差校正 v_hat_t
+        p.data -= lr_t * m_hat / (v_hat ** 0.5 + eps_adam) # 参数更新
+```
+**对应说明**：`m` 和 `v` 列表分别对应一阶矩 $\mathbf{m}$ 和二阶矩 $\mathbf{v}$。代码严格遵循数学公式：用梯度 `p.grad` 更新矩估计，计算偏差校正项 `m_hat` 和 `v_hat`，最后用校正后的矩和衰减的学习率 `lr_t` 更新参数值 `p.data`。
+
+### 推理 (文本生成)
+> [!note] 数学原理
+> 使用训练好的模型参数进行自回归生成。给定起始 token（如 BOS），模型输出下一个 token 的概率分布 $\hat{\mathbf{p}}$。通过采样（通常引入温度 $\tau$ 控制随机性：$p_i = \frac{\exp(z_i / \tau)}{\sum_j \exp(z_j / \tau)}$）得到下一个 token，并将其作为输入继续生成，直到达到长度限制或生成结束 token。
+
+**代码实现**：代码末尾的推理循环
+```python
+    for pos_id in range(block_size):
+        logits = gpt(token_id, pos_id, keys, values) # 前向传播得到 logits z
+        probs = softmax([l / temperature for l in logits]) # 应用温度缩放后 softmax
+        token_id = random.choices(range(vocab_size), weights=[p.data for p in probs])[0] # 采样
+```
+**对应说明**：推理循环模拟了自回归过程。`gpt` 函数根据当前 `token_id` 和 `pos_id` 计算 logits（未归一化的分数 $z$）。`softmax` 前先将每个 logits 除以 `temperature` ($\tau$)，实现温度缩放。`random.choices` 根据得到的概率分布 `probs` 进行加权随机采样，得到下一个 `token_id`。
+
+## 补充说明
+1.  **笔记中未详细覆盖的代码细节**：
+    *   **自动微分框架**：代码实现了一个完整的基于 `Value` 类的轻量级自动微分框架，用于计算梯度，这是反向传播的核心基础设施。
+    *   **参数初始化**：代码使用高斯分布初始化所有参数矩阵（`matrix`
+
+---
+*生成日期：2026-03-07*
