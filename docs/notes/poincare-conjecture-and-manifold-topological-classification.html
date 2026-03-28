@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-03-28">
+<meta name="description" content="探讨庞加莱猜想、流形分类、同伦球与怪球，以及配边理论在拓扑学中的应用。">
+
+<title>庞加莱猜想与怪球 – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/poincare-conjecture-and-manifold-topological-classification.html">庞加莱猜想与怪球</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turaev-Viro Invariants</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#poincare-conjecture" id="toc-poincare-conjecture" class="nav-link active" data-scroll-target="#poincare-conjecture">Poincare Conjecture</a>
+  <ul class="collapse">
+  <li><a href="#topological-poincare-conjecture" id="toc-topological-poincare-conjecture" class="nav-link" data-scroll-target="#topological-poincare-conjecture">Topological Poincare Conjecture</a></li>
+  <li><a href="#smooth-poincare-conjecture-and-exotic-sphere" id="toc-smooth-poincare-conjecture-and-exotic-sphere" class="nav-link" data-scroll-target="#smooth-poincare-conjecture-and-exotic-sphere">Smooth Poincare Conjecture and Exotic Sphere</a></li>
+  </ul></li>
+  <li><a href="#computation-of-theta_n" id="toc-computation-of-theta_n" class="nav-link" data-scroll-target="#computation-of-theta_n">Computation of <span class="math inline">\Theta_n</span></a>
+  <ul class="collapse">
+  <li><a href="#theta_n-as-a-group" id="toc-theta_n-as-a-group" class="nav-link" data-scroll-target="#theta_n-as-a-group"><span class="math inline">\Theta_n</span> as a Group</a></li>
+  <li><a href="#framed-cobordism-and-stable-homotopy-groups" id="toc-framed-cobordism-and-stable-homotopy-groups" class="nav-link" data-scroll-target="#framed-cobordism-and-stable-homotopy-groups">Framed cobordism and Stable homotopy groups</a>
+  <ul class="collapse">
+  <li><a href="#framed-cobordism" id="toc-framed-cobordism" class="nav-link" data-scroll-target="#framed-cobordism">Framed cobordism</a></li>
+  </ul></li>
+  <li><a href="#kervaire-milnor-s-exact-sequence" id="toc-kervaire-milnor-s-exact-sequence" class="nav-link" data-scroll-target="#kervaire-milnor-s-exact-sequence">Kervaire-Milnor ’s exact sequence</a></li>
+  </ul></li>
+  <li><a href="#computation-of-some-theta_n" id="toc-computation-of-some-theta_n" class="nav-link" data-scroll-target="#computation-of-some-theta_n">Computation of some <span class="math inline">\Theta_n</span></a>
+  <ul class="collapse">
+  <li><a href="#formulas-for-j_n-and-theta_nbp" id="toc-formulas-for-j_n-and-theta_nbp" class="nav-link" data-scroll-target="#formulas-for-j_n-and-theta_nbp">Formulas for <span class="math inline">J_n</span> and <span class="math inline">\Theta_n^{bp}</span></a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></li>
+  <li><a href="#further-discussion" id="toc-further-discussion" class="nav-link" data-scroll-target="#further-discussion">Further Discussion</a>
+  <ul class="collapse">
+  <li><a href="#cobordism-classification-of-manifolds" id="toc-cobordism-classification-of-manifolds" class="nav-link" data-scroll-target="#cobordism-classification-of-manifolds">Cobordism Classification of Manifolds</a></li>
+  <li><a href="#cobordism-and-normal-bundle" id="toc-cobordism-and-normal-bundle" class="nav-link" data-scroll-target="#cobordism-and-normal-bundle">Cobordism and Normal Bundle</a></li>
+  <li><a href="#computation-of-cobordism-ring" id="toc-computation-of-cobordism-ring" class="nav-link" data-scroll-target="#computation-of-cobordism-ring">Computation of Cobordism Ring</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/poincare-conjecture-and-manifold-topological-classification.html">庞加莱猜想与怪球</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">庞加莱猜想与怪球</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">poincare-conjecture</div>
+    <div class="quarto-category">topological-manifolds</div>
+    <div class="quarto-category">homotopy-sphere</div>
+    <div class="quarto-category">handle-decomposition</div>
+    <div class="quarto-category">whitehead-theorem</div>
+    <div class="quarto-category">morse-theory</div>
+    <div class="quarto-category">h-cobordism-theorem</div>
+    <div class="quarto-category">my-notes</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    探讨庞加莱猜想、流形分类、同伦球与怪球，以及配边理论在拓扑学中的应用。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="poincare-conjecture" class="level1">
+<h1>Poincare Conjecture</h1>
+<section id="topological-poincare-conjecture" class="level2">
+<h2 class="anchored" data-anchor-id="topological-poincare-conjecture">Topological Poincare Conjecture</h2>
+<p>我们把拓扑庞加莱猜想简记为 (GPC) General Poincare Conjecture.</p>
+<ul>
+<li>GPC:
+<ul>
+<li>任意闭的拓扑流形 <span class="math inline">M^n</span>, 若 <span class="math inline">M^n</span> 是同伦球面(<span class="math inline">M</span> 同伦等价于 <span class="math inline">S^n</span>), 则 <span class="math inline">M</span> 是拓扑球面(同胚于 <span class="math inline">S^n</span>).</li>
+<li>GPC 是对的.</li>
+</ul></li>
+<li>相比确定同胚型, 确定同伦型是相对容易的.
+<ul>
+<li>主要工具是Whitehead 定理:
+<ul>
+<li>假设 <span class="math inline">X,Y</span> 是两个 CW 复形, 若存在连续映射 <span class="math inline">f: X\to Y</span>, <span class="math inline">f</span> 诱导同伦群上的同构 (称这样的 <span class="math inline">f</span> 为弱同伦等价), 则 <span class="math inline">f</span> 是同伦等价.</li>
+<li>同调版本: 对于单连通的空间 <span class="math inline">X,Y</span>, 若 <span class="math inline">f: X\to Y</span> 诱导同调群上的同构, 则 <span class="math inline">f</span> 是同伦等价.
+<ul>
+<li>Sketch: 使用 Hurewicz 定理.</li>
+</ul></li>
+</ul></li>
+<li>证明拓扑空间 <span class="math inline">X</span> 是同伦球面的过程是标准的:
+<ul>
+<li>若 <span class="math inline">X</span> 单连通, 且为同调球面, 则 <span class="math inline">X</span> 是同伦球面.
+<ul>
+<li>Sketch: 使用 Hurewicz 定理构造映射 <span class="math inline">f</span> + 同调版本的 Whitehead 定理.</li>
+</ul></li>
+<li>推论: 单连通的三维流形是同伦球面.</li>
+</ul></li>
+<li>猜想: 同调庞加莱猜想
+<ul>
+<li>同调球面是拓扑球面。</li>
+<li>猜想是错的, 反例: Poincare 构造了 3 维怪球(它是同调球面, 但不是同伦球), 它的基本群不平凡 (基本群是 <span class="math inline">\tilde{I}</span> , 用 <span class="math inline">\mathbb{Z}_2</span> 对 <span class="math inline">A_5</span> 进行中心扩张后得到的完美群, 完美群: 商掉交换子是零)</li>
+</ul></li>
+</ul></li>
+<li>weak GPC: 任意闭的<strong>光滑</strong>流形 <span class="math inline">M^n</span>, 若 <span class="math inline">M^n</span> 是同伦球面, 则 <span class="math inline">M^n</span> 是拓扑球面.
+<ul>
+<li>Smale: weak GPC 在 <span class="math inline">n\geq5</span> 的情形下成立.</li>
+<li>这个结果弱于GPC, 因为它要求流形是光滑的. 然而我们关心的多数流形都是光滑的, 故这个结果也足够重要.</li>
+<li>weak GPC 的证明主要依赖于 h-cobordism 定理.</li>
+</ul></li>
+<li>handle 分解
+<ul>
+<li>handle 分解是胞腔分解在光滑流形中的对应: 注意到, 一般来说, 粘接不同的胞腔会改变拓扑空间的维数, 导致得到的胞腔复形一般来说不是流形.</li>
+<li>handle 分解的定义:
+<ul>
+<li>main idea: 对于一个 <span class="math inline">n</span> 维的闭光滑流形 <span class="math inline">M^n</span>, 我们希望将 <span class="math inline">M</span> 表示成若干个 (有限多个) <span class="math inline">D^n</span> 的组合(这里每个 <span class="math inline">D^n</span> 被称为 handle <span class="math inline">h</span>, 可以定义它的指标, 指标为 k 的 handle 被记为 k-handle, 对应于胞腔分解中的一个 k-cell).
+<ul>
+<li>每个组成部分 <span class="math inline">D^n</span> 都是平凡的, 我们流形 <span class="math inline">M</span> 的复杂程度完全蕴含在了每个 <span class="math inline">D^n</span> 的粘接方法中.</li>
+<li>在考虑粘接 handle 时, 我们应该想象这个操作在胞腔分解中的对应. 事实上, handle 分解在同伦上给出了一个胞腔分解.</li>
+</ul></li>
+<li>在某个光滑流形 <span class="math inline">X^n</span> 上粘接 k-handle:
+<ul>
+<li>为了对应粘接 k-cell，我们将 <span class="math inline">D^n</span> (把这个 handle 记为 <span class="math inline">h</span>) 看作 <span class="math inline">D^k\times D^{n-k}</span>，其中第一个分量 <span class="math inline">D^k</span> 用于粘接：我们将 <span class="math inline">D^k</span> 的边界 <span class="math inline">S^{k-1}</span> 粘接到初始流形 <span class="math inline">X</span> 的边界 <span class="math inline">\partial X</span> 上；而 <span class="math inline">D^{n-k}</span> 则用于“补充”，保证粘接得到的结果还是一个流形。</li>
+<li>具体来说: 给定一个嵌入映射 <span class="math inline">\varphi: \partial D^k\times D^{n-k}=S^{k-1} \times D^{n-k} \hookrightarrow \partial X</span>，粘接后的流形定义为 <span class="math inline">X \cup_{\varphi} h := X \sqcup (D^k \times D^{n-k}) / \sim</span>，其中等价关系 <span class="math inline">\sim</span> 由 <span class="math inline">\varphi</span> 给出。</li>
+<li>在同伦上看, 这个操作对应于粘接一个 k-cell.</li>
+</ul></li>
+<li>定义: 光滑流形的 handle 分解
+<ul>
+<li><p>一个 <span class="math inline">n</span> 维光滑流形 <span class="math inline">M</span> 的一个 handle 分解是指从空集 <span class="math inline">\varnothing</span> 出发，通过有限次粘接 handle 得到 <span class="math inline">M</span> 的一个表示。更细致地说，一个 handle 分解是一个有限序列 <span class="math inline">\varnothing = M_{-1} \subset M_0 \subset M_1 \subset \cdots \subset M_m = M</span>，其中每个 <span class="math inline">M_j</span> 是通过在 <span class="math inline">M_{j-1}</span> 上粘接一个 handle 得到的。</p></li>
+<li><p>例子: <span class="math inline">T^2</span> 的 handle 分解</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/poincare-t2-handle.png" class="img-fluid figure-img" loading="lazy" decoding="async"></p>
+<figcaption>T² 的 handle 分解</figcaption>
+</figure>
+</div></li>
+</ul></li>
+<li>handle 分解的对偶和消去:
+<ul>
+<li><strong>add picture</strong></li>
+</ul></li>
+</ul></li>
+<li>Morse 函数和 handle 分解的存在性:
+<ul>
+<li>结果: 任意紧的(可能带边界)光滑流形上存在 (有限) handle 分解.</li>
+<li>论证依赖 Morse 理论:
+<ul>
+<li>Morse 函数: 给定一个光滑流形 <span class="math inline">M</span> 上的光滑函数 <span class="math inline">f: M \to \mathbb{R}</span>，若其所有临界点(导数为零的点)都非退化 (二阶导数矩阵, 即Hessian 矩阵 <span class="math inline">H_{ij}(p) = \frac{\partial^2 f}{\partial x_i \partial x_j}(p)</span> 的行列式不为零) ，则称 <span class="math inline">f</span> 为一个 Morse 函数. 我们可以根据 Hessian 矩阵的 signature(负惯性指数) 来定义临界点的指标。</li>
+<li>光滑流形 <span class="math inline">M^n</span> 上的任意 Morse 函数给出 <span class="math inline">M^n</span> 上的一个 handle 分解. 且指标为 <span class="math inline">k</span> 的临界点对应一个 <span class="math inline">k</span> -handle 的粘接。</li>
+<li>光滑流形 <span class="math inline">M^n</span> 上总存在 Morse 函数 (事实上, Morse 函数在 <span class="math inline">C^\infty\left(M\right)</span> 中是稠密的, <span class="math inline">C^\infty\left(M\right)</span> 定义为 <span class="math inline">M</span> 上所有光滑函数构成的空间)</li>
+<li>结合以上，handle 分解总存在。</li>
+</ul></li>
+</ul></li>
+<li>例子: <span class="math inline">T^2</span> 的 handle 分解.</li>
+</ul></li>
+<li>h-cobordism 和 h-cobordism 定理 (Smale)
+<ul>
+<li>oriented cobordism:
+<ul>
+<li>我们称两个 <span class="math inline">n</span> 维定向流形 <span class="math inline">X_1,X_2</span> 是定向配边的, 如果存在一个定向的 <span class="math inline">(n+1)</span> 维流形 <span class="math inline">M</span>, 使得在集合上看, 我们有 <span class="math inline">\partial M=X_1\sqcup X_2</span> (仅仅将这里的流形看成集合), 如果考虑流形的定向, 则我们有 <span class="math inline">\partial M = X_1 \sqcup (-X_2)</span>，其中 <span class="math inline">-X_2</span> 表示流形 <span class="math inline">X_2</span> 带相反定向. 有时, 我们也把 <span class="math inline">\left(M;X_1,X_2\right)</span> 称为一个定向配边.
+<ul>
+<li>如果我们将对 <span class="math inline">X_1,X_2,M</span> 的定向要求去掉, 并且只要求 <span class="math inline">\partial M=X_1\sqcup X_2</span> 在集合上成立, 则我们称 <span class="math inline">X_1</span> 和 <span class="math inline">X_2</span> 是配边的.</li>
+</ul></li>
+<li>例子 (定向配边):</li>
+</ul></li>
+<li>h-cobordism:
+<ul>
+<li>考虑定向配边 <span class="math inline">X_1,X_2,M</span>, 以及嵌入映射 <span class="math inline">\iota_1: X_1\to M, \iota_2: X_2\to M</span>. 我们称 <span class="math inline">(M;X_1,X_2)</span> 是一个 h-配边，如果每个嵌入 <span class="math inline">\iota_i</span> 都是同伦等价。
+<ul>
+<li>这里的 <span class="math inline">h</span> 代表同伦。</li>
+</ul></li>
+</ul></li>
+<li>h-cobordism Theorem:
+<ul>
+<li><p>定理: 设 <span class="math inline">\left(M;X_1,X_2\right)</span> 是一个紧的、单连通的 h-配边，且 <span class="math inline">\dim X_1 \geq 5</span>，则 <span class="math inline">M</span> 微分同胚于一个柱面 <span class="math inline">X_1 \times [0,1]</span>。</p>
+<ul>
+<li>拓扑 h-cobordism Thm: 保持假设不变, 推出 <span class="math inline">M</span> 同胚于柱面 <span class="math inline">X_1\times [0,1]</span></li>
+</ul></li>
+<li><p>推论: 若 <span class="math inline">\left(M;X_1,X_2\right)</span> 如上所述, 则 <span class="math inline">X_1</span> 与 <span class="math inline">X_2</span> 微分同胚.</p></li>
+<li><p>推论: 对于维数大于等于 5 的情形 <span class="math display">
+  \{  拓扑球的集合 \}/ \text{Diffeo} \cong \{  同伦球的集合 \}/\text{h-cobordism}
+  </span></p>
+<ul>
+<li>证明: 利用 GPC+ h-cobordism 定理.</li>
+</ul></li>
+<li><p>定理的证明思路: 我们对 pair <span class="math inline">\left(M,X_1\right)</span> 做 handle 分解 (即将 <span class="math inline">M</span> 写成在 <span class="math inline">X_1\times[0,1]</span> 上粘接 handles 的形式)。利用单连通和同伦等价的强限制, 我们可以证明这个 handle 分解实际上没有多余的 handles, 即 <span class="math inline">M\cong X_1\times[0,1]</span>.</p></li>
+</ul></li>
+</ul></li>
+<li>历史: GPC 的证明
+<ul>
+<li>weak GPC (<span class="math inline">n\geq5</span>): Smale</li>
+<li>GPC <span class="math inline">\left(n\geq5\right)</span>: Newman by Connell
+<ul>
+<li>key word: Engulfing method (吞噬法)</li>
+</ul></li>
+<li>GPC <span class="math inline">\left(n=4\right)</span>: Freedman
+<ul>
+<li>证明概要:
+<ul>
+<li>Freedman: 拓扑 h-cobordism 定理在 <span class="math inline">\dim X_1=4</span> 的情形下成立.</li>
+<li>Wall: 设 <span class="math inline">M,N</span> 是单连通的闭四维流形, 若它们之间有等价的 intersection form (一个同伦不变量, 后面介绍), 则它们之间存在一个 h-配边。</li>
+<li>推论: 对于单连通闭四维流形 <span class="math inline">M</span>，<span class="math inline">M</span> 的拓扑完全由它上面的 intersection form 决定, 从而同伦等价蕴含同胚。这蕴含了 GPC, n=4.</li>
+</ul></li>
+</ul></li>
+<li>GPC <span class="math inline">\left(n=3\right)</span>: Perelman 通过证明几何化猜想而完成。</li>
+<li>GPC <span class="math inline">\left(n&lt;3\right)</span>: trivial.</li>
+</ul></li>
+</ul>
+<p>还有很多数学家做出了重要的贡献, 即使我们没有一一列举.</p>
+</section>
+<section id="smooth-poincare-conjecture-and-exotic-sphere" class="level2">
+<h2 class="anchored" data-anchor-id="smooth-poincare-conjecture-and-exotic-sphere">Smooth Poincare Conjecture and Exotic Sphere</h2>
+<ul>
+<li>SPC: 光滑庞加莱猜想
+<ul>
+<li>SPC: 设 <span class="math inline">M^n</span> 是光滑闭流形, 若它是同伦球面, 则它也是微分球面 (微分同胚于标准 <span class="math inline">S^n</span>).</li>
+<li>一般的 SPC 是错的:
+<ul>
+<li>Milnor 在 1956 年发现了第一个怪球 <span class="math inline">S^7</span>.</li>
+<li>事实上, SPC 在多数维数上失效。</li>
+<li>既然一般来说,(拓扑) <span class="math inline">S^n</span> 上的光滑结构不止一种, 我们考虑其上所有光滑结构的集合, 记为 <span class="math inline">\theta\left(n\right)</span>.</li>
+</ul></li>
+<li>对于 <span class="math inline">n\geq5</span>, 我们知道如何计算 <span class="math inline">\theta\left(n\right)</span>
+<ul>
+<li>至少, 我们将计算 <span class="math inline">\theta\left(n\right)</span> 归结成了计算球面的稳定同伦群(难算).</li>
+</ul></li>
+<li>对于 <span class="math inline">n\leq3</span>: 流形上的光滑结构唯一, 故 GPC 推出 SPC.</li>
+<li>对于 <span class="math inline">n=4</span>: <strong>我们完全不知道 <span class="math inline">\theta\left(4\right)</span>, SPC 4 是开放问题</strong>。</li>
+</ul></li>
+<li>拥有唯一光滑结构的奇数维拓扑球面，只有 1 维、3 维、5 维以及 <strong>61 维</strong>。其余所有奇数维球面都必然存在怪异微分结构. (王国祯, 徐宙利, 2016)</li>
+</ul>
+<p>下文中, 我们主要讨论 <span class="math inline">\theta\left(n\right),n\ge 5</span> 的计算问题.</p>
+<ul>
+<li>定义: Kervaire-Milnor group
+<ul>
+<li>对于 <span class="math inline">n\geq5</span> 的情形下, 我们已经得到了双射: <span class="math inline">\{  拓扑球的集合 \}/ \text{Diffeo} \cong \{  同伦球的集合 \}/\text{h-cobordism}</span>. 这其实是个群同构. 左边的群, 记为 <span class="math inline">\Theta_n</span>, 被称为 Kervaire-Milnor 群.</li>
+</ul></li>
+</ul>
+<p>于是, 我们只要关心 <span class="math inline">\Theta_n</span> 的计算问题.</p>
+</section>
+</section>
+<section id="computation-of-theta_n" class="level1">
+<h1>Computation of <span class="math inline">\Theta_n</span></h1>
+<section id="theta_n-as-a-group" class="level2">
+<h2 class="anchored" data-anchor-id="theta_n-as-a-group"><span class="math inline">\Theta_n</span> as a Group</h2>
+<ul>
+<li>定向配边群:
+<ul>
+<li>回顾定向配边, 固定维数 <span class="math inline">n</span>, 我们考虑所有定向 <span class="math inline">n</span> 维流形的定向配边类构成的集合, 记为 <span class="math inline">\Omega_n</span>.</li>
+<li><span class="math inline">\Omega_n</span> 作为群:
+<ul>
+<li>加法: <span class="math inline">[\Sigma_1]+[\Sigma_2]:=[\Sigma_1\sqcup\Sigma_2]</span>.</li>
+<li>逆元: <span class="math inline">-[\Sigma]:=[-\Sigma]</span></li>
+<li>零元素: <span class="math inline">[\emptyset]</span>
+<ul>
+<li>注意 <span class="math inline">[\partial M]=[\emptyset]</span></li>
+</ul></li>
+<li>容易验证, <span class="math inline">\Omega_n</span> 构成 Abel 群.</li>
+</ul></li>
+<li>例子: 在 <span class="math inline">n=2</span> 维中, <span class="math inline">S^2\times[0,1]</span></li>
+</ul></li>
+<li><span class="math inline">\Theta_n</span> 作为群
+<ul>
+<li>群结构:
+<ul>
+<li>加法: <span class="math inline">[\Sigma_1]+[\Sigma_2]:=[\Sigma_1\# \Sigma_2]</span></li>
+<li>逆元: <span class="math inline">-[\Sigma]:=[-\Sigma]</span></li>
+<li>零元: <span class="math inline">[S^n]</span>, 标准光滑球面所在的等价类</li>
+<li>显然, 加法是交换的. 故为 abel 群.</li>
+</ul></li>
+<li>一些说明:
+<ul>
+<li>加法良定义:
+<ul>
+<li><p>lemma: 同伦球的连通和还是同伦球.</p>
+<ul>
+<li>使用命题: 单连通的同调球是同伦球.</li>
+</ul></li>
+<li><p>LEMMA 2.2. Let <span class="math inline">M</span>, <span class="math inline">M'</span> and <span class="math inline">M_r</span> be closed and simply connected. If <span class="math inline">\Sigma</span> is <span class="math inline">h</span> -cobordant to <span class="math inline">\Sigma'</span> then <span class="math inline">\Sigma \# \Sigma_r</span> is <span class="math inline">h</span> -cobordant to <span class="math inline">\Sigma' \# \Sigma_r</span>.</p></li>
+<li><p>Prove via a picture:</p>
+<p><img src="images/poincare-lemma22.png" class="img-fluid" loading="lazy" decoding="async"></p></li>
+</ul></li>
+<li>逆元满足 <span class="math inline">-[\Sigma]+[\Sigma]=[S^n]</span> :
+<ul>
+<li><p>LEMMA 2.3. A simply connected manifold <span class="math inline">\Sigma</span> is <span class="math inline">h</span> -cobordant to the sphere <span class="math inline">S^n</span> if and only if <span class="math inline">\Sigma</span> bounds a contractible manifold.</p></li>
+<li><p>Sketch:</p>
+<ul>
+<li>假设 <span class="math inline">[\Sigma]=[S^n]</span>, 即 <span class="math inline">\Sigma \sqcup -S^n=\partial M</span>. 我们沿着边界上的标准 <span class="math inline">S^n</span> 粘回去一个 <span class="math inline">D^{n+1}</span>, 得到 <span class="math inline">M'</span>, 且有 <span class="math inline">\Sigma = \partial M'</span>。由于 <span class="math inline">S^n</span> 是 <span class="math inline">M</span> 的形变收缩核, 故粘接 disk 之后, 得到的流形 <span class="math inline">M'</span> 是可缩的.</li>
+<li>假设 <span class="math inline">\Sigma</span> bounds 一个可缩的 <span class="math inline">M</span>, 在在 <span class="math inline">M</span> 的内部挖去一个 disk, 我们得到单连通的流形 <span class="math inline">M'</span>.
+<ul>
+<li><span class="math inline">S^n</span> 是 <span class="math inline">M'</span> 的形变收缩核: 考虑 map of pair: <span class="math inline">\left(D^{n+1},S^n\right)\hookrightarrow (M,M')</span>, 我们可以证明 <span class="math inline">S^n\hookrightarrow M'</span> 保持同调群.</li>
+<li><span class="math inline">\Sigma</span> 是 <span class="math inline">M'</span> 的形变收缩核: 对配边 <span class="math inline">\left(M';\Sigma,S^n\right)</span> 使用 Poincare 对偶, 我们得到相对同调群同构 <span class="math inline">H_*\left(M',\Sigma\right)\cong H^{n+1-*}\left(M',S^n\right)</span> (用 handle 分解的对偶性质) , 从而 <span class="math inline">H_*\left(M',\Sigma\right)\cong0</span> , 至此我们说明了 <span class="math inline">\Sigma\hookrightarrow M'</span> 保持同调群, 故它是同伦等价.</li>
+</ul></li>
+</ul></li>
+<li><p>LEMMA 2.4. If <span class="math inline">\Sigma</span> is a homotopy sphere, then <span class="math inline">\Sigma \# (-\Sigma)</span> bounds a contractible manifold.</p></li>
+<li><p>Sketch: 为了做连通和, 在 <span class="math inline">\Sigma</span> 上面挖掉一个 disk. 这样会得到带边流形 <span class="math inline">\Sigma-D^n</span>. 我们沿着这个流形的边界旋转 180 度, 得到流形 <span class="math inline">M</span>, 如下图所示:</p>
+<p><img src="images/poincare-lemma24.png" class="img-fluid" loading="lazy" decoding="async"></p>
+<p>这样构造的 <span class="math inline">M</span> 显然同伦等价于 <span class="math inline">\Sigma-D^n</span> (这个同伦可以被造出来), 又注意到, <span class="math inline">\Sigma</span> 是同伦球面, 故 <span class="math inline">\Sigma-D^n</span> 可缩, 于是 <span class="math inline">M</span> 可缩. 根据 LEMMA 2.3, 我们有 <span class="math inline">[\Sigma]+[-\Sigma]=[S^n]=0</span>.</p></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Relation between these two Groups
+<ul>
+<li><span class="math inline">\Omega^h_n</span> 中的加法和单位元的定义在 <span class="math inline">\Omega_n</span> 中仍然生效:
+<ul>
+<li><span class="math inline">[\Sigma\# \Sigma']=[\Sigma \sqcup\Sigma']</span> in <span class="math inline">\Omega_n</span>: 考虑在 <span class="math inline">\left(\Sigma\sqcup\Sigma'\right)\times[0,1]</span> 上面粘接 1-handle, 这个 <span class="math inline">\left(n+1\right)</span> 维流形给出了我们想要的 cobordism.</li>
+<li><span class="math inline">[S^n]=0</span> in <span class="math inline">\Omega_n</span>: 它是 <span class="math inline">D^{n+1}</span> 的边界.</li>
+</ul></li>
+<li>但我们在 <span class="math inline">\Omega_n^h</span> 中只能用连通和和 <span class="math inline">[S^n]</span> 定义群结构:
+<ul>
+<li><span class="math inline">\Omega_n</span> 中的运算在 <span class="math inline">\Omega^h_n</span> 上不封闭.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="framed-cobordism-and-stable-homotopy-groups" class="level2">
+<h2 class="anchored" data-anchor-id="framed-cobordism-and-stable-homotopy-groups">Framed cobordism and Stable homotopy groups</h2>
+<section id="framed-cobordism" class="level3">
+<h3 class="anchored" data-anchor-id="framed-cobordism">Framed cobordism</h3>
+<ul>
+<li>稳定可平行化流形
+<ul>
+<li>可平行化: 称一个流形 <span class="math inline">M</span> 是可平行化的, 如果它的切丛 <span class="math inline">TM</span> 是一个平凡向量丛.</li>
+<li>稳定可平行化: 称一个流形 <span class="math inline">M</span> 是稳定可平凡化的, 如果它的切丛直和某个平凡向量丛后成为平凡丛。</li>
+<li><span class="math inline">S^n</span> 一般不是可平行化流形, 但是稳定可平凡化流形:
+<ul>
+<li>不可平行化: <span class="math inline">S^n</span> 只有在维数 <span class="math inline">n=1,3,7</span> 可平行化.<br>
+</li>
+<li>稳定可平行化: <span class="math inline">TS^n\oplus \epsilon^1</span> 是平凡丛.</li>
+</ul></li>
+</ul></li>
+<li>Framed manifold
+<ul>
+<li>我们知道, 流形 <span class="math inline">M^n</span> 可以被嵌入到维数充分大的欧氏空间 <span class="math inline">\mathbb{R}^{n+k}</span> 中. 如果这个嵌入 <span class="math inline">i:M^n\hookrightarrow \mathbb{R}^{n+k}</span> 的法丛是平凡丛, 我们可以在法丛上选定一个标架场(平凡化). 法丛上带有平凡化的流形被称为一个 framed manifold.</li>
+<li>命题: 任意稳定可平行化流形 <span class="math inline">M</span>, 存在充分大的 <span class="math inline">k</span>, 以及嵌入 <span class="math inline">i:M^n \hookrightarrow\mathbb{R}^{n+k}</span> 使得法丛是平凡的. 即对于这种流形, 我们总可以给它一个 frame, 使其成为 framed manifold.
+<ul>
+<li>Sketch:
+<ul>
+<li><p>法丛关系： 因为 <span class="math inline">M^n</span> 嵌在 <span class="math inline">\mathbb{R}^{n+k}</span> 中，它的切丛和法丛的直和一定是整个平坦宇宙的切丛（即平凡丛）： <span class="math display">
+  TM \oplus \nu^k \cong \epsilon^{n+k}
+  </span></p></li>
+<li><p>稳定可平行化前提： 你假设了 <span class="math inline">M</span> 是稳定可平凡化的。它的代数定义是：只要给切丛加上某个足够大维度 <span class="math inline">a</span> 的平凡丛，它就会变成一个平凡丛： <span class="math display">
+  TM \oplus \epsilon^a \cong \epsilon^{n+a}
+  </span></p></li>
+<li><p>我们在第 1 个公式的两边，同时加上一个 <span class="math inline">\epsilon^a</span>： <span class="math display">
+  (TM \oplus \epsilon^a) \oplus \nu^k \cong \epsilon^{n+k} \oplus \epsilon^a
+  </span> 把括号里的东西替换成第 2 个公式的结果： <span class="math display">
+\epsilon^{n+a} \oplus \nu^k \cong \epsilon^{n+k+a}
+</span> 这个公式的白话翻译是： 你的法丛 <span class="math inline">\nu^k</span>，如果再给它强行加上一个极其庞大的平凡向量丛 <span class="math inline">\epsilon^{n+a}</span>，它俩混在一起后，就彻底变成了一个完美的、没有打结的平凡丛！在拓扑学里，这就叫证明了 <span class="math inline">\nu^k</span> 是 “稳定平凡的 (Stably trivial)”。</p></li>
+</ul></li>
+</ul></li>
+<li>并不是所有的流形上都可以定义 frame. 球面 <span class="math inline">S^n</span> 上可以定义 frame. 同伦球面上也可以定义 frame.</li>
+</ul></li>
+<li>Framed cobordism:
+<ul>
+<li>Framed cobordism 是两个 framed manifold 之间的等价关系，它考虑的是在更高一维的流形中，两个 framed manifold 是否可以通过一个 framed cobordism 连接起来。我们将这个配边群记为 <span class="math inline">\Omega^{\text{fr}}_n</span>.</li>
+</ul></li>
+</ul>
+<p>我们从定义中发现, framed manifold <span class="math inline">\left(M,f\right)</span> 和嵌入的欧氏空间 <span class="math inline">\mathbb{R}^{n+k}</span> 的维数 <span class="math inline">k</span> 有关系. 即 framed manifold 是在稳定意义下的 (我们可以在所有的 framed manifold 构成的集合上定义等价关系: 由”稳定”给出, 然后考虑在这个等价关系下的等价类. ) 事实上, 这种稳定的现象还出现在了同伦群的计算中.</p>
+<ul>
+<li>球面的稳定同伦群
+<ul>
+<li><span class="math inline">\pi_k\left(S^k\right)\cong\mathbb{Z},\forall k\geq1</span>
+<ul>
+<li>换一种写法: <span class="math inline">\lim_{ k \to \infty }\pi_{0+k}\left(S^k\right)=\mathbb{Z}</span></li>
+</ul></li>
+<li>这可以被推广 (by suspension theorem):
+<ul>
+<li><span class="math inline">\lim_{ k \to \infty }\pi_{n+k}\left(S^k\right)</span> 收敛 (当 <span class="math inline">k</span> 充分大时, 这个群不依赖于 <span class="math inline">k</span> 的选取)</li>
+<li>将这个群定义为球面的 <span class="math inline">n</span> 阶稳定同伦群, 记为 <span class="math inline">\Pi_n</span>。</li>
+</ul></li>
+</ul></li>
+<li>定理 (Pontryagin-Thom):
+<ul>
+<li>Framed cobordism 群 <span class="math inline">\Omega_n^{\text{fr}}</span> 与球面 <span class="math inline">S^n</span> 的稳定同伦群 <span class="math inline">\Pi_n</span> 是同构的.</li>
+<li>我们给出映射 <span class="math inline">\Omega_n^{\text{fr}}\to \Pi_n</span>, 它是著名的 Pontryagin-Thom构造, 在不同的 cobordism 类有众多推广.
+<ul>
+<li>Pontryagin-Thom 构造: 对于 <span class="math inline">i:M^n \hookrightarrow \mathbb{R}^{n+k}</span> 和 framing <span class="math inline">f</span>, 粗略地说, 我们将给出从环境流形 <span class="math inline">\mathbb{R}^{n+k}</span> 到 <span class="math inline">M^n</span> 的一个坍缩映射(事实上, 我们给出从环境流形 <span class="math inline">\mathbb{R}^{n+k}</span> 的紧致化到 <span class="math inline">M^n</span> 的管状邻域的紧致化的坍缩映射).<br>
+</li>
+<li><span class="math inline">M</span> 的管状邻域的紧致化: 我们考虑 <span class="math inline">M^n</span> 在 <span class="math inline">\mathbb{R}^{n+k}</span> 中的管状邻域 <span class="math inline">N</span>, 它是平凡 disk bundle. 将这个平凡 disk bundle 沿着边界 <span class="math inline">\partial N=M^n\times S^{k-1}</span> 粘起来, 得到 <span class="math inline">N/\partial N=M^n\times D^k/M^n\times S^{k-1}=M\times S^k/M=M_+\wedge S^k</span>, 这个操作其实就是对于 disk bundle <span class="math inline">M\times D^k</span> 做紧致化 <span class="math inline">\left(M\times D^k\right)^+=M^+\wedge S^k=M_+\wedge S^k</span>. 这也被称为这个 disk bundle 的 Thom 空间.</li>
+<li>环境流形 <span class="math inline">\mathbb{R}^{n+k}</span> 的紧致化是 <span class="math inline">S^{n+k}</span>.</li>
+<li>将紧致化看作函子, 它是反变的, 原来的管状邻域的含入映射 <span class="math inline">M\times D^k\hookrightarrow \mathbb{R}^{n+k}</span> 在这里给出 <span class="math inline">S^{n+k}\to M_+\wedge S^k=M^n\times S^k/M</span>. 将这个映射与 <span class="math inline">M\times S^k/M\to S^k</span> 复合, 我们得到映射 <span class="math inline">S^{n+k} \to S^k</span>, 从而得到一个元素 <span class="math inline">\alpha \in \pi_{n+k}(S^k)</span>. 这个元素 <span class="math inline">\alpha</span> 在稳定同伦群 <span class="math inline">\Pi_n</span> 中的像就是 Pontryagin-Thom 构造给出的对应.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="kervaire-milnor-s-exact-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="kervaire-milnor-s-exact-sequence">Kervaire-Milnor ’s exact sequence</h2>
+<p>我们希望把同伦球面”嵌入”到群 <span class="math inline">\Omega_n^{\text{fr}}</span> 中去看, 即 <span class="math inline">i:\Theta_n \rightarrow \Omega_n^{\text{fr}}</span> , 从这个映射导出正合序列, 然后使用正合序列计算 <span class="math inline">\Theta_n</span>, 这样我们就通过一个”已知”的配边群计算另一个未知的配边群. 但是注意到, 映射 <span class="math inline">i</span> 性质较差, 比如, 它显然不是满射: 一个同伦球面上面可以有很多个 framing. 我们考虑将 <span class="math inline">\Theta_n</span> 映射到 <span class="math inline">\Omega_n^{\text{fr}}</span> 上的一个商集.</p>
+<ul>
+<li><span class="math inline">\Omega_n^{\text{fr}}</span> 上的群作用:
+<ul>
+<li><span class="math inline">\Omega_n^{\text{fr}}</span> 上有一个自然的 <span class="math inline">\pi_n(SO)</span> 作用.</li>
+<li>回顾流形上的一个 framing 就是法丛上的一个平凡化, 即法丛上的一组标架场. 为了从一个 framing 得到另一个 framing, 只要旋转这个标架场, 即在每个法丛的纤维上作用一个旋转矩阵. 这对应了 <span class="math inline">\pi_n\left(SO\right)</span> 上的元素.</li>
+<li>给定一个 framing 作为 base, 我们可以定义群作用 <span class="math inline">J:\pi_n\left(SO\right)\to \Omega_n^{\text{fr}}</span>, 把这个映射的像记为 <span class="math inline">J_n</span>. 商掉这个群作用得到商空间 <span class="math inline">\Omega_n^{\text{fr}}/J_n</span> , 它只依赖于底流形 <span class="math inline">M</span>, 而不再依赖 framing.</li>
+</ul></li>
+</ul>
+<p>我们将映射改写成 <span class="math inline">\phi:\Theta_n\to \Omega_n^{\text{fr}}/J_n=\Pi_n/J_n</span>, 并由此构造 Kervaire-Milnor 正合序列.</p>
+<ul>
+<li>映射 <span class="math inline">\phi</span> 的核：
+<ul>
+<li>映射 <span class="math inline">\phi</span> 的核由那些同伦球面构成，它们作为带 framing 的流形在 <span class="math inline">\Omega_n^{\text{fr}}</span> 中平凡，即应该是某个 framed manifold 的边界，或者说某个稳定可平行化流形的边界。</li>
+<li>LEMMA 3.4: 一个稳定可平行化的流形, 如果是带边的, 那么它也是可平行化的 (parallelizable).</li>
+<li>我们将这些 bounded, parallelizable 流形的边界构成的子群记为 <span class="math inline">\Theta^{bp}_n</span>, 于是 <span class="math inline">\ker \phi=\Theta^{bp}_n</span>. 这个群是容易计算的.</li>
+</ul></li>
+</ul>
+<p>于是我们有了正合序列: <span class="math display">
+        0 \to \Theta^{bp}_n \to \Theta_n \xrightarrow{\phi} \Pi_n/J_n \to \text{Coker} \phi \to 0
+        </span></p>
+<ul>
+<li>映射 <span class="math inline">\phi</span> 的像:
+<ul>
+<li><p>我们有如下的结果：</p></li>
+<li><p>对于 <span class="math inline">n \neq 2 \pmod{4}</span>，每个 <span class="math inline">\Pi_n</span> 中的元素都可以被同伦球面实现，即 <span class="math inline">\Theta_n \to \Pi_n/J_n</span> 是满射，于是我们有正合列： <span class="math display">
+  0 \to \Theta_n^{bp} \to \Theta_n \to \Pi_n/J_n \to 0
+  </span></p></li>
+<li><p>对于 <span class="math inline">n \equiv 2 \pmod{4}</span>（此时 <span class="math inline">\Theta_n^{bp} = 0</span>），映射 <span class="math inline">\Theta_n \to \Pi_n/J_n</span> 是否为满射由 Kervaire 不变量决定，即我们有正合列 <span class="math display">
+  0 \to \Theta_{4k-2} \to \Pi_{4k-2}/J_{4k-2} \to \mathbb{Z}/2
+  </span> 这里多数情况 <span class="math inline">\Pi_{4k-2}/J_{4k-2} = 0</span>. <span class="math inline">\Pi_{4k-2}/J_{4k-2}\neq 0</span> 当且仅当 <span class="math inline">k = 1,2,4,8,16,32</span>，对应的流形维数为 <span class="math inline">2,6,14,30,62,126</span> (<span class="math inline">126</span> by 林伟南, 王国祯, 徐宙利 <a href="https://arxiv.org/abs/2412.10879">On the Last Kervaire Invariant Problem</a> )</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="computation-of-some-theta_n" class="level1">
+<h1>Computation of some <span class="math inline">\Theta_n</span></h1>
+<section id="formulas-for-j_n-and-theta_nbp" class="level2">
+<h2 class="anchored" data-anchor-id="formulas-for-j_n-and-theta_nbp">Formulas for <span class="math inline">J_n</span> and <span class="math inline">\Theta_n^{bp}</span></h2>
+<p>我们记 <span class="math inline">B_n</span> 为第 <span class="math inline">n</span> 个伯努利数.</p>
+<ul>
+<li><span class="math inline">J_n</span> 的计算：
+<ul>
+<li><p><span class="math inline">J_n</span> 是循环群, 且阶数满足:</p>
+<p><span class="math display">|J_n| =
+  \begin{cases}
+  \text{denominator}\left( \frac{B_{2k}}{4k} \right) &amp; \text{for } n = 4k - 1, \\
+  2 &amp; \text{for } n \equiv 0,1 \pmod{8}, \\
+  1 &amp; \text{for } n \equiv 2,4,5,6 \pmod{8}.
+  \end{cases}</span></p></li>
+</ul></li>
+<li><span class="math inline">|\Theta_n^{bp}|</span> 的计算：
+<ul>
+<li>对于 <span class="math inline">n \geq 4</span>，群 <span class="math inline">\Theta^{bp}_n</span> 是有限循环群，且有显式的生成元。</li>
+<li>具体地：
+<ul>
+<li>当 <span class="math inline">n</span> 为偶数时，<span class="math inline">\Theta^{bp}_n</span> 是平凡群；</li>
+<li>当 <span class="math inline">n = 4k - 3</span> 时，<span class="math inline">\Theta^{bp}_n</span> 是平凡群或 <span class="math inline">2</span> 阶循环群；</li>
+<li>当 <span class="math inline">n = 4k - 1 &gt; 3</span> 时，<span class="math inline">\Theta^{bp}_n</span> 是阶为 <span class="math inline">2^{2k-2}(2^{2k-1} - 1) \cdot \text{numerator}\left(\frac{4B_{2k}}{k}\right)</span> 的循环群。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<ul>
+<li><p>例子：计算 <span class="math inline">\Theta_6</span></p>
+<ul>
+<li><p>由于 <span class="math inline">6\equiv 2 \pmod{4}</span> 我们有正合列:<br>
+<span class="math display">
+  0 \to \Theta_6 \to \Pi_6/J_6 \xrightarrow{\Phi_2} \mathbb{Z}/2
+  </span></p></li>
+<li><p>查表得到 <span class="math inline">\Pi_6\cong\mathbb{Z}/2</span></p></li>
+<li><p>根据公式, <span class="math inline">J_6=0</span>. 于是 <span class="math inline">\Pi_6/J_6 \cong \mathbb{Z}/2</span>.</p></li>
+<li><p>而 <span class="math inline">\Phi_2</span> 将生成元映为 <span class="math inline">1 \in \mathbb{Z}/2</span>, 故为同构. 于是 <span class="math inline">\Theta_6\cong 0</span>, 即 <span class="math inline">S^6</span> 上只有一个光滑结构.</p></li>
+</ul></li>
+<li><p>例子: 计算 <span class="math inline">\Theta_7</span></p>
+<ul>
+<li>我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">\Theta_7</span>)。</li>
+</ul>
+<ol type="1">
+<li>检查维度：<span class="math inline">n=7 = 4\times2-1</span>，属于第一种情况（<span class="math inline">n \equiv 3 \pmod 4</span>），正合列分裂。</li>
+</ol>
+<p><span class="math display">
+  |\Theta_7| = |\Theta_7^{bp}| \cdot |\Pi_7 / J_7|
+  </span></p>
+<ol start="2" type="1">
+<li>计算 <span class="math inline">|\Theta_7^{bp}|</span>：
+<ul>
+<li><p>代入公式 <span class="math inline">k=2</span>：</p>
+<p><span class="math display">
+  |\Theta_7^{bp}| = 2^{2\times2-2}(2^{2\times2-1}-1) \cdot \text{numerator}\left(\frac{4B_4}{2}\right)
+  </span></p></li>
+<li><p>第一部分：<span class="math inline">2^2 (2^3 - 1) = 4 \times 7 = 28</span></p></li>
+<li><p>第二部分：<span class="math inline">B_4 = -1/30</span>，所以 <span class="math inline">\frac{4\times1/30}{2} = \frac{1}{15}</span>。分子是 1。</p></li>
+<li><p>结果：<span class="math inline">|\Theta_7^{bp}| = 28 \times 1 = 28</span>。</p></li>
+</ul></li>
+<li><strong>计算 <span class="math inline">|\Pi_7 / J_7|</span></strong>：
+<ul>
+<li>查阅同伦群表，<span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>。</li>
+<li><span class="math inline">J_7</span> 的阶数由 <span class="math inline">\text{denominator}(B_{2k}/4k)</span> 决定（其中 <span class="math inline">n=4k-1</span>，即 <span class="math inline">k=2</span>）。<span class="math inline">B_4 = \frac{1}{30}</span>，所以 <span class="math inline">\frac{B_4}{8} = \frac{1}{240}</span>，分母是 240，因此 <span class="math inline">|J_7| = 240</span>。由于 <span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>，故 <span class="math inline">\Pi_7 = J_7</span>，即 <span class="math inline">\Pi_7/J_7</span> 是平凡群。</li>
+<li>可以看到对于 <span class="math inline">n=7</span>，<span class="math inline">|\Theta_7|</span> 对应的值就是 <span class="math inline">b_2 = 28</span>。这意味着对于 <span class="math inline">n=7</span>，<span class="math inline">\Pi_7/J_7</span> 是平凡的（或者说 <span class="math inline">\Pi_7 = J_7</span>）。</li>
+</ul></li>
+<li><strong>结论</strong>：<span class="math inline">|\Theta_7| = 28 \times 1 = 28</span>。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="further-discussion" class="level1">
+<h1>Further Discussion</h1>
+<ul>
+<li>流形的分类
+<ul>
+<li>按照同伦、同胚、微分同胚分类
+<ul>
+<li>这引出了庞加莱猜想.</li>
+</ul></li>
+<li>按照配边分类
+<ul>
+<li>即计算配边群(环)</li>
+<li>主要结果是 Pontryagin-Thom 定理</li>
+</ul></li>
+</ul></li>
+<li>配边与同调</li>
+</ul>
+<section id="cobordism-classification-of-manifolds" class="level2">
+<h2 class="anchored" data-anchor-id="cobordism-classification-of-manifolds">Cobordism Classification of Manifolds</h2>
+<p>我们可以考虑多种配边: 非定向配边(法丛群 <span class="math inline">O\left(n\right)</span>), 定向配边(法丛结构群 <span class="math inline">SO\left(n\right)</span>), framed 配边(法丛结构群 <span class="math inline">\{ e \}</span>), 复配边(法丛结构群 <span class="math inline">U\left(n\right)</span>)等.</p>
+<p>流形在这些配边下的分类是已知的, 我们有结果:</p>
+<ul>
+<li><strong>Theorem 1.5.10</strong> (Pontrjagin, Thom) 设 <span class="math inline">\mathfrak{B}</span> 为 <span class="math inline">(B, f)</span>-structure, 则存在分次环同构: <span class="math inline">\Omega_*^{\mathfrak{B}} \cong \pi_*(M\mathfrak{B})</span>.
+<ul>
+<li>配边群还有环结构: 乘法定义为流形的笛卡尔积 <span class="math inline">X\times Y</span>.</li>
+<li>这里 <span class="math inline">\mathfrak{B}</span> 可以取成 <span class="math inline">O,SO,\{e\},U</span>, 对应上述不同的配边。</li>
+<li>同构左侧的环可以被完全计算. 即完全分类了流形的上述配边类.</li>
+</ul></li>
+</ul>
+</section>
+<section id="cobordism-and-normal-bundle" class="level2">
+<h2 class="anchored" data-anchor-id="cobordism-and-normal-bundle">Cobordism and Normal Bundle</h2>
+<p>为什么配边分类与法丛密切相关? 因为对于 <span class="math inline">\Sigma=\partial M</span> 的情形, <span class="math inline">\Sigma</span> 的法丛给出了 <span class="math inline">M</span> 的法丛. 我们通过验证映射 <span class="math inline">\alpha:\Omega_n^o\to \pi_n\left(MO\right)</span> 良定义给出说明.</p>
+<p><img src="images/poincare-cobordism1.png" class="img-fluid" loading="lazy" decoding="async"> <img src="images/poincare-cobordism2.png" class="img-fluid" loading="lazy" decoding="async"></p>
+</section>
+<section id="computation-of-cobordism-ring" class="level2">
+<h2 class="anchored" data-anchor-id="computation-of-cobordism-ring">Computation of Cobordism Ring</h2>
+<ul>
+<li>结果:
+<ul>
+<li>不定向配边:
+<ul>
+<li><span class="math inline">\Omega^O_* \cong \mathbb{Z}_2[x_2, x_4, x_5, x_6, \dots]</span></li>
+<li>下标的取法为: 下标不等于 <span class="math inline">2^k-1</span></li>
+<li>对应的生成元:</li>
+</ul></li>
+<li>定向配边:
+<ul>
+<li><span class="math inline">\Omega_*^{SO} \otimes \mathbb{Q} \cong \mathbb{Q}[y_4, y_8, y_{12}, \dots]</span></li>
+<li>生成元为 <span class="math inline">\mathbb{CP}^2</span>, <span class="math inline">\mathbb{HP}^2</span> 等流形的配边类。</li>
+</ul></li>
+<li>framed 配边:
+<ul>
+<li><span class="math inline">\Omega_n^{fr} \cong \pi_n^S</span></li>
+<li>对应球面的稳定同伦群。</li>
+</ul></li>
+<li>复配边:
+<ul>
+<li><span class="math inline">\Omega_*^U \cong \mathbb{Z}[z_2, z_4, z_6, z_8, \dots]</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>证明方法:</p>
+<ul>
+<li>分类空间同调 <span class="math inline">\xrightarrow{\text{Thom 同构}}</span> Thom 谱的同调群 <span class="math inline">\xrightarrow{\text{确定 } \mathcal{A}\text{-模结构}}</span> 算出 Adams 谱序列 <span class="math inline">E_2</span> 页 <span class="math inline">\xrightarrow{\text{塌陷 (微分全为0)}}</span> 直接得出 Thom 谱的同伦群</li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>本讲要点
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>七维怪球的数量为28，对应28个微分同胚类，其中27个是怪球。</li>
+<li>流形可按同伦、同胚、微分同胚以及配边关系进行分类。</li>
+<li>Pontryagin-Thom定理建立了配边群与Thom谱稳定同伦群之间的同构。</li>
+<li>配边分类与流形的法丛结构密切相关。</li>
+<li>不同结构（如非定向、定向、framed、复配边）的配边环已被计算。</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

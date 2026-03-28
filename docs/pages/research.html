@@ -73,9 +73,36 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -402,6 +429,29 @@ window.Quarto = {
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -477,10 +527,10 @@ window.Quarto = {
 <div class="column" style="width:50%;">
 <section id="turaev-viro-invariants" class="level4">
 <h4 class="anchored" data-anchor-id="turaev-viro-invariants">Turaev-Viro Invariants</h4>
-<p>The Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation <span class="math inline">\(\mathcal{T}\)</span> of a 3-manifold <span class="math inline">\(M\)</span>:</p>
-<p><span class="math display">\[
+<p>The Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation <span class="math inline">\mathcal{T}</span> of a 3-manifold <span class="math inline">M</span>:</p>
+<p><span class="math display">
 TV(M) = \sum_{\text{colorings}} \prod_{\text{tetrahedra}} |6j|^2
-\]</span></p>
+</span></p>
 <p>These invariants are:</p>
 <ul>
 <li>Topologically invariant (independent of triangulation)</li>
@@ -505,11 +555,11 @@ TV(M) = \sum_{\text{colorings}} \prod_{\text{tetrahedra}} |6j|^2
 </section>
 <section id="knot-theory-categorification" class="level3">
 <h3 class="anchored" data-anchor-id="knot-theory-categorification">Knot Theory &amp; Categorification</h3>
-<p>Khovanov homology categorifies the Jones polynomial <span class="math inline">\(V_L(q)\)</span> of a link <span class="math inline">\(L\)</span>:</p>
-<p><span class="math display">\[
+<p>Khovanov homology categorifies the Jones polynomial <span class="math inline">V_L(q)</span> of a link <span class="math inline">L</span>:</p>
+<p><span class="math display">
 V_L(q) = \sum_{i,j} (-1)^i q^j \dim \text{Kh}^{i,j}(L)
-\]</span></p>
-<p>The categorified invariant <span class="math inline">\(\text{Kh}(L)\)</span> is a bigraded chain complex that:</p>
+</span></p>
+<p>The categorified invariant <span class="math inline">\text{Kh}(L)</span> is a bigraded chain complex that:</p>
 <ul>
 <li>Detects the unknot (Kronheimer-Mrowka, 2011)</li>
 <li>Provides bounds on slice genus</li>
@@ -534,9 +584,9 @@ Note
 <h3 class="anchored" data-anchor-id="geometric-topology">Geometric Topology</h3>
 <section id="heegaard-splittings" class="level4">
 <h4 class="anchored" data-anchor-id="heegaard-splittings">Heegaard Splittings</h4>
-<p>Every closed, orientable 3-manifold <span class="math inline">\(M\)</span> admits a Heegaard splitting: <span class="math display">\[
+<p>Every closed, orientable 3-manifold <span class="math inline">M</span> admits a Heegaard splitting: <span class="math display">
 M = H_g \cup_\phi H_g
-\]</span> where <span class="math inline">\(H_g\)</span> is a genus-<span class="math inline">\(g\)</span> handlebody and <span class="math inline">\(\phi\)</span> is a gluing homeomorphism of the boundary.</p>
+</span> where <span class="math inline">H_g</span> is a genus-<span class="math inline">g</span> handlebody and <span class="math inline">\phi</span> is a gluing homeomorphism of the boundary.</p>
 <p><strong>Key Questions</strong>:</p>
 <ul>
 <li>How does the Heegaard genus relate to other complexity measures?</li>

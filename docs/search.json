@@ -1,5 +1,352 @@
 [
   {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html",
+    "title": "庞加莱猜想与怪球",
+    "section": "",
+    "text": "我们把拓扑庞加莱猜想简记为 (GPC) General Poincare Conjecture.\n\nGPC:\n\n任意闭的拓扑流形 M^n, 若 M^n 是同伦球面(M 同伦等价于 S^n), 则 M 是拓扑球面(同胚于 S^n).\nGPC 是对的.\n\n相比确定同胚型, 确定同伦型是相对容易的.\n\n主要工具是Whitehead 定理:\n\n假设 X,Y 是两个 CW 复形, 若存在连续映射 f: X\\to Y, f 诱导同伦群上的同构 (称这样的 f 为弱同伦等价), 则 f 是同伦等价.\n同调版本: 对于单连通的空间 X,Y, 若 f: X\\to Y 诱导同调群上的同构, 则 f 是同伦等价.\n\nSketch: 使用 Hurewicz 定理.\n\n\n证明拓扑空间 X 是同伦球面的过程是标准的:\n\n若 X 单连通, 且为同调球面, 则 X 是同伦球面.\n\nSketch: 使用 Hurewicz 定理构造映射 f + 同调版本的 Whitehead 定理.\n\n推论: 单连通的三维流形是同伦球面.\n\n猜想: 同调庞加莱猜想\n\n同调球面是拓扑球面。\n猜想是错的, 反例: Poincare 构造了 3 维怪球(它是同调球面, 但不是同伦球), 它的基本群不平凡 (基本群是 \\tilde{I} , 用 \\mathbb{Z}_2 对 A_5 进行中心扩张后得到的完美群, 完美群: 商掉交换子是零)\n\n\nweak GPC: 任意闭的光滑流形 M^n, 若 M^n 是同伦球面, 则 M^n 是拓扑球面.\n\nSmale: weak GPC 在 n\\geq5 的情形下成立.\n这个结果弱于GPC, 因为它要求流形是光滑的. 然而我们关心的多数流形都是光滑的, 故这个结果也足够重要.\nweak GPC 的证明主要依赖于 h-cobordism 定理.\n\nhandle 分解\n\nhandle 分解是胞腔分解在光滑流形中的对应: 注意到, 一般来说, 粘接不同的胞腔会改变拓扑空间的维数, 导致得到的胞腔复形一般来说不是流形.\nhandle 分解的定义:\n\nmain idea: 对于一个 n 维的闭光滑流形 M^n, 我们希望将 M 表示成若干个 (有限多个) D^n 的组合(这里每个 D^n 被称为 handle h, 可以定义它的指标, 指标为 k 的 handle 被记为 k-handle, 对应于胞腔分解中的一个 k-cell).\n\n每个组成部分 D^n 都是平凡的, 我们流形 M 的复杂程度完全蕴含在了每个 D^n 的粘接方法中.\n在考虑粘接 handle 时, 我们应该想象这个操作在胞腔分解中的对应. 事实上, handle 分解在同伦上给出了一个胞腔分解.\n\n在某个光滑流形 X^n 上粘接 k-handle:\n\n为了对应粘接 k-cell，我们将 D^n (把这个 handle 记为 h) 看作 D^k\\times D^{n-k}，其中第一个分量 D^k 用于粘接：我们将 D^k 的边界 S^{k-1} 粘接到初始流形 X 的边界 \\partial X 上；而 D^{n-k} 则用于“补充”，保证粘接得到的结果还是一个流形。\n具体来说: 给定一个嵌入映射 \\varphi: \\partial D^k\\times D^{n-k}=S^{k-1} \\times D^{n-k} \\hookrightarrow \\partial X，粘接后的流形定义为 X \\cup_{\\varphi} h := X \\sqcup (D^k \\times D^{n-k}) / \\sim，其中等价关系 \\sim 由 \\varphi 给出。\n在同伦上看, 这个操作对应于粘接一个 k-cell.\n\n定义: 光滑流形的 handle 分解\n\n一个 n 维光滑流形 M 的一个 handle 分解是指从空集 \\varnothing 出发，通过有限次粘接 handle 得到 M 的一个表示。更细致地说，一个 handle 分解是一个有限序列 \\varnothing = M_{-1} \\subset M_0 \\subset M_1 \\subset \\cdots \\subset M_m = M，其中每个 M_j 是通过在 M_{j-1} 上粘接一个 handle 得到的。\n例子: T^2 的 handle 分解\n\n\n\nT² 的 handle 分解\n\n\n\nhandle 分解的对偶和消去:\n\nadd picture\n\n\nMorse 函数和 handle 分解的存在性:\n\n结果: 任意紧的(可能带边界)光滑流形上存在 (有限) handle 分解.\n论证依赖 Morse 理论:\n\nMorse 函数: 给定一个光滑流形 M 上的光滑函数 f: M \\to \\mathbb{R}，若其所有临界点(导数为零的点)都非退化 (二阶导数矩阵, 即Hessian 矩阵 H_{ij}(p) = \\frac{\\partial^2 f}{\\partial x_i \\partial x_j}(p) 的行列式不为零) ，则称 f 为一个 Morse 函数. 我们可以根据 Hessian 矩阵的 signature(负惯性指数) 来定义临界点的指标。\n光滑流形 M^n 上的任意 Morse 函数给出 M^n 上的一个 handle 分解. 且指标为 k 的临界点对应一个 k -handle 的粘接。\n光滑流形 M^n 上总存在 Morse 函数 (事实上, Morse 函数在 C^\\infty\\left(M\\right) 中是稠密的, C^\\infty\\left(M\\right) 定义为 M 上所有光滑函数构成的空间)\n结合以上，handle 分解总存在。\n\n\n例子: T^2 的 handle 分解.\n\nh-cobordism 和 h-cobordism 定理 (Smale)\n\noriented cobordism:\n\n我们称两个 n 维定向流形 X_1,X_2 是定向配边的, 如果存在一个定向的 (n+1) 维流形 M, 使得在集合上看, 我们有 \\partial M=X_1\\sqcup X_2 (仅仅将这里的流形看成集合), 如果考虑流形的定向, 则我们有 \\partial M = X_1 \\sqcup (-X_2)，其中 -X_2 表示流形 X_2 带相反定向. 有时, 我们也把 \\left(M;X_1,X_2\\right) 称为一个定向配边.\n\n如果我们将对 X_1,X_2,M 的定向要求去掉, 并且只要求 \\partial M=X_1\\sqcup X_2 在集合上成立, 则我们称 X_1 和 X_2 是配边的.\n\n例子 (定向配边):\n\nh-cobordism:\n\n考虑定向配边 X_1,X_2,M, 以及嵌入映射 \\iota_1: X_1\\to M, \\iota_2: X_2\\to M. 我们称 (M;X_1,X_2) 是一个 h-配边，如果每个嵌入 \\iota_i 都是同伦等价。\n\n这里的 h 代表同伦。\n\n\nh-cobordism Theorem:\n\n定理: 设 \\left(M;X_1,X_2\\right) 是一个紧的、单连通的 h-配边，且 \\dim X_1 \\geq 5，则 M 微分同胚于一个柱面 X_1 \\times [0,1]。\n\n拓扑 h-cobordism Thm: 保持假设不变, 推出 M 同胚于柱面 X_1\\times [0,1]\n\n推论: 若 \\left(M;X_1,X_2\\right) 如上所述, 则 X_1 与 X_2 微分同胚.\n推论: 对于维数大于等于 5 的情形 \n  \\{  拓扑球的集合 \\}/ \\text{Diffeo} \\cong \\{  同伦球的集合 \\}/\\text{h-cobordism}\n  \n\n证明: 利用 GPC+ h-cobordism 定理.\n\n定理的证明思路: 我们对 pair \\left(M,X_1\\right) 做 handle 分解 (即将 M 写成在 X_1\\times[0,1] 上粘接 handles 的形式)。利用单连通和同伦等价的强限制, 我们可以证明这个 handle 分解实际上没有多余的 handles, 即 M\\cong X_1\\times[0,1].\n\n\n历史: GPC 的证明\n\nweak GPC (n\\geq5): Smale\nGPC \\left(n\\geq5\\right): Newman by Connell\n\nkey word: Engulfing method (吞噬法)\n\nGPC \\left(n=4\\right): Freedman\n\n证明概要:\n\nFreedman: 拓扑 h-cobordism 定理在 \\dim X_1=4 的情形下成立.\nWall: 设 M,N 是单连通的闭四维流形, 若它们之间有等价的 intersection form (一个同伦不变量, 后面介绍), 则它们之间存在一个 h-配边。\n推论: 对于单连通闭四维流形 M，M 的拓扑完全由它上面的 intersection form 决定, 从而同伦等价蕴含同胚。这蕴含了 GPC, n=4.\n\n\nGPC \\left(n=3\\right): Perelman 通过证明几何化猜想而完成。\nGPC \\left(n&lt;3\\right): trivial.\n\n\n还有很多数学家做出了重要的贡献, 即使我们没有一一列举.\n\n\n\n\nSPC: 光滑庞加莱猜想\n\nSPC: 设 M^n 是光滑闭流形, 若它是同伦球面, 则它也是微分球面 (微分同胚于标准 S^n).\n一般的 SPC 是错的:\n\nMilnor 在 1956 年发现了第一个怪球 S^7.\n事实上, SPC 在多数维数上失效。\n既然一般来说,(拓扑) S^n 上的光滑结构不止一种, 我们考虑其上所有光滑结构的集合, 记为 \\theta\\left(n\\right).\n\n对于 n\\geq5, 我们知道如何计算 \\theta\\left(n\\right)\n\n至少, 我们将计算 \\theta\\left(n\\right) 归结成了计算球面的稳定同伦群(难算).\n\n对于 n\\leq3: 流形上的光滑结构唯一, 故 GPC 推出 SPC.\n对于 n=4: 我们完全不知道 \\theta\\left(4\\right), SPC 4 是开放问题。\n\n拥有唯一光滑结构的奇数维拓扑球面，只有 1 维、3 维、5 维以及 61 维。其余所有奇数维球面都必然存在怪异微分结构. (王国祯, 徐宙利, 2016)\n\n下文中, 我们主要讨论 \\theta\\left(n\\right),n\\ge 5 的计算问题.\n\n定义: Kervaire-Milnor group\n\n对于 n\\geq5 的情形下, 我们已经得到了双射: \\{  拓扑球的集合 \\}/ \\text{Diffeo} \\cong \\{  同伦球的集合 \\}/\\text{h-cobordism}. 这其实是个群同构. 左边的群, 记为 \\Theta_n, 被称为 Kervaire-Milnor 群.\n\n\n于是, 我们只要关心 \\Theta_n 的计算问题.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#topological-poincare-conjecture",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#topological-poincare-conjecture",
+    "title": "庞加莱猜想与怪球",
+    "section": "",
+    "text": "我们把拓扑庞加莱猜想简记为 (GPC) General Poincare Conjecture.\n\nGPC:\n\n任意闭的拓扑流形 M^n, 若 M^n 是同伦球面(M 同伦等价于 S^n), 则 M 是拓扑球面(同胚于 S^n).\nGPC 是对的.\n\n相比确定同胚型, 确定同伦型是相对容易的.\n\n主要工具是Whitehead 定理:\n\n假设 X,Y 是两个 CW 复形, 若存在连续映射 f: X\\to Y, f 诱导同伦群上的同构 (称这样的 f 为弱同伦等价), 则 f 是同伦等价.\n同调版本: 对于单连通的空间 X,Y, 若 f: X\\to Y 诱导同调群上的同构, 则 f 是同伦等价.\n\nSketch: 使用 Hurewicz 定理.\n\n\n证明拓扑空间 X 是同伦球面的过程是标准的:\n\n若 X 单连通, 且为同调球面, 则 X 是同伦球面.\n\nSketch: 使用 Hurewicz 定理构造映射 f + 同调版本的 Whitehead 定理.\n\n推论: 单连通的三维流形是同伦球面.\n\n猜想: 同调庞加莱猜想\n\n同调球面是拓扑球面。\n猜想是错的, 反例: Poincare 构造了 3 维怪球(它是同调球面, 但不是同伦球), 它的基本群不平凡 (基本群是 \\tilde{I} , 用 \\mathbb{Z}_2 对 A_5 进行中心扩张后得到的完美群, 完美群: 商掉交换子是零)\n\n\nweak GPC: 任意闭的光滑流形 M^n, 若 M^n 是同伦球面, 则 M^n 是拓扑球面.\n\nSmale: weak GPC 在 n\\geq5 的情形下成立.\n这个结果弱于GPC, 因为它要求流形是光滑的. 然而我们关心的多数流形都是光滑的, 故这个结果也足够重要.\nweak GPC 的证明主要依赖于 h-cobordism 定理.\n\nhandle 分解\n\nhandle 分解是胞腔分解在光滑流形中的对应: 注意到, 一般来说, 粘接不同的胞腔会改变拓扑空间的维数, 导致得到的胞腔复形一般来说不是流形.\nhandle 分解的定义:\n\nmain idea: 对于一个 n 维的闭光滑流形 M^n, 我们希望将 M 表示成若干个 (有限多个) D^n 的组合(这里每个 D^n 被称为 handle h, 可以定义它的指标, 指标为 k 的 handle 被记为 k-handle, 对应于胞腔分解中的一个 k-cell).\n\n每个组成部分 D^n 都是平凡的, 我们流形 M 的复杂程度完全蕴含在了每个 D^n 的粘接方法中.\n在考虑粘接 handle 时, 我们应该想象这个操作在胞腔分解中的对应. 事实上, handle 分解在同伦上给出了一个胞腔分解.\n\n在某个光滑流形 X^n 上粘接 k-handle:\n\n为了对应粘接 k-cell，我们将 D^n (把这个 handle 记为 h) 看作 D^k\\times D^{n-k}，其中第一个分量 D^k 用于粘接：我们将 D^k 的边界 S^{k-1} 粘接到初始流形 X 的边界 \\partial X 上；而 D^{n-k} 则用于“补充”，保证粘接得到的结果还是一个流形。\n具体来说: 给定一个嵌入映射 \\varphi: \\partial D^k\\times D^{n-k}=S^{k-1} \\times D^{n-k} \\hookrightarrow \\partial X，粘接后的流形定义为 X \\cup_{\\varphi} h := X \\sqcup (D^k \\times D^{n-k}) / \\sim，其中等价关系 \\sim 由 \\varphi 给出。\n在同伦上看, 这个操作对应于粘接一个 k-cell.\n\n定义: 光滑流形的 handle 分解\n\n一个 n 维光滑流形 M 的一个 handle 分解是指从空集 \\varnothing 出发，通过有限次粘接 handle 得到 M 的一个表示。更细致地说，一个 handle 分解是一个有限序列 \\varnothing = M_{-1} \\subset M_0 \\subset M_1 \\subset \\cdots \\subset M_m = M，其中每个 M_j 是通过在 M_{j-1} 上粘接一个 handle 得到的。\n例子: T^2 的 handle 分解\n\n\n\nT² 的 handle 分解\n\n\n\nhandle 分解的对偶和消去:\n\nadd picture\n\n\nMorse 函数和 handle 分解的存在性:\n\n结果: 任意紧的(可能带边界)光滑流形上存在 (有限) handle 分解.\n论证依赖 Morse 理论:\n\nMorse 函数: 给定一个光滑流形 M 上的光滑函数 f: M \\to \\mathbb{R}，若其所有临界点(导数为零的点)都非退化 (二阶导数矩阵, 即Hessian 矩阵 H_{ij}(p) = \\frac{\\partial^2 f}{\\partial x_i \\partial x_j}(p) 的行列式不为零) ，则称 f 为一个 Morse 函数. 我们可以根据 Hessian 矩阵的 signature(负惯性指数) 来定义临界点的指标。\n光滑流形 M^n 上的任意 Morse 函数给出 M^n 上的一个 handle 分解. 且指标为 k 的临界点对应一个 k -handle 的粘接。\n光滑流形 M^n 上总存在 Morse 函数 (事实上, Morse 函数在 C^\\infty\\left(M\\right) 中是稠密的, C^\\infty\\left(M\\right) 定义为 M 上所有光滑函数构成的空间)\n结合以上，handle 分解总存在。\n\n\n例子: T^2 的 handle 分解.\n\nh-cobordism 和 h-cobordism 定理 (Smale)\n\noriented cobordism:\n\n我们称两个 n 维定向流形 X_1,X_2 是定向配边的, 如果存在一个定向的 (n+1) 维流形 M, 使得在集合上看, 我们有 \\partial M=X_1\\sqcup X_2 (仅仅将这里的流形看成集合), 如果考虑流形的定向, 则我们有 \\partial M = X_1 \\sqcup (-X_2)，其中 -X_2 表示流形 X_2 带相反定向. 有时, 我们也把 \\left(M;X_1,X_2\\right) 称为一个定向配边.\n\n如果我们将对 X_1,X_2,M 的定向要求去掉, 并且只要求 \\partial M=X_1\\sqcup X_2 在集合上成立, 则我们称 X_1 和 X_2 是配边的.\n\n例子 (定向配边):\n\nh-cobordism:\n\n考虑定向配边 X_1,X_2,M, 以及嵌入映射 \\iota_1: X_1\\to M, \\iota_2: X_2\\to M. 我们称 (M;X_1,X_2) 是一个 h-配边，如果每个嵌入 \\iota_i 都是同伦等价。\n\n这里的 h 代表同伦。\n\n\nh-cobordism Theorem:\n\n定理: 设 \\left(M;X_1,X_2\\right) 是一个紧的、单连通的 h-配边，且 \\dim X_1 \\geq 5，则 M 微分同胚于一个柱面 X_1 \\times [0,1]。\n\n拓扑 h-cobordism Thm: 保持假设不变, 推出 M 同胚于柱面 X_1\\times [0,1]\n\n推论: 若 \\left(M;X_1,X_2\\right) 如上所述, 则 X_1 与 X_2 微分同胚.\n推论: 对于维数大于等于 5 的情形 \n  \\{  拓扑球的集合 \\}/ \\text{Diffeo} \\cong \\{  同伦球的集合 \\}/\\text{h-cobordism}\n  \n\n证明: 利用 GPC+ h-cobordism 定理.\n\n定理的证明思路: 我们对 pair \\left(M,X_1\\right) 做 handle 分解 (即将 M 写成在 X_1\\times[0,1] 上粘接 handles 的形式)。利用单连通和同伦等价的强限制, 我们可以证明这个 handle 分解实际上没有多余的 handles, 即 M\\cong X_1\\times[0,1].\n\n\n历史: GPC 的证明\n\nweak GPC (n\\geq5): Smale\nGPC \\left(n\\geq5\\right): Newman by Connell\n\nkey word: Engulfing method (吞噬法)\n\nGPC \\left(n=4\\right): Freedman\n\n证明概要:\n\nFreedman: 拓扑 h-cobordism 定理在 \\dim X_1=4 的情形下成立.\nWall: 设 M,N 是单连通的闭四维流形, 若它们之间有等价的 intersection form (一个同伦不变量, 后面介绍), 则它们之间存在一个 h-配边。\n推论: 对于单连通闭四维流形 M，M 的拓扑完全由它上面的 intersection form 决定, 从而同伦等价蕴含同胚。这蕴含了 GPC, n=4.\n\n\nGPC \\left(n=3\\right): Perelman 通过证明几何化猜想而完成。\nGPC \\left(n&lt;3\\right): trivial.\n\n\n还有很多数学家做出了重要的贡献, 即使我们没有一一列举.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#smooth-poincare-conjecture-and-exotic-sphere",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#smooth-poincare-conjecture-and-exotic-sphere",
+    "title": "庞加莱猜想与怪球",
+    "section": "",
+    "text": "SPC: 光滑庞加莱猜想\n\nSPC: 设 M^n 是光滑闭流形, 若它是同伦球面, 则它也是微分球面 (微分同胚于标准 S^n).\n一般的 SPC 是错的:\n\nMilnor 在 1956 年发现了第一个怪球 S^7.\n事实上, SPC 在多数维数上失效。\n既然一般来说,(拓扑) S^n 上的光滑结构不止一种, 我们考虑其上所有光滑结构的集合, 记为 \\theta\\left(n\\right).\n\n对于 n\\geq5, 我们知道如何计算 \\theta\\left(n\\right)\n\n至少, 我们将计算 \\theta\\left(n\\right) 归结成了计算球面的稳定同伦群(难算).\n\n对于 n\\leq3: 流形上的光滑结构唯一, 故 GPC 推出 SPC.\n对于 n=4: 我们完全不知道 \\theta\\left(4\\right), SPC 4 是开放问题。\n\n拥有唯一光滑结构的奇数维拓扑球面，只有 1 维、3 维、5 维以及 61 维。其余所有奇数维球面都必然存在怪异微分结构. (王国祯, 徐宙利, 2016)\n\n下文中, 我们主要讨论 \\theta\\left(n\\right),n\\ge 5 的计算问题.\n\n定义: Kervaire-Milnor group\n\n对于 n\\geq5 的情形下, 我们已经得到了双射: \\{  拓扑球的集合 \\}/ \\text{Diffeo} \\cong \\{  同伦球的集合 \\}/\\text{h-cobordism}. 这其实是个群同构. 左边的群, 记为 \\Theta_n, 被称为 Kervaire-Milnor 群.\n\n\n于是, 我们只要关心 \\Theta_n 的计算问题.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#theta_n-as-a-group",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#theta_n-as-a-group",
+    "title": "庞加莱猜想与怪球",
+    "section": "\\Theta_n as a Group",
+    "text": "\\Theta_n as a Group\n\n定向配边群:\n\n回顾定向配边, 固定维数 n, 我们考虑所有定向 n 维流形的定向配边类构成的集合, 记为 \\Omega_n.\n\\Omega_n 作为群:\n\n加法: [\\Sigma_1]+[\\Sigma_2]:=[\\Sigma_1\\sqcup\\Sigma_2].\n逆元: -[\\Sigma]:=[-\\Sigma]\n零元素: [\\emptyset]\n\n注意 [\\partial M]=[\\emptyset]\n\n容易验证, \\Omega_n 构成 Abel 群.\n\n例子: 在 n=2 维中, S^2\\times[0,1]\n\n\\Theta_n 作为群\n\n群结构:\n\n加法: [\\Sigma_1]+[\\Sigma_2]:=[\\Sigma_1\\# \\Sigma_2]\n逆元: -[\\Sigma]:=[-\\Sigma]\n零元: [S^n], 标准光滑球面所在的等价类\n显然, 加法是交换的. 故为 abel 群.\n\n一些说明:\n\n加法良定义:\n\nlemma: 同伦球的连通和还是同伦球.\n\n使用命题: 单连通的同调球是同伦球.\n\nLEMMA 2.2. Let M, M' and M_r be closed and simply connected. If \\Sigma is h -cobordant to \\Sigma' then \\Sigma \\# \\Sigma_r is h -cobordant to \\Sigma' \\# \\Sigma_r.\nProve via a picture:\n\n\n逆元满足 -[\\Sigma]+[\\Sigma]=[S^n] :\n\nLEMMA 2.3. A simply connected manifold \\Sigma is h -cobordant to the sphere S^n if and only if \\Sigma bounds a contractible manifold.\nSketch:\n\n假设 [\\Sigma]=[S^n], 即 \\Sigma \\sqcup -S^n=\\partial M. 我们沿着边界上的标准 S^n 粘回去一个 D^{n+1}, 得到 M', 且有 \\Sigma = \\partial M'。由于 S^n 是 M 的形变收缩核, 故粘接 disk 之后, 得到的流形 M' 是可缩的.\n假设 \\Sigma bounds 一个可缩的 M, 在在 M 的内部挖去一个 disk, 我们得到单连通的流形 M'.\n\nS^n 是 M' 的形变收缩核: 考虑 map of pair: \\left(D^{n+1},S^n\\right)\\hookrightarrow (M,M'), 我们可以证明 S^n\\hookrightarrow M' 保持同调群.\n\\Sigma 是 M' 的形变收缩核: 对配边 \\left(M';\\Sigma,S^n\\right) 使用 Poincare 对偶, 我们得到相对同调群同构 H_*\\left(M',\\Sigma\\right)\\cong H^{n+1-*}\\left(M',S^n\\right) (用 handle 分解的对偶性质) , 从而 H_*\\left(M',\\Sigma\\right)\\cong0 , 至此我们说明了 \\Sigma\\hookrightarrow M' 保持同调群, 故它是同伦等价.\n\n\nLEMMA 2.4. If \\Sigma is a homotopy sphere, then \\Sigma \\# (-\\Sigma) bounds a contractible manifold.\nSketch: 为了做连通和, 在 \\Sigma 上面挖掉一个 disk. 这样会得到带边流形 \\Sigma-D^n. 我们沿着这个流形的边界旋转 180 度, 得到流形 M, 如下图所示:\n\n这样构造的 M 显然同伦等价于 \\Sigma-D^n (这个同伦可以被造出来), 又注意到, \\Sigma 是同伦球面, 故 \\Sigma-D^n 可缩, 于是 M 可缩. 根据 LEMMA 2.3, 我们有 [\\Sigma]+[-\\Sigma]=[S^n]=0.\n\n\n\nRelation between these two Groups\n\n\\Omega^h_n 中的加法和单位元的定义在 \\Omega_n 中仍然生效:\n\n[\\Sigma\\# \\Sigma']=[\\Sigma \\sqcup\\Sigma'] in \\Omega_n: 考虑在 \\left(\\Sigma\\sqcup\\Sigma'\\right)\\times[0,1] 上面粘接 1-handle, 这个 \\left(n+1\\right) 维流形给出了我们想要的 cobordism.\n[S^n]=0 in \\Omega_n: 它是 D^{n+1} 的边界.\n\n但我们在 \\Omega_n^h 中只能用连通和和 [S^n] 定义群结构:\n\n\\Omega_n 中的运算在 \\Omega^h_n 上不封闭.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#framed-cobordism-and-stable-homotopy-groups",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#framed-cobordism-and-stable-homotopy-groups",
+    "title": "庞加莱猜想与怪球",
+    "section": "Framed cobordism and Stable homotopy groups",
+    "text": "Framed cobordism and Stable homotopy groups\n\nFramed cobordism\n\n稳定可平行化流形\n\n可平行化: 称一个流形 M 是可平行化的, 如果它的切丛 TM 是一个平凡向量丛.\n稳定可平行化: 称一个流形 M 是稳定可平凡化的, 如果它的切丛直和某个平凡向量丛后成为平凡丛。\nS^n 一般不是可平行化流形, 但是稳定可平凡化流形:\n\n不可平行化: S^n 只有在维数 n=1,3,7 可平行化.\n\n稳定可平行化: TS^n\\oplus \\epsilon^1 是平凡丛.\n\n\nFramed manifold\n\n我们知道, 流形 M^n 可以被嵌入到维数充分大的欧氏空间 \\mathbb{R}^{n+k} 中. 如果这个嵌入 i:M^n\\hookrightarrow \\mathbb{R}^{n+k} 的法丛是平凡丛, 我们可以在法丛上选定一个标架场(平凡化). 法丛上带有平凡化的流形被称为一个 framed manifold.\n命题: 任意稳定可平行化流形 M, 存在充分大的 k, 以及嵌入 i:M^n \\hookrightarrow\\mathbb{R}^{n+k} 使得法丛是平凡的. 即对于这种流形, 我们总可以给它一个 frame, 使其成为 framed manifold.\n\nSketch:\n\n法丛关系： 因为 M^n 嵌在 \\mathbb{R}^{n+k} 中，它的切丛和法丛的直和一定是整个平坦宇宙的切丛（即平凡丛）： \n  TM \\oplus \\nu^k \\cong \\epsilon^{n+k}\n  \n稳定可平行化前提： 你假设了 M 是稳定可平凡化的。它的代数定义是：只要给切丛加上某个足够大维度 a 的平凡丛，它就会变成一个平凡丛： \n  TM \\oplus \\epsilon^a \\cong \\epsilon^{n+a}\n  \n我们在第 1 个公式的两边，同时加上一个 \\epsilon^a： \n  (TM \\oplus \\epsilon^a) \\oplus \\nu^k \\cong \\epsilon^{n+k} \\oplus \\epsilon^a\n   把括号里的东西替换成第 2 个公式的结果： \n\\epsilon^{n+a} \\oplus \\nu^k \\cong \\epsilon^{n+k+a}\n 这个公式的白话翻译是： 你的法丛 \\nu^k，如果再给它强行加上一个极其庞大的平凡向量丛 \\epsilon^{n+a}，它俩混在一起后，就彻底变成了一个完美的、没有打结的平凡丛！在拓扑学里，这就叫证明了 \\nu^k 是 “稳定平凡的 (Stably trivial)”。\n\n\n并不是所有的流形上都可以定义 frame. 球面 S^n 上可以定义 frame. 同伦球面上也可以定义 frame.\n\nFramed cobordism:\n\nFramed cobordism 是两个 framed manifold 之间的等价关系，它考虑的是在更高一维的流形中，两个 framed manifold 是否可以通过一个 framed cobordism 连接起来。我们将这个配边群记为 \\Omega^{\\text{fr}}_n.\n\n\n我们从定义中发现, framed manifold \\left(M,f\\right) 和嵌入的欧氏空间 \\mathbb{R}^{n+k} 的维数 k 有关系. 即 framed manifold 是在稳定意义下的 (我们可以在所有的 framed manifold 构成的集合上定义等价关系: 由”稳定”给出, 然后考虑在这个等价关系下的等价类. ) 事实上, 这种稳定的现象还出现在了同伦群的计算中.\n\n球面的稳定同伦群\n\n\\pi_k\\left(S^k\\right)\\cong\\mathbb{Z},\\forall k\\geq1\n\n换一种写法: \\lim_{ k \\to \\infty }\\pi_{0+k}\\left(S^k\\right)=\\mathbb{Z}\n\n这可以被推广 (by suspension theorem):\n\n\\lim_{ k \\to \\infty }\\pi_{n+k}\\left(S^k\\right) 收敛 (当 k 充分大时, 这个群不依赖于 k 的选取)\n将这个群定义为球面的 n 阶稳定同伦群, 记为 \\Pi_n。\n\n\n定理 (Pontryagin-Thom):\n\nFramed cobordism 群 \\Omega_n^{\\text{fr}} 与球面 S^n 的稳定同伦群 \\Pi_n 是同构的.\n我们给出映射 \\Omega_n^{\\text{fr}}\\to \\Pi_n, 它是著名的 Pontryagin-Thom构造, 在不同的 cobordism 类有众多推广.\n\nPontryagin-Thom 构造: 对于 i:M^n \\hookrightarrow \\mathbb{R}^{n+k} 和 framing f, 粗略地说, 我们将给出从环境流形 \\mathbb{R}^{n+k} 到 M^n 的一个坍缩映射(事实上, 我们给出从环境流形 \\mathbb{R}^{n+k} 的紧致化到 M^n 的管状邻域的紧致化的坍缩映射).\n\nM 的管状邻域的紧致化: 我们考虑 M^n 在 \\mathbb{R}^{n+k} 中的管状邻域 N, 它是平凡 disk bundle. 将这个平凡 disk bundle 沿着边界 \\partial N=M^n\\times S^{k-1} 粘起来, 得到 N/\\partial N=M^n\\times D^k/M^n\\times S^{k-1}=M\\times S^k/M=M_+\\wedge S^k, 这个操作其实就是对于 disk bundle M\\times D^k 做紧致化 \\left(M\\times D^k\\right)^+=M^+\\wedge S^k=M_+\\wedge S^k. 这也被称为这个 disk bundle 的 Thom 空间.\n环境流形 \\mathbb{R}^{n+k} 的紧致化是 S^{n+k}.\n将紧致化看作函子, 它是反变的, 原来的管状邻域的含入映射 M\\times D^k\\hookrightarrow \\mathbb{R}^{n+k} 在这里给出 S^{n+k}\\to M_+\\wedge S^k=M^n\\times S^k/M. 将这个映射与 M\\times S^k/M\\to S^k 复合, 我们得到映射 S^{n+k} \\to S^k, 从而得到一个元素 \\alpha \\in \\pi_{n+k}(S^k). 这个元素 \\alpha 在稳定同伦群 \\Pi_n 中的像就是 Pontryagin-Thom 构造给出的对应.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#kervaire-milnor-s-exact-sequence",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#kervaire-milnor-s-exact-sequence",
+    "title": "庞加莱猜想与怪球",
+    "section": "Kervaire-Milnor ’s exact sequence",
+    "text": "Kervaire-Milnor ’s exact sequence\n我们希望把同伦球面”嵌入”到群 \\Omega_n^{\\text{fr}} 中去看, 即 i:\\Theta_n \\rightarrow \\Omega_n^{\\text{fr}} , 从这个映射导出正合序列, 然后使用正合序列计算 \\Theta_n, 这样我们就通过一个”已知”的配边群计算另一个未知的配边群. 但是注意到, 映射 i 性质较差, 比如, 它显然不是满射: 一个同伦球面上面可以有很多个 framing. 我们考虑将 \\Theta_n 映射到 \\Omega_n^{\\text{fr}} 上的一个商集.\n\n\\Omega_n^{\\text{fr}} 上的群作用:\n\n\\Omega_n^{\\text{fr}} 上有一个自然的 \\pi_n(SO) 作用.\n回顾流形上的一个 framing 就是法丛上的一个平凡化, 即法丛上的一组标架场. 为了从一个 framing 得到另一个 framing, 只要旋转这个标架场, 即在每个法丛的纤维上作用一个旋转矩阵. 这对应了 \\pi_n\\left(SO\\right) 上的元素.\n给定一个 framing 作为 base, 我们可以定义群作用 J:\\pi_n\\left(SO\\right)\\to \\Omega_n^{\\text{fr}}, 把这个映射的像记为 J_n. 商掉这个群作用得到商空间 \\Omega_n^{\\text{fr}}/J_n , 它只依赖于底流形 M, 而不再依赖 framing.\n\n\n我们将映射改写成 \\phi:\\Theta_n\\to \\Omega_n^{\\text{fr}}/J_n=\\Pi_n/J_n, 并由此构造 Kervaire-Milnor 正合序列.\n\n映射 \\phi 的核：\n\n映射 \\phi 的核由那些同伦球面构成，它们作为带 framing 的流形在 \\Omega_n^{\\text{fr}} 中平凡，即应该是某个 framed manifold 的边界，或者说某个稳定可平行化流形的边界。\nLEMMA 3.4: 一个稳定可平行化的流形, 如果是带边的, 那么它也是可平行化的 (parallelizable).\n我们将这些 bounded, parallelizable 流形的边界构成的子群记为 \\Theta^{bp}_n, 于是 \\ker \\phi=\\Theta^{bp}_n. 这个群是容易计算的.\n\n\n于是我们有了正合序列: \n        0 \\to \\Theta^{bp}_n \\to \\Theta_n \\xrightarrow{\\phi} \\Pi_n/J_n \\to \\text{Coker} \\phi \\to 0\n        \n\n映射 \\phi 的像:\n\n我们有如下的结果：\n对于 n \\neq 2 \\pmod{4}，每个 \\Pi_n 中的元素都可以被同伦球面实现，即 \\Theta_n \\to \\Pi_n/J_n 是满射，于是我们有正合列： \n  0 \\to \\Theta_n^{bp} \\to \\Theta_n \\to \\Pi_n/J_n \\to 0\n  \n对于 n \\equiv 2 \\pmod{4}（此时 \\Theta_n^{bp} = 0），映射 \\Theta_n \\to \\Pi_n/J_n 是否为满射由 Kervaire 不变量决定，即我们有正合列 \n  0 \\to \\Theta_{4k-2} \\to \\Pi_{4k-2}/J_{4k-2} \\to \\mathbb{Z}/2\n   这里多数情况 \\Pi_{4k-2}/J_{4k-2} = 0. \\Pi_{4k-2}/J_{4k-2}\\neq 0 当且仅当 k = 1,2,4,8,16,32，对应的流形维数为 2,6,14,30,62,126 (126 by 林伟南, 王国祯, 徐宙利 On the Last Kervaire Invariant Problem )",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#computation-of-some-theta_n",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#computation-of-some-theta_n",
+    "title": "庞加莱猜想与怪球",
+    "section": "Computation of some \\Theta_n",
+    "text": "Computation of some \\Theta_n",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#formulas-for-j_n-and-theta_nbp",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#formulas-for-j_n-and-theta_nbp",
+    "title": "庞加莱猜想与怪球",
+    "section": "Formulas for J_n and \\Theta_n^{bp}",
+    "text": "Formulas for J_n and \\Theta_n^{bp}\n我们记 B_n 为第 n 个伯努利数.\n\nJ_n 的计算：\n\nJ_n 是循环群, 且阶数满足:\n|J_n| =\n  \\begin{cases}\n  \\text{denominator}\\left( \\frac{B_{2k}}{4k} \\right) & \\text{for } n = 4k - 1, \\\\\n  2 & \\text{for } n \\equiv 0,1 \\pmod{8}, \\\\\n  1 & \\text{for } n \\equiv 2,4,5,6 \\pmod{8}.\n  \\end{cases}\n\n|\\Theta_n^{bp}| 的计算：\n\n对于 n \\geq 4，群 \\Theta^{bp}_n 是有限循环群，且有显式的生成元。\n具体地：\n\n当 n 为偶数时，\\Theta^{bp}_n 是平凡群；\n当 n = 4k - 3 时，\\Theta^{bp}_n 是平凡群或 2 阶循环群；\n当 n = 4k - 1 &gt; 3 时，\\Theta^{bp}_n 是阶为 2^{2k-2}(2^{2k-1} - 1) \\cdot \\text{numerator}\\left(\\frac{4B_{2k}}{k}\\right) 的循环群。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#examples",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#examples",
+    "title": "庞加莱猜想与怪球",
+    "section": "Examples",
+    "text": "Examples\n\n例子：计算 \\Theta_6\n\n由于 6\\equiv 2 \\pmod{4} 我们有正合列:\n\n  0 \\to \\Theta_6 \\to \\Pi_6/J_6 \\xrightarrow{\\Phi_2} \\mathbb{Z}/2\n  \n查表得到 \\Pi_6\\cong\\mathbb{Z}/2\n根据公式, J_6=0. 于是 \\Pi_6/J_6 \\cong \\mathbb{Z}/2.\n而 \\Phi_2 将生成元映为 1 \\in \\mathbb{Z}/2, 故为同构. 于是 \\Theta_6\\cong 0, 即 S^6 上只有一个光滑结构.\n\n例子: 计算 \\Theta_7\n\n我们用这个方法计算一下著名的 7 维怪球数量 (\\Theta_7)。\n\n\n检查维度：n=7 = 4\\times2-1，属于第一种情况（n \\equiv 3 \\pmod 4），正合列分裂。\n\n\n  |\\Theta_7| = |\\Theta_7^{bp}| \\cdot |\\Pi_7 / J_7|\n  \n\n计算 |\\Theta_7^{bp}|：\n\n代入公式 k=2：\n\n  |\\Theta_7^{bp}| = 2^{2\\times2-2}(2^{2\\times2-1}-1) \\cdot \\text{numerator}\\left(\\frac{4B_4}{2}\\right)\n  \n第一部分：2^2 (2^3 - 1) = 4 \\times 7 = 28\n第二部分：B_4 = -1/30，所以 \\frac{4\\times1/30}{2} = \\frac{1}{15}。分子是 1。\n结果：|\\Theta_7^{bp}| = 28 \\times 1 = 28。\n\n计算 |\\Pi_7 / J_7|：\n\n查阅同伦群表，\\Pi_7 \\cong \\mathbb{Z}_{240}。\nJ_7 的阶数由 \\text{denominator}(B_{2k}/4k) 决定（其中 n=4k-1，即 k=2）。B_4 = \\frac{1}{30}，所以 \\frac{B_4}{8} = \\frac{1}{240}，分母是 240，因此 |J_7| = 240。由于 \\Pi_7 \\cong \\mathbb{Z}_{240}，故 \\Pi_7 = J_7，即 \\Pi_7/J_7 是平凡群。\n可以看到对于 n=7，|\\Theta_7| 对应的值就是 b_2 = 28。这意味着对于 n=7，\\Pi_7/J_7 是平凡的（或者说 \\Pi_7 = J_7）。\n\n结论：|\\Theta_7| = 28 \\times 1 = 28。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#cobordism-classification-of-manifolds",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#cobordism-classification-of-manifolds",
+    "title": "庞加莱猜想与怪球",
+    "section": "Cobordism Classification of Manifolds",
+    "text": "Cobordism Classification of Manifolds\n我们可以考虑多种配边: 非定向配边(法丛群 O\\left(n\\right)), 定向配边(法丛结构群 SO\\left(n\\right)), framed 配边(法丛结构群 \\{ e \\}), 复配边(法丛结构群 U\\left(n\\right))等.\n流形在这些配边下的分类是已知的, 我们有结果:\n\nTheorem 1.5.10 (Pontrjagin, Thom) 设 \\mathfrak{B} 为 (B, f)-structure, 则存在分次环同构: \\Omega_*^{\\mathfrak{B}} \\cong \\pi_*(M\\mathfrak{B}).\n\n配边群还有环结构: 乘法定义为流形的笛卡尔积 X\\times Y.\n这里 \\mathfrak{B} 可以取成 O,SO,\\{e\\},U, 对应上述不同的配边。\n同构左侧的环可以被完全计算. 即完全分类了流形的上述配边类.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#cobordism-and-normal-bundle",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#cobordism-and-normal-bundle",
+    "title": "庞加莱猜想与怪球",
+    "section": "Cobordism and Normal Bundle",
+    "text": "Cobordism and Normal Bundle\n为什么配边分类与法丛密切相关? 因为对于 \\Sigma=\\partial M 的情形, \\Sigma 的法丛给出了 M 的法丛. 我们通过验证映射 \\alpha:\\Omega_n^o\\to \\pi_n\\left(MO\\right) 良定义给出说明.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/poincare-conjecture-and-manifold-topological-classification.html#computation-of-cobordism-ring",
+    "href": "notes/poincare-conjecture-and-manifold-topological-classification.html#computation-of-cobordism-ring",
+    "title": "庞加莱猜想与怪球",
+    "section": "Computation of Cobordism Ring",
+    "text": "Computation of Cobordism Ring\n\n结果:\n\n不定向配边:\n\n\\Omega^O_* \\cong \\mathbb{Z}_2[x_2, x_4, x_5, x_6, \\dots]\n下标的取法为: 下标不等于 2^k-1\n对应的生成元:\n\n定向配边:\n\n\\Omega_*^{SO} \\otimes \\mathbb{Q} \\cong \\mathbb{Q}[y_4, y_8, y_{12}, \\dots]\n生成元为 \\mathbb{CP}^2, \\mathbb{HP}^2 等流形的配边类。\n\nframed 配边:\n\n\\Omega_n^{fr} \\cong \\pi_n^S\n对应球面的稳定同伦群。\n\n复配边:\n\n\\Omega_*^U \\cong \\mathbb{Z}[z_2, z_4, z_6, z_8, \\dots]\n\n\n\n证明方法:\n\n分类空间同调 \\xrightarrow{\\text{Thom 同构}} Thom 谱的同调群 \\xrightarrow{\\text{确定 } \\mathcal{A}\\text{-模结构}} 算出 Adams 谱序列 E_2 页 \\xrightarrow{\\text{塌陷 (微分全为0)}} 直接得出 Thom 谱的同伦群\n\n\n\n\n\n\n\n\nNote本讲要点\n\n\n\n\n七维怪球的数量为28，对应28个微分同胚类，其中27个是怪球。\n流形可按同伦、同胚、微分同胚以及配边关系进行分类。\nPontryagin-Thom定理建立了配边群与Thom谱稳定同伦群之间的同构。\n配边分类与流形的法丛结构密切相关。\n不同结构（如非定向、定向、framed、复配边）的配边环已被计算。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "庞加莱猜想与怪球"
+    ]
+  },
+  {
+    "objectID": "translations/milnor.html",
+    "href": "translations/milnor.html",
+    "title": "四十六年后的微分拓扑学",
+    "section": "",
+    "text": "作者：约翰·米尔诺（John Milnor）\n原文：Differential Topology Forty-six Years Later, Notices of the AMS, Vol. 58, No. 6, 2011\n1965年的赫德里克讲座（Hedrick Lectures）1中，我描述了微分拓扑学的发展状况——这一领域当时尚属新兴，却发展极为迅速。此后数十年间，许多曾被认为完全无法解决的微分拓扑与几何拓扑问题相继得到解答，而解决这些问题往往依赖于全新的方法。以下将简要概述这些进展中的部分亮点。"
+  },
+  {
+    "objectID": "translations/milnor.html#主要进展",
+    "href": "translations/milnor.html#主要进展",
+    "title": "四十六年后的微分拓扑学",
+    "section": "主要进展",
+    "text": "主要进展\n首个重大突破由柯比（Kirby）与西本曼（Siebenmann）[1969, 1969a, 1977] 取得，他们为”将给定拓扑流形三角剖分为分片线性流形（PL流形）“这一问题建立了障碍理论。\n设 B_{\\mathrm{Top}} 与 B_{\\mathrm{PL}} 为讲座中所述的稳定分类空间，他们证明：当 j=4 时，相对同伦群 \\pi_{j}(B_{\\mathrm{Top}}, B_{\\mathrm{PL}}) 是2阶循环群，而在其他情况下均为零群。\n对于 n 维拓扑流形 M^n，由此可推出存在一个障碍类 o \\in H^4(M^n ; \\mathbb{Z}/2)，其决定了 M^n 能否被三角剖分为PL流形。当维数 n \\geq 5 时，这是唯一的障碍。若存在这样的三角剖分，则在 H^3(M^n ; \\mathbb{Z}/2) 中存在另一个类似的障碍类，其决定了该三角剖分在”拓扑同痕于恒等映射的PL同构”意义下的唯一性。\n\n\n\n\n\n\nTip定理 1\n\n\n\n若无边拓扑流形 M^n 满足 H^3(M^n ; \\mathbb{Z}/2)=H^4(M^n ; \\mathbb{Z}/2)=0 且 n&gt;5，则 M^n 存在唯一的PL流形结构（在PL同构意义下）。\n\n\n（对于带边流形，需满足n&gt;5。）莫伊泽（Moise）[1952] 更早便证明了所有维数n \\leq 3的流形对应的上述定理。然而，我们将看到维数4时的对应结论并不成立。\n此前，芒克雷斯（Munkres）[1960, 1964a, 1964b] 与赫希（Hirsch）[1963] 已为“从PL结构过渡到光滑结构”的问题建立了类似的障碍理论（另见[赫希-马祖尔（Hirsch-Mazur）, 1974]）。此外，塞尔夫（Cerf）通过复杂的几何论证填补了关键空白，证明了三维球面的保向微分同胚空间是连通的（参见1962/63年嘉当讨论班讲义及[塞尔夫, 1968]）。结合其他已知结果，这导出了如下定理：\n\n\n\n\n\n\nTip定理 2\n\n\n\n所有维数n \\leq 7的PL流形均存在相容的光滑结构；且当n&lt;7时，该光滑结构在微分同胚意义下是唯一的。\n\n\n更多细节参见本文末尾的“补充说明”。\n下一个重大突破是弗里德曼（Freedman）[1982] 对单连通闭4维拓扑流形的分类。他运用高度非可微的方法证明：此类流形由以下两项唯一确定： 1. 对称双线性形式H^2 \\otimes H^2 \\to H^4 \\cong \\mathbb{Z}的同构类（其中H^k=H^k(M^4 ; \\mathbb{Z})）； 2. 柯比-西本曼不变量 o \\in H^4\\left(M^4 ; \\mathbb{Z}/2\\right) \\cong \\mathbb{Z}/2.\n这两项可任意指定，但需满足两个限制条件：双线性形式的行列式必须为\\pm 1；且在“偶情形”（即对所有x \\in H^2，x \\cup x \\equiv 0（模2H^4））下，柯比-西本曼类必须同余于符号差的1/8。例如，4维拓扑流形的庞加莱猜想便是其直接推论：若M^4是同伦球面，则H^2与障碍类均为零，故M^4同胚于标准4维球面。\n一年后，唐纳森（Donaldson）[1983] 运用规范理论方法证明：上述许多拓扑流形并不存在任何光滑结构（因此由定理2可知，它们无法被三角剖分为PL流形）。更具体地，若M^4是光滑、单连通且具有正定双线性形式的4维流形，则该双线性形式必可对角化，因此M^4必同胚于若干个复射影平面的连通和。存在许多行列式为1、偶情形下符号差可被16整除但不可对角化的正定双线性形式（例如参见[米尔诺-胡塞尔莫勒（Milnor-Husemoller）, 1973]）。每一个这样的双线性形式都对应一个不存在光滑结构的拓扑流形M^4，但M^4 \\times \\mathbb{R}却存在唯一的光滑结构（在微分同胚意义下）。\n弗里德曼的拓扑结果与唐纳森的分析结果相结合，迅速产生了令人惊叹的推论。例如，\\mathbb{R}^4上存在不可数多个互不微分同胚的光滑结构（参见[冈普夫（Gompf）, 1993]）。其他维数的情况则更为良好：对于n&gt;4，斯托林斯（Stallings）[1962] 证明拓扑空间\\mathbb{R}^n的PL结构在PL同构意义下是唯一的；结合莫伊泽关于n&lt;4的结果及芒克雷斯-赫希-马祖尔障碍理论，可推出对所有n \\neq 4，\\mathbb{R}^n的光滑结构在微分同胚意义下是唯一的。\n3维流形的完善理论则发展得更为缓慢。首个里程碑是瑟斯顿（Thurston）[1982, 1986] 提出的几何化猜想，该猜想为3维流形理论设定了目标。这一猜想最终由佩雷尔曼（Perelman）[2002, 2003a, 2003b] 利用基于“里奇流”偏微分方程的复杂论证得以证实（参见摩根-田刚（Morgan-Tian）[2007] 及克莱纳-洛特（Kleiner-Lott）[2008] 的阐述）。3维庞加莱猜想作为其特殊情形随之得证。\n\n庞加莱猜想的三种版本\n首先考虑纯拓扑版本：\n\n\n\n\n\n\nTip定理 3（拓扑庞加莱猜想）\n\n\n\n拓扑庞加莱猜想在所有维数下均成立。\n\n\n即每个与n维球面同伦等价的闭拓扑流形，实际上都与n维球面同胚。对于n&gt;4，纽曼（Newman）[1966] 与康奈尔（Connell）[1967] 利用斯托林斯[1960] 的”吞噬法”证明了该结论；对于n=4，其证明当然归功于弗里德曼；对于n=3，佩雷尔曼通过莫伊泽[1952] 的结果将拓扑情形转化为PL情形，再利用芒克雷斯-赫希-马祖尔障碍理论将PL情形转化为光滑情形，从而完成了证明。□\n\n\n\n\n\n\nTip定理 4（PL庞加莱猜想）\n\n\n\n分片线性庞加莱猜想在n \\neq 4的维数下均成立。\n\n\n即每个与n维球面同伦等价的闭PL流形（n \\neq 4），均与n维球面PL同胚。对于n&gt;4，斯梅尔（Smale）[1962] 证明了该结论；对于n=3，其可由佩雷尔曼的工作结合芒克雷斯-赫希-马祖尔障碍理论推出。□\n光滑庞加莱猜想则更为复杂，它在部分维数下成立，在另一些维数下不成立，而在4维下仍完全未知。我们可更精确地表述这一问题：所有闭光滑同伦n维球面（即与拓扑n维球面同伦等价的闭光滑流形）的保向微分同胚类构成一个交换幺半群S_n（运算为连通和）。事实上，除n=4外，该幺半群均为有限阿贝尔群。以下概述主要基于[克尔瓦雷-米尔诺（Kervaire-Milnor）, 1963]，该文献原则上给出了n&gt;4时如何利用球面的稳定同伦群计算这些群²。遗憾的是，该文的许多证明被推迟至未完成的第二部分，但缺失的论证已在其他文献中补足（尤其参见[莱文（Levine）, 1985]）。\n利用佩雷尔曼关于n=3的结果，低维情形下的群S_n可描述如下（表1）。（例如，2 \\cdot 8表示群\\mathbb{Z}/2 \\oplus \\mathbb{Z}/8，1表示平凡群。）\n\n\n\nTable 1: 表1：低维同伦球面群\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nS_n\n1\n1\n1\n?\n1\n1\n28\n2\n2 \\cdot 8\n6\n\n\n\n\n\n\n由此可知，光滑庞加莱猜想在维数1、2、3、5、6、12下成立，而在4维下未知。我曾猜想它在所有更高维数下均不成立，但马霍瓦尔德（Mahowald）指出至少存在另一个例外情形：群S_{61}也是平凡群（参见下文“补充说明”）。\n\n\n\n\n\n\nWarning问题\n\n\n\n对于所有n&gt;6且n \\neq 12, 61，群S_n是否均为非平凡群？\n\n\n（目前无法对大维数n进行精确计算，因为球面的稳定同伦群仅被完全计算至维数64。但现有结果可能已足够对该问题作出明确回答。）\n记球面的稳定同伦群为 \\Pi_n = \\pi_{n+q}(\\mathbb{S}^q) \\quad (q &gt; n+1), 并设J_n \\subset \\Pi_n为稳定怀特海同态J: \\pi_n(SO) \\to \\Pi_n的像（参见[怀特海（Whitehead）, 1942]）。该子群J_n是循环群，其阶数³为： |J_n| = \\begin{cases}\n\\text{分数 } \\dfrac{B_k}{4k} \\text{ 的分母} & n=4k-1, \\\\\n2 & n \\equiv 0,1 \\pmod{8}, \\\\\n1 & n \\equiv 2,4,5,6 \\pmod{8},\n\\end{cases} 其中B_k为伯努利数，例如： B_1=\\frac{1}{6},\\ B_2=\\frac{1}{30},\\ B_3=\\frac{1}{42}, B_4=\\frac{1}{30},\\ B_5=\\frac{5}{66},\\ B_6=\\frac{691}{2730}, 且分数\\frac{B_k}{4k}需化为既约形式（参见[米尔诺-斯塔谢夫（Milnor-Stasheff）, 1974, 附录B]）。\n根据庞特里亚金（Pontrjagin）与托姆（Thom）的理论，稳定同伦群\\Pi_n（即第n个稳定stem）亦可描述为所有配边类构成的群（此处考虑光滑嵌入于高维欧氏空间的流形，配边指法丛的平凡化）。每个同伦球面都是稳定可平行化的，因此均存在这样的配边。若改变配边，则\\Pi_n中对应的类将改变一个J_n中的元素。由此得到正合列： (1)\\ 0 \\to S_n^{bp} \\to S_n \\to \\Pi_n / J_n, 其中S_n^{bp} \\subset S_n表示由”边界为可平行化流形的同伦球面”所代表的子群。该子群是S_n中被理解最为透彻的部分，其部分性质可描述如下：\n\n\n\n\n\n\nTip定理 5\n\n\n\n对于n \\neq 4，群S_n^{bp}是有限循环群，且存在明确的生成元。具体而言：\n\n当n为偶数时，S_n^{bp}为平凡群；\n当n=4k-3时，S_n^{bp}要么为平凡群，要么为2阶循环群；\n当n=4k-1&gt;3时，S_n^{bp}为阶数等于 2^{2k-2}(2^{2k-1}-1) 乘以分数 \\dfrac{4B_k}{k} 的分子的循环群。\n\n\n\n（最后一个数依赖于上述|J_{4k-1}|的计算结果。）在奇数情形下，设n=2q-1，S_{2q-1}^{bp}的明确生成元可通过一个基本构造块（即q维球面的切圆盘丛）结合以下两种图表之一构造：  （图表说明：每个圆圈代表一个2q维构造块——即带边的2q维可平行化流形；每个圆点代表一个配边构造，即将两个此类流形沿边界粘贴，使得它们的中心q维球面横截相交且相交数为+1。最终得到带角的光滑可平行化流形，将角光滑化后可得到带光滑边界的光滑流形X^{2q}。）\n当q为奇数时使用左图，当q为偶数时使用右图。在两种情形下，若q \\neq 2，则所得的光滑边界\\partial X^{2q}是一个同伦球面，其代表S_{2q-1}^{bp}的所需生成元（q=2为例外情形，因为\\partial X^4仅具有3维球面的同调群；在S_{2q-1}^{bp}为平凡群的所有其他情形下，边界均与标准(2q-1)维球面微分同胚）。\n正合列(1)可补充如下信息：\n\n\n\n\n\n\nTip定理 6\n\n\n\n当n \\not\\equiv 2 \\pmod{4}时，\\Pi_n中的每个元素均可由一个拓扑球面表示。\n\n\n因此正合列(1)可表示为更精确的形式： (2)\\ 0 \\to S_n^{bp} \\to S_n \\to \\Pi_n / J_n \\to 0.\n然而，当n=4k-2时，其拓展为正合列： (3)\\ 0 = S_{4k-2}^{bp} \\to S_{4k-2} \\to \\Pi_{4k-2} / J_{4k-2}.\n布伦菲尔（Brumfiel）[1968, 1969, 1970] 改进了这一结果，证明正合列(2)是分裂正合的，除非n具有形式2^k - 3（事实上，仅当n=2^k - 3 \\geq 125时，其可能不分裂，参见下文讨论）。\n(3)中的克尔瓦雷同态\\Phi_k由[克尔瓦雷, 1960] 引入（同伦类\\theta的像\\Phi_k(\\theta) \\in \\mathbb{Z}/2称为克尔瓦雷不变量）。因此存在两种情形： - 若\\Phi_k=0，则S_{4k-3}^{bp} \\cong \\mathbb{Z}/2，其生成元为上述的\\partial X^{4k-2}，且\\Pi_{4k-2}中的每个元素均可由一个同伦球面表示； - 若\\Phi_k \\neq 0，则S_{4k-3}^{bp}=0，这意味着X_{4k-2}的边界与标准(4k-3)维球面微分同胚。将一个(4k-2)维圆盘粘贴至该边界，可得到一个配边类，其不与任何同伦球面的配边类等价。此时\\Phi_k的核构成\\Pi_{4k-2}/J_{4k-2}的一个指数为2的子群，该子群由可由同伦球面表示的配边类组成。\n克尔瓦雷同态\\Phi_k何时为零，是理解同伦球面群的最后一个重大未决问题。近期，希尔（Hill）、霍普金斯（Hopkins）与雷文内尔（Ravenel）解决了除一个情形外的所有情况：\n\n\n\n\n\n\nTip定理 7\n\n\n\n克尔瓦雷同态\\Phi_k在k=1,2,4,8,16时非零，在k=32时可能非零，在所有其他情形下均为零。\n\n\n事实上，布劳德（Browder）[1969] 证明\\Phi_k仅可能在n为2的幂时非零；巴拉特（Barratt）、琼斯（Jones）与马霍瓦尔德[1984] 证实了\\Phi_k在k=1,2,4,8,16时确实非零；最终，希尔、霍普金斯与雷文内尔[2010] 证明当k&gt;32时\\Phi_k=0（其核心工具是一个精心构造的周期为256的广义上同调理论）。\n因此，仅k=32（对应4k-2=126）的情形仍未解决。特别地，对于n \\neq 4,125,126，若\\Pi_n的阶数已知，则可精确计算奇异n维球面的个数|S_n|。事实上，若排除4、126及形式为2^k - 3 \\geq 125的数，则当\\Pi_n的结构已知时，群S_n可被完全描述⁴。"
+  },
+  {
+    "objectID": "translations/milnor.html#补充说明",
+    "href": "translations/milnor.html#补充说明",
+    "title": "四十六年后的微分拓扑学",
+    "section": "补充说明",
+    "text": "补充说明\n以下简要概述\\Pi_n的现有研究成果。由于直和因子J_n已被精确确定，我们只需关注商群\\Pi_n / J_n。其中最困难的部分是2局部分支，科赫曼（Kochman）[1990] 计算了n \\leq 64的所有情形，科赫曼与马霍瓦尔德[1995] 对其进行了修正；雷文内尔[1986] 计算了更大范围内的3局部与5局部分支；对于p \\geq 7，当n&lt;82时，p局部分支均为平凡群（事实上，对于任意素数p，当n&lt;2p(p-1)-2时，\\Pi_n / J_n的p局部分支为平凡群；当n=2p(p-1)-2时，其为p阶循环群）。\n因此，稳定同伦群\\Pi_n在n \\leq 64时已被精确确定，进而群S_n在n \\leq 64且n \\neq 4时也被精确确定。表2中，b_k表示子群S_{4k-1}^{bp} \\subset S_{4k-1}的阶数，诸如2^3 \\cdot 4的表示意为三个\\mathbb{Z}/2与一个\\mathbb{Z}/4的直和，粗点表示平凡群。所有对应子群S_n^{bp}的项均带有下划线（注意S_{4k-3}^{bp}是2阶循环群，在第1列或第5列中标注为2，除非k=1,2,4,8,16）。在该范围内，群S_n仅在以下情形下为平凡群： n=1,2,3,5,6,12,61 \\text{ （及可能的 } 4 \\text{）}\n表2：n \\leq 64 时的同伦球面群 S_n\n\n\n\n\n\n\n\n\n\n\nn\n4k\n4k+1\n4k+2\n4k+3\n\n\n\n\n0–3\n•\n•\n•\n•\n\n\n4–7\n?\n•\n•\n\\underline{28}\n\n\n8–11\n\\underline{2}\n2^3\n6\n\\underline{992}\n\n\n12–15\n•\n3\n\\underline{2}\n\\underline{8128}\n\n\n16–19\n\\underline{2}\n2^4\n2 \\cdot 4\n\\underline{2^5 \\cdot b_5}\n\n\n20–23\n24\n\\underline{2}\n2^2\n\\underline{2^2 \\cdot b_6}\n\n\n24–27\n\\underline{2}\n2^3\n2\n\\underline{2^4 \\cdot b_7}\n\n\n28–31\n\\underline{2}\n2^4\n6\n\\underline{2^6 \\cdot b_8}\n\n\n32–35\n\\underline{2}\n2^6 \\cdot 4\n2 \\cdot 12\n\\underline{2^3 \\cdot b_9}\n\n\n36–39\n2^3 \\cdot 3\n\\underline{2}\n2^3 \\cdot 9\n\\underline{2^4 \\cdot b_{10}}\n\n\n40–43\n\\underline{2}\n2^7 \\cdot 4\n2^2\n\\underline{2^5 \\cdot b_{11}}\n\n\n44–47\n2^2 \\cdot 3\n\\underline{2}\n2^4\n\\underline{2^7 \\cdot b_{12}}\n\n\n48–51\n\\underline{2}\n2^4 \\cdot 8\n2 \\cdot 6\n\\underline{2^2 \\cdot b_{13}}\n\n\n52–55\n2^5 \\cdot 3\n\\underline{2}\n2^5\n\\underline{2^4 \\cdot b_{14}}\n\n\n56–59\n\\underline{2}\n2^8 \\cdot 4\n2^2 \\cdot 4\n\\underline{2^4 \\cdot b_{15}}\n\n\n60–63\n2 \\cdot 24\n•\n2^6\n\\underline{2^8 \\cdot b_{16}}\n\n\n\nb_k的取值并不难计算，但增长极为迅速（表3给出了k&gt;5时的近似值）。注意，当k的约数较多时，b_k的值往往更大。\n表3：b_k 的近似值（k &gt; 5）\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nk\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n\n\n\n\nb_k \\approx\n10^4\n10^5\n10^7\n10^7\n10^9\n10^{10}\n10^{13}\n10^{12}\n10^{14}\n10^{16}\n10^{19}\n\n\n\n最后，补充一个前文推迟的论证：\n\n\n\n\n\n\nNote定理 2 的证明概要\n\n\n\n\n\n不难验证，单位n维球面的保向微分同胚的光滑同痕类构成的群\\pi_0(Diff^+(\\mathbb{S}^n))是阿贝尔群。定义\\Gamma_n为\\pi_0(Diff^+(\\mathbb{S}^{n-1}))关于”可延拓至闭单位n维圆盘的同痕类”所构成子群的商群。存在自然嵌入\\Gamma_n \\subset S_n，其将每个(f) \\in \\Gamma_n映射至”通过f粘贴两个n维圆盘边界得到的扭曲n维球面”。由[斯梅尔, 1962] 可知，对于n \\geq 5，\\Gamma_n = S_n；由[斯梅尔, 1959] 可知，\\Gamma_3=0。由于易证\\Gamma_1=0且\\Gamma_2=0，故对所有n \\neq 4，有： \\Gamma_n = S_n.\n另一方面，塞尔夫证明⁵\\pi_0(Diff^+(\\mathbb{S}^3))=0，因此\\Gamma_4=0（尽管S_4完全未知）。结合上述关于S_n的结果，可推出对于n&lt;7，\\Gamma_n=0，且对所有n，\\Gamma_n是有限阿贝尔群。\n给定PL流形M^n，其光滑结构存在性的芒克雷斯-赫希-马祖尔障碍类位于群H^k(M^n ; \\Gamma_{k-1})中，而光滑结构唯一性的障碍类位于H^k(M^n ; \\Gamma_k)中（与前文讨论的大多数构造不同，这一结论在4维下同样成立）。显然，定理2由此得证。□\n\n\n\n更多历史背景讨论参见米尔诺[1999, 2007, 2009]。\n\n\n\n\n\n\nNote参考文献\n\n\n\n\n\n\nAdams, J. F. (1963, 1965). On the groups J(X) I, II. Topology 2, 3.\nAntonelli-Burghelea-Kahn (1972). The non-finite homotopy type of some diffeomorphism groups. Topology 11.\nBarratt-Jones-Mahowald (1984). Relations amongst Toda brackets and the Kervaire invariant in dimension 62. J. London Math. Soc. 30.\nBecker-Gottlieb (1975). The transfer map and fiber bundles. Topology 14.\nBrowder, W. (1969). The Kervaire invariant of framed manifolds and its generalization. Ann. Math. 90.\nBrumfiel, G. (1968, 1969, 1970). On the homotopy groups of BPL and PL/O. Ann. Math. 88; Topology 8; Michigan Math. J. 17.\nCerf, J. (1968). Sur les difféomorphismes de la sphère de dimension trois (\\Gamma_4=0). Lecture Notes in Math. 53, Springer.\nConnell, E. H. (1967). A topological h-cobordism theorem for n \\geq 5. Illinois J. Math. 11.\nDonaldson, S. K. (1983). An application of gauge theory to four-dimensional topology. J. Diff. Geom. 18.\nFreedman, M. H. (1982). The topology of four-dimensional manifolds. J. Diff. Geom. 17.\nGompf, R. (1993). An exotic menagerie. J. Diff. Geom. 37.\nHatcher, A. E. (1983). A proof of the Smale conjecture: Diff(\\mathbb{S}^3) \\simeq O(4). Ann. Math. 117.\nHill-Hopkins-Ravenel (2010). On the non-existence of elements of Kervaire invariant one. arXiv 0908.3724v2.\nHirsch, M. W. (1963). Obstruction theories for smoothing manifolds and maps. Bull. AMS 69.\nHirsch-Mazur (1974). Smoothings of piecewise linear manifolds. Ann. Math. Studies 80, Princeton.\nKervaire, M. A. (1960). A manifold which does not admit any differentiable structure. Comment. Math. Helv. 34.\nKervaire-Milnor (1963). Groups of homotopy spheres I. Ann. Math. 77.\nKirby-Siebenmann (1969, 1977). On the triangulation of manifolds and the Hauptvermutung. Bull. AMS 75; Ann. Math. Studies 88.\nKleiner-Lott (2008). Notes on Perelman’s papers. Geom. Topol. 12.\nKochman, S. O. (1990). Stable homotopy groups of spheres: A computer-assisted approach. Lecture Notes in Math. 1423.\nKochman-Mahowald (1995). On the computation of stable stems. Contemp. Math. 181.\nLevine, J. P. (1985). Lectures on groups of homotopy spheres. Lecture Notes in Math. 1126.\nMahowald, M. (1970). The order of the image of the J-homomorphism. Proc. Adv. Study Inst. Alg. Top. (Aarhus).\nMilnor, J. (1999, 2007, 2009). Growing up in the old Fine Hall; Collected Papers III, IV. AMS.\nMilnor-Husemoller (1973). Symmetric bilinear forms. Ergebnisse 73, Springer.\nMilnor-Stasheff (1974). Characteristic classes. Ann. Math. Studies 76, Princeton.\nMoise, E. E. (1952). Affine structures in 3-manifolds V. Ann. Math. 56.\nMorgan-Tian (2007). Ricci flow and the Poincaré conjecture. Clay Math. Monographs 3.\nMunkres, J. (1960, 1964a, 1964b). Obstructions to smoothing. Ann. Math. 72; Illinois J. Math. 8; Proc. AMS 15.\nNewman, M. H. A. (1966). The engulfing theorem for topological manifolds. Ann. Math. 84.\nNovikov, S. P. (1963). Homotopy properties of the group of diffeomorphisms of the sphere. Dokl. Akad. Nauk SSSR 148.\nPerelman, G. (2002, 2003). The entropy formula for the Ricci flow; Ricci flow with surgery; Finite extinction time. arXiv: math.DG/0211159, 0303109, 0307245.\nQuillen, D. (1971). The Adams conjecture. Topology 10.\nRavenel, D. C. (1986). Complex cobordism and stable homotopy groups of spheres. Academic Press.\nRanicki, A. (ed.) (1996). The Hauptvermutung book. Kluwer.\nSmale, S. (1959, 1962). Diffeomorphisms of the 2-sphere; On the structure of manifolds. Proc. AMS 10; Amer. J. Math. 84.\nStallings, J. (1960, 1962). Polyhedral homotopy spheres; The piecewise-linear structure of Euclidean space. Bull. AMS 66; Proc. Cambridge Philos. Soc. 58.\nSullivan, D. (1974). Genetics of homotopy theory and the Adams conjecture. Ann. Math. 100.\nThurston, W. (1982, 1986). Hyperbolic geometry and 3-manifolds; Hyperbolic structures on 3-manifolds I. LMS Lecture Notes 48; Ann. Math. 124.\nWhitehead, G. W. (1942). On the homotopy groups of spheres and rotation groups. Ann. Math. 43.\n\n\n\n\n\n\n注释\n¹ 该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。感谢杜萨·麦克杜夫（Dusa McDuff）发掘原始录音带（关于怀尔德（Wilder）的引言，可参见[米尔诺, 1999]）。 ² 克尔瓦雷-米尔诺的论文实际研究的是“h配边意义下的同伦球面群\\Theta_n”。仅当n=4时，\\Theta_n与S_n存在差异：由斯梅尔[1962] 的h配边定理可知，当n \\neq 4时，S_n \\cong \\Theta_n；而在4维情形下，\\Theta_4是平凡群，S_4的结构则是尚未解决的重大问题。 ³ |J_{4k-1}|的这一计算是亚当斯猜想[亚当斯, 1963, 1965] 的特例。马霍瓦尔德[1970] 完成了该特例的证明，奎伦[1971]、沙利文[1974] 及贝克尔-戈特利布[1975] 则证明了完整的亚当斯猜想。亚当斯还证明了J_n始终是\\Pi_n的直和因子。 ⁴ 还需用到“\\Phi_k的核始终是\\Pi_{4k-2}的直和因子”这一事实（至少当4k-2 \\neq 126时成立）。马霍瓦尔德告知我，62维情形下该事实成立，其余四个情形则较为直接。 ⁵ 哈彻[1983] 后续证明了更强的结论：嵌入SO(4) \\to Diff^+(\\mathbb{S}^3)是同伦等价。另一方面，对于n \\geq 7，安东内利、布尔盖莱亚与卡恩[1972] 证明Diff^+(\\mathbb{S}^n)不具有任何有限复形的同伦型（早期结果参见[诺维科夫, 1963]）。对于n=6，由于\\Gamma_7 \\neq 0，Diff(\\mathbb{S}^6)是不连通的；但我尚未知晓n=4,5时的相关结果。\n\n\n原文发表于《美国数学会通报》（Notices of the AMS）第58卷第6期，2011年6-7月，第804-809页"
+  },
+  {
+    "objectID": "translations/milnor.html#footnotes",
+    "href": "translations/milnor.html#footnotes",
+    "title": "四十六年后的微分拓扑学",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\n该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。↩︎"
+  },
+  {
+    "objectID": "pages/translations.html",
+    "href": "pages/translations.html",
+    "title": "Translations",
+    "section": "",
+    "text": "这里收集了一些优秀的综述性数学文献的中文翻译版本。"
+  },
+  {
+    "objectID": "pages/translations.html#翻译列表",
+    "href": "pages/translations.html#翻译列表",
+    "title": "Translations",
+    "section": "翻译列表",
+    "text": "翻译列表\n\n四十六年后的微分拓扑学 - Milnor 经典综述\n人工智能在纽结理论中的应用 - 神经网络在纽结理论中的应用综述"
+  },
+  {
+    "objectID": "pages/about.html",
+    "href": "pages/about.html",
+    "title": "关于本站",
+    "section": "",
+    "text": "这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 vibe mathing 理念\n\n\n\n我的学习方法是 vibe mathing——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。\n\nvibe: 直觉、图像、“感觉应该是这样”\nrigor: 证明、定义、“这就是为什么它成立”\n\n两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。\n笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。"
+  },
+  {
+    "objectID": "pages/about.html#关于本站",
+    "href": "pages/about.html#关于本站",
+    "title": "关于本站",
+    "section": "",
+    "text": "这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 vibe mathing 理念\n\n\n\n我的学习方法是 vibe mathing——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。\n\nvibe: 直觉、图像、“感觉应该是这样”\nrigor: 证明、定义、“这就是为什么它成立”\n\n两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。\n笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。"
+  },
+  {
+    "objectID": "pages/about.html#the-stack",
+    "href": "pages/about.html#the-stack",
+    "title": "关于本站",
+    "section": "the stack",
+    "text": "the stack\n本站使用以下技术构建：\n\n\n\n工具\n用途\n\n\n\n\nQuarto\n文档生成系统\n\n\nLaTeX / KaTeX\n数学公式渲染\n\n\nGitHub Pages\n静态网站托管\n\n\nSCSS\n自定义样式"
+  },
+  {
+    "objectID": "pages/about.html#联系方式",
+    "href": "pages/about.html#联系方式",
+    "title": "关于本站",
+    "section": "联系方式",
+    "text": "联系方式\n欢迎交流拓扑、分享想法:\n\n📧 Email: your_email@edu.com\n🐙 GitHub: @cyw6130"
+  },
+  {
+    "objectID": "pages/about.html#致谢",
+    "href": "pages/about.html#致谢",
+    "title": "关于本站",
+    "section": "致谢",
+    "text": "致谢\n感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。\n感谢开源社区让知识分享变得如此简单。\n\n\n\n\n\n\n\n许可协议: 除特别注明外,本站内容采用 CC BY-NC-SA 4.0 许可。"
+  },
+  {
+    "objectID": "pages/notes.html",
+    "href": "pages/notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、高维流形、低维拓扑等主题。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/notes.html#主题分类",
+    "href": "pages/notes.html#主题分类",
+    "title": "Notes",
+    "section": "主题分类",
+    "text": "主题分类\n\n\n\n\n量子不变量\n\nKhovanov Homology\nTuraev-Viro 不变量\n\n\n\n\n\n\n\n高维流形\n\nh-Cobordism 理论\n\n\n\n\n\n\n\n其他主题\n\nBernoulli 数",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/notes.html#所有笔记",
+    "href": "pages/notes.html#所有笔记",
+    "title": "Notes",
+    "section": "所有笔记",
+    "text": "所有笔记",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html",
+    "href": "notes/h_cobordism_4.html",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "",
+    "text": "Note\n\n\n\n参考书目：Introductory Lectures on Manifold Topology Signposts (Thomas Farrell & Yang Su) — 一本非常舒适的入门书",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html#主要结果",
+    "href": "notes/h_cobordism_4.html#主要结果",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "1.1 主要结果",
+    "text": "1.1 主要结果\n\n1.1.1 Smale 定理 (GPC: 拓扑广义庞加莱猜想)\n\nTheorem 1 (广义庞加莱猜想) 设 \\(M^m\\) 是闭光滑流形，维数 \\(m \\geq 5\\)。若 \\(M\\) 是同伦球面，则 \\(M\\) 同胚于球面。\n\n主要工具 (\\(m \\geq 5\\))：h-Cobordism 定理\n\nTheorem 2 (h-Cobordism 定理) 设 \\(W^m\\) 是光滑的 h-cobordism，若 \\(W\\) 单连通且维数 \\(m \\geq 6\\)，则配边 \\(W\\) 微分同胚于 \\(\\partial^- W \\times [0,1]\\)（相对于边界 \\(\\partial^- W\\)）。\n\n\n\n1.1.2 怪球与 h-Cobordism 类\n利用 h-cobordism 定理，对于单连通光滑流形（特别是光滑同伦球面），当 \\(n \\geq 5\\) 时有双射：\n\\[\\frac{\\{S^n \\text{ 上的光滑结构}\\}}{\\text{微分同胚}} \\longleftrightarrow \\frac{\\{n \\text{ 维同伦球面}\\}}{\\{\\text{h-cobordism}\\}}\\]\n\n左边：球面上所有光滑结构，即所有怪球构成的集合\n右边：所有同伦球面的配边类，记为 \\(\\Theta^n\\)\n\n\\(\\Theta^n\\) 的群结构：\n\n\n\n\n\n\n\n运算\n定义\n\n\n\n\n乘法\n连通和\n\n\n单位元\n\\(S^n\\) 上的标准光滑结构\n\n\n逆元\n反转定向，记为 \\(-\\Sigma\\)（在柱 \\(\\Sigma \\times I\\) 的内部挖去 \\(D^{n+1}\\) 即得所需配边）\n\n\n\n\\(\\Theta^n\\) 的阶数：\n\n\n\n\n\n\nFigure 1: 怪异球面个数表\n\n\n\n这个表格给出了各维数上怪异球面的个数（\\(n \\neq 4\\)），与伯努利数（数论中的量）密切相关。\n\n\n\n\n\n\nWarning\n\n\n\n由于 h-cobordism 定理在 4 维失效（h-cobordism 类中的元素未必微分同胚），\\(\\Theta^4\\) 的阶数为 1 不能推出 4 维光滑庞加莱猜想。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html#gpc-的证明",
+    "href": "notes/h_cobordism_4.html#gpc-的证明",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "1.2 GPC 的证明",
+    "text": "1.2 GPC 的证明\n本节假设 h-cobordism 定理成立，在此基础上给出 GPC 的证明。\n\n1.2.1 h-Cobordism 的定义\n\nDefinition 1 (Cobordism) 一个 \\((m+1)\\) 维 cobordism 是流形 \\(W^{m+1}\\)，其边界可写成两部分的不交并： \\[\\partial W = \\partial^- W \\sqcup \\partial^+ W\\] 此时称 \\(W\\) 是从 \\(\\partial^- W\\) 到 \\(\\partial^+ W\\) 的配边。\n\n\n\n\n\n\n\nFigure 2: 配边但不是 h-配边的例子\n\n\n\n\nDefinition 2 (h-Cobordism) \\((m+1)\\) 维的 h-cobordism 是配边 \\(W^{m+1}\\)，满足含入映射 \\[\\partial^- W \\hookrightarrow W, \\quad \\partial^+ W \\hookrightarrow W\\] 都是同伦等价。\n\n\n\n\n\n\n\nFigure 3: 平凡配边\n\n\n\n\n\n1.2.2 h-Cobordism 定理\n\nTheorem 3 (h-Cobordism 定理（完整表述）) 设 \\(W^{m+1}\\) 是光滑的 h-cobordism。若 \\(W\\) 单连通且 \\(m \\geq 5\\)，则 \\[W \\cong_{\\text{diff}} \\partial^- W \\times [0,1] \\quad (\\text{rel } \\partial^- W)\\]\n\n\n\n1.2.3 GPC 的证明 (\\(n \\geq 6\\))\n\nProof. 设 \\(M^m\\) 是光滑流形，维数 \\(\\geq 6\\) 且是同伦球面。\nStep 1. 在 \\(M^m\\) 上挖去两个隔开的 disk，得到配边 \\(W^m\\)。\n\n\n\n\n\n\nFigure 4: 挖去两个 disk\n\n\n\nStep 2. 由 Lemma 1，\\(W\\) 单连通且是光滑 h-cobordism。\nStep 3. 应用 h-cobordism 定理： \\[W \\cong_{\\text{diff}} \\partial^- W \\times [0,1] = S^{m-1} \\times [0,1] \\quad (\\text{rel } \\partial^- W = S^{m-1})\\]\nStep 4. 重新粘回挖去的 disk：\n\n利用相对微分同胚，将底部 disk 通过边界球面上的 identity 映射粘回，得到 \\(\\mathbb{D}^m\\)\n将顶部 disk 粘回（边界上的粘接映射可以是任意的）：\n\n这会影响光滑结构\n但不影响拓扑结构——仍同胚于 \\(S^m\\)\n\n\n\n\n\n\n\n\nFigure 5: 同胚的构造\n\n\n\n结论：\\(M \\approx S^m\\)。\n\n\nLemma 1 (同伦球面上挖去两个 disk 得到 h-cobordism (\\(n \\geq 6\\))) 设置：从同伦球面 \\(M\\) 出发，挖去两个 disk \\(D^+, D^-\\)，得到配边 \\(W\\)。\n\n\n\n\n\n\nFigure 6: 挖去 disk 的示意图\n\n\n\n\nProof. (I) 证明 \\(W\\) 单连通\n需要从「\\(M\\) 单连通」推出「\\(W\\) 单连通」。\n\n\\(M\\) 单连通 \\(\\Rightarrow\\) \\(W \\cup D^+\\) 单连通：\n对 triple \\((M, W \\cup D^+, D^-)\\) 使用 Van Kampen 定理\n（注意 \\(D^-\\) 单连通，\\(D^- \\cap (W \\cup D^+) = S^{m-1}\\) 单连通）\n\\(W \\cup D^+\\) 单连通 \\(\\Rightarrow\\) \\(W\\) 单连通：\n对 triple \\((W \\cup D^+, W, D^+)\\) 使用 Van Kampen 定理\n\n(II) 证明 \\(\\partial^+ W \\hookrightarrow W\\) 是同伦等价\n\n诱导同调群同构：\n对 triple \\((W \\cup D^+, W, D^+)\\) 使用 Mayer-Vietoris 序列（注意 \\(W \\cap D^+ = \\partial^+ W\\)）\n\n\n\n\n\n\nTip\n\n\n\n这里需要 \\(W \\cup D^+\\) 的同调群为 0，由 triple \\((M, W \\cup D^+, D^-)\\) 的 Mayer-Vietoris 序列得到。\n\n\n使用 Homology Whitehead 定理：\n\n\n\n\n\n\nFigure 7: Homology Whitehead 定理\n\n\n\n单连通 + 同调等价 \\(\\Rightarrow\\) 同伦等价\n结论：\\(\\partial^+ W \\hookrightarrow W\\) 是同伦等价\n\n(III) \\(\\partial^- W \\hookrightarrow W\\) 是同伦等价的证明类似。\n\n\n\n\n1.2.4 附：Whitehead 定理\n问题：如何证明两个拓扑空间同伦等价？\n\nDefinition 3 (弱同伦等价) 称空间 \\(X, Y\\) 弱同伦等价，如果存在映射 \\(f: X \\to Y\\)，使得 \\[f_*: \\pi_i(X) \\xrightarrow{\\cong} \\pi_i(Y) \\quad \\forall i\\]\n\n\nTheorem 4 (Whitehead 定理) 任意两个 CW 复形 \\(X, Y\\)，若弱同伦等价，则同伦等价。\n\n\n\n\n\n\n\nImportant\n\n\n\n弱同伦等价不仅要求同伦群同构，还要求存在映射 \\(f\\) 实现之。存在同伦群同构但不同伦等价的例子。\n\n\n\nTheorem 5 (Homology Whitehead 定理) 对于单连通空间，同调等价（映射诱导同调群同构）即可得到同伦等价。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html#预备知识",
+    "href": "notes/h_cobordism_4.html#预备知识",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "2.1 预备知识",
+    "text": "2.1 预备知识\n\n2.1.1 Isotopy（同痕）\n\n\n\n\n\n\nFigure 8: Isotopy 定义\n\n\n\n\n我们讨论的同痕总是光滑同痕\n连续同痕不能区分纽结：\n\n\n\n\n\n\n\nFigure 9: 连续同痕不能区分纽结",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html#handle-分解",
+    "href": "notes/h_cobordism_4.html#handle-分解",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "2.2 Handle 分解",
+    "text": "2.2 Handle 分解\n（粘接映射的内容略）",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
+    "objectID": "notes/h_cobordism_4.html#handle-运算法则",
+    "href": "notes/h_cobordism_4.html#handle-运算法则",
+    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
+    "section": "2.3 Handle 运算法则",
+    "text": "2.3 Handle 运算法则\n\n2.3.1 同痕不变性\n\nProposition 1 (同痕扩张定理)  \n\n\n\n\n\n\nFigure 10: 同痕扩张定理\n\n\n\n\n\nLemma 2 (同痕引理) 将 handle \\(h\\) 粘到流形 \\(M\\) 上时，若使用同痕的粘接映射 \\(f, g: \\partial^- h \\to \\partial M\\)，则得到的流形同胚： \\[M +_f h \\cong M +_g h\\]\n\n\nProof. \n\n\n\n\n\n\nFigure 11: 同痕引理的证明\n\n\n\n\n\n\n2.3.2 粘接顺序的交换性\n\n2.3.2.1 基本概念\n\nDefinition 4 (Attaching sphere 与 Complementary sphere) Handle 一般写成乘积 \\(D^i \\times D^{n-i}\\)：\n\n\n\n\n\n\n\n\n\n部分\n名称\n子空间\n边界\n\n\n\n\n第一分量\nAttaching part\n\\(D^i \\times \\{0\\}\\) (attaching disk)\nAttaching sphere \\(\\mathscr{S}\\)\n\n\n第二分量\nComplementary part\n\\(\\{0\\} \\times D^{n-i}\\) (complementary disk)\nComplementary sphere \\(\\mathcal{S}\\)\n\n\n\n\n\n\n\n\n\n\nFigure 12: Attaching 和 Complementary 部分\n\n\n\n\n\n2.3.2.2 Thom 横截性定理\n考虑三元组 \\((W, M, N)\\)，其中 \\(M, N\\) 是 \\(W\\) 的子流形。\n\nTheorem 6 (Thom 横截性定理)  \n\n可在 \\(W\\) 内做微小扰动（同痕），使 \\(M, N\\) 横截相交\n若 \\(M, N\\) 横截相交，则 \\[\\dim M + \\dim N = \\dim W + \\dim(M \\cap N)\\]\n\n\n\nExample 1 设 \\(\\dim W = 3\\)，\\(\\dim M = \\dim N = 1\\)。由定理，可扰动使 \\(M, N\\) 横截相交，此时 \\[\\dim(M \\cap N) = 1 + 1 - 3 = -1 \\implies M \\cap N = \\varnothing\\]\n\n\n\n\n\n\n\nTip启示\n\n\n\n可通过控制维数保证子流形不相交。\n\n\n\n\n2.3.2.3 Lemma：顺序引理\n\nLemma 3 (顺序引理) 考虑 \\((M + h_1) + h_2\\)。若 \\(h_2\\) 的粘接球面 \\(\\mathscr{S}\\) 与 \\(h_1\\) 的补球面 \\(\\mathcal{S}\\) 不相交（它们都是 \\(\\partial^+(M + h_1)\\) 的子流形），则可交换粘接顺序： \\[(M + h_1) + h_2 \\cong (M + h_2) + h_1\\] 此时记作 \\(M + (h_1 \\sqcup h_2)\\)。\n\n\nProof. 若不相交，可在 \\(\\partial(M + h_1)\\) 上挖去补球面 \\(\\mathcal{S}\\)，将 \\(\\partial^- h_2\\) 收缩到 \\(\\partial M\\) 上。\n\n\n\n\n\n\nFigure 13: 顺序引理的证明\n\n\n\n\n\nCorollary 1 若 \\(\\mathrm{index}(h_2) \\leq \\mathrm{index}(h_1)\\)，则 \\[M + h_1 + h_2 = M + (h_1 \\sqcup h_2) = M + h_2 + h_1\\] 即总可从 index 更小的 handle 开始粘接。\n\n\nProof. 设 \\(\\mathrm{index}(h_1) = i_1\\)，\\(\\mathrm{index}(h_2) = i_2\\)，\\(i_2 \\leq i_1\\)。\n\n补球面维数：\\((n - i_1) - 1\\)\n粘接球面维数：\\(i_2 - 1\\)\n维数之和：\\(n - i_1 + i_2 - 2 \\leq n - 2\\)\n\n两者都是 \\(\\partial(M + h_1)\\)（维数 \\(n-1\\)）的子流形。由 Thom 横截性定理，相交维数为 \\((n-2) - (n-1) = -1\\)，即可做同痕使两者不相交。由 Lemma 3 得证。\n\n\n\n\n\n\n\nNote约定\n\n\n\n以后总假设按 index 从小到大粘接。Index 相同时，粘接顺序可交换（或认为同时进行）。\n\n\n标准分解：\n\n\n\n\n\n\nFigure 14: 标准分解示意图 1\n\n\n\n\n\n\n\n\n\nFigure 15: 标准分解示意图 2\n\n\n\n\n\n\n2.3.3 几何与代数消解\n\n2.3.3.1 几何消解的例子\n粘接相邻维数的 handle 时，有时会出现消解现象：\n\n\n\n\n\n\nFigure 16: 几何消解例 1\n\n\n\n在 \\(M\\) 上粘接 0-handle \\(h_1\\) 和 1-handle \\(h_2\\)，结果可收缩到 \\(M\\)。关键观察：\\(h_1\\) 的补球面与 \\(h_2\\) 的粘接球面恰好相交于 1 点。\n\n\n\n\n\n\nFigure 17: 几何消解例 2\n\n\n\n\n\n2.3.3.2 几何消解\n\nLemma 4 (几何消解) 对于 \\(M + h_1 + h_2\\)，若 \\(h_2\\) 的粘接球面 \\(\\mathscr{S}\\) 与 \\(h_1\\) 的补球面 \\(\\mathcal{S}\\) 恰好横截相交于一点，则 \\[M + h_1 + h_2 \\cong M\\]\n\n\n\n\n\n\n\nNote\n\n\n\n由 Thom 横截定理，这只发生在 \\(\\mathrm{index}(h_2) = \\mathrm{index}(h_1) + 1\\) 时。\n\n\n\nProof. 将 handle \\(h_1\\) 分割成两部分，于是 \\(h_1, h_2\\) 被分割成三部分 \\(A, B, C\\)（都是 \\(D^3\\)）：\n\n\n\n\n\n\nFigure 18: 分割示意图 1\n\n\n\n\n\n\n\n\n\nFigure 19: 分割示意图 2\n\n\n\n粘接两个 handle 等同于 \\(((M \\cup A) \\cup B) \\cup C\\)。关注交集：\n\n\n\n\n\n\nFigure 20: 交集示意图\n\n\n\n沿 \\(D^2\\) 粘 \\(D^3\\) 不改变拓扑（想象立方体放在桌面上）：\n\n\n\n\n\n\nFigure 21: 拓扑不变\n\n\n\n故 \\(M + h_1 + h_2 \\cong M\\)。\n\n\n\n2.3.3.3 代数消解 / Whitney Trick\n考虑 Lemma 4 的情形，但改为考虑代数相交数： \\[\\sigma(\\mathcal{S}, \\mathscr{S}) := \\sum_{x \\in \\mathscr{S} \\cap \\mathcal{S}} \\sigma(x)\\]\n\nLemma 5 (代数消解（Whitney Trick）) 条件：设 \\(N = \\partial(M + h_1)\\) 单连通，\\(\\dim M = n \\geq 6\\)，\\(\\mathrm{index}(h_1) = i\\) 满足 \\(2 \\leq i \\leq n - 3\\)。\n结论：若代数相交数为 \\(\\pm 1\\)，则粘接映射 \\(f: \\partial^- h_2 \\to N^{n-1}\\) 可同痕到 \\(f'\\)，使新粘接球面 \\(\\mathscr{S}'\\) 与 \\(\\mathcal{S}\\) 的几何相交数为 1。\n\n由 Lemma 4，得 \\(M + h_1 + h_2 \\cong M\\)。\n\nProof. 只需证明可消去相邻的、符号相反的两个交点。设这两点为 \\(x, y\\)：\n\n\n\n\n\n\nFigure 22: Whitney trick\n\n\n\n\n分别在 \\(\\mathscr{S}\\) 和 \\(\\mathcal{S}\\) 上用 arc 连接 \\(x, y\\)，使两 arc 在 \\(x, y\\) 外无交点，得到一个 loop\n由 \\(N\\) 单连通，此 loop bounds 一个拓扑 disk \\(D^2\\)\n由 Whitney 嵌入定理（Thom 横截性定理）及 \\(n \\geq 6\\)，可假设 \\(D^2\\) 光滑嵌入 \\(N\\)\n\n\n\n\n\n\nTip嵌入的说明\n\n\n\n要证不自交，将 \\(D^2\\) 微小平移得 \\((D^2)'\\)，需保证 \\(D^2 \\cap (D^2)' = \\varnothing\\)。由于 \\(\\dim N = n - 1 \\geq 5\\)，两 disk 维数和为 \\(4\\)，相交维数为 \\(4 - 5 = -1\\)，即无交点。\n\n\n沿 embedded \\(D^2\\) 将 \\(\\mathscr{S}\\) 落入 \\(\\mathcal{S}\\) 的部分”划出去”，交点减少两个，代数相交数不变\n从最里面的交点对开始，逐步往外操作，最终将交点减少到 1 个\n使用 Lemma 4 完成证明。\n\n\n\n\n\n2.3.4 Handle Addition\n限制到只有 \\(i\\)-handle 和 \\((i+1)\\)-handle 的情形。\n\n2.3.4.1 复杂情形的处理\n对于 \\(M + h_1 + h_2\\)（\\(\\mathrm{index}(h_2) = \\mathrm{index}(h_1) + 1\\)），已有几何/代数相交数的方法。\n但实际情形更复杂：有若干 \\(i\\)-handle 和若干 \\((i+1)\\)-handle，相交方式复杂。\n问题：考虑 \\(M + h_1^i + h_2^i + h_3^{i+1}\\)，若 \\(h_1, h_2\\) 满足消解条件，可得 \\[M + h_1 + h_2 + h_3 = (M + h_1 + h_2) + h_3 = M + h_3\\] 但 \\(h_3\\) 的粘接球面如何变化？\n答案由 incidence matrix（关联矩阵）\\(D^{i+1}\\) 给出。\n\n\n2.3.4.2 定义：Incidence Matrix \\(D^{i+1}\\)\n设有 \\(m_i\\) 个 \\(i\\)-handle，补球面为 \\(\\mathcal{S}_1, \\ldots, \\mathcal{S}_{m_i}\\)；有 \\(m_{i+1}\\) 个 \\((i+1)\\)-handle，粘接球面为 \\(\\mathscr{S}_1, \\ldots, \\mathscr{S}_{m_{i+1}}\\)。\n\nDefinition 5 (Incidence Matrix) \\[D^{i+1}_{j,k} := \\sigma(\\mathcal{S}_j, \\mathscr{S}_k) \\quad \\text{(代数相交数)}\\] 得到 \\(m_i \\times m_{i+1}\\) 矩阵 \\(D^{i+1}\\)。\n\n\n\n\n\n\n\nNote\n\n\n\nIncidence matrix 蕴含了 handle 分解的全部信息。\n\n\n与同调群的联系：\n\n流形的 handle 分解形变收缩后得到 cell 分解\n链复形由 \\(n\\)-handle 生成的自由 Abel 群构成\n微分映射 \\(C_{i+1} \\to C_i\\) 恰为 incidence matrix \\(D^{i+1}\\)\n\n\n\n2.3.4.3 Handle Addition\n\nLemma 6 (Handle Addition) 可改变 \\((i+1)\\)-handle 的 attaching sphere，保持粘出结果不变。例如，将 \\(\\mathscr{S}_1\\) 改为 \\[\\mathscr{S}_1' = \\mathscr{S}_1 \\mathbin{\\#} \\mathscr{S}_2\\] 则 \\(M +_{\\mathscr{S}_1} h_1 + \\cdots \\cong M +_{\\mathscr{S}_1'} h_1 + \\cdots\\)\n\n\n\n\n\n\n\nFigure 23: Handle addition\n\n\n\n对关联矩阵的影响：第三类基本列变换（第一列加上第二列）。\n\n\n\n\n\n\nNote\n\n\n\n条件：当 index 为 \\(i, i+1\\) 时，要求 \\(2 \\leq i \\leq n - 3\\)。\n\n\n\nProof. \n\n\n\n\n\n\nFigure 24: Handle addition 证明 1\n\n\n\n\n\n\n\n\n\nFigure 25: Handle addition 证明 2\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n不仅可以加法，还可以减法（与反定向粘接球面做连通和）。因此 Lemma 6 允许对关联矩阵做第三类基本变换。\n\n\n关于 index 限制的说明：\n证明的关键步骤是找 arc \\(\\alpha\\)，需要 \\(\\alpha\\) 与其他粘接球面、补球面都不相交。\n\n粘接球面（维数 \\(i - 1\\)）：需 \\(n - 1 &gt; 1 + (i - 1)\\)，即 \\(i \\leq n - 2\\)\n补球面（维数 \\(n - i\\)）：需 \\(n - 1 &gt; (n - i) + 1\\)，即 \\(i \\geq 3\\)\n\n综合得 \\(3 \\leq i \\leq n - 2\\)，即对 \\((i-1)\\)-handle 有 \\(2 \\leq i - 1 \\leq n - 3\\)。\n\n\n\n2.3.5 h-Cobordism 定理的证明\n\n2.3.5.1 Proposition：Regular Handle 分解的存在性\n\nProposition 2 (Regular Handle 分解的存在性)  \n\n\n\n\n\n\nFigure 26: Prop 2.42\n\n\n\n\n动机：在 Lemma 5 和 Lemma 6 中，考虑 \\(i, i+1\\) handle 时要求 \\(2 \\leq i \\leq n - 3\\)。因此 handle 的 index 落在 \\([2, n-2]\\) 区间内，需先排除区间外的 handle——这就是 regular form 的意义。\n\n\n2.3.5.2 h-Cobordism 定理的证明\n设 \\(W^n\\) 是 h-cobordism，取 \\(W\\) 的 regular handle 分解： \\[W = \\partial^- W \\times [0,1] + h_1 + h_2 + \\cdots + h_m\\]\n核心命题：若 \\(m &gt; 0\\)，则存在另一个 regular handle 分解，具有更少的 handle。\n\n\n\n\n\n\nTip\n\n\n\n若此命题成立，取 \\(m\\) 最小的 regular 分解，则 \\(m = 0\\)，即 \\(W = \\partial^- W \\times [0,1]\\)。\n\n\n\nProof (核心命题的证明). Step 1. 设所有 handle 中 index 最小者为 \\(i - 1\\)，考虑所有 \\((i-1)\\)-handle 和 \\(i\\)-handle。\nStep 2. 考虑 \\(H_{i-1}(W, \\partial^- W)\\)：\n\n由同伦等价 \\(\\partial^- W \\hookrightarrow W\\) 及相对长正合序列，此同调群为 0\n由胞腔同调，\\(H_{i-1} = C_{i-1} / \\mathrm{Im}(D^i)\\)，故 \\(D^i\\) 是满射，即满秩\n\nStep 3. 对矩阵 \\(D^i\\) 做初等变换：\n\n第一类基本行列变换 + 第三类基本列变换 → 上三角矩阵 \\(\\mathscr{D}^i\\)\n由满射性，对角元为 \\(\\pm 1\\)\n再做第三类列变换 → 对角矩阵\n\n例：\n\n\n\n\n\n\nFigure 27: 矩阵变换例 1\n\n\n\n\n\n\n\n\n\nFigure 28: 矩阵变换例 2\n\n\n\nStep 4. 在对角矩阵上使用 Lemma 4 和 Lemma 5，减少 handle 个数。\n\n\n\n2.3.5.3 补充命题\n为使证明完整，需补充：\n\nProposition 3 (命题 1 (Prop 2.42)) 任意 h-cobordism \\(W\\) 都有 regular handle 分解（不含 0, 1, \\(n-1\\), \\(n\\)-handle）。\n\n\nProposition 4 (命题 2) \\(\\pi_1(N_{i-1}) = 1\\)。\n\n\n\n2.3.5.4 Lemma 2.45\n\nLemma 7  \n\n\n\n\n\n\nFigure 29: Lemma 2.45\n\n\n\n\n取 \\(X = A - \\{0\\} \\simeq B\\)（\\(0\\) 为粘接 cell 的中心），\\(Y = \\mathrm{int}(D^s)\\)，则 \\[X \\cap Y = S^{s-1}, \\quad X \\cup Y = A\\] 对 triple \\((A, A - \\{0\\}, \\mathrm{int}(D^s))\\) 使用 Van Kampen 定理即证。\n\n\n2.3.5.5 命题 2 的证明：\\(\\pi_1(N_{i-1}) = 1\\)\n粘接 \\(i\\)-handle 在同伦上等同于粘接 \\(i\\)-cell，可用 Lemma 7。\n策略：分别将 \\(N_{i-1}\\) 和 \\(W\\) 与 \\(W_{i-1}\\) 联系起来。\n\nProof. (I) \\(W\\) 与 \\(W_{i-1}\\)：\n\\(W\\) 是在 \\(W_{i-1}\\) 上粘接若干 index \\(\\geq i\\) 的 handle。由 \\(i - 1 \\geq 2\\)，有 \\(i \\geq 3\\)，故 \\[\\pi_1(W) \\cong \\pi_1(W_{i-1})\\]\n(II) \\(N_{i-1}\\) 与 \\(W_{i-1}\\)：\n由于只关心同伦型，考虑 \\(N_{i-1} \\times I\\) 与 \\(W_{i-1}\\)。\n\n\\(W_{i-1}\\) 是在 \\(\\partial^- W \\times I\\) 上粘接若干 \\((i-1)\\)-handle\n取对偶：\\(W_{i-1}\\) 是在 \\(N_{i-1} \\times I\\) 上粘接若干 index 为 \\(n - (i-1) = (n-i) + 1 \\geq 3\\) 的 handle\n\n故 \\(\\pi_1(N_{i-1}) \\cong \\pi_1(W_{i-1})\\)。\n(III) 由 \\(W\\) 单连通，综合得 \\(\\pi_1(N_{i-1}) = 1\\)。\n\n\n\n2.3.5.6 命题 1 的证明：Regular Handle 分解总存在\n策略：\n\n证明 0, 1-handle 可消解\n利用对偶原理，\\((n-1)\\), \\(n\\)-handle 也可消解\n\n对偶论证框架：给定任意 handle 分解 \\(t\\)：\n\n\n\n\n\n\n\n\n步骤\n操作\n结果\n\n\n\n\n1\n在 \\(t\\) 中消解 0, 1-handle\n\\(t_1\\)\n\n\n2\n对 \\(t_1\\) 做对偶\n\\(t_2\\)\n\n\n3\n在 \\(t_2\\) 中消解 0, 1-handle（= 消解 \\(t_1\\) 的 \\(n{-}1\\), \\(n\\)-handle）\n\\(t_3\\)\n\n\n4\n对 \\(t_3\\) 做对偶\n\\(t_4\\)（不含 0, 1, \\(n{-}1\\), \\(n\\)-handle）\n\n\n\n\n2.3.5.6.1 消解 0-Handle\n由 \\(W\\) 是 h-cobordism，有 \\(H_0(W, \\partial^- W) = 0\\)，即空间连通。\n因此，对于任意 0-handle，都有唯一的 1-handle 将其与 \\(\\partial^- W \\times I\\) 所在的”主要部分”连接（其他 index 的 handle 无法使空间连通）。\n这意味着 \\(D^1\\) 天然是对角矩阵（事实上是单位阵），可直接消解所有 0-handle。\n\n\n2.3.5.6.2 消解 1-Handle (Handle Trading)\n核心思想：用 handle trading 消解所有 1-handle。过程不改变 handle 总数——用 3-handle 替换 1-handle。\n准备工作：\n\n由于 0-handle 已消解，1-handle 直接粘接到 \\(\\partial^- W \\times I\\) 上\n每个 1-handle 给出一个 loop\n在 \\(W_2\\) 上考虑（与 \\(W\\) 差若干 index \\(\\geq 3\\) 的 handle，基本群一致）\n由 Proposition 4 的策略，\\(\\partial^+ W_2\\) 单连通\n\n构造过程：\n\nProof. Step 1. 对任意 1-handle \\(h_1\\)，考虑其在 \\(\\partial^+ W_2\\) 上形成的 loop。\nStep 2. 由 \\(\\pi_1(\\partial^+ W) = 1\\)，此 loop bounds a disk \\(D^2\\)。\n由 Thom 横截性定理 + dimension argument，可假设 \\(D^2\\) 嵌入到 \\(\\partial^+ W\\) 中。记 \\(\\partial D^2 = \\mathscr{S}_0\\)。\nStep 3. 由 Lemma 4，引入一对互相消解（几何相交数为 1）的 handle：\n\n2-handle \\(h_2\\)\n3-handle \\(h_3\\)\n\n使得 \\(W_2 = W_2 + h_2 + h_3\\)。同时要求 \\(h_2\\) 避开 \\(D^2\\) 和 \\(W_2\\) 上其他 2-handle。\n记 \\(h_2\\) 的粘接球面为 \\(\\mathscr{S}_2\\)。\nStep 4. 取连通和 \\[\\mathscr{S}_2' := \\mathscr{S}_2 \\mathbin{\\#} \\mathscr{S}_0\\] 记对应的 2-handle 为 \\(h_2'\\)。\n\n\n\n\n\n\nFigure 30: Handle trading 示意图\n\n\n\n关键观察：\n\n由于 \\(\\mathscr{S}_0\\) bounds a disk，有 \\(\\mathscr{S}_2' \\sim \\mathscr{S}_2\\)\n\\(\\mathscr{S}_2'\\) 与 \\(h_1\\) 的补球面几何相交数为 1\n\n消解计算：\n\\[\n\\begin{aligned}\nW_2 &= W_2 + h_2 + h_3 \\\\[6pt]\n    &= W_2 + h_2' + h_3 \\\\[6pt]\n    &= \\partial^- W \\times I + \\cdots + (h_1 + h_2') + \\cdots + h_3 \\\\[6pt]\n    &= \\partial^- W \\times I + \\cdots + h_3\n\\end{aligned}\n\\]\n结论：1-handle \\(h_1\\) 被替换为 3-handle \\(h_3\\)。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
+    ]
+  },
+  {
     "objectID": "notes/Khovanov_homology.html",
     "href": "notes/Khovanov_homology.html",
     "title": "An introduction to khovanov homology and s-invariant",
@@ -78,6 +425,159 @@
     ]
   },
   {
+    "objectID": "notes/bernoulli.html",
+    "href": "notes/bernoulli.html",
+    "title": "伯努利数、Zeta 函数与怪球",
+    "section": "",
+    "text": "动机：尝试计算 S_k(n) = \\sum_{m=0}^{n-1} m^k 的通项公式\n\n当 k=0, 1, 2 时，我们已经知道\n\nS_0(n) = n\nS_1(n) = \\frac{n(n-1)}{2}\nS_2(n) = \\frac{n(n-1)(2n-1)}{6}\n\n但对于一般的 k，如何计算 S_k(n)？\n\n另一个问题：这个离散求和与积分 \\int_0^n x^k dx 之间有什么关系？\n\n我们知道 \\int_0^n x^k dx = \\frac{n^{k+1}}{k+1}\n我们能否将 S_k(n) 表示为 \\int_0^n x^k dx 加上一些修正项？\n\n为了回答这些问题，我们引入伯努利数。\n定义：生成函数\n\n定义：形式幂级数环 \\mathbb{C}[[x]]。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为： \nf(x) = \\sum_{n=0}^{\\infty} a_n x^n\n 其中，a_n 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。\n定义：指数生成函数\n\n给定一个数列 \\{a_n\\}，它的指数生成函数定义为： \nA(t) = \\sum_{n=0}^{\\infty} a_n \\frac{t^n}{n!}\n 这里，t 是一个形式变量。即指数生成函数作为映射：{数列} \\to {形式幂级数}，给出了数列和形式幂级数之间的一一对应。\n上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果 \nA(t) = \\sum_{n=0}^{\\infty} a_n \\frac{t^n}{n!}, \\quad B(t) = \\sum_{n=0}^{\\infty} b_n \\frac{t^n}{n!}\n 那么它们的乘积 \nC(t) = A(t) \\cdot B(t) = \\sum_{n=0}^{\\infty} c_n \\frac{t^n}{n!}\n 其中，c_n = \\sum_{k=0}^n \\binom{n}{k} a_k b_{n-k}。我们将这个运算称为数列之间的卷积运算。\n\n\n定义：伯努利数 B_n 由以下生成函数定义 \n\\frac{t}{e^t - 1} = \\sum_{n=0}^{\\infty} B_n \\frac{t^n}{n!}.\n\n虽然直接计算 S_k(n) 很困难，但我们可以先计算它的生成函数： \n\\mathbb{S}(n,t) = \\sum_{k=0}^{\\infty} S_k(n) \\frac{t^k}{k!} = \\sum_{m=0}^{n-1} e^{mt} = \\frac{e^{nt}-1}{e^t-1}\n 对于右边，我们可以将其改写为 \n\\mathbb{S}(n,t) = \\underbrace{\\frac{e^{nt}-1}{t}}_{\\text{积分项}} \\cdot \\underbrace{\\frac{t}{e^t-1}}_{\\text{伯努利项}}\n 对于右边的第一部分，我们有泰勒展开 \n\\frac{e^{nt}-1}{t} = \\sum_{j=0}^{\\infty} \\frac{n^{j+1}}{(j+1)!} t^j\n 这个生成函数的系数正是积分项 \\int_0^n x^k dx = \\frac{n^{k+1}}{k+1}。 对于右边的第二部分，根据伯努利数的定义，我们有 \n\\frac{t}{e^t-1} = \\sum_{m=0}^{\\infty} B_m \\frac{t^m}{m!}\n 于是，我们实际上有：\n\n\n\\underbrace{\\mathbb{S}(n,t)}_{离散求和项} = \\underbrace{\\frac{e^{nt}-1}{t}}_{\\text{积分项}} \\cdot \\underbrace{\\frac{t}{e^t-1}}_{\\text{伯努利项}}\n\n即伯努利项衡量了离散求和项和积分项之间的偏差。 我们将等式两边展开，得到：\n\n\\sum_{k=0}^{\\infty} S_k(n) \\frac{t^k}{k!} = \\left( \\sum_{j=0}^{\\infty} \\frac{n^{j+1}}{(j+1)!} t^j \\right) \\cdot \\left( \\sum_{m=0}^{\\infty } B_m \\frac{t^m}{m!} \\right)\n\n比较等式两边的 t^k 系数，我们得到：\n\nS_k(n) = \\sum_{j=0}^k B_j \\frac{n^{k+1-j}}{(k+1 - j)! \\cdot j!} \\cdot k! = \\frac{1}{k+1} \\sum_{j=0}^k \\binom{k+1}{j} B_j n^{k + 1 - j}\n\n我们得到了我们想要的通项公式。\n\n如果我们引入伯努利多项式的定义, 它对应于生成函数\\frac{t}{e^t-1}在平移算子下的平移\\frac{e^{xt}t}{e^t-1}, 即\n\n\\sum_{k=0}^\\infty B_k(x) \\frac{t^k}{k!} = \\frac{t e^{xt}}{e^t - 1} = e^{xt} \\cdot \\left( \\frac{t}{e^t - 1} \\right)\n\n那么我们可以将上面的结果更简洁地表示为:\n\nS_k(n) = \\frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "伯努利数、Zeta 函数与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/bernoulli.html#庞加莱猜想和怪球",
+    "href": "notes/bernoulli.html#庞加莱猜想和怪球",
+    "title": "伯努利数、Zeta 函数与怪球",
+    "section": "5.1 庞加莱猜想和怪球",
+    "text": "5.1 庞加莱猜想和怪球\n\n拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)\n代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类?\n\n这就是著名的 (广义) 庞加莱猜想: 设 M^n 是闭流形, 若 M 是同伦球面 (即同伦等价于 S^n), 则 M^n 同胚意义下也是球面.\n\n庞加莱猜想是对的:\n\nn\\geq5: smale h-cobordism\nn=4: freedman\nn=3: perelman\n\n\n更进一步: 光滑庞加莱猜想: 设 M^n 是光滑闭流形, 若 M 是同伦球面 (由 GPC, 也是同胚球面), 那么 M^n 也是光滑球面.\n\n光滑庞加莱猜想是错的:\n\nmilnor 找到了第一个怪球: 7 维\n既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 n 维怪球的集合记为 S_n\n\nS_n 是 Abel 群 (n\\neq4): 利用 h-cobordism 定理 (n\\neq4), 我们有同构: \\{  S^n \\text{上的光滑结构}\\}/\\{微分同胚\\}\\longleftrightarrow\\{n\\text{维同伦球面}\\}/\\{\\text{h-cobordism}\\} 注意到右边恰为 S_n, 即 n 维怪球的集合, 而左边是配边类, 它有群结构:\n\n乘法: 连通和\n单位元: S^n 上的标准光滑结构\n逆元: 反转定向, 记为 -\\Sigma. 在柱 \\Sigma\\times I 的内部挖去一个 disk D^{n+1} 即可得到所需配边.\n这说明 S_n 是一个群.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "伯努利数、Zeta 函数与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/bernoulli.html#怪球与球面的稳定同伦群",
+    "href": "notes/bernoulli.html#怪球与球面的稳定同伦群",
+    "title": "伯努利数、Zeta 函数与怪球",
+    "section": "5.2 怪球与球面的稳定同伦群",
+    "text": "5.2 怪球与球面的稳定同伦群\n\n定义: 球面的稳定同伦群\n\n同伦群的稳定现象: 球面的 suspension thm\n\n当 k 充分大时 \\Sigma:\\pi_{n+k}\\left(S^k\\right)\\to \\pi_{n+k+1}\\left(S^{k+1}\\right) 是群同构.\n球面同伦群的稳定性质: \\Sigma:\\pi_n\\left(S^n\\right)\\to \\pi_{n+1}\\left(S^{n+1}\\right) 是群同构。\n球面稳定同伦群: 定义为 \\Pi_n:=\\lim_{ k \\to \\infty }\\pi_{n+k}\\left(S^{k}\\right)\n\n\n稳定同伦群和 framed cobordism class\n\nPontrjagin-Thom 定理: \\Pi_n \\cong \\Omega_n^{fr}，即球面稳定同伦群同构于 framed cobordism 群。\n直观理解：一个 n 维 framed 流形 M^n \\subset \\mathbb{R}^{n+k}（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 S^{n+k} \\to S^k。\n\nJ-同态 (J-homomorphism)\n\n定义：J-同态 J: \\pi_n(SO) \\to \\Pi_n 定义如下：给定 \\alpha \\in \\pi_n(SO)，即一个映射 \\alpha: S^n \\to SO，我们可以用它来”扭转” S^n 上的标准 framing，从而得到一个新的 framed n-球面，它对应于 \\Pi_n 中的一个元素。\nJ_n := \\text{Im}(J: \\pi_n(SO) \\to \\Pi_n) 是 J-同态的像。\n\n正合列 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\n\n定义: S_n\\to \\Pi_n, 即把 S_n 中的同伦球面映射成它所在的 framed cobordism class.\nchange of frame: 如果我们选择 S_n 上不同的 frame 对应的 framed cobordism class, 那么两个 \\Pi_n 中的元素会相差 J: \\pi_n(SO) \\rightarrow \\Pi_n 的作用, 我们把 J 映射的像集记为 J_n, 则我们可以定义映射 S_n\\to \\Pi_n/J_n\n这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 \\Pi_n 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 S_n^{bp} 为 S_n 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 S_n\\to \\Pi_n/J_n 的 kernel.\n至此, 我们得到了正合列 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\n\n我们还需要讨论映射 S_n\\to \\Pi_n/J_n 的满射性质, 即是否 \\Pi_n 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:\n\n对于 n\\not\\equiv 2 \\pmod{4}, 每个 \\Pi_n 中的元素都可以被同伦球面实现, 即 S_n\\to\\Pi_n/J_n 是满射, 于是我们有正合列: 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\\to 0\n对于 n \\equiv 2\\pmod{4}, (此时 S_n^{bp}=0) 映射 S_n\\to \\Pi_n/J_n 是否为满射由 Kervaire 不变量决定, 即我们有正合列 0 \\rightarrow S_{4k-2} \\rightarrow \\Pi_{4k-2}/J_{4k-2} \\xrightarrow{\\Phi_k} \\mathbb{Z}/2 这里多数情况 \\Phi_k=0, \\Phi_k\\neq0 当且仅当 k=1,2,4,8,16,32, 对应的流形维数为 2,6,14,30,62,126\\left(126 \\text{ by Guozhen Wang}\\right).",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "伯努利数、Zeta 函数与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/bernoulli.html#计算-怪球和伯努利数",
+    "href": "notes/bernoulli.html#计算-怪球和伯努利数",
+    "title": "伯努利数、Zeta 函数与怪球",
+    "section": "5.3 计算: 怪球和伯努利数",
+    "text": "5.3 计算: 怪球和伯努利数\n\n|J_n| 的计算:\n\n\n|J_n| = \\begin{cases}\n\\text{denominator}\\left(\\frac{B_{2k}}{4k}\\right) & \\text{for } n = 4k-1, \\\\\n2 & \\text{for } n \\equiv 0, 1 \\pmod{8}, \\\\\n1 & \\text{for } n \\equiv 2, 4, 5, 6 \\pmod{8}.\n\\end{cases}\n\n\n|S_n^{bp}| 的计算:\n对于 n \\neq 4，群 S_n^{bp} 是有限循环群，且有显式的生成元。具体地：\n\n当 n 为偶数时，S_n^{bp} 是平凡群；\n当 n = 4k - 3 时，S_n^{bp} 是平凡群或 2 阶循环群；\n当 n = 4k - 1 &gt; 3 时，S_n^{bp} 是阶为 2^{2k-2}(2^{2k-1}-1) \\cdot \\text{numerator}\\left(\\frac{4B_{2k}}{k}\\right) 的循环群。\n\n例子: 计算 S_7\n\n让我们用这个方法计算一下著名的 7 维怪球数量 (S_7)。\n\n检查维度：n=7 = 4(2)-1，属于第一种情况（n \\equiv 3 \\pmod 4），正合列分裂。\n\n|S_7| = |S_7^{bp}| \\cdot |\\Pi_7 / J_7|\n\n计算 |S_7^{bp}|：\n代入公式 k=2：\n|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \\cdot \\text{numerator}\\left(\\frac{4B_2}{2}\\right)\n\n第一部分：2^2 (2^3 - 1) = 4 \\times 7 = 28\n第二部分：B_4 = -1/30，所以 \\frac{4(1/30)}{2} = \\frac{1}{15}。分子是 1。\n结果：|S_7^{bp}| = 28 \\times 1 = 28。\n\n计算 |\\Pi_7 / J_7|：\n\n查阅同伦群表，\\Pi_7 \\cong \\mathbb{Z}_{240}。\nJ_7 的阶数由 \\text{denominator}(B_k/4k) 决定（其中 n=4k-1，即 k=2）。B_2 = \\frac{1}{30}，所以 \\frac{B_2}{8} = \\frac{1}{240}，分母是 240，因此 |J_7| = 240。由于 \\Pi_7 \\cong \\mathbb{Z}_{240}，故 \\Pi_7 = J_7，即 \\Pi_7/J_7 是平凡群。\n可以看到对于 n=7，|S_7| 对应的值就是 b_2 = 28。这意味着对于 n=7，\\Pi_7/J_7 是平凡的（或者说 \\Pi_7 = J_7）。\n\n最终结果：|S_7| = 28 \\times 1 = 28。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "High-dimensional Manifolds",
+      "伯努利数、Zeta 函数与怪球"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html",
+    "href": "notes/turaev-viro.html",
+    "title": "Turaev-Viro Invariants",
+    "section": "",
+    "text": "The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the Witten-Reshetikhin-Turaev (WRT) invariant, it does not require a framing of the manifold.\n\n\n\nA manifold is a topological space…\n\n\n\n\n\n\n\nNoteDefinition 1.1 (Manifold)\n\n\n\nA topological space M is called a locally Euclidean of dimension n if every point has a neighborhood homeomorphic to an open subset of \\mathbb{R}^n.\n\n\n\n\n\n\n\n\nTipTheorem (Invariance of Domain)\n\n\n\nIf U \\subset \\mathbb{R}^n is open and f: U \\to \\mathbb{R}^n is continuous and injective, then f(U) is open.\n\n\n\n\n\n\n\n\nWarningCaution\n\n\n\nThis invariant only works for closed 3-manifolds.\n\n\nLet \\mathcal{C} be a spherical fusion category. For a triangulation \\mathcal{T} of a closed 3-manifold M, the invariant is defined as:\n\nZ_{TV}(M, \\mathcal{C}) = \\mathcal{D}^{-2|V|} \\sum_{\\varphi} \\prod_{t \\in T} |t|_{\\varphi}\n\n\n\n\n\n\n\nNoteKey Definition: Quantum Dimension\n\n\n\nThe scalar \\mathcal{D} is the total quantum dimension of the category, defined by \\mathcal{D}^2 = \\sum_{i \\in Irr(\\mathcal{C})} d_i^2.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#introduction",
+    "href": "notes/turaev-viro.html#introduction",
+    "title": "Turaev-Viro Invariants",
+    "section": "",
+    "text": "The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the Witten-Reshetikhin-Turaev (WRT) invariant, it does not require a framing of the manifold.\n\n\n\nA manifold is a topological space…\n\n\n\n\n\n\n\nNoteDefinition 1.1 (Manifold)\n\n\n\nA topological space M is called a locally Euclidean of dimension n if every point has a neighborhood homeomorphic to an open subset of \\mathbb{R}^n.\n\n\n\n\n\n\n\n\nTipTheorem (Invariance of Domain)\n\n\n\nIf U \\subset \\mathbb{R}^n is open and f: U \\to \\mathbb{R}^n is continuous and injective, then f(U) is open.\n\n\n\n\n\n\n\n\nWarningCaution\n\n\n\nThis invariant only works for closed 3-manifolds.\n\n\nLet \\mathcal{C} be a spherical fusion category. For a triangulation \\mathcal{T} of a closed 3-manifold M, the invariant is defined as:\n\nZ_{TV}(M, \\mathcal{C}) = \\mathcal{D}^{-2|V|} \\sum_{\\varphi} \\prod_{t \\in T} |t|_{\\varphi}\n\n\n\n\n\n\n\nNoteKey Definition: Quantum Dimension\n\n\n\nThe scalar \\mathcal{D} is the total quantum dimension of the category, defined by \\mathcal{D}^2 = \\sum_{i \\in Irr(\\mathcal{C})} d_i^2.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#relation-to-wrt-invariants",
+    "href": "notes/turaev-viro.html#relation-to-wrt-invariants",
+    "title": "Turaev-Viro Invariants",
+    "section": "Relation to WRT Invariants",
+    "text": "Relation to WRT Invariants\nIt is a well-known theorem that the Turaev-Viro invariant is essentially the square of the modulus of the WRT invariant.\n\n\n\n\n\n\nTipTheorem (Turaev, 1994)\n\n\n\nFor a modular tensor category \\mathcal{C}, we have: Z_{TV}(M, \\mathcal{C}) = |Z_{WRT}(M, \\mathcal{C})|^2",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/turaev-viro.html#connection-to-kuperberg-invariant",
+    "href": "notes/turaev-viro.html#connection-to-kuperberg-invariant",
+    "title": "Turaev-Viro Invariants",
+    "section": "Connection to Kuperberg Invariant",
+    "text": "Connection to Kuperberg Invariant\nAs discussed in my Kuperberg Notes, when the category is non-semisimple, the standard definition fails because \\mathcal{D} might be zero. Kuperberg’s construction solves this for involutory Hopf algebras.",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Turaev-Viro Invariants"
+    ]
+  },
+  {
+    "objectID": "pages/research.html",
+    "href": "pages/research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
+  },
+  {
+    "objectID": "pages/research.html#overview",
+    "href": "pages/research.html#overview",
+    "title": "Research",
+    "section": "",
+    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
+  },
+  {
+    "objectID": "pages/research.html#research-areas",
+    "href": "pages/research.html#research-areas",
+    "title": "Research",
+    "section": "Research Areas",
+    "text": "Research Areas\n\nQuantum Topology\nQuantum topology studies topological invariants arising from quantum groups and related algebraic structures. These invariants often have deep connections to:\n\nMathematical Physics: Chern-Simons theory, conformal field theory\nRepresentation Theory: Quantum groups at roots of unity\nCategory Theory: Tensor categories, braided monoidal categories\n\n\n\n\nTuraev-Viro Invariants\nThe Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation \\mathcal{T} of a 3-manifold M:\n\nTV(M) = \\sum_{\\text{colorings}} \\prod_{\\text{tetrahedra}} |6j|^2\n\nThese invariants are:\n\nTopologically invariant (independent of triangulation)\nComputable (via state-sum formulas)\nRelated to Reshetikhin-Turaev invariants via the Turaev-Walker theorem\n\n\n\n\nNon-Semisimple Extensions\nWhen working with non-semisimple categories, new phenomena emerge:\n\nModified Traces: The usual categorical trace fails; we need renormalized traces\nLogarithmic CFT: Physical interpretation involves non-unitary theories\nNew Invariants: Potentially stronger invariants than the semisimple case\n\nThis is an active area with many open questions!\n\n\n\n\n\n\nKnot Theory & Categorification\nKhovanov homology categorifies the Jones polynomial V_L(q) of a link L:\n\nV_L(q) = \\sum_{i,j} (-1)^i q^j \\dim \\text{Kh}^{i,j}(L)\n\nThe categorified invariant \\text{Kh}(L) is a bigraded chain complex that:\n\nDetects the unknot (Kronheimer-Mrowka, 2011)\nProvides bounds on slice genus\nHas connections to symplectic geometry and gauge theory\n\n\n\n\n\n\n\nNote\n\n\n\nOpen Problem: Does Khovanov homology detect the trefoil knot?\n\n\n\n\n\nGeometric Topology\n\nHeegaard Splittings\nEvery closed, orientable 3-manifold M admits a Heegaard splitting: \nM = H_g \\cup_\\phi H_g\n where H_g is a genus-g handlebody and \\phi is a gluing homeomorphism of the boundary.\nKey Questions:\n\nHow does the Heegaard genus relate to other complexity measures?\nWhat is the relationship between Heegaard diagrams and quantum invariants?\n\n\n\nTriangulations & Pachner Moves\nThe Pachner moves provide a finite set of local modifications that connect any two triangulations of a manifold:\n\n\n\nDimension\nMoves\n\n\n\n\n2D\n2-2 flip\n\n\n3D\n1-4, 2-3, and their inverses\n\n\n4D\n1-5, 2-4, 3-3, and their inverses\n\n\n\nThese moves are fundamental for:\n\nProving topological invariance of state-sum models\nComputational topology algorithms\nUnderstanding the geometry of the space of triangulations"
+  },
+  {
+    "objectID": "pages/research.html#publications-preprints",
+    "href": "pages/research.html#publications-preprints",
+    "title": "Research",
+    "section": "Publications & Preprints",
+    "text": "Publications & Preprints\n\nIn Preparation\n\nOn the Kuperberg Invariant for Hopf Superalgebras\nChen (Expected 2026)\nWe extend Kuperberg’s G-invariant to the setting of Hopf superalgebras, obtaining new invariants of 3-manifolds with additional structure.\n\n\n\nExpository\n\nAn Introduction to Turaev-Viro Theory\nNotes for the Graduate Topology Seminar (2025)\nA gentle introduction to the Turaev-Viro construction, suitable for graduate students with background in algebraic topology.\n📄 PDF"
+  },
+  {
+    "objectID": "pages/research.html#talks-presentations",
+    "href": "pages/research.html#talks-presentations",
+    "title": "Research",
+    "section": "Talks & Presentations",
+    "text": "Talks & Presentations\n\n\n\n\n\n\n\n\nDate\nTitle\nVenue\n\n\n\n\nDec 2025\nTuraev-Viro Invariants: An Introduction\nTopology Seminar\n\n\nOct 2025\nWhat is a TQFT?\nGraduate Student Colloquium"
+  },
+  {
+    "objectID": "pages/research.html#collaborators-mentors",
+    "href": "pages/research.html#collaborators-mentors",
+    "title": "Research",
+    "section": "Collaborators & Mentors",
+    "text": "Collaborators & Mentors\nI am fortunate to learn from and work with wonderful mathematicians:\n\nProf. X (Advisor) — Non-semisimple TQFTs\nDr. Y — Khovanov homology\n\n\n\n\n\n\n\nAlways open to discussions and collaborations! Feel free to reach out via email."
+  },
+  {
+    "objectID": "pages/gallery.html",
+    "href": "pages/gallery.html",
+    "title": "Gallery",
+    "section": "",
+    "text": "A curated collection of moments — from sweeping landscapes to intimate urban scenes.\nEach photograph tells its own quiet story.\n\n\n✦\n\n\nLandscapes & Cityscapes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n✦\n\n\nVertical Perspectives\n\n\n\n\n\n\n\n\n\n\n\n· · ·\n\n\n✨ Click on any image to view in full screen\n\n\n◆"
+  },
+  {
     "objectID": "translations/ai_for_knot.html",
     "href": "translations/ai_for_knot.html",
     "title": "人工智能在纽结理论中的应用",
@@ -141,398 +641,6 @@
     "text": "参考文献\n[1] J. Craven, M. Hughes, V. Jejjala, and A. Kar. Learning knot invariants across dimensions. ArXiv:2112.00016. SciPost Phys. 14 (2023), no. 2, Paper No. 021, 28 pp.\n[2] A. Davies, M. Lackenby, A. Juhasz, and N. Tomašev. The signature and cusp geometry of hyperbolic knots. ArXiv:2111.15323.\n[3] A. Davies, P. Veličković, L. Buesing, et al. Advancing mathematics by guiding human intuition with AI. Nature, 600 (2021), 70–74.\n[4] I. Dynnikov. Arc-presentations of links: monotonic simplification. Fund. Math., 190 (2006), 29–76.\n[5] C. Even-Zohar, J. Hass, N. Linial, and T. Nowik. The distribution of knots in the petaluma model. Algebraic and Geometric Topology, 18 (2018), 3647–3667.\n[6] M. Hughes. A neural network approach to predicting and computing knot invariants. J. of Knot Thy. and its Ram., 29(3) (2020), 2050005.\n[7] V. Jejjala, A. Kar, and O. Parrikar. Deep learning the hyperbolic volume of a knot. ArXiv:1902.05547. Phys. Lett. B 799 (2019), 135033, 7 pp.\n[8] L. Kauffman, N. Russkikh, and I. Taimanov. Rectangular knot diagrams classification with deep learning. ArXiv:2011.03498. J. Knot Theory Ramifications 31 (2022), no. 11, Paper No. 2250067, 20 pp.\n[9] C. Manolescu and M. Marengon. The knight move conjecture is false. Proc. Amer. Math. Soc., 148 (2020), 435–439.\n[10] L. Rudolph. Quasipositivity as an obstruction to sliceness. Bulletin Amer. Math. Soc., 29(1) (1993), 51–59.\n[11] O. Vandans, K. Yang, Z. Wu, and L. Dai. Identifying knot types of polymer conformations by machine learning. Phys. Rev. E, 101 (2020), 022502."
   },
   {
-    "objectID": "pages/notes.html",
-    "href": "pages/notes.html",
-    "title": "Notes",
-    "section": "",
-    "text": "这里收集了我在学习拓扑学过程中的笔记。内容涵盖量子拓扑、高维流形、低维拓扑等主题。",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "pages/notes.html#主题分类",
-    "href": "pages/notes.html#主题分类",
-    "title": "Notes",
-    "section": "主题分类",
-    "text": "主题分类\n\n\n\n\n量子不变量\n\nKhovanov Homology\nTuraev-Viro 不变量\n\n\n\n\n\n\n\n高维流形\n\nh-Cobordism 理论\n\n\n\n\n\n\n\n其他主题\n\nBernoulli 数",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "pages/notes.html#所有笔记",
-    "href": "pages/notes.html#所有笔记",
-    "title": "Notes",
-    "section": "所有笔记",
-    "text": "所有笔记",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "translations/milnor.html",
-    "href": "translations/milnor.html",
-    "title": "四十六年后的微分拓扑学",
-    "section": "",
-    "text": "作者：约翰·米尔诺（John Milnor）\n原文：Differential Topology Forty-six Years Later, Notices of the AMS, Vol. 58, No. 6, 2011\n1965年的赫德里克讲座（Hedrick Lectures）1中，我描述了微分拓扑学的发展状况——这一领域当时尚属新兴，却发展极为迅速。此后数十年间，许多曾被认为完全无法解决的微分拓扑与几何拓扑问题相继得到解答，而解决这些问题往往依赖于全新的方法。以下将简要概述这些进展中的部分亮点。"
-  },
-  {
-    "objectID": "translations/milnor.html#主要进展",
-    "href": "translations/milnor.html#主要进展",
-    "title": "四十六年后的微分拓扑学",
-    "section": "主要进展",
-    "text": "主要进展\n首个重大突破由柯比（Kirby）与西本曼（Siebenmann）[1969, 1969a, 1977] 取得，他们为”将给定拓扑流形三角剖分为分片线性流形（PL流形）“这一问题建立了障碍理论。\n设 B_{\\mathrm{Top}} 与 B_{\\mathrm{PL}} 为讲座中所述的稳定分类空间，他们证明：当 j=4 时，相对同伦群 \\pi_{j}(B_{\\mathrm{Top}}, B_{\\mathrm{PL}}) 是2阶循环群，而在其他情况下均为零群。\n对于 n 维拓扑流形 M^n，由此可推出存在一个障碍类 o \\in H^4(M^n ; \\mathbb{Z}/2)，其决定了 M^n 能否被三角剖分为PL流形。当维数 n \\geq 5 时，这是唯一的障碍。若存在这样的三角剖分，则在 H^3(M^n ; \\mathbb{Z}/2) 中存在另一个类似的障碍类，其决定了该三角剖分在”拓扑同痕于恒等映射的PL同构”意义下的唯一性。\n\n\n\n\n\n\nTip定理 1\n\n\n\n若无边拓扑流形 M^n 满足 H^3(M^n ; \\mathbb{Z}/2)=H^4(M^n ; \\mathbb{Z}/2)=0 且 n&gt;5，则 M^n 存在唯一的PL流形结构（在PL同构意义下）。\n\n\n（对于带边流形，需满足n&gt;5。）莫伊泽（Moise）[1952] 更早便证明了所有维数n \\leq 3的流形对应的上述定理。然而，我们将看到维数4时的对应结论并不成立。\n此前，芒克雷斯（Munkres）[1960, 1964a, 1964b] 与赫希（Hirsch）[1963] 已为“从PL结构过渡到光滑结构”的问题建立了类似的障碍理论（另见[赫希-马祖尔（Hirsch-Mazur）, 1974]）。此外，塞尔夫（Cerf）通过复杂的几何论证填补了关键空白，证明了三维球面的保向微分同胚空间是连通的（参见1962/63年嘉当讨论班讲义及[塞尔夫, 1968]）。结合其他已知结果，这导出了如下定理：\n\n\n\n\n\n\nTip定理 2\n\n\n\n所有维数n \\leq 7的PL流形均存在相容的光滑结构；且当n&lt;7时，该光滑结构在微分同胚意义下是唯一的。\n\n\n更多细节参见本文末尾的“补充说明”。\n下一个重大突破是弗里德曼（Freedman）[1982] 对单连通闭4维拓扑流形的分类。他运用高度非可微的方法证明：此类流形由以下两项唯一确定： 1. 对称双线性形式H^2 \\otimes H^2 \\to H^4 \\cong \\mathbb{Z}的同构类（其中H^k=H^k(M^4 ; \\mathbb{Z})）； 2. 柯比-西本曼不变量 o \\in H^4\\left(M^4 ; \\mathbb{Z}/2\\right) \\cong \\mathbb{Z}/2.\n这两项可任意指定，但需满足两个限制条件：双线性形式的行列式必须为\\pm 1；且在“偶情形”（即对所有x \\in H^2，x \\cup x \\equiv 0（模2H^4））下，柯比-西本曼类必须同余于符号差的1/8。例如，4维拓扑流形的庞加莱猜想便是其直接推论：若M^4是同伦球面，则H^2与障碍类均为零，故M^4同胚于标准4维球面。\n一年后，唐纳森（Donaldson）[1983] 运用规范理论方法证明：上述许多拓扑流形并不存在任何光滑结构（因此由定理2可知，它们无法被三角剖分为PL流形）。更具体地，若M^4是光滑、单连通且具有正定双线性形式的4维流形，则该双线性形式必可对角化，因此M^4必同胚于若干个复射影平面的连通和。存在许多行列式为1、偶情形下符号差可被16整除但不可对角化的正定双线性形式（例如参见[米尔诺-胡塞尔莫勒（Milnor-Husemoller）, 1973]）。每一个这样的双线性形式都对应一个不存在光滑结构的拓扑流形M^4，但M^4 \\times \\mathbb{R}却存在唯一的光滑结构（在微分同胚意义下）。\n弗里德曼的拓扑结果与唐纳森的分析结果相结合，迅速产生了令人惊叹的推论。例如，\\mathbb{R}^4上存在不可数多个互不微分同胚的光滑结构（参见[冈普夫（Gompf）, 1993]）。其他维数的情况则更为良好：对于n&gt;4，斯托林斯（Stallings）[1962] 证明拓扑空间\\mathbb{R}^n的PL结构在PL同构意义下是唯一的；结合莫伊泽关于n&lt;4的结果及芒克雷斯-赫希-马祖尔障碍理论，可推出对所有n \\neq 4，\\mathbb{R}^n的光滑结构在微分同胚意义下是唯一的。\n3维流形的完善理论则发展得更为缓慢。首个里程碑是瑟斯顿（Thurston）[1982, 1986] 提出的几何化猜想，该猜想为3维流形理论设定了目标。这一猜想最终由佩雷尔曼（Perelman）[2002, 2003a, 2003b] 利用基于“里奇流”偏微分方程的复杂论证得以证实（参见摩根-田刚（Morgan-Tian）[2007] 及克莱纳-洛特（Kleiner-Lott）[2008] 的阐述）。3维庞加莱猜想作为其特殊情形随之得证。\n\n庞加莱猜想的三种版本\n首先考虑纯拓扑版本：\n\n\n\n\n\n\nTip定理 3（拓扑庞加莱猜想）\n\n\n\n拓扑庞加莱猜想在所有维数下均成立。\n\n\n即每个与n维球面同伦等价的闭拓扑流形，实际上都与n维球面同胚。对于n&gt;4，纽曼（Newman）[1966] 与康奈尔（Connell）[1967] 利用斯托林斯[1960] 的”吞噬法”证明了该结论；对于n=4，其证明当然归功于弗里德曼；对于n=3，佩雷尔曼通过莫伊泽[1952] 的结果将拓扑情形转化为PL情形，再利用芒克雷斯-赫希-马祖尔障碍理论将PL情形转化为光滑情形，从而完成了证明。□\n\n\n\n\n\n\nTip定理 4（PL庞加莱猜想）\n\n\n\n分片线性庞加莱猜想在n \\neq 4的维数下均成立。\n\n\n即每个与n维球面同伦等价的闭PL流形（n \\neq 4），均与n维球面PL同胚。对于n&gt;4，斯梅尔（Smale）[1962] 证明了该结论；对于n=3，其可由佩雷尔曼的工作结合芒克雷斯-赫希-马祖尔障碍理论推出。□\n光滑庞加莱猜想则更为复杂，它在部分维数下成立，在另一些维数下不成立，而在4维下仍完全未知。我们可更精确地表述这一问题：所有闭光滑同伦n维球面（即与拓扑n维球面同伦等价的闭光滑流形）的保向微分同胚类构成一个交换幺半群S_n（运算为连通和）。事实上，除n=4外，该幺半群均为有限阿贝尔群。以下概述主要基于[克尔瓦雷-米尔诺（Kervaire-Milnor）, 1963]，该文献原则上给出了n&gt;4时如何利用球面的稳定同伦群计算这些群²。遗憾的是，该文的许多证明被推迟至未完成的第二部分，但缺失的论证已在其他文献中补足（尤其参见[莱文（Levine）, 1985]）。\n利用佩雷尔曼关于n=3的结果，低维情形下的群S_n可描述如下（表1）。（例如，2 \\cdot 8表示群\\mathbb{Z}/2 \\oplus \\mathbb{Z}/8，1表示平凡群。）\n\n\n\nTable 1: 表1：低维同伦球面群\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nS_n\n1\n1\n1\n?\n1\n1\n28\n2\n2 \\cdot 8\n6\n\n\n\n\n\n\n由此可知，光滑庞加莱猜想在维数1、2、3、5、6、12下成立，而在4维下未知。我曾猜想它在所有更高维数下均不成立，但马霍瓦尔德（Mahowald）指出至少存在另一个例外情形：群S_{61}也是平凡群（参见下文“补充说明”）。\n\n\n\n\n\n\nWarning问题\n\n\n\n对于所有n&gt;6且n \\neq 12, 61，群S_n是否均为非平凡群？\n\n\n（目前无法对大维数n进行精确计算，因为球面的稳定同伦群仅被完全计算至维数64。但现有结果可能已足够对该问题作出明确回答。）\n记球面的稳定同伦群为 \\Pi_n = \\pi_{n+q}(\\mathbb{S}^q) \\quad (q &gt; n+1), 并设J_n \\subset \\Pi_n为稳定怀特海同态J: \\pi_n(SO) \\to \\Pi_n的像（参见[怀特海（Whitehead）, 1942]）。该子群J_n是循环群，其阶数³为： |J_n| = \\begin{cases}\n\\text{分数 } \\dfrac{B_k}{4k} \\text{ 的分母} & n=4k-1, \\\\\n2 & n \\equiv 0,1 \\pmod{8}, \\\\\n1 & n \\equiv 2,4,5,6 \\pmod{8},\n\\end{cases} 其中B_k为伯努利数，例如： B_1=\\frac{1}{6},\\ B_2=\\frac{1}{30},\\ B_3=\\frac{1}{42}, B_4=\\frac{1}{30},\\ B_5=\\frac{5}{66},\\ B_6=\\frac{691}{2730}, 且分数\\frac{B_k}{4k}需化为既约形式（参见[米尔诺-斯塔谢夫（Milnor-Stasheff）, 1974, 附录B]）。\n根据庞特里亚金（Pontrjagin）与托姆（Thom）的理论，稳定同伦群\\Pi_n（即第n个稳定stem）亦可描述为所有配边类构成的群（此处考虑光滑嵌入于高维欧氏空间的流形，配边指法丛的平凡化）。每个同伦球面都是稳定可平行化的，因此均存在这样的配边。若改变配边，则\\Pi_n中对应的类将改变一个J_n中的元素。由此得到正合列： (1)\\ 0 \\to S_n^{bp} \\to S_n \\to \\Pi_n / J_n, 其中S_n^{bp} \\subset S_n表示由”边界为可平行化流形的同伦球面”所代表的子群。该子群是S_n中被理解最为透彻的部分，其部分性质可描述如下：\n\n\n\n\n\n\nTip定理 5\n\n\n\n对于n \\neq 4，群S_n^{bp}是有限循环群，且存在明确的生成元。具体而言：\n\n当n为偶数时，S_n^{bp}为平凡群；\n当n=4k-3时，S_n^{bp}要么为平凡群，要么为2阶循环群；\n当n=4k-1&gt;3时，S_n^{bp}为阶数等于 2^{2k-2}(2^{2k-1}-1) 乘以分数 \\dfrac{4B_k}{k} 的分子的循环群。\n\n\n\n（最后一个数依赖于上述|J_{4k-1}|的计算结果。）在奇数情形下，设n=2q-1，S_{2q-1}^{bp}的明确生成元可通过一个基本构造块（即q维球面的切圆盘丛）结合以下两种图表之一构造：  （图表说明：每个圆圈代表一个2q维构造块——即带边的2q维可平行化流形；每个圆点代表一个配边构造，即将两个此类流形沿边界粘贴，使得它们的中心q维球面横截相交且相交数为+1。最终得到带角的光滑可平行化流形，将角光滑化后可得到带光滑边界的光滑流形X^{2q}。）\n当q为奇数时使用左图，当q为偶数时使用右图。在两种情形下，若q \\neq 2，则所得的光滑边界\\partial X^{2q}是一个同伦球面，其代表S_{2q-1}^{bp}的所需生成元（q=2为例外情形，因为\\partial X^4仅具有3维球面的同调群；在S_{2q-1}^{bp}为平凡群的所有其他情形下，边界均与标准(2q-1)维球面微分同胚）。\n正合列(1)可补充如下信息：\n\n\n\n\n\n\nTip定理 6\n\n\n\n当n \\not\\equiv 2 \\pmod{4}时，\\Pi_n中的每个元素均可由一个拓扑球面表示。\n\n\n因此正合列(1)可表示为更精确的形式： (2)\\ 0 \\to S_n^{bp} \\to S_n \\to \\Pi_n / J_n \\to 0.\n然而，当n=4k-2时，其拓展为正合列： (3)\\ 0 = S_{4k-2}^{bp} \\to S_{4k-2} \\to \\Pi_{4k-2} / J_{4k-2}.\n布伦菲尔（Brumfiel）[1968, 1969, 1970] 改进了这一结果，证明正合列(2)是分裂正合的，除非n具有形式2^k - 3（事实上，仅当n=2^k - 3 \\geq 125时，其可能不分裂，参见下文讨论）。\n(3)中的克尔瓦雷同态\\Phi_k由[克尔瓦雷, 1960] 引入（同伦类\\theta的像\\Phi_k(\\theta) \\in \\mathbb{Z}/2称为克尔瓦雷不变量）。因此存在两种情形： - 若\\Phi_k=0，则S_{4k-3}^{bp} \\cong \\mathbb{Z}/2，其生成元为上述的\\partial X^{4k-2}，且\\Pi_{4k-2}中的每个元素均可由一个同伦球面表示； - 若\\Phi_k \\neq 0，则S_{4k-3}^{bp}=0，这意味着X_{4k-2}的边界与标准(4k-3)维球面微分同胚。将一个(4k-2)维圆盘粘贴至该边界，可得到一个配边类，其不与任何同伦球面的配边类等价。此时\\Phi_k的核构成\\Pi_{4k-2}/J_{4k-2}的一个指数为2的子群，该子群由可由同伦球面表示的配边类组成。\n克尔瓦雷同态\\Phi_k何时为零，是理解同伦球面群的最后一个重大未决问题。近期，希尔（Hill）、霍普金斯（Hopkins）与雷文内尔（Ravenel）解决了除一个情形外的所有情况：\n\n\n\n\n\n\nTip定理 7\n\n\n\n克尔瓦雷同态\\Phi_k在k=1,2,4,8,16时非零，在k=32时可能非零，在所有其他情形下均为零。\n\n\n事实上，布劳德（Browder）[1969] 证明\\Phi_k仅可能在n为2的幂时非零；巴拉特（Barratt）、琼斯（Jones）与马霍瓦尔德[1984] 证实了\\Phi_k在k=1,2,4,8,16时确实非零；最终，希尔、霍普金斯与雷文内尔[2010] 证明当k&gt;32时\\Phi_k=0（其核心工具是一个精心构造的周期为256的广义上同调理论）。\n因此，仅k=32（对应4k-2=126）的情形仍未解决。特别地，对于n \\neq 4,125,126，若\\Pi_n的阶数已知，则可精确计算奇异n维球面的个数|S_n|。事实上，若排除4、126及形式为2^k - 3 \\geq 125的数，则当\\Pi_n的结构已知时，群S_n可被完全描述⁴。"
-  },
-  {
-    "objectID": "translations/milnor.html#补充说明",
-    "href": "translations/milnor.html#补充说明",
-    "title": "四十六年后的微分拓扑学",
-    "section": "补充说明",
-    "text": "补充说明\n以下简要概述\\Pi_n的现有研究成果。由于直和因子J_n已被精确确定，我们只需关注商群\\Pi_n / J_n。其中最困难的部分是2局部分支，科赫曼（Kochman）[1990] 计算了n \\leq 64的所有情形，科赫曼与马霍瓦尔德[1995] 对其进行了修正；雷文内尔[1986] 计算了更大范围内的3局部与5局部分支；对于p \\geq 7，当n&lt;82时，p局部分支均为平凡群（事实上，对于任意素数p，当n&lt;2p(p-1)-2时，\\Pi_n / J_n的p局部分支为平凡群；当n=2p(p-1)-2时，其为p阶循环群）。\n因此，稳定同伦群\\Pi_n在n \\leq 64时已被精确确定，进而群S_n在n \\leq 64且n \\neq 4时也被精确确定。表2中，b_k表示子群S_{4k-1}^{bp} \\subset S_{4k-1}的阶数，诸如2^3 \\cdot 4的表示意为三个\\mathbb{Z}/2与一个\\mathbb{Z}/4的直和，粗点表示平凡群。所有对应子群S_n^{bp}的项均带有下划线（注意S_{4k-3}^{bp}是2阶循环群，在第1列或第5列中标注为2，除非k=1,2,4,8,16）。在该范围内，群S_n仅在以下情形下为平凡群： n=1,2,3,5,6,12,61 \\text{ （及可能的 } 4 \\text{）}\n表2：n \\leq 64 时的同伦球面群 S_n\n\n\n\n\n\n\n\n\n\n\nn\n4k\n4k+1\n4k+2\n4k+3\n\n\n\n\n0–3\n•\n•\n•\n•\n\n\n4–7\n?\n•\n•\n\\underline{28}\n\n\n8–11\n\\underline{2}\n2^3\n6\n\\underline{992}\n\n\n12–15\n•\n3\n\\underline{2}\n\\underline{8128}\n\n\n16–19\n\\underline{2}\n2^4\n2 \\cdot 4\n\\underline{2^5 \\cdot b_5}\n\n\n20–23\n24\n\\underline{2}\n2^2\n\\underline{2^2 \\cdot b_6}\n\n\n24–27\n\\underline{2}\n2^3\n2\n\\underline{2^4 \\cdot b_7}\n\n\n28–31\n\\underline{2}\n2^4\n6\n\\underline{2^6 \\cdot b_8}\n\n\n32–35\n\\underline{2}\n2^6 \\cdot 4\n2 \\cdot 12\n\\underline{2^3 \\cdot b_9}\n\n\n36–39\n2^3 \\cdot 3\n\\underline{2}\n2^3 \\cdot 9\n\\underline{2^4 \\cdot b_{10}}\n\n\n40–43\n\\underline{2}\n2^7 \\cdot 4\n2^2\n\\underline{2^5 \\cdot b_{11}}\n\n\n44–47\n2^2 \\cdot 3\n\\underline{2}\n2^4\n\\underline{2^7 \\cdot b_{12}}\n\n\n48–51\n\\underline{2}\n2^4 \\cdot 8\n2 \\cdot 6\n\\underline{2^2 \\cdot b_{13}}\n\n\n52–55\n2^5 \\cdot 3\n\\underline{2}\n2^5\n\\underline{2^4 \\cdot b_{14}}\n\n\n56–59\n\\underline{2}\n2^8 \\cdot 4\n2^2 \\cdot 4\n\\underline{2^4 \\cdot b_{15}}\n\n\n60–63\n2 \\cdot 24\n•\n2^6\n\\underline{2^8 \\cdot b_{16}}\n\n\n\nb_k的取值并不难计算，但增长极为迅速（表3给出了k&gt;5时的近似值）。注意，当k的约数较多时，b_k的值往往更大。\n表3：b_k 的近似值（k &gt; 5）\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nk\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n\n\n\n\nb_k \\approx\n10^4\n10^5\n10^7\n10^7\n10^9\n10^{10}\n10^{13}\n10^{12}\n10^{14}\n10^{16}\n10^{19}\n\n\n\n最后，补充一个前文推迟的论证：\n\n\n\n\n\n\nNote定理 2 的证明概要\n\n\n\n\n\n不难验证，单位n维球面的保向微分同胚的光滑同痕类构成的群\\pi_0(Diff^+(\\mathbb{S}^n))是阿贝尔群。定义\\Gamma_n为\\pi_0(Diff^+(\\mathbb{S}^{n-1}))关于”可延拓至闭单位n维圆盘的同痕类”所构成子群的商群。存在自然嵌入\\Gamma_n \\subset S_n，其将每个(f) \\in \\Gamma_n映射至”通过f粘贴两个n维圆盘边界得到的扭曲n维球面”。由[斯梅尔, 1962] 可知，对于n \\geq 5，\\Gamma_n = S_n；由[斯梅尔, 1959] 可知，\\Gamma_3=0。由于易证\\Gamma_1=0且\\Gamma_2=0，故对所有n \\neq 4，有： \\Gamma_n = S_n.\n另一方面，塞尔夫证明⁵\\pi_0(Diff^+(\\mathbb{S}^3))=0，因此\\Gamma_4=0（尽管S_4完全未知）。结合上述关于S_n的结果，可推出对于n&lt;7，\\Gamma_n=0，且对所有n，\\Gamma_n是有限阿贝尔群。\n给定PL流形M^n，其光滑结构存在性的芒克雷斯-赫希-马祖尔障碍类位于群H^k(M^n ; \\Gamma_{k-1})中，而光滑结构唯一性的障碍类位于H^k(M^n ; \\Gamma_k)中（与前文讨论的大多数构造不同，这一结论在4维下同样成立）。显然，定理2由此得证。□\n\n\n\n更多历史背景讨论参见米尔诺[1999, 2007, 2009]。\n\n\n\n\n\n\nNote参考文献\n\n\n\n\n\n\nAdams, J. F. (1963, 1965). On the groups J(X) I, II. Topology 2, 3.\nAntonelli-Burghelea-Kahn (1972). The non-finite homotopy type of some diffeomorphism groups. Topology 11.\nBarratt-Jones-Mahowald (1984). Relations amongst Toda brackets and the Kervaire invariant in dimension 62. J. London Math. Soc. 30.\nBecker-Gottlieb (1975). The transfer map and fiber bundles. Topology 14.\nBrowder, W. (1969). The Kervaire invariant of framed manifolds and its generalization. Ann. Math. 90.\nBrumfiel, G. (1968, 1969, 1970). On the homotopy groups of BPL and PL/O. Ann. Math. 88; Topology 8; Michigan Math. J. 17.\nCerf, J. (1968). Sur les difféomorphismes de la sphère de dimension trois (\\Gamma_4=0). Lecture Notes in Math. 53, Springer.\nConnell, E. H. (1967). A topological h-cobordism theorem for n \\geq 5. Illinois J. Math. 11.\nDonaldson, S. K. (1983). An application of gauge theory to four-dimensional topology. J. Diff. Geom. 18.\nFreedman, M. H. (1982). The topology of four-dimensional manifolds. J. Diff. Geom. 17.\nGompf, R. (1993). An exotic menagerie. J. Diff. Geom. 37.\nHatcher, A. E. (1983). A proof of the Smale conjecture: Diff(\\mathbb{S}^3) \\simeq O(4). Ann. Math. 117.\nHill-Hopkins-Ravenel (2010). On the non-existence of elements of Kervaire invariant one. arXiv 0908.3724v2.\nHirsch, M. W. (1963). Obstruction theories for smoothing manifolds and maps. Bull. AMS 69.\nHirsch-Mazur (1974). Smoothings of piecewise linear manifolds. Ann. Math. Studies 80, Princeton.\nKervaire, M. A. (1960). A manifold which does not admit any differentiable structure. Comment. Math. Helv. 34.\nKervaire-Milnor (1963). Groups of homotopy spheres I. Ann. Math. 77.\nKirby-Siebenmann (1969, 1977). On the triangulation of manifolds and the Hauptvermutung. Bull. AMS 75; Ann. Math. Studies 88.\nKleiner-Lott (2008). Notes on Perelman’s papers. Geom. Topol. 12.\nKochman, S. O. (1990). Stable homotopy groups of spheres: A computer-assisted approach. Lecture Notes in Math. 1423.\nKochman-Mahowald (1995). On the computation of stable stems. Contemp. Math. 181.\nLevine, J. P. (1985). Lectures on groups of homotopy spheres. Lecture Notes in Math. 1126.\nMahowald, M. (1970). The order of the image of the J-homomorphism. Proc. Adv. Study Inst. Alg. Top. (Aarhus).\nMilnor, J. (1999, 2007, 2009). Growing up in the old Fine Hall; Collected Papers III, IV. AMS.\nMilnor-Husemoller (1973). Symmetric bilinear forms. Ergebnisse 73, Springer.\nMilnor-Stasheff (1974). Characteristic classes. Ann. Math. Studies 76, Princeton.\nMoise, E. E. (1952). Affine structures in 3-manifolds V. Ann. Math. 56.\nMorgan-Tian (2007). Ricci flow and the Poincaré conjecture. Clay Math. Monographs 3.\nMunkres, J. (1960, 1964a, 1964b). Obstructions to smoothing. Ann. Math. 72; Illinois J. Math. 8; Proc. AMS 15.\nNewman, M. H. A. (1966). The engulfing theorem for topological manifolds. Ann. Math. 84.\nNovikov, S. P. (1963). Homotopy properties of the group of diffeomorphisms of the sphere. Dokl. Akad. Nauk SSSR 148.\nPerelman, G. (2002, 2003). The entropy formula for the Ricci flow; Ricci flow with surgery; Finite extinction time. arXiv: math.DG/0211159, 0303109, 0307245.\nQuillen, D. (1971). The Adams conjecture. Topology 10.\nRavenel, D. C. (1986). Complex cobordism and stable homotopy groups of spheres. Academic Press.\nRanicki, A. (ed.) (1996). The Hauptvermutung book. Kluwer.\nSmale, S. (1959, 1962). Diffeomorphisms of the 2-sphere; On the structure of manifolds. Proc. AMS 10; Amer. J. Math. 84.\nStallings, J. (1960, 1962). Polyhedral homotopy spheres; The piecewise-linear structure of Euclidean space. Bull. AMS 66; Proc. Cambridge Philos. Soc. 58.\nSullivan, D. (1974). Genetics of homotopy theory and the Adams conjecture. Ann. Math. 100.\nThurston, W. (1982, 1986). Hyperbolic geometry and 3-manifolds; Hyperbolic structures on 3-manifolds I. LMS Lecture Notes 48; Ann. Math. 124.\nWhitehead, G. W. (1942). On the homotopy groups of spheres and rotation groups. Ann. Math. 43.\n\n\n\n\n\n\n注释\n¹ 该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。感谢杜萨·麦克杜夫（Dusa McDuff）发掘原始录音带（关于怀尔德（Wilder）的引言，可参见[米尔诺, 1999]）。 ² 克尔瓦雷-米尔诺的论文实际研究的是“h配边意义下的同伦球面群\\Theta_n”。仅当n=4时，\\Theta_n与S_n存在差异：由斯梅尔[1962] 的h配边定理可知，当n \\neq 4时，S_n \\cong \\Theta_n；而在4维情形下，\\Theta_4是平凡群，S_4的结构则是尚未解决的重大问题。 ³ |J_{4k-1}|的这一计算是亚当斯猜想[亚当斯, 1963, 1965] 的特例。马霍瓦尔德[1970] 完成了该特例的证明，奎伦[1971]、沙利文[1974] 及贝克尔-戈特利布[1975] 则证明了完整的亚当斯猜想。亚当斯还证明了J_n始终是\\Pi_n的直和因子。 ⁴ 还需用到“\\Phi_k的核始终是\\Pi_{4k-2}的直和因子”这一事实（至少当4k-2 \\neq 126时成立）。马霍瓦尔德告知我，62维情形下该事实成立，其余四个情形则较为直接。 ⁵ 哈彻[1983] 后续证明了更强的结论：嵌入SO(4) \\to Diff^+(\\mathbb{S}^3)是同伦等价。另一方面，对于n \\geq 7，安东内利、布尔盖莱亚与卡恩[1972] 证明Diff^+(\\mathbb{S}^n)不具有任何有限复形的同伦型（早期结果参见[诺维科夫, 1963]）。对于n=6，由于\\Gamma_7 \\neq 0，Diff(\\mathbb{S}^6)是不连通的；但我尚未知晓n=4,5时的相关结果。\n\n\n原文发表于《美国数学会通报》（Notices of the AMS）第58卷第6期，2011年6-7月，第804-809页"
-  },
-  {
-    "objectID": "translations/milnor.html#footnotes",
-    "href": "translations/milnor.html#footnotes",
-    "title": "四十六年后的微分拓扑学",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\n该讲座近期已由数学科学研究所（MSRI）数字化，即将公开。↩︎"
-  },
-  {
-    "objectID": "pages/about.html",
-    "href": "pages/about.html",
-    "title": "关于本站",
-    "section": "",
-    "text": "这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 vibe mathing 理念\n\n\n\n我的学习方法是 vibe mathing——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。\n\nvibe: 直觉、图像、“感觉应该是这样”\nrigor: 证明、定义、“这就是为什么它成立”\n\n两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。\n笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。"
-  },
-  {
-    "objectID": "pages/about.html#关于本站",
-    "href": "pages/about.html#关于本站",
-    "title": "关于本站",
-    "section": "",
-    "text": "这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。\n\n\n\n\n\n\nNote🌱 vibe mathing 理念\n\n\n\n我的学习方法是 vibe mathing——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。\n\nvibe: 直觉、图像、“感觉应该是这样”\nrigor: 证明、定义、“这就是为什么它成立”\n\n两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。\n笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。"
-  },
-  {
-    "objectID": "pages/about.html#the-stack",
-    "href": "pages/about.html#the-stack",
-    "title": "关于本站",
-    "section": "the stack",
-    "text": "the stack\n本站使用以下技术构建：\n\n\n\n工具\n用途\n\n\n\n\nQuarto\n文档生成系统\n\n\nLaTeX / KaTeX\n数学公式渲染\n\n\nGitHub Pages\n静态网站托管\n\n\nSCSS\n自定义样式"
-  },
-  {
-    "objectID": "pages/about.html#联系方式",
-    "href": "pages/about.html#联系方式",
-    "title": "关于本站",
-    "section": "联系方式",
-    "text": "联系方式\n欢迎交流拓扑、分享想法:\n\n📧 Email: your_email@edu.com\n🐙 GitHub: @cyw6130"
-  },
-  {
-    "objectID": "pages/about.html#致谢",
-    "href": "pages/about.html#致谢",
-    "title": "关于本站",
-    "section": "致谢",
-    "text": "致谢\n感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。\n感谢开源社区让知识分享变得如此简单。\n\n\n\n\n\n\n\n许可协议: 除特别注明外,本站内容采用 CC BY-NC-SA 4.0 许可。"
-  },
-  {
-    "objectID": "pages/research.html",
-    "href": "pages/research.html",
-    "title": "Research",
-    "section": "",
-    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
-  },
-  {
-    "objectID": "pages/research.html#overview",
-    "href": "pages/research.html#overview",
-    "title": "Research",
-    "section": "",
-    "text": "My research focuses on the beautiful interplay between algebra and topology, particularly in dimensions 3 and 4. I am fascinated by how abstract algebraic structures — tensor categories, quantum groups, and representation theory — give rise to powerful invariants that can distinguish between different topological spaces.\n\n\n\n\n\n\nCurrent Focus: Non-semisimple TQFTs and their applications to 3-manifold invariants."
-  },
-  {
-    "objectID": "pages/research.html#research-areas",
-    "href": "pages/research.html#research-areas",
-    "title": "Research",
-    "section": "Research Areas",
-    "text": "Research Areas\n\nQuantum Topology\nQuantum topology studies topological invariants arising from quantum groups and related algebraic structures. These invariants often have deep connections to:\n\nMathematical Physics: Chern-Simons theory, conformal field theory\nRepresentation Theory: Quantum groups at roots of unity\nCategory Theory: Tensor categories, braided monoidal categories\n\n\n\n\nTuraev-Viro Invariants\nThe Turaev-Viro construction produces 3-manifold invariants from spherical fusion categories. Given a triangulation \\(\\mathcal{T}\\) of a 3-manifold \\(M\\):\n\\[\nTV(M) = \\sum_{\\text{colorings}} \\prod_{\\text{tetrahedra}} |6j|^2\n\\]\nThese invariants are:\n\nTopologically invariant (independent of triangulation)\nComputable (via state-sum formulas)\nRelated to Reshetikhin-Turaev invariants via the Turaev-Walker theorem\n\n\n\n\nNon-Semisimple Extensions\nWhen working with non-semisimple categories, new phenomena emerge:\n\nModified Traces: The usual categorical trace fails; we need renormalized traces\nLogarithmic CFT: Physical interpretation involves non-unitary theories\nNew Invariants: Potentially stronger invariants than the semisimple case\n\nThis is an active area with many open questions!\n\n\n\n\n\n\nKnot Theory & Categorification\nKhovanov homology categorifies the Jones polynomial \\(V_L(q)\\) of a link \\(L\\):\n\\[\nV_L(q) = \\sum_{i,j} (-1)^i q^j \\dim \\text{Kh}^{i,j}(L)\n\\]\nThe categorified invariant \\(\\text{Kh}(L)\\) is a bigraded chain complex that:\n\nDetects the unknot (Kronheimer-Mrowka, 2011)\nProvides bounds on slice genus\nHas connections to symplectic geometry and gauge theory\n\n\n\n\n\n\n\nNote\n\n\n\nOpen Problem: Does Khovanov homology detect the trefoil knot?\n\n\n\n\n\nGeometric Topology\n\nHeegaard Splittings\nEvery closed, orientable 3-manifold \\(M\\) admits a Heegaard splitting: \\[\nM = H_g \\cup_\\phi H_g\n\\] where \\(H_g\\) is a genus-\\(g\\) handlebody and \\(\\phi\\) is a gluing homeomorphism of the boundary.\nKey Questions:\n\nHow does the Heegaard genus relate to other complexity measures?\nWhat is the relationship between Heegaard diagrams and quantum invariants?\n\n\n\nTriangulations & Pachner Moves\nThe Pachner moves provide a finite set of local modifications that connect any two triangulations of a manifold:\n\n\n\nDimension\nMoves\n\n\n\n\n2D\n2-2 flip\n\n\n3D\n1-4, 2-3, and their inverses\n\n\n4D\n1-5, 2-4, 3-3, and their inverses\n\n\n\nThese moves are fundamental for:\n\nProving topological invariance of state-sum models\nComputational topology algorithms\nUnderstanding the geometry of the space of triangulations"
-  },
-  {
-    "objectID": "pages/research.html#publications-preprints",
-    "href": "pages/research.html#publications-preprints",
-    "title": "Research",
-    "section": "Publications & Preprints",
-    "text": "Publications & Preprints\n\nIn Preparation\n\nOn the Kuperberg Invariant for Hopf Superalgebras\nChen (Expected 2026)\nWe extend Kuperberg’s G-invariant to the setting of Hopf superalgebras, obtaining new invariants of 3-manifolds with additional structure.\n\n\n\nExpository\n\nAn Introduction to Turaev-Viro Theory\nNotes for the Graduate Topology Seminar (2025)\nA gentle introduction to the Turaev-Viro construction, suitable for graduate students with background in algebraic topology.\n📄 PDF"
-  },
-  {
-    "objectID": "pages/research.html#talks-presentations",
-    "href": "pages/research.html#talks-presentations",
-    "title": "Research",
-    "section": "Talks & Presentations",
-    "text": "Talks & Presentations\n\n\n\n\n\n\n\n\nDate\nTitle\nVenue\n\n\n\n\nDec 2025\nTuraev-Viro Invariants: An Introduction\nTopology Seminar\n\n\nOct 2025\nWhat is a TQFT?\nGraduate Student Colloquium"
-  },
-  {
-    "objectID": "pages/research.html#collaborators-mentors",
-    "href": "pages/research.html#collaborators-mentors",
-    "title": "Research",
-    "section": "Collaborators & Mentors",
-    "text": "Collaborators & Mentors\nI am fortunate to learn from and work with wonderful mathematicians:\n\nProf. X (Advisor) — Non-semisimple TQFTs\nDr. Y — Khovanov homology\n\n\n\n\n\n\n\nAlways open to discussions and collaborations! Feel free to reach out via email."
-  },
-  {
-    "objectID": "notes/turaev-viro.html",
-    "href": "notes/turaev-viro.html",
-    "title": "Turaev-Viro Invariants",
-    "section": "",
-    "text": "The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the Witten-Reshetikhin-Turaev (WRT) invariant, it does not require a framing of the manifold.\n\n\n\nA manifold is a topological space…\n\n\n\n\n\n\n\nNoteDefinition 1.1 (Manifold)\n\n\n\nA topological space M is called a locally Euclidean of dimension n if every point has a neighborhood homeomorphic to an open subset of \\mathbb{R}^n.\n\n\n\n\n\n\n\n\nTipTheorem (Invariance of Domain)\n\n\n\nIf U \\subset \\mathbb{R}^n is open and f: U \\to \\mathbb{R}^n is continuous and injective, then f(U) is open.\n\n\n\n\n\n\n\n\nWarningCaution\n\n\n\nThis invariant only works for closed 3-manifolds.\n\n\nLet \\mathcal{C} be a spherical fusion category. For a triangulation \\mathcal{T} of a closed 3-manifold M, the invariant is defined as:\n\nZ_{TV}(M, \\mathcal{C}) = \\mathcal{D}^{-2|V|} \\sum_{\\varphi} \\prod_{t \\in T} |t|_{\\varphi}\n\n\n\n\n\n\n\nNoteKey Definition: Quantum Dimension\n\n\n\nThe scalar \\mathcal{D} is the total quantum dimension of the category, defined by \\mathcal{D}^2 = \\sum_{i \\in Irr(\\mathcal{C})} d_i^2.",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Quantum Invariants",
-      "Turaev-Viro Invariants"
-    ]
-  },
-  {
-    "objectID": "notes/turaev-viro.html#introduction",
-    "href": "notes/turaev-viro.html#introduction",
-    "title": "Turaev-Viro Invariants",
-    "section": "",
-    "text": "The Turaev-Viro invariant is a state-sum invariant for 3-manifolds. Unlike the Witten-Reshetikhin-Turaev (WRT) invariant, it does not require a framing of the manifold.\n\n\n\nA manifold is a topological space…\n\n\n\n\n\n\n\nNoteDefinition 1.1 (Manifold)\n\n\n\nA topological space M is called a locally Euclidean of dimension n if every point has a neighborhood homeomorphic to an open subset of \\mathbb{R}^n.\n\n\n\n\n\n\n\n\nTipTheorem (Invariance of Domain)\n\n\n\nIf U \\subset \\mathbb{R}^n is open and f: U \\to \\mathbb{R}^n is continuous and injective, then f(U) is open.\n\n\n\n\n\n\n\n\nWarningCaution\n\n\n\nThis invariant only works for closed 3-manifolds.\n\n\nLet \\mathcal{C} be a spherical fusion category. For a triangulation \\mathcal{T} of a closed 3-manifold M, the invariant is defined as:\n\nZ_{TV}(M, \\mathcal{C}) = \\mathcal{D}^{-2|V|} \\sum_{\\varphi} \\prod_{t \\in T} |t|_{\\varphi}\n\n\n\n\n\n\n\nNoteKey Definition: Quantum Dimension\n\n\n\nThe scalar \\mathcal{D} is the total quantum dimension of the category, defined by \\mathcal{D}^2 = \\sum_{i \\in Irr(\\mathcal{C})} d_i^2.",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Quantum Invariants",
-      "Turaev-Viro Invariants"
-    ]
-  },
-  {
-    "objectID": "notes/turaev-viro.html#relation-to-wrt-invariants",
-    "href": "notes/turaev-viro.html#relation-to-wrt-invariants",
-    "title": "Turaev-Viro Invariants",
-    "section": "Relation to WRT Invariants",
-    "text": "Relation to WRT Invariants\nIt is a well-known theorem that the Turaev-Viro invariant is essentially the square of the modulus of the WRT invariant.\n\n\n\n\n\n\nTipTheorem (Turaev, 1994)\n\n\n\nFor a modular tensor category \\mathcal{C}, we have: Z_{TV}(M, \\mathcal{C}) = |Z_{WRT}(M, \\mathcal{C})|^2",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Quantum Invariants",
-      "Turaev-Viro Invariants"
-    ]
-  },
-  {
-    "objectID": "notes/turaev-viro.html#connection-to-kuperberg-invariant",
-    "href": "notes/turaev-viro.html#connection-to-kuperberg-invariant",
-    "title": "Turaev-Viro Invariants",
-    "section": "Connection to Kuperberg Invariant",
-    "text": "Connection to Kuperberg Invariant\nAs discussed in my Kuperberg Notes, when the category is non-semisimple, the standard definition fails because \\mathcal{D} might be zero. Kuperberg’s construction solves this for involutory Hopf algebras.",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Quantum Invariants",
-      "Turaev-Viro Invariants"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html",
-    "href": "notes/h_cobordism_4.html",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "",
-    "text": "Note\n\n\n\n参考书目：Introductory Lectures on Manifold Topology Signposts (Thomas Farrell & Yang Su) — 一本非常舒适的入门书",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html#主要结果",
-    "href": "notes/h_cobordism_4.html#主要结果",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "1.1 主要结果",
-    "text": "1.1 主要结果\n\n1.1.1 Smale 定理 (GPC: 拓扑广义庞加莱猜想)\n\nTheorem 1 (广义庞加莱猜想) 设 \\(M^m\\) 是闭光滑流形，维数 \\(m \\geq 5\\)。若 \\(M\\) 是同伦球面，则 \\(M\\) 同胚于球面。\n\n主要工具 (\\(m \\geq 5\\))：h-Cobordism 定理\n\nTheorem 2 (h-Cobordism 定理) 设 \\(W^m\\) 是光滑的 h-cobordism，若 \\(W\\) 单连通且维数 \\(m \\geq 6\\)，则配边 \\(W\\) 微分同胚于 \\(\\partial^- W \\times [0,1]\\)（相对于边界 \\(\\partial^- W\\)）。\n\n\n\n1.1.2 怪球与 h-Cobordism 类\n利用 h-cobordism 定理，对于单连通光滑流形（特别是光滑同伦球面），当 \\(n \\geq 5\\) 时有双射：\n\\[\\frac{\\{S^n \\text{ 上的光滑结构}\\}}{\\text{微分同胚}} \\longleftrightarrow \\frac{\\{n \\text{ 维同伦球面}\\}}{\\{\\text{h-cobordism}\\}}\\]\n\n左边：球面上所有光滑结构，即所有怪球构成的集合\n右边：所有同伦球面的配边类，记为 \\(\\Theta^n\\)\n\n\\(\\Theta^n\\) 的群结构：\n\n\n\n\n\n\n\n运算\n定义\n\n\n\n\n乘法\n连通和\n\n\n单位元\n\\(S^n\\) 上的标准光滑结构\n\n\n逆元\n反转定向，记为 \\(-\\Sigma\\)（在柱 \\(\\Sigma \\times I\\) 的内部挖去 \\(D^{n+1}\\) 即得所需配边）\n\n\n\n\\(\\Theta^n\\) 的阶数：\n\n\n\n\n\n\nFigure 1: 怪异球面个数表\n\n\n\n这个表格给出了各维数上怪异球面的个数（\\(n \\neq 4\\)），与伯努利数（数论中的量）密切相关。\n\n\n\n\n\n\nWarning\n\n\n\n由于 h-cobordism 定理在 4 维失效（h-cobordism 类中的元素未必微分同胚），\\(\\Theta^4\\) 的阶数为 1 不能推出 4 维光滑庞加莱猜想。",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html#gpc-的证明",
-    "href": "notes/h_cobordism_4.html#gpc-的证明",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "1.2 GPC 的证明",
-    "text": "1.2 GPC 的证明\n本节假设 h-cobordism 定理成立，在此基础上给出 GPC 的证明。111\n\n1.2.1 h-Cobordism 的定义\n\nDefinition 1 (Cobordism) 一个 \\((m+1)\\) 维 cobordism 是流形 \\(W^{m+1}\\)，其边界可写成两部分的不交并： \\[\\partial W = \\partial^- W \\sqcup \\partial^+ W\\] 此时称 \\(W\\) 是从 \\(\\partial^- W\\) 到 \\(\\partial^+ W\\) 的配边。\n\n\n\n\n\n\n\nFigure 2: 配边但不是 h-配边的例子\n\n\n\n\nDefinition 2 (h-Cobordism) \\((m+1)\\) 维的 h-cobordism 是配边 \\(W^{m+1}\\)，满足含入映射 \\[\\partial^- W \\hookrightarrow W, \\quad \\partial^+ W \\hookrightarrow W\\] 都是同伦等价。\n\n\n\n\n\n\n\nFigure 3: 平凡配边\n\n\n\n\n\n1.2.2 h-Cobordism 定理\n\nTheorem 3 (h-Cobordism 定理（完整表述）) 设 \\(W^{m+1}\\) 是光滑的 h-cobordism。若 \\(W\\) 单连通且 \\(m \\geq 5\\)，则 \\[W \\cong_{\\text{diff}} \\partial^- W \\times [0,1] \\quad (\\text{rel } \\partial^- W)\\]\n\n\n\n1.2.3 GPC 的证明 (\\(n \\geq 6\\))\n\nProof. 设 \\(M^m\\) 是光滑流形，维数 \\(\\geq 6\\) 且是同伦球面。\nStep 1. 在 \\(M^m\\) 上挖去两个隔开的 disk，得到配边 \\(W^m\\)。\n\n\n\n\n\n\nFigure 4: 挖去两个 disk\n\n\n\nStep 2. 由 Lemma 1，\\(W\\) 单连通且是光滑 h-cobordism。\nStep 3. 应用 h-cobordism 定理： \\[W \\cong_{\\text{diff}} \\partial^- W \\times [0,1] = S^{m-1} \\times [0,1] \\quad (\\text{rel } \\partial^- W = S^{m-1})\\]\nStep 4. 重新粘回挖去的 disk：\n\n利用相对微分同胚，将底部 disk 通过边界球面上的 identity 映射粘回，得到 \\(\\mathbb{D}^m\\)\n将顶部 disk 粘回（边界上的粘接映射可以是任意的）：\n\n这会影响光滑结构\n但不影响拓扑结构——仍同胚于 \\(S^m\\)\n\n\n\n\n\n\n\n\nFigure 5: 同胚的构造\n\n\n\n结论：\\(M \\approx S^m\\)。\n\n\nLemma 1 (同伦球面上挖去两个 disk 得到 h-cobordism (\\(n \\geq 6\\))) 设置：从同伦球面 \\(M\\) 出发，挖去两个 disk \\(D^+, D^-\\)，得到配边 \\(W\\)。\n\n\n\n\n\n\nFigure 6: 挖去 disk 的示意图\n\n\n\n\nProof. (I) 证明 \\(W\\) 单连通\n需要从「\\(M\\) 单连通」推出「\\(W\\) 单连通」。\n\n\\(M\\) 单连通 \\(\\Rightarrow\\) \\(W \\cup D^+\\) 单连通：\n对 triple \\((M, W \\cup D^+, D^-)\\) 使用 Van Kampen 定理\n（注意 \\(D^-\\) 单连通，\\(D^- \\cap (W \\cup D^+) = S^{m-1}\\) 单连通）\n\\(W \\cup D^+\\) 单连通 \\(\\Rightarrow\\) \\(W\\) 单连通：\n对 triple \\((W \\cup D^+, W, D^+)\\) 使用 Van Kampen 定理\n\n(II) 证明 \\(\\partial^+ W \\hookrightarrow W\\) 是同伦等价\n\n诱导同调群同构：\n对 triple \\((W \\cup D^+, W, D^+)\\) 使用 Mayer-Vietoris 序列（注意 \\(W \\cap D^+ = \\partial^+ W\\)）\n\n\n\n\n\n\nTip\n\n\n\n这里需要 \\(W \\cup D^+\\) 的同调群为 0，由 triple \\((M, W \\cup D^+, D^-)\\) 的 Mayer-Vietoris 序列得到。\n\n\n使用 Homology Whitehead 定理：\n\n\n\n\n\n\nFigure 7: Homology Whitehead 定理\n\n\n\n单连通 + 同调等价 \\(\\Rightarrow\\) 同伦等价\n结论：\\(\\partial^+ W \\hookrightarrow W\\) 是同伦等价\n\n(III) \\(\\partial^- W \\hookrightarrow W\\) 是同伦等价的证明类似。\n\n\n\n\n1.2.4 附：Whitehead 定理\n问题：如何证明两个拓扑空间同伦等价？\n\nDefinition 3 (弱同伦等价) 称空间 \\(X, Y\\) 弱同伦等价，如果存在映射 \\(f: X \\to Y\\)，使得 \\[f_*: \\pi_i(X) \\xrightarrow{\\cong} \\pi_i(Y) \\quad \\forall i\\]\n\n\nTheorem 4 (Whitehead 定理) 任意两个 CW 复形 \\(X, Y\\)，若弱同伦等价，则同伦等价。\n\n\n\n\n\n\n\nImportant\n\n\n\n弱同伦等价不仅要求同伦群同构，还要求存在映射 \\(f\\) 实现之。存在同伦群同构但不同伦等价的例子。\n\n\n\nTheorem 5 (Homology Whitehead 定理) 对于单连通空间，同调等价（映射诱导同调群同构）即可得到同伦等价。",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html#预备知识",
-    "href": "notes/h_cobordism_4.html#预备知识",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "2.1 预备知识",
-    "text": "2.1 预备知识\n\n2.1.1 Isotopy（同痕）\n\n\n\n\n\n\nFigure 8: Isotopy 定义\n\n\n\n\n我们讨论的同痕总是光滑同痕\n连续同痕不能区分纽结：\n\n\n\n\n\n\n\nFigure 9: 连续同痕不能区分纽结",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html#handle-分解",
-    "href": "notes/h_cobordism_4.html#handle-分解",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "2.2 Handle 分解",
-    "text": "2.2 Handle 分解\n（粘接映射的内容略）",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "notes/h_cobordism_4.html#handle-运算法则",
-    "href": "notes/h_cobordism_4.html#handle-运算法则",
-    "title": "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想",
-    "section": "2.3 Handle 运算法则",
-    "text": "2.3 Handle 运算法则\n\n2.3.1 同痕不变性\n\nProposition 1 (同痕扩张定理)  \n\n\n\n\n\n\nFigure 10: 同痕扩张定理\n\n\n\n\n\nLemma 2 (同痕引理) 将 handle \\(h\\) 粘到流形 \\(M\\) 上时，若使用同痕的粘接映射 \\(f, g: \\partial^- h \\to \\partial M\\)，则得到的流形同胚： \\[M +_f h \\cong M +_g h\\]\n\n\nProof. \n\n\n\n\n\n\nFigure 11: 同痕引理的证明\n\n\n\n\n\n\n2.3.2 粘接顺序的交换性\n\n2.3.2.1 基本概念\n\nDefinition 4 (Attaching sphere 与 Complementary sphere) Handle 一般写成乘积 \\(D^i \\times D^{n-i}\\)：\n\n\n\n\n\n\n\n\n\n部分\n名称\n子空间\n边界\n\n\n\n\n第一分量\nAttaching part\n\\(D^i \\times \\{0\\}\\) (attaching disk)\nAttaching sphere \\(\\mathscr{S}\\)\n\n\n第二分量\nComplementary part\n\\(\\{0\\} \\times D^{n-i}\\) (complementary disk)\nComplementary sphere \\(\\mathcal{S}\\)\n\n\n\n\n\n\n\n\n\n\nFigure 12: Attaching 和 Complementary 部分\n\n\n\n\n\n2.3.2.2 Thom 横截性定理\n考虑三元组 \\((W, M, N)\\)，其中 \\(M, N\\) 是 \\(W\\) 的子流形。\n\nTheorem 6 (Thom 横截性定理)  \n\n可在 \\(W\\) 内做微小扰动（同痕），使 \\(M, N\\) 横截相交\n若 \\(M, N\\) 横截相交，则 \\[\\dim M + \\dim N = \\dim W + \\dim(M \\cap N)\\]\n\n\n\nExample 1 设 \\(\\dim W = 3\\)，\\(\\dim M = \\dim N = 1\\)。由定理，可扰动使 \\(M, N\\) 横截相交，此时 \\[\\dim(M \\cap N) = 1 + 1 - 3 = -1 \\implies M \\cap N = \\varnothing\\]\n\n\n\n\n\n\n\nTip启示\n\n\n\n可通过控制维数保证子流形不相交。\n\n\n\n\n2.3.2.3 Lemma：顺序引理\n\nLemma 3 (顺序引理) 考虑 \\((M + h_1) + h_2\\)。若 \\(h_2\\) 的粘接球面 \\(\\mathscr{S}\\) 与 \\(h_1\\) 的补球面 \\(\\mathcal{S}\\) 不相交（它们都是 \\(\\partial^+(M + h_1)\\) 的子流形），则可交换粘接顺序： \\[(M + h_1) + h_2 \\cong (M + h_2) + h_1\\] 此时记作 \\(M + (h_1 \\sqcup h_2)\\)。\n\n\nProof. 若不相交，可在 \\(\\partial(M + h_1)\\) 上挖去补球面 \\(\\mathcal{S}\\)，将 \\(\\partial^- h_2\\) 收缩到 \\(\\partial M\\) 上。\n\n\n\n\n\n\nFigure 13: 顺序引理的证明\n\n\n\n\n\nCorollary 1 若 \\(\\mathrm{index}(h_2) \\leq \\mathrm{index}(h_1)\\)，则 \\[M + h_1 + h_2 = M + (h_1 \\sqcup h_2) = M + h_2 + h_1\\] 即总可从 index 更小的 handle 开始粘接。\n\n\nProof. 设 \\(\\mathrm{index}(h_1) = i_1\\)，\\(\\mathrm{index}(h_2) = i_2\\)，\\(i_2 \\leq i_1\\)。\n\n补球面维数：\\((n - i_1) - 1\\)\n粘接球面维数：\\(i_2 - 1\\)\n维数之和：\\(n - i_1 + i_2 - 2 \\leq n - 2\\)\n\n两者都是 \\(\\partial(M + h_1)\\)（维数 \\(n-1\\)）的子流形。由 Thom 横截性定理，相交维数为 \\((n-2) - (n-1) = -1\\)，即可做同痕使两者不相交。由 Lemma 3 得证。\n\n\n\n\n\n\n\nNote约定\n\n\n\n以后总假设按 index 从小到大粘接。Index 相同时，粘接顺序可交换（或认为同时进行）。\n\n\n标准分解：\n\n\n\n\n\n\nFigure 14: 标准分解示意图 1\n\n\n\n\n\n\n\n\n\nFigure 15: 标准分解示意图 2\n\n\n\n\n\n\n2.3.3 几何与代数消解\n\n2.3.3.1 几何消解的例子\n粘接相邻维数的 handle 时，有时会出现消解现象：\n\n\n\n\n\n\nFigure 16: 几何消解例 1\n\n\n\n在 \\(M\\) 上粘接 0-handle \\(h_1\\) 和 1-handle \\(h_2\\)，结果可收缩到 \\(M\\)。关键观察：\\(h_1\\) 的补球面与 \\(h_2\\) 的粘接球面恰好相交于 1 点。\n\n\n\n\n\n\nFigure 17: 几何消解例 2\n\n\n\n\n\n2.3.3.2 几何消解\n\nLemma 4 (几何消解) 对于 \\(M + h_1 + h_2\\)，若 \\(h_2\\) 的粘接球面 \\(\\mathscr{S}\\) 与 \\(h_1\\) 的补球面 \\(\\mathcal{S}\\) 恰好横截相交于一点，则 \\[M + h_1 + h_2 \\cong M\\]\n\n\n\n\n\n\n\nNote\n\n\n\n由 Thom 横截定理，这只发生在 \\(\\mathrm{index}(h_2) = \\mathrm{index}(h_1) + 1\\) 时。\n\n\n\nProof. 将 handle \\(h_1\\) 分割成两部分，于是 \\(h_1, h_2\\) 被分割成三部分 \\(A, B, C\\)（都是 \\(D^3\\)）：\n\n\n\n\n\n\nFigure 18: 分割示意图 1\n\n\n\n\n\n\n\n\n\nFigure 19: 分割示意图 2\n\n\n\n粘接两个 handle 等同于 \\(((M \\cup A) \\cup B) \\cup C\\)。关注交集：\n\n\n\n\n\n\nFigure 20: 交集示意图\n\n\n\n沿 \\(D^2\\) 粘 \\(D^3\\) 不改变拓扑（想象立方体放在桌面上）：\n\n\n\n\n\n\nFigure 21: 拓扑不变\n\n\n\n故 \\(M + h_1 + h_2 \\cong M\\)。\n\n\n\n2.3.3.3 代数消解 / Whitney Trick\n考虑 Lemma 4 的情形，但改为考虑代数相交数： \\[\\sigma(\\mathcal{S}, \\mathscr{S}) := \\sum_{x \\in \\mathscr{S} \\cap \\mathcal{S}} \\sigma(x)\\]\n\nLemma 5 (代数消解（Whitney Trick）) 条件：设 \\(N = \\partial(M + h_1)\\) 单连通，\\(\\dim M = n \\geq 6\\)，\\(\\mathrm{index}(h_1) = i\\) 满足 \\(2 \\leq i \\leq n - 3\\)。\n结论：若代数相交数为 \\(\\pm 1\\)，则粘接映射 \\(f: \\partial^- h_2 \\to N^{n-1}\\) 可同痕到 \\(f'\\)，使新粘接球面 \\(\\mathscr{S}'\\) 与 \\(\\mathcal{S}\\) 的几何相交数为 1。\n\n由 Lemma 4，得 \\(M + h_1 + h_2 \\cong M\\)。\n\nProof. 只需证明可消去相邻的、符号相反的两个交点。设这两点为 \\(x, y\\)：\n\n\n\n\n\n\nFigure 22: Whitney trick\n\n\n\n\n分别在 \\(\\mathscr{S}\\) 和 \\(\\mathcal{S}\\) 上用 arc 连接 \\(x, y\\)，使两 arc 在 \\(x, y\\) 外无交点，得到一个 loop\n由 \\(N\\) 单连通，此 loop bounds 一个拓扑 disk \\(D^2\\)\n由 Whitney 嵌入定理（Thom 横截性定理）及 \\(n \\geq 6\\)，可假设 \\(D^2\\) 光滑嵌入 \\(N\\)\n\n\n\n\n\n\nTip嵌入的说明\n\n\n\n要证不自交，将 \\(D^2\\) 微小平移得 \\((D^2)'\\)，需保证 \\(D^2 \\cap (D^2)' = \\varnothing\\)。由于 \\(\\dim N = n - 1 \\geq 5\\)，两 disk 维数和为 \\(4\\)，相交维数为 \\(4 - 5 = -1\\)，即无交点。\n\n\n沿 embedded \\(D^2\\) 将 \\(\\mathscr{S}\\) 落入 \\(\\mathcal{S}\\) 的部分”划出去”，交点减少两个，代数相交数不变\n从最里面的交点对开始，逐步往外操作，最终将交点减少到 1 个\n使用 Lemma 4 完成证明。\n\n\n\n\n\n2.3.4 Handle Addition\n限制到只有 \\(i\\)-handle 和 \\((i+1)\\)-handle 的情形。\n\n2.3.4.1 复杂情形的处理\n对于 \\(M + h_1 + h_2\\)（\\(\\mathrm{index}(h_2) = \\mathrm{index}(h_1) + 1\\)），已有几何/代数相交数的方法。\n但实际情形更复杂：有若干 \\(i\\)-handle 和若干 \\((i+1)\\)-handle，相交方式复杂。\n问题：考虑 \\(M + h_1^i + h_2^i + h_3^{i+1}\\)，若 \\(h_1, h_2\\) 满足消解条件，可得 \\[M + h_1 + h_2 + h_3 = (M + h_1 + h_2) + h_3 = M + h_3\\] 但 \\(h_3\\) 的粘接球面如何变化？\n答案由 incidence matrix（关联矩阵）\\(D^{i+1}\\) 给出。\n\n\n2.3.4.2 定义：Incidence Matrix \\(D^{i+1}\\)\n设有 \\(m_i\\) 个 \\(i\\)-handle，补球面为 \\(\\mathcal{S}_1, \\ldots, \\mathcal{S}_{m_i}\\)；有 \\(m_{i+1}\\) 个 \\((i+1)\\)-handle，粘接球面为 \\(\\mathscr{S}_1, \\ldots, \\mathscr{S}_{m_{i+1}}\\)。\n\nDefinition 5 (Incidence Matrix) \\[D^{i+1}_{j,k} := \\sigma(\\mathcal{S}_j, \\mathscr{S}_k) \\quad \\text{(代数相交数)}\\] 得到 \\(m_i \\times m_{i+1}\\) 矩阵 \\(D^{i+1}\\)。\n\n\n\n\n\n\n\nNote\n\n\n\nIncidence matrix 蕴含了 handle 分解的全部信息。\n\n\n与同调群的联系：\n\n流形的 handle 分解形变收缩后得到 cell 分解\n链复形由 \\(n\\)-handle 生成的自由 Abel 群构成\n微分映射 \\(C_{i+1} \\to C_i\\) 恰为 incidence matrix \\(D^{i+1}\\)\n\n\n\n2.3.4.3 Handle Addition\n\nLemma 6 (Handle Addition) 可改变 \\((i+1)\\)-handle 的 attaching sphere，保持粘出结果不变。例如，将 \\(\\mathscr{S}_1\\) 改为 \\[\\mathscr{S}_1' = \\mathscr{S}_1 \\mathbin{\\#} \\mathscr{S}_2\\] 则 \\(M +_{\\mathscr{S}_1} h_1 + \\cdots \\cong M +_{\\mathscr{S}_1'} h_1 + \\cdots\\)\n\n\n\n\n\n\n\nFigure 23: Handle addition\n\n\n\n对关联矩阵的影响：第三类基本列变换（第一列加上第二列）。\n\n\n\n\n\n\nNote\n\n\n\n条件：当 index 为 \\(i, i+1\\) 时，要求 \\(2 \\leq i \\leq n - 3\\)。\n\n\n\nProof. \n\n\n\n\n\n\nFigure 24: Handle addition 证明 1\n\n\n\n\n\n\n\n\n\nFigure 25: Handle addition 证明 2\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n不仅可以加法，还可以减法（与反定向粘接球面做连通和）。因此 Lemma 6 允许对关联矩阵做第三类基本变换。\n\n\n关于 index 限制的说明：\n证明的关键步骤是找 arc \\(\\alpha\\)，需要 \\(\\alpha\\) 与其他粘接球面、补球面都不相交。\n\n粘接球面（维数 \\(i - 1\\)）：需 \\(n - 1 &gt; 1 + (i - 1)\\)，即 \\(i \\leq n - 2\\)\n补球面（维数 \\(n - i\\)）：需 \\(n - 1 &gt; (n - i) + 1\\)，即 \\(i \\geq 3\\)\n\n综合得 \\(3 \\leq i \\leq n - 2\\)，即对 \\((i-1)\\)-handle 有 \\(2 \\leq i - 1 \\leq n - 3\\)。\n\n\n\n2.3.5 h-Cobordism 定理的证明\n\n2.3.5.1 Proposition：Regular Handle 分解的存在性\n\nProposition 2 (Regular Handle 分解的存在性)  \n\n\n\n\n\n\nFigure 26: Prop 2.42\n\n\n\n\n动机：在 Lemma 5 和 Lemma 6 中，考虑 \\(i, i+1\\) handle 时要求 \\(2 \\leq i \\leq n - 3\\)。因此 handle 的 index 落在 \\([2, n-2]\\) 区间内，需先排除区间外的 handle——这就是 regular form 的意义。\n\n\n2.3.5.2 h-Cobordism 定理的证明\n设 \\(W^n\\) 是 h-cobordism，取 \\(W\\) 的 regular handle 分解： \\[W = \\partial^- W \\times [0,1] + h_1 + h_2 + \\cdots + h_m\\]\n核心命题：若 \\(m &gt; 0\\)，则存在另一个 regular handle 分解，具有更少的 handle。\n\n\n\n\n\n\nTip\n\n\n\n若此命题成立，取 \\(m\\) 最小的 regular 分解，则 \\(m = 0\\)，即 \\(W = \\partial^- W \\times [0,1]\\)。\n\n\n\nProof (核心命题的证明). Step 1. 设所有 handle 中 index 最小者为 \\(i - 1\\)，考虑所有 \\((i-1)\\)-handle 和 \\(i\\)-handle。\nStep 2. 考虑 \\(H_{i-1}(W, \\partial^- W)\\)：\n\n由同伦等价 \\(\\partial^- W \\hookrightarrow W\\) 及相对长正合序列，此同调群为 0\n由胞腔同调，\\(H_{i-1} = C_{i-1} / \\mathrm{Im}(D^i)\\)，故 \\(D^i\\) 是满射，即满秩\n\nStep 3. 对矩阵 \\(D^i\\) 做初等变换：\n\n第一类基本行列变换 + 第三类基本列变换 → 上三角矩阵 \\(\\mathscr{D}^i\\)\n由满射性，对角元为 \\(\\pm 1\\)\n再做第三类列变换 → 对角矩阵\n\n例：\n\n\n\n\n\n\nFigure 27: 矩阵变换例 1\n\n\n\n\n\n\n\n\n\nFigure 28: 矩阵变换例 2\n\n\n\nStep 4. 在对角矩阵上使用 Lemma 4 和 Lemma 5，减少 handle 个数。\n\n\n\n2.3.5.3 补充命题\n为使证明完整，需补充：\n\nProposition 3 (命题 1 (Prop 2.42)) 任意 h-cobordism \\(W\\) 都有 regular handle 分解（不含 0, 1, \\(n-1\\), \\(n\\)-handle）。\n\n\nProposition 4 (命题 2) \\(\\pi_1(N_{i-1}) = 1\\)。\n\n\n\n2.3.5.4 Lemma 2.45\n\nLemma 7  \n\n\n\n\n\n\nFigure 29: Lemma 2.45\n\n\n\n\n取 \\(X = A - \\{0\\} \\simeq B\\)（\\(0\\) 为粘接 cell 的中心），\\(Y = \\mathrm{int}(D^s)\\)，则 \\[X \\cap Y = S^{s-1}, \\quad X \\cup Y = A\\] 对 triple \\((A, A - \\{0\\}, \\mathrm{int}(D^s))\\) 使用 Van Kampen 定理即证。\n\n\n2.3.5.5 命题 2 的证明：\\(\\pi_1(N_{i-1}) = 1\\)\n粘接 \\(i\\)-handle 在同伦上等同于粘接 \\(i\\)-cell，可用 Lemma 7。\n策略：分别将 \\(N_{i-1}\\) 和 \\(W\\) 与 \\(W_{i-1}\\) 联系起来。\n\nProof. (I) \\(W\\) 与 \\(W_{i-1}\\)：\n\\(W\\) 是在 \\(W_{i-1}\\) 上粘接若干 index \\(\\geq i\\) 的 handle。由 \\(i - 1 \\geq 2\\)，有 \\(i \\geq 3\\)，故 \\[\\pi_1(W) \\cong \\pi_1(W_{i-1})\\]\n(II) \\(N_{i-1}\\) 与 \\(W_{i-1}\\)：\n由于只关心同伦型，考虑 \\(N_{i-1} \\times I\\) 与 \\(W_{i-1}\\)。\n\n\\(W_{i-1}\\) 是在 \\(\\partial^- W \\times I\\) 上粘接若干 \\((i-1)\\)-handle\n取对偶：\\(W_{i-1}\\) 是在 \\(N_{i-1} \\times I\\) 上粘接若干 index 为 \\(n - (i-1) = (n-i) + 1 \\geq 3\\) 的 handle\n\n故 \\(\\pi_1(N_{i-1}) \\cong \\pi_1(W_{i-1})\\)。\n(III) 由 \\(W\\) 单连通，综合得 \\(\\pi_1(N_{i-1}) = 1\\)。\n\n\n\n2.3.5.6 命题 1 的证明：Regular Handle 分解总存在\n策略：\n\n证明 0, 1-handle 可消解\n利用对偶原理，\\((n-1)\\), \\(n\\)-handle 也可消解\n\n对偶论证框架：给定任意 handle 分解 \\(t\\)：\n\n\n\n\n\n\n\n\n步骤\n操作\n结果\n\n\n\n\n1\n在 \\(t\\) 中消解 0, 1-handle\n\\(t_1\\)\n\n\n2\n对 \\(t_1\\) 做对偶\n\\(t_2\\)\n\n\n3\n在 \\(t_2\\) 中消解 0, 1-handle（= 消解 \\(t_1\\) 的 \\(n{-}1\\), \\(n\\)-handle）\n\\(t_3\\)\n\n\n4\n对 \\(t_3\\) 做对偶\n\\(t_4\\)（不含 0, 1, \\(n{-}1\\), \\(n\\)-handle）\n\n\n\n\n2.3.5.6.1 消解 0-Handle\n由 \\(W\\) 是 h-cobordism，有 \\(H_0(W, \\partial^- W) = 0\\)，即空间连通。\n因此，对于任意 0-handle，都有唯一的 1-handle 将其与 \\(\\partial^- W \\times I\\) 所在的”主要部分”连接（其他 index 的 handle 无法使空间连通）。\n这意味着 \\(D^1\\) 天然是对角矩阵（事实上是单位阵），可直接消解所有 0-handle。\n\n\n2.3.5.6.2 消解 1-Handle (Handle Trading)\n核心思想：用 handle trading 消解所有 1-handle。过程不改变 handle 总数——用 3-handle 替换 1-handle。\n准备工作：\n\n由于 0-handle 已消解，1-handle 直接粘接到 \\(\\partial^- W \\times I\\) 上\n每个 1-handle 给出一个 loop\n在 \\(W_2\\) 上考虑（与 \\(W\\) 差若干 index \\(\\geq 3\\) 的 handle，基本群一致）\n由 Proposition 4 的策略，\\(\\partial^+ W_2\\) 单连通\n\n构造过程：\n\nProof. Step 1. 对任意 1-handle \\(h_1\\)，考虑其在 \\(\\partial^+ W_2\\) 上形成的 loop。\nStep 2. 由 \\(\\pi_1(\\partial^+ W) = 1\\)，此 loop bounds a disk \\(D^2\\)。\n由 Thom 横截性定理 + dimension argument，可假设 \\(D^2\\) 嵌入到 \\(\\partial^+ W\\) 中。记 \\(\\partial D^2 = \\mathscr{S}_0\\)。\nStep 3. 由 Lemma 4，引入一对互相消解（几何相交数为 1）的 handle：\n\n2-handle \\(h_2\\)\n3-handle \\(h_3\\)\n\n使得 \\(W_2 = W_2 + h_2 + h_3\\)。同时要求 \\(h_2\\) 避开 \\(D^2\\) 和 \\(W_2\\) 上其他 2-handle。\n记 \\(h_2\\) 的粘接球面为 \\(\\mathscr{S}_2\\)。\nStep 4. 取连通和 \\[\\mathscr{S}_2' := \\mathscr{S}_2 \\mathbin{\\#} \\mathscr{S}_0\\] 记对应的 2-handle 为 \\(h_2'\\)。\n\n\n\n\n\n\nFigure 30: Handle trading 示意图\n\n\n\n关键观察：\n\n由于 \\(\\mathscr{S}_0\\) bounds a disk，有 \\(\\mathscr{S}_2' \\sim \\mathscr{S}_2\\)\n\\(\\mathscr{S}_2'\\) 与 \\(h_1\\) 的补球面几何相交数为 1\n\n消解计算：\n\\[\n\\begin{aligned}\nW_2 &= W_2 + h_2 + h_3 \\\\[6pt]\n    &= W_2 + h_2' + h_3 \\\\[6pt]\n    &= \\partial^- W \\times I + \\cdots + (h_1 + h_2') + \\cdots + h_3 \\\\[6pt]\n    &= \\partial^- W \\times I + \\cdots + h_3\n\\end{aligned}\n\\]\n结论：1-handle \\(h_1\\) 被替换为 3-handle \\(h_3\\)。",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
-    ]
-  },
-  {
-    "objectID": "pages/gallery.html",
-    "href": "pages/gallery.html",
-    "title": "Gallery",
-    "section": "",
-    "text": "A curated collection of moments — from sweeping landscapes to intimate urban scenes.\nEach photograph tells its own quiet story.\n\n\n✦\n\n\nLandscapes & Cityscapes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n✦\n\n\nVertical Perspectives\n\n\n\n\n\n\n\n\n\n\n\n· · ·\n\n\n✨ Click on any image to view in full screen\n\n\n◆"
-  },
-  {
-    "objectID": "pages/translations.html",
-    "href": "pages/translations.html",
-    "title": "Translations",
-    "section": "",
-    "text": "这里收集了一些优秀的综述性数学文献的中文翻译版本。"
-  },
-  {
-    "objectID": "pages/translations.html#翻译列表",
-    "href": "pages/translations.html#翻译列表",
-    "title": "Translations",
-    "section": "翻译列表",
-    "text": "翻译列表\n\n四十六年后的微分拓扑学 - Milnor 经典综述\n人工智能在纽结理论中的应用 - 神经网络在纽结理论中的应用综述"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Chen",
-    "section": "",
-    "text": "我是一名数学研究生,热衷于探索代数、几何与拓扑之间的优美结构。\n我的研究方向是低维拓扑与代数拓扑的交叉领域,探索代数结构如何产生纽结与流形的强大不变量。"
-  },
-  {
-    "objectID": "index.html#关于我",
-    "href": "index.html#关于我",
-    "title": "Chen",
-    "section": "",
-    "text": "我是一名数学研究生,热衷于探索代数、几何与拓扑之间的优美结构。\n我的研究方向是低维拓扑与代数拓扑的交叉领域,探索代数结构如何产生纽结与流形的强大不变量。"
-  },
-  {
-    "objectID": "index.html#研究兴趣",
-    "href": "index.html#研究兴趣",
-    "title": "Chen",
-    "section": "研究兴趣",
-    "text": "研究兴趣\n\n\nKhovanov Homology\nkhovanov homology 是琼斯多项式的范畴化, 从 khovanov homology的基本定义出发, 发展出了丰富的内容.\n\n首先, 它是纽结不变量, 可以区分纽结.\n通过形变的 khovanov homology (Lee homology), 我们可以定义s-invariant, 它可以用来限制纽结的亏格, 从而可以证明 \\mathbb{R}^4上存在怪异的光滑结构.\n从 cube 出发, 我们可以定义一个广义空间(谱:spectrum), 它是纽结不变量(可以用来区分 khovanov homology 无法区分的纽结), 这套理论将纽结和稳定同伦论联系起来.\n近些年, skein lasagna module 定义了四维流形的光滑不变量, Qiuyu Ren 等人首次利用这个不变量区分了光滑四维流形的怪异对(两个同胚却不微分同胚的流形).\n\nNon-Semisimple TQFTs\nModified traces in non-unimodular categories\n\n\nH-Cobordism\n这是解决广义庞加莱猜想的关键工具, 也是研究高维流形上面光滑结构的重要起点. h-cobordism 理论给出了研究流形的一般办法, 我们可以在 3 维, 4 维上看到这种方法的实践.\n4-manifold and Gauge Theory\n研究四维流形的微分结构与规范场论的深刻联系."
-  },
-  {
-    "objectID": "index.html#最近动态",
-    "href": "index.html#最近动态",
-    "title": "Chen",
-    "section": "最近动态",
-    "text": "最近动态\n\n\n\n\nDate\nEvent\n\n\n\n\nMon 2026\n准备解析数论期末考试, 我的 pre\n\n\nDec 2025\n学习 h-cobordism, surgery theory\n\n\nNov 2025\n学习 khovanov homology 及相关的 topics\n\n\nOct 2025\n计算 torus bundle 的非半单 RT 不变量\n\n\nSept 2025\n学习 mapping class group 相关"
-  },
-  {
-    "objectID": "index.html#精选笔记",
-    "href": "index.html#精选笔记",
-    "title": "Chen",
-    "section": "精选笔记",
-    "text": "精选笔记\n从量子不变量到流形结构,探索拓扑学的美丽世界:\n\n\n\n\nh-cobordism 理论\nState-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.\nDifferential Topology Algebraic Topology\n\n\n\n\n\n\nKhovanov 同调\nA categorification of the Jones polynomial that provides strictly stronger invariants for links.\nCategorification Knot Theory 4-manifold\n\n\n\n\n:::"
-  },
-  {
-    "objectID": "notes/bernoulli.html",
-    "href": "notes/bernoulli.html",
-    "title": "伯努利数、Zeta 函数与怪球",
-    "section": "",
-    "text": "动机：尝试计算 S_k(n) = \\sum_{m=0}^{n-1} m^k 的通项公式\n\n当 k=0, 1, 2 时，我们已经知道\n\nS_0(n) = n\nS_1(n) = \\frac{n(n-1)}{2}\nS_2(n) = \\frac{n(n-1)(2n-1)}{6}\n\n但对于一般的 k，如何计算 S_k(n)？\n\n另一个问题：这个离散求和与积分 \\int_0^n x^k dx 之间有什么关系？\n\n我们知道 \\int_0^n x^k dx = \\frac{n^{k+1}}{k+1}\n我们能否将 S_k(n) 表示为 \\int_0^n x^k dx 加上一些修正项？\n\n为了回答这些问题，我们引入伯努利数。\n定义：生成函数\n\n定义：形式幂级数环 \\mathbb{C}[[x]]。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为： \nf(x) = \\sum_{n=0}^{\\infty} a_n x^n\n 其中，a_n 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。\n定义：指数生成函数\n\n给定一个数列 \\{a_n\\}，它的指数生成函数定义为： \nA(t) = \\sum_{n=0}^{\\infty} a_n \\frac{t^n}{n!}\n 这里，t 是一个形式变量。即指数生成函数作为映射：{数列} \\to {形式幂级数}，给出了数列和形式幂级数之间的一一对应。\n上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果 \nA(t) = \\sum_{n=0}^{\\infty} a_n \\frac{t^n}{n!}, \\quad B(t) = \\sum_{n=0}^{\\infty} b_n \\frac{t^n}{n!}\n 那么它们的乘积 \nC(t) = A(t) \\cdot B(t) = \\sum_{n=0}^{\\infty} c_n \\frac{t^n}{n!}\n 其中，c_n = \\sum_{k=0}^n \\binom{n}{k} a_k b_{n-k}。我们将这个运算称为数列之间的卷积运算。\n\n\n定义：伯努利数 B_n 由以下生成函数定义 \n\\frac{t}{e^t - 1} = \\sum_{n=0}^{\\infty} B_n \\frac{t^n}{n!}.\n\n虽然直接计算 S_k(n) 很困难，但我们可以先计算它的生成函数： \n\\mathbb{S}(n,t) = \\sum_{k=0}^{\\infty} S_k(n) \\frac{t^k}{k!} = \\sum_{m=0}^{n-1} e^{mt} = \\frac{e^{nt}-1}{e^t-1}\n 对于右边，我们可以将其改写为 \n\\mathbb{S}(n,t) = \\underbrace{\\frac{e^{nt}-1}{t}}_{\\text{积分项}} \\cdot \\underbrace{\\frac{t}{e^t-1}}_{\\text{伯努利项}}\n 对于右边的第一部分，我们有泰勒展开 \n\\frac{e^{nt}-1}{t} = \\sum_{j=0}^{\\infty} \\frac{n^{j+1}}{(j+1)!} t^j\n 这个生成函数的系数正是积分项 \\int_0^n x^k dx = \\frac{n^{k+1}}{k+1}。 对于右边的第二部分，根据伯努利数的定义，我们有 \n\\frac{t}{e^t-1} = \\sum_{m=0}^{\\infty} B_m \\frac{t^m}{m!}\n 于是，我们实际上有：\n\n\n\\underbrace{\\mathbb{S}(n,t)}_{离散求和项} = \\underbrace{\\frac{e^{nt}-1}{t}}_{\\text{积分项}} \\cdot \\underbrace{\\frac{t}{e^t-1}}_{\\text{伯努利项}}\n\n即伯努利项衡量了离散求和项和积分项之间的偏差。 我们将等式两边展开，得到：\n\n\\sum_{k=0}^{\\infty} S_k(n) \\frac{t^k}{k!} = \\left( \\sum_{j=0}^{\\infty} \\frac{n^{j+1}}{(j+1)!} t^j \\right) \\cdot \\left( \\sum_{m=0}^{\\infty } B_m \\frac{t^m}{m!} \\right)\n\n比较等式两边的 t^k 系数，我们得到：\n\nS_k(n) = \\sum_{j=0}^k B_j \\frac{n^{k+1-j}}{(k+1 - j)! \\cdot j!} \\cdot k! = \\frac{1}{k+1} \\sum_{j=0}^k \\binom{k+1}{j} B_j n^{k + 1 - j}\n\n我们得到了我们想要的通项公式。\n\n如果我们引入伯努利多项式的定义, 它对应于生成函数\\frac{t}{e^t-1}在平移算子下的平移\\frac{e^{xt}t}{e^t-1}, 即\n\n\\sum_{k=0}^\\infty B_k(x) \\frac{t^k}{k!} = \\frac{t e^{xt}}{e^t - 1} = e^{xt} \\cdot \\left( \\frac{t}{e^t - 1} \\right)\n\n那么我们可以将上面的结果更简洁地表示为:\n\nS_k(n) = \\frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "伯努利数、Zeta 函数与怪球"
-    ]
-  },
-  {
-    "objectID": "notes/bernoulli.html#庞加莱猜想和怪球",
-    "href": "notes/bernoulli.html#庞加莱猜想和怪球",
-    "title": "伯努利数、Zeta 函数与怪球",
-    "section": "5.1 庞加莱猜想和怪球",
-    "text": "5.1 庞加莱猜想和怪球\n\n拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)\n代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类?\n\n这就是著名的 (广义) 庞加莱猜想: 设 M^n 是闭流形, 若 M 是同伦球面 (即同伦等价于 S^n), 则 M^n 同胚意义下也是球面.\n\n庞加莱猜想是对的:\n\nn\\geq5: smale h-cobordism\nn=4: freedman\nn=3: perelman\n\n\n更进一步: 光滑庞加莱猜想: 设 M^n 是光滑闭流形, 若 M 是同伦球面 (由 GPC, 也是同胚球面), 那么 M^n 也是光滑球面.\n\n光滑庞加莱猜想是错的:\n\nmilnor 找到了第一个怪球: 7 维\n既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 n 维怪球的集合记为 S_n\n\nS_n 是 Abel 群 (n\\neq4): 利用 h-cobordism 定理 (n\\neq4), 我们有同构: \\{  S^n \\text{上的光滑结构}\\}/\\{微分同胚\\}\\longleftrightarrow\\{n\\text{维同伦球面}\\}/\\{\\text{h-cobordism}\\} 注意到右边恰为 S_n, 即 n 维怪球的集合, 而左边是配边类, 它有群结构:\n\n乘法: 连通和\n单位元: S^n 上的标准光滑结构\n逆元: 反转定向, 记为 -\\Sigma. 在柱 \\Sigma\\times I 的内部挖去一个 disk D^{n+1} 即可得到所需配边.\n这说明 S_n 是一个群.",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "伯努利数、Zeta 函数与怪球"
-    ]
-  },
-  {
-    "objectID": "notes/bernoulli.html#怪球与球面的稳定同伦群",
-    "href": "notes/bernoulli.html#怪球与球面的稳定同伦群",
-    "title": "伯努利数、Zeta 函数与怪球",
-    "section": "5.2 怪球与球面的稳定同伦群",
-    "text": "5.2 怪球与球面的稳定同伦群\n\n定义: 球面的稳定同伦群\n\n同伦群的稳定现象: 球面的 suspension thm\n\n当 k 充分大时 \\Sigma:\\pi_{n+k}\\left(S^k\\right)\\to \\pi_{n+k+1}\\left(S^{k+1}\\right) 是群同构.\n球面同伦群的稳定性质: \\Sigma:\\pi_n\\left(S^n\\right)\\to \\pi_{n+1}\\left(S^{n+1}\\right) 是群同构。\n球面稳定同伦群: 定义为 \\Pi_n:=\\lim_{ k \\to \\infty }\\pi_{n+k}\\left(S^{k}\\right)\n\n\n稳定同伦群和 framed cobordism class\n\nPontrjagin-Thom 定理: \\Pi_n \\cong \\Omega_n^{fr}，即球面稳定同伦群同构于 framed cobordism 群。\n直观理解：一个 n 维 framed 流形 M^n \\subset \\mathbb{R}^{n+k}（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 S^{n+k} \\to S^k。\n\nJ-同态 (J-homomorphism)\n\n定义：J-同态 J: \\pi_n(SO) \\to \\Pi_n 定义如下：给定 \\alpha \\in \\pi_n(SO)，即一个映射 \\alpha: S^n \\to SO，我们可以用它来”扭转” S^n 上的标准 framing，从而得到一个新的 framed n-球面，它对应于 \\Pi_n 中的一个元素。\nJ_n := \\text{Im}(J: \\pi_n(SO) \\to \\Pi_n) 是 J-同态的像。\n\n正合列 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\n\n定义: S_n\\to \\Pi_n, 即把 S_n 中的同伦球面映射成它所在的 framed cobordism class.\nchange of frame: 如果我们选择 S_n 上不同的 frame 对应的 framed cobordism class, 那么两个 \\Pi_n 中的元素会相差 J: \\pi_n(SO) \\rightarrow \\Pi_n 的作用, 我们把 J 映射的像集记为 J_n, 则我们可以定义映射 S_n\\to \\Pi_n/J_n\n这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 \\Pi_n 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 S_n^{bp} 为 S_n 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 S_n\\to \\Pi_n/J_n 的 kernel.\n至此, 我们得到了正合列 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\n\n我们还需要讨论映射 S_n\\to \\Pi_n/J_n 的满射性质, 即是否 \\Pi_n 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:\n\n对于 n\\not\\equiv 2 \\pmod{4}, 每个 \\Pi_n 中的元素都可以被同伦球面实现, 即 S_n\\to\\Pi_n/J_n 是满射, 于是我们有正合列: 0 \\rightarrow S_n^{bp} \\rightarrow S_n \\rightarrow \\Pi_n / J_n\\to 0\n对于 n \\equiv 2\\pmod{4}, (此时 S_n^{bp}=0) 映射 S_n\\to \\Pi_n/J_n 是否为满射由 Kervaire 不变量决定, 即我们有正合列 0 \\rightarrow S_{4k-2} \\rightarrow \\Pi_{4k-2}/J_{4k-2} \\xrightarrow{\\Phi_k} \\mathbb{Z}/2 这里多数情况 \\Phi_k=0, \\Phi_k\\neq0 当且仅当 k=1,2,4,8,16,32, 对应的流形维数为 2,6,14,30,62,126\\left(126 \\text{ by Guozhen Wang}\\right).",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "伯努利数、Zeta 函数与怪球"
-    ]
-  },
-  {
-    "objectID": "notes/bernoulli.html#计算-怪球和伯努利数",
-    "href": "notes/bernoulli.html#计算-怪球和伯努利数",
-    "title": "伯努利数、Zeta 函数与怪球",
-    "section": "5.3 计算: 怪球和伯努利数",
-    "text": "5.3 计算: 怪球和伯努利数\n\n|J_n| 的计算:\n\n\n|J_n| = \\begin{cases}\n\\text{denominator}\\left(\\frac{B_{2k}}{4k}\\right) & \\text{for } n = 4k-1, \\\\\n2 & \\text{for } n \\equiv 0, 1 \\pmod{8}, \\\\\n1 & \\text{for } n \\equiv 2, 4, 5, 6 \\pmod{8}.\n\\end{cases}\n\n\n|S_n^{bp}| 的计算:\n对于 n \\neq 4，群 S_n^{bp} 是有限循环群，且有显式的生成元。具体地：\n\n当 n 为偶数时，S_n^{bp} 是平凡群；\n当 n = 4k - 3 时，S_n^{bp} 是平凡群或 2 阶循环群；\n当 n = 4k - 1 &gt; 3 时，S_n^{bp} 是阶为 2^{2k-2}(2^{2k-1}-1) \\cdot \\text{numerator}\\left(\\frac{4B_{2k}}{k}\\right) 的循环群。\n\n例子: 计算 S_7\n\n让我们用这个方法计算一下著名的 7 维怪球数量 (S_7)。\n\n检查维度：n=7 = 4(2)-1，属于第一种情况（n \\equiv 3 \\pmod 4），正合列分裂。\n\n|S_7| = |S_7^{bp}| \\cdot |\\Pi_7 / J_7|\n\n计算 |S_7^{bp}|：\n代入公式 k=2：\n|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \\cdot \\text{numerator}\\left(\\frac{4B_2}{2}\\right)\n\n第一部分：2^2 (2^3 - 1) = 4 \\times 7 = 28\n第二部分：B_4 = -1/30，所以 \\frac{4(1/30)}{2} = \\frac{1}{15}。分子是 1。\n结果：|S_7^{bp}| = 28 \\times 1 = 28。\n\n计算 |\\Pi_7 / J_7|：\n\n查阅同伦群表，\\Pi_7 \\cong \\mathbb{Z}_{240}。\nJ_7 的阶数由 \\text{denominator}(B_k/4k) 决定（其中 n=4k-1，即 k=2）。B_2 = \\frac{1}{30}，所以 \\frac{B_2}{8} = \\frac{1}{240}，分母是 240，因此 |J_7| = 240。由于 \\Pi_7 \\cong \\mathbb{Z}_{240}，故 \\Pi_7 = J_7，即 \\Pi_7/J_7 是平凡群。\n可以看到对于 n=7，|S_7| 对应的值就是 b_2 = 28。这意味着对于 n=7，\\Pi_7/J_7 是平凡的（或者说 \\Pi_7 = J_7）。\n\n最终结果：|S_7| = 28 \\times 1 = 28。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "High-dimensional Manifolds",
-      "伯努利数、Zeta 函数与怪球"
-    ]
-  },
-  {
-    "objectID": "notes/Khovanov_homology.html#下载-pdf",
-    "href": "notes/Khovanov_homology.html#下载-pdf",
-    "title": "An introduction to khovanov homology and s-invariant",
-    "section": "3.4 下载 PDF",
-    "text": "3.4 下载 PDF\n下载本页 PDF",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "Quantum Invariants",
-      "An introduction to khovanov homology and s-invariant"
-    ]
-  },
-  {
     "objectID": "notes/microgpt-math-impl-compare.html",
     "href": "notes/microgpt-math-impl-compare.html",
     "title": "MicroGPT 数学原理与实现对照",
@@ -570,26 +678,6 @@
       "AI for Knot",
       "MicroGPT 数学原理与实现对照"
     ]
-  },
-  {
-    "objectID": "notes/microgpt-math-impl-compare.html#补充说明",
-    "href": "notes/microgpt-math-impl-compare.html#补充说明",
-    "title": "MicroGPT 数学原理与实现对照",
-    "section": "",
-    "text": "笔记中未详细覆盖的代码细节：\n\n自动微分框架：代码实现了一个完整的基于 Value 类的轻量级自动微分框架，用于计算梯度，这是反向传播的核心基础设施。\n参数初始化：代码使用高斯分布初始化所有参数矩阵，是训练收敛的重要前提。\nKV Cache：推理时通过 keys 和 values 缓存历史 token 的键值对，避免重复计算，是 Transformer 推理加速的标准技术。\n\n\n生成日期：2026-03-07",
-    "crumbs": [
-      "Home",
-      "Notes",
-      "AI for Knot",
-      "MicroGPT 数学原理与实现对照"
-    ]
-  },
-  {
-    "objectID": "ai_for_knot.html",
-    "href": "ai_for_knot.html",
-    "title": "Chen 的拓扑笔记",
-    "section": "",
-    "text": "Artificial Intelligence in Knot Theory January 16, 2022 , 3:35 pm , new AUTHOR : C. Adams : EDITOR/ART : R. Ghrist :\nTo move mathematics forward, researchers are constantly seeking new relationships between various areas of mathematics. The farther apart two areas are, the more dramatic the implications when relationships are discovered. But how to find these relationships? Certainly, studying the fields and developing intuition plays a critical role. But there is also the option of generating lots of data and searching for patterns in the data. Once a suspected relationship is uncovered, mathematicians can then try to prove that the result holds.\nBut rather than just combing through data, researchers have now begun to apply artificial intelligence techniques to predict connections and to search for mathematical objects with particular properties. In this review, we consider six recent papers that apply neural networks to questions from knot theory.\nA neural network can be thought of as an adjustable function 𝑓 that is defined on a dataset 𝐷 ⊂ℝ𝑛, taking values in, say, a set 𝑆 ⊂ℝ𝑚. Taking a subset of 𝐷 for which the desired values of 𝑓 are known, we train the network to approximately and efficiently try to match those values. It is then applied to a broader subset of 𝐷 for which its values are known to validate its prediction capabilities. Once satisfied, we can then run it on those elements of 𝐷for which we do not know the values. Unlike some statistical methods, the function is far from being linear.\nTo generate such a function, we first choose an architecture for the neural network with parameters that can be tuned via the training set. But we do not want to overfit the data, so we limit the number of parameters we can adjust.\nAn example of a typical neural network with an input layer [left], five hidden layers [middle], and an output layer [right]. For instance, as in the figure above, we might start with an input layer, five hidden layers and an output layer. In our case, the input might be knots formatted in a particular manner, for instance as a Gauss code representation of a knot diagram, or as a cycle of vertices in 3-space with adjacent vertices connected by straight line segments, or as a permutation of integers obtained from a petal representation of a knot. Or the input could be a set of particular choices for invariants associated to the knot. The output might be types of knots or other invariants for the knots. Each edge has a weight associated to it that can be adjusted.\nNeural networks can be substantially more complicated, but for our purposes, this model suffices. For more background on the subject of neural networks, a good introduction is the video series by 3Blue1Brown.\nIn [3], which we will discuss in more detail shortly, the authors provide a simple example to help motivate the idea. Suppose we take as input quantities we can calculate from a convex polyhedron. For instance, we might take as input a vector with entries the number of vertices, the number of edges, the surface area and the volume. Now suppose we would like to find a relationship between this input data and the number of faces of the polyhedron. By training the neural network on large numbers of convex polyhedra, it may converge on the simple solution that the first entry minus the second entry of the input vector is equal to 2 minus the number of faces. In other words, it rediscovers Euler’s Theorem. Of course, we already knew Euler’s Theorem, but if we had not, this would have pointed us to the conjecture and then we would have been motivated to prove it.\nIn A neural network approach to computing knot invariants, the author applies neural networks to help in the search for knots that are quasipositive [6], meaning that it can be represented by a braid generated by a product of conjugations of positive crossings. A quasipositive representative of a knot is useful in that in [10], Rudolph showed that one could use it to directly determine the slice genus 𝑔4⁡(𝐾) of the knot 𝐾. Further, for quasipositive knots, the 𝜏-invariant of Ozsváth and Szabó, defined in terms of the Heegaard-Floer homology, is equal to the slice genus 𝑔4⁡(𝐾). So there are very good reasons to want to know whether a knot is quasipositive and to determine a quasipositive braid representation if it is. Once trained on a subset of the knots, the network achieves a success rate in identifying quasipositive knots from blind validation sets of greater than 99.93% . It also determines 𝑔4⁡(𝐾)and 𝜏⁡(𝐾) with mean validation accuracies of 93.70% and 99.97% respectively. Considering 179 knots of twelve or fewer crossings for which quasipositivity had not been determined, the methods pointed to additional candidates which could then be verified and resulted in the determination of 84 new quasipositive knots.\nAs the author points out, there are limitations to the neural network approach. Although they can point toward a relationship, in no way do they constitute a proof. Furthermore, however effective a neural network is at prediction, they are often at present a black box. It is difficult to deduce from where that effectiveness comes. Moreover, one should also be careful about how the training set, which consists of knots for which particular invariants are known, may differ from the broader class of knots. The metaphorical floor of knot theory is littered with conjectures posited on relatively simple collections of knots for which counterexamples appeared when more complicated knots were considered.\nAnother opportunity to apply neural networks is to look for relationships between various invariants associated to a knot. In Advancing Mathematics by Guiding Human Intuition with AI, the authors describe an application of neural networks to finding correlations between algebraic and geometric invariants of knots [3].\nThe signature of a knot is an invariant that was first defined by Trotter in 1962. It is an even integer computed from the Seifert module of the knot. It is an algebraic invariant in that it comes out of the homology associated to the knot complement and its spanning surface. On the other hand, there are also geometric invariants of knots. In the 1980’s, William Thurston showed that all knots fall into three categories: torus knots that sit on the surface of an unknotted torus, satellite knots that live in a toroidal fattening of another knot, and hyperbolic knots, which have a metric of constant curvature -1 on their complements. The Mostow-Prasad Rigidity Theorem tells us that for hyperbolic knots, this metric is unique and hence any measurable quantities that come out of this metric are invariants useful for distinguishing knots.\nWe would like to find relationships between the algebraic invariants and the geometric invariants of knots. There are many invariants known to have algebraic or combinatorial definitions that as of yet have no known connection to the geometric structure on the knot complement. A huge step in this direction would be to prove the Volume Conjecture, formulated by Rinat Kashaev in 1997. Since then, it has been proved for a handful of knots. It posits a relationship between the hyperbolic volume of a knot and the asymptotic behavior of the colored Jones polynomial, another algebraic invariant. Specifically,\nlim 𝑁→∞ ⁡ 2⁢𝜋⁢ln⁡∣𝐽𝐾,𝑁⁡(𝑒2⁢𝜋⁢𝑖)| 𝑁 =Vol⁡(𝐾)\nwhere the colored Jones polynomial 𝐽𝐾,𝑁⁡(𝑞) can be defined in terms of the Jones polynomials of parallel copies of the knot 𝐾.\nBut there are a variety of invariants other than volume that come out of the metric on a hyperbolic knot. In particular, one can look at the geometry of the cusp. The cusp is a neighborhood of the missing knot in the complement of the knot. For a hyperbolic knot, the boundary of the cusp is a torus with a Euclidean 2-dimensional metric. A fundamental domain for this cusp boundary is a parallelogram 𝑃 in the Euclidean plane with one boundary corresponding to the meridian of the knot and the other boundary corresponding to the longitude. If we fire a geodesic ray from their intersection that is perpendicular to the meridian, it will wrap around the cusp torus and hit the meridian again. The number 𝐶 of meridians away from its initial point on the meridian, which need not be a whole number, is the natural slope of the cusp boundary. In the Euclidean plane, we see the natural slope as in the figure below.\nThe natural slope of the cusp boundary is the constant 𝐶 obtained by seeing where a geodesic in the Euclidean cusp boundary perpendicular to the meridian curve intersects the meridian next, as a multiple of the meridian length 𝑚. This is not an invariant that has been considered previously. But in the neural network from [3], it turns out to have the best correlation with the signature. The relationship between the invariants suggested by the neural network was subsequently proved in [2]. So this is an excellent example of how neural networks can point to conjectures that can then be proved.\nThe Volume Conjecture considers the relationship between the asymptotic behavior of the colored Jones polynomial of a hyperbolic knot and its hyperbolic volume. In Deep learning the hyperbolic volume of a knot, the authors sought to find a direct connection between the Jones polynomial and the hyperbolic volume of knots [5]. They utilized a neural network with two hidden layers of 100 neurons each that was able to yield surprisingly accurate volume estimates for knots from the Jones polynomials of the knots. The results suggest that a nonlinear equation (like the one above) may also hold for the Jones polynomial itself, perhaps with some adjustment terms from other invariants.\nIn Learning knot invariants across dimensions, the authors investigate correlations between the invariants given by the Jones polynomial 𝐽𝐾⁡(𝑞), the Khovanov polynomial Kh⁡(𝑞,𝑡), the smooth slice genus 𝑔4⁡(𝐾), and Rasmussen’s 𝑠-invariant [1].\nFor this purpose, they employ two different methods to generate random knots. The first uses the fact that every knot is represented by a braid, and so one can randomize by generating random braid words. The second uses the fact that every knot can be put into a petal diagram which is represented by a permutation on integers. So one can then use this to generate random knots via random permutations as in [5].\nAlthough their trained neural network predicts 𝑠 with 99% accuracy from Kh⁡(𝑞,−𝑞−4), this is a good example of the limitations inherent in such techniques. A theoretical explanation for the correlation is the so-called Knight Move Conjecture on Khovanov homology. It has been proved for all alternating knots, all quasialternating knots and all knots of unknotting number two or less and in fact held for all of the knots in the dataset, but it was disproved in 2018 [9] with a counterexample of 38 crossings.\nOn the other hand, the authors of [1] also find similar relations between 𝑠 and Kh⁡(𝑞,−𝑞−2); between 𝑔4 and Kh⁡(𝑞,𝑡); and realize 95% accuracy in predicting 𝑔4 and 𝑠 from 𝐽𝐾⁡(𝑞). These correlations present interesting opportunities to pursue connections between these invariants.\nNeural networks have been applied to the oldest problem in knot theory: how do you identify a particular knot from a representation? In Identifying knot types of polymer conformations by machine learning, the authors represent knots as polymers in the sense of equal-length rods glued end-to-end [11]. They take representatives of the five simplest knots, including the trivial knot, 31, 41, 51 and 52, and then train various architectures of neural networks to try to determine the knot type of a given representative. Their best model achieves a 99% success rate on polymers consisting of 100 rods.\nThe preprint Rectangular knot diagrams classification with deep learning considers the same problem [8]. This relies on results of I. Dynnikov [4], who provided an algorithm that starts with a knot in a special rectangular form (see figure below). In this form, there is a projection to a square planar grid, in which each row [column] has exactly one horizontal [vertical] edge, and where each vertical edge crosses over the horizontal edges. It is straightforward to represent such a diagram via an 𝑛 ×2 matrix, where 𝑛 is the number of horizontal [equivalently, vertical] edges: this is the complexity of the diagram. Dynnikov showed that if the knot is trivial, there must be a sequence of monotonically simplifying moves, now called Dynnikov moves, that will reduce it to a trivial projection [4].\nA rectangular knot in 3-d [left] can be easily presented as a projection with horizontal segments underneath vertical segments [right]. This allows for efficient encoding as a vector input to a neural network. In [8], the authors generate their own data by starting with simple rectangular knot diagrams for the 36 knots of eight or fewer crossings, and then complicate them by applying Dynnikov moves. They then train their neural network to identify which type of knot a given diagram represents. Once trained, the neural network achieved a correct identification of knots that were trivial 84% of the time. For other types of knots, it is less successful. For instance, it correctly identifies the knot 51 only 34% of the time, often confusing it with the other two-braid knots 31 and 71.\nThe model is much more successful when only certain (“internal”) Dynnikov moves are used to complicate the original rectangular diagrams. And interestingly, sometimes the neural network is better at identifying diagrams with higher complexity than with lower complexity. Further research will seek to understand these phenomena and to use neural networks to determine possible sequences of Dynnikov moves to simplify diagrams.\nClearly, neural networks have a contribution to make in knot theory and more generally across mathematics. They can point us to potential theorems, conjectures, and algorithms and they can help to identify mathematical objects with certain properties. This area provides an opportunity for very fruitful collaboration between the artificial intelligence and the mathematics communities that could have a substantial impact as we move forward.\nBIBLIOGRAPHY\n[1] J. Craven, M. Hughes, V. Jejjala, and A. Kar. Learning knot invariants across dimensions. ArXiv:2112.00016. SciPost Phys. 14 (2023), no. 2, Paper No. 021, 28 pp.\n[2] A. Davies, M. Lackenby, A. Juhasz, and N. Tomašev. The signature and cusp geometry of hyperbolic knots. ArXiv:2111.15323.\n[3] A. Davies, P. Veličković, L. Buesing, et al. Advancing mathematics by guiding human intuition with AI. Nature, 600 (2021), 70–74.\n[4] I. Dynnikov. Arc-presentations of links: monotonic simplification. Fund. Math., 190 (2006), 29–76.\n[5] C. Even-Zohar, J. Hass, N. Linial, and T. Nowik. The distribution of knots in the petaluma model. Algebraic and Geometric Topology], 18 (2018), 3647–3667.\n[6] M. Hughes. A neural network approach to predicting and computing knot invariants. J. of Knot Thy. and its Ram., 29(3) (2020), 2050005.\n[7] V. Jejjala, A. Kar, and O. Parrikar. Deep learning the hyperbolic volume of a knot. ArXiv:1902.05547. Phys. Lett. B 799 (2019), 135033, 7 pp.\n[8] L. Kauffman, N. Russkikh, and I. Taimanov. Rectangular knot diagrams classification with deep learning. ArXiv:2011.03498. J. Knot Theory Ramifications 31 (2022), no. 11, Paper No. 2250067, 20 pp. \n[9] C. Manolescu and M. Marengon. The knight move conjecture is false. Proc. Amer. Math. Soc., 148 (2020), 435–439.\n[10] L. Rudolph. Quasipositivity as an obstruction to sliceness. Bulletin Amer. Math. Soc., 29(1) (1993), 51–59.\n[11] O. Vandans, K. Yang, Z. Wu, and L. Dai. Identifying knot types of polymer conformations by machine learning. Phys. Rev. E], 101 (2020), 022502."
   },
   {
     "objectID": "notes/microgpt-math-impl-compare.html#tokenizer数据代码化",
@@ -727,6 +815,19 @@
     "title": "MicroGPT 数学原理与实现对照",
     "section": "",
     "text": "Tip数学原理\n\n\n\n使用训练好的模型参数进行自回归生成。给定起始 token（如 BOS），模型输出下一个 token 的概率分布 \\hat{\\mathbf{p}}。通过采样（引入温度 \\tau 控制随机性）：\np_i = \\frac{\\exp(z_i / \\tau)}{\\sum_j \\exp(z_j / \\tau)}\n得到下一个 token，并将其作为输入继续生成，直到达到长度限制。\n\n\n代码实现：代码末尾的推理循环\nfor pos_id in range(block_size):\n    logits = gpt(token_id, pos_id, keys, values) # 前向传播得到 logits z\n    probs = softmax([l / temperature for l in logits]) # 应用温度缩放后 softmax\n    token_id = random.choices(range(vocab_size), weights=[p.data for p in probs])[0] # 采样\n对应说明：推理循环模拟了自回归过程。gpt 函数根据当前 token_id 和 pos_id 计算 logits（未归一化的分数 z）。softmax 前先将每个 logits 除以 temperature（\\tau），实现温度缩放。random.choices 根据得到的概率分布 probs 进行加权随机采样，得到下一个 token_id。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "AI for Knot",
+      "MicroGPT 数学原理与实现对照"
+    ]
+  },
+  {
+    "objectID": "notes/microgpt-math-impl-compare.html#补充说明",
+    "href": "notes/microgpt-math-impl-compare.html#补充说明",
+    "title": "MicroGPT 数学原理与实现对照",
+    "section": "",
+    "text": "笔记中未详细覆盖的代码细节：\n\n自动微分框架：代码实现了一个完整的基于 Value 类的轻量级自动微分框架，用于计算梯度，这是反向传播的核心基础设施。\n参数初始化：代码使用高斯分布初始化所有参数矩阵，是训练收敛的重要前提。\nKV Cache：推理时通过 keys 和 values 缓存历史 token 的键值对，避免重复计算，是 Transformer 推理加速的标准技术。\n\n\n生成日期：2026-03-07",
     "crumbs": [
       "Home",
       "Notes",

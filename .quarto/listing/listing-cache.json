@@ -1,9 +1,6 @@
 {
   "listingMap": {
     "pages/notes.qmd": [
-      "notes",
-      "../notes",
-      "/notes",
       "../notes/*.qmd"
     ]
   }

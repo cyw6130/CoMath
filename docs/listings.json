@@ -2,6 +2,7 @@
   {
     "listing": "/pages/notes.html",
     "items": [
+      "/notes/poincare-conjecture-and-manifold-topological-classification.html",
       "/notes/microgpt-math-impl-compare.html",
       "/notes/bernoulli.html",
       "/notes/h_cobordism_4.html",
