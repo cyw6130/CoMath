@@ -1,7 +1,7 @@
 ---
 title: "庞加莱猜想与怪球"
 date: 2026-03-28
-categories: [poincare-conjecture, topological-manifolds, homotopy-sphere, handle-decomposition, whitehead-theorem, morse-theory, h-cobordism-theorem, my-notes]
+categories: [Poincaré Conjecture, Homotopy Spheres, Morse Theory, Topological Manifolds]
 description: "探讨庞加莱猜想、流形分类、同伦球与怪球，以及配边理论在拓扑学中的应用。"
 ---
 

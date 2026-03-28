@@ -15,6 +15,13 @@ about:
     - icon: mortarboard
       text: Google Scholar
       href: https://scholar.google.com
+listing:
+  - id: featured-notes
+    contents: "notes/*.qmd"
+    type: grid
+    max-items: 4
+    sort: "date desc"
+    categories: true
 page-layout: full
 toc: false
 ---
@@ -85,32 +92,5 @@ Modified traces in non-unimodular categories
 
 从量子不变量到流形结构,探索拓扑学的美丽世界:
 
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-6}
-::: {.card .h-100}
-::: {.card-body}
-### [h-cobordism 理论](notes/h_cobordism_4.qmd)
-
-State-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.
-
-`Differential Topology` `Algebraic Topology`
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6}
-::: {.card .h-100}
-::: {.card-body}
-### [Khovanov 同调](notes/Khovanov_homology.qmd)
-
-A categorification of the Jones polynomial that provides strictly stronger invariants for links.
-
-`Categorification` `Knot Theory` `4-manifold`
-:::
-:::
-:::
-
-:::
-
+:::{#featured-notes}
 :::

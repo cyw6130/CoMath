@@ -1,31 +1,8 @@
 ---
 title: "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
 author: "Cyw"
-date: "2026.1.2"
-categories: [High-Dimensional Manifolds, Surgery Theory, Algebraic Topology]
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    theme: cosmo
-    html-math-method: mathjax
-    filters:
-      - ../filters/lazy-images.lua
-      - ../filters/use-webp-html.lua
-  pdf:
-    toc: true
-    number-sections: true
-    documentclass: ctexart
-    pdf-engine: xelatex
-    CJKmainfont: "STSong"
-    geometry: margin=1in
-    fig-pos: 'H'
-    include-in-header:
-      text: |
-        \usepackage{float}
-        \usepackage{unicode-math}
-        \floatplacement{figure}{H}
+date: "2026-01-02"
+categories: [h-Cobordism, Surgery Theory, High-Dimensional Manifolds]
 ---
 
 ::: {.callout-note}

@@ -1,0 +1,23 @@
+# 这份元数据文件会自动应用于 notes 文件夹及其子文件夹下的所有 .qmd 文件。
+# 它统一了所有笔记输出 PDF 和 HTML 时的基础和高级配置。
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    # 注意：不要写 theme，让它继承根目录 _quarto.yml 定义的双主题！
+
+  pdf:
+    toc: true
+    number-sections: true
+    documentclass: ctexart
+    pdf-engine: xelatex
+    CJKmainfont: "STSong"
+    geometry: margin=1in
+    fig-pos: 'H'
+    include-in-header:
+      text: |
+        \usepackage{float}
+        \usepackage{unicode-math}
+        \floatplacement{figure}{H}

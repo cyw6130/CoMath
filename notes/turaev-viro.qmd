@@ -2,7 +2,7 @@
 title: "Turaev-Viro Invariants"
 description: "An introduction to state-sum invariants for 3-manifolds."
 date: "2025-10-24"
-categories: [TQFT, 3-Manifolds]
+categories: [Turaev-Viro Invariant, TQFT, 3-Manifolds]
 ---
 
 

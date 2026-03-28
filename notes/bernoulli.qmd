@@ -2,10 +2,6 @@
 title: "伯努利数、Zeta 函数与怪球"
 date: "2026-01-09"
 categories: [Number Theory, Exotic Spheres, Differential Topology]
-output:
-  pdf_document:
-    latex_engine: xelatex
-CJKmainfont: "PingFang SC"
 ---
 # 1 伯努利数的定义
 

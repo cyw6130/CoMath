@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-featured-notes .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-featured-notes'] = new List('listing-featured-notes', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -431,7 +462,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">庞加莱猜想与流形拓扑分类</span></a>
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
   </div>
 </li>
       </ul>
@@ -460,9 +491,10 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="My1NYW5pZm9sZHM=">3-Manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NC1NYW5pZm9sZHM=">4-Manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUklMjBmb3IlMjBNYXRo">AI for Math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2F0ZWdvcmlmaWNhdGlvbg==">Categorification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGlmZmVyZW50aWFsJTIwVG9wb2xvZ3k=">Differential Topology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXhvdGljJTIwU3BoZXJlcw==">Exotic Spheres <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aC1Db2JvcmRpc20=">h-Cobordism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw==">High-Dimensional Manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SG9tb3RvcHklMjBTcGhlcmVz">Homotopy Spheres <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S2hvdmFub3YlMjBIb21vbG9neQ==">Khovanov Homology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw==">Large Language Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9yc2UlMjBUaGVvcnk=">Morse Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TnVtYmVyJTIwVGhlb3J5">Number Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG9pbmNhciVDMyVBOSUyMENvbmplY3R1cmU=">Poincaré Conjecture <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhbnR1bSUyMEludmFyaWFudHM=">Quantum Invariants <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3VyZ2VyeSUyMFRoZW9yeQ==">Surgery Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VG9wb2xvZ2ljYWwlMjBNYW5pZm9sZHM=">Topological Manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VFFGVA==">TQFT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHVyYWV2LVZpcm8lMjBJbnZhcmlhbnQ=">Turaev-Viro Invariant <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-jolla column-page-right">
+<div class="quarto-about-jolla column-body">
   <img src="头像.png" class="about-image
   round " style="height: 15em; width: 15em;">
  <header id="title-block-header" class="quarto-title-block default">
@@ -470,9 +502,9 @@ window.Quarto = {
 <h1 class="title">Chen</h1>
 <p class="subtitle lead">数学 · 拓扑 · 量子不变量</p>
 </div>
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
   </div>
-</header><main class="content column-page-right" id="quarto-document-content">
+</header><main class="content column-body" id="quarto-document-content">
 
 <section id="关于我" class="level2">
 <h2 data-anchor-id="关于我">关于我</h2>
@@ -544,27 +576,119 @@ window.Quarto = {
 <section id="精选笔记" class="level2">
 <h2 data-anchor-id="精选笔记">精选笔记</h2>
 <p>从量子不变量到流形结构,探索拓扑学的美丽世界:</p>
-<div class="grid">
-<div class="g-col-12 g-col-md-6">
-<div class="card h-100">
-<section id="h-cobordism-理论" class="level3 card-body">
-<h3 data-anchor-id="h-cobordism-理论"><a href="./notes/h_cobordism_4.html">h-cobordism 理论</a></h3>
-<p>State-sum construction of 3-manifold invariants using 6j-symbols from spherical fusion categories.</p>
-<p><code>Differential Topology</code> <code>Algebraic Topology</code></p>
-</section>
+<div id="listing-featured-notes" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="UG9pbmNhciVDMyVBOSUyMENvbmplY3R1cmUlMkNIb21vdG9weSUyMFNwaGVyZXMlMkNNb3JzZSUyMFRoZW9yeSUyQ1RvcG9sb2dpY2FsJTIwTWFuaWZvbGRz" data-listing-date-sort="1774627200000" data-listing-file-modified-sort="1774715263664" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3627">
+<a href="./notes/poincare-conjecture-and-manifold-topological-classification.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/images/poincare-t2-handle.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+庞加莱猜想与怪球
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('UG9pbmNhciVDMyVBOSUyMENvbmplY3R1cmU='); return false;">Poincaré Conjecture</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SG9tb3RvcHklMjBTcGhlcmVz'); return false;">Homotopy Spheres</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TW9yc2UlMjBUaGVvcnk='); return false;">Morse Theory</div>
+<div class="listing-category" onclick="window.quartoListingCategory('VG9wb2xvZ2ljYWwlMjBNYW5pZm9sZHM='); return false;">Topological Manifolds</div>
+</div>
+<div class="card-text listing-description delink">
+<p>探讨庞加莱猜想、流形分类、同伦球与怪球，以及配边理论在拓扑学中的应用。</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+</div>
+<div class="listing-date">
+Mar 28, 2026
 </div>
 </div>
-<div class="g-col-12 g-col-md-6">
-<div class="card h-100">
-<section id="khovanov-同调" class="level3 card-body">
-<h3 data-anchor-id="khovanov-同调"><a href="./notes/Khovanov_homology.html">Khovanov 同调</a></h3>
-<p>A categorification of the Jones polynomial that provides strictly stronger invariants for links.</p>
-<p><code>Categorification</code> <code>Knot Theory</code> <code>4-manifold</code></p>
-</section>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscyUyQ0RlZXAlMjBMZWFybmluZyUyQ0FJJTIwZm9yJTIwTWF0aA==" data-listing-date-sort="1772812800000" data-listing-file-modified-sort="1774715263665" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<a href="./notes/microgpt-math-impl-compare.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+MicroGPT 数学原理与实现对照
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw=='); return false;">Large Language Models</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBmb3IlMjBNYXRo'); return false;">AI for Math</div>
+</div>
+<div class="card-text listing-description delink">
+<p>极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+</div>
+<div class="listing-date">
+Mar 7, 2026
 </div>
 </div>
 </div>
-<p>:::</p>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="TnVtYmVyJTIwVGhlb3J5JTJDRXhvdGljJTIwU3BoZXJlcyUyQ0RpZmZlcmVudGlhbCUyMFRvcG9sb2d5" data-listing-date-sort="1767888000000" data-listing-file-modified-sort="1774715567852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2075">
+<a href="./notes/bernoulli.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+伯努利数、Zeta 函数与怪球
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('TnVtYmVyJTIwVGhlb3J5'); return false;">Number Theory</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RXhvdGljJTIwU3BoZXJlcw=='); return false;">Exotic Spheres</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGlmZmVyZW50aWFsJTIwVG9wb2xvZ3k='); return false;">Differential Topology</div>
+</div>
+<div class="card-text listing-description delink">
+<span class="math display">
+\underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
+</span>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+</div>
+<div class="listing-date">
+Jan 9, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="aC1Db2JvcmRpc20lMkNTdXJnZXJ5JTIwVGhlb3J5JTJDSGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw==" data-listing-date-sort="1767283200000" data-listing-file-modified-sort="1774715753952" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1699">
+<a href="./notes/h_cobordism_4.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/pic_h_cobordism/2-Smale_s_work.webp" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Smale 的工作：h-Cobordism 定理与广义庞加莱猜想
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('aC1Db2JvcmRpc20='); return false;">h-Cobordism</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3VyZ2VyeSUyMFRoZW9yeQ=='); return false;">Surgery Theory</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw=='); return false;">High-Dimensional Manifolds</div>
+</div>
+<div class="card-text listing-description delink">
+<strong>参考书目</strong>：<em>Introductory Lectures on Manifold Topology Signposts</em> (Thomas Farrell &amp; Yang Su) — 一本非常舒适的入门书
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Cyw
+</div>
+<div class="listing-date">
+Jan 2, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 
 
 </section>

@@ -9,14 +9,26 @@ local function file_exists(filepath)
   return false
 end
 
-local function input_dir()
-  if PANDOC_STATE and PANDOC_STATE.input_files and #PANDOC_STATE.input_files > 0 then
-    local dir = path.directory(PANDOC_STATE.input_files[1])
-    if dir ~= "" then
-      return dir
+-- Quarto copies .qmd to a temp dir before passing to Pandoc, so
+-- PANDOC_STATE.input_files[1] points to the temp copy. We must check
+-- the real source tree instead.
+local function webp_exists_in_source(webp_src)
+  local project_dir = os.getenv("QUARTO_PROJECT_DIR")
+  if not project_dir then
+    return false
+  end
+
+  -- Try project_dir/<webp_src> and project_dir/notes/<webp_src>
+  local candidates = {
+    path.normalize(path.join({project_dir, webp_src})),
+    path.normalize(path.join({project_dir, "notes", webp_src})),
+  }
+  for _, c in ipairs(candidates) do
+    if file_exists(c) then
+      return true
     end
   end
-  return "."
+  return false
 end
 
 function Image(img)
@@ -30,10 +42,8 @@ function Image(img)
   end
 
   local webp_src = src:gsub("%.png$", ".webp")
-  local candidate = path.normalize(path.join({input_dir(), webp_src}))
 
-  -- Only rewrite when a matching .webp asset actually exists beside source notes.
-  if file_exists(candidate) then
+  if webp_exists_in_source(webp_src) then
     img.src = webp_src
   end
 
