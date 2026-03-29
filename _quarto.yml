@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - tools/skill-manager.html
 
 website:
   title: "Chen 的拓扑笔记"
@@ -20,6 +22,8 @@ website:
         text: Translations
       - href: pages/gallery.qmd
         text: Gallery
+      - href: tools/skill-manager.html
+        text: Skills
       - icon: github
         href: https://github.com/cyw6130
       - icon: envelope
