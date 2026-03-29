@@ -1,2 +1,7 @@
 /.quarto/
 **/*.quarto_ipynb
+
+/.luarc.json
+
+/tmp_repos/
+/docs/tmp_repos/
