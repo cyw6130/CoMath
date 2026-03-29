@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>关于本站 – Chen 的拓扑笔记</title>
+<title>agents – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,31 +20,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -259,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Chen 的拓扑笔记</span>
     </a>
   </div>
@@ -270,23 +305,23 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+    <a class="nav-link active" href="../../pages/notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/translations.html"> 
+    <a class="nav-link" href="../../pages/translations.html"> 
 <span class="menu-text">Translations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/gallery.html"> 
+    <a class="nav-link" href="../../pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/skill-manager.html"> 
+    <a class="nav-link" href="../../tools/skill-manager.html"> 
 <span class="menu-text">Skills</span></a>
   </li>  
   <li class="nav-item compact">
@@ -311,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">关于本站</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -342,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -357,13 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Turaev-Viro Invariants</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
   </div>
 </li>
@@ -380,19 +415,19 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">庞加莱猜想与怪球</span></a>
   </div>
 </li>
@@ -409,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
   </div>
 </li>
@@ -419,116 +454,64 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#repository-guidelines" id="toc-repository-guidelines" class="nav-link active" data-scroll-target="#repository-guidelines">Repository Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#project-structure-module-organization" id="toc-project-structure-module-organization" class="nav-link" data-scroll-target="#project-structure-module-organization">Project Structure &amp; Module Organization</a></li>
+  <li><a href="#build-test-and-development-commands" id="toc-build-test-and-development-commands" class="nav-link" data-scroll-target="#build-test-and-development-commands">Build, Test, and Development Commands</a></li>
+  <li><a href="#coding-style-naming-conventions" id="toc-coding-style-naming-conventions" class="nav-link" data-scroll-target="#coding-style-naming-conventions">Coding Style &amp; Naming Conventions</a></li>
+  <li><a href="#testing-guidelines" id="toc-testing-guidelines" class="nav-link" data-scroll-target="#testing-guidelines">Testing Guidelines</a></li>
+  <li><a href="#commit-pr-and-agent-notes" id="toc-commit-pr-and-agent-notes" class="nav-link" data-scroll-target="#commit-pr-and-agent-notes">Commit, PR, and Agent Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">关于本站</h1>
-<p class="subtitle lead">数字花园 · 拓扑笔记</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="关于本站" class="level2">
-<h2 class="anchored" data-anchor-id="关于本站">关于本站</h2>
-<p>这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🌱 vibe mathing 理念
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>我的学习方法是 <strong>vibe mathing</strong>——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。</p>
-<ul>
-<li><strong>vibe</strong>: 直觉、图像、“感觉应该是这样”</li>
-<li><strong>rigor</strong>: 证明、定义、“这就是为什么它成立”</li>
-</ul>
-<p>两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。</p>
-<p>笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。</p>
-</div>
-</div>
-<hr>
+<section id="repository-guidelines" class="level1">
+<h1>Repository Guidelines</h1>
+<p><strong>Status:</strong> Active <strong>Last Updated:</strong> 2026-03-13</p>
+<section id="project-structure-module-organization" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure-module-organization">Project Structure &amp; Module Organization</h2>
+<p><code>src/notebooklm/</code> contains the async client and typed APIs. Internal feature modules use <code>_</code> prefixes such as <code>_sources.py</code> and <code>_artifacts.py</code>; <code>src/notebooklm/cli/</code> holds Click commands, and <code>src/notebooklm/rpc/</code> handles protocol encoding and decoding. Tests are split by scope: <code>tests/unit/</code>, <code>tests/integration/</code>, and <code>tests/e2e/</code>. Recorded HTTP fixtures live in <code>tests/cassettes/</code>. Examples are in <code>docs/examples/</code>, and diagnostics live in <code>scripts/</code>.</p>
 </section>
-<section id="the-stack" class="level2">
-<h2 class="anchored" data-anchor-id="the-stack">the stack</h2>
-<p>本站使用以下技术构建：</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">工具</th>
-<th style="text-align: left;">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://quarto.org">Quarto</a></td>
-<td style="text-align: left;">文档生成系统</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LaTeX / KaTeX</td>
-<td style="text-align: left;">数学公式渲染</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">GitHub Pages</td>
-<td style="text-align: left;">静态网站托管</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SCSS</td>
-<td style="text-align: left;">自定义样式</td>
-</tr>
-</tbody>
-</table>
-<hr>
+<section id="build-test-and-development-commands" class="level2">
+<h2 class="anchored" data-anchor-id="build-test-and-development-commands">Build, Test, and Development Commands</h2>
+<p>Use <code>uv</code> for local work:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync <span class="at">--extra</span> dev <span class="at">--extra</span> browser</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run pytest</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run ruff check src/ tests/</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run ruff format src/ tests/</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run mypy src/notebooklm</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run pre-commit run <span class="at">--all-files</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run <code>uv run pytest tests/e2e -m readonly</code> only after <code>notebooklm login</code> and setting test notebook env vars.</p>
 </section>
-<section id="联系方式" class="level2">
-<h2 class="anchored" data-anchor-id="联系方式">联系方式</h2>
-<p>欢迎交流拓扑、分享想法:</p>
-<ul>
-<li>📧 <strong>Email</strong>: <a href="mailto:your_email@edu.com">your_email@edu.com</a></li>
-<li>🐙 <strong>GitHub</strong>: <a href="https://github.com/cyw6130"><span class="citation" data-cites="cyw6130">@cyw6130</span></a></li>
-</ul>
-<hr>
+<section id="coding-style-naming-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="coding-style-naming-conventions">Coding Style &amp; Naming Conventions</h2>
+<p>Target Python 3.10+, 4-space indentation, and double quotes. Ruff enforces formatting and import order with a 100-character line length. Keep module and test file names in <code>snake_case</code>; prefer descriptive Click command names that match existing groups such as <code>source</code>, <code>artifact</code>, and <code>research</code>. Preserve the internal/public split: <code>_*.py</code> for implementation, exported types in <code>src/notebooklm/__init__.py</code>.</p>
 </section>
-<section id="致谢" class="level2">
-<h2 class="anchored" data-anchor-id="致谢">致谢</h2>
-<p>感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。</p>
-<p>感谢开源社区让知识分享变得如此简单。</p>
-<hr>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>许可协议</strong>: 除特别注明外,本站内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。</p>
-</div>
-</div>
-</div>
+<section id="testing-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="testing-guidelines">Testing Guidelines</h2>
+<p>Put pure logic in <code>tests/unit/</code>, VCR-backed flows in <code>tests/integration/</code>, and authenticated NotebookLM coverage in <code>tests/e2e/</code>. Name tests <code>test_&lt;behavior&gt;.py</code> and record cassettes with <code>NOTEBOOKLM_VCR_RECORD=1 uv run pytest tests/integration/test_vcr_*.py -v</code>. Coverage is expected to stay at or above the configured 90% threshold.</p>
+</section>
+<section id="commit-pr-and-agent-notes" class="level2">
+<h2 class="anchored" data-anchor-id="commit-pr-and-agent-notes">Commit, PR, and Agent Notes</h2>
+<p>Follow the existing commit style: <code>feat(cli): ...</code>, <code>fix(cli): ...</code>, <code>refactor(test): ...</code>, <code>style: ...</code>. PRs should include a short summary, linked issue when relevant, and the commands run locally. For Codex or other parallel agents, prefer <code>--json</code>, pass explicit notebook IDs instead of relying on <code>notebooklm use</code>, and isolate runs with <code>NOTEBOOKLM_HOME=/tmp/&lt;agent-id&gt;</code> when multiple agents share one machine.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -976,5 +959,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

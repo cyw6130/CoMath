@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>关于本站 – Chen 的拓扑笔记</title>
+<title>security – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,31 +20,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -259,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Chen 的拓扑笔记</span>
     </a>
   </div>
@@ -270,23 +305,23 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+    <a class="nav-link active" href="../../pages/notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/translations.html"> 
+    <a class="nav-link" href="../../pages/translations.html"> 
 <span class="menu-text">Translations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/gallery.html"> 
+    <a class="nav-link" href="../../pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/skill-manager.html"> 
+    <a class="nav-link" href="../../tools/skill-manager.html"> 
 <span class="menu-text">Skills</span></a>
   </li>  
   <li class="nav-item compact">
@@ -311,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">关于本站</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -342,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -357,13 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Turaev-Viro Invariants</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
   </div>
 </li>
@@ -380,19 +415,19 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">庞加莱猜想与怪球</span></a>
   </div>
 </li>
@@ -409,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
   </div>
 </li>
@@ -419,116 +454,218 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#security-policy" id="toc-security-policy" class="nav-link active" data-scroll-target="#security-policy">Security Policy</a>
+  <ul class="collapse">
+  <li><a href="#supported-versions" id="toc-supported-versions" class="nav-link" data-scroll-target="#supported-versions">Supported Versions</a></li>
+  <li><a href="#reporting-a-vulnerability" id="toc-reporting-a-vulnerability" class="nav-link" data-scroll-target="#reporting-a-vulnerability">Reporting a Vulnerability</a></li>
+  <li><a href="#credential-security" id="toc-credential-security" class="nav-link" data-scroll-target="#credential-security">Credential Security</a>
+  <ul class="collapse">
+  <li><a href="#storage-locations" id="toc-storage-locations" class="nav-link" data-scroll-target="#storage-locations">Storage Locations</a></li>
+  <li><a href="#security-best-practices" id="toc-security-best-practices" class="nav-link" data-scroll-target="#security-best-practices">Security Best Practices</a></li>
+  <li><a href="#what-this-library-does-not-do" id="toc-what-this-library-does-not-do" class="nav-link" data-scroll-target="#what-this-library-does-not-do">What This Library Does NOT Do</a></li>
+  </ul></li>
+  <li><a href="#dependency-security" id="toc-dependency-security" class="nav-link" data-scroll-target="#dependency-security">Dependency Security</a>
+  <ul class="collapse">
+  <li><a href="#auditing-dependencies" id="toc-auditing-dependencies" class="nav-link" data-scroll-target="#auditing-dependencies">Auditing Dependencies</a></li>
+  </ul></li>
+  <li><a href="#known-limitations" id="toc-known-limitations" class="nav-link" data-scroll-target="#known-limitations">Known Limitations</a>
+  <ul class="collapse">
+  <li><a href="#undocumented-api" id="toc-undocumented-api" class="nav-link" data-scroll-target="#undocumented-api">Undocumented API</a></li>
+  <li><a href="#session-security" id="toc-session-security" class="nav-link" data-scroll-target="#session-security">Session Security</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">关于本站</h1>
-<p class="subtitle lead">数字花园 · 拓扑笔记</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="关于本站" class="level2">
-<h2 class="anchored" data-anchor-id="关于本站">关于本站</h2>
-<p>这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🌱 vibe mathing 理念
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>我的学习方法是 <strong>vibe mathing</strong>——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。</p>
-<ul>
-<li><strong>vibe</strong>: 直觉、图像、“感觉应该是这样”</li>
-<li><strong>rigor</strong>: 证明、定义、“这就是为什么它成立”</li>
-</ul>
-<p>两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。</p>
-<p>笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。</p>
-</div>
-</div>
-<hr>
-</section>
-<section id="the-stack" class="level2">
-<h2 class="anchored" data-anchor-id="the-stack">the stack</h2>
-<p>本站使用以下技术构建：</p>
+<section id="security-policy" class="level1">
+<h1>Security Policy</h1>
+<section id="supported-versions" class="level2">
+<h2 class="anchored" data-anchor-id="supported-versions">Supported Versions</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">工具</th>
-<th style="text-align: left;">用途</th>
+<th>Version</th>
+<th>Supported</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://quarto.org">Quarto</a></td>
-<td style="text-align: left;">文档生成系统</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LaTeX / KaTeX</td>
-<td style="text-align: left;">数学公式渲染</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">GitHub Pages</td>
-<td style="text-align: left;">静态网站托管</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SCSS</td>
-<td style="text-align: left;">自定义样式</td>
+<td>0.1.x</td>
+<td>:white_check_mark:</td>
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
-<section id="联系方式" class="level2">
-<h2 class="anchored" data-anchor-id="联系方式">联系方式</h2>
-<p>欢迎交流拓扑、分享想法:</p>
+<section id="reporting-a-vulnerability" class="level2">
+<h2 class="anchored" data-anchor-id="reporting-a-vulnerability">Reporting a Vulnerability</h2>
+<p>If you discover a security vulnerability, please report it by:</p>
+<ol type="1">
+<li><strong>DO NOT</strong> open a public GitHub issue</li>
+<li>Email the maintainers directly (see <code>pyproject.toml</code> for contact info)</li>
+<li>Include a detailed description of the vulnerability</li>
+<li>Allow reasonable time for a fix before public disclosure</li>
+</ol>
+</section>
+<section id="credential-security" class="level2">
+<h2 class="anchored" data-anchor-id="credential-security">Credential Security</h2>
+<p>This library stores authentication credentials locally. Please understand these security considerations:</p>
+<section id="storage-locations" class="level3">
+<h3 class="anchored" data-anchor-id="storage-locations">Storage Locations</h3>
+<p>Default location is <code>~/.notebooklm/</code> (can be changed via <code>NOTEBOOKLM_HOME</code> environment variable):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Contents</th>
+<th>Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>storage_state.json</code></td>
+<td>Google session cookies</td>
+<td><code>0o600</code> (owner-only)</td>
+</tr>
+<tr class="even">
+<td><code>browser_profile/</code></td>
+<td>Chromium profile data</td>
+<td><code>0o700</code> (owner-only)</td>
+</tr>
+<tr class="odd">
+<td><code>context.json</code></td>
+<td>Active notebook ID</td>
+<td>Default</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="security-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="security-best-practices">Security Best Practices</h3>
+<ol type="1">
+<li><p><strong>Protect your credentials</strong></p>
 <ul>
-<li>📧 <strong>Email</strong>: <a href="mailto:your_email@edu.com">your_email@edu.com</a></li>
-<li>🐙 <strong>GitHub</strong>: <a href="https://github.com/cyw6130"><span class="citation" data-cites="cyw6130">@cyw6130</span></a></li>
-</ul>
-<hr>
+<li>The <code>storage_state.json</code> file contains your Google session cookies</li>
+<li>Anyone with access to this file can impersonate your Google account to NotebookLM</li>
+<li>Never share, commit, or expose this file</li>
+</ul></li>
+<li><p><strong>Add to .gitignore</strong></p>
+<pre class="gitignore"><code>.notebooklm/</code></pre></li>
+<li><p><strong>Credential rotation</strong></p>
+<ul>
+<li>Re-run <code>notebooklm login</code> periodically to refresh credentials</li>
+<li>Sessions typically last days to weeks before expiring</li>
+</ul></li>
+<li><p><strong>If credentials are compromised</strong></p>
+<ul>
+<li>Immediately revoke access at <a href="https://myaccount.google.com/permissions">Google Security Settings</a></li>
+<li>Delete the <code>~/.notebooklm/</code> directory</li>
+<li>Re-authenticate with <code>notebooklm login</code></li>
+</ul></li>
+<li><p><strong>CI/CD usage</strong></p>
+<ul>
+<li>Do not commit credentials to repositories</li>
+<li>Use <code>NOTEBOOKLM_AUTH_JSON</code> environment variable for secure, file-free authentication</li>
+<li>Store the JSON value in GitHub Secrets or similar secure secret management</li>
+<li>The env var approach keeps credentials in memory only, never written to disk</li>
+</ul></li>
+</ol>
 </section>
-<section id="致谢" class="level2">
-<h2 class="anchored" data-anchor-id="致谢">致谢</h2>
-<p>感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。</p>
-<p>感谢开源社区让知识分享变得如此简单。</p>
-<hr>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>许可协议</strong>: 除特别注明外,本站内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。</p>
-</div>
-</div>
-</div>
+<section id="what-this-library-does-not-do" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-library-does-not-do">What This Library Does NOT Do</h3>
+<ul>
+<li>Does not transmit credentials to any third party</li>
+<li>Does not store passwords (uses browser-based OAuth)</li>
+<li>Does not access data outside of NotebookLM</li>
+<li>Does not modify Google account settings</li>
+</ul>
+</section>
+</section>
+<section id="dependency-security" class="level2">
+<h2 class="anchored" data-anchor-id="dependency-security">Dependency Security</h2>
+<p>This library uses minimal dependencies:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dependency</th>
+<th>Purpose</th>
+<th>Security Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>httpx</code></td>
+<td>HTTP client</td>
+<td>Well-maintained, security-focused</td>
+</tr>
+<tr class="even">
+<td><code>click</code></td>
+<td>CLI framework</td>
+<td>Stable, minimal attack surface</td>
+</tr>
+<tr class="odd">
+<td><code>rich</code></td>
+<td>Terminal output</td>
+<td>Cosmetic, no network access</td>
+</tr>
+<tr class="even">
+<td><code>playwright</code></td>
+<td>Browser automation (optional)</td>
+<td>Used only for login</td>
+</tr>
+</tbody>
+</table>
+<section id="auditing-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="auditing-dependencies">Auditing Dependencies</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install pip-audit</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pip-audit</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run security audit</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip-audit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="known-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="known-limitations">Known Limitations</h2>
+<section id="undocumented-api" class="level3">
+<h3 class="anchored" data-anchor-id="undocumented-api">Undocumented API</h3>
+<p>This library uses Google’s internal APIs, which means:</p>
+<ul>
+<li><strong>No official security guarantees</strong> from Google</li>
+<li><strong>API changes without notice</strong> may break functionality</li>
+<li><strong>Rate limiting</strong> may be applied by Google</li>
+<li><strong>Account restrictions</strong> are possible for unusual usage patterns</li>
+</ul>
+</section>
+<section id="session-security" class="level3">
+<h3 class="anchored" data-anchor-id="session-security">Session Security</h3>
+<ul>
+<li>Sessions are cookie-based (standard web authentication)</li>
+<li>CSRF tokens are required and automatically handled</li>
+<li>No long-lived API keys or OAuth tokens</li>
+</ul>
+</section>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions?</h2>
+<p>For security questions that are not vulnerabilities, open a <a href="https://github.com/teng-lin/notebooklm-py/discussions">GitHub Discussion</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -976,5 +1113,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

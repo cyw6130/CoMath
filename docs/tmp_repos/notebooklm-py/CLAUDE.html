@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>关于本站 – Chen 的拓扑笔记</title>
+<title>claude – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,31 +20,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -259,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Chen 的拓扑笔记</span>
     </a>
   </div>
@@ -270,23 +305,23 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+    <a class="nav-link active" href="../../pages/notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/translations.html"> 
+    <a class="nav-link" href="../../pages/translations.html"> 
 <span class="menu-text">Translations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/gallery.html"> 
+    <a class="nav-link" href="../../pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tools/skill-manager.html"> 
+    <a class="nav-link" href="../../tools/skill-manager.html"> 
 <span class="menu-text">Skills</span></a>
   </li>  
   <li class="nav-item compact">
@@ -311,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">关于本站</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -342,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -357,13 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Turaev-Viro Invariants</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
   </div>
 </li>
@@ -380,19 +415,19 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">庞加莱猜想与怪球</span></a>
   </div>
 </li>
@@ -409,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
   </div>
 </li>
@@ -419,116 +454,301 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#claude.md" id="toc-claude.md" class="nav-link active" data-scroll-target="#claude.md">CLAUDE.md</a>
+  <ul class="collapse">
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#development-commands" id="toc-development-commands" class="nav-link" data-scroll-target="#development-commands">Development Commands</a></li>
+  <li><a href="#pre-commit-checks-required-before-committing" id="toc-pre-commit-checks-required-before-committing" class="nav-link" data-scroll-target="#pre-commit-checks-required-before-committing">Pre-Commit Checks (REQUIRED before committing)</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#layered-design" id="toc-layered-design" class="nav-link" data-scroll-target="#layered-design">Layered Design</a></li>
+  <li><a href="#key-files" id="toc-key-files" class="nav-link" data-scroll-target="#key-files">Key Files</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure">Repository Structure</a></li>
+  </ul></li>
+  <li><a href="#api-patterns" id="toc-api-patterns" class="nav-link" data-scroll-target="#api-patterns">API Patterns</a>
+  <ul class="collapse">
+  <li><a href="#client-usage" id="toc-client-usage" class="nav-link" data-scroll-target="#client-usage">Client Usage</a></li>
+  <li><a href="#cli-structure" id="toc-cli-structure" class="nav-link" data-scroll-target="#cli-structure">CLI Structure</a></li>
+  </ul></li>
+  <li><a href="#testing-strategy" id="toc-testing-strategy" class="nav-link" data-scroll-target="#testing-strategy">Testing Strategy</a>
+  <ul class="collapse">
+  <li><a href="#e2e-test-status" id="toc-e2e-test-status" class="nav-link" data-scroll-target="#e2e-test-status">E2E Test Status</a></li>
+  </ul></li>
+  <li><a href="#common-pitfalls" id="toc-common-pitfalls" class="nav-link" data-scroll-target="#common-pitfalls">Common Pitfalls</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#when-to-suggest-cli-vs-api" id="toc-when-to-suggest-cli-vs-api" class="nav-link" data-scroll-target="#when-to-suggest-cli-vs-api">When to Suggest CLI vs API</a></li>
+  <li><a href="#pull-request-workflow-required" id="toc-pull-request-workflow-required" class="nav-link" data-scroll-target="#pull-request-workflow-required">Pull Request Workflow (REQUIRED)</a>
+  <ul class="collapse">
+  <li><a href="#monitor-ci-status" id="toc-monitor-ci-status" class="nav-link" data-scroll-target="#monitor-ci-status">1. Monitor CI Status</a></li>
+  <li><a href="#check-for-review-comments" id="toc-check-for-review-comments" class="nav-link" data-scroll-target="#check-for-review-comments">2. Check for Review Comments</a></li>
+  <li><a href="#address-feedback" id="toc-address-feedback" class="nav-link" data-scroll-target="#address-feedback">3. Address Feedback</a></li>
+  <li><a href="#verify-final-state" id="toc-verify-final-state" class="nav-link" data-scroll-target="#verify-final-state">4. Verify Final State</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">关于本站</h1>
-<p class="subtitle lead">数字花园 · 拓扑笔记</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="关于本站" class="level2">
-<h2 class="anchored" data-anchor-id="关于本站">关于本站</h2>
-<p>这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🌱 vibe mathing 理念
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>我的学习方法是 <strong>vibe mathing</strong>——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。</p>
-<ul>
-<li><strong>vibe</strong>: 直觉、图像、“感觉应该是这样”</li>
-<li><strong>rigor</strong>: 证明、定义、“这就是为什么它成立”</li>
-</ul>
-<p>两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。</p>
-<p>笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。</p>
-</div>
-</div>
-<hr>
+<section id="claude.md" class="level1">
+<h1>CLAUDE.md</h1>
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+<p><strong>IMPORTANT:</strong> Follow documentation rules in <a href="../../tmp_repos/notebooklm-py/CONTRIBUTING.html">CONTRIBUTING.md</a> - especially the file creation and naming conventions.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p><code>notebooklm-py</code> is an unofficial Python client for Google NotebookLM that uses undocumented RPC APIs. The library enables programmatic automation of NotebookLM features including notebook management, source integration, AI querying, and studio artifact generation (podcasts, videos, quizzes, etc.).</p>
+<p><strong>Critical constraint</strong>: This uses Google’s internal <code>batchexecute</code> RPC protocol with obfuscated method IDs that Google can change at any time. All RPC method IDs in <code>src/notebooklm/rpc/types.py</code> are undocumented and subject to breakage.</p>
 </section>
-<section id="the-stack" class="level2">
-<h2 class="anchored" data-anchor-id="the-stack">the stack</h2>
-<p>本站使用以下技术构建：</p>
+<section id="development-commands" class="level2">
+<h2 class="anchored" data-anchor-id="development-commands">Development Commands</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create/recreate venv with uv (recommended - relocatable venvs)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv .venv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> <span class="st">".[all]"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">playwright</span> install chromium</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate virtual environment</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all tests (excluding e2e by default)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with coverage</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">--cov</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Run e2e tests (requires authentication)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> tests/e2e <span class="at">-m</span> e2e</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># CLI testing</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">notebooklm</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pre-commit-checks-required-before-committing" class="level2">
+<h2 class="anchored" data-anchor-id="pre-commit-checks-required-before-committing">Pre-Commit Checks (REQUIRED before committing)</h2>
+<p><strong>IMPORTANT:</strong> Always run these checks before committing to avoid CI failures:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Format code with ruff</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ruff</span> format src/ tests/</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for linting issues</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ruff</span> check src/ tests/</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Type checking with mypy</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">mypy</span> src/notebooklm <span class="at">--ignore-missing-imports</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or use this one-liner:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ruff</span> format src/ tests/ <span class="kw">&amp;&amp;</span> <span class="ex">ruff</span> check src/ tests/ <span class="kw">&amp;&amp;</span> <span class="ex">mypy</span> src/notebooklm <span class="at">--ignore-missing-imports</span> <span class="kw">&amp;&amp;</span> <span class="ex">pytest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<section id="layered-design" class="level3">
+<h3 class="anchored" data-anchor-id="layered-design">Layered Design</h3>
+<pre><code>CLI Layer (cli/)
+    ↓
+Client Layer (client.py, _*.py APIs)
+    ↓
+Core Layer (_core.py)
+    ↓
+RPC Layer (rpc/)</code></pre>
+<ol type="1">
+<li><strong>RPC Layer</strong> (<code>src/notebooklm/rpc/</code>):
+<ul>
+<li><code>types.py</code>: All RPC method IDs and enums (source of truth)</li>
+<li><code>encoder.py</code>: Request encoding</li>
+<li><code>decoder.py</code>: Response parsing</li>
+</ul></li>
+<li><strong>Core Layer</strong> (<code>src/notebooklm/_core.py</code>):
+<ul>
+<li>HTTP client management</li>
+<li>RPC call abstraction</li>
+<li>Request counter handling</li>
+</ul></li>
+<li><strong>Client Layer</strong> (<code>src/notebooklm/client.py</code>, <code>_*.py</code>):
+<ul>
+<li><code>NotebookLMClient</code>: Main async client with namespaced APIs</li>
+<li><code>_notebooks.py</code>, <code>_sources.py</code>, <code>_artifacts.py</code>, etc.: Domain APIs</li>
+</ul></li>
+<li><strong>CLI Layer</strong> (<code>src/notebooklm/cli/</code>):
+<ul>
+<li>Modular Click commands</li>
+<li><code>session.py</code>, <code>notebook.py</code>, <code>source.py</code>, <code>generate.py</code>, etc.</li>
+</ul></li>
+</ol>
+</section>
+<section id="key-files" class="level3">
+<h3 class="anchored" data-anchor-id="key-files">Key Files</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">工具</th>
-<th style="text-align: left;">用途</th>
+<th>File</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://quarto.org">Quarto</a></td>
-<td style="text-align: left;">文档生成系统</td>
+<td><code>client.py</code></td>
+<td>Main <code>NotebookLMClient</code> class</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">LaTeX / KaTeX</td>
-<td style="text-align: left;">数学公式渲染</td>
+<td><code>_core.py</code></td>
+<td>HTTP and RPC infrastructure</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">GitHub Pages</td>
-<td style="text-align: left;">静态网站托管</td>
+<td><code>_notebooks.py</code></td>
+<td><code>client.notebooks</code> API</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">SCSS</td>
-<td style="text-align: left;">自定义样式</td>
+<td><code>_sources.py</code></td>
+<td><code>client.sources</code> API</td>
+</tr>
+<tr class="odd">
+<td><code>_artifacts.py</code></td>
+<td><code>client.artifacts</code> API</td>
+</tr>
+<tr class="even">
+<td><code>_chat.py</code></td>
+<td><code>client.chat</code> API</td>
+</tr>
+<tr class="odd">
+<td><code>rpc/types.py</code></td>
+<td>RPC method IDs (source of truth)</td>
+</tr>
+<tr class="even">
+<td><code>auth.py</code></td>
+<td>Authentication handling</td>
+</tr>
+<tr class="odd">
+<td><code>cli/</code></td>
+<td>CLI command modules</td>
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
-<section id="联系方式" class="level2">
-<h2 class="anchored" data-anchor-id="联系方式">联系方式</h2>
-<p>欢迎交流拓扑、分享想法:</p>
+<section id="repository-structure" class="level3">
+<h3 class="anchored" data-anchor-id="repository-structure">Repository Structure</h3>
+<pre><code>src/notebooklm/
+├── __init__.py          # Public exports
+├── client.py            # NotebookLMClient
+├── auth.py              # Authentication
+├── types.py             # Dataclasses
+├── _core.py             # Core infrastructure
+├── _notebooks.py        # NotebooksAPI
+├── _sources.py          # SourcesAPI
+├── _artifacts.py        # ArtifactsAPI
+├── _chat.py             # ChatAPI
+├── _research.py         # ResearchAPI
+├── _notes.py            # NotesAPI
+├── rpc/                 # RPC protocol layer
+│   ├── types.py         # Method IDs and enums
+│   ├── encoder.py       # Request encoding
+│   └── decoder.py       # Response parsing
+└── cli/                 # CLI implementation
+    ├── __init__.py
+    ├── helpers.py       # Shared utilities
+    ├── session.py       # login, use, status, clear
+    ├── notebook.py      # list, create, delete, rename
+    ├── source.py        # source add, list, delete
+    ├── artifact.py      # artifact commands
+    ├── generate.py      # generate audio, video, etc.
+    ├── download.py      # download commands
+    ├── chat.py          # ask, configure, history
+    └── note.py          # note commands</code></pre>
+</section>
+</section>
+<section id="api-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="api-patterns">API Patterns</h2>
+<section id="client-usage" class="level3">
+<h3 class="anchored" data-anchor-id="client-usage">Client Usage</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct pattern - uses namespaced APIs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> <span class="cf">await</span> NotebookLMClient.from_storage() <span class="im">as</span> client:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    notebooks <span class="op">=</span> <span class="cf">await</span> client.notebooks.<span class="bu">list</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> client.sources.add_url(nb_id, url)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="cf">await</span> client.chat.ask(nb_id, question)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    status <span class="op">=</span> <span class="cf">await</span> client.artifacts.generate_audio(nb_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cli-structure" class="level3">
+<h3 class="anchored" data-anchor-id="cli-structure">CLI Structure</h3>
+<p>Commands are organized as: - <strong>Top-level</strong>: <code>login</code>, <code>use</code>, <code>status</code>, <code>clear</code>, <code>list</code>, <code>create</code>, <code>ask</code> - <strong>Grouped</strong>: <code>source add</code>, <code>artifact list</code>, <code>generate audio</code>, <code>download video</code>, <code>note create</code></p>
+</section>
+</section>
+<section id="testing-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="testing-strategy">Testing Strategy</h2>
 <ul>
-<li>📧 <strong>Email</strong>: <a href="mailto:your_email@edu.com">your_email@edu.com</a></li>
-<li>🐙 <strong>GitHub</strong>: <a href="https://github.com/cyw6130"><span class="citation" data-cites="cyw6130">@cyw6130</span></a></li>
+<li><strong>Unit tests</strong> (<code>tests/unit/</code>): Test encoding/decoding, no network</li>
+<li><strong>Integration tests</strong> (<code>tests/integration/</code>): Mock HTTP responses</li>
+<li><strong>E2E tests</strong> (<code>tests/e2e/</code>): Real API, require auth, marked <code>@pytest.mark.e2e</code></li>
 </ul>
-<hr>
+<section id="e2e-test-status" class="level3">
+<h3 class="anchored" data-anchor-id="e2e-test-status">E2E Test Status</h3>
+<ul>
+<li>✅ Notebook operations (list, create, rename, delete)</li>
+<li>✅ Source operations (add URL/text/YouTube, rename)</li>
+<li>✅ Download operations (audio, video, infographic, slides)</li>
+<li>⚠️ Artifact generation may fail due to rate limiting</li>
+</ul>
 </section>
-<section id="致谢" class="level2">
-<h2 class="anchored" data-anchor-id="致谢">致谢</h2>
-<p>感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。</p>
-<p>感谢开源社区让知识分享变得如此简单。</p>
-<hr>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>许可协议</strong>: 除特别注明外,本站内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。</p>
-</div>
-</div>
-</div>
+</section>
+<section id="common-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="common-pitfalls">Common Pitfalls</h2>
+<ol type="1">
+<li><strong>RPC method IDs change</strong>: Check network traffic and update <code>rpc/types.py</code></li>
+<li><strong>Nested list structures</strong>: Params are position-sensitive. Check existing implementations.</li>
+<li><strong>Source ID nesting</strong>: Different methods need <code>[id]</code>, <code>[[id]]</code>, <code>[[[id]]]</code>, or <code>[[[[id]]]]</code></li>
+<li><strong>CSRF tokens expire</strong>: Use <code>client.refresh_auth()</code> or re-run <code>notebooklm login</code></li>
+<li><strong>Rate limiting</strong>: Add delays between bulk operations</li>
+</ol>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>All docs use lowercase-kebab naming in <code>docs/</code>: - <code>docs/cli-reference.md</code> - CLI commands - <code>docs/python-api.md</code> - Python API reference - <code>docs/configuration.md</code> - Storage and settings - <code>docs/troubleshooting.md</code> - Known issues - <code>docs/development.md</code> - Architecture, testing, releasing - <code>docs/rpc-development.md</code> - RPC capture and debugging - <code>docs/rpc-reference.md</code> - RPC payload structures</p>
+</section>
+<section id="when-to-suggest-cli-vs-api" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-suggest-cli-vs-api">When to Suggest CLI vs API</h2>
+<ul>
+<li><strong>CLI</strong>: Quick tasks, shell scripts, LLM agent automation</li>
+<li><strong>Python API</strong>: Application integration, complex workflows, async operations</li>
+</ul>
+</section>
+<section id="pull-request-workflow-required" class="level2">
+<h2 class="anchored" data-anchor-id="pull-request-workflow-required">Pull Request Workflow (REQUIRED)</h2>
+<p>After creating a PR, you MUST monitor and address feedback:</p>
+<section id="monitor-ci-status" class="level3">
+<h3 class="anchored" data-anchor-id="monitor-ci-status">1. Monitor CI Status</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check CI status (repeat until all pass)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> pr checks <span class="op">&lt;</span>PR_NUMBER<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wait for all checks to pass. If any fail, investigate and fix.</p>
+</section>
+<section id="check-for-review-comments" class="level3">
+<h3 class="anchored" data-anchor-id="check-for-review-comments">2. Check for Review Comments</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get review comments</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> api repos/teng-lin/notebooklm-py/pulls/<span class="op">&lt;</span>PR_NUMBER<span class="op">&gt;</span>/comments <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--jq</span> <span class="st">'.[] | "File: \(.path):\(.line)\nComment: \(.body)\n---"'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="address-feedback" class="level3">
+<h3 class="anchored" data-anchor-id="address-feedback">3. Address Feedback</h3>
+<p>For each review comment (especially from <code>gemini-code-assist</code>): 1. Read and understand the feedback 2. Make the suggested fix if it improves the code 3. Commit with a descriptive message referencing the feedback 4. Push and re-check CI 5. <strong>Reply to the review thread</strong> confirming the fix: <code>bash    gh api repos/teng-lin/notebooklm-py/pulls/&lt;PR&gt;/comments/&lt;COMMENT_ID&gt;/replies \      -f body="Addressed in commit &lt;SHA&gt;: &lt;brief description&gt;"</code></p>
+</section>
+<section id="verify-final-state" class="level3">
+<h3 class="anchored" data-anchor-id="verify-final-state">4. Verify Final State</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure PR is ready to merge</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> pr view <span class="op">&lt;</span>PR_NUMBER<span class="op">&gt;</span> --json state,mergeStateStatus,mergeable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Important</strong>: Do NOT consider a PR complete until: - All CI checks pass - All review comments are addressed - <code>mergeStateStatus</code> is <code>CLEAN</code></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -976,5 +1196,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
