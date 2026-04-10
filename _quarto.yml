@@ -22,8 +22,6 @@ website:
         text: Translations
       - href: pages/gallery.qmd
         text: Gallery
-      - href: tools/skill-manager.html
-        text: Skills
       - icon: github
         href: https://github.com/cyw6130
       - icon: envelope
