@@ -1,16 +1,7 @@
 ---
-title: Intersection Form of 4-Manifold
-date: 2026-4-10
-categories:
-  - intersection-form
-  - poincare-duality
-  - de-rham-cohomology
-  - homology
-  - manifold-topology
-  - thom-class
-  - lefschetz-duality
-  - fundamental-class
-  - my-notes
+title: "四维流形的相交形式 (Intersection Form)"
+date: 2026-04-10
+categories: [Intersection Form, 4-Manifolds, Poincaré Duality, Freedman, Donaldson]
 description: 本文系统介绍了四维流形相交形式的定义、几何直观、代数分类及其在单连通四维流形分类问题中的应用。
 ---
 

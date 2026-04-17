@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-04-10">
+<meta name="description" content="本文系统介绍了四维流形相交形式的定义、几何直观、代数分类及其在单连通四维流形分类问题中的应用。">
+
+<title>Intersection Form of 4-Manifold – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:2120240050@nankai.edu.cn"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Intersection Form of 4-Manifold</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov 同调与 s-不变量</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Four Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/intersection-form-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">四维流形的相交形式 (Intersection Form)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation"><span class="header-section-number">1</span> Preparation</a></li>
+  <li><a href="#intersection-form-of-4-manifold" id="toc-intersection-form-of-4-manifold" class="nav-link" data-scroll-target="#intersection-form-of-4-manifold"><span class="header-section-number">2</span> Intersection Form of 4-Manifold</a>
+  <ul class="collapse">
+  <li><a href="#algebraic-classification-of-intersection-form" id="toc-algebraic-classification-of-intersection-form" class="nav-link" data-scroll-target="#algebraic-classification-of-intersection-form"><span class="header-section-number">2.1</span> Algebraic Classification of Intersection Form</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-thm-1" id="toc-proof-of-thm-1" class="nav-link" data-scroll-target="#proof-of-thm-1"><span class="header-section-number">2.1.1</span> Proof of Thm 1</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#thm-1" id="toc-thm-1" class="nav-link" data-scroll-target="#thm-1"><span class="header-section-number">3</span> Thm 1</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-thm-2" id="toc-proof-of-thm-2" class="nav-link" data-scroll-target="#proof-of-thm-2"><span class="header-section-number">3.0.1</span> Proof of Thm 2</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">3.0.2</span> Examples</a></li>
+  </ul></li>
+  <li><a href="#computation-of-mathbbcp2." id="toc-computation-of-mathbbcp2." class="nav-link" data-scroll-target="#computation-of-mathbbcp2."><span class="header-section-number">4</span> Computation of <span class="math inline">\mathbb{CP}^2</span>.</a>
+  <ul class="collapse">
+  <li><a href="#more-results-oriented-cobordism-group" id="toc-more-results-oriented-cobordism-group" class="nav-link" data-scroll-target="#more-results-oriented-cobordism-group"><span class="header-section-number">4.0.1</span> More Results: Oriented Cobordism Group</a></li>
+  </ul></li>
+  <li><a href="#main-results-on-simply-connected-4-manifolds" id="toc-main-results-on-simply-connected-4-manifolds" class="nav-link" data-scroll-target="#main-results-on-simply-connected-4-manifolds"><span class="header-section-number">5</span> Main Results on Simply Connected 4-Manifolds</a>
+  <ul class="collapse">
+  <li><a href="#homology-group" id="toc-homology-group" class="nav-link" data-scroll-target="#homology-group"><span class="header-section-number">5.1</span> Homology Group</a></li>
+  <li><a href="#homotopy-type" id="toc-homotopy-type" class="nav-link" data-scroll-target="#homotopy-type"><span class="header-section-number">5.2</span> Homotopy Type</a></li>
+  </ul></li>
+  <li><a href="#降维直观类比2维圆盘与1维边界" id="toc-降维直观类比2维圆盘与1维边界" class="nav-link" data-scroll-target="#降维直观类比2维圆盘与1维边界"><span class="header-section-number">6</span> 1. 降维直观类比：2维圆盘与1维边界</a>
+  <ul class="collapse">
+  <li><a href="#homeomorphism-type" id="toc-homeomorphism-type" class="nav-link" data-scroll-target="#homeomorphism-type"><span class="header-section-number">6.1</span> Homeomorphism Type</a></li>
+  <li><a href="#diffeomorphic-type-open" id="toc-diffeomorphic-type-open" class="nav-link" data-scroll-target="#diffeomorphic-type-open"><span class="header-section-number">6.2</span> Diffeomorphic Type (open)</a>
+  <ul class="collapse">
+  <li><a href="#results-of-existence" id="toc-results-of-existence" class="nav-link" data-scroll-target="#results-of-existence"><span class="header-section-number">6.2.1</span> Results of Existence</a></li>
+  <li><a href="#results-of-uniqueness" id="toc-results-of-uniqueness" class="nav-link" data-scroll-target="#results-of-uniqueness"><span class="header-section-number">6.2.2</span> Results of Uniqueness</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#fundamental-group-of-smooth-4-manifold" id="toc-fundamental-group-of-smooth-4-manifold" class="nav-link" data-scroll-target="#fundamental-group-of-smooth-4-manifold"><span class="header-section-number">7</span> Fundamental Group of Smooth 4-Manifold</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">8</span> Appendix</a>
+  <ul class="collapse">
+  <li><a href="#handle-分解的-dual" id="toc-handle-分解的-dual" class="nav-link" data-scroll-target="#handle-分解的-dual"><span class="header-section-number">8.1</span> handle 分解的 dual</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Intersection Form of 4-Manifold</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">intersection-form</div>
+    <div class="quarto-category">poincare-duality</div>
+    <div class="quarto-category">de-rham-cohomology</div>
+    <div class="quarto-category">homology</div>
+    <div class="quarto-category">manifold-topology</div>
+    <div class="quarto-category">thom-class</div>
+    <div class="quarto-category">lefschetz-duality</div>
+    <div class="quarto-category">fundamental-class</div>
+    <div class="quarto-category">my-notes</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    本文系统介绍了四维流形相交形式的定义、几何直观、代数分类及其在单连通四维流形分类问题中的应用。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 10, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preparation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Preparation</h1>
+<p>对于任意紧的(可能带边), 定向的 4-流形 <span class="math inline">M^4</span>, 我们可以定义其上的相交形式.</p>
+<p>我们主要关心闭的 4-mfld 上的结果. 为了理论的完整性, 我们也会指出带边界情形的差异. 若第一次接触, 不妨直接略过后者.</p>
+<ul>
+<li>观点 (<span class="math inline">M</span> 不带边界)
+<ul>
+<li>如何使用”几何”的观点看待定向紧流形 <span class="math inline">M^n</span> 的同调和上同调?</li>
+<li>上同调:
+<ul>
+<li>由 De Rham 上同调理论, 我们知道流形上的微分形式具有链复形的结构. De Rham 定理指出这个复形的上同调群与实系数奇异上同调群同构.</li>
+<li>含入映射 <span class="math inline">\mathbb{Z}\hookrightarrow\mathbb{R}</span> 诱导出上同调之间的”含入”(未必单射)映射 <span class="math inline">H^k\left(M;\mathbb{Z}\right)\to H^k\left(M;\mathbb{R}\right)</span>, 于是对于一个 <span class="math inline">H^k\left(M;\mathbb{Z}\right)</span> 中的元素, 我们考虑它在 <span class="math inline">H^k\left(M;\mathbb{R}\right)</span> 中的像, 从而将其视为一个 k-form.</li>
+</ul></li>
+<li>同调:
+<ul>
+<li>由同调的定义, 我们不妨将其视为 <span class="math inline">M</span> 上光滑定向闭子流形的整系数线性组合.
+<ul>
+<li>定向: 考虑单纯同调的定义(三角刨分), 不定向的流形的三角刨分无法自相消, 故不是 cycle. 但在 mod 2 意义下可以相消, 故可以对应到 <span class="math inline">H_k\left(M;\mathbb{Z}_2\right)</span> 中的元素.</li>
+</ul></li>
+<li>我们可以给出更精确的定义: 对于子流形 <span class="math inline">X^k</span>, 嵌入映射 <span class="math inline">X^k\hookrightarrow M^n</span> 诱导同调群之间的映射 <span class="math inline">H_k\left(X\right)\to H_k\left(M\right)</span>, <span class="math inline">X</span> 的基本类 <span class="math inline">[X]</span> 在这个映射下的像就是子流形 <span class="math inline">X</span> 在 <span class="math inline">M</span> 的同调群 <span class="math inline">H_k\left(M\right)</span> 中的元素.</li>
+<li>一般来说, <span class="math inline">H_k(M)</span> 中的每个元素未必都可以由某个 <span class="math inline">k</span> 维闭子流形表示。</li>
+</ul></li>
+<li>配对:
+<ul>
+<li>我们知道, <span class="math inline">M</span> 上次数相同的同调和上同调可以配对 (UCT).</li>
+<li>从”几何”的角度来看, 这就是将微分形式 (k-form <span class="math inline">\omega</span>) 在底流形 <span class="math inline">X^k</span> 上做积分 <span class="math inline">\int_X\omega</span> .</li>
+</ul></li>
+<li>综上: 同调是定向闭子流形, 上同调是微分形式, 配对是做积分.</li>
+</ul></li>
+<li>带边界的版本
+<ul>
+<li>上同调 <span class="math inline">H^k\left(M,\partial M\right)</span>: 在边界上为零的微分形式</li>
+<li>同调: <span class="math inline">H_k\left(M,\partial M\right)</span>
+<ul>
+<li><span class="math inline">H_k\left(M\right)</span> 中的元素是 closed embedded submfld, 要求 closed 是因为同调中的元素必须在边缘算子的作用下消失.</li>
+<li><span class="math inline">H_k\left(M,\partial M\right)</span> 中的元素是 Properly Embedded Submanifold (即子流形与边界横截相交, 且 <span class="math inline">\partial X = X \cap \partial M</span>), 此时即使子流形 <span class="math inline">X</span> 带边界, 由于它的边界落在了 <span class="math inline">\partial M</span> 上, 故在同调的意义下被视为 0.</li>
+</ul></li>
+</ul></li>
+<li>基本类与庞加莱对偶:
+<ul>
+<li>基本类:
+<ul>
+<li>对于定向流形 <span class="math inline">M^n</span>, 我们有 <span class="math inline">H_n\left(M,\partial M;\mathbb{Z}\right)\cong\mathbb{Z}</span>, 我们选取这个群的一个生成元, 在”几何”的观点上看, 这个群的生成元就是 <span class="math inline">M</span> 的一个 <span class="math inline">n</span> 维定向子流形, 就是选取了 <span class="math inline">M</span> 上的一个定向. 这个生成元被称为 <span class="math inline">M</span> 的基本类，记为 <span class="math inline">[M]</span>, 它与 <span class="math inline">M</span> 的定向的选取是一致的.</li>
+</ul></li>
+<li>庞加莱对偶 (不带边界)
+<ul>
+<li><span class="math inline">PD: H_k\left(M\right)\to H^{n-k}\left(M\right),\alpha\mapsto PD(\alpha)\left(=\omega\right)</span>
+<ul>
+<li>在”几何”上看就是把 <span class="math inline">\alpha</span> 对应的子流形 <span class="math inline">X_{\alpha}^k</span> 映射到 <span class="math inline">X_\alpha \hookrightarrow M</span> 的 (<span class="math inline">n-k</span> 维) 法丛的 Thom 类 <span class="math inline">\omega</span>, 它是 <span class="math inline">H^{n-k}\left(M\right)</span> 中的元素, 限制在 <span class="math inline">X_\alpha</span> 的 fibre 上做积分是 1, 其他位置则积分为 0.</li>
+<li>即子流形的庞加莱对偶对应于其法丛的 Thom 类.</li>
+</ul></li>
+<li>逆映射 <span class="math inline">PD:H^k\left(M\right)\to H_{n-k}\left(M\right), \omega \mapsto \omega \cap [M]\left(=\alpha\right)</span>
+<ul>
+<li>我们记 <span class="math inline">\alpha</span> 对应的子流形为 <span class="math inline">X_\alpha</span>, 在”几何”上看, <span class="math inline">X_\alpha</span> 由性质: <span class="math inline">\int_M\left(\cdot\right)\wedge \omega=\int_{X_\alpha}\left(\cdot\right)</span> 唯一决定.</li>
+</ul></li>
+</ul></li>
+<li>Lefschetz Duality (带边界)
+<ul>
+<li><span class="math inline">LD: H_k\left(M\right)\to H^{n-k}\left(M;\partial M\right),  \alpha\mapsto PD(\alpha)</span>.
+<ul>
+<li>看法是一样的, 由于 <span class="math inline">X^k</span> 是闭子流形, 它和 <span class="math inline">M</span> 的边界不相交, 故它的法丛的 Thom 类在边界上为零, 自然是 <span class="math inline">H^{n-k}\left(M,\partial M\right)</span> 中的元素.</li>
+<li><span class="math inline">LD:H_k\left(M,\partial M\right)\to H^{n-k}\left(M\right),\alpha\mapsto PD(\alpha) =: \alpha \cap [M].</span> (如何理解? Omit)</li>
+</ul></li>
+<li><span class="math inline">LD:H^k\left(M\right)\to H_{n-k}\left(M,\partial M\right),\omega \mapsto \omega \cap [M]</span>
+<ul>
+<li>Omit.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="intersection-form-of-4-manifold" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Intersection Form of 4-Manifold</h1>
+<p>假设 <span class="math inline">M</span> 是紧的(可能带边的), 定向的 4-mfld. 由于有定向, 存在基本类 <span class="math inline">[X]\in H_4\left(X,\partial X;\mathbb{Z}\right)</span>.</p>
+<ul>
+<li>intersection form
+<ul>
+<li>定义 <span class="math inline">Q_X:H^2\left(X,\partial X;\mathbb{Z}\right)\times H^2\left(X,\partial X;\mathbb{Z}\right)\to \mathbb{Z}, \left(\omega_1,\omega_2\right)\mapsto\langle \omega_1\cup \omega_2,[X]\rangle</span>.
+<ul>
+<li>根据庞加莱对偶, <span class="math inline">H^2\left(X,\partial X;\mathbb{Z}\right)</span> 同构于 <span class="math inline">H_2\left(X;\mathbb{Z}\right)</span>. 于是也可以写为 <span class="math inline">Q_X: H_2(X; \mathbb{Z}) \times H_2(X; \mathbb{Z}) \to \mathbb{Z}</span>.</li>
+<li>由于 <span class="math inline">H^2</span> 的上标是偶数, 这是一个对称双线性形式.</li>
+<li>由于 <span class="math inline">[X]\in \mathbb{Z}</span>, 这个双线性形式作用在 torsion 上总是零, 故可以将其限制在自由部分 <span class="math inline">H_2(X;\mathbb{Z})/\text{Torsion}</span> 上考虑。</li>
+<li>于是这个双线性形式对应一个 <span class="math inline">r\times r</span> 对称整系数矩阵. 当我们变换 <span class="math inline">H_2</span> 的基底时, 对应的矩阵会差一个合同变换 <span class="math inline">CMC^T</span>. 于是这个矩阵的合同类是流形 <span class="math inline">X^4</span> 的同伦不变量.</li>
+</ul></li>
+<li>当 <span class="math inline">X</span> 是闭流形时, 这个形式还是 unimodular 的 (行列式为 <span class="math inline">\pm1</span>) (如果是域系数, 这表述为非退化):
+<ul>
+<li>若一个对称整系数双线性形式 <span class="math inline">Q</span> 行列式为 <span class="math inline">\pm1</span> ( <span class="math inline">Q</span> 是这个群中的可逆元), 我们称它 unimodular.</li>
+<li><span class="math inline">Q_X</span> 是 unimodular 的(域系数对应非退化), 当且仅当它的伴随映射 <span class="math inline">H^2(X;\mathbb{Z}) \to \operatorname{Hom}(H^2(X;\mathbb{Z}), \mathbb{Z})</span> 是群同构.</li>
+<li>这个映射可以看作两个同构的复合, <span class="math inline">H^2\left(X;\mathbb{Z}\right)\to H_2\left(X;\mathbb{Z}\right)\to \operatorname{Hom}\left(H^2\left(X;\mathbb{Z}\right),\mathbb{Z}\right)</span> 的复合, 其中第一个映射是庞加莱对偶, 第二个同构由 UCT 给出. (用到 <span class="math inline">X</span> 是闭流形, 从而 <span class="math inline">H_2</span> 是无挠的).</li>
+</ul></li>
+<li>当 <span class="math inline">X</span> 是闭流形, <span class="math inline">Q_X</span> unimodular.</li>
+</ul></li>
+<li>相交型的几何看法
+<ul>
+<li><span class="math inline">Q_X: H^2\left(X\right)\times H^2\left(X\right)\to \mathbb{Z}, \left(\nu,\omega\right)\mapsto Q_X\left(\nu,\omega\right)</span>, 假设 <span class="math inline">\Sigma_{\nu},\Sigma_{\omega}</span> 分别对应于 <span class="math inline">\nu,\omega</span> 的庞加莱对偶, 那么, 在几何上看, 而相交数 <span class="math inline">Q_X\left(\nu,\omega\right)</span> 对应这两个子流形的代数相交数.</li>
+<li>说明: <span class="math inline">Q_X\left(\nu,\omega\right)=\int_M\nu \wedge \omega={\int_\Sigma}_{\nu}\omega=\int_{\Sigma_\nu \cap \Sigma_{\omega}}1</span>, 右边是代数相交数.</li>
+</ul></li>
+</ul>
+<p>为什么考虑 intersection form? 后面我们会提到, 我们主要关心单连通的 4 mfld, 而对于闭的单连通的 4 mfld, 其唯一非平凡的同调群就是 <span class="math inline">H_2\left(H^2\right)</span>.</p>
+<section id="algebraic-classification-of-intersection-form" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="algebraic-classification-of-intersection-form"><span class="header-section-number">2.1</span> Algebraic Classification of Intersection Form</h2>
+<p>当我们尝试用不变量分类拓扑空间时, 我们实际上在考虑映射:</p>
+<p><span class="math display">\text{相交型}:\{ \text{拓扑 4mfld} \}/\text{同伦等价}\to \{ \text{u.s.b form} \}/\text{合同变换}</span> u.s.b.表示 unimodular symmetric bilinear, 下文我们直接叫 unimodular form.</p>
+<p>这一小节, 我们先给出等式右侧的一个分类 (不完全, 事实上, 我们只能给出未定型 unimodular form 的完全分类)</p>
+<p>后面我们还可以考虑: - 这个映射是不是单射? - 是不是满射? - 当我们将相交型映射限制到子集“光滑 4 流形”上时，情况如何？</p>
+<ul>
+<li>定义: signature, type, rank, definite
+<ul>
+<li>假设 <span class="math inline">\left(A,Q\right)</span> 是一个 u.s.b. form, 它对应一个整系数对称矩阵</li>
+<li>我们可以定义这个矩阵的 rank, signature, definite (正定, 负定, 不定)</li>
+<li>parity: even or odd
+<ul>
+<li><span class="math inline">Q</span> even 如果 <span class="math inline">Q\left(\alpha,\alpha\right)\equiv 0 \pmod2, \forall \alpha\in H_2</span>.</li>
+<li><span class="math inline">Q</span> odd if not even.</li>
+</ul></li>
+<li>TFAE:
+<ul>
+<li><span class="math inline">Q</span> even</li>
+<li>对于任意和 <span class="math inline">Q</span> 合同的矩阵，对角元都是偶数.</li>
+<li>存在一个和 <span class="math inline">Q</span> 合同的矩阵, 对角元都是偶数.</li>
+</ul></li>
+</ul></li>
+<li>Thm 1:
+<ul>
+<li>不定型 unimodular form 由 rank, signature, parity 完全分类. 即若 <span class="math inline">\left(A_1,Q_1\right),\left(A_2,Q_2\right)</span> 为两个 unimodular form (<span class="math inline">A_i</span> 有限自由 abel 群), 若 <span class="math inline">Q_1,Q_2</span> 的 rank, signature, parity 相同, 则存在映射 <span class="math inline">f: A_1\to A_2</span>, <span class="math inline">f</span> 是保持 unimodular form 的同构.</li>
+</ul></li>
+<li>Thm 2:
+<ul>
+<li>假设 <span class="math inline">Q</span> 是一个不定 unimodular form. (我们知道它的 signature, rank, parity)
+<ul>
+<li>如果 <span class="math inline">Q</span> 是奇的, 则 <span class="math inline">Q\cong b_2^+\langle1\rangle\oplus b_2^-\langle-1\rangle</span></li>
+<li>如果 <span class="math inline">Q</span> 是偶的, 则 <span class="math inline">Q\cong \frac{\sigma \left(Q\right)}{8}E_8\oplus \frac{\text{rk}\left(Q\right)-|\sigma\left(Q\right)|}{2}H</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="proof-of-thm-1" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="proof-of-thm-1"><span class="header-section-number">2.1.1</span> Proof of Thm 1</h3>
+<ul>
+<li>Lemma 1.2.12
+<ul>
+<li>设 <span class="math inline">\left(A,Q\right)</span> 是 symmetric bilinear form. 若 <span class="math inline">Q</span> 限制在 <span class="math inline">A</span> 的子群 <span class="math inline">A_1</span> 上是 unimodular, 则对称双线性形式 <span class="math inline">\left(A,Q\right)</span> 可以被直和分解为 <span class="math inline">\left(A,Q\right)=\left(A_1,Q\right) \oplus\left(A_1^{\perp},Q\right)</span>, 其中 <span class="math inline">A_1^\perp</span> 是 <span class="math inline">A_1</span> 的正交补. 更进一步, <span class="math inline">\left(A,Q\right)</span> unimodular 当且仅当 <span class="math inline">\left(A_1^{\perp},Q\right)</span> unimodular.</li>
+<li>证明:</li>
+</ul></li>
+</ul>
+<p>Lemma 1.2.12.</p>
+<p>the form <span class="math inline">Q</span> on <span class="math inline">A</span> gives the definition of <span class="math inline">A_1^\perp</span>. - <span class="math inline">A = A_1 \oplus A_1^\perp</span>: - <span class="math inline">A_1 \cap A_1^\perp = 0</span>: assumel <span class="math inline">\exists a \neq 0</span>, <span class="math inline">a \in A \cap A_1^\perp</span>. then <span class="math inline">\forall b \in A_1</span> we have <span class="math inline">Q(a,b)=0</span>. contradicting the fact <span class="math inline">A_1</span> 13 unimodular. - <span class="math inline">A_1 \oplus A_1^\perp = A</span>: <span class="math inline">\forall x \in A</span> gives a map <span class="math inline">f_x: A_1 \to \text{Hom}(A_1, \mathbb{Z})</span>, though <span class="math inline">a \mapsto Q(x,a)</span>. since <span class="math inline">A_1</span> unimodular, <span class="math inline">\exists b \in A_1</span> st <span class="math inline">f_x = f_b: a \mapsto Q(b,a)</span> then <span class="math inline">f_x = f_b \implies Q(x,a) = Q(b,a)</span> i.e.&nbsp;<span class="math inline">Q(x-b,a)=0</span> <span class="math inline">\forall a \in A_1 \implies x-b \in A_1^\perp</span>. and <span class="math inline">b \in A_1</span>. <span class="math inline">\quad\checkmark</span> - for the equiv. <span class="math inline">(A_1^\perp, Q)</span> unimodular iff <span class="math inline">(A, Q)</span>, though the fact <span class="math inline">\det Q = \det Q\vert_{A_1} \cdot \det Q\vert_{A_1^\perp}</span>.</p>
+<p><span class="math inline">A = A_1 \oplus A_1^\perp</span> and <span class="math inline">\square</span>.</p>
+<ul>
+<li>Theorem 1.2.15 (Fact)
+<ul>
+<li><span class="math inline">A\neq 0</span>. 若 <span class="math inline">\sigma\left(Q\right)=0</span>, 那么存在一个非零元 <span class="math inline">\alpha\in A</span> 满足 <span class="math inline">Q\left(\alpha,\alpha\right)=0</span>.</li>
+</ul></li>
+<li>Lemma 1.2.16:
+<ul>
+<li><span class="math inline">Q</span> unimodular, 若 <span class="math inline">\sigma\left(Q\right)=0</span>, 则 <span class="math inline">Q</span> 可以被完全分类:
+<ul>
+<li>若 <span class="math inline">Q</span> 是偶的, 则存在 <span class="math inline">k\in \mathbb{N}</span> 使得 <span class="math inline">Q\cong kH</span>. 其中 <span class="math inline">H=\left(\begin{matrix}0&amp;1\\1&amp;0 \end{matrix}\right)</span></li>
+<li>若 <span class="math inline">Q</span> 是奇的, 则存在 <span class="math inline">l\in \mathbb{N}</span> 使得 <span class="math inline">Q\cong l\langle1\rangle\oplus l\langle-1\rangle</span>.</li>
+</ul></li>
+<li>证明:</li>
+</ul></li>
+</ul>
+<p>Pf. Since <span class="math inline">\sigma(Q)=0</span>, by Thm 1.215. <span class="math inline">\exists x\in A</span> s.t. <span class="math inline">Q(x,x)=0</span>. WLOG, assume <span class="math inline">x</span> primitive. since <span class="math inline">Q</span> unimodular, recall we will have bijection (from) <span class="math inline">A \to \text{Hom}(A,\mathbb{Z})</span>. <span class="math inline">x</span> primitive <span class="math inline">\implies \exists f\in \text{Hom}(A,\mathbb{Z})</span> s.t. <span class="math inline">f(x)=1</span> by the bij, <span class="math inline">\exists y\in A</span> s.t. <span class="math inline">f(x)=Q(x,y)=1</span>.</p>
+<p><span class="math inline">\cdot</span> then <span class="math inline">Q|_{\text{Span}_\mathbb{Z}(x,y)}</span> satisfying <span class="math inline">\det\left(Q|_{\text{Span}_\mathbb{Z}(x,y)}\right)=-1</span> hence <span class="math inline">(\text{Span}_\mathbb{Z}(x,y), Q|_{\sim})</span> unimodular. with <span class="math inline">Q|_{\sim} = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; Q(y,y) \end{pmatrix}</span>.</p>
+<p><span class="math inline">\cdot</span> As for <span class="math inline">\text{Span}_\mathbb{Z}(x,y)^\perp</span>, it is unimodular, and signature <span class="math inline">=0</span>: Since <span class="math inline">\det(\text{Span}_\mathbb{Z}(x,y))=1 \implies</span> eigenvalue one positive, one negative. <span class="math inline">\implies \sigma(A)=0 \implies \sigma(\text{Span}(x,y)^\perp)=0</span>. hence we can do induction <span class="math inline">\dots</span></p>
+<p><span class="math inline">\cdot</span> To obtain the lemma, we still need to do some calculus, which will be skipped here.</p>
+<ul>
+<li>Calculus: <span class="math inline">Q=\left(\begin{matrix}0&amp;1\\ 1&amp;k\end{matrix}\right)</span>
+<ul>
+<li>若 <span class="math inline">k</span> 是偶数, 则 <span class="math inline">Q\cong H</span></li>
+<li>若 <span class="math inline">k</span> 是奇数, 则 <span class="math inline">Q\cong \langle1\rangle \oplus \langle-1\rangle</span></li>
+<li>无论 <span class="math inline">k</span> 取何值, <span class="math inline">Q\oplus \langle-1\rangle\cong 2\langle-1\rangle\oplus \langle1\rangle</span></li>
+</ul></li>
+<li>Theorem 1:
+<ul>
+<li>不定型 unimodular form 由 rank, signature, parity 完全分类.</li>
+</ul></li>
+<li>证明:</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="thm-1" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Thm 1</h1>
+<p>If <span class="math inline">(A_1, Q_1)</span>, <span class="math inline">(A_2, Q_2)</span> satisfying <span class="math inline">Q_1</span> and <span class="math inline">Q_2</span> (unimodular) has the same signature, rank, parity, then <span class="math inline">(A_1, Q_1) \cong (A_2, Q_2)</span></p>
+<p>WLOG, assume <span class="math inline">\sigma(Q)&gt;0</span> (otherwise consider <span class="math inline">-Q</span>)</p>
+<p><strong>Pf.</strong> Prove this by induction on <span class="math inline">\sigma(Q)</span>.</p>
+<ul>
+<li>Base case: <span class="math inline">\sigma(Q)=0</span>, which is completely classified.
+<ul>
+<li>In this case:
+<ul>
+<li>Signature: fixed.</li>
+<li>Parity: Same parity implies the same form <span class="math display">Q \cong kH \quad \text{or} \quad Q \cong \langle 1 \rangle \oplus \langle -1 \rangle</span></li>
+<li>Rank: the rank of <span class="math inline">Q</span> will determine the number <span class="math inline">k</span> and <span class="math inline">v</span>.</li>
+</ul></li>
+<li>Hence Thm 1 is true in this case.</li>
+</ul></li>
+<li>Inductive hypothesis:
+<ol type="1">
+<li>Thm 1 is true for all <span class="math inline">Q</span> with <span class="math inline">\sigma(Q) \leq n-1</span>.</li>
+<li>If <span class="math inline">Q</span> is odd, then <span class="math inline">Q</span> has the form <span class="math inline">k_1\langle 1 \rangle + k_2\langle -1 \rangle</span>.</li>
+</ol></li>
+<li>Inductive step: Consider the case <span class="math inline">\sigma(Q)=n</span> (<span class="math inline">\sigma(Q_1)=\sigma(Q_2)=n</span>).
+<ul>
+<li>Consider <span class="math inline">\widetilde{Q}_1 := Q_1 \oplus \langle -1 \rangle</span>, <span class="math inline">\widetilde{Q}_2 := Q_2 \oplus \langle -1 \rangle</span>.</li>
+<li>Then <span class="math inline">\widetilde{Q}_i</span> satisfies: <span class="math display">
+\begin{cases}
+\sigma(\widetilde{Q}_i) \leq n-1 \\
+\widetilde{Q}_i \text{ is odd.}
+\end{cases}
+</span></li>
+</ul></li>
+<li>Then by the inductive hypothesis, we have: <span class="math inline">\widetilde{Q}_i</span> has the form <span class="math inline">\widetilde{Q}_i = k_1\langle 1 \rangle + k_2\langle -1 \rangle</span>.
+<ul>
+<li>If we take the rank into consideration, they satisfy: <span class="math display">
+\begin{cases}
+b_2^+ + b_2^- = \text{rank}(Q_i) \\
+b_2^+ - b_2^- = \text{signature}
+\end{cases}
+</span></li>
+<li><span class="math inline">\implies b_2^+ = k_1</span> and <span class="math inline">b_2^- + 1 = k_2</span></li>
+<li>And <span class="math inline">\widetilde{Q}_i = b_2^+ \langle 1 \rangle + (b_2^- + 1)\langle -1 \rangle</span>.</li>
+<li><span class="math inline">\implies (\widetilde{A}_1, \widetilde{Q}_1) \cong (\widetilde{A}_2, \widetilde{Q}_2)</span>.</li>
+</ul></li>
+<li>Consider <span class="math inline">(A_i, Q_i) \hookrightarrow (\widetilde{A}_i, \widetilde{Q}_i)</span>. <span class="math inline">(A_i, Q_i)</span> is unimodular, hence we have a direct sum decomposition: <span class="math inline">\widetilde{A}_i = A_i \oplus \varepsilon_i</span>, <span class="math inline">\dim = 1</span>.
+<ul>
+<li>Write <span class="math inline">\varepsilon_i = \operatorname{Span}_{\mathbb{Z}} x_i</span>.</li>
+<li>If <span class="math inline">\exists f: (\widetilde{A}_1, \widetilde{Q}_1) \to (\widetilde{A}_2, \widetilde{Q}_2)</span>, <span class="math inline">x \mapsto y</span>, …</li>
+</ul></li>
+</ul>
+<section id="proof-of-thm-2" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="proof-of-thm-2"><span class="header-section-number">3.0.1</span> Proof of Thm 2</h3>
+<p>一个 form <span class="math inline">Q</span> 的 <span class="math inline">\left(\text{rank, signature, parity}\right)</span> 给出了映射 <span class="math display">\{ \text{indefinite unimodular form } Q\}\to \mathbb{N}\times \mathbb{Z}\times \mathbb{Z}/2</span> 根据 Thm 1, 我们知道这个映射是单射。我们还需要考虑这个映射的像。</p>
+<p>这个 image 是 RHS 的子集, 由如下两条限制给出: 1. 由于 <span class="math inline">\text{rk}\left(Q\right)=b_2^++b_2^-,\sigma\left(Q\right)=b_2^+ -b_2^-</span>, 我们有 <span class="math inline">|\sigma(Q)| \leq \operatorname{rk}(Q), \text{rk}\left(Q\right)\equiv \sigma\left(Q\right)\pmod{2}</span> 2. 如果 <span class="math inline">Q</span> 是 even 的, 则 <span class="math inline">\sigma\left(Q\right)\equiv0 \pmod{8}</span>. 这条限制由下面的引理给出.</p>
+<ul>
+<li>Lemma 1.2.20</li>
+</ul>
+<p>Lemma 1.2.20.</p>
+<p>If <span class="math inline">x \in A</span> a characteristic, then <span class="math display">Q(x,x) \equiv \sigma(Q) \pmod{8}.</span> As a result, if <span class="math inline">Q</span> is even (then <span class="math inline">0</span> will be a chara.), we have <span class="math display">\sigma(Q) \equiv 0 \pmod{8}.</span></p>
+<p><em>Proof.</em> For <span class="math inline">\forall Q</span> unimodular. <span class="math inline">Q \oplus \langle 1 \rangle \oplus \langle -1 \rangle</span> is odd, indefinite. Hence by Thm I, we have <span class="math display">Q \oplus \langle 1 \rangle \oplus \langle -1 \rangle \cong (b_2^+ + 1)\langle 1 \rangle \oplus (b_2^- + 1)\langle -1 \rangle.</span></p>
+<p><span class="math inline">\forall x \in A</span> a chara. (by def. of chara. <span class="math inline">\forall y \in A</span>: <span class="math display">Q(x,y) \equiv Q(y,y) \pmod{2})</span></p>
+<p>It is easy to see <span class="math inline">x + e_+ + e_-</span> will be a chara in <span class="math inline">\widetilde{A} = A \oplus \mathbb{Z} \oplus \mathbb{Z}</span>. We <span class="math inline">e_+, e_-</span> are the generator of <span class="math inline">\mathbb{Z}</span>.</p>
+<p>Since <span class="math inline">\widetilde{Q} \cong (b_2^+ + 1)\langle 1 \rangle \oplus (b_2^- + 1)\langle -1 \rangle</span>, which will correspond to a series of basis <span class="math inline">\{e_i\}</span>, and consider the coefficient of <span class="math inline">x</span> on this basis. Write <span class="math inline">\{c_i\}</span>.</p>
+<p>Then since <span class="math display">\underbrace{Q(x, e_i) \equiv Q(e_i, e_i) = \pm 1 \pmod{2}}_{x \text{ chara.}},</span> <span class="math inline">\implies c_i</span> are odd number <span class="math inline">\forall i</span>.</p>
+<p><span class="math inline">\implies c_i^2 \equiv 1 \pmod{8}</span>.</p>
+<p>Hence <span class="math display">Q(x,x) = \sum \pm c_i^2 \equiv (b_2^+ + 1) - (b_2^- + 1) = \sigma(Q) \pmod{8}.</span></p>
+<p><span class="math inline">\square</span></p>
+<ul>
+<li><span class="math inline">E_8</span> 矩阵
+<ul>
+<li><span class="math inline">E_8</span> 矩阵定义为 <span class="math display">E_8 = \begin{pmatrix}
+2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 2
+\end{pmatrix}</span></li>
+<li>unimodular form, rank=8: <span class="math inline">\det\left(E_8\right)=1</span></li>
+<li>positive definite: 计算顺序主子式</li>
+<li>signature=8: 由正定</li>
+<li>even: 直接从对角线读出.</li>
+</ul></li>
+</ul>
+<p>我们说明上面的这两条限制给出的恰好为映射的像集。（从而我们得到了双射，得到了 indefinite unimodular form 的完全分类） - 如果是奇的, 我们可以直接取 <span class="math inline">b_2^+\langle1\rangle\oplus b_2^-\langle-1\rangle</span> - 如果是偶的，我们使用 <span class="math inline">H,E_8</span> 构造这个矩阵 - <span class="math inline">H</span> 满足 rank=2, signature=0 - <span class="math inline">E_8</span> 满足 rank=8, signature=8. - 假设已经给定了 <span class="math inline">\sigma\left(Q\right),\text{rk}\left(Q\right)</span>. 由于直和 <span class="math inline">H</span> 不会改变 signature, 我们使用 <span class="math inline">E_8</span> 来调整 signature, 使用 <span class="math inline">H</span> 来调整 rank. - 由于 <span class="math inline">\sigma\left(Q\right)</span> 总是 <span class="math inline">8</span> 的倍数，它一定能被 <span class="math inline">E_8</span> 实现: <span class="math inline">\frac{\sigma\left(Q\right)}{8}E_8</span> - 由于 <span class="math inline">\sigma\left(Q\right)</span> 和 <span class="math inline">\text{rk}\left(Q\right)</span> 之间的差是偶数, 这个差距总能通过直和 <span class="math inline">H</span> 来补齐: <span class="math inline">\frac{\text{rk}\left(Q\right)-|\sigma\left(Q\right)|}{2}H</span>. - 于是我们可以构造 <span class="math inline">Q\cong \frac{\sigma\left(Q\right)}{8}E_8\oplus \frac{\text{rk}\left(Q\right)-|\sigma\left(Q\right)|}{2}H</span></p>
+</section>
+<section id="examples" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">3.0.2</span> Examples</h3>
+<p>相交型是光滑流形的同伦不变量, 仅仅使用相交型, 我们就可以区分一些常见的流形.</p>
+<ul>
+<li>计算相交型
+<ul>
+<li>下面都是单连通的 4 mfld.</li>
+<li><span class="math inline">S^2\times S^2</span>:
+<ul>
+<li>有两个生成元 <span class="math inline">S^2\times \{ pt \},\{ pt \}\times S^2</span></li>
+<li>相交数为+1: 乘积流形的定向由两个分量上的定向给出.</li>
+<li><span class="math inline">Q_X=H=\left(\begin{matrix}0&amp;1\\ 1&amp;0\end{matrix}\right)</span></li>
+</ul></li>
+<li><span class="math inline">\#_k S^2\times S^2</span>: <span class="math inline">Q_X=kH</span>, k 个 H 的直和.</li>
+<li><span class="math inline">\mathbb{CP}^2,\overline{\mathbb{CP}^2}</span>: <span class="math inline">Q_{\mathbb{CP}^2}=\langle1\rangle,Q_{\overline{\mathbb{CP}^2}}=\langle-1\rangle</span>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="computation-of-mathbbcp2." class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Computation of <span class="math inline">\mathbb{CP}^2</span>.</h1>
+<p>CW decomposition: <span class="math inline">\mathbb{CP}^2 = 0\text{-cell} + 2\text{-cell} + 4\text{-cell}</span> <span class="math inline">\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\downarrow</span> <span class="math inline">\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\mathbb{CP}^1</span></p>
+<p><span class="math inline">\Rightarrow H_0 = H_4 = \mathbb{Z}</span>, <span class="math inline">H_2 = \mathbb{Z}</span>, generated by <span class="math inline">\mathbb{CP}^1</span>. Denoting it <span class="math inline">h</span>.</p>
+<p>intersection form: <span class="math inline">\mathbb{CP}^1</span> can be written as <span class="math inline">Z_1 = \left\{ [0, z_1, z_2] \in \mathbb{CP}^2 \right\}</span> it can be also written as <span class="math inline">Z_2 = \left\{ [z_0, 0, z_2] \in \mathbb{CP}^2 \right\}</span>. then <span class="math inline">Q(h, h) = Q(Z_1, Z_2)</span> algebraic intersection number <span class="math inline">Z_1 \cap Z_2 = [0,0,z_2] \in \mathbb{CP}^2 \Rightarrow z_2 \neq 0</span>, i.e.&nbsp;<span class="math inline">Z_1 \cap Z_2 = \{[0,0,1]\}</span>. since <span class="math inline">\forall</span> two complex basis of a complex manifold gives the same orientation, we must have <span class="math inline">Q(Z_1,Z_2) = +1</span>. i.e.&nbsp;<span class="math inline">Q_{\mathbb{CP}^2} = \langle 1 \rangle</span>.</p>
+<p><span class="math inline">\square</span></p>
+<pre><code>    - 说明: 关于复流形的定向
+        - 两组复基底在基变换过程中会差一个复矩阵, 而将这个 $n\times n$ 的复矩阵视为一个 $2n\times 2n$ 的实矩阵(它一定长这样: $M = \begin{pmatrix} A &amp; -B \\ B &amp; A \end{pmatrix}$), 这个实矩阵的行列式一定大于 0.
+        - $\overline{\mathbb{CP}^2}$ 是我们将 $\mathbb{CP}^2$ 当作实流形反转定向之后得到的(比如, 对于某一个复分量取共轭), 这会破坏它的复结构, 此时它不再是复流形.
+        - 它的 handle 分解我们之后再介绍.
+- $\#_k \mathbb{CP}^2 \#_l \overline{\mathbb{CP}^2}$: $Q_X=k\langle1\rangle\oplus l\langle-1\rangle$.</code></pre>
+<ul>
+<li>区分 <span class="math inline">S^2\times S^2</span> 和 <span class="math inline">\mathbb{CP}^2\# {\mathbb{CP}^2}</span>
+<ul>
+<li>此时同调群是相同的。</li>
+<li><span class="math inline">S^2\times S^2</span> 的 handle 分解:</li>
+</ul></li>
+</ul>
+<p>S<sup>2S</sup>2 的 handle 分解:</p>
+<p>利用 signature: 前者是 0, 后者是 2</p>
+<p>Handle decomposition of <span class="math inline">S^2\times S^2</span>.</p>
+<p><span class="math display">
+\begin{align*}
+S^2\times S^2 &amp;= (D_- \cup D_+) \times (D_- \cup D_+) \\
+&amp;= D_- \times D_- \cup_{S^1} D_- \times D_+ \cup_{S^1} D_+ \times D_- \cup D_+ \times D_+
+\end{align*}
+</span></p>
+<p>and for <span class="math inline">S^2 = D_- \cup D_+</span>, we may view <span class="math inline">D_-</span> as 0-handle and <span class="math inline">D_+</span> as 2-handle. i.e.&nbsp;<span class="math inline">S^2 = 0\text{-handle} + 2\text{-handle}</span>.</p>
+<p>For <span class="math inline">S^2\times S^2</span>, we may view <span class="math inline">D_- \times D_-</span>, <span class="math inline">D_- \times D_+</span>, <span class="math inline">D_+ \times D_-</span>, <span class="math inline">D_+ \times D_+</span> as 0-handle, 1-handle, 2-handle, 4-handle.</p>
+<p>i.e.&nbsp;<span class="math inline">(0\text{-handle} + 2\text{-handle})^2 = 0\text{-handle} + 2\text{-handle} + 2\text{-handle} + 4\text{-handle}</span></p>
+<p>to see (*), we show <span class="math inline">X_2 := 0\text{-handles} + 2\text{-handles}</span> has boundary <span class="math inline">S^3</span></p>
+<p><span class="math display">
+\begin{align*}
+\partial X_2 &amp;= \partial(D_- \times D_-) \cup \partial(D_+ \times D_-) \cup \partial(D_- \times D_+) \\
+&amp;= \cancel{S^1\times D_- \cup D_- \times S^1} \quad S^1\times D_- \cup D_+ \times S^1 \quad \cancel{S^1\times D_+ \cup D_+ \times S^1} \\
+&amp;= D_+ \cup S^1 \cup_{S^1\times S^1} S^1 \times D_+
+\end{align*}
+</span></p>
+<p>i.e.&nbsp;two solid tori attached along common boundary <span class="math inline">T^2</span> with <span class="math inline">(x,y) \sim (y,x)</span></p>
+<p>hence <span class="math inline">\partial X_2 = S^3</span>. (Similarly, we can show <span class="math inline">\partial(D^2\times D^2)=S^3</span>.)</p>
+<pre><code>- 利用 signature: 前者是 0, 后者是 2</code></pre>
+<ul>
+<li>区分 <span class="math inline">S^2\times S^2</span> 和 <span class="math inline">\mathbb{CP}^2\#\overline{\mathbb{CP}^2}</span>
+<ul>
+<li>此时 signature 相同</li>
+<li>利用 parity, <span class="math inline">S^2\times S^2</span> 是 even 的, <span class="math inline">\mathbb{CP}^2\#\overline{\mathbb{CP}^2}</span> 是 odd 的.</li>
+</ul></li>
+<li>区分 <span class="math inline">\# S^2\times S^2</span> 和 <span class="math inline">\#\mathbb{CP}^2\#\overline{\mathbb{CP}^2}</span>
+<ul>
+<li>一定同伦不等价</li>
+</ul></li>
+</ul>
+<section id="more-results-oriented-cobordism-group" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="more-results-oriented-cobordism-group"><span class="header-section-number">4.0.1</span> More Results: Oriented Cobordism Group</h3>
+<p><span class="math display">\Omega_*^{SO} \otimes \mathbb{Q} \cong \mathbb{Q}[x_4, x_8, x_{12}, \dots]</span> 低维的结果: - <strong><span class="math inline">\Omega_0^{SO} \cong \mathbb{Z}</span></strong>：由点的个数（带符号）生成。 - <strong><span class="math inline">\Omega_1^{SO} = 0</span></strong>：任何闭曲线（圆环的并）都是某个曲面（带有洞的圆盘）的边界。 - <strong><span class="math inline">\Omega_2^{SO} = 0</span></strong>：任何闭定向曲面都是某个 3 维柄体（Handlebody）的边界。 - <strong><span class="math inline">\Omega_3^{SO} = 0</span></strong>：（由 Rokhlin 证明）。任何闭定向 3-流形都是某个定向 4-流形的边界。 - <strong><span class="math inline">\Omega_4^{SO} \cong \mathbb{Z}</span></strong>：由 <span class="math inline">\mathbb{CP}^2</span> 生成 (它的 signature 为 1) - 我们实际上有同构 <span class="math inline">\sigma: \Omega_4^{SO}\to \mathbb{Z}, [M]\mapsto \sigma(M)</span> - <span class="math inline">M</span> bound 一个 5 mfld 当且仅当 <span class="math inline">\sigma(M)=0</span>.</p>
+</section>
+</section>
+<section id="main-results-on-simply-connected-4-manifolds" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Main Results on Simply Connected 4-Manifolds</h1>
+<p>我们可以通过 4 mfld 的不变量来评估 4 mfld 的复杂度. 我们将在下文中看到, 仅仅是4 mfld 的基本群给出的复杂度就会造成算法不可解问题. 于是, 本节中, 我们将 4 mfld 限制为单连通的.</p>
+<p>这一部分, 我们介绍 intersection form 在分类单连通流形上的应用和主要结果. <strong>注意: 本节中我们只考虑单连通 4 mfld!</strong></p>
+<p>分类问题 - 存在性: 给定 <span class="math inline">Q</span>, 是否存在这样的 (光滑) 4 mfld <span class="math inline">X</span> 使得 <span class="math inline">Q_X=Q</span>? - 唯一性: 给定 <span class="math inline">Q</span>, 有多少个这样的 (光滑) 4 流形 <span class="math inline">X</span> 使得 <span class="math inline">Q_X=Q</span>?</p>
+<section id="homology-group" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="homology-group"><span class="header-section-number">5.1</span> Homology Group</h2>
+<ul>
+<li>UCT</li>
+</ul>
+<p><span class="math inline">\underline{\text{Universal coefficient thm. (UCT)}}</span></p>
+<p><span class="math display">H_n(X; G) \cong \left(H_n \underset{\mathbb{Z}}{\otimes} G\right) \oplus_{\mathbb{Z}} \operatorname{Tor}_\mathbb{Z}^1(H_{n-1}, G)</span> for <span class="math inline">G</span> abelian group, for any <span class="math inline">n</span>.</p>
+<p><span class="math display">H_n(X; G) \cong \operatorname{Hom}_\mathbb{Z}(H_n, G) \oplus_{\mathbb{Z}} \operatorname{Ext}_\mathbb{Z}^1(H_{n-1}, G)</span></p>
+<p><small>笔误, 这是上同调</small></p>
+<p><span class="math inline">\text{Dictionary} :</span> 1. <span class="math inline">\operatorname{Ext}^1(\mathbb{Z}, G)=0</span>, <span class="math inline">\quad \operatorname{Ext}^1(\mathbb{Z}/n, G)=G/nG</span> 2. <span class="math inline">\operatorname{Tor}^1(\mathbb{Z}, G)=0</span>, <span class="math inline">\quad \operatorname{Tor}(\mathbb{Z}/n, G)=G[n]</span> 3. <span class="math inline">\mathbb{Z} \otimes G = G</span>, <span class="math inline">\quad \mathbb{Z}/n \otimes G = G/nG</span> 4. <span class="math inline">\operatorname{Hom}(\mathbb{Z}, G)=G</span>, <span class="math inline">\quad \operatorname{Hom}(\mathbb{Z}/n, G)=G[n]</span></p>
+<p><span class="math display">G[n] := \left\{ g \in G \mid ng=0 \right\}</span></p>
+<p><em>n-torsion subgroup</em></p>
+<ul>
+<li>同调群和同伦群:
+<ul>
+<li>我们使用 Poincare 对偶和万有系数定理来计算同调群. 使用 Hurewicz 定理来计算同伦群.</li>
+<li><span class="math inline">H_0,H^0</span>
+<ul>
+<li><span class="math inline">H_0\left(X\right)=\mathbb{Z}</span>: 通过连通性</li>
+<li><span class="math inline">H^0\left(X\right)=\mathbb{Z}</span>: 万有系数定理</li>
+</ul></li>
+<li><span class="math inline">H_4, H^4</span>
+<ul>
+<li><span class="math inline">H_4=\mathbb{Z}</span>: Poincare 对偶</li>
+<li><span class="math inline">H^4=\mathbb{Z}</span>: 万有系数定理 (or PD)</li>
+</ul></li>
+<li><span class="math inline">\pi_1,H_1,H^1</span>
+<ul>
+<li><span class="math inline">\pi_1=0</span>: 我们考虑单连通流形</li>
+<li><span class="math inline">H_1=0</span>: Hurewicz 定理</li>
+<li><span class="math inline">H^1=0</span>: 万有系数定理</li>
+</ul></li>
+<li><span class="math inline">H_3,H^3</span>
+<ul>
+<li>均为 0, 对 <span class="math inline">H_1</span> 的结果使用 Poincare 对偶.</li>
+</ul></li>
+<li><span class="math inline">H_2,H^2</span>
+<ul>
+<li><span class="math inline">H^2\cong H_2</span>: Poincare 对偶</li>
+<li><span class="math inline">H_2</span> 是有限生成的自由阿贝尔群:
+<ul>
+<li>由于我们考虑的流形是紧的 (closed), <span class="math inline">H_2\cong \mathbb{Z}^r</span>: 万有系数定理 <span class="math inline">H^2\left(X\right)\cong Hom\left(H_2\left(X\right),\mathbb{Z}\right)</span></li>
+</ul></li>
+</ul></li>
+<li><span class="math inline">\pi_2</span>
+<ul>
+<li><span class="math inline">\pi_2\cong H_2</span>: Hurewicz 定理</li>
+<li>由于 <span class="math inline">H_2</span> 未必是 0, 我们不知道更高阶同伦群的信息.</li>
+</ul></li>
+<li>汇总:</li>
+</ul></li>
+</ul>
+<p>In summary:</p>
+<p><span class="math display">H_0 = H^0 = H_4 = H^4 = \mathbb{Z}, \quad \pi_1 = H_1 = H^1 = H_3 = H^3 = 0, \quad \pi_2 = H_2 = H^2 = \mathbb{Z}^r.</span> 即对于单连通闭的四维流形, 其同调群只有 <span class="math inline">H_2</span> (和 <span class="math inline">H^2</span>) 不平凡.</p>
+<ul>
+<li>如果流形 <span class="math inline">M</span> 是带边流形, 则庞加莱对偶写成 Lefschetz Duality (LD): <span class="math inline">H_2\left(M;\mathbb{Z}\right)\cong H^2\left(M,\partial M;\mathbb{Z}\right)</span>, 以及 <span class="math inline">H_2(M,\partial M;\mathbb{Z})\cong H^2(M;\mathbb{Z})</span>. 此时:
+<ul>
+<li><span class="math inline">H_4=H^4=0</span>:
+<ul>
+<li><span class="math inline">H_4=0</span>:
+<ul>
+<li>存在没有 4-handle 的 handle 分解.</li>
+<li>依赖结果: 对于紧的, 连通的光滑流形 <span class="math inline">M^n</span>, 若其无边界, 则可以选择 handle 分解使其仅有一个 0-handle (对偶的, 一个 n-handle). 若其有边界, 则可以选择 handle 分解使其没有 0-handle (对偶的, 没有 n-handle).</li>
+<li>Sketch: 利用 handle cancel 以及连通性质.</li>
+</ul></li>
+<li><span class="math inline">H^4=0</span>:
+<ul>
+<li>使用 LD: <span class="math inline">H^4(M) \cong H_0(M, \partial M) = 0</span></li>
+<li>右侧为零是因为 <span class="math inline">M,\partial M</span> 处于相同的连通分支中。</li>
+</ul></li>
+</ul></li>
+<li><span class="math inline">H_2</span> 未必自由:
+<ul>
+<li>此时我们不再有 <span class="math inline">H_2\cong H^2</span>.</li>
+</ul></li>
+<li><span class="math inline">H_3,H^3</span> 未必是零:
+<ul>
+<li><span class="math inline">H_1,H^1</span> 是零+LD 只能得到 <span class="math inline">H_3\left(M,\partial M\right)=0, H^3(M,\partial M)=0</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="homotopy-type" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="homotopy-type"><span class="header-section-number">5.2</span> Homotopy Type</h2>
+<p>我们之前提到, 对于单连通的 4 mfld, <span class="math inline">X</span> 的同调群中只有 <span class="math inline">H_2</span> 是不平凡的, 我们在其上定义了相交型. 本节我们证明, 4 mfld <span class="math inline">X</span> 的同伦型完全由其上的相交型决定.</p>
+<ul>
+<li>Thm: (Whitehead)
+<ul>
+<li>定理: <span class="math inline">X_1,X_2</span> 是两个单连通的 4 mfld, <span class="math inline">X_1</span> 和 <span class="math inline">X_2</span> 同伦等价当且仅当 <span class="math inline">Q_{X_1}</span> 和 <span class="math inline">Q_{X_2}</span> 是等价的.</li>
+<li>证明:
+<ul>
+<li>定理的一侧是显然的, 我们说明 <span class="math inline">Q_X</span> 可以决定 <span class="math inline">X</span> 的同伦型. 证明大致思路是从 <span class="math inline">Q_X</span> 出发, 构造复形 <span class="math inline">\tilde{X}</span>, 并证明复形 <span class="math inline">\tilde{X}</span> 和 <span class="math inline">X</span> 同伦. (即我们找了一个中间的拓扑空间, 证明 <span class="math inline">X_1,X_2</span> 都同伦于它)</li>
+<li><span class="math inline">X-B^4</span> 的同伦型
+<ul>
+<li>利用 Mayer-Viector 序列, 可以证明挖去 <span class="math inline">B^4</span> 在同调上去掉了 <span class="math inline">X</span> 的四维同调群. 此时 <span class="math inline">H_0=\mathbb{Z},H_2=\mathbb{Z}^r,H_{else}=0</span>.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>In this situation, <span class="math inline">A=D^4</span>, <span class="math inline">B=X-D^4</span>. <span class="math inline">A\cap B=S^3</span>. <span class="math inline">A\cup B=X</span>.</p>
+<p>we have <span class="math display">
+\begin{aligned}
+S^3 &amp;\hookrightarrow D^4 \twoheadrightarrow X \\
+&amp;\quad\searrow \\
+&amp;\quad X-D^4 \hookrightarrow X
+\end{aligned}
+</span></p>
+<p>which gives the exact seq. <span class="math display">\dots \to H_k(S^3) \to H_k(D^4) \oplus H_k(X-D^4) \to H_k(X) \to H_{k-1}(S^3) \to \dots</span></p>
+<p>take <span class="math inline">k=3,4</span>, we have <span class="math display">
+0 \to \underset{0}{H_4(D^4)} \oplus \underset{0}{H_4(X-D^4)} \to \underset{\mathbb{Z}}{H_4(X)} \to \underset{\mathbb{Z}}{H_3(S^3)} \to \underset{0}{H_3(D^4)} \oplus \underset{0}{H_3(X-D^4)} \to \underset{0}{H_3(X)} \to \dots
+</span></p>
+<p>i.e. <span class="math display">0 \to H_4(X-D^4) \to \underset{\mathbb{Z}}{H_4(X)} \xrightarrow{\partial} \underset{\mathbb{Z}}{H_3(S^3)} \to H_3(X-D^4) \to 0</span></p>
+<p>where <span class="math inline">\partial: [X] \mapsto [X\cap D^4] = [S^3]</span>, i.e.&nbsp;<span class="math inline">\partial</span> Bom.</p>
+<p><span class="math inline">\implies H_4(X-D^4) = H_3(X-D^4) = 0</span>.</p>
+<p>as for <span class="math inline">H_k(X-D^4)</span> for <span class="math inline">k&lt;3</span>. Since <span class="math inline">X-D^4</span> just cancel the 4-handle, <span class="math inline">H_k(X-D^4) \cong H_k(X)</span>.</p>
+<p><span class="math inline">\square</span></p>
+<pre><code>        - $X-B^4$ 同伦于 $\bigvee_{i=1}^r\mathbb{S}^2$: 注意到两者都是单连通的, 且同调群同构, 为了使用同调版本的 whitehead 定理, 我们还需要构造从 $X-B^4$ 到 $\bigvee_{i=1}^r\mathbb{S}^2$ 的映射. 注意到我们有 $H_2\left(X-B^4\right)\cong \pi_2\left(X-B^4\right)$, 且同调群的生成元对应着球面映射的同伦类 (Hurewicz 定理)。因此，我们可以选取一组生成元对应的映射 $f_i: S^2 \to X-B^4$，并将它们组合成一个映射 $f: \bigvee_{i=1}^r S^2 \to X-B^4$。这个映射诱导了同调群的同构。根据同调版本的 Whitehead 定理，这个映射就是同伦等价。
+    - $X$ 的同伦型
+        - 我们已经证明了 $X-B^4$ 同伦于 $\bigvee_{i=1}^r\mathbb{S}^2$, 要寻找 $X$ 的同伦型，我们需要考虑如何将 $B^4$ 粘回去。这涉及到一个粘接映射 $\phi: S^3 \to \bigvee_{i=1}^r S^2$，它描述了 $B^4$ 的边界如何附着在 $\bigvee_{i=1}^r S^2$ 上。(注意, 粘接的结果不再是流形, 仅仅是 CW 复形)
+        - 这个粘接映射 $\phi$ 的同伦类由相交形式 $r\times r$ 阶矩阵 $Q_X$ 所决定。
+            - 对角线上的元素: 对角线上的元素 $Q_{ii}$ 对应了第 $i$ 个 $S^2$ 的同伦群 $\pi_3\left(S^2\right)$. 对于映射 $h:S^3\to S^2$, 我们在 $S^2$ 上任取一点 $x$, 记它在 $h$ 下的原像为 loop $L$, 则 $Q_{ii}$ 就对应了 $L$ 的自相交数.
+                - 只有 framed knot 才能定义自相交数, 而映射 $h$ 天然给出了 $L$ 上的一个 framing: 我们在 $S^2$ 上再取一点 $x'$, 并记 $x'$ 在 $h$ 下的原像 $L'$, 则 $L$ 的自相交数可以被定义为 $lk\left(L,L'\right)$.
+                - loop $L$ 自相交数的含义: 这实际上对应了 $L$  bound 的曲面的自(代数)相交数 ($L$ 在 $B^4$ 上 bound disk 是因为 $B^4$ 单连通). 我们考虑 $\left(S^3,L\right)\subset (B^4,D^2)$, 其中前面的 pair 是后面的 pair 的边界. 我们有结果: **$L$ 的自相交数等于 $D^2$ 在 $B^4$ 中的自(代数)相交数.** 直观上理解:  </code></pre>
+</section>
+</section>
+<section id="降维直观类比2维圆盘与1维边界" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 1. 降维直观类比：2维圆盘与1维边界</h1>
+<p>高维空间很难想象，但我们可以把维度同时减去2，看一个完全等价的低维现象：</p>
+<ul>
+<li>内部空间：一个2维的实心圆盘 <span class="math inline">D^2</span>。</li>
+<li>边界空间：一个1维的圆环 <span class="math inline">S^1</span>。</li>
+</ul>
+<p>现在，在边界圆环上取四对点，分别是起点和终点：红色对 <span class="math inline">(R_1,R_2)</span> 和蓝色对 <span class="math inline">(B_1,B_2)</span>。</p>
+<ul>
+<li>如果在边界上没有“纠缠”：点在圆环上的排列顺序是 <span class="math inline">R_1,R_2,B_1,B_2</span>。此时，你可以在内部圆盘里画一条红线连接 <span class="math inline">R_1R_2</span>，画一条蓝线连接 <span class="math inline">B_1B_2</span>。这两条线完全可以不相交。</li>
+<li>如果在边界上发生了“纠缠”（链环的低维形式）：点在圆环上的排列顺序是交替的 <span class="math inline">R_1,B_1,R_2,B_2</span>。此时，只要红线和蓝线都被强制限制在二维圆盘内部，无论你怎么弯曲这两条线，它们必定会发生交叉（碰撞）！</li>
+</ul>
+<p>在四维拓扑中，发生的事情与此完全同理：</p>
+<ul>
+<li><p>边界上的交替点，升级成了三维边界 <span class="math inline">\mathbb{S}^3</span> 中互相穿过的闭合曲线（链环 <span class="math inline">L_i,L_j</span>）。</p></li>
+<li><p>内部连线的线段，升级成了四维内部 <span class="math inline">B^4</span> 中以曲线为边界的二维圆盘（曲面 <span class="math inline">D_i,D_j</span>）。</p>
+<pre><code>              - 关于上面的论述: knot 的相交数可以理解为一个 knot 和另一个 knot 的 Seifert surface 之间的相交数 (这里也有横截性定理: 维数和为 3). 而 Seifert surface 和 knot 在 $B^4$ 中 bound 的 disk 会在 $B^4$ 中一起围出一个落在 $B^4$ 中的闭的可定向曲面. (从而代数相交数一样)
+          - 非对角线上的元素: 非对角线上的元素 $Q_{ij}$ 对应了第 $i$ 个 $S^2$ 和第 $j$ 个 $S^2$ 的映射 $h_i, h_j: S^3 \to S^2$ 所诱导的环路 $L_i$ 与 $L_j$ 的环绕数 $lk(L_i, L_j)$。且与对角线上的元素类似，这个环绕数也对应了 $B^4$ 中两个圆盘 $D_i^2$ 和 $D_j^2$ 的相交数.
+  - 综上, 给定相交形式 $Q$, 我们可以唯一确定粘接映射 $\phi:S^3\to \bigvee_{i=1}^r S^2$, 从而给出 CW 复形 $\bigvee S^2\cup_{\phi}B^4$, 根据上面的论述, 它同伦于 $X$.</code></pre>
+<ul>
+<li>注: 在上述构造的过程中, 我们把 4 mfld 的同伦型写成了 2-cell 和 4-cell 组合的形式. <strong>而相交型的信息完全蕴含在 4-cell 中</strong>, 在证明中我们通过 loop 在 <span class="math inline">D^4</span> 中 bound 的 disk 的相交数给出了矩阵 <span class="math inline">Q</span>.</li>
+</ul></li>
+</ul>
+<section id="homeomorphism-type" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="homeomorphism-type"><span class="header-section-number">6.1</span> Homeomorphism Type</h2>
+<p>我们已经知道对于单连通的 4 mfld, 相交型可以决定同伦型, 自然的问题是: 能否决定同胚型 (拓扑型).</p>
+<ul>
+<li>比较弱的回答:
+<ul>
+<li>GPC 4 (四维庞加莱定理): 四维同伦球面是拓扑球面. 于是若单连通的 <span class="math inline">X</span> 满足 <span class="math inline">Q_X=0</span>, 则它是拓扑球面.</li>
+</ul></li>
+<li>Thm 1.2.27 (Freedman)
+<ul>
+<li>定理:
+<ol type="1">
+<li>任意 unimodular 对称双线性形式 <span class="math inline">Q</span>, 存在单连通闭 4 mfld <span class="math inline">X</span> s.t. <span class="math inline">Q_X=Q</span></li>
+<li>如果 <span class="math inline">Q</span> 是偶的, 则 <span class="math inline">X</span> 在同胚意义下是唯一的.</li>
+<li>若 <span class="math inline">Q</span> 是奇的, 则满足 <span class="math inline">Q_X=Q</span> 的 <span class="math inline">X</span> 有两种同胚型, 最多一个同胚型上有光滑结构.</li>
+</ol></li>
+<li>这个定理同时回答了存在性和唯一性.</li>
+<li>推论: GPC 4
+<ul>
+<li>若 <span class="math inline">X\simeq S^4</span> (同伦等价), 对应的幺模形式 <span class="math inline">Q_X=0</span>, 是偶的. 由 Freedman 的定理, 立刻得到 <span class="math inline">X</span> 同胚于 <span class="math inline">S^4</span>.</li>
+</ul></li>
+<li>推论:
+<ul>
+<li>单连通光滑 4 mfld 的拓扑型由 unimodular form 完全决定. 即映射 <span class="math display">
+Q:\{ \text{单连通光滑 4mfld} \}/\text{Homeo}\to \{ \text{unimodular form} \}/\text{Congruent},X\mapsto Q_X
+</span> 是单射. (如果两个光滑 4 mfld 有相同的 unimodular form, 则它们一定是同胚的.)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="diffeomorphic-type-open" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="diffeomorphic-type-open"><span class="header-section-number">6.2</span> Diffeomorphic Type (open)</h2>
+<p>分类问题在光滑情形下的表述: - 存在性: 什么样的 <span class="math inline">Q</span>, 它对应的 <span class="math inline">X</span> (可能对应两个 <span class="math inline">X</span>) 上存在光滑结构? - 唯一性: 如果 <span class="math inline">Q</span> 对应的 <span class="math inline">X</span> (可能对应两个) 上存在光滑结构, 那么拓扑流形 <span class="math inline">X</span> 上的光滑结构是否唯一? 根据 Freedman 的结果, 这几乎等价于分类拓扑 4 mfld 上的光滑结构.</p>
+<ul>
+<li>Conjecture: SPC 4 (唯一性问题)
+<ul>
+<li><span class="math inline">Q=0</span> , 由 Freedman 的结果我们知道 <span class="math inline">Q</span> 一定对应唯一的拓扑 <span class="math inline">X</span> (同胚于 $<span class="math inline">S^4</span>), 它上面的光滑结构是否唯一?</li>
+</ul></li>
+</ul>
+<section id="results-of-existence" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="results-of-existence"><span class="header-section-number">6.2.1</span> Results of Existence</h3>
+<ul>
+<li>Thm 1.2.29 (Rohlin)
+<ul>
+<li>如果 <span class="math inline">Q</span> 是偶的, 且可以被某个光滑 4 mfld <span class="math inline">X</span> 实现, 则 <span class="math inline">\sigma\left(Q\right)\equiv 0 \pmod{16}</span></li>
+<li>推论: <span class="math inline">E_8</span> 流形 (唯一的那个满足 <span class="math inline">Q_X=E_8</span> 的拓扑流形) 上不具有光滑结构.</li>
+</ul></li>
+<li>Thm 1.2.30 (Donaldson)
+<ul>
+<li>如果 <span class="math inline">Q</span> 能被某个光滑 4 mfld <span class="math inline">X</span> 实现, 且 <span class="math inline">Q</span> definite, 则 <span class="math inline">Q</span> 等价于对角矩阵.</li>
+<li>换句话说, 在所有 definite form 中, 只有那些对角矩阵可能被光滑 4 mfld 实现.</li>
+<li>虽然 definite form 的分类是复杂的, 但能被光滑流形实现的那些是简单的.</li>
+</ul></li>
+<li><span class="math inline">Q</span> indefinite 的情形:
+<ul>
+<li>Recall: 我们完全分类了 indefinite unimodular forms.</li>
+<li>如果 <span class="math inline">Q</span> odd: <span class="math inline">Q</span> 等价于 <span class="math inline">m\langle 1\rangle \oplus n\langle -1\rangle</span>, 它可以被带有光滑结构的流形 <span class="math inline">\left(\#_m \mathbb{CP}^2\right)\# \left(\#_n \overline{\mathbb{CP}^2}\right)</span> 实现.</li>
+<li>如果 <span class="math inline">Q</span> even: <span class="math inline">Q\cong \frac{\sigma\left(Q\right)}{8}E_8\oplus \frac{\text{rk}\left(Q\right)-|\sigma\left(Q\right)|}{2}H</span>, 关于系数的取值范围, 我们有下面的结果:</li>
+</ul></li>
+<li>Thm 1.2.31 (<span class="math inline">\frac{10}{8}</span>)
+<ul>
+<li>如果 <span class="math inline">Q</span> 是不定的, 偶的 (从而可以分解为 <span class="math inline">2kE_8\oplus lH</span>, 这里出现 <span class="math inline">2k</span> 是因为 Rohlin 的定理), 且能被某个光滑 4 mfld 实现, 则系数 <span class="math inline">k,l</span> 满足 <span class="math inline">l\geq2|k|+1</span>.</li>
+<li><em>为什么叫 10/8？</em> 因为流形的第二贝蒂数 <span class="math inline">b_2 = 2l + 16|k|</span>，符号差 <span class="math inline">|\sigma| = 16|k|</span>。将 <span class="math inline">l \ge 2|k| + 1</span> 代入，可以推导出 <span class="math inline">b_2 \ge \frac{10}{8}|\sigma| + 2</span>。</li>
+</ul></li>
+<li>Conjecture (<span class="math inline">\frac{11}{8}</span>)
+<ul>
+<li>上述限制条件实际上可以写成 <span class="math inline">l\geq3|k|</span> (open problem)</li>
+</ul></li>
+</ul>
+</section>
+<section id="results-of-uniqueness" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="results-of-uniqueness"><span class="header-section-number">6.2.2</span> Results of Uniqueness</h3>
+<p>我们几乎只有负面的结果。</p>
+<ul>
+<li>非紧的 4 mfld:
+<ul>
+<li>对于 <span class="math inline">n\neq4</span>, <span class="math inline">\mathbb{R}^n</span> 上有唯一的光滑结构.</li>
+<li><span class="math inline">\mathbb{R}^4</span> 上存在不可数多个光滑结构.</li>
+</ul></li>
+<li>紧的 4 mfld:
+<ul>
+<li>以下空间上是否有怪异的光滑结构? (open)
+<ul>
+<li><span class="math inline">S^4,S^2\times S^2,\mathbb{CP}^2, \overline{\mathbb{CP}^2},\mathbb{CP}^2\#\overline{\mathbb{CP}^2}</span></li>
+</ul></li>
+<li>是否存在有有限多光滑结构的闭 4 mfld? (open)</li>
+</ul></li>
+</ul>
+<p>正面的”结果”: 稳定意义下是唯一的</p>
+<p><strong>Theorem 4.13 (Wall).</strong> <em>Suppose that <span class="math inline">X,Y</span> are smooth, closed, simply connected and oriented 4 manifolds with <span class="math inline">Q_X \cong Q_Y</span>. Then:</em></p>
+<ol type="a">
+<li><p><em>There exists <span class="math inline">k \in \mathbb{Z}_+</span> such that <span class="math inline">X\#_k S^2 \times S^2 \cong Y\#_k S^2 \times S^2</span> (<span class="math inline">X</span> and <span class="math inline">Y</span> are stably diffeomorphic).</em></p></li>
+<li><p><em><span class="math inline">X</span> and <span class="math inline">Y</span> are <span class="math inline">h</span>-cobordant, i.e.&nbsp;there exists a cobordism <span class="math inline">W</span> from <span class="math inline">X</span> to <span class="math inline">Y</span> with inclusions <span class="math inline">X,Y \hookrightarrow W</span> that are homotopy equivalences.</em></p></li>
+</ol>
+<p>Given any two closed simply connected 4 manifolds, we can connect sum with appropriate numbers of <span class="math inline">\pm\mathbb{CP}^2</span> to make the rank, signature, and pairity of thier intersection forms coincide. Since we can ensure that these forms are indefinite, these three characteristics determine their forms and hence <span class="math inline">Q_X \cong Q_Y</span>. Then applying the theorem above proves:</p>
+<p><strong>Corollary 4.14.</strong> <em>Any two closed, smooth, simply connected 4 manifolds are diffeomorphic after connect-summing with enough <span class="math inline">\pm\mathbb{CP}^2</span>.</em></p>
+</section>
+</section>
+</section>
+<section id="fundamental-group-of-smooth-4-manifold" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Fundamental Group of Smooth 4-Manifold</h1>
+<p>4mfld 学科的核心问题是分类光滑四维流形. 基本群是分类光滑 4 mfld 的第一个”复杂度”. 这一小节, 利用基本群我们说明: 光滑 4-mfld 的完全分类是一个不可解问题.</p>
+<ul>
+<li><p><strong>注: 这个证明有两种写法</strong></p></li>
+<li><p>Thm 1.2.2 (Markov)</p>
+<ul>
+<li>定理:
+<ul>
+<li>基本群映射 <span class="math inline">\pi_1:\{\text{closed oriented 4 mfld}\}\to \{\text{finitely generated group}\}, X\mapsto \pi_1\left(X\right)</span> 是满射。即对于任意有限生成群 <span class="math inline">G</span>，都能找到一个闭的定向的 4-mfld，它的基本群实现这个 <span class="math inline">G</span>。</li>
+<li>更一般的, 任意 <span class="math inline">n\geq4</span>, 任意有限生成群 <span class="math inline">G</span>, 都存在一个闭的定向的 mfld <span class="math inline">M^n</span>, 它的基本群实现这个 <span class="math inline">G</span>. (我们证明这个)</li>
+</ul></li>
+<li>说明:
+<ul>
+<li>假设 <span class="math inline">G=\langle g_1,\cdots,g_k|r_1,\cdots,r_l\rangle</span></li>
+<li>我们知道, handle 分解在同伦中的对应是胞腔分解, 证明的基本思路也是利用 1 handle 构造生成元, 利用 2 handle 商掉关系. 但是这里要求找到的流形 <span class="math inline">M^n</span> 是闭流形, 即我们得到的流形得是无边的, 这引出了两种证明方式.</li>
+</ul></li>
+<li>构造 1:
+<ul>
+<li><p>构造 <span class="math inline">n+1</span> 维流形 <span class="math inline">W^{n+1}</span>, 然后取它的边界 <span class="math inline">M:=\partial W</span>. 这样得到的 <span class="math inline">M</span> 显然是不带边的.</p></li>
+<li><p>构造: 我们构造 <span class="math inline">W^{n+1}</span>, 它上面只有 0,1,2 handle.</p>
+<ul>
+<li>其中 1 handle 对应于生成元 <span class="math inline">g_i</span>, 在 <span class="math inline">D^{n+1}</span> 上粘接 <span class="math inline">k</span> 个 1 handle 会得到 <span class="math inline">\#_kS^1\times D^n</span>, 它是 <span class="math inline">k</span> 个 <span class="math inline">S^1\times D^n</span> 的连通和. 利用 Seifert-Van Kampen 定理，连通和在基本群上对应自由积.</li>
+</ul>
+<p><span class="math display">\pi_1(X_1\#X_2) = \pi_1(X_1 - B^4) *_{\pi_1(\mathbb{S}^3)} \pi_1(X_2 - B^4) = \pi_1(X_1) * \pi_2(X_2).</span></p>
+<ul>
+<li>2 handle 对应商掉的关系.</li>
+<li>于是这样得到的 <span class="math inline">W</span> 的基本群就是 <span class="math inline">G</span>.</li>
+</ul></li>
+<li><p>取 <span class="math inline">M:=\partial W</span>. 我们说明 <span class="math inline">\pi_1(M)\cong \pi_1(W)</span>, 只要说明两者的 <span class="math inline">H_1</span> 是一样的.</p>
+<ul>
+<li>我们可以将 <span class="math inline">W</span> 看作是从 <span class="math inline">\emptyset</span> 到 <span class="math inline">M</span> 的配边, 这个过程中粘接了0-handle, 1-handles, and 2-handles.</li>
+<li>利用 handle 分解的对偶观点, <span class="math inline">W^{n+1}</span> 给出了从 <span class="math inline">M</span> 到 <span class="math inline">\emptyset</span> 的配边, 这个过程中我们在 <span class="math inline">M\times I</span> 上粘接了 (对偶的) n+1 handle, n handle, n-1 handle, 这里 <span class="math inline">n\geq4</span>, 于是 <span class="math inline">n-1\geq3</span>, 注意到粘接 handle 在代数上会给出胞腔复形上的微分映射, 故 3 handle 不会改变 <span class="math inline">H_1</span>, 于是我们有 <span class="math inline">H_1(M)\cong H_1(W)</span>.</li>
+</ul></li>
+<li><p>因此 <span class="math inline">\pi_1(M)\cong\pi_1(W)\cong G</span>.</p></li>
+<li><p>注意到这个证明在 n+1 阶流形上做 handle 粘接, 当然也可以表述为在 n 阶流形上做 surgery, 这恰为讲义 MATH 283 A 中的表述.</p></li>
+</ul></li>
+<li>构造 2:
+<ul>
+<li>我们直接在 n 维上构造, 使用 double 操作消除边界.</li>
+<li>使用和上述一样的方法构造一个带边界的 <span class="math inline">n</span> 维流形 <span class="math inline">M_0</span>，使得 <span class="math inline">\pi_1(M_0) \cong G</span>. 然后取 <span class="math inline">M</span> 为 <span class="math inline">M_0</span> 的双重（double），即 <span class="math inline">M = M_0 \cup_{\partial M_0} \overline{M_0}</span>.</li>
+<li>基本群同构: 我们可以将 double 操作理解为粘接对偶的 handle. <span class="math inline">M_0</span> 通过在 <span class="math inline">\emptyset</span> 上粘接 0,1,2 handle 给出了从 <span class="math inline">\emptyset</span> 到 <span class="math inline">\partial M_0</span> 的配边. 对偶的, <span class="math inline">\overline{M_0}</span> 通过在 <span class="math inline">-\partial M_0\times I</span> 上粘接 n, n-1, n-2 handle 给出了从 <span class="math inline">-\partial M_0</span> 到 <span class="math inline">\emptyset</span> 的配边.
+<ul>
+<li>注意, 这里 <span class="math inline">n-2</span> 可能会取到 2, 但是我们可以说明, 这里的 2 handle 的粘接球面是特殊的 (在 1 handlebody 的边界上 bound disk), 从而不会影响到 <span class="math inline">H_1</span>. (在 Kirby diagram 上直观看到).</li>
+</ul></li>
+</ul></li>
+<li>两种构造的一致性:
+<ul>
+<li>我们可以将 double 操作看作对高维流形取边界.</li>
+<li>假设 <span class="math inline">M</span> 是带边流形, 则 double <span class="math inline">D M</span> 就是对 <span class="math inline">M\times I</span> 取边界, 这里 <span class="math inline">M\times I</span> 作为 n+1 维流形有着和 <span class="math inline">M</span> 完全一致的 handle 分解. (因为 <span class="math inline">I</span> 是 0 handle).</li>
+<li>示意图:</li>
+</ul>
+Consider <span class="math inline">M = T^2 - D^2,\ \partial M = S^1</span>.</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\dim M = 2 + 1</span></p>
+<p><span class="math inline">[M:</span></p>
+<p>then <span class="math inline">M \times I:</span></p>
+<p>the <span class="math inline">\partial(M \times I):</span></p>
+<p><span class="math display">\partial(M \times I) = M \cup \partial M \times I \cup (-M)</span></p>
+<p><span class="math display">= M \cup_{\mathrm{id}_{\partial M}} -M = DM</span></p>
+<p>我们还想回答下面的问题:</p>
+<ul>
+<li><p>是否存在一种（能在有限步骤内完成）的算法，能区分任意两个光滑 4 mfld <span class="math inline">W_1,W_2</span> 是否（微分）同胚？</p></li>
+<li><p>答案是不存在.</p></li>
+<li><p>Thm (Markov)</p>
+<ul>
+<li>不存在能够判断任意两个光滑 4 mfld <span class="math inline">W_1,W_2</span> 是否（微分）同胚（能在有限步骤内完成）的算法。</li>
+</ul></li>
+<li><p>证明:</p>
+<ul>
+<li>用反证法, 假设存在这样的算法, 则我们可以得到判断有限表示群 <span class="math inline">G</span> 是否平凡的（在有限步骤内完成）算法. 根据 Novikov-Boone 的定理, 不存在这样的算法.</li>
+<li>固定一个群 <span class="math inline">G_0=\{e\}</span> 平凡群. 考虑任意有限表示群 <span class="math inline">G_1</span>, 并构造一个四维流形 <span class="math inline">W_1'</span>, 使得 <span class="math inline">\pi_1\left(W_1'\right)=G_1</span>. 将 <span class="math inline">W_1'</span> 和 <span class="math inline">\mathbb{CP}^2 \# \bar{\mathbb{CP}^2}</span> 做连通和得到 <span class="math inline">W_1</span>（从而得到 indefinite and odd 的相交形式），这个操作不会改变它的基本群. 我们将另一个流形取为 <span class="math inline">W_0:=a\mathbb{CP}^2\#\bar{b\mathbb{CP}^2}</span>, 我们有 <span class="math inline">\pi_1\left(W_0\right)\cong G_0</span>.
+<ul>
+<li>此时我们得到了两个流形, 它们的相交形式都是不定的, 奇的. 于是这两个相交形式都是对角的, 对角线上都是 <span class="math inline">\pm1</span>. 我们可以取 <span class="math inline">a,b</span> 使得 <span class="math inline">W_0,W_1</span> 有相同的相交型.</li>
+</ul></li>
+<li>我们有命题: <span class="math inline">W_1\simeq W_2\text{ (同伦等价)} \iff G_1\cong G_0</span>.
+<ul>
+<li><span class="math inline">\Rightarrow</span>: 显然.</li>
+<li><span class="math inline">\Leftarrow</span>: <span class="math inline">G_1\cong G_0</span> 则 <span class="math inline">W_1</span> 单连通, 由 Whitehead 的定理它们同伦等价.</li>
+</ul></li>
+<li>还有命题: <span class="math inline">W_1\cong W_2 \text{ (同伦等价)}\Rightarrow W_1\simeq_S W_2</span>（稳定微分同胚），即存在 <span class="math inline">N</span>, 使得 <span class="math inline">W_1\# (\#^lS^2\times S^2)\cong W_2\#\left(\#^lS^2\times S^2\right)</span>（微分同胚）.</li>
+<li>由假设, 我们有一种算法可以区分</li>
+</ul></li>
+</ul>
+<p><span class="math display">W_1\# (\#^lS^2\times S^2),\quad W_2\#\left(\#^lS^2\times S^2\right)</span></p>
+<pre><code>假设不微分同胚, 则 $G$ 不是平凡群; 假设微分同胚, 计算两边基本群, 则 $G$ 是平凡群. 至此得到矛盾.</code></pre>
+<ul>
+<li>另一种基于 Kirby Calculus 的证明:
+<ul>
+<li>书上 Exercises 5.1.10 (c)</li>
+</ul></li>
+</ul>
+</section>
+<section id="appendix" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Appendix</h1>
+<section id="handle-分解的-dual" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="handle-分解的-dual"><span class="header-section-number">8.1</span> handle 分解的 dual</h2>
+<p><img src="images/pasted-image-20260407112024.png" class="img-fluid" loading="lazy" decoding="async" alt="Handle 分解对偶示意图 1"> <img src="images/pasted-image-20260407112047.png" class="img-fluid" loading="lazy" decoding="async" alt="Handle 分解对偶示意图 2"></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

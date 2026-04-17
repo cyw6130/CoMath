@@ -2,23 +2,23 @@
   {
     "listing": "/pages/notes.html",
     "items": [
+      "/notes/intersection-form-of-4-manifold.html",
       "/notes/poincare-conjecture-and-manifold-topological-classification.html",
       "/notes/microgpt-math-impl-compare.html",
       "/notes/bernoulli.html",
       "/notes/h_cobordism_4.html",
-      "/notes/Khovanov_homology.html",
-      "/notes/turaev-viro.html"
+      "/notes/Khovanov_homology.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/notes/intersection-form-of-4-manifold.html",
       "/notes/poincare-conjecture-and-manifold-topological-classification.html",
       "/notes/microgpt-math-impl-compare.html",
       "/notes/bernoulli.html",
       "/notes/h_cobordism_4.html",
-      "/notes/Khovanov_homology.html",
-      "/notes/turaev-viro.html"
+      "/notes/Khovanov_homology.html"
     ]
   }
 ]

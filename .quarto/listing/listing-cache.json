@@ -1,7 +1,24 @@
 {
   "listingMap": {
+    "index.qmd": [
+      "notes/*.qmd",
+      "notes/Khovanov_homology.qmd",
+      "notes/h_cobordism_4.qmd",
+      "notes/intersection-form-of-4-manifold.qmd",
+      "notes/poincare-conjecture-and-manifold-topological-classification.qmd",
+      "notes/bernoulli.qmd",
+      "notes/turaev-viro.qmd",
+      "notes/microgpt-math-impl-compare.qmd"
+    ],
     "pages/notes.qmd": [
-      "../notes/*.qmd"
+      "../notes/*.qmd",
+      "../notes/Khovanov_homology.qmd",
+      "../notes/h_cobordism_4.qmd",
+      "../notes/intersection-form-of-4-manifold.qmd",
+      "../notes/poincare-conjecture-and-manifold-topological-classification.qmd",
+      "../notes/bernoulli.qmd",
+      "../notes/turaev-viro.qmd",
+      "../notes/microgpt-math-impl-compare.qmd"
     ]
   }
 }

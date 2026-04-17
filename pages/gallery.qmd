@@ -9,6 +9,7 @@ lightbox:
   loop: true
 toc: false
 page-layout: full
+sidebar: false
 ---
 
 <style>
@@ -196,6 +197,14 @@ Landscapes & Cityscapes
 
 ![](../images/gallery/gallery-02.jpeg){group="main-gallery"}
 
+![](../images/gallery/DSC_5925.jpg){group="main-gallery"}
+
+![](../images/gallery/DSC_5842.jpg){group="main-gallery"}
+
+![](../images/gallery/DSC_5129(1).jpeg){group="main-gallery"}
+
+![](../images/gallery/DSC_5170(1).jpeg){group="main-gallery"}
+
 :::
 :::
 
@@ -209,6 +218,14 @@ Vertical Perspectives
 ::: {layout-ncol=3}
 
 ![](../images/gallery/gallery-03.jpeg){group="main-gallery"}
+
+![](../images/gallery/DSC_5903.jpg){group="main-gallery"}
+
+![](../images/gallery/DSC_5835.jpg){group="main-gallery"}
+
+![](../images/gallery/DSC_4718(1).jpeg){group="main-gallery"}
+
+![](../images/gallery/DSC_5038(1).jpeg){group="main-gallery"}
 
 :::
 :::

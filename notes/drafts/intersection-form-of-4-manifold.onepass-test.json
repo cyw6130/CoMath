@@ -1,0 +1,33 @@
+{
+  "note": "/Users/chenyuwen/code/quarto/notes/intersection-form-of-4-manifold.qmd",
+  "vault": "/Users/chenyuwen/Library/Mobile Documents/iCloud~md~obsidian/Documents/AI_for_Math",
+  "model": "doubao-seed-2-0-mini-260215",
+  "api_url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+  "image_count": 1,
+  "images": [
+    {
+      "index": 1,
+      "syntax": "markdown",
+      "embed": "![](images/pasted-image-20260330232011.png)",
+      "embed_target": "images/pasted-image-20260330232011.png",
+      "size_hint": null,
+      "alt_text": "",
+      "line_no": 126,
+      "context": "124:     - 证明:\n125: \n126: ![](images/pasted-image-20260330232011.png)\n127: \n128: ",
+      "resolved_path": "/Users/chenyuwen/code/quarto/notes/images/pasted-image-20260330232011.png",
+      "span_start": 6711,
+      "span_end": 6754,
+      "status": "ok",
+      "result": {
+        "kind": "text",
+        "keep_image": false,
+        "confidence": 0.95,
+        "reason": "该图片为纯手写数学证明文本，仅包含定理陈述、公式和证明步骤，无几何或示意图成分",
+        "raw_transcription_md": "# Lemma 1.2.12.\n\nthe form $Q$ on $A$ gives the definition of $A_1^\\perp$.\n- $A = A_1 \\oplus A_1^\\perp$:\n  - $A_1 \\cap A_1^\\perp = 0$: assume $\\exists a \\neq 0, a \\in A \\cap A_1^\\perp$. then $\\forall b \\in A_1$ we have $Q(a,b)=0$. contradicting the fact $A_1$ is unimodular.\n  - $A_1 \\oplus A_1^\\perp = A$: $\\forall x \\in A$ gives a map $f_x: A_1 \\to \\text{Hom}(A_1, \\mathbb{Z})$, though $a \\mapsto Q(x,a)$.\n    since $A_1$ unimodular, $\\exists b \\in A_1$ s.t. $f_x = f_b: a \\mapsto Q(b,a)$\n    then $f_x = f_b \\implies Q(x,a) = Q(b,a)$ i.e. $Q(x-b,a)=0$\n    $\\forall a \\in A_1 \\implies x-b \\in A_1^\\perp$. and $b \\in A_1$. $\\checkmark$\n- for the equiv. $(A_1^\\perp, Q)$ unimodular iff $(A, Q)$, though the fact $\\det Q = \\det Q\\vert_{A_1} \\cdot \\det Q\\vert_{A_1^\\perp}$.\n\n$A=A_1 \\oplus A_1^\\perp$ and $\\square$.",
+        "formatted_transcription_md": "### Lemma 1.2.12.\n\nThe form $Q$ on $A$ gives the definition of $A_1^\\perp$.\n\n- $A = A_1 \\oplus A_1^\\perp$:\n  - $A_1 \\cap A_1^\\perp = \\{0\\}$: assume $\\exists a \\neq 0, a \\in A_1 \\cap A_1^\\perp$. Then $\\forall b \\in A_1$ we have $Q(a,b) = 0$. Contradicting the fact $A_1$ is unimodular.\n  - $A_1 \\oplus A_1^\\perp = A$: $\\forall x \\in A$ gives a map $f_x: A_1 \\to \\text{Hom}(A_1, \\mathbb{Z})$, though $a \\mapsto Q(x,a)$.\n    Since $A_1$ unimodular, $\\exists b \\in A_1$ s.t. $f_x = f_b: a \\mapsto Q(b,a)$.\n    Then $f_x = f_b \\implies Q(x,a) = Q(b,a)$ i.e. $Q(x-b,a) = 0$.\n    $\\forall a \\in A_1 \\implies x-b \\in A_1^\\perp$. And $b \\in A_1$. $\\checkmark$\n\n- For the equiv. $(A_1^\\perp, Q)$ unimodular iff $(A, Q)$, though the fact $\\det Q = \\det Q\\vert_{A_1} \\cdot \\det Q\\vert_{A_1^\\perp}$.\n\n$A = A_1 \\oplus A_1^\\perp$ and $\\square$.",
+        "caption": "Lemma 1.2.12 证明笔记",
+        "visible_text_summary": "Lemma 1.2.12的证明，关于双线性形式空间的正交补分解与unimodular性"
+      }
+    }
+  ]
+}

@@ -126,12 +126,95 @@
     "test_listing.html": "89c0ba1d"
   },
   "notes/microgpt-math-impl-compare.qmd": {
-    "microgpt-math-impl-compare.html": "e5d0dd45"
+    "microgpt-math-impl-compare.html": "e5d0dd45",
+    "microgpt-math-impl-compare.tex": "56921a1e"
   },
   "pages/ai.qmd": {
     "ai.html": "9353ffe7"
   },
   "notes/poincare-conjecture-and-manifold-topological-classification.qmd": {
-    "poincare-conjecture-and-manifold-topological-classification.html": "2ee39ca1"
+    "poincare-conjecture-and-manifold-topological-classification.html": "2ee39ca1",
+    "poincare-conjecture-and-manifold-topological-classification.tex": "7bb61bd0"
+  },
+  "tmp_repos/notebooklm-skill/AUTHENTICATION.md": {
+    "AUTHENTICATION.html": "29330cf3"
+  },
+  "tmp_repos/notebooklm-skill/CHANGELOG.md": {
+    "CHANGELOG.html": "e4ceb119"
+  },
+  "tmp_repos/notebooklm-skill/references/usage_patterns.md": {
+    "usage_patterns.html": "44cf8e1f"
+  },
+  "tmp_repos/notebooklm-skill/references/api_reference.md": {
+    "api_reference.html": "479ab4e2"
+  },
+  "tmp_repos/notebooklm-skill/references/troubleshooting.md": {
+    "troubleshooting.html": "958c5bbd"
+  },
+  "tmp_repos/notebooklm-skill/SKILL.md": {
+    "SKILL.html": "590f5080"
+  },
+  "tmp_repos/notebooklm-py/CHANGELOG.md": {
+    "CHANGELOG.html": "543e9802"
+  },
+  "tmp_repos/notebooklm-py/docs/releasing.md": {
+    "releasing.html": "50cec087"
+  },
+  "tmp_repos/notebooklm-py/docs/troubleshooting.md": {
+    "troubleshooting.html": "db9c0fe3"
+  },
+  "tmp_repos/notebooklm-py/docs/rpc-reference.md": {
+    "rpc-reference.html": "68008e02"
+  },
+  "tmp_repos/notebooklm-py/docs/rpc-development.md": {
+    "rpc-development.html": "20eb6a1b"
+  },
+  "tmp_repos/notebooklm-py/docs/python-api.md": {
+    "python-api.html": "8f8cbbbe"
+  },
+  "tmp_repos/notebooklm-py/docs/configuration.md": {
+    "configuration.html": "ee8f0fd0"
+  },
+  "tmp_repos/notebooklm-py/docs/stability.md": {
+    "stability.html": "e15feb45"
+  },
+  "tmp_repos/notebooklm-py/docs/cli-reference.md": {
+    "cli-reference.html": "16647ff6"
+  },
+  "tmp_repos/notebooklm-py/docs/development.md": {
+    "development.html": "11e7c4fc"
+  },
+  "tmp_repos/notebooklm-py/CONTRIBUTING.md": {
+    "CONTRIBUTING.html": "6a4c8a16"
+  },
+  "tmp_repos/notebooklm-py/SKILL.md": {
+    "SKILL.html": "4b18ef18"
+  },
+  "tmp_repos/notebooklm-py/AGENTS.md": {
+    "AGENTS.html": "34fcac85"
+  },
+  "tmp_repos/notebooklm-py/CLAUDE.md": {
+    "CLAUDE.html": "ceb0826d"
+  },
+  "tmp_repos/notebooklm-py/SECURITY.md": {
+    "SECURITY.html": "d97e4e37"
+  },
+  "notes/intersection-form-of-4-manifold.qmd": {
+    "intersection-form-of-4-manifold.html": "ebac2d66"
+  },
+  "notes/intersection-form-of-4-manifold.triaged.qmd": {
+    "intersection-form-of-4-manifold.triaged.html": "f804e52b"
+  },
+  "notes/topological-modular-forms-2024-10-28-manifold-orientation-and-principal-bundle-classification.qmd": {
+    "topological-modular-forms-2024-10-28-manifold-orientation-and-principal-bundle-classification.html": "fa219ec2"
+  },
+  "notes/intersection-form-of-4-manifold.onepass-test.qmd": {
+    "intersection-form-of-4-manifold.onepass-test.html": "6cc71c2c"
+  },
+  "notes/drafts/intersection-form-of-4-manifold.onepass-test.qmd": {
+    "intersection-form-of-4-manifold.onepass-test.html": "6134b2d9"
+  },
+  "notes/drafts/intersection-form-of-4-manifold.triaged.qmd": {
+    "intersection-form-of-4-manifold.triaged.html": "fc283798"
   }
 }

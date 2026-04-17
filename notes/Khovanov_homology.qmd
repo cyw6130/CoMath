@@ -1,5 +1,5 @@
 ---
-title: "An introduction to khovanov homology and s-invariant"
+title: "Khovanov 同调与 s-不变量"
 author: "Cyw"
 date: "2025-12-18"
 categories: [Khovanov Homology, Categorification, Quantum Invariants, 4-Manifolds]

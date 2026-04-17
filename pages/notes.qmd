@@ -2,7 +2,13 @@
 title: "Notes"
 subtitle: "学习笔记与数学随想"
 listing:
-  contents: ../notes/*.qmd
+  contents:
+    - ../notes/Khovanov_homology.qmd
+    - ../notes/h_cobordism_4.qmd
+    - ../notes/intersection-form-of-4-manifold.qmd
+    - ../notes/poincare-conjecture-and-manifold-topological-classification.qmd
+    - ../notes/bernoulli.qmd
+    - ../notes/microgpt-math-impl-compare.qmd
   type: grid
   sort: "date desc"
   categories: true
@@ -50,8 +56,18 @@ toc: false
 ::: {.card-body}
 ###  量子不变量
 
-- [Khovanov Homology](../notes/Khovanov_homology.qmd)
-- [Turaev-Viro 不变量](../notes/turaev-viro.qmd)
+- [Khovanov 同调与 s-不变量](../notes/Khovanov_homology.qmd)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.card .h-100}
+::: {.card-body}
+###  四维流形
+
+- [庞加莱猜想与怪球](../notes/poincare-conjecture-and-manifold-topological-classification.qmd)
+- [四维流形的相交形式 (Intersection Form)](../notes/intersection-form-of-4-manifold.qmd)
 :::
 :::
 :::
@@ -61,17 +77,8 @@ toc: false
 ::: {.card-body}
 ###  高维流形
 
-- [h-Cobordism 理论](../notes/h_cobordism_4.qmd)
-:::
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.card .h-100}
-::: {.card-body}
-###  其他主题
-
-- [Bernoulli 数](../notes/bernoulli.qmd)
+- [h-Cobordism 定理与广义庞加莱猜想](../notes/h_cobordism_4.qmd)
+- [伯努利数、Zeta 函数与怪球](../notes/bernoulli.qmd)
 :::
 :::
 :::

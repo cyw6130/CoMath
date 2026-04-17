@@ -25,17 +25,15 @@ website:
       - icon: github
         href: https://github.com/cyw6130
       - icon: envelope
-        href: mailto:your.email@university.edu
+        href: mailto:2120240050@nankai.edu.cn
 
   # 页脚
   page-footer:
     background: dark
-    left: "© 2025 Chen · 数学与拓扑"
+    left: "© 2026 Chen · 数学与拓扑"
     center:
       - icon: github
         href: https://github.com/cyw6130
-      - icon: twitter
-        href: https://twitter.com
     right: "Built with Quarto"
 
   # 侧边栏
@@ -52,14 +50,15 @@ website:
             text: "Overview"
           - section: "Quantum Invariants"
             contents:
-              - notes/turaev-viro.qmd
               - notes/Khovanov_homology.qmd
+          - section: "Four Manifolds"
+            contents:
+              - notes/poincare-conjecture-and-manifold-topological-classification.qmd
+              - notes/intersection-form-of-4-manifold.qmd
           - section: "High-dimensional Manifolds"
             contents:
               - notes/h_cobordism_4.qmd
               - notes/bernoulli.qmd
-              - notes/poincare-conjecture-and-manifold-topological-classification.qmd
-              - notes/intersection-form-of-4-manifold.qmd
           - section: "AI for Knot"
             contents:
               - notes/microgpt-math-impl-compare.qmd

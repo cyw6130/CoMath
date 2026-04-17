@@ -9,7 +9,7 @@
 <meta name="author" content="Cyw">
 <meta name="dcterms.date" content="2025-12-18">
 
-<title>An introduction to khovanov homology and s-invariant – Chen 的拓扑笔记</title>
+<title>Khovanov 同调与 s-不变量 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -330,17 +330,13 @@ window.Quarto = {
     <a class="nav-link" href="../pages/gallery.html"> 
 <span class="menu-text">Gallery</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../tools/skill-manager.html"> 
-<span class="menu-text">Skills</span></a>
-  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:your.email@university.edu"> <i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:2120240050@nankai.edu.cn"> <i class="bi bi-envelope" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -356,7 +352,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">An introduction to khovanov homology and s-invariant</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Khovanov 同调与 s-不变量</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -402,14 +398,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/turaev-viro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Turaev-Viro Invariants</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">An introduction to khovanov homology and s-invariant</span></a>
+ <span class="menu-text">Khovanov 同调与 s-不变量</span></a>
   </div>
 </li>
       </ul>
@@ -417,12 +407,35 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">High-dimensional Manifolds</span></a>
+ <span class="menu-text">Four Manifolds</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/intersection-form-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">四维流形的相交形式 (Intersection Form)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
@@ -435,23 +448,17 @@ window.Quarto = {
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">庞加莱猜想与怪球</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">AI for Knot</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
@@ -511,9 +518,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/turaev-viro.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">An introduction to khovanov homology and s-invariant</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Khovanov 同调与 s-不变量</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">An introduction to khovanov homology and s-invariant</h1>
+<h1 class="title">Khovanov 同调与 s-不变量</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Khovanov Homology</div>
     <div class="quarto-category">Categorification</div>
@@ -1894,7 +1901,7 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Chen · 数学与拓扑</p>
+<p>© 2026 Chen · 数学与拓扑</p>
 </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">

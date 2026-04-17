@@ -2,7 +2,7 @@
 title: "Smale 的工作：h-Cobordism 定理与广义庞加莱猜想"
 author: "Cyw"
 date: "2026-01-02"
-categories: [h-Cobordism, Surgery Theory, High-Dimensional Manifolds]
+categories: [h-Cobordism, Surgery Theory, High-Dimensional Manifolds, Exotic Spheres, Differential Topology]
 ---
 
 ::: {.callout-note}
