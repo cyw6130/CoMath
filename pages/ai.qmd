@@ -1,0 +1,65 @@
+---
+title: "AI"
+subtitle: "AI 工具、Agent 与数学的交叉探索"
+listing:
+  contents:
+    - ../notes/microgpt-math-impl-compare.qmd
+    - ../notes/ai-tools-handbook.qmd
+    - ../notes/literature-search-tools.qmd
+    - ../notes/mineru-ocr-document-parsing.qmd
+    - ../notes/lark-cli-docs.qmd
+    - ../notes/obsidian-cli-docs.qmd
+    - ../notes/agent-reach-multi-platform-content-retrieval.qmd
+    - ../notes/brave-search-api.qmd
+    - ../notes/deepseek-v4-mimo-v2.5.qmd
+  type: grid
+  sort: "date desc"
+  categories: true
+  fields: [title, description, categories, date]
+  grid-columns: 2
+  page-size: 10
+toc: false
+---
+
+::: {.callout-note appearance="minimal" icon=false}
+这里收集了我在研究工作流中用到的 AI 工具、Agent，以及把 AI 与数学结合起来的探索性笔记。
+:::
+
+---
+
+## 主题分类
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body}
+###  AI for Math
+
+- [MicroGPT 数学原理与实现对照](../notes/microgpt-math-impl-compare.qmd)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body}
+###  AI 工具
+
+- [AI 工具手册 — 汇总](../notes/ai-tools-handbook.qmd)
+- [文献检索工具手册](../notes/literature-search-tools.qmd)
+- [OCR 文档解析 — MinerU](../notes/mineru-ocr-document-parsing.qmd)
+- [飞书文档读写 — lark-cli](../notes/lark-cli-docs.qmd)
+- [Obsidian 文档读写 — Obsidian CLI](../notes/obsidian-cli-docs.qmd)
+- [多平台内容检索 — Agent-Reach](../notes/agent-reach-multi-platform-content-retrieval.qmd)
+- [网页检索 — Brave Search API](../notes/brave-search-api.qmd)
+- [国产 AI 模型 — DeepSeek V4 / MiMo V2.5](../notes/deepseek-v4-mimo-v2.5.qmd)
+:::
+:::
+:::
+
+:::
+
+---
+
+## 所有笔记

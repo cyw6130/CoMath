@@ -9,7 +9,12 @@
       "notes/intersection-form-of-4-manifold.qmd",
       "notes/poincare-conjecture-and-manifold-topological-classification.qmd",
       "notes/bernoulli.qmd",
-      "notes/microgpt-math-impl-compare.qmd"
+      "notes/microgpt-math-impl-compare.qmd",
+      "notes/ai-tools-handbook.qmd",
+      "notes/literature-search-tools.qmd",
+      "notes/mineru-ocr-document-parsing.qmd",
+      "notes/agent-reach-multi-platform-content-retrieval.qmd",
+      "notes/deepseek-v4-mimo-v2.5.qmd"
     ],
     "pages/notes.qmd": [
       "../notes/Khovanov_homology.qmd",
@@ -19,7 +24,9 @@
       "../notes/poincare-conjecture-and-manifold-topological-classification.qmd",
       "../notes/kirby-diagram-of-4-manifold.qmd",
       "../notes/cerf-theorem-and-kirby-calculus.qmd",
-      "../notes/bernoulli.qmd",
+      "../notes/bernoulli.qmd"
+    ],
+    "pages/ai.qmd": [
       "../notes/microgpt-math-impl-compare.qmd",
       "../notes/ai-tools-handbook.qmd",
       "../notes/literature-search-tools.qmd",

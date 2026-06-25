@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>AI – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -87,6 +118,49 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -275,7 +349,11 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
-<span class="menu-text">Notes</span></a>
+<span class="menu-text">Math</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/ai.html"> 
+<span class="menu-text">AI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../pages/translations.html"> 
@@ -307,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/ai.html">🤖 AI</a></li><li class="breadcrumb-item"><a href="../pages/ai.html">Overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -330,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Notes</span></a>
+ <span class="menu-text">📐 Math</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -423,15 +501,32 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">AI for Knot</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">🤖 AI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ai.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Math</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +537,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -507,19 +602,351 @@ document.addEventListener("DOMContentLoaded", function () {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="QUklMjBmb3IlMjBNYXRo">AI for Math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWktYWdlbnQ=">ai-agent <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YWktdG9vbA==">ai-tool <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWktdG9vbHM=">ai-tools <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YXBp">api <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YXJ0aWZpY2lhbC1pbnRlbGxpZ2VuY2U=">artificial-intelligence <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXJ4aXY=">arxiv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXV0b21hdGlvbg==">automation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YnJhdmUtc2VhcmNo">brave-search <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hpbmE=">china <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xp">cli <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y29tbWFuZC1saW5l">command-line <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29udGVudC1yZXRyaWV2YWw=">content-retrieval <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y3Jvc3NyZWY=">crossref <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcHNlZWs=">deepseek <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGV2ZWxvcGVyLXRvb2xz">developer-tools <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZG9jdW1lbnQtbWFuYWdlbWVudA==">document-management <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZG9jdW1lbnQtcGFyc2luZw==">document-parsing <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZmVpc2h1">feishu <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZWdyYXRpb24=">integration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="anNvbg==">json <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25vd2xlZGdlLWJhc2U=">knowledge-base <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a25vd2xlZGdlLW1hbmFnZW1lbnQ=">knowledge-management <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw==">Large Language Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFyZ2UtbGFuZ3VhZ2UtbW9kZWw=">large-language-model <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGl0ZXJhdHVyZS1zZWFyY2g=">literature-search <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGxtLWNvbnRleHQ=">llm-context <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFya2Rvd24=">markdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0aGVtYXRpY3M=">mathematics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWltbw==">mimo <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9l">moe <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bXVsdGktcGxhdGZvcm0=">multi-platform <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm90ZS10YWtpbmc=">note-taking <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2JzaWRpYW4=">obsidian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2Ny">ocr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3Blbi1zb3VyY2U=">open-source <span class="quarto-category-count">(2)</span></div><div class="category" data-category="b3BlbmFsZXg=">openalex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGRm">pdf <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2VhcmNoLWFwaQ==">search-api <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2ViLXNjcmFwaW5n">web-scraping <span class="quarto-category-count">(2)</span></div><div class="category" data-category="d2ViLXNlYXJjaA==">web-search <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d29ya2Zsb3c=">workflow <span class="quarto-category-count">(1)</span></div><div class="category" data-category="emJtYXRo">zbmath <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/ai.html">🤖 AI</a></li><li class="breadcrumb-item"><a href="../pages/ai.html">Overview</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">AI</h1>
+<p class="subtitle lead">AI 工具、Agent 与数学的交叉探索</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>这里收集了我在研究工作流中用到的 AI 工具、Agent，以及把 AI 与数学结合起来的探索性笔记。</p>
+</div>
+</div>
+</div>
+<hr>
+<section id="主题分类" class="level2">
+<h2 class="anchored" data-anchor-id="主题分类">主题分类</h2>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<section id="ai-for-math" class="level3 card-body">
+<h3 class="anchored" data-anchor-id="ai-for-math">AI for Math</h3>
+<ul>
+<li><a href="../notes/microgpt-math-impl-compare.html">MicroGPT 数学原理与实现对照</a></li>
+</ul>
+</section>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<section id="ai-工具" class="level3 card-body">
+<h3 class="anchored" data-anchor-id="ai-工具">AI 工具</h3>
+<ul>
+<li><a href="../notes/ai-tools-handbook.html">AI 工具手册 — 汇总</a></li>
+<li><a href="../notes/literature-search-tools.html">文献检索工具手册</a></li>
+<li><a href="../notes/mineru-ocr-document-parsing.html">OCR 文档解析 — MinerU</a></li>
+<li><a href="../notes/lark-cli-docs.html">飞书文档读写 — lark-cli</a></li>
+<li><a href="../notes/obsidian-cli-docs.html">Obsidian 文档读写 — Obsidian CLI</a></li>
+<li><a href="../notes/agent-reach-multi-platform-content-retrieval.html">多平台内容检索 — Agent-Reach</a></li>
+<li><a href="../notes/brave-search-api.html">网页检索 — Brave Search API</a></li>
+<li><a href="../notes/deepseek-v4-mimo-v2.5.html">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="所有笔记" class="level2">
+<h2 class="anchored" data-anchor-id="所有笔记">所有笔记</h2>
 
 
 
+</section>
 
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="YWktdG9vbHMlMkNsaXRlcmF0dXJlLXNlYXJjaCUyQ2RvY3VtZW50LXBhcnNpbmclMkNrbm93bGVkZ2UtYmFzZSUyQ2NvbnRlbnQtcmV0cmlldmFsJTJDd2ViLXNlYXJjaCUyQ2xsbQ==" data-listing-file-modified-sort="1782361844007" data-listing-reading-time-sort="4" data-listing-word-count-sort="612">
+<a href="../notes/ai-tools-handbook.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AI 工具手册 — 汇总
+</h5>
+<div class="listing-categories">
 
-</main> <!-- /main -->
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbHM='); return false;">ai-tools</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGl0ZXJhdHVyZS1zZWFyY2g='); return false;">literature-search</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnQtcGFyc2luZw=='); return false;">document-parsing</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('a25vd2xlZGdlLWJhc2U='); return false;">knowledge-base</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGVudC1yZXRyaWV2YWw='); return false;">content-retrieval</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNlYXJjaA=='); return false;">web-search</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGxt'); return false;">llm</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>汇总7类AI工具，按场景推荐最佳组合方案。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="YXBpJTJDbGl0ZXJhdHVyZS1zZWFyY2glMkNhcnhpdiUyQ2Nyb3NzcmVmJTJDb3BlbmFsZXglMkN6Ym1hdGglMkNtYXRoZW1hdGljcyUyQ3dvcmtmbG93" data-listing-file-modified-sort="1782361654024" data-listing-reading-time-sort="4" data-listing-word-count-sort="748">
+<a href="../notes/literature-search-tools.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+文献检索工具手册
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGl0ZXJhdHVyZS1zZWFyY2g='); return false;">literature-search</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJ4aXY='); return false;">arxiv</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y3Jvc3NyZWY='); return false;">crossref</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbmFsZXg='); return false;">openalex</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('emJtYXRo'); return false;">zbmath</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWF0aGVtYXRpY3M='); return false;">mathematics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>整理数学文献检索的4个API工具使用手册</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="b3Blbi1zb3VyY2UlMkNkb2N1bWVudC1wYXJzaW5nJTJDb2NyJTJDcGRmJTJDbWFya2Rvd24lMkNqc29uJTJDYWktdG9vbCUyQ25scA==" data-listing-file-modified-sort="1782361461261" data-listing-reading-time-sort="3" data-listing-word-count-sort="534">
+<a href="../notes/mineru-ocr-document-parsing.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+OCR 文档解析 — MinerU
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3Blbi1zb3VyY2U='); return false;">open-source</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnQtcGFyc2luZw=='); return false;">document-parsing</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2Ny'); return false;">ocr</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGRm'); return false;">pdf</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFya2Rvd24='); return false;">markdown</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('anNvbg=='); return false;">json</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbA=='); return false;">ai-tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>MinerU：高精度开源文档解析工具，支持多格式与语言。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="ZmVpc2h1JTJDY2xpJTJDZG9jdW1lbnQtbWFuYWdlbWVudCUyQ2FpLWFnZW50JTJDYXV0b21hdGlvbiUyQ2FwaQ==" data-listing-file-modified-sort="1782361694554" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
+<a href="../notes/lark-cli-docs.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+飞书文档读写 — lark-cli
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZmVpc2h1'); return false;">feishu</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xp'); return false;">cli</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnQtbWFuYWdlbWVudA=='); return false;">document-management</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWktYWdlbnQ='); return false;">ai-agent</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXV0b21hdGlvbg=='); return false;">automation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>飞书官方命令行工具，支持文档和50+资源的CRUD操作。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="b2JzaWRpYW4lMkNjbGklMkNjb21tYW5kLWxpbmUlMkNrbm93bGVkZ2UtbWFuYWdlbWVudCUyQ2F1dG9tYXRpb24lMkNkZXZlbG9wZXItdG9vbHMlMkNub3RlLXRha2luZw==" data-listing-file-modified-sort="1782361562826" data-listing-reading-time-sort="4" data-listing-word-count-sort="693">
+<a href="../notes/obsidian-cli-docs.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Obsidian 文档读写 — Obsidian CLI
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2JzaWRpYW4='); return false;">obsidian</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xp'); return false;">cli</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tbWFuZC1saW5l'); return false;">command-line</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('a25vd2xlZGdlLW1hbmFnZW1lbnQ='); return false;">knowledge-management</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXV0b21hdGlvbg=='); return false;">automation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGV2ZWxvcGVyLXRvb2xz'); return false;">developer-tools</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bm90ZS10YWtpbmc='); return false;">note-taking</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Obsidian CLI的安装、配置与核心命令教程</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="Y29udGVudC1yZXRyaWV2YWwlMkNtdWx0aS1wbGF0Zm9ybSUyQ29wZW4tc291cmNlJTJDYWktdG9vbHMlMkN3ZWItc2NyYXBpbmclMkNpbnRlZ3JhdGlvbg==" data-listing-file-modified-sort="1782361626947" data-listing-reading-time-sort="9" data-listing-word-count-sort="1691">
+<a href="../notes/agent-reach-multi-platform-content-retrieval.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+多平台内容检索 — Agent-Reach
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGVudC1yZXRyaWV2YWw='); return false;">content-retrieval</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bXVsdGktcGxhdGZvcm0='); return false;">multi-platform</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3Blbi1zb3VyY2U='); return false;">open-source</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbHM='); return false;">ai-tools</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNjcmFwaW5n'); return false;">web-scraping</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZWdyYXRpb24='); return false;">integration</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>多平台内容读取工具，支持20+平台，零API费用。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="c2VhcmNoLWFwaSUyQ2JyYXZlLXNlYXJjaCUyQ2FpLWFnZW50JTJDd2ViLXNjcmFwaW5nJTJDbGxtLWNvbnRleHQ=" data-listing-file-modified-sort="1782361674208" data-listing-reading-time-sort="4" data-listing-word-count-sort="738">
+<a href="../notes/brave-search-api.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+网页检索 — Brave Search API
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('c2VhcmNoLWFwaQ=='); return false;">search-api</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YnJhdmUtc2VhcmNo'); return false;">brave-search</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWktYWdlbnQ='); return false;">ai-agent</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNjcmFwaW5n'); return false;">web-scraping</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGxtLWNvbnRleHQ='); return false;">llm-context</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Brave Search API 独立索引，AI 原生，隐私友好</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="ZGVlcHNlZWslMkNtaW1vJTJDbGFyZ2UtbGFuZ3VhZ2UtbW9kZWwlMkNhcGklMkNhcnRpZmljaWFsLWludGVsbGlnZW5jZSUyQ2NoaW5hJTJDbW9l" data-listing-file-modified-sort="1782361590833" data-listing-reading-time-sort="5" data-listing-word-count-sort="984">
+<a href="../notes/deepseek-v4-mimo-v2.5.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+国产 AI 模型 — DeepSeek V4 / MiMo V2.5
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcHNlZWs='); return false;">deepseek</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWltbw=='); return false;">mimo</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGFyZ2UtbGFuZ3VhZ2UtbW9kZWw='); return false;">large-language-model</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJ0aWZpY2lhbC1pbnRlbGxpZ2VuY2U='); return false;">artificial-intelligence</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hpbmE='); return false;">china</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bW9l'); return false;">moe</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>介绍DeepSeek V4与MiMo V2.5国产大模型</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscyUyQ0RlZXAlMjBMZWFybmluZyUyQ0FJJTIwZm9yJTIwTWF0aA==" data-listing-date-sort="1772812800000" data-listing-file-modified-sort="1774715263665" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<a href="../notes/microgpt-math-impl-compare.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+MicroGPT 数学原理与实现对照
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw=='); return false;">Large Language Models</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBmb3IlMjBNYXRo'); return false;">AI for Math</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Mar 7, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

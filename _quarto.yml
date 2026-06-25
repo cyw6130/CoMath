@@ -17,7 +17,9 @@ website:
       # - href: pages/research.qmd
       #   text: Research
       - href: pages/notes.qmd
-        text: Notes
+        text: Math
+      - href: pages/ai.qmd
+        text: AI
       - href: pages/translations.qmd
         text: Translations
       - href: pages/gallery.qmd
@@ -44,7 +46,7 @@ website:
     contents:
       # - href: notes/Khovanov_homology.pdf
       #   text: "Download PDF"
-      - section: "Notes"
+      - section: "📐 Math"
         contents:
           - href: pages/notes.qmd
             text: "Overview"
@@ -62,7 +64,11 @@ website:
             contents:
               - notes/h_cobordism_4.qmd
               - notes/bernoulli.qmd
-          - section: "AI for Knot"
+      - section: "🤖 AI"
+        contents:
+          - href: pages/ai.qmd
+            text: "Overview"
+          - section: "AI for Math"
             contents:
               - notes/microgpt-math-impl-compare.qmd
           - section: "AI Tools"

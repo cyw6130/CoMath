@@ -85,11 +85,39 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-featured-notes'] = new List('listing-featured-notes', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-featured-ai .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-date','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-featured-ai'] = new List('listing-featured-ai', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -348,7 +376,11 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./pages/notes.html"> 
-<span class="menu-text">Notes</span></a>
+<span class="menu-text">Math</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/ai.html"> 
+<span class="menu-text">AI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./pages/translations.html"> 
@@ -380,10 +412,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="NC1tYW5pZm9sZA==">4-manifold <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NC1tYW5pZm9sZHM=">4-manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NC1NYW5pZm9sZHM=">4-Manifolds <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QUklMjBmb3IlMjBNYXRo">AI for Math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2F0ZWdvcmlmaWNhdGlvbg==">Categorification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2VyZi10aGVvcnk=">cerf-theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xvc2VkLW1hbmlmb2xkcw==">closed-manifolds <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGlmZmVyZW50aWFsJTIwVG9wb2xvZ3k=">Differential Topology <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGlmZmVyZW50aWFsLXRvcG9sb2d5">differential-topology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RG9uYWxkc29u">Donaldson <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXhvdGljJTIwU3BoZXJlcw==">Exotic Spheres <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZnJhbWVkLWxpbms=">framed-link <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RnJlZWRtYW4=">Freedman <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aC1Db2JvcmRpc20=">h-Cobordism <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGFuZGxlLWRlY29tcG9zaXRpb24=">handle-decomposition <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGVlZ2FhcmQtZGlhZ3JhbXM=">heegaard-diagrams <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw==">High-Dimensional Manifolds <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SG9tb3RvcHklMjBTcGhlcmVz">Homotopy Spheres <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJzZWN0aW9uJTIwRm9ybQ==">Intersection Form <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S2hvdmFub3YlMjBIb21vbG9neQ==">Khovanov Homology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S2lyYnklMjBDYWxjdWx1cw==">Kirby Calculus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2lyYnktZGlhZ3JhbQ==">kirby-diagram <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2lyYnktZGlhZ3JhbXM=">kirby-diagrams <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw==">Large Language Models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG93LWRpbWVuc2lvbmFsLXRvcG9sb2d5">low-dimensional-topology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9kdWxhciUyMENhdGVnb3J5">Modular Category <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9yc2UlMjBUaGVvcnk=">Morse Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TnVtYmVyJTIwVGhlb3J5">Number Theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG9pbmNhciVDMyVBOSUyMENvbmplY3R1cmU=">Poincaré Conjecture <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG9pbmNhciVDMyVBOSUyMER1YWxpdHk=">Poincaré Duality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UXVhbnR1bSUyMEludmFyaWFudHM=">Quantum Invariants <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UmVzaGV0aWtoaW4tVHVyYWV2">Reshetikhin-Turaev <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmliYm9uJTIwSG9wZiUyMEFsZ2VicmE=">Ribbon Hopf Algebra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c21vb3RoLW1hbmlmb2xk">smooth-manifold <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3VyZ2VyeSUyMFRoZW9yeQ==">Surgery Theory <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<div class="quarto-about-jolla column-page-left">
+<div class="quarto-about-jolla column-page">
   <img src="头像.png" class="about-image
   round " style="height: 15em; width: 15em;">
  <header id="title-block-header" class="quarto-title-block default">
@@ -391,9 +422,9 @@ window.Quarto = {
 <h1 class="title">Chen</h1>
 <p class="subtitle lead">数学 · 拓扑 · 量子不变量</p>
 </div>
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
   </div>
-</header><main class="content column-page-left" id="quarto-document-content">
+</header><main class="content column-page" id="quarto-document-content">
 
 <section id="关于我" class="level2">
 <h2 data-anchor-id="关于我">关于我</h2>
@@ -467,8 +498,8 @@ window.Quarto = {
 </div>
 <hr>
 </section>
-<section id="精选笔记" class="level2">
-<h2 data-anchor-id="精选笔记">精选笔记</h2>
+<section id="数学精选" class="level2">
+<h2 data-anchor-id="数学精选">数学精选</h2>
 <p>从量子不变量到流形结构，探索拓扑学的美丽世界：</p>
 <div id="listing-featured-notes" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
@@ -601,30 +632,7 @@ Mar 28, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscyUyQ0RlZXAlMjBMZWFybmluZyUyQ0FJJTIwZm9yJTIwTWF0aA==" data-listing-date-sort="1772812800000" data-listing-file-modified-sort="1774715263665" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
-<a href="./notes/microgpt-math-impl-compare.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-MicroGPT 数学原理与实现对照
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw=='); return false;">Large Language Models</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBmb3IlMjBNYXRo'); return false;">AI for Math</div>
-</div>
-<div class="card-text listing-description delink">
-<p>极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 7, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="TnVtYmVyJTIwVGhlb3J5JTJDRXhvdGljJTIwU3BoZXJlcyUyQ0RpZmZlcmVudGlhbCUyMFRvcG9sb2d5JTJDSGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw==" data-listing-date-sort="1767888000000" data-listing-file-modified-sort="1776448578570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2075">
+<div class="g-col-1" data-index="5" data-categories="TnVtYmVyJTIwVGhlb3J5JTJDRXhvdGljJTIwU3BoZXJlcyUyQ0RpZmZlcmVudGlhbCUyMFRvcG9sb2d5JTJDSGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw==" data-listing-date-sort="1767888000000" data-listing-file-modified-sort="1776448578570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2075">
 <a href="./notes/bernoulli.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -650,50 +658,146 @@ Jan 9, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="aC1Db2JvcmRpc20lMkNTdXJnZXJ5JTIwVGhlb3J5JTJDSGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcyUyQ0V4b3RpYyUyMFNwaGVyZXMlMkNEaWZmZXJlbnRpYWwlMjBUb3BvbG9neQ==" data-listing-date-sort="1767283200000" data-listing-file-modified-sort="1776448572437" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1699">
-<a href="./notes/h_cobordism_4.html" class="quarto-grid-link">
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<p><a href="./pages/notes.html">查看全部数学笔记 →</a></p>
+<hr>
+</section>
+<section id="ai-探索" class="level2">
+<h2 data-anchor-id="ai-探索">AI 探索</h2>
+<p>研究工作流中的 AI 工具、Agent，以及 AI 与数学结合的尝试：</p>
+<div id="listing-featured-ai" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="YWktdG9vbHMlMkNsaXRlcmF0dXJlLXNlYXJjaCUyQ2RvY3VtZW50LXBhcnNpbmclMkNrbm93bGVkZ2UtYmFzZSUyQ2NvbnRlbnQtcmV0cmlldmFsJTJDd2ViLXNlYXJjaCUyQ2xsbQ==" data-listing-file-modified-sort="1782361844007" data-listing-reading-time-sort="4" data-listing-word-count-sort="612">
+<a href="./notes/ai-tools-handbook.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Smale 的工作：h-Cobordism 定理与广义庞加莱猜想
+AI 工具手册 — 汇总
 </h5>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('aC1Db2JvcmRpc20='); return false;">h-Cobordism</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U3VyZ2VyeSUyMFRoZW9yeQ=='); return false;">Surgery Theory</div>
-<div class="listing-category" onclick="window.quartoListingCategory('SGlnaC1EaW1lbnNpb25hbCUyME1hbmlmb2xkcw=='); return false;">High-Dimensional Manifolds</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RXhvdGljJTIwU3BoZXJlcw=='); return false;">Exotic Spheres</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RGlmZmVyZW50aWFsJTIwVG9wb2xvZ3k='); return false;">Differential Topology</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbHM='); return false;">ai-tools</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGl0ZXJhdHVyZS1zZWFyY2g='); return false;">literature-search</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnQtcGFyc2luZw=='); return false;">document-parsing</div>
+<div class="listing-category" onclick="window.quartoListingCategory('a25vd2xlZGdlLWJhc2U='); return false;">knowledge-base</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGVudC1yZXRyaWV2YWw='); return false;">content-retrieval</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNlYXJjaA=='); return false;">web-search</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGxt'); return false;">llm</div>
 </div>
 <div class="card-text listing-description delink">
-<strong>参考书目</strong>：<em>Introductory Lectures on Manifold Topology Signposts</em> (Thomas Farrell &amp; Yang Su) — 一本非常舒适的入门书
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 2, 2026
-</div>
+<p>汇总7类AI工具，按场景推荐最佳组合方案。</p>
 </div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="S2hvdmFub3YlMjBIb21vbG9neSUyQ0NhdGVnb3JpZmljYXRpb24lMkNRdWFudHVtJTIwSW52YXJpYW50cyUyQzQtTWFuaWZvbGRz" data-listing-date-sort="1765987200000" data-listing-file-modified-sort="1776448394190" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3504">
-<a href="./notes/Khovanov_homology.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-categories="YXBpJTJDbGl0ZXJhdHVyZS1zZWFyY2glMkNhcnhpdiUyQ2Nyb3NzcmVmJTJDb3BlbmFsZXglMkN6Ym1hdGglMkNtYXRoZW1hdGljcyUyQ3dvcmtmbG93" data-listing-file-modified-sort="1782361654024" data-listing-reading-time-sort="4" data-listing-word-count-sort="748">
+<a href="./notes/literature-search-tools.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Khovanov 同调与 s-不变量
+文献检索工具手册
 </h5>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('S2hvdmFub3YlMjBIb21vbG9neQ=='); return false;">Khovanov Homology</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Q2F0ZWdvcmlmaWNhdGlvbg=='); return false;">Categorification</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UXVhbnR1bSUyMEludmFyaWFudHM='); return false;">Quantum Invariants</div>
-<div class="listing-category" onclick="window.quartoListingCategory('NC1NYW5pZm9sZHM='); return false;">4-Manifolds</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGl0ZXJhdHVyZS1zZWFyY2g='); return false;">literature-search</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXJ4aXY='); return false;">arxiv</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y3Jvc3NyZWY='); return false;">crossref</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbmFsZXg='); return false;">openalex</div>
+<div class="listing-category" onclick="window.quartoListingCategory('emJtYXRo'); return false;">zbmath</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWF0aGVtYXRpY3M='); return false;">mathematics</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 </div>
 <div class="card-text listing-description delink">
-我们对于 link diagram 定义 Khovanov homology
+<p>整理数学文献检索的4个API工具使用手册</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="b3Blbi1zb3VyY2UlMkNkb2N1bWVudC1wYXJzaW5nJTJDb2NyJTJDcGRmJTJDbWFya2Rvd24lMkNqc29uJTJDYWktdG9vbCUyQ25scA==" data-listing-file-modified-sort="1782361461261" data-listing-reading-time-sort="3" data-listing-word-count-sort="534">
+<a href="./notes/mineru-ocr-document-parsing.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+OCR 文档解析 — MinerU
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('b3Blbi1zb3VyY2U='); return false;">open-source</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnQtcGFyc2luZw=='); return false;">document-parsing</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b2Ny'); return false;">ocr</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGRm'); return false;">pdf</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWFya2Rvd24='); return false;">markdown</div>
+<div class="listing-category" onclick="window.quartoListingCategory('anNvbg=='); return false;">json</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbA=='); return false;">ai-tool</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+</div>
+<div class="card-text listing-description delink">
+<p>MinerU：高精度开源文档解析工具，支持多格式与语言。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="Y29udGVudC1yZXRyaWV2YWwlMkNtdWx0aS1wbGF0Zm9ybSUyQ29wZW4tc291cmNlJTJDYWktdG9vbHMlMkN3ZWItc2NyYXBpbmclMkNpbnRlZ3JhdGlvbg==" data-listing-file-modified-sort="1782361626947" data-listing-reading-time-sort="9" data-listing-word-count-sort="1691">
+<a href="./notes/agent-reach-multi-platform-content-retrieval.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+多平台内容检索 — Agent-Reach
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGVudC1yZXRyaWV2YWw='); return false;">content-retrieval</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bXVsdGktcGxhdGZvcm0='); return false;">multi-platform</div>
+<div class="listing-category" onclick="window.quartoListingCategory('b3Blbi1zb3VyY2U='); return false;">open-source</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YWktdG9vbHM='); return false;">ai-tools</div>
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNjcmFwaW5n'); return false;">web-scraping</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZWdyYXRpb24='); return false;">integration</div>
+</div>
+<div class="card-text listing-description delink">
+<p>多平台内容读取工具，支持20+平台，零API费用。</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="ZGVlcHNlZWslMkNtaW1vJTJDbGFyZ2UtbGFuZ3VhZ2UtbW9kZWwlMkNhcGklMkNhcnRpZmljaWFsLWludGVsbGlnZW5jZSUyQ2NoaW5hJTJDbW9l" data-listing-file-modified-sort="1782361590833" data-listing-reading-time-sort="5" data-listing-word-count-sort="984">
+<a href="./notes/deepseek-v4-mimo-v2.5.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+国产 AI 模型 — DeepSeek V4 / MiMo V2.5
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcHNlZWs='); return false;">deepseek</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWltbw=='); return false;">mimo</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGFyZ2UtbGFuZ3VhZ2UtbW9kZWw='); return false;">large-language-model</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+<div class="listing-category" onclick="window.quartoListingCategory('YXJ0aWZpY2lhbC1pbnRlbGxpZ2VuY2U='); return false;">artificial-intelligence</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hpbmE='); return false;">china</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bW9l'); return false;">moe</div>
+</div>
+<div class="card-text listing-description delink">
+<p>介绍DeepSeek V4与MiMo V2.5国产大模型</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscyUyQ0RlZXAlMjBMZWFybmluZyUyQ0FJJTIwZm9yJTIwTWF0aA==" data-listing-date-sort="1772812800000" data-listing-file-modified-sort="1774715263665" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<a href="./notes/microgpt-math-impl-compare.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+MicroGPT 数学原理与实现对照
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('TGFyZ2UlMjBMYW5ndWFnZSUyME1vZGVscw=='); return false;">Large Language Models</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBmb3IlMjBNYXRo'); return false;">AI for Math</div>
+</div>
+<div class="card-text listing-description delink">
+<p>极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。</p>
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
-Dec 18, 2025
+Mar 7, 2026
 </div>
 </div>
 </div>
@@ -702,6 +806,7 @@ Dec 18, 2025
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
+<p><a href="./pages/ai.html">查看全部 AI 笔记 →</a></p>
 
 
 </section>

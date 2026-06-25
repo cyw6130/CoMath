@@ -26,11 +26,23 @@ listing:
       - "notes/intersection-form-of-4-manifold.qmd"
       - "notes/poincare-conjecture-and-manifold-topological-classification.qmd"
       - "notes/bernoulli.qmd"
-      - "notes/microgpt-math-impl-compare.qmd"
     type: grid
-    max-items: 9
+    max-items: 6
     sort: "date desc"
-    categories: true
+    categories: false
+    fields: [title, description, date, categories]
+  - id: featured-ai
+    contents:
+      - "notes/microgpt-math-impl-compare.qmd"
+      - "notes/ai-tools-handbook.qmd"
+      - "notes/literature-search-tools.qmd"
+      - "notes/mineru-ocr-document-parsing.qmd"
+      - "notes/agent-reach-multi-platform-content-retrieval.qmd"
+      - "notes/deepseek-v4-mimo-v2.5.qmd"
+    type: grid
+    max-items: 6
+    sort: "date desc"
+    categories: false
     fields: [title, description, date, categories]
 page-layout: full
 toc: false
@@ -95,9 +107,22 @@ sidebar: false
 
 ---
 
-## 精选笔记
+## 数学精选
 
 从量子不变量到流形结构，探索拓扑学的美丽世界：
 
 :::{#featured-notes}
 :::
+
+[查看全部数学笔记 →](pages/notes.qmd)
+
+---
+
+## AI 探索
+
+研究工作流中的 AI 工具、Agent，以及 AI 与数学结合的尝试：
+
+:::{#featured-ai}
+:::
+
+[查看全部 AI 笔记 →](pages/ai.qmd)
