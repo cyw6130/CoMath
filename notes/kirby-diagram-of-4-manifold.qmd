@@ -1,6 +1,6 @@
 ---
-title: "Kirby Diagram Of 4 Manifold"
-date: 
+title: "Kirby Diagram"
+date: 2026-05-28
 categories:
   - kirby-diagram
   - 4-manifold

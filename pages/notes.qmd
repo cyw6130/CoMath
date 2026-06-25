@@ -73,7 +73,7 @@ toc: false
 - [庞加莱猜想与怪球](../notes/poincare-conjecture-and-manifold-topological-classification.qmd)
 - [四维流形的相交形式](../notes/intersection-form-of-4-manifold.qmd)
 - [Kirby Diagram](../notes/kirby-diagram-of-4-manifold.qmd)
-- [Cerf 定理与 Kirby Calculus](../notes/cerf-theorem-and-kirby-calculus.qmd)
+- [Kirby Calculus](../notes/cerf-theorem-and-kirby-calculus.qmd)
 :::
 :::
 :::

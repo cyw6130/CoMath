@@ -1,6 +1,6 @@
 ---
-title: "Cerf Theorem And Kirby Calculus"
-date: 
+title: "Kirby Calculus"
+date: 2026-06-02
 categories:
   - 4-manifolds
   - kirby-diagrams

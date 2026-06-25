@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-06-02">
+<meta name="description" content="Cerf定理与Kirby演算：闭的四流形由Kirby图唯一确定">
+
+<title>Kirby Calculus – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:2120240050@nankai.edu.cn"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/poincare-conjecture-and-manifold-topological-classification.html">Four Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/cerf-theorem-and-kirby-calculus.html">Kirby Calculus</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov 同调与 s-不变量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/knot-hopf-algebra-and-quantum-invariants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knot, Hopf Algebra and Quantum Invariants</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Four Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/intersection-form-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">四维流形的相交形式 (Intersection Form)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/kirby-diagram-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kirby Diagram</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/cerf-theorem-and-kirby-calculus.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Kirby Calculus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#applications" id="toc-applications" class="nav-link active" data-scroll-target="#applications"><span class="header-section-number">1</span> Applications</a>
+  <ul class="collapse">
+  <li><a href="#unlock" id="toc-unlock" class="nav-link" data-scroll-target="#unlock"><span class="header-section-number">1.1</span> Unlock</a></li>
+  <li><a href="#unravel-解开缠结" id="toc-unravel-解开缠结" class="nav-link" data-scroll-target="#unravel-解开缠结"><span class="header-section-number">1.2</span> Unravel (解开缠结)</a></li>
+  </ul></li>
+  <li><a href="#handle-cancellation-1" id="toc-handle-cancellation-1" class="nav-link" data-scroll-target="#handle-cancellation-1"><span class="header-section-number">2</span> Handle Cancellation</a>
+  <ul class="collapse">
+  <li><a href="#handle-cancellation-2" id="toc-handle-cancellation-2" class="nav-link" data-scroll-target="#handle-cancellation-2"><span class="header-section-number">2.1</span> 1,2-handle cancellation</a></li>
+  </ul></li>
+  <li><a href="#results-in-dimension-3" id="toc-results-in-dimension-3" class="nav-link" data-scroll-target="#results-in-dimension-3"><span class="header-section-number">3</span> Results in Dimension 3</a>
+  <ul class="collapse">
+  <li><a href="#recall-surgery" id="toc-recall-surgery" class="nav-link" data-scroll-target="#recall-surgery"><span class="header-section-number">3.1</span> Recall: Surgery</a></li>
+  <li><a href="#dehn-surgery" id="toc-dehn-surgery" class="nav-link" data-scroll-target="#dehn-surgery"><span class="header-section-number">3.2</span> Dehn Surgery</a></li>
+  <li><a href="#surgery-and-closed-3-mfld" id="toc-surgery-and-closed-3-mfld" class="nav-link" data-scroll-target="#surgery-and-closed-3-mfld"><span class="header-section-number">3.3</span> Surgery and Closed 3 mfld</a></li>
+  <li><a href="#calculus-on-dehn-surgery" id="toc-calculus-on-dehn-surgery" class="nav-link" data-scroll-target="#calculus-on-dehn-surgery"><span class="header-section-number">3.4</span> Calculus on Dehn Surgery</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/poincare-conjecture-and-manifold-topological-classification.html">Four Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/cerf-theorem-and-kirby-calculus.html">Kirby Calculus</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Kirby Calculus</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">4-manifolds</div>
+    <div class="quarto-category">kirby-diagrams</div>
+    <div class="quarto-category">handle-decomposition</div>
+    <div class="quarto-category">cerf-theory</div>
+    <div class="quarto-category">heegaard-diagrams</div>
+    <div class="quarto-category">closed-manifolds</div>
+    <div class="quarto-category">differential-topology</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Cerf定理与Kirby演算：闭的四流形由Kirby图唯一确定
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>2-handle slide (dim=4)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>在 4 维情形下，2-handle 的 attaching sphere 是 <span class="math inline">S^2</span>，因此 handle slide 需要对球面进行操作。直观上，我们沿着另一个 2-handle 的 attaching sphere 滑动一个 2-handle 的 attaching sphere，类似于在 3 维情形下沿着曲线滑动曲线。</p>
+<p>具体地，假设我们有 2-handle <span class="math inline">h_1^2</span>和<span class="math inline">h_2^2</span>，其 attaching spheres 分别为 <span class="math inline">S_1</span>和<span class="math inline">S_2</span>（均为嵌入在 <span class="math inline">\partial W^2</span>中的 2-球面）。对<span class="math inline">h_1^2</span>做 handle slide over<span class="math inline">h_2^2</span>指的是：我们取一个从<span class="math inline">S_1</span>到<span class="math inline">S_2</span>的管状邻域的平凡化，将<span class="math inline">S_1</span>沿着该管状邻域向<span class="math inline">S_2</span>滑动，得到一个新的 2-球面<span class="math inline">S_1'</span>。这个操作对应于改变 <span class="math inline">h_1^2</span> 的 attaching map，从而得到等价的 handle decomposition。</p>
+<p>在 Kirby diagram 中，2-handle slide 的图示表现为：将代表 2-handle 的纽结（或链环）沿着另一个代表 2-handle 的纽结滑动，过程中可能产生 twist 或 linking 的变化。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Handle cancellation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<section id="stabilization-dim3" class="level3" data-number="0.0.1">
+<h3 data-number="0.0.1" class="anchored" data-anchor-id="stabilization-dim3"><span class="header-section-number">0.0.1</span> Stabilization (dim=3)</h3>
+<p>Stabilization 指的是在 Heegaard diagram 中添加一对对偶的 1-handle 和 2-handle。具体来说，我们在表面 <span class="math inline">S_g</span> 上选择一个平凡的小圆盘，去掉它并粘上一个 1-handle 和一个 2-handle，使得 genus 增加 1。这一操作不改变流形，因为新添加的 1-handle 和 2-handle 可以互相抵消。</p>
+<p>在 Heegaard diagram 中，stabilization 对应着添加一对不相交的简单闭曲线：一个表示 1-handle 的 meridian，另一个表示 2-handle 的 longitude。</p>
+</section>
+<section id="cancellation-dim4" class="level3" data-number="0.0.2">
+<h3 data-number="0.0.2" class="anchored" data-anchor-id="cancellation-dim4"><span class="header-section-number">0.0.2</span> Cancellation (dim=4)</h3>
+<p>在 4 维 handle decomposition 中，一个 <span class="math inline">k</span>-handle 与其对偶的 <span class="math inline">(k+1)</span>-handle 可以互相抵消，如果它们的 attaching sphere 在边界上以唯一的方式相遇。例如，一个 1-handle 和一个 2-handle 可以抵消，如果 2-handle 的 attaching sphere 与 1-handle 的 belt sphere 恰好相交一次。</p>
+<p>在 Kirby diagram 中，1-2 handle cancellation 表现为：一个 1-handle 的 attaching 球（两个点）与一个 2-handle 的 attaching 纽结在代数上相交数为 1（即纽结恰好从一个点穿过到另一个点），且没有其他 handle 干扰。</p>
+<p>类似地，2-3 handle cancellation 也可定义，但更少见。</p>
+</section>
+</div>
+</div>
+<ul>
+<li>此时每个 2-handle 被一个 framed knot 标识, 我们需要回答:
+<ul>
+<li>slide 之后, 纽结怎么变化?</li>
+<li>slide 之后, 纽结的 framing 怎么变化?</li>
+</ul></li>
+</ul>
+<section id="the-change-of-knot" class="level4" data-number="0.0.2.1">
+<h4 data-number="0.0.2.1" class="anchored" data-anchor-id="the-change-of-knot"><span class="header-section-number">0.0.2.1</span> The change of knot</h4>
+<ul>
+<li>纽结如何变化
+<ul>
+<li>当我们做 slide 时, 我们是将需要粘接的 <span class="math inline">h_2^2</span>沿着已经粘接好的 2-handle<span class="math inline">h_1^2</span> 的表面划过去.</li>
+<li>对于一个 framed knot (对应 2-handle <span class="math inline">h^2</span>), 记为 <span class="math inline">(K,K')</span>, 其中<span class="math inline">K'</span>代表他的 framing, 我们可以认为<span class="math inline">K'</span>落在<span class="math inline">K</span>的管状邻域的表面, 故我们可以认为<span class="math inline">K'</span>代表了<span class="math inline">h^2</span> 的边界的信息.</li>
+<li>当我们将 <span class="math inline">h_1^2</span>沿着边界划过<span class="math inline">h_2^2</span>时, 新的<span class="math inline">\tilde{h_1^2}</span>的纽结对应于<span class="math inline">K_1</span>划过<span class="math inline">K_2'</span>, 即 <span class="math inline">\tilde{K_1}=K_1\#K_2'</span>. <img src="images/4.-kirby-calculus-1778515927858.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1778515995644.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+<li>typo: 上面画的 framing 实际为-2. #### The change of framing</li>
+</ul>
+<p>framing公式: <span class="math display">
+f_1'=f_1+f_2\pm2lk(K_1,K_2)
+</span></p>
+<ul>
+<li>例子
+<ul>
+<li>在下面的具体的例子中 (<span class="math inline">K_1,K_2</span> 不 link 到一起的时候), 我们可以把 framing 的变化看出来.</li>
+<li>对于一个 framed knot <span class="math inline">(K_1,K_1')</span>, 我们把 <span class="math inline">K_1,K_1'</span>一起划过<span class="math inline">K_2'</span>, 然后观察 framing 的变化. <img src="images/4.-kirby-calculus-1779721619142.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778516075400.webp" class="img-fluid" loading="lazy" decoding="async"> %% 另一种解释:
+<ul>
+<li>先考虑 <span class="math inline">K_2</span>的 framing 为 blackboard framing 的情形, 此时做连通和不会改变<span class="math inline">K_1</span> 的 framing.</li>
+<li>当 <span class="math inline">K_2</span>的 framing=n 的时候, 可以将<span class="math inline">K_2</span> 写成一个 framing=0 的 knot 上面 %%</li>
+</ul></li>
+<li>如果两个被 link 到一起了 (good case): <img src="images/4.-kirby-calculus-1779119620341.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>一般公式为: <span class="math display">
+f_1'=f_1+f_2\pm2lk(K_1,K_2)
+</span></li>
+<li>关于 linking number 前面符号的解释: <img src="images/4.-kirby-calculus-1779120483697.webp" class="img-fluid" loading="lazy" decoding="async">
+<ul>
+<li>我们一般考虑 good case.</li>
+<li>将符号看作”修正”的手段: 如果我们不幸落在了 bad case, 就改变其中一个纽结的定向, 这个时候 linking number 会差一个符号.
+<ul>
+<li>但我们知道 framing 应该不依赖于定向的取法, 于是要求出现一个符号.</li>
+<li>即我们要求改变连通和的类型时出现一个符号.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>回顾, 如果一个 4 mfld 仅仅由 0,2-handle 组成, 那我们称它为 2-handlebody.</p>
+<ul>
+<li>在 2-handlebody 上计算
+<ul>
+<li>在 2-handlebody 上, 我们通过代数相交数计算.</li>
+<li>回顾, 每个 framed knot 都能对应到一个 4 mfld 中的闭曲面, 这个闭曲面会对应到一个同调群 <span class="math inline">H_2</span>的生成元. 设<span class="math inline">K_1,K_2</span>分别对应的同调生成元为<span class="math inline">\alpha,\beta</span>.</li>
+<li>2-handle slide 在 <span class="math inline">H_2</span> 上对应与两个同调生成元做加 (减) 法.</li>
+<li>纽结的framing 就等于它对应的闭曲面的代数自相交数.</li>
+<li>于是我们有 <span class="math inline">f_1'=Q(\alpha+\beta,\alpha+\beta)=Q(\alpha,\alpha)+Q(\beta,\beta)+2Q(\alpha,\beta)=f_1+f_2+2lk(K_1,K_2)</span>
+<ul>
+<li>注意, 由于 <span class="math inline">\alpha,\beta</span>都是定向的, 为了保证新的生成元也是定向的, 有时 (若<span class="math inline">\alpha,\beta</span>定向相反) handle slide 会在生成元上对应到<span class="math inline">\alpha-\beta</span>, 此时我们的 framing 就是 <span class="math inline">f_1'=Q(\alpha-\beta,\alpha-\beta)=Q(\alpha,\alpha)+Q(\beta,\beta)-2Q(\alpha,\beta)=f_1+f_2-2lk(K_1,K_2)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="applications" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Applications</h1>
+<section id="unlock" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="unlock"><span class="header-section-number">1.1</span> Unlock</h2>
+<ul>
+<li><p>引理(Kirby move): <img src="images/4.-kirby-calculus-1778551800707.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778551866564.webp" class="img-fluid" loading="lazy" decoding="async"> 最后一个等号: 右侧拉直之后就是左侧.</p></li>
+<li><p>推论: <img src="images/4.-kirby-calculus-1778551958561.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+<li><p><span class="math inline">S^2</span>bundle over<span class="math inline">S^2</span> <img src="images/4.-kirby-calculus-1778551977381.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1778551995462.webp" class="img-fluid" loading="lazy" decoding="async"> ( 3. 中的定向给的不太好 ) <img src="images/4.-kirby-calculus-1778552004092.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+</ul>
+<p><span class="math inline">S^2</span> bundle over surface (<span class="math inline">F</span>): 总可以被写成 <span class="math inline">F</span>上<span class="math inline">D^2</span> bundle 的 double. 我们知道 <span class="math inline">S^2</span>上的<span class="math inline">D^2</span>bundle 是一个 2-handlebody: 它可以写成<span class="math inline">h^0+h^2</span>, 上述定理分类了它的 double. 事实上, 我们有更一般的结果:</p>
+<ul>
+<li>推广:
+<ul>
+<li>设 <span class="math inline">W</span>是 2-handlebody. 那么它的 double 只有两种可能, 且可以被<span class="math inline">Q_W</span> 的奇偶性分类. <img src="images/4.-kirby-calculus-1778340767090.webp" class="img-fluid" loading="lazy" decoding="async"> 它的证明需要用到下面的技术.</li>
+</ul></li>
+</ul>
+</section>
+<section id="unravel-解开缠结" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="unravel-解开缠结"><span class="header-section-number">1.2</span> Unravel (解开缠结)</h2>
+<ul>
+<li><p>定理: <img src="images/4.-kirby-calculus-1779163470376.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1779163487746.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+<li><p>上面的推广: <img src="images/4.-kirby-calculus-1779163506352.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779163515106.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+</ul>
+</section>
+</section>
+<section id="handle-cancellation-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Handle Cancellation</h1>
+<section id="handle-cancellation-2" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="handle-cancellation-2"><span class="header-section-number">2.1</span> 1,2-handle cancellation</h2>
+<p>如果一个消去 pair 在 Kirby diagram 中是孤立存在的, 我们很容易想象消去后的 new Kirby diagram 是什么样的. 但是, 如果消去 pair 不是孤立的呢? 即如果它们和其他的 handle (的 attaching sphere)相交时, 如何处理? 下面的引理告诉我们, 如果一个 pair 是消去 pair, 则总可以通过做 isotopy 和 handle silde, 将这个消去 pair 孤立出来.</p>
+<ul>
+<li>Recall <img src="images/4.-kirby-calculus-1779721927464.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul>
+<p><img src="images/4.-kirby-calculus-1779154898996.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154910024.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154931375.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154941389.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+</section>
+</section>
+<section id="results-in-dimension-3" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Results in Dimension 3</h1>
+<section id="recall-surgery" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="recall-surgery"><span class="header-section-number">3.1</span> Recall: Surgery</h2>
+<ul>
+<li>Surgery: <img src="images/4.-kirby-calculus-1778417486829.webp" class="img-fluid" loading="lazy" decoding="async">
+<ul>
+<li>我们将 <span class="math inline">l</span>-surgery 定义为从<span class="math inline">M^m</span>上挖去一个<span class="math inline">S^l\times D^{m-l}</span>(这个时候挖去的部分会裸露出来一个<span class="math inline">S^l\times S^{m-l-1}</span>), 然后沿着裸露出来的新的边界粘回去一个 <span class="math inline">D^{l+1}\times S^{m-l-1}</span>, 其中边界上的粘接映射就是 identity.</li>
+<li>注意, 当 <span class="math inline">m=3,M=S^3,l=1</span>时, 在<span class="math inline">M^m</span>上选取一个<span class="math inline">S^l\times D^{m-l}</span>, 就对应 <span class="math inline">S^3</span> 上的一个 framed knot, 我们取 Seifert framing 的话, 它就会被一个整数标记. 因此, 当考虑 3 mfld 的时, 我们也将这种 Surgery 称为整的 Surgery.</li>
+</ul></li>
+<li>Surgery 与粘接 handle:
+<ul>
+<li>我们在流形 <span class="math inline">W^{n+1}</span>(或者把它看作配边<span class="math inline">(W;W_-,W_+)</span>) 粘接 k+1 handle<span class="math inline">D^{k+1}\times D^{n-k}</span>(当做配边看的时候, 就是在上边界<span class="math inline">W_+</span>上粘接), 得到新的流形<span class="math inline">W'</span>(作为配边看<span class="math inline">(W';W'_-,W_+')</span>), 那么 <span class="math inline">W_+'</span>和<span class="math inline">W_+</span> 之间就差了一个 k Surgery(下边界保持不变).</li>
+<li>简单来说, 在流形上粘 k+1 handle 就是在边界上做 Surgery.
+<ul>
+<li>画成图表: <img src="images/4.-kirby-calculus-1778419871204.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+<li>例子: <img src="images/4.-kirby-calculus-1778418888351.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+<li>推论:
+<ul>
+<li>流形 <span class="math inline">M_1^n,M_2^n</span>配边 , 即存在<span class="math inline">W^{n+1}</span>使得<span class="math inline">W_-=M_1,W_+=M_2</span>,
+<ul>
+<li>当且仅当 <span class="math inline">W</span>可以通过在<span class="math inline">M_1\times I</span> 上粘接 handles 得到
+<ul>
+<li>即 <span class="math inline">W=M_1\times I+\{ h_i \}_i</span></li>
+<li>这个操作会对 <span class="math inline">M_1\times I</span>的上边界<span class="math inline">M_1</span> 做 Surgery</li>
+</ul></li>
+</ul></li>
+<li>故当且仅当 <span class="math inline">M_2</span>可以通过对<span class="math inline">M_1</span> 做一系列 Surgery 得到.</li>
+<li>即配边类就是 “Surgery 类”.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dehn-surgery" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dehn-surgery"><span class="header-section-number">3.2</span> Dehn Surgery</h2>
+<p>后面, 我们的 surgery 都指 dim=3 的 1-surgery. ## Definition</p>
+<ul>
+<li>(Integer) Surgery
+<ul>
+<li>回顾在 dim 3, <span class="math inline">S^3</span>上做 Surgery. 我们需要在<span class="math inline">S^3</span>上挖去一个 knot 的管状邻域, 然后用边界<span class="math inline">T^2=S^1\times S^1</span>上的恒等映射将一个新的<span class="math inline">S^1\times D^2</span> 粘回去.</li>
+<li>首先注意到, <span class="math inline">S^3</span> 上挖掉 knot 的管状邻域之后一般不是 solid torus.</li>
+<li>粘回去 <span class="math inline">S^1\times D^2</span>是一个 solid torus, 故粘接它可以被视为粘接<span class="math inline">h^2+h^3</span>.
+<ul>
+<li>我们知道, 在 dim=3 时, 粘接的 2-handle 会被曲面上简单闭曲线的 (同痕等价于同伦)同伦类唯一决定. 粘接 3-handle 的方式是唯一的.</li>
+<li>我们先关心这个 <span class="math inline">h^2</span>, 只要找到简单闭曲线. 要知道 2-handle 粘到哪里, 只要知道哪个曲线会新 bound disk.
+<ul>
+<li>根据 Surgery 的定义, 在公共边界 <span class="math inline">S^1\times S^1</span>上看. 第二个<span class="math inline">S^1</span>在<span class="math inline">S^3</span>中 bound 一个 disk. 第一个<span class="math inline">S^1</span>粘回去之后, 会 bound 一个 disk. 即第一个<span class="math inline">S^1</span> 会新 bound 一个 ball.</li>
+<li>所以我们只要在 <span class="math inline">S^3</span>中找到<span class="math inline">S^1\times S^1</span>上的第一个<span class="math inline">S^1</span>(它平行于纽结<span class="math inline">K</span>, 落在管状邻域 <span class="math inline">NK</span> 的边界上).
+<ul>
+<li>这个平行于 <span class="math inline">K</span>的曲线恰好就是描述 framing 的那一条. 当 framing=n 时, 它沿着<span class="math inline">\partial NK</span> 的 longitude (由 Seifert framing 定下里的) 转 1 圈, 沿着 meridian 转 n 圈.</li>
+<li>在图上看: <img src="images/4.-kirby-calculus-1778423779608.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>综上, Integer surgery 会被一个纽结 <span class="math inline">K</span>和整数<span class="math inline">n</span> 决定.</li>
+</ul></li>
+</ul>
+<p>上述过程中, 我们本质上往一个 3 mfld (<span class="math inline">S^3-NK</span>) 上粘接了一个 solid torus. 但是粘接的方式是固定的. 于是复杂度完全被 <span class="math inline">N K</span> 嵌入的方式决定. 我们当然也可以假设 <span class="math inline">NK</span> 是平凡嵌入的, 用粘接映射来描述这个复杂度, 即挖去一个标准的 (不扭曲的) solid torus, 然后沿着上图中的蓝线粘接 2-handle.</p>
+<ul>
+<li>Dehn Surgery
+<ul>
+<li>但是, 理论上, 我们未必一定要用上图中的方式, 即 <span class="math inline">K'=n\mu+\lambda</span>来粘接 2-handle:<span class="math inline">T^2</span>上的任意简单闭曲线都可以. 在同调上, 这对应于<span class="math inline">K'=p \mu+q\lambda</span>, 其中 <span class="math inline">p,q</span>互素. 那么此时, 这样的闭曲线可以被一个有理数<span class="math inline">\frac{p}{q}\in \mathbb{Q}\cup \infty</span> 来确定.</li>
+<li>这种从 <span class="math inline">S^3</span> 出发, 做有理手术得到闭的 3 mfld 的方式被称为 Dehn Surgery.</li>
+<li>注意到, 如果限制 <span class="math inline">q=1</span>, 我们就回到了之前的情形, 此时 <span class="math inline">K'=p\mu+\lambda</span> 就对应于一个整数, 这恰好还原了之前 integer surgery 的定义.</li>
+</ul></li>
+<li>例子: <img src="images/4.-kirby-calculus-1779721734679.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779721748563.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778425087907.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul>
+<p>我们不仅可以对于 knot 做整的, 有理的 Surgery, 我们也可以对 link 做, 定义为依次对每个 knot 做 surgery (与做 surgery 的顺序无关). 对于 link <span class="math inline">L</span>以及系数<span class="math inline">x_i\in \mathbb{Q}</span>, 我们定义 <span class="math inline">S^3_L(x_i)</span>为从<span class="math inline">S^3</span>出发对 link<span class="math inline">L</span> 做 (有理) Dehn surgery 得到的闭 3 mfld.</p>
+</section>
+<section id="surgery-and-closed-3-mfld" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="surgery-and-closed-3-mfld"><span class="header-section-number">3.3</span> Surgery and Closed 3 mfld</h2>
+<ul>
+<li>定理 1(Lickorish–Wallace): Integer surgery 与 3 mfld.
+<ul>
+<li>任意闭 3 mfld <span class="math inline">M</span>, 存在 link <span class="math inline">L\subset S^3</span>以及整数<span class="math inline">n_i</span>, 使得 <span class="math inline">M\cong S^3_L(n_i)</span></li>
+<li>即任意闭 3 mfld 可以通过对 link 做整手术得到.</li>
+</ul></li>
+<li>定理 2(Rohlin)
+<ul>
+<li>任意闭 3 mfld <span class="math inline">M</span>, 存在单连通的 4 mfld <span class="math inline">W</span>使得<span class="math inline">\partial W=M</span>.</li>
+<li>这等价于: 任意闭 3 mfld <span class="math inline">M</span>存在 4 mfld<span class="math inline">W</span>使得<span class="math inline">\partial W=M</span>. 即配边群 <span class="math inline">\Omega_3^{SO}=0</span>. (下面的命题中, 我们用这条作为定义).</li>
+</ul></li>
+<li>命题: 上述两定理等价</li>
+<li>证明:
+<ul>
+<li><span class="math inline">1\Rightarrow2</span>: 使用 handle attaching 和 (integer) surgery 之间的关系.
+<ul>
+<li>定理 1 说明从 <span class="math inline">S^3</span>到<span class="math inline">M</span>只要做一些 1 surgery. 于是如果我们从<span class="math inline">D^4</span>出发, 做一些 2-handle attaching (与 1 surgery 对应), 那么我得到的流形<span class="math inline">W=h^0+(h^2_i)_i</span>求边界就得到<span class="math inline">M</span>. 显然 <span class="math inline">W</span> 是单连通的.</li>
+</ul></li>
+<li><span class="math inline">2\Rightarrow1</span>:
+<ul>
+<li>根据定理 2, 存在 4 mfld <span class="math inline">W</span>, <span class="math inline">\partial W=M</span>. 要证定理 1, 我们只要找到一个只有 0,2-handle 的 4 mfld 使其 bound <span class="math inline">M</span>.</li>
+<li>我们可以从 <span class="math inline">W</span>出发, 得到一个<span class="math inline">W'</span>, 使得 <span class="math inline">\partial W'=\partial W(=M)</span>, 且 <span class="math inline">W'</span> 上面只有 0,2 handle (即消去原来的 1,3 handle)</li>
+<li>我们对 <span class="math inline">W</span>做 handle 分解. 注意, 现在我们只要保持边界不变就可以. 我们从<span class="math inline">W_1</span> (小于等于 1 的 handle 粘出来的) 出发.</li>
+<li><span class="math inline">W_1</span>形如<span class="math inline">\#S^1\times D^3</span>, 它的边界为 <span class="math inline">S^1\times S^2</span>. 后续, 我们的粘接发生在这个边界上, 且最后得到的边界就是对这个边界做 surgery.
+<ul>
+<li>注意到我们将 <span class="math inline">\#S^1\times D^3</span>替换成<span class="math inline">\#D^2\times S^2</span> 不会改变边界, 后者对应与粘接 2-handle, 它的 Kirby diagram 为一些 framing=0 的 unknot 的不交并.</li>
+<li>我们保持后面的粘接方式不变.</li>
+<li>此时, 我们得到了 <span class="math inline">W''</span>它没有 1-handle, 且满足<span class="math inline">\partial W''=\partial W=M</span>. 即我们总可以消去 1-handle, 用 2-handle 替代.</li>
+</ul></li>
+<li>我们对 <span class="math inline">W''</span>做对偶, 得到一个配边<span class="math inline">(\overline{W''};M,S^3)</span>, 我们用上面的技术, 消去 <span class="math inline">\overline{W''}</span>中的 1-handle (即原来<span class="math inline">W''</span>中的 3-handle, 这个过程只会引入 2-handle.). 记得到的流形(配边)为<span class="math inline">(\overline{W'};M,S^3)</span>.</li>
+<li>最后, 再对偶一次, 我们得到流形 <span class="math inline">(W';S^3,M)</span>, 此时 <span class="math inline">W'</span> 中只剩下 0,2 handle, 即为所求.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>在上述证明中, 我们事实上也证明了定理 2 的两种表述等价.</p>
+<ul>
+<li>Surgery 和 Dehn twist
+<ul>
+<li>注意到在 3 mfld 上面做 Surgery 会保持原来的边界不变, surgery 会给出边界上曲线的重参数化, 从而诱导边界上的自同胚. 这个自同胚属于曲面的映射类群(…).</li>
+<li>记 <span class="math inline">K'</span>是 solid torus 边界上的曲线, 将它向 solid torus 里面推得到 (边界的 collar nbhd 上面的曲线)<span class="math inline">K</span>.</li>
+<li>Claim: 沿着 <span class="math inline">K</span>做+1 surgery 诱导的边界自同胚就是沿着<span class="math inline">K'</span> 做 Dehn twist.</li>
+<li>证明: <img src="images/4.-kirby-calculus-1778431065817.webp" class="img-fluid" loading="lazy" decoding="async"> (下图对应顺时针的 dehn twist) <img src="images/4.-kirby-calculus-1778431077915.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>Remark:
+<ul>
+<li>对 solid torus 沿着 core circle 做 surgery 得到的 3 mfld 仍然是 solid torus. 因为当我们在 solid torus 上挖去 core circle 的管状邻域后, 得到一个空心的 <span class="math inline">T^2\times I</span>, 它可以被视为 collar neighborhood, 它的拓扑信息是平凡的. 重新粘接的结果只会依赖于粘回去的东西.</li>
+<li>更一般的, 对于 collar nbhd 上的曲线做 surgery 不会改变 collar nbhd, 从而诱导 collar 上的自同胚, 限制在边界上得到边界的自同胚.</li>
+<li>对于 solid torus 里的一般的位置的纽结 <span class="math inline">K</span>, 做 surgery 之后得到的 3 mfld 未必还是 solid torus, 新的流形的边界(保持不变)仍然是 <span class="math inline">T^2</span>. 此时 surgery 仍然可以诱导边界上的自同胚, 这个自同胚和 dehn twist 对应.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><img src="images/4.-kirby-calculus-1779721786848.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779721798495.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<ul>
+<li>定理 1 的证明: 使用 3 mfld 的 heegaard splitting.
+<ul>
+<li>任意 3 mfld <span class="math inline">M</span>, 存在 <span class="math inline">g</span>, 使得 <span class="math inline">M=H_g\cup_{\phi} H_g</span>. 注意到, <span class="math inline">S^3=H_0\cup H_0=H_g\cup_{\phi_0} H_g</span>. 不难看出, <span class="math inline">\phi</span>和<span class="math inline">\phi_0</span>之间差了个<span class="math inline">MCG(\Sigma_g)</span>中的元素, 记为<span class="math inline">f</span>, 我们知道 <span class="math inline">f</span> 可以被 dehn twist 生成. <img src="images/4.-kirby-calculus-1778431091001.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779721855533.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779721864308.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+</ul>
+<p>定理 1 本质上给出了满射: <span class="math display">\{ \text{framed link in } S^3 \}\twoheadrightarrow\{ \text{closed 3 mfld} \}</span> 先映射到 2-handlebody, 然后取边界得到闭 3 mfld.</p>
+<p>一个自然的问题是何时两组这样的 framed link, 给出相同的闭 3 mfld. 即上述映射的 “kernel” 是谁. 这一小节, 我们回答这个问题.</p>
+<p>我们先给出答案: “kernel”由 kirby moves 生成, 即两个 framed link 等价, 当且仅当它们差了一系列的 kirby move.</p>
+<ul>
+<li>示意图: Kirby move
+<ul>
+<li>第一种表述
+<ul>
+<li>Type 1: blow up/blow down <img src="images/4.-kirby-calculus-1778499810584.webp" class="img-fluid" loading="lazy" decoding="async"> 这对应于 handle cancelling.</li>
+<li>Type 2: 2-handle slide <img src="images/4.-kirby-calculus-1778499773040.webp" class="img-fluid" loading="lazy" decoding="async"> 注意这里 framing 的变化严格遵循 Kirby calculus.</li>
+</ul></li>
+<li>第二种表述: <img src="images/4.-kirby-calculus-1778500333088.webp" class="img-fluid" loading="lazy" decoding="async"> 即这一个图可以同时涵盖 blow up/down 和 2-handle slide.</li>
+<li>Prop: 两种定义是等价的</li>
+</ul></li>
+<li>定理 (Kirby):
+<ul>
+<li>满射 <span class="math inline">f_2: \{ \text{framed link in }S^3 \}\twoheadrightarrow \{ \text{closed 3mfld} \}</span> 的 kernel 是 Kirby move, 即 2-handle slide 和 blow up/down.</li>
+</ul></li>
+<li>证明 (Sketch):
+<ul>
+<li>一个方向是显然的: 由于 blow up 在 4 mfld 上对应的操作是连通和 <span class="math inline">\mathbb{CP}^2</span> , 显然 Kirby move 不会改变得到的 3 mfld.</li>
+<li>另一个方向 (Sketch)
+<ul>
+<li>in summary: <img src="images/4.-kirby-calculus-1780375026397.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>给定两个 framed link <span class="math inline">L_1,L_2</span>, 我们考虑从它们出发构造的 4 mfld (2-handlebodies) <span class="math inline">W_1=W(L_1),W_2=W(L_2)</span>. 由假设, 首先有 <span class="math inline">\partial W_1\cong \partial W_2</span>. 于是我们可以沿着公共的边界将它们粘起来, 得到 <span class="math inline">Y^4=W_1\cup W_2</span>, 它是一个闭的 4 mfld.<br>
+</li>
+<li>我们希望 <span class="math inline">Y^4</span> 能够成为某个 5-mfld 的边界.
+<ul>
+<li>回顾我们知道闭 4 维 (定向) 配边的分类 : <span class="math inline">\Omega_4^{SO}\cong\mathbb{Z}</span>, 其中同构映射为 <span class="math inline">W^4\mapsto \sigma(W^4)</span>, 右边是相交型矩阵的 signature. 于是我们可以通过改变闭 4 mfld 的 signature 来使它成为 5-mfld 的边界. 改变 signature 的方式就是和 <span class="math inline">\pm\mathbb{CP}</span> 做连通和.</li>
+<li>于是我们可以修正 <span class="math inline">W_i':=W_i\#\pm_i\mathbb{CP}</span>使得<span class="math inline">Y':=W_1'\cup W_2'</span>bound 5-mfld<span class="math inline">Z^5</span>.</li>
+<li>我们得到(相对)配边 <span class="math inline">(Z^5;W_1',W_2')</span>. 即 <span class="math inline">Z^5</span>可以通过在<span class="math inline">W_1'\times I</span> 上粘接 handles 得到.</li>
+</ul></li>
+<li>化简 handle 分解 <span class="math inline">(Z^5;W_1')</span>:
+<ul>
+<li>由于此时 dim=5, 我们可以使用 handle trade (<span class="math inline">h^1=h^1+(h^2+h^3)=(h^1+h^2)+h^3=h^3</span>), 从而消去 handle 分解中的 1,4 handle. 至此有 <span class="math inline">Z^5=W_1'\times I+(h^2)+(h^3)=(Z^5;W_1',W_2')</span>.</li>
+<li>我们从中间(<span class="math inline">W_1'\times I+(h^2)</span>处)切开这个配边. 利用对偶的观点, 我们有<span class="math inline">Z=(W_1'\times I+(h_2))\cup(W_2'\times I+(\tilde{h^2}))</span>(后面这个<span class="math inline">\tilde{h^2}</span> 是 3-handle 对偶得到的).</li>
+<li>我们有两条路径走到在中间这个 level: 从 <span class="math inline">W_1'</span>或者<span class="math inline">W_2'</span>. 两条路径给出…</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>我们上面提到, Kirby move 有两种表述方式 (第二种是对第一种的”简化”). 下面的命题证明这两种表述方式是等价的. - Prop: <img src="images/4.-kirby-calculus-1780375168914.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1780375236491.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375247511.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375283095.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375300243.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375307295.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+</section>
+<section id="calculus-on-dehn-surgery" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="calculus-on-dehn-surgery"><span class="header-section-number">3.4</span> Calculus on Dehn Surgery</h2>
+<p>我们在 integer surgery 上的计算可以延拓到 rational surgery 上去.</p>
+<ul>
+<li><p>Rolfsen twist <img src="images/4.-kirby-calculus-1778507292797.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<ul>
+<li>证明: <img src="images/4.-kirby-calculus-1780371807209.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+<li><p>Slam-dunk (灌篮) <img src="images/4.-kirby-calculus-1778506676792.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<ul>
+<li>证明 (不严格): <img src="images/4.-kirby-calculus-1780371862485.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>Remark: 上面的证明涉及到”无穷”framing, 看不出为什么需要 <span class="math inline">K_1</span> 的 framing 取成整数. 更严格的证明见 R-G p 164.</li>
+</ul></li>
+<li><p>Rolfsen twist 可以诱导 blow up <img src="images/4.-kirby-calculus-1780371919275.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+<li><p>例子: <img src="images/4.-kirby-calculus-1780371950184.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+<li><p>Prop: Rolfsen twist 是 rational surgery 中的”Kirby move”. <img src="images/4.-kirby-calculus-1780372339192.webp" class="img-fluid" loading="lazy" decoding="async"> ## Surgery and Dehn Surgery</p></li>
+</ul>
+<p>我们知道整手术属于有理手术, 一个自然的问题是: 这个包含是严格的吗? - 答案: - 虽然对于 knot 来说, rational surgery 含有更多的信息. - 但对于 link 而言, link 上的 integer surgery 涵盖的信息和 link 的 rational surgery 一样多. - 即我们有下面图表: <img src="images/4.-kirby-calculus-1778504955455.webp" class="img-fluid" loading="lazy" decoding="async"> - 证明: <img src="images/4.-kirby-calculus-1778505755311.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<p>下一个自然的问题是: rational knot 和 rational link 之间差了多少? 是否所有闭 3 mfld 都能被 rational knot 实现? - 答案是否定的: 上面的例子中证明了 <span class="math inline">S_k^3(\gamma)\neq T^3</span>对于任意的<span class="math inline">\gamma\in \mathbb{Q}</span>, 因为有理手术给出的 3 mfld 的 <span class="math inline">H_1</span> 是被控制住的.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
