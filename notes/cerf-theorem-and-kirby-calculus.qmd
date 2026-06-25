@@ -1,0 +1,282 @@
+---
+title: "Cerf Theorem And Kirby Calculus"
+date: 
+categories:
+  - 4-manifolds
+  - kirby-diagrams
+  - handle-decomposition
+  - cerf-theory
+  - heegaard-diagrams
+  - closed-manifolds
+  - differential-topology
+description: "Cerf定理与Kirby演算：闭的四流形由Kirby图唯一确定"
+---
+
+::: {.callout-note}
+## 2-handle slide (dim=4)
+
+在 4 维情形下，2-handle 的 attaching sphere 是 $S^2$，因此 handle slide 需要对球面进行操作。直观上，我们沿着另一个 2-handle 的 attaching sphere 滑动一个 2-handle 的 attaching sphere，类似于在 3 维情形下沿着曲线滑动曲线。
+
+具体地，假设我们有 2-handle $h_1^2$和$h_2^2$，其 attaching spheres 分别为 $S_1$和$S_2$（均为嵌入在 $\partial W^2$中的 2-球面）。对$h_1^2$做 handle slide over$h_2^2$指的是：我们取一个从$S_1$到$S_2$的管状邻域的平凡化，将$S_1$沿着该管状邻域向$S_2$滑动，得到一个新的 2-球面$S_1'$。这个操作对应于改变 $h_1^2$ 的 attaching map，从而得到等价的 handle decomposition。
+
+在 Kirby diagram 中，2-handle slide 的图示表现为：将代表 2-handle 的纽结（或链环）沿着另一个代表 2-handle 的纽结滑动，过程中可能产生 twist 或 linking 的变化。
+
+:::
+
+::: {.callout-note}
+## Handle cancellation
+### Stabilization (dim=3)
+
+Stabilization 指的是在 Heegaard diagram 中添加一对对偶的 1-handle 和 2-handle。具体来说，我们在表面 $S_g$ 上选择一个平凡的小圆盘，去掉它并粘上一个 1-handle 和一个 2-handle，使得 genus 增加 1。这一操作不改变流形，因为新添加的 1-handle 和 2-handle 可以互相抵消。
+
+在 Heegaard diagram 中，stabilization 对应着添加一对不相交的简单闭曲线：一个表示 1-handle 的 meridian，另一个表示 2-handle 的 longitude。
+
+### Cancellation (dim=4)
+
+在 4 维 handle decomposition 中，一个 $k$-handle 与其对偶的 $(k+1)$-handle 可以互相抵消，如果它们的 attaching sphere 在边界上以唯一的方式相遇。例如，一个 1-handle 和一个 2-handle 可以抵消，如果 2-handle 的 attaching sphere 与 1-handle 的 belt sphere 恰好相交一次。
+
+在 Kirby diagram 中，1-2 handle cancellation 表现为：一个 1-handle 的 attaching 球（两个点）与一个 2-handle 的 attaching 纽结在代数上相交数为 1（即纽结恰好从一个点穿过到另一个点），且没有其他 handle 干扰。
+
+类似地，2-3 handle cancellation 也可定义，但更少见。
+
+:::
+
+- 此时每个 2-handle 被一个 framed knot 标识, 我们需要回答: 
+    - slide 之后, 纽结怎么变化? 
+    - slide 之后, 纽结的 framing 怎么变化? 
+
+#### The change of knot
+
+- 纽结如何变化 
+    - 当我们做 slide 时, 我们是将需要粘接的 $h_2^2$沿着已经粘接好的 2-handle$h_1^2$ 的表面划过去. 
+    - 对于一个 framed knot (对应 2-handle $h^2$), 记为 $(K,K')$, 其中$K'$代表他的 framing, 我们可以认为$K'$落在$K$的管状邻域的表面, 故我们可以认为$K'$代表了$h^2$ 的边界的信息. 
+    - 当我们将 $h_1^2$沿着边界划过$h_2^2$时, 新的$\tilde{h_1^2}$的纽结对应于$K_1$划过$K_2'$, 即 $\tilde{K_1}=K_1\#K_2'$. 
+![](images/4.-kirby-calculus-1778515927858.webp)
+![](images/4.-kirby-calculus-1778515995644.webp)
+- typo: 上面画的 framing 实际为-2. 
+#### The change of framing
+
+framing公式: 
+$$
+f_1'=f_1+f_2\pm2lk(K_1,K_2)
+$$
+
+- 例子
+    - 在下面的具体的例子中 ($K_1,K_2$ 不 link 到一起的时候), 我们可以把 framing 的变化看出来. 
+    - 对于一个 framed knot $(K_1,K_1')$, 我们把 $K_1,K_1'$一起划过$K_2'$, 然后观察 framing 的变化. ![](images/4.-kirby-calculus-1779721619142.webp)![](images/4.-kirby-calculus-1778516075400.webp) %% 另一种解释: 
+        - 先考虑 $K_2$的 framing 为 blackboard framing 的情形, 此时做连通和不会改变$K_1$ 的 framing. 
+        - 当 $K_2$的 framing=n 的时候, 可以将$K_2$ 写成一个 framing=0 的 knot 上面 %%
+    - 如果两个被 link 到一起了 (good case): ![](images/4.-kirby-calculus-1779119620341.webp)
+    - 一般公式为: $$
+f_1'=f_1+f_2\pm2lk(K_1,K_2)
+$$
+    - 关于 linking number 前面符号的解释: ![](images/4.-kirby-calculus-1779120483697.webp)
+        - 我们一般考虑 good case. 
+        - 将符号看作"修正"的手段: 如果我们不幸落在了 bad case, 就改变其中一个纽结的定向, 这个时候 linking number 会差一个符号. 
+            - 但我们知道 framing 应该不依赖于定向的取法, 于是要求出现一个符号. 
+            - 即我们要求改变连通和的类型时出现一个符号. 
+
+回顾, 如果一个 4 mfld 仅仅由 0,2-handle 组成, 那我们称它为 2-handlebody. 
+
+- 在 2-handlebody 上计算
+    - 在 2-handlebody 上, 我们通过代数相交数计算. 
+    - 回顾, 每个 framed knot 都能对应到一个 4 mfld 中的闭曲面, 这个闭曲面会对应到一个同调群 $H_2$的生成元. 设$K_1,K_2$分别对应的同调生成元为$\alpha,\beta$. 
+    - 2-handle slide 在 $H_2$ 上对应与两个同调生成元做加 (减) 法. 
+    - 纽结的framing 就等于它对应的闭曲面的代数自相交数. 
+    - 于是我们有 $f_1'=Q(\alpha+\beta,\alpha+\beta)=Q(\alpha,\alpha)+Q(\beta,\beta)+2Q(\alpha,\beta)=f_1+f_2+2lk(K_1,K_2)$
+        - 注意, 由于 $\alpha,\beta$都是定向的, 为了保证新的生成元也是定向的, 有时 (若$\alpha,\beta$定向相反) handle slide 会在生成元上对应到$\alpha-\beta$, 此时我们的 framing 就是 $f_1'=Q(\alpha-\beta,\alpha-\beta)=Q(\alpha,\alpha)+Q(\beta,\beta)-2Q(\alpha,\beta)=f_1+f_2-2lk(K_1,K_2)$
+
+
+
+# Applications
+
+## Unlock
+
+- 引理(Kirby move): ![](images/4.-kirby-calculus-1778551800707.webp)![](images/4.-kirby-calculus-1778551866564.webp)
+    最后一个等号: 右侧拉直之后就是左侧. 
+- 推论: ![](images/4.-kirby-calculus-1778551958561.webp)
+
+
+
+- $S^2$bundle over$S^2$ ![](images/4.-kirby-calculus-1778551977381.webp) ![](images/4.-kirby-calculus-1778551995462.webp) ( 3. 中的定向给的不太好 ) ![](images/4.-kirby-calculus-1778552004092.webp)
+
+$S^2$ bundle over surface ($F$): 总可以被写成 $F$上$D^2$ bundle 的 double. 
+我们知道 $S^2$上的$D^2$bundle 是一个 2-handlebody: 它可以写成$h^0+h^2$, 上述定理分类了它的 double. 事实上, 我们有更一般的结果: 
+
+- 推广: 
+    - 设 $W$是 2-handlebody. 那么它的 double 只有两种可能, 且可以被$Q_W$ 的奇偶性分类.  ![](images/4.-kirby-calculus-1778340767090.webp) 它的证明需要用到下面的技术. 
+
+## Unravel (解开缠结)
+
+- 定理:  ![](images/4.-kirby-calculus-1779163470376.webp)
+    ![](images/4.-kirby-calculus-1779163487746.webp)
+
+- 上面的推广: ![](images/4.-kirby-calculus-1779163506352.webp)![](images/4.-kirby-calculus-1779163515106.webp)
+
+# Handle Cancellation
+
+## 1,2-handle cancellation
+
+如果一个消去 pair 在 Kirby diagram 中是孤立存在的, 我们很容易想象消去后的 new Kirby diagram 是什么样的. 但是, 如果消去 pair 不是孤立的呢? 即如果它们和其他的 handle (的 attaching sphere)相交时, 如何处理? 
+下面的引理告诉我们, 如果一个 pair 是消去 pair, 则总可以通过做 isotopy 和 handle silde, 将这个消去 pair 孤立出来.  
+
+- Recall ![](images/4.-kirby-calculus-1779721927464.webp)
+
+
+![](images/4.-kirby-calculus-1779154898996.webp)![](images/4.-kirby-calculus-1779154910024.webp)![](images/4.-kirby-calculus-1779154931375.webp)![](images/4.-kirby-calculus-1779154941389.webp)
+
+
+
+
+
+# Results in Dimension 3
+
+## Recall: Surgery
+- Surgery:  ![](images/4.-kirby-calculus-1778417486829.webp)
+    - 我们将 $l$-surgery 定义为从$M^m$上挖去一个$S^l\times D^{m-l}$(这个时候挖去的部分会裸露出来一个$S^l\times S^{m-l-1}$), 然后沿着裸露出来的新的边界粘回去一个 $D^{l+1}\times S^{m-l-1}$, 其中边界上的粘接映射就是 identity. 
+    - 注意, 当 $m=3,M=S^3,l=1$时, 在$M^m$上选取一个$S^l\times D^{m-l}$, 就对应 $S^3$ 上的一个 framed knot, 我们取 Seifert framing 的话, 它就会被一个整数标记. 因此, 当考虑 3 mfld 的时, 我们也将这种 Surgery 称为整的 Surgery. 
+
+- Surgery 与粘接 handle: 
+    - 我们在流形 $W^{n+1}$(或者把它看作配边$(W;W_-,W_+)$) 粘接 k+1 handle$D^{k+1}\times D^{n-k}$(当做配边看的时候, 就是在上边界$W_+$上粘接), 得到新的流形$W'$(作为配边看$(W';W'_-,W_+')$), 那么 $W_+'$和$W_+$ 之间就差了一个 k Surgery(下边界保持不变). 
+    - 简单来说, 在流形上粘 k+1 handle 就是在边界上做 Surgery. 
+        - 画成图表: ![](images/4.-kirby-calculus-1778419871204.webp)
+    - 例子: ![](images/4.-kirby-calculus-1778418888351.webp)
+
+- 推论: 
+    - 流形 $M_1^n,M_2^n$配边 , 即存在$W^{n+1}$使得$W_-=M_1,W_+=M_2$, 
+        - 当且仅当 $W$可以通过在$M_1\times I$ 上粘接 handles 得到
+            - 即 $W=M_1\times I+\{ h_i \}_i$ 
+            - 这个操作会对 $M_1\times I$的上边界$M_1$ 做 Surgery
+    - 故当且仅当 $M_2$可以通过对$M_1$ 做一系列 Surgery 得到. 
+    - 即配边类就是 "Surgery 类". 
+
+
+## Dehn Surgery
+
+后面, 我们的 surgery 都指 dim=3 的 1-surgery.
+## Definition
+
+- (Integer) Surgery
+    - 回顾在 dim 3, $S^3$上做 Surgery. 我们需要在$S^3$上挖去一个 knot 的管状邻域, 然后用边界$T^2=S^1\times S^1$上的恒等映射将一个新的$S^1\times D^2$ 粘回去.
+    - 首先注意到, $S^3$ 上挖掉 knot 的管状邻域之后一般不是 solid torus.
+    - 粘回去 $S^1\times D^2$是一个 solid torus, 故粘接它可以被视为粘接$h^2+h^3$.
+        - 我们知道, 在 dim=3 时, 粘接的 2-handle 会被曲面上简单闭曲线的 (同痕等价于同伦)同伦类唯一决定. 粘接 3-handle 的方式是唯一的.
+        - 我们先关心这个 $h^2$, 只要找到简单闭曲线. 要知道 2-handle 粘到哪里, 只要知道哪个曲线会新 bound disk.
+            - 根据 Surgery 的定义, 在公共边界 $S^1\times S^1$上看. 第二个$S^1$在$S^3$中 bound 一个 disk. 第一个$S^1$粘回去之后, 会 bound 一个 disk. 即第一个$S^1$ 会新 bound 一个 ball.
+            - 所以我们只要在 $S^3$中找到$S^1\times S^1$上的第一个$S^1$(它平行于纽结$K$, 落在管状邻域 $NK$ 的边界上).
+                - 这个平行于 $K$的曲线恰好就是描述 framing 的那一条. 当 framing=n 时, 它沿着$\partial NK$ 的 longitude (由 Seifert framing 定下里的) 转 1 圈, 沿着 meridian 转 n 圈.
+                - 在图上看:  ![](images/4.-kirby-calculus-1778423779608.webp)
+    - 综上, Integer surgery 会被一个纽结 $K$和整数$n$ 决定.
+
+上述过程中, 我们本质上往一个 3 mfld ($S^3-NK$) 上粘接了一个 solid torus. 但是粘接的方式是固定的. 于是复杂度完全被 $N K$ 嵌入的方式决定.
+我们当然也可以假设 $NK$ 是平凡嵌入的, 用粘接映射来描述这个复杂度, 即挖去一个标准的 (不扭曲的) solid torus, 然后沿着上图中的蓝线粘接 2-handle.
+
+- Dehn Surgery
+    - 但是, 理论上, 我们未必一定要用上图中的方式, 即 $K'=n\mu+\lambda$来粘接 2-handle:$T^2$上的任意简单闭曲线都可以. 在同调上, 这对应于$K'=p \mu+q\lambda$, 其中 $p,q$互素. 那么此时, 这样的闭曲线可以被一个有理数$\frac{p}{q}\in \mathbb{Q}\cup \infty$ 来确定.
+    - 这种从 $S^3$ 出发, 做有理手术得到闭的 3 mfld 的方式被称为 Dehn Surgery.
+    - 注意到, 如果限制 $q=1$, 我们就回到了之前的情形, 此时 $K'=p\mu+\lambda$ 就对应于一个整数, 这恰好还原了之前 integer surgery 的定义.
+- 例子: ![](images/4.-kirby-calculus-1779721734679.webp)![](images/4.-kirby-calculus-1779721748563.webp)![](images/4.-kirby-calculus-1778425087907.webp)
+
+我们不仅可以对于 knot 做整的, 有理的 Surgery, 我们也可以对 link 做, 定义为依次对每个 knot 做 surgery (与做 surgery 的顺序无关). 对于 link $L$以及系数$x_i\in \mathbb{Q}$, 我们定义 $S^3_L(x_i)$为从$S^3$出发对 link$L$ 做 (有理) Dehn surgery 得到的闭 3 mfld.
+
+## Surgery and Closed 3 mfld
+
+- 定理 1(Lickorish–Wallace): Integer surgery 与 3 mfld.
+    - 任意闭 3 mfld $M$, 存在 link $L\subset S^3$以及整数$n_i$, 使得 $M\cong S^3_L(n_i)$
+    - 即任意闭 3 mfld 可以通过对 link 做整手术得到.
+
+- 定理 2(Rohlin)
+    - 任意闭 3 mfld $M$, 存在单连通的 4 mfld $W$使得$\partial W=M$.
+    - 这等价于: 任意闭 3 mfld $M$存在 4 mfld$W$使得$\partial W=M$. 即配边群 $\Omega_3^{SO}=0$. (下面的命题中, 我们用这条作为定义).
+
+- 命题: 上述两定理等价
+- 证明:
+    - $1\Rightarrow2$: 使用 handle attaching 和 (integer) surgery 之间的关系.
+        - 定理 1 说明从 $S^3$到$M$只要做一些 1 surgery. 于是如果我们从$D^4$出发, 做一些 2-handle attaching (与 1 surgery 对应), 那么我得到的流形$W=h^0+(h^2_i)_i$求边界就得到$M$. 显然 $W$ 是单连通的.
+    - $2\Rightarrow1$:
+        - 根据定理 2, 存在 4 mfld $W$, $\partial W=M$. 要证定理 1, 我们只要找到一个只有 0,2-handle 的 4 mfld 使其 bound $M$.
+        - 我们可以从 $W$出发, 得到一个$W'$, 使得 $\partial W'=\partial W(=M)$, 且 $W'$ 上面只有 0,2 handle (即消去原来的 1,3 handle)
+        - 我们对 $W$做 handle 分解. 注意, 现在我们只要保持边界不变就可以. 我们从$W_1$ (小于等于 1 的 handle 粘出来的) 出发.
+        - $W_1$形如$\#S^1\times D^3$, 它的边界为 $S^1\times S^2$. 后续, 我们的粘接发生在这个边界上, 且最后得到的边界就是对这个边界做 surgery.
+            - 注意到我们将 $\#S^1\times D^3$替换成$\#D^2\times S^2$ 不会改变边界, 后者对应与粘接 2-handle, 它的 Kirby diagram 为一些 framing=0 的 unknot 的不交并.
+            - 我们保持后面的粘接方式不变.
+            - 此时, 我们得到了 $W''$它没有 1-handle, 且满足$\partial W''=\partial W=M$. 即我们总可以消去 1-handle, 用 2-handle 替代.
+        - 我们对 $W''$做对偶, 得到一个配边$(\overline{W''};M,S^3)$, 我们用上面的技术, 消去 $\overline{W''}$中的 1-handle (即原来$W''$中的 3-handle, 这个过程只会引入 2-handle.). 记得到的流形(配边)为$(\overline{W'};M,S^3)$.
+        - 最后, 再对偶一次, 我们得到流形 $(W';S^3,M)$, 此时 $W'$ 中只剩下 0,2 handle, 即为所求.
+
+在上述证明中, 我们事实上也证明了定理 2 的两种表述等价.
+
+- Surgery 和 Dehn twist
+    - 注意到在 3 mfld 上面做 Surgery 会保持原来的边界不变, surgery 会给出边界上曲线的重参数化, 从而诱导边界上的自同胚. 这个自同胚属于曲面的映射类群(...).
+    - 记 $K'$是 solid torus 边界上的曲线, 将它向 solid torus 里面推得到 (边界的 collar nbhd 上面的曲线)$K$.
+    - Claim: 沿着 $K$做+1 surgery 诱导的边界自同胚就是沿着$K'$ 做 Dehn twist.
+    - 证明:  ![](images/4.-kirby-calculus-1778431065817.webp) (下图对应顺时针的 dehn twist) ![](images/4.-kirby-calculus-1778431077915.webp)
+    - Remark:
+        - 对 solid torus 沿着 core circle 做 surgery 得到的 3 mfld 仍然是 solid torus. 因为当我们在 solid torus 上挖去 core circle 的管状邻域后, 得到一个空心的 $T^2\times I$, 它可以被视为 collar neighborhood, 它的拓扑信息是平凡的. 重新粘接的结果只会依赖于粘回去的东西.
+        - 更一般的, 对于 collar nbhd 上的曲线做 surgery 不会改变 collar nbhd, 从而诱导 collar 上的自同胚, 限制在边界上得到边界的自同胚.
+        - 对于 solid torus 里的一般的位置的纽结 $K$,  做 surgery 之后得到的 3 mfld 未必还是 solid torus, 新的流形的边界(保持不变)仍然是 $T^2$. 此时 surgery 仍然可以诱导边界上的自同胚, 这个自同胚和 dehn twist 对应.
+
+![](images/4.-kirby-calculus-1779721786848.webp)![](images/4.-kirby-calculus-1779721798495.webp)
+
+- 定理 1 的证明: 使用 3 mfld 的 heegaard splitting.
+    - 任意 3 mfld $M$, 存在 $g$, 使得 $M=H_g\cup_{\phi} H_g$. 注意到, $S^3=H_0\cup H_0=H_g\cup_{\phi_0} H_g$. 不难看出, $\phi$和$\phi_0$之间差了个$MCG(\Sigma_g)$中的元素, 记为$f$, 我们知道 $f$ 可以被 dehn twist 生成.  ![](images/4.-kirby-calculus-1778431091001.webp)![](images/4.-kirby-calculus-1779721855533.webp)![](images/4.-kirby-calculus-1779721864308.webp)
+
+定理 1 本质上给出了满射: $$\{ \text{framed link in } S^3 \}\twoheadrightarrow\{ \text{closed 3 mfld} \}$$ 先映射到 2-handlebody, 然后取边界得到闭 3 mfld. 
+
+一个自然的问题是何时两组这样的 framed link, 给出相同的闭 3 mfld. 即上述映射的 "kernel" 是谁. 这一小节, 我们回答这个问题.
+
+我们先给出答案: "kernel"由 kirby moves 生成, 即两个 framed link 等价, 当且仅当它们差了一系列的 kirby move. 
+
+- 示意图: Kirby move
+    - 第一种表述
+        - Type 1: blow up/blow down ![](images/4.-kirby-calculus-1778499810584.webp) 这对应于 handle cancelling. 
+        - Type 2: 2-handle slide ![](images/4.-kirby-calculus-1778499773040.webp) 注意这里 framing 的变化严格遵循 Kirby calculus. 
+    - 第二种表述: ![](images/4.-kirby-calculus-1778500333088.webp) 即这一个图可以同时涵盖 blow up/down 和 2-handle slide. 
+    - Prop: 两种定义是等价的
+
+- 定理 (Kirby): 
+    - 满射 $f_2: \{ \text{framed link in }S^3 \}\twoheadrightarrow \{ \text{closed 3mfld} \}$ 的 kernel 是 Kirby move, 即 2-handle slide 和 blow up/down. 
+- 证明 (Sketch): 
+    - 一个方向是显然的: 由于 blow up 在 4 mfld 上对应的操作是连通和 $\mathbb{CP}^2$ , 显然 Kirby move 不会改变得到的 3 mfld. 
+    - 另一个方向 (Sketch)
+        - in summary:   ![](images/4.-kirby-calculus-1780375026397.webp)
+        - 给定两个 framed link $L_1,L_2$, 我们考虑从它们出发构造的 4 mfld (2-handlebodies) $W_1=W(L_1),W_2=W(L_2)$. 由假设, 首先有 $\partial W_1\cong \partial W_2$. 于是我们可以沿着公共的边界将它们粘起来, 得到 $Y^4=W_1\cup W_2$, 它是一个闭的 4 mfld.  
+        - 我们希望 $Y^4$ 能够成为某个 5-mfld 的边界. 
+            - 回顾我们知道闭 4 维 (定向) 配边的分类 : $\Omega_4^{SO}\cong\mathbb{Z}$, 其中同构映射为 $W^4\mapsto \sigma(W^4)$, 右边是相交型矩阵的 signature. 于是我们可以通过改变闭 4 mfld 的 signature 来使它成为 5-mfld 的边界. 改变 signature 的方式就是和 $\pm\mathbb{CP}$ 做连通和. 
+            - 于是我们可以修正 $W_i':=W_i\#\pm_i\mathbb{CP}$使得$Y':=W_1'\cup W_2'$bound 5-mfld$Z^5$. 
+            - 我们得到(相对)配边 $(Z^5;W_1',W_2')$. 即 $Z^5$可以通过在$W_1'\times I$ 上粘接 handles 得到.
+        - 化简 handle 分解 $(Z^5;W_1')$: 
+            - 由于此时 dim=5, 我们可以使用 handle trade ($h^1=h^1+(h^2+h^3)=(h^1+h^2)+h^3=h^3$), 从而消去 handle 分解中的 1,4 handle. 至此有 $Z^5=W_1'\times I+(h^2)+(h^3)=(Z^5;W_1',W_2')$. 
+            - 我们从中间($W_1'\times I+(h^2)$处)切开这个配边. 利用对偶的观点, 我们有$Z=(W_1'\times I+(h_2))\cup(W_2'\times I+(\tilde{h^2}))$(后面这个$\tilde{h^2}$ 是 3-handle 对偶得到的). 
+            - 我们有两条路径走到在中间这个 level: 从 $W_1'$或者$W_2'$. 两条路径给出...
+
+我们上面提到, Kirby move 有两种表述方式 (第二种是对第一种的"简化"). 下面的命题证明这两种表述方式是等价的. 
+- Prop: ![](images/4.-kirby-calculus-1780375168914.webp)
+![](images/4.-kirby-calculus-1780375236491.webp)![](images/4.-kirby-calculus-1780375247511.webp)![](images/4.-kirby-calculus-1780375283095.webp)![](images/4.-kirby-calculus-1780375300243.webp)![](images/4.-kirby-calculus-1780375307295.webp)
+
+## Calculus on Dehn Surgery
+
+我们在 integer surgery 上的计算可以延拓到 rational surgery 上去. 
+
+- Rolfsen twist ![](images/4.-kirby-calculus-1778507292797.webp)
+    - 证明: ![](images/4.-kirby-calculus-1780371807209.webp)
+
+- Slam-dunk (灌篮) ![](images/4.-kirby-calculus-1778506676792.webp)
+    - 证明 (不严格): ![](images/4.-kirby-calculus-1780371862485.webp)
+    - Remark: 上面的证明涉及到"无穷"framing, 看不出为什么需要 $K_1$ 的 framing 取成整数. 更严格的证明见 R-G p 164.
+
+- Rolfsen twist 可以诱导 blow up ![](images/4.-kirby-calculus-1780371919275.webp) 
+- 例子:  ![](images/4.-kirby-calculus-1780371950184.webp)
+
+- Prop: Rolfsen twist 是 rational surgery 中的"Kirby move".  ![](images/4.-kirby-calculus-1780372339192.webp)
+## Surgery and Dehn Surgery
+
+我们知道整手术属于有理手术, 一个自然的问题是: 这个包含是严格的吗? 
+- 答案: 
+    - 虽然对于 knot 来说, rational surgery 含有更多的信息. 
+    - 但对于 link 而言, link 上的 integer surgery 涵盖的信息和 link 的 rational surgery 一样多. 
+    - 即我们有下面图表: ![](images/4.-kirby-calculus-1778504955455.webp)
+- 证明: ![](images/4.-kirby-calculus-1778505755311.webp)
+
+下一个自然的问题是: rational knot 和 rational link 之间差了多少? 是否所有闭 3 mfld 都能被 rational knot 实现? 
+- 答案是否定的: 上面的例子中证明了 $S_k^3(\gamma)\neq T^3$对于任意的$\gamma\in \mathbb{Q}$, 因为有理手术给出的 3 mfld 的 $H_1$ 是被控制住的.

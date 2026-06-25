@@ -1,0 +1,350 @@
+---
+title: "Kirby Diagram Of 4 Manifold"
+date: 
+categories:
+  - kirby-diagram
+  - 4-manifold
+  - handle-decomposition
+  - framed-link
+  - smooth-manifold
+  - low-dimensional-topology
+description: "介绍4流形的Kirby图及其handle分解"
+---
+
+本节我们总考虑光滑流形.
+
+## Kirby diagram of 4-mfld
+- 在 4 mfld $M$ 上粘接 2-handle:
+    - 由边界 $\partial M$ 上的 framed knot 决定.
+- 在 4 mfld $M$ 上粘接 1-handle
+    - 唯一, 可以画成边界 $\partial M$上的一对$D^3$.
+- 闭 4 mfld 的 handle 分解
+    - 可以被 1,2-handle 的粘接方式唯一确定.
+
+在 0-handle 上面粘接 1,2 handle 这件事可以被 Kirby diagram 描述, 故闭 4 流形的 handle 分解可由 Kirby 图完全刻画。即我们有满射:
+ $$\{ \text{Kirby diagram} \}\twoheadrightarrow\{  \text{closed 4-mfld}\}$$
+ *上面这个不准确, 应改为*: ![](images/4.-kirby-calculus-1778498648067.webp)
+ - 注: 并不是所有的 Kirby diagram 都能给出闭的 4 mfld. 我们称那些给出闭 4 mfld 的 Kirby diagram 为 closed Kirby diagram. 
+ 如果我们考虑不带有 1-handle 的闭 4 mfld, 那么此时的 Kirby diagram 就是 $S^3$ 上的 framed link. 此时我们有满射:
+ $$
+\{ \text{closed framed link in }S^3 \}\twoheadrightarrow \{ \text{closed 4mfld without 1,-handle} \}
+$$
+- Open problem: 单连通的闭 4 mfld 是否总存在不含 1-handle 的 handle 分解? 
+
+如果我们放宽到带边的 4 mfld, 那么 Kirby diagram 一般不能唯一确定 4 mfld, 我们需要更多的限制, 比如要求 4 mfld 不带 3-handle. 
+于是我们可以有满射: 
+$$
+\{ \text{framed link in }S^3 \}\twoheadrightarrow \{ \text{4mfld without 1,3-handle (2-handlebody)} \}
+$$
+
+## Kirby diagram of 3-mfld
+
+虽然 4 mfld 上的结果不够好,  但对于闭的 3 mfld $M$: 
+- 我们总可以将它实现为 4 mfld 的边界, 即存在 $W^4$,$\partial W^4=M^3$ 
+- 如果我们对 4 mfld 进行不改变边界的操作 ($W\mapsto W'$), 那么取边界之后会得到相同的 3 mfld $\partial W'=\partial W=M$. 
+- 通过上述操作，我们总可以消去 4 mfld 的 1,3-handle。
+- 于是, 任意的闭 3 mfld 总可以被写成不带 1,3-handle 的 4 mfld 的边界, 从而被不带 1,3-handle 的 Kirby diagram ($S^3$ 上的 framed link) 表示. 
+- 综上, 我们有满射:  
+$$
+\{ \text{framed link in } S^3 \}\twoheadrightarrow \{ \text{closed 3-mfld} \}
+$$
+我们其实知道这个映射的 kernel: 两个 framed link 表示相同的 3 mfld 当且仅当它们之间差了有限多个 Kirby moves. 即我们实际上有双射: 
+$$
+\{ \text{framed link in }S^3 \}/\text{Kirby moves}\cong \{ \text{closed 3-mfld} \}/\text{Homeo}
+$$
+
+## From kirby diagram to quantum invariant
+
+- 利用 Ribbon category, 我们可以定义"colored" framed link (ribbon link) 的量子不变量 $F$. 
+- 利用 Modular tensor category (在 Ribbon cate 上加一些修正), 我们可以定义 (uncolored) framed link 的量子不变量, 使得它在 Kirby move 下不变, 即我们实际上定义了 3 mfld 的不变量, 记为 $\tau(M)$. 这被称为 3 mfld 的 Reshetikhin–Turaev invariant.
+
+# Handle Decomposition
+
+handle 分解理论主要有以下结果:
+- handle 分解的顺序: 
+    - 总可以按照 handle 的 index, 从下往上粘. 对于相同的 index 而言, 粘接顺序可以是任意的. 
+- handle 分解的对偶: 
+    - $(X,\partial X)$的 handle 分解可以被看成$(X,\emptyset)$ 的 handle 分解的对偶:  ![](images/pasted-image-20260412151625.png) 观察 attaching sphere 和 belt sphere 之间地位的变化:
+        - 0-handle: 原来的 0-handle 的 belt sphere 变成了新的 2-handle 的 attaching sphere.
+        - 1-handle: 原来的 1-handle 的 belt sphere 变成了新的1-handle 的 attaching sphere. 
+- handle 分解的等价: 
+    - handle slide 和 handle cancelling. 具体来说，handle slide 允许我们在同 index 的 handles 之间进行滑动操作, 而 handle cancelling 则描述了相邻 index 的 handle 对在满足一定相交数条件时可以相互消去. ![](images/pasted-image-20260412151647.png)![](images/pasted-image-20260412151705.png)
+- handle 分解的化简: 
+    - 如果 $X^n$ 连通, 则可以假设只有 1 个 0-handle. 
+    - 如果 $\partial X=\emptyset$, 则可以假设只有 1 个 n-handle, 如果 $\partial X\neq \emptyset$, 则可以假设没有 n-handle.
+    - 证明: 使用连通性和 handle 分解的对偶. 
+- handle 分解的存在性和唯一性. 
+    - 存在性: Morse function
+    - 唯一性: Cerf's Theorem
+        - handle 分解: $(X,\partial X)$的 handle 分解是一些 handle$h^k_i$, 满足 $X=\partial X\times I+\bigcup_i h_i^k$.
+        - Cerf's Thm: 两组 handle $h_i^k,{h'}_j^l$都给出$(X,\partial X)$ 的 handle 分解, 当且仅当它们之间相差有限多个 handle slide, handle cancelling (or its inverse move), isotopy. 
+
+# Handle Decomposition of 4 mfld
+
+### 流形 $X\cup_{\varphi}h$由$(\varphi_0,f)$ 的同痕类决定
+
+我们考虑粘接后的流形 , 其中 $h=D^k\times D^{n-k},\varphi:\partial D^k\times D^{n-k}\to \partial X$;($\varphi$ 是 embedding)
+ 1. 首先, 流形 $X\cup_{\varphi}h$由$\varphi$ 的同痕类决定. 
+ 2. 其次, 映射 $\varphi$作为从$\partial D^k\times D^{n-k}$打到$\partial X$的 embedding, 可以由 embedding$\varphi_0:\partial D^k\times 0\to \partial X$(使得$im\varphi_0$在$\partial X$中有 trivial normal bundle) 以及 framing$f$ 来决定.
+3. 即流形 $X\cup_{\varphi}h$由 pair$(\varphi_0,f)$ 的同痕类决定. 
+
+我们下面只要讨论 $\varphi_o$的同痕类, 以及$S^{k-1}$ 上的 framing 分别由什么决定.
+
+### $S^{k-1}$ 上的 framing
+
+- framing 的结构
+    - 在我们考虑通过映射 $\varphi$向$X^n$上粘接 handle$h^k$时, 我们默认了$\varphi_0$在$\partial X$上的法丛是平凡的. 于是$\text{im}\varphi_0$ 上的一个 framing 就是这个法丛的一组构成基底的截面.
+    - 任意两个截面之间, 相差一个映射 $S^{k-1}\to GL(n-k)$, 它对应基本群$\pi_{k-1}(GL(n-k))\cong\pi_{k-1}(O(n-k))$中的一个元素. 如果我们固定一个 framing$f_0$, 则可以得到 framing 和群 $\pi_{k-1}(O(n-k))$之间的双射. 即我们有一个自由, 可迁的群作用$\text{framing}\times\pi_{k-1}(\mathrm{O}(n-k))\to \text{framing}$. 
+    - 这可以表述成: 全体 framing 的集合是群 $\pi_{k-1}(O(n-k))$ 上的一个 Torsor / 主齐性空间, 这里的 Torsor 类似于我们之前了解的 affine space "仿射空间".
+    - 由于法丛作为子流形有一个典则的定向, 上面的对称群其实都是保定向的那个, 即 $O(n-k)$应该写成$SO(n-k)$. 
+
+- 4 mfld handle 分解中的 framing
+    - $k=0$ 时, 粘接 0-handle 就是做不交并, 不需要考虑粘接问题和 framing.  
+    - $k=1$, $\pi_0(O(n-k))=\mathbb{Z}_2$, 这两种 framing 分别给出一个定向的，一个非定向的 1-handlebody。如果我们只关心定向的情形($\pi_0(SO(n-k))=0$)，即 1-handle 上的 framing 唯一。  ![](images/pasted-image-20260318144954.png)
+    - $k=2$, $\pi_1(O(2))=\pi_1(SO(2))\cong\mathbb{Z}$, 即 2-handle 的 framing 被一个整数所标记. 
+    - $k=n-1,n$, $\pi_{k-1}(O(n-k))=\pi_{n-2}(O(1))\text{ or }\pi_{n-1}(O(0))$, 这两个群都平凡, 故 $n-1$, $n$ handle 上的 framing 都是平凡的. 
+
+###  $\varphi_0$ 的同痕类
+
+- 同伦与同痕
+    - 同伦（homotopy）：指存在连续映射 $F: I \times N \to M$（$I=[0,1]$），使得 $F(0,\cdot)$和$F(1,\cdot)$ 分别为两个嵌入，中间时刻映射仅需连续，允许自交；
+     - 同痕（isotopy）：是更强的条件，要求上述连续映射 $F$在所有时刻$t \in I$ 均为嵌入（无自交），即嵌入的“连续形变”过程中始终保持嵌入性质。
+     - 例子: ![](images/pasted-image-20260412133558.png)
+    - Lemma: 对于 **$2(l+1) \leq m$** 的情形（$l$ 为子流形维数，$m$为底流形维数），将$l$维流形$N^l$嵌入到$m$维流形$M^m$ 的两个同伦嵌入必定是同痕的。
+
+- Lemma 的说明 
+    - 要理解为何 $2(l+1) \leq m$能保证同伦嵌入必同痕，需分析嵌入的 “自交可能性”, 看待相交型问题的主要观点是横截相交原理: 即通过对流形$M$上的两个子流形$X_1,X_2$在相交处进行扰动 (从而达到一般位置: 横截相交), 相交集$X_1\cap X_2$的维数等于$\dim X_1 + \dim X_2 - \dim M$.
+     - 若 $2(l+1) < m$：此时子流形 $N^l$的 “厚度”（维数相关）远小于底流形$M^m$的 “空间”，一般性同伦$F: I \times N \to M$可避免自交 —— 因为自交需要$I \times N$中两点映射到$M$同一点，而$2(l+1) < m$意味着这种 “碰撞” 可通过微小扰动消除，最终$F$ 成为同痕。
+    - 若 $2(l+1) = m$：此时同伦可能出现自交点，但我们总可以假设自交点对应 $I \times N$中不同$I$坐标的点，(如果相交在相同的$I$坐标, 则我们一定可以通过微小的扰动使其坐标不同: 因为$t_1=t_2$本质上又增加了一个维度的限制) 即对于每个参数$t\in I$, 同伦映射都是 embedding, 从而是 isotopy。
+
+- 在 4 mfld 上粘接: 
+    - 当我们向 $M^n$上粘接 k-handle$h$时, 粘接球面的维数为$k-1$, $M^n$边界的维数为$n-1$. 故我们的判定条件为: $2k \leq n-1$.
+    - 粘接 0-handle: 是不交并
+    - 考虑粘接 1-handle, 此时 $2\leq4-1$, 故只要考虑嵌入映射 $S^0\to M$的同伦型$\pi_0(M)$, 当 $M$ 连通时, 这是平凡的. 
+    - 考虑粘接 2-handle. 此时我们有: $2\times2>4-1$, 故仅仅考虑嵌入映射 $\varphi_0$ 的同伦类是不够的, 即我们处理的是纽结的同痕问题.
+
+- 其他维数上的 2-handle：
+    - 在 $M^n,n\geq5$上粘接 2-handle, 此时$k=2,n=5$, 而 $2\times2\leq5-1$, 故我们只要考虑 2-handle attaching sphere $S^1$ 的同伦型.
+    - 在 $M^3$上粘接 2-handle, 此时虽然$2\times2<3-1$, 但我们在双曲曲面上有定理: ![](images/pasted-image-20260412154322.png)
+        - 这个结果对于所有闭曲面都对 (Baer-Epstein) , 即闭曲面上的简单闭曲线痕当且仅当同伦. ![](images/3.-kirby-diagram-1777301061421.webp)
+        - (回顾: 双曲曲面是欧拉数小于 0 的曲面, g 亏格的闭曲面的欧拉示性数为 $2-2g$. )
+    - 综上, 只有在 4-mfld 上面粘接 2-handle 的时候才会出现纽结理论, 即关心"纽结的同痕类". 
+
+- 综上: 当我们考虑闭的 4 mfld $M$ 时: 
+    - 对于 1-handle: 
+        - $\varphi_0$ 同痕 (同伦) 意义下唯一. 
+        - framing 由 $\pi_0(O(n-1)) \cong \mathbb{Z}_2$ 给出. 若要求可定向, 则取法唯一.
+    - 对于 2-handle:
+        - $\varphi_0$ 在同痕意义下选取
+        - framing 对应于 $\pi_1\left(O\left(2\right)\right)\cong\mathbb{Z}$ ($O\left(2\right)$ 是两个 circle 的不交并)
+    - 对于 3,4-handle: 我们使用对偶的观点将其理解成 0,1-handle.  
+    - 最后我们将流形 $M$分成了两个部分:$X_1,X_2$, 其中 $X_1$代表 0,1,2-handle 粘接得到的结果,$X_2$则代表 3,4-handle 粘接的结果,$X_2$是一个 1-handlebody.$X_1,X_2$有相同的边界,$M$是由$X_1$和$X_2$ 沿着它们的公共边界粘合而成的。
+    - 故我们只要考虑: 粘接 1-handle, 粘接 2-handle, 以及一个边界上的微分同胚。
+
+- $M$ 不依赖于边界上的微分同胚:
+    - 由于 $X_2$是由 0,1-handle 粘接而成, 它形如$\natural m S^1\times D^3$(这个记号是边界连通和). 从而边界为$\# mS^1\times S^2$. 于是 $X_1$ 的边界也是这个. 
+    - Laudenbach-Poénaru 定理: 对于这种特定的边界 $\partial H = \# m (S^1 \times S^2)$，它的**任何**自微分同胚 $\psi$，都必定可以光滑地延拓到内部的柄体 $H$ 上。
+    - 命题: $M$不依赖于$X_1,X_2$之间的粘接映射$\phi: \partial X_1\to\partial X_2$ 的取法. 
+    - 证明: 给定两个不同的粘接映射 $\phi,\tilde{\phi}$，它们相差一个边界自同胚 $\varphi = \tilde{\phi} \circ \phi^{-1}$. 
+
+![](images/3.-kirby-diagram-1776739028218.webp)
+
+- 3 维中的类比: 
+    - Heegaard splitting:
+        - 我们考虑闭的 3 mfld. 我们将 3 mfld 的 handle 分解拆成两个部分来看: 0,1-handle 和 2,3-handle. 
+            - 由于粘接 1-handle 的方式是唯一的, 0,1-handle 构成 solid torus. 
+            - 用对偶的观点看 2,3-handle, 对偶之后是 0,1-handle, 粘接起来也得到 solid torus. 
+            - 对于闭 3 mfld, 0,1-handle 和 2,3-handle 沿着公共边界 ($\Sigma_g$) 粘起来.
+        - 于是一个闭的 3 mfld 实际上可以看作两个两个 solid torus 沿着公共边界粘起来, 如果我们知道了 1-handle 的个数, 那么复杂度全部在粘接映射上. 
+        - 这种将闭的 3 mfld 分解成两个 solid torus 的看法叫做 3 mfld 的 Heegaard splitting. 
+    - 在 3 mfld 中, 粘接 solid torus 的方式不唯一. 
+        - 因为边界上的自同胚未必能延拓到内部. 
+        - 例子: 考虑 solid torus $S^1\times D^2$, 它的边界是$T^2$, 映射类群 $MCG:=\{  \text{Diffeo}\}/\text{isotopy}$为$\mathrm{SL}(2,\mathbb{Z})$. 映射类群的生成元是沿着 $T^2$ 经线, 纬线的 Dehn twist. 
+            - 沿着纬线的 Dehn twist 无法被延拓到 solid torus. ![](images/3.-kirby-diagram-1777307306303.webp)![](images/3.-kirby-diagram-1777307242211.webp)
+
+- 带边界四维流形的 handle 分解
+    - 假设 $X$ 是连通的带边流形. 
+    - Recall: 我们总可以认为带边流形的 handle 分解不存在 4-handle. 此时我们不仅需要考虑 1-handle 和 2-handle, 还要考虑粘接 3-handle. $X$ 的信息完全由 1,2,3-handle 决定.
+    - 假设 $X$的边界是连通的, 且$X$ 单连通, 则 3-handle 的粘接方式是唯一的, 从而 3-handle 的信息只取决于粘接 3-handle 的个数.
+        - 粘接 3-handle 需要考虑 embedding 和 framing. 我们已经知道, 对于 (n-1)-handle, frame 是平凡的. 于是只要考虑粘接球面 $S^2$ 的嵌入方式. 
+        - 我们考虑粘接 3-handle 对于 $X_3$边界的影响. 粘接一个 3-handle 相当于在边界上挖掉一个$S^2 \times D^1$并粘上一个$D^3 \times S^0$. 若这个粘接球面 $S^2$是可分的 (将$\partial X_2$分成两个连通分支), 则最后得到$X$的边界一定不连通. (因为粘回去的$D^3\times S^0$ 不会让流形的连通性变得更好.)
+        - 于是我们只要考虑边界 $\partial X_2$上的不可分球面$S^2$, 我们可以说明这些不可分球面是等价的, 即存在 $\partial X_2$ 上的微分自同胚将一个映成另一个. 
+        - 定理 (Trace): 如果 $M$是一个单连通的四维流形（这里对应$X_2$），那么其边界 $\partial M$上的任意两个不可分 2-球面，都可以通过$M$ 的自微分同胚相互转化。
+            - 类比: 将 $S^2$ 看作三维流形上的 2-knot, 于是这个定理就像是曲面上结果的推广: 曲面上任意两个不可分曲线在同胚意义下等价.
+        - 利用定理, 立刻得到结果. 
+
+# Kirby diagram: definition
+
+根据上面的分析, 我们知道 4 mfld 的 1,2-handle 已经描述了充分多的信息了. 我们可以将 1-handle 和 2-handle 的信息用图示画在纸上, 很大程度上, 这就可以(在微分同胚意义下)表示一个 4 mfld, 这种表示就是 4 mfld 的 kirby diagram. 
+## Heegaard diagram
+
+先看 3-dim 的情形, 如果有边界, 则不需要 3-handle, 如果闭的, 则粘接 3-handle 的方式是唯一的.
+于是我们只要考虑在一个 $D^3$上面粘接 1,2-handle. 它的边界是$S^2$, 由于粘接的嵌入映射总不是满射, 我们不妨在 $\mathbb{R}^2$ 上考虑.
+
+- 1-handle
+    - 我们在 $\mathbb{R}^2$上画两个圆盘来表示粘接 1-handle 的位置$S^0\times D^2$:
+    - 示意图: ![](images/pasted-image-20260412155419.png)
+    - 我们应该想象为把这两个 disk 按照图中的反射捏到一起, 这会提供一个管道, 即 1-handle.
+    - 注意到粘接 1-handle 之后 0-handle 的边界 $S^2$ 已经被改变了, 它上面的两个 disk 被粘到了一起, 即我们可以从一个 disk 穿梭到另一个 disk.
+- 2-handle
+    - 我们在这个粘接 1-handle 之后的新的表面上粘接 2-handle. 根据之前的分析, 我们只关心它的粘接 circle 的同伦类, 即一个表面上一个简单闭曲线的同伦类. ![](images/pasted-image-20260412163949.png)![](images/pasted-image-20260412163933.png)
+
+## Kirby diagram
+
+类似的, 这里我们在 0-handle $D^4$的边界$S^3$上画出粘接的 1,2-handle. 同理, 我们可以在$\mathbb{R}^3$ 中考虑.
+
+- 1-handle:
+    - 我们在 $\mathbb{R}^3$中画两个$D^3$ 来表示粘接 1-handle 的位置.  ![](images/pasted-image-20260412164155.png)
+    - 我们应该想象通过粘接映射(图中的反射)将这两个 $D^3$ 粘到一起, 这样会产生一个管道, 即一个 1-handle.
+- 2-handle:
+    - 我们在这个粘接 1-handle 后得到的新的表面上粘接 2-handle. 回顾 2-handle 被一个嵌入纽结的同痕类和纽结的 framing 决定, 这在图上就表示为一个纽结图和一个数字 (下图没有标注数字): ![](images/pasted-image-20260412164548.png)
+
+## Examples
+
+- Heegaard diagram
+
+- $S^1\times S^2$:![](images/3.-kirby-diagram-1778559671017.webp)
+- $I\times T^2$: ![](images/pasted-image-20260412171916.png)
+
+- $T^3:=S^1\times S^1\times S^1$![](images/3.-kirby-diagram-1776781397326.webp)![](images/3.-kirby-diagram-1776781303022.webp)
+
+# Framing and Linking Number
+
+这一部分, 通过考虑 linking number, 我们讨论:
+- Kirby diagram 和相交数的关系
+- 以及"基准" framing 的选取
+
+![](images/page01-2-2.jpg)
+
+framing 可以被看成 $Aut(N_K)$ 上的元素.
+
+![](images/3.-kirby-diagram-1776781070286.webp)
+
+![](images/page03-2-2.jpg)
+![](images/3.-kirby-diagram-1777353280415.webp)
+
+![](images/page05-2-2.jpg)
+
+![](images/page06-2-2.jpg)
+
+![](images/page07-2-2.jpg)
+
+![](images/page08-2-2.jpg)
+![](images/page09-2-2.jpg) 补充: $\mu_K$是$H_1(M-NK)$ 中的自由元.
+- 利用 $\mu_K$和$K$ 的 Seifert Surface 的代数相交数为 1.
+- 如果它是挠元, 则代数相交数只能是 0.
+![](images/page17-2-2.jpg)
+![](images/page10-2-2.jpg)
+![](images/3.-kirby-diagram-1779936389331.webp)这个 Seifert Surface 告诉我们三叶结的亏格是 1.
+- 我们已经造出来了亏格为 1 的 Seifert Surface
+- 纽结的亏格是 0 当且仅当它 bound disk, 当且仅当它是 unknot. 我们知道三叶结不是 unknot.
+![](images/page11-2-2.jpg)
+把 $K_2$完全拿到$K_1$ 上面.
+![](images/page12-2-2.jpg)
+也可以把 $K_2$完全拿到$K_1$ 的上面.
+![](images/page13-2-2.jpg)
+
+![](images/page14-2-2.jpg)
+
+![](images/page15-2-2.jpg)
+
+![](images/3.-kirby-diagram-1776690621613.webp)![](images/3.-kirby-diagram-1776690675146.webp)
+![](images/page18-2-2.jpg)
+
+![](images/page19-2-2.jpg)
+
+![](images/page20-2-2.jpg)
+
+# Kirby Diagram: Examples
+
+我们已经建立的闭 4 mfld 和 framed link 之间的对应.
+
+这一小节的逻辑是这样的: 给出 link 上的操作, 我们希望知道在 4 mfld 上的对应是什么; 或者反过来, 我们有一些构造 4 mfld 的方式, 然后我们会问这些构造的 4 mfld 对应的 link 是什么.
+
+1-handle 的引入会带来很多复杂度, 当我们考虑 Kirby diagram 时, 往往分开考虑带有 1-handle 和不带 1-handle 的情形. 当然不带 1-handle 的情形要简单的多.
+## Disk/Sphere bundle over $S^2$
+
+- $S^2$上的所有$D^2$bundle 可以被$frame=n$ 的 unknot 表示。
+    - 所有 $S^2$上的$D^2$ bundle 可以被欧拉数分类:
+        - 将 $S^2$分解成两个 disk, 它们上面的丛是平凡的. 于是不平凡的地方来自于粘接映射. 两个 disk 沿着公共的边界$S^1$粘接, 在$D^2$bundle 上这个粘接映射会诱导一个从$S^1$到$\operatorname{Diff}(D^2) \simeq SO(2)$ (考虑定向情形) 的映射。这个映射的同伦类对应着 bundle 的欧拉数。
+    - framing=n 的 unknot 可以用来表示 $S^2$上的$D^2$ bundle, 这也和一个整数一一对应.
+    - framing=n 的 unknot 恰好对应欧拉数为 n 的 bundle:
+        - $\text{framing}=lk(K,K')=\text{intersection number of surface}$.
+
+$S^2$上的$S^2$ bundle
+- 通过计算对称群 $SO(3)$的基本群, 只有两个, 记为$S^2\times S^2,S^2\tilde{\times }S^2$
+- $S^2\times S^2$的 Kirby diagram (我们可以拿$T^2=S^1\times S^1$ 的 diagram 来做类比):
+![](images/3.-kirby-diagram-1776744552606.webp)
+-  $S^2\tilde{\times}S^2$ 的 Kirby diagram: hopf link, framing 一个为 0, 一个为 1.
+    - 这里我们只的是那个带有标准结构的 $S^2\tilde{\times}S^2$.
+    - 它是 2-handlebody, 我们可以通过计算它的相交型矩阵找到它的 kirby diagram.
+        - $H_2$的生成元取成 bundle 的 fiber 和 section (各自对应一个$S^2$)
+        - 相交型矩阵算出来是 $\left(\begin{matrix}0&1\\1&*\end{matrix}\right)$. 其中 $*$ 代表 section 的自相交数.
+        - 根据相交型矩阵的分类, 我们知道这种矩阵在合同等价的意义下只有两种, 分别对应 $*$ 为奇数和偶数的情形.
+        - 于是这个唯一的不平凡的 bundle 只能对应 $\left(\begin{matrix}0&1\\1&1\end{matrix}\right)$, 从而它的 Kirby diagram 就是![](images/3.-kirby-diagram-1778558416136.webp)
+## Connect sum, boundary connect sum
+
+如何从简单的 link 得到复杂的 link?
+最简单的办法就是做 link 的不交并. 我们想知道这在 4 mfld 上会对应什么:
+- 当我们对流形做连通和, 在 Kirby diagram 上对应为不交并 (unlinked).
+![](images/3.-kirby-diagram-1776692204275.webp)![](images/3.-kirby-diagram-1776692216289.webp)
+![](images/3.-kirby-diagram-1776692185211.webp)
+
+## Plumbings
+
+一个自然的组合 link 的方式就是把一些纽结 "link" 到一起, 我们想知道这个操作在 4 mfld 中的对应. 它对应的操作叫做"plumbings" (管道). 所有相交局部上看都是这样.
+- 2 维中的情形:
+![](images/3.-kirby-diagram-1776745719118.webp)
+![](images/3.-kirby-diagram-1777307185398.webp)
+
+- 例子: $S^2\times S^2$
+    - 考虑它的 $H_2$ 的两个生成元, 局部相交处就形如这个 plumbing.
+- 构造 "$-E_8$ 流形": ![](images/3.-kirby-diagram-1776745692433.webp)
+    - 这个 4 mfld只有 0,2-handle, 故我们可以直接读出它的相交形式矩阵.
+    - 这样造出来的 4 mfld 确实光滑, 且相交形式是 $E_8$, 但它是带边流形, 故不是我们常说的那个. 它的边界是庞加莱球面 $\Sigma(2,3,5)$. (从边界上读出来)
+    - 我们可以用拓扑平凡(可缩)的流形将边界堵上, 从而得到一个拓扑的 $E_8$流形. 但是没有办法保证这个粘接过程是光滑的, 即得到的流形未必光滑. 事实上, 我们前面提到过, 根据 Rochlin 的结果, 不存在光滑的闭的$E_8$ 流形.
+
+## Double
+
+从一个带边的 4 mfld 得到不带边的 4 mfld 的标准操作是取 double, 我们想知道它在 link 上会对应到什么.
+
+我们这里考虑 $X$ 只有 0,1,2-handle 的情形.
+
+- handle 分解的对偶 ![](images/pasted-image-20260412151625.png) 做完对偶之后, handle $h$的 belt sphere 变成了 handle$h^*$ 的 attaching sphere.
+
+- Double:   ![](images/3.-kirby-diagram-1776745589167.webp)
+    - 当对 $X$做 double 时, 我们需要将两个$X$沿着相同的边界$\partial X$, 使用恒等映射, 粘到一起. 我们将这两个 $X$分别记成$X_1,X_2$, 并用对偶的观点看 $X_2$, 记为 $X_2^*$, 即我们有 $DX=X_1\cup X_2=X_1\cup X_2^*$
+    - 在做粘接 $DX=X_1\cup X_2$的时候, 我们是把$X_1,X_2$上的 belt sphere 用恒等映射粘到一起(更严格的, 粘接位置是$D^k\times\{  \text{belt sphere}\}$, 粘接映射是恒同) 即 $DX=X_1\cup_{\text{belt sphere}} X_2$.
+    - 当我们对 $X_2$做对偶之后, 它上面的 belt sphere 变成了 attaching sphere, 即$D^k\times \{ \text{belt sphere} \}$变成了$\{ \text{attaching sphere} \}\times D^k$, 我们只改变了看法, 粘接映射仍然是恒同映射. 写成 $DX=X_1\cup_\text{attaching sphere}X_2^*$
+    - 于是, 当我们使用观点 $DX=X_1\cup_\text{attaching sphere}X_2^*$来看 double 操作时, 我们在$X_1$上每个 2-handle 的 belt sphere 处用恒等映射粘接$X_2^*$ 中的 2-handle.
+        - 因为是粘在 belt sphere 上面, 故对应的粘接纽结是 unknot.
+        - 因为用的是恒等映射, 故 framing=0.
+
+## Bundle over lower manifold
+
+- 任意 $S^2$bundle$\pi: X\to F$可以被视为$D^2$ bundle 的 double
+    - $S^2$bundle 会对应一个$\mathbb{R}^3$向量丛, 记为$E$. 由于底流形是一个曲面, 维数是 $2$, 于是这个 $\mathbb{R}^3$ 丛上任意两个截面总可以假设不相交 (横截位置不相交)(在 fiber 上看, 全空间维数是 3, 截面维数是 1). 即存在一个处处非零的截面.
+    - 利用这个截面, 我们可以得到这个 $\mathbb{R}^3$丛上的一个子丛, 它是平凡线丛, 记为$\epsilon$
+        - 回顾: 一个向量丛是平凡的当且仅当存在一组处处非零的截面, 使得这些截面在每个 fiber 上张成了整个向量空间. 这里我们考虑的就是维数为 1 的情形.
+    - 利用 $\mathbb{R}^3$丛上的度量，对这个$\mathbb{R}^3$丛沿着平凡线丛分解, 我们得到$E=F\oplus \epsilon$, 其中 $F$是一个$\mathbb{R}^2$ 丛.
+        - 回顾: 当底空间是紧流形时, 它上面的向量丛上总可以定义度量: 局部平凡 + 单位分解.
+    - 我们在 $E$上定义函数$f: E\to \mathbb{R}$, 其中 $f$将向量映射到它在$\epsilon$方向上的分量. 将这个函数限制在$\mathbb{R}^3$中的单位球面上, 即得到原来的$S^2$bundle$X$打到$\mathbb{R}$上的映射, 记为$f|_X$. 这个映射在 $[0,1]$和$[-1,0]$下的原像给出了两个$X$上的$D^2$bundle, 它们在公共边界上用 id 粘到了一起. 故 double 在一起得到原来的$S^2$bundle$X$.
+
+- 闭曲面 $F$上的$D^2$bundle (记为$X$)。
+    - 对于 $D^2$bundle$\pi: X\to F$, 我们可以先对 $F$handle 分解, 它上面 handle 的拉回将给出$X$ 上的 handle 分解.
+        - 分解中 handle 的个数, index 是一样的. (回顾我们之前讨论过的 $X\times I$的 handle 分解, 后者$I$ 是一个 0-handle).
+        - 但由于 $X$相比$F$多了$D^2$ bundle 的复杂度, 故我们的粘接映射会相对复杂一些.
+    - 我们先在 $F$ 上挖个洞, 使其成为带边曲面.
+        - 我们知道, 对于闭流形 $M^n$, 我们总可以假设只有一个 n-handle. 在这里, 我们可以假设 $F$上只有一个 2-handle. 第一步是将这个 2-handle 取下来, 并将剩下的流形记为$F^*$, 它是带边流形. (它的同伦类由小于等于 1 的 cell 构成)
+    - 当我们要求整个 $X$ 定向时，$F^*$上的$D^2$ bundle 是唯一的。
+        - $F^*$由 0,1-handle 构成. 当我们限制在每个 handle 上时, 得到的$D^2$bundle 总是平凡的。于是只要考虑粘接映射. 1-handle 的粘接映射对应的扭转为$\pi_0(O(2))=\mathbb{Z}/2\mathbb{Z}$, 分别对应保持定向和反转定向. 当 $X$的定向固定时, 如果我们知道曲面$F$ 的定向, 自然也就知道了丛的定向.
+            - 注意, 只要有一个 1-handle 是反定向的, 这个 bundle 就是反定向的, 两个反定向的 1-handle 不会抵消, 事实上, 只要有一个 1-handle 反定向, 就等价于所有的 1-handle 都反定向
+    - 于是 bundle $X$完全由$F$上 2-handle 的粘接映射决定, 这个粘接映射对应的 bundle 上的扭转为$\pi_1(SO(2))=\mathbb{Z}$. 这个整数就是粘接 2-handle 的 framing, 也是丛 $X$ 的欧拉数.
+        - 欧拉数被定义为截面的自相交数, 等于一般截面和零截面的相交数.
+
+- $T^2$上的$D^2$ bundle![](images/3.-kirby-diagram-1777347666397.webp)
+- 更一般的情形:  ![](images/3.-kirby-diagram-1777347599770.webp)
+
+- $\mathbb{RP}^2$上的$D^2$ bundle![](images/3.-kirby-diagram-1777349463207.webp)
+
+ - 3-mfld 上的 $S^1$ bundle. ![](images/3.-kirby-diagram-1777349574188.webp)![](images/3.-kirby-diagram-1777349604867.webp)

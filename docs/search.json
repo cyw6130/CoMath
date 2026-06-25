@@ -2636,5 +2636,109 @@
     "title": "Intersection Form of 4-Manifold",
     "section": "8.1 handle 分解的 dual",
     "text": "8.1 handle 分解的 dual"
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "",
+    "text": "关键词： framed link；Kirby calculus；ribbon Hopf algebra；ribbon category；modular category；Reshetikhin–Turaev invariant",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#framing-与-writhe-的关系",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#framing-与-writhe-的关系",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "2.1 Framing 与 writhe 的关系",
+    "text": "2.1 Framing 与 writhe 的关系\n设 L 是 S^3 中的 oriented link。一个 framing 是 L 的法丛的一个平凡化，也就是沿每个分量取一个处处非零的法向量场并考虑其同伦类。对 S^3 中的 oriented knot 而言，framing 可以用一个整数记录；这个整数可理解为给定 framing longitude 与 Seifert longitude 的差。\n在图示计算中，经常把 framing 转换成 writhe 的信息。具体地说，给定一个 link diagram D，blackboard framing 把每条线段加厚为贴近平面的 ribbon。此时 framing 由图中的 twisting 反映出来；给 diagram 加一个正 curl 或负 curl 会使 writhe 改变 \\pm 1，同时也改变 blackboard framing。因而，在采用 blackboard framing 的约定下，可以用 writhe 来代表 framing，并把 framed link 视为 ribbon link 的平面图示。\n这一点解释了为什么 RT 构造自然使用 framed link 而不是普通 link：ribbon category 中的 twist 正是代数侧记录 framing 的结构。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#四维-handlebody-视角",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#四维-handlebody-视角",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "2.2 四维 handlebody 视角",
+    "text": "2.2 四维 handlebody 视角\n本文把四维 handlebody 视角作为 framed link 出现的主要几何来源。令 B^4 是四维球，且 \\partial B^4=S^3。若 L=L_1\\cup\\cdots\\cup L_m 是 \\partial B^4 中的 link，并给每个分量 L_i 指定一个整数 framing n_i，则可以沿 L 的各分量附加 2-handles，得到四维 2-handlebody W_L=B^4\\cup_L\\bigcup_i(D^2\\times D^2). 这里每个 attaching map 的 framing 决定了 \\partial D^2\\times D^2 如何贴到 \\partial B^4 的 tubular neighborhood 上。所得四维流形的边界 \\partial W_L 是一个 closed oriented 3-manifold。\n通常也把 \\partial W_L 说成由 S^3 沿 framed link L 做 integer Dehn surgery 得到的三维流形，并记为 M_L=S^3_L(n_1,\\ldots,n_m)=\\partial W_L. 本文不需要把 Dehn surgery 作为独立定义；只需记住它与上述 2-handle attachment 的边界描述等价。\n\n定理 1 (Lickorish–Wallace surgery theorem). 任意 closed connected oriented 3-manifold M 都有一个 integer surgery presentation：存在 S^3 中的 link L=L_1\\cup\\cdots\\cup L_m 以及整数 framings n_1,\\ldots,n_m，使得 M\\cong S^3_L(n_1,\\ldots,n_m). 等价地，任意 closed connected oriented 3-manifold 都可由 S^3 中某个 framed link 的 integer surgery 得到。\n\n\n定理 2 (Rohlin cobordism theorem). 任意 closed oriented 3-manifold M 都是某个 compact oriented 4-manifold W 的边界： \\partial W=M. 换言之，oriented cobordism group \\Omega^{SO}_3 为 0。进一步地，我们可以要求 W 由 B^4 附加 2-handles 得到，即 W=W_L。\n\n上面两个定理是等价的。因此，若要构造 closed oriented 3-manifold invariant，可以从 framed link 出发。但 framed link 表示并不唯一，因此还需要处理不同 handle diagrams 之间的等价关系。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#kirby-calculus",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#kirby-calculus",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "2.3 Kirby calculus",
+    "text": "2.3 Kirby calculus\nKirby calculus 描述了不同 framed links 何时给出同一个三维流形。它的几何含义是：改变四维 handle decomposition 的方式不应改变其边界三维流形。\n\n定理 3 (Kirby calculus). 设 L 与 L' 是 S^3 中的 framed links。则 M_L 与 M_{L'} orientation-preservingly homeomorphic 当且仅当 L 与 L' 可通过有限次 framed isotopy、handle slides 以及 \\pm 1-framed unknot 的加入或删除相互变换。\n\n\n\n\nKirby moves 的局部示意：在 surgery diagram 中加入或删除特定 framed unknot，以及将一个分量沿另一个分量滑过，都不改变所得三维流形。\n\n\n在 link diagram 中，handle slide 表现为一个分量沿另一分量做 band sum；\\pm 1 move 表现为加入或删除一个与其余分量不交的 \\pm 1-framed unknot。Turaev 在 RT 构造中使用的是等价版本的 Kirby moves。无论采用哪一套生成元，结论都是：若一个由 surgery link 写出的数量要成为三维流形不变量，它必须在 Kirby moves 下保持不变。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#ribbon-category-的定义",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#ribbon-category-的定义",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "3.1 Ribbon category 的定义",
+    "text": "3.1 Ribbon category 的定义\n为了把 framed link diagram 转化成线性代数，需要一个能够解释 crossing、cup、cap 与 twist 的范畴结构。我们分几步来搭：先是 monoidal category，再加上 braiding 和 duality，最后把它们合起来得到 ribbon category。\n\n定义 4 (strict monoidal category). 本节采用 strict 约定。一个 strict monoidal category \\mathcal C 带有 bifunctor \\otimes:\\mathcal C\\times\\mathcal C\\to\\mathcal C 和单位对象 \\mathbf 1，满足 (U\\otimes V)\\otimes W=U\\otimes(V\\otimes W),\\qquad\n  \\mathbf 1\\otimes V=V=V\\otimes\\mathbf 1. 一般非 strict 的情形中，上式应改为 associativity 与 unit constraints；Mac Lane coherence 允许我们在图示计算中按 strict 情形书写。\n\n\n定义 5 (braiding). 设 \\mathcal C 是 strict monoidal category。一个 braiding 是一族对对象 V,W 自然的同构 c=\\{c_{V,W}:V\\otimes W\\longrightarrow W\\otimes V\\}_{V,W\\in\\mathcal C}, 满足两条 hexagon identity： c_{U,V\\otimes W}\n  =\n  (\\operatorname{id}_V\\otimes c_{U,W})\\circ(c_{U,V}\\otimes\\operatorname{id}_W), c_{U\\otimes V,W}\n  =\n  (c_{U,W}\\otimes\\operatorname{id}_V)\\circ(\\operatorname{id}_U\\otimes c_{V,W}), 以及自然性：对任意 f:V\\to V' 与 g:W\\to W'， (g\\otimes f)\\circ c_{V,W}\n  =\n  c_{V',W'}\\circ(f\\otimes g). 配有 braiding 的 monoidal category 称为 braided monoidal category。\n\n由定义立刻能得到两条常用事实。其一，在两条 hexagon identity 中取 V=W=\\mathbf 1 以及 U=V=\\mathbf 1，再用 c 的可逆性，就有 c_{V,\\mathbf 1}=c_{\\mathbf 1,V}=\\operatorname{id}_V. 其二，这些公理蕴含 Yang–Baxter（braid relation）恒等式 (\\operatorname{id}_W\\otimes c_{U,V})\\circ(c_{U,W}\\otimes\\operatorname{id}_V)\\circ(\\operatorname{id}_U\\otimes c_{V,W})\n  =\n  (c_{V,W}\\otimes\\operatorname{id}_U)\\circ(\\operatorname{id}_V\\otimes c_{U,W})\\circ(c_{U,V}\\otimes\\operatorname{id}_W). 直观上，c_{V,W} 是把 V-colored strand 从 W-colored strand 上方穿过去的代数解释：两条 hexagon identity 保证 crossing 与张量积相容，而 Yang–Baxter 恒等式在图示上正好是三条 strand 的 Reidemeister III 同痕（见后面的 graphical calculus 一节）。\n\n定义 6 (duality / rigid structure). 设 \\mathcal C 是 strict monoidal category。这里说的 duality，是给每个对象 V 指定一个对象 V^* 以及两个态射 b_V:\\mathbf 1\\to V\\otimes V^*,\n  \\qquad\n  d_V:V^*\\otimes V\\to\\mathbf 1, 满足 zig-zag identities (\\operatorname{id}_V\\otimes d_V)\\circ(b_V\\otimes\\operatorname{id}_V)=\\operatorname{id}_V, (d_V\\otimes\\operatorname{id}_{V^*})\\circ(\\operatorname{id}_{V^*}\\otimes b_V)=\\operatorname{id}_{V^*}. 这里 b_V 是 coevaluation，d_V 是 evaluation。具有这种 duality 的 monoidal category 常称为 rigid category。注意此处并不预先要求 (V^*)^*=V；在 ribbon category 中，这一点会由兼容性给出一个 canonical identification。\n\n\n定义 7 (ribbon category). 一个 ribbon category 是一个 monoidal category \\mathcal C，配有 braiding c、twist \\theta 以及与它们相容的 duality (\\,^*,b,d)。其中 twist 是一族自然同构 \\theta_V:V\\to V, 满足 \\theta_{V\\otimes W}\n  =\n  c_{W,V}\\circ c_{V,W}\\circ(\\theta_V\\otimes\\theta_W). duality 与 braiding、twist 之间的兼容性则要求 (\\theta_V\\otimes\\operatorname{id}_{V^*})\\circ b_V\n  =\n  (\\operatorname{id}_V\\otimes\\theta_{V^*})\\circ b_V, 也就是常写成的 \\theta_{V^*}=(\\theta_V)^*。因此，ribbon category 正是能够同时解释 crossing、cup/cap 和 framing twist 的范畴结构。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#colored-ribbon-graph",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#colored-ribbon-graph",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "3.2 Colored ribbon graph",
+    "text": "3.2 Colored ribbon graph\n\n定义 8 (colored ribbon graph). 设 \\mathcal C 是一个 ribbon category。一个 ribbon graph 是三维流形中的紧定向曲面，分解为有限个 directed bands、directed annuli 和 coupons：bands 可看作加厚的有向边，annuli 可看作加厚的闭边，coupons 是带有若干输入、输出边的矩形节点。一个 \\mathcal C-colored ribbon graph 是一个 ribbon graph，并附加如下标签：\n\n每条 directed band 或 annulus 标以 \\mathcal C 中的一个对象 V；若方向反转，则颜色改为对偶对象 V^*；\n每个 coupon 标以 \\mathcal C 中的一个 morphism，其 source 和 target 分别由 coupon 下方、上方边界上相遇的 colored strands 的张量积给出；\nisotopy 必须保持 ribbon graph 的分解、方向和 colors。\n\n\n普通的 colored framed link 是最简单的例子：它没有 coupons，每个 link component 被加厚为一个 annulus，并标以某个对象 V\\in\\mathcal C。framing 被 annulus 的嵌入方式记录；这就是为什么 RT 构造自然处理 framed links 而不是 unframed links。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#graphical-calculus",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#graphical-calculus",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "3.3 Graphical calculus",
+    "text": "3.3 Graphical calculus\nGraphical calculus 指的是把 colored ribbon graph 的平面图示系统地翻译成 \\mathcal C 中 morphisms 的规则。具体地，先把图示切成局部生成元，再把它们替换为范畴中的结构态射： \\begin{array}{c|c}\n\\text{图示局部构件} & \\text{范畴解释}\\\\\n\\hline\n\\text{identity strand} & \\operatorname{id}_V\\\\\n\\text{positive/negative crossing} & c_{V,W}\\text{ 或 }c_{V,W}^{-1}\\\\\n\\text{cup/cap} & \\text{coevaluation/evaluation}\\\\\n\\text{positive/negative twist} & \\theta_V\\text{ 或 }\\theta_V^{-1}\\\\\n\\text{coupon} & \\text{coupon 上标记的 morphism}\n\\end{array}\n这些规则可以用下面几张图来读。一个带标签的 coupon 表示一个 morphism；多输入、多输出的 coupon 表示一般 morphism f:V_1\\otimes\\cdots\\otimes V_m\\longrightarrow\n  W_1\\otimes\\cdots\\otimes W_n. 图元上下连接对应 morphism 的复合，并列放置对应 tensor product。\n\n\n \n\n\nCoupon 表示 morphism；一般 coupon 允许多个输入与多个输出。\n\n\n\n\n \n\n\n水平并列表示 tensor product；改变 strand 的方向时，颜色改为对偶对象。\n\n\nbraiding 与 twist 是 framed link 图示中最重要的两个局部操作。Crossing 被读成 c_{V,W} 或 c_{V,W}^{-1}；一圈正负 twist 被读成 \\theta_V 或 \\theta_V^{-1}。因此，framing 的改变不是额外信息，而是已经由 ribbon category 的 twist 记录在代数中。\n\n\n \n\n\nCrossing 对应 braiding；ribbon 的正负扭转对应 twist 及其逆。\n\n\n同痕变形的代数化，就是把”图可以连续拉动而不改变 isotopy class”翻译成范畴公理。比如，strand 穿过一个 tensor product 的两种画法相同，对应 braiding 的 hexagon identity c_{U,V\\otimes W}\n  =\n  (\\operatorname{id}_V\\otimes c_{U,W})\\circ(c_{U,V}\\otimes\\operatorname{id}_W). 图形上，这正是把 U 同时穿过 V\\otimes W，或先穿过 V 再穿过 W，所得图示同痕。\n\n\n\nBraiding 的 hexagon identity 是 crossing 与 tensor product 相容性的图示版本。\n\n\n三条 strand 的 Reidemeister III 型同痕对应 Yang–Baxter identity： \\begin{aligned}\n  &(\\operatorname{id}_W\\otimes c_{U,V})\\circ(c_{U,W}\\otimes\\operatorname{id}_V)\\circ(\\operatorname{id}_U\\otimes c_{V,W})\\\\\n  &\\qquad =\n  (c_{V,W}\\otimes\\operatorname{id}_U)\\circ(\\operatorname{id}_V\\otimes c_{U,W})\\circ(c_{U,V}\\otimes\\operatorname{id}_W).\n\\end{aligned} 这解释了为什么一个 braiding 不只是任意的交换同构，而必须满足 braid relation。\n\n\n\nYang–Baxter identity 是三条 colored strands 的 Reidemeister III 型同痕。\n\n\n类似地，morphisms 可以沿着 crossing 滑动，这对应 braiding 的自然性： (g\\otimes f)\\circ c_{V,W}\n  =\n  c_{V',W'}\\circ(f\\otimes g). Cup 与 cap 的拉直则对应 duality 的 zig-zag identities： (\\operatorname{id}_V\\otimes d_V)\\circ(b_V\\otimes\\operatorname{id}_V)=\\operatorname{id}_V,\\qquad\n  (d_V\\otimes\\operatorname{id}_{V^*})\\circ(\\operatorname{id}_{V^*}\\otimes b_V)=\\operatorname{id}_{V^*}.\n\n\n  \n\n\nNaturality 允许 coupon 穿过 crossing；cup/cap 由 coevaluation/evaluation 给出，zig-zag identities 允许它们被拉直。\n\n\n最后，把这些局部规则拼起来，就可以解释带 coupons 的 ribbon graph。ribbon category 的公理正是保证这种翻译不依赖于图示切分方式，并且在 ribbon isotopy 下保持不变的代数条件。\n\n\n\n一般 ribbon graph 由 strands、crossings、twists、cups/caps 和 coupons 拼接而成。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
+  },
+  {
+    "objectID": "notes/knot-hopf-algebra-and-quantum-invariants.html#trace-与-dimension",
+    "href": "notes/knot-hopf-algebra-and-quantum-invariants.html#trace-与-dimension",
+    "title": "Knot, Hopf Algebra and Quantum Invariants",
+    "section": "3.4 Trace 与 dimension",
+    "text": "3.4 Trace 与 dimension\nribbon category 中的 trace 是一个图形化的 trace，而不是一开始就给定的矩阵 trace。设 f:V\\to V 是 \\mathcal C 中的 endomorphism。记 b_V:\\mathbf 1\\to V\\otimes V^*,\\qquad\n  d_V:V^*\\otimes V\\to \\mathbf 1 为 coevaluation 和 evaluation。Turaev 的 categorical trace 定义为 \\operatorname{tr}_{\\mathcal C}(f)\n  =\n  d_V\\circ c_{V,V^*}\\circ\n  \\bigl((\\theta_V\\circ f)\\otimes \\operatorname{id}_{V^*}\\bigr)\n  \\circ b_V\n  \\in \\operatorname{End}_{\\mathcal C}(\\mathbf 1). 对象 V 的 categorical dimension 定义为 \\dim_{\\mathcal C}(V)=\\operatorname{tr}_{\\mathcal C}(\\operatorname{id}_V). 图形上，\\operatorname{tr}_{\\mathcal C}(f) 就是把一个标有 f 的 coupon 放到一条 V-colored closed ribbon 上后得到的 closed ribbon graph invariant。也就是说，若 \\Omega_f 表示这个闭合图形，则 F(\\Omega_f)=\\operatorname{tr}_{\\mathcal C}(f).\n\n定理 9 (Turaev ribbon graph functor). 对任意 ribbon category \\mathcal C，存在一个拓扑不变量函子 F，它把 \\mathcal C-colored ribbon graphs 映到 \\mathcal C 中的 morphisms。若 \\Gamma 是 closed colored ribbon graph，则 F(\\Gamma)\\in \\operatorname{End}_{\\mathcal C}(\\mathbf 1). 在 \\operatorname{End}_{\\mathcal C}(\\mathbf 1)=K 的情形下，F(\\Gamma) 是 K 值不变量。\n\n这个定理是 graphical calculus 的严格表述。它说明，只要范畴结构满足 ribbon category 的公理，局部图元的代数解释就自动对 Reidemeister 型局部变形不变。",
+    "crumbs": [
+      "Home",
+      "Notes",
+      "Quantum Invariants",
+      "Knot, Hopf Algebra and Quantum Invariants"
+    ]
   }
 ]

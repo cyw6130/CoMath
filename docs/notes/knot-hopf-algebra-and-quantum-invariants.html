@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-06-22">
+<meta name="description" content="从 framed link 的几何、Hopf 代数的图示演算到 modular category，串起 Reshetikhin–Turaev 三维流形量子不变量。">
+
+<title>Knot, Hopf Algebra and Quantum Invariants – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:2120240050@nankai.edu.cn"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/knot-hopf-algebra-and-quantum-invariants.html">Knot, Hopf Algebra and Quantum Invariants</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov 同调与 s-不变量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/knot-hopf-algebra-and-quantum-invariants.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Knot, Hopf Algebra and Quantum Invariants</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Four Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/intersection-form-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">四维流形的相交形式 (Intersection Form)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/kirby-diagram-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kirby Diagram Of 4 Manifold</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/cerf-theorem-and-kirby-calculus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cerf Theorem And Kirby Calculus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#引言" id="toc-引言" class="nav-link active" data-scroll-target="#引言"><span class="header-section-number">1</span> 引言</a></li>
+  <li><a href="#framed-link-与-closed-3-manifold-的几何来源" id="toc-framed-link-与-closed-3-manifold-的几何来源" class="nav-link" data-scroll-target="#framed-link-与-closed-3-manifold-的几何来源"><span class="header-section-number">2</span> Framed link 与 closed 3-manifold 的几何来源</a>
+  <ul class="collapse">
+  <li><a href="#framing-与-writhe-的关系" id="toc-framing-与-writhe-的关系" class="nav-link" data-scroll-target="#framing-与-writhe-的关系"><span class="header-section-number">2.1</span> Framing 与 writhe 的关系</a></li>
+  <li><a href="#四维-handlebody-视角" id="toc-四维-handlebody-视角" class="nav-link" data-scroll-target="#四维-handlebody-视角"><span class="header-section-number">2.2</span> 四维 handlebody 视角</a></li>
+  <li><a href="#kirby-calculus" id="toc-kirby-calculus" class="nav-link" data-scroll-target="#kirby-calculus"><span class="header-section-number">2.3</span> Kirby calculus</a></li>
+  </ul></li>
+  <li><a href="#ribbon-category-与-graphical-calculus" id="toc-ribbon-category-与-graphical-calculus" class="nav-link" data-scroll-target="#ribbon-category-与-graphical-calculus"><span class="header-section-number">3</span> Ribbon category 与 graphical calculus</a>
+  <ul class="collapse">
+  <li><a href="#ribbon-category-的定义" id="toc-ribbon-category-的定义" class="nav-link" data-scroll-target="#ribbon-category-的定义"><span class="header-section-number">3.1</span> Ribbon category 的定义</a></li>
+  <li><a href="#colored-ribbon-graph" id="toc-colored-ribbon-graph" class="nav-link" data-scroll-target="#colored-ribbon-graph"><span class="header-section-number">3.2</span> Colored ribbon graph</a></li>
+  <li><a href="#graphical-calculus" id="toc-graphical-calculus" class="nav-link" data-scroll-target="#graphical-calculus"><span class="header-section-number">3.3</span> Graphical calculus</a></li>
+  <li><a href="#trace-与-dimension" id="toc-trace-与-dimension" class="nav-link" data-scroll-target="#trace-与-dimension"><span class="header-section-number">3.4</span> Trace 与 dimension</a></li>
+  </ul></li>
+  <li><a href="#hopf-代数如何产生-ribbon-category" id="toc-hopf-代数如何产生-ribbon-category" class="nav-link" data-scroll-target="#hopf-代数如何产生-ribbon-category"><span class="header-section-number">4</span> Hopf 代数如何产生 ribbon category</a></li>
+  <li><a href="#colored-framed-link-invariant" id="toc-colored-framed-link-invariant" class="nav-link" data-scroll-target="#colored-framed-link-invariant"><span class="header-section-number">5</span> Colored framed link invariant</a></li>
+  <li><a href="#sec:surgery" id="toc-sec:surgery" class="nav-link" data-scroll-target="#sec\:surgery"><span class="header-section-number">6</span> 从 link invariant 到三维流形不变量</a></li>
+  <li><a href="#modular-hopf-algebra-与-purification" id="toc-modular-hopf-algebra-与-purification" class="nav-link" data-scroll-target="#modular-hopf-algebra-与-purification"><span class="header-section-number">7</span> Modular Hopf algebra 与 purification</a></li>
+  <li><a href="#u_qmathfraksl_2jones-polynomial-与-wrt-invariant" id="toc-u_qmathfraksl_2jones-polynomial-与-wrt-invariant" class="nav-link" data-scroll-target="#u_qmathfraksl_2jones-polynomial-与-wrt-invariant"><span class="header-section-number">8</span> <span class="math inline">U_q(\mathfrak{sl}_2)</span>、Jones polynomial 与 WRT invariant</a></li>
+  <li><a href="#sec:table" id="toc-sec:table" class="nav-link" data-scroll-target="#sec\:table"><span class="header-section-number">9</span> 结构表</a></li>
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献"><span class="header-section-number">10</span> 参考文献</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/Khovanov_homology.html">Quantum Invariants</a></li><li class="breadcrumb-item"><a href="../notes/knot-hopf-algebra-and-quantum-invariants.html">Knot, Hopf Algebra and Quantum Invariants</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Knot, Hopf Algebra and Quantum Invariants</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Quantum Invariants</div>
+    <div class="quarto-category">Reshetikhin-Turaev</div>
+    <div class="quarto-category">Ribbon Hopf Algebra</div>
+    <div class="quarto-category">Modular Category</div>
+    <div class="quarto-category">Kirby Calculus</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    从 framed link 的几何、Hopf 代数的图示演算到 modular category，串起 Reshetikhin–Turaev 三维流形量子不变量。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>关键词：</strong> framed link；Kirby calculus；ribbon Hopf algebra；ribbon category；modular category；Reshetikhin–Turaev invariant</p>
+<section id="引言" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 引言</h1>
+<p>Jones polynomial 的发现把 knot theory、Lie theory 与 quantum groups 联系起来。Reshetikhin 与 Turaev 的工作进一步说明，这种联系并不止于 <span class="math inline">S^3</span> 中的 link invariants：在合适的 root of unity 情形下，quantum group 的表示论还可以通过 surgery presentation 产生 closed oriented <span class="math inline">3</span>-manifold 的拓扑不变量 （Reshetikhin–Turaev 1991）。Turaev 后来的系统表述则把这种构造放入 ribbon category 与 modular category 的框架中 （Turaev 1994）。</p>
+<p>本文按照”几何侧、代数侧、三维流形不变量”的顺序组织。几何侧解释为什么 framed link 足以描述 closed oriented <span class="math inline">3</span>-manifold；代数侧解释 Hopf algebra 的结构如何对应 tangle diagram 的局部构件；最后说明 modular data 如何保证由 link invariant 写出的 surgery expression 对 Kirby moves 不变。</p>
+<p>本文采用如下约定。三维流形均为 closed oriented <span class="math inline">3</span>-manifold；link 默认嵌入 <span class="math inline">S^3</span> 中；从 Hopf algebra 出发时，表示范畴默认取有限秩表示。我们只讨论半单（或经 purification 后半单）的 modular category 构造，不涉及非半单的 Hennings、Lyubashenko 或 modified trace 型推广。</p>
+<p>记号大体沿用 Turaev 1994 年的教材 （Turaev 1994）（以下简称 T94）。</p>
+</section>
+<section id="framed-link-与-closed-3-manifold-的几何来源" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Framed link 与 closed 3-manifold 的几何来源</h1>
+<section id="framing-与-writhe-的关系" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="framing-与-writhe-的关系"><span class="header-section-number">2.1</span> Framing 与 writhe 的关系</h2>
+<p>设 <span class="math inline">L</span> 是 <span class="math inline">S^3</span> 中的 oriented link。一个 framing 是 <span class="math inline">L</span> 的法丛的一个平凡化，也就是沿每个分量取一个处处非零的法向量场并考虑其同伦类。对 <span class="math inline">S^3</span> 中的 oriented knot 而言，framing 可以用一个整数记录；这个整数可理解为给定 framing longitude 与 Seifert longitude 的差。</p>
+<p>在图示计算中，经常把 framing 转换成 writhe 的信息。具体地说，给定一个 link diagram <span class="math inline">D</span>，blackboard framing 把每条线段加厚为贴近平面的 ribbon。此时 framing 由图中的 twisting 反映出来；给 diagram 加一个正 curl 或负 curl 会使 writhe 改变 <span class="math inline">\pm 1</span>，同时也改变 blackboard framing。因而，在采用 blackboard framing 的约定下，可以用 writhe 来代表 framing，并把 framed link 视为 ribbon link 的平面图示。</p>
+<p>这一点解释了为什么 RT 构造自然使用 framed link 而不是普通 link：ribbon category 中的 twist 正是代数侧记录 framing 的结构。</p>
+</section>
+<section id="四维-handlebody-视角" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="四维-handlebody-视角"><span class="header-section-number">2.2</span> 四维 handlebody 视角</h2>
+<p>本文把四维 handlebody 视角作为 framed link 出现的主要几何来源。令 <span class="math inline">B^4</span> 是四维球，且 <span class="math inline">\partial B^4=S^3</span>。若 <span class="math inline">L=L_1\cup\cdots\cup L_m</span> 是 <span class="math inline">\partial B^4</span> 中的 link，并给每个分量 <span class="math inline">L_i</span> 指定一个整数 framing <span class="math inline">n_i</span>，则可以沿 <span class="math inline">L</span> 的各分量附加 <span class="math inline">2</span>-handles，得到四维 <span class="math inline">2</span>-handlebody <span class="math display">W_L=B^4\cup_L\bigcup_i(D^2\times D^2).</span> 这里每个 attaching map 的 framing 决定了 <span class="math inline">\partial D^2\times D^2</span> 如何贴到 <span class="math inline">\partial B^4</span> 的 tubular neighborhood 上。所得四维流形的边界 <span class="math inline">\partial W_L</span> 是一个 closed oriented <span class="math inline">3</span>-manifold。</p>
+<p>通常也把 <span class="math inline">\partial W_L</span> 说成由 <span class="math inline">S^3</span> 沿 framed link <span class="math inline">L</span> 做 integer Dehn surgery 得到的三维流形，并记为 <span class="math display">M_L=S^3_L(n_1,\ldots,n_m)=\partial W_L.</span> 本文不需要把 Dehn surgery 作为独立定义；只需记住它与上述 <span class="math inline">2</span>-handle attachment 的边界描述等价。</p>
+<div class="theorem">
+<p><strong>定理 1</strong> (Lickorish–Wallace surgery theorem). <em>任意 closed connected oriented <span class="math inline">3</span>-manifold <span class="math inline">M</span> 都有一个 integer surgery presentation：存在 <span class="math inline">S^3</span> 中的 link <span class="math inline">L=L_1\cup\cdots\cup L_m</span> 以及整数 framings <span class="math inline">n_1,\ldots,n_m</span>，使得 <span class="math display">M\cong S^3_L(n_1,\ldots,n_m).</span> 等价地，任意 closed connected oriented <span class="math inline">3</span>-manifold 都可由 <span class="math inline">S^3</span> 中某个 framed link 的 integer surgery 得到。</em></p>
+</div>
+<div class="theorem">
+<p><strong>定理 2</strong> (Rohlin cobordism theorem). <em>任意 closed oriented <span class="math inline">3</span>-manifold <span class="math inline">M</span> 都是某个 compact oriented <span class="math inline">4</span>-manifold <span class="math inline">W</span> 的边界： <span class="math display">\partial W=M.</span> 换言之，oriented cobordism group <span class="math inline">\Omega^{SO}_3</span> 为 <span class="math inline">0</span>。进一步地，我们可以要求 <span class="math inline">W</span> 由 <span class="math inline">B^4</span> 附加 <span class="math inline">2</span>-handles 得到，即 <span class="math inline">W=W_L</span>。</em></p>
+</div>
+<p>上面两个定理是等价的。因此，若要构造 closed oriented <span class="math inline">3</span>-manifold invariant，可以从 framed link 出发。但 framed link 表示并不唯一，因此还需要处理不同 handle diagrams 之间的等价关系。</p>
+</section>
+<section id="kirby-calculus" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="kirby-calculus"><span class="header-section-number">2.3</span> Kirby calculus</h2>
+<p>Kirby calculus 描述了不同 framed links 何时给出同一个三维流形。它的几何含义是：改变四维 handle decomposition 的方式不应改变其边界三维流形。</p>
+<div class="theorem">
+<p><strong>定理 3</strong> (Kirby calculus). <em>设 <span class="math inline">L</span> 与 <span class="math inline">L'</span> 是 <span class="math inline">S^3</span> 中的 framed links。则 <span class="math inline">M_L</span> 与 <span class="math inline">M_{L'}</span> orientation-preservingly homeomorphic 当且仅当 <span class="math inline">L</span> 与 <span class="math inline">L'</span> 可通过有限次 framed isotopy、handle slides 以及 <span class="math inline">\pm 1</span>-framed unknot 的加入或删除相互变换。</em></p>
+</div>
+<figure data-latex-placement="H" class="figure">
+<img src="images/kirby-moves.png" class="figure-img">
+<figcaption>
+Kirby moves 的局部示意：在 surgery diagram 中加入或删除特定 framed unknot，以及将一个分量沿另一个分量滑过，都不改变所得三维流形。
+</figcaption>
+</figure>
+<p>在 link diagram 中，handle slide 表现为一个分量沿另一分量做 band sum；<span class="math inline">\pm 1</span> move 表现为加入或删除一个与其余分量不交的 <span class="math inline">\pm 1</span>-framed unknot。Turaev 在 RT 构造中使用的是等价版本的 Kirby moves。无论采用哪一套生成元，结论都是：若一个由 surgery link 写出的数量要成为三维流形不变量，它必须在 Kirby moves 下保持不变。</p>
+</section>
+</section>
+<section id="ribbon-category-与-graphical-calculus" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Ribbon category 与 graphical calculus</h1>
+<section id="ribbon-category-的定义" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="ribbon-category-的定义"><span class="header-section-number">3.1</span> Ribbon category 的定义</h2>
+<p>为了把 framed link diagram 转化成线性代数，需要一个能够解释 crossing、cup、cap 与 twist 的范畴结构。我们分几步来搭：先是 monoidal category，再加上 braiding 和 duality，最后把它们合起来得到 ribbon category。</p>
+<div class="definition">
+<p><strong>定义 4</strong> (strict monoidal category). <em>本节采用 strict 约定。一个 strict monoidal category <span class="math inline">\mathcal C</span> 带有 bifunctor <span class="math display">\otimes:\mathcal C\times\mathcal C\to\mathcal C</span> 和单位对象 <span class="math inline">\mathbf 1</span>，满足 <span class="math display">(U\otimes V)\otimes W=U\otimes(V\otimes W),\qquad
+  \mathbf 1\otimes V=V=V\otimes\mathbf 1.</span> 一般非 strict 的情形中，上式应改为 associativity 与 unit constraints；Mac Lane coherence 允许我们在图示计算中按 strict 情形书写。</em></p>
+</div>
+<div class="definition">
+<p><strong>定义 5</strong> (braiding). <em>设 <span class="math inline">\mathcal C</span> 是 strict monoidal category。一个 braiding 是一族对对象 <span class="math inline">V,W</span> 自然的同构 <span class="math display">c=\{c_{V,W}:V\otimes W\longrightarrow W\otimes V\}_{V,W\in\mathcal C},</span> 满足两条 hexagon identity： <span class="math display">c_{U,V\otimes W}
+  =
+  (\operatorname{id}_V\otimes c_{U,W})\circ(c_{U,V}\otimes\operatorname{id}_W),</span> <span class="math display">c_{U\otimes V,W}
+  =
+  (c_{U,W}\otimes\operatorname{id}_V)\circ(\operatorname{id}_U\otimes c_{V,W}),</span> 以及自然性：对任意 <span class="math inline">f:V\to V'</span> 与 <span class="math inline">g:W\to W'</span>， <span class="math display">(g\otimes f)\circ c_{V,W}
+  =
+  c_{V',W'}\circ(f\otimes g).</span> 配有 braiding 的 monoidal category 称为 braided monoidal category。</em></p>
+</div>
+<p>由定义立刻能得到两条常用事实。其一，在两条 hexagon identity 中取 <span class="math inline">V=W=\mathbf 1</span> 以及 <span class="math inline">U=V=\mathbf 1</span>，再用 <span class="math inline">c</span> 的可逆性，就有 <span class="math display">c_{V,\mathbf 1}=c_{\mathbf 1,V}=\operatorname{id}_V.</span> 其二，这些公理蕴含 Yang–Baxter（braid relation）恒等式 <span class="math display">(\operatorname{id}_W\otimes c_{U,V})\circ(c_{U,W}\otimes\operatorname{id}_V)\circ(\operatorname{id}_U\otimes c_{V,W})
+  =
+  (c_{V,W}\otimes\operatorname{id}_U)\circ(\operatorname{id}_V\otimes c_{U,W})\circ(c_{U,V}\otimes\operatorname{id}_W).</span> 直观上，<span class="math inline">c_{V,W}</span> 是把 <span class="math inline">V</span>-colored strand 从 <span class="math inline">W</span>-colored strand 上方穿过去的代数解释：两条 hexagon identity 保证 crossing 与张量积相容，而 Yang–Baxter 恒等式在图示上正好是三条 strand 的 Reidemeister III 同痕（见后面的 graphical calculus 一节）。</p>
+<div class="definition">
+<p><strong>定义 6</strong> (duality / rigid structure). <em>设 <span class="math inline">\mathcal C</span> 是 strict monoidal category。这里说的 duality，是给每个对象 <span class="math inline">V</span> 指定一个对象 <span class="math inline">V^*</span> 以及两个态射 <span class="math display">b_V:\mathbf 1\to V\otimes V^*,
+  \qquad
+  d_V:V^*\otimes V\to\mathbf 1,</span> 满足 zig-zag identities <span class="math display">(\operatorname{id}_V\otimes d_V)\circ(b_V\otimes\operatorname{id}_V)=\operatorname{id}_V,</span> <span class="math display">(d_V\otimes\operatorname{id}_{V^*})\circ(\operatorname{id}_{V^*}\otimes b_V)=\operatorname{id}_{V^*}.</span> 这里 <span class="math inline">b_V</span> 是 coevaluation，<span class="math inline">d_V</span> 是 evaluation。具有这种 duality 的 monoidal category 常称为 rigid category。注意此处并不预先要求 <span class="math inline">(V^*)^*=V</span>；在 ribbon category 中，这一点会由兼容性给出一个 canonical identification。</em></p>
+</div>
+<div class="definition">
+<p><strong>定义 7</strong> (ribbon category). <em>一个 ribbon category 是一个 monoidal category <span class="math inline">\mathcal C</span>，配有 braiding <span class="math inline">c</span>、twist <span class="math inline">\theta</span> 以及与它们相容的 duality <span class="math inline">(\,^*,b,d)</span>。其中 twist 是一族自然同构 <span class="math display">\theta_V:V\to V,</span> 满足 <span class="math display">\theta_{V\otimes W}
+  =
+  c_{W,V}\circ c_{V,W}\circ(\theta_V\otimes\theta_W).</span> duality 与 braiding、twist 之间的兼容性则要求 <span class="math display">(\theta_V\otimes\operatorname{id}_{V^*})\circ b_V
+  =
+  (\operatorname{id}_V\otimes\theta_{V^*})\circ b_V,</span> 也就是常写成的 <span class="math inline">\theta_{V^*}=(\theta_V)^*</span>。因此，ribbon category 正是能够同时解释 crossing、cup/cap 和 framing twist 的范畴结构。</em></p>
+</div>
+</section>
+<section id="colored-ribbon-graph" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="colored-ribbon-graph"><span class="header-section-number">3.2</span> Colored ribbon graph</h2>
+<div class="definition">
+<p><strong>定义 8</strong> (colored ribbon graph). <em>设 <span class="math inline">\mathcal C</span> 是一个 ribbon category。一个 ribbon graph 是三维流形中的紧定向曲面，分解为有限个 directed bands、directed annuli 和 coupons：bands 可看作加厚的有向边，annuli 可看作加厚的闭边，coupons 是带有若干输入、输出边的矩形节点。一个 <span class="math inline">\mathcal C</span>-colored ribbon graph 是一个 ribbon graph，并附加如下标签：</em></p>
+<ol type="1">
+<li><p><em>每条 directed band 或 annulus 标以 <span class="math inline">\mathcal C</span> 中的一个对象 <span class="math inline">V</span>；若方向反转，则颜色改为对偶对象 <span class="math inline">V^*</span>；</em></p></li>
+<li><p><em>每个 coupon 标以 <span class="math inline">\mathcal C</span> 中的一个 morphism，其 source 和 target 分别由 coupon 下方、上方边界上相遇的 colored strands 的张量积给出；</em></p></li>
+<li><p><em>isotopy 必须保持 ribbon graph 的分解、方向和 colors。</em></p></li>
+</ol>
+</div>
+<p>普通的 colored framed link 是最简单的例子：它没有 coupons，每个 link component 被加厚为一个 annulus，并标以某个对象 <span class="math inline">V\in\mathcal C</span>。framing 被 annulus 的嵌入方式记录；这就是为什么 RT 构造自然处理 framed links 而不是 unframed links。</p>
+</section>
+<section id="graphical-calculus" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="graphical-calculus"><span class="header-section-number">3.3</span> Graphical calculus</h2>
+<p>Graphical calculus 指的是把 colored ribbon graph 的平面图示系统地翻译成 <span class="math inline">\mathcal C</span> 中 morphisms 的规则。具体地，先把图示切成局部生成元，再把它们替换为范畴中的结构态射： <span class="math display">\begin{array}{c|c}
+\text{图示局部构件} &amp; \text{范畴解释}\\
+\hline
+\text{identity strand} &amp; \operatorname{id}_V\\
+\text{positive/negative crossing} &amp; c_{V,W}\text{ 或 }c_{V,W}^{-1}\\
+\text{cup/cap} &amp; \text{coevaluation/evaluation}\\
+\text{positive/negative twist} &amp; \theta_V\text{ 或 }\theta_V^{-1}\\
+\text{coupon} &amp; \text{coupon 上标记的 morphism}
+\end{array}</span></p>
+<p>这些规则可以用下面几张图来读。一个带标签的 coupon 表示一个 morphism；多输入、多输出的 coupon 表示一般 morphism <span class="math display">f:V_1\otimes\cdots\otimes V_m\longrightarrow
+  W_1\otimes\cdots\otimes W_n.</span> 图元上下连接对应 morphism 的复合，并列放置对应 tensor product。</p>
+<figure data-latex-placement="H" class="figure">
+<p>
+<img src="images/image.png" alt="image" class="figure-img"> <img src="images/image-1.png" alt="image" class="figure-img">
+</p>
+<figcaption>
+Coupon 表示 morphism；一般 coupon 允许多个输入与多个输出。
+</figcaption>
+</figure>
+<figure data-latex-placement="H" class="figure">
+<p>
+<img src="images/image-2.png" alt="image" class="figure-img"><br> <img src="images/image-3.png" alt="image" class="figure-img">
+</p>
+<figcaption>
+水平并列表示 tensor product；改变 strand 的方向时，颜色改为对偶对象。
+</figcaption>
+</figure>
+<p>braiding 与 twist 是 framed link 图示中最重要的两个局部操作。Crossing 被读成 <span class="math inline">c_{V,W}</span> 或 <span class="math inline">c_{V,W}^{-1}</span>；一圈正负 twist 被读成 <span class="math inline">\theta_V</span> 或 <span class="math inline">\theta_V^{-1}</span>。因此，framing 的改变不是额外信息，而是已经由 ribbon category 的 twist 记录在代数中。</p>
+<figure data-latex-placement="H" class="figure">
+<p>
+<img src="images/image-4.png" alt="image" class="figure-img"> <img src="images/image-5.png" alt="image" class="figure-img">
+</p>
+<figcaption>
+Crossing 对应 braiding；ribbon 的正负扭转对应 twist 及其逆。
+</figcaption>
+</figure>
+<p>同痕变形的代数化，就是把”图可以连续拉动而不改变 isotopy class”翻译成范畴公理。比如，strand 穿过一个 tensor product 的两种画法相同，对应 braiding 的 hexagon identity <span class="math display">c_{U,V\otimes W}
+  =
+  (\operatorname{id}_V\otimes c_{U,W})\circ(c_{U,V}\otimes\operatorname{id}_W).</span> 图形上，这正是把 <span class="math inline">U</span> 同时穿过 <span class="math inline">V\otimes W</span>，或先穿过 <span class="math inline">V</span> 再穿过 <span class="math inline">W</span>，所得图示同痕。</p>
+<figure data-latex-placement="H" class="figure">
+<img src="images/image-6.png" class="figure-img">
+<figcaption>
+Braiding 的 hexagon identity 是 crossing 与 tensor product 相容性的图示版本。
+</figcaption>
+</figure>
+<p>三条 strand 的 Reidemeister III 型同痕对应 Yang–Baxter identity： <span class="math display">\begin{aligned}
+  &amp;(\operatorname{id}_W\otimes c_{U,V})\circ(c_{U,W}\otimes\operatorname{id}_V)\circ(\operatorname{id}_U\otimes c_{V,W})\\
+  &amp;\qquad =
+  (c_{V,W}\otimes\operatorname{id}_U)\circ(\operatorname{id}_V\otimes c_{U,W})\circ(c_{U,V}\otimes\operatorname{id}_W).
+\end{aligned}</span> 这解释了为什么一个 braiding 不只是任意的交换同构，而必须满足 braid relation。</p>
+<figure data-latex-placement="H" class="figure">
+<img src="images/image-7.png" class="figure-img">
+<figcaption>
+Yang–Baxter identity 是三条 colored strands 的 Reidemeister III 型同痕。
+</figcaption>
+</figure>
+<p>类似地，morphisms 可以沿着 crossing 滑动，这对应 braiding 的自然性： <span class="math display">(g\otimes f)\circ c_{V,W}
+  =
+  c_{V',W'}\circ(f\otimes g).</span> Cup 与 cap 的拉直则对应 duality 的 zig-zag identities： <span class="math display">(\operatorname{id}_V\otimes d_V)\circ(b_V\otimes\operatorname{id}_V)=\operatorname{id}_V,\qquad
+  (d_V\otimes\operatorname{id}_{V^*})\circ(\operatorname{id}_{V^*}\otimes b_V)=\operatorname{id}_{V^*}.</span></p>
+<figure data-latex-placement="H" class="figure">
+<p>
+<img src="images/image-13.png" alt="image" class="figure-img"><br> <img src="images/image-9.png" alt="image" class="figure-img"><br> <img src="images/image-10.png" alt="image" class="figure-img">
+</p>
+<figcaption>
+Naturality 允许 coupon 穿过 crossing；cup/cap 由 coevaluation/evaluation 给出，zig-zag identities 允许它们被拉直。
+</figcaption>
+</figure>
+<p>最后，把这些局部规则拼起来，就可以解释带 coupons 的 ribbon graph。ribbon category 的公理正是保证这种翻译不依赖于图示切分方式，并且在 ribbon isotopy 下保持不变的代数条件。</p>
+<figure data-latex-placement="H" class="figure">
+<img src="images/image-12.png" class="figure-img">
+<figcaption>
+一般 ribbon graph 由 strands、crossings、twists、cups/caps 和 coupons 拼接而成。
+</figcaption>
+</figure>
+</section>
+<section id="trace-与-dimension" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="trace-与-dimension"><span class="header-section-number">3.4</span> Trace 与 dimension</h2>
+<p>ribbon category 中的 trace 是一个图形化的 trace，而不是一开始就给定的矩阵 trace。设 <span class="math inline">f:V\to V</span> 是 <span class="math inline">\mathcal C</span> 中的 endomorphism。记 <span class="math display">b_V:\mathbf 1\to V\otimes V^*,\qquad
+  d_V:V^*\otimes V\to \mathbf 1</span> 为 coevaluation 和 evaluation。Turaev 的 categorical trace 定义为 <span class="math display">\operatorname{tr}_{\mathcal C}(f)
+  =
+  d_V\circ c_{V,V^*}\circ
+  \bigl((\theta_V\circ f)\otimes \operatorname{id}_{V^*}\bigr)
+  \circ b_V
+  \in \operatorname{End}_{\mathcal C}(\mathbf 1).</span> 对象 <span class="math inline">V</span> 的 categorical dimension 定义为 <span class="math display">\dim_{\mathcal C}(V)=\operatorname{tr}_{\mathcal C}(\operatorname{id}_V).</span> 图形上，<span class="math inline">\operatorname{tr}_{\mathcal C}(f)</span> 就是把一个标有 <span class="math inline">f</span> 的 coupon 放到一条 <span class="math inline">V</span>-colored closed ribbon 上后得到的 closed ribbon graph invariant。也就是说，若 <span class="math inline">\Omega_f</span> 表示这个闭合图形，则 <span class="math display">F(\Omega_f)=\operatorname{tr}_{\mathcal C}(f).</span></p>
+<div class="theorem">
+<p><strong>定理 9</strong> (Turaev ribbon graph functor). <em>对任意 ribbon category <span class="math inline">\mathcal C</span>，存在一个拓扑不变量函子 <span class="math inline">F</span>，它把 <span class="math inline">\mathcal C</span>-colored ribbon graphs 映到 <span class="math inline">\mathcal C</span> 中的 morphisms。若 <span class="math inline">\Gamma</span> 是 closed colored ribbon graph，则 <span class="math display">F(\Gamma)\in \operatorname{End}_{\mathcal C}(\mathbf 1).</span> 在 <span class="math inline">\operatorname{End}_{\mathcal C}(\mathbf 1)=K</span> 的情形下，<span class="math inline">F(\Gamma)</span> 是 <span class="math inline">K</span> 值不变量。</em></p>
+</div>
+<p>这个定理是 graphical calculus 的严格表述。它说明，只要范畴结构满足 ribbon category 的公理，局部图元的代数解释就自动对 Reidemeister 型局部变形不变。</p>
+</section>
+</section>
+<section id="hopf-代数如何产生-ribbon-category" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Hopf 代数如何产生 ribbon category</h1>
+<p>本节主线是：Hopf algebra <span class="math inline">A</span> 的每一层代数结构，恰好在表示范畴 <span class="math inline">\mathrm{Rep}(A)</span> 上诱导一层范畴结构，从而逐步把 <span class="math inline">\mathrm{Rep}(A)</span> 提升为 ribbon category（与拓扑侧的完整对照见第 <a href="#sec:table" data-reference-type="ref" data-reference="sec:table">9</a> 节）。</p>
+<div class="center">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong><span class="math inline">A</span> 上的结构</strong></th>
+<th style="text-align: left;"><strong><span class="math inline">\mathrm{Rep}(A)</span> 上的结构</strong></th>
+<th style="text-align: left;"><strong>图示</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bialgebra：<span class="math inline">\Delta,\varepsilon</span></td>
+<td style="text-align: left;">monoidal（张量积、单位）</td>
+<td style="text-align: left;">并列 strands</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hopf：antipode <span class="math inline">S</span></td>
+<td style="text-align: left;">rigid / duality</td>
+<td style="text-align: left;">cup、cap</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">quasitriangular：<span class="math inline">R</span>-matrix</td>
+<td style="text-align: left;">braiding <span class="math inline">c</span></td>
+<td style="text-align: left;">crossing</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ribbon：universal twist <span class="math inline">v</span></td>
+<td style="text-align: left;">twist <span class="math inline">\theta</span></td>
+<td style="text-align: left;">framing</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>设 <span class="math inline">A</span> 是一个 Hopf algebra，结构映射为乘法、单位、coproduct <span class="math inline">\Delta</span>、counit <span class="math inline">\varepsilon</span> 与 antipode <span class="math inline">S</span>。若 <span class="math inline">V</span> 与 <span class="math inline">W</span> 是左 <span class="math inline">A</span>-modules，则 <span class="math inline">V\otimes W</span> 上的 <span class="math inline">A</span>-作用由 <span class="math inline">\Delta</span> 给出： <span class="math display">a\cdot(v\otimes w)
+  =\sum a_{(1)}v\otimes a_{(2)}w,
+  \qquad
+  \Delta(a)=\sum a_{(1)}\otimes a_{(2)}.</span> 因此 <span class="math inline">\mathrm{Rep}(A)</span> 是 monoidal category。</p>
+<p>antipode 的作用是构造 dual modules。设 <span class="math inline">V</span> 是有限秩左 <span class="math inline">A</span>-module，并记 <span class="math display">V^*=\operatorname{Hom}_K(V,K).</span> 有两种自然的左 <span class="math inline">A</span>-module 结构： <span class="math display">(a\cdot f)(v)=f(S(a)v),</span> 以及 <span class="math display">(a\cdot f)(v)=f(S^{-1}(a)v),</span> 其中第二个公式要求 <span class="math inline">S</span> 可逆。第一种结构使 evaluation <span class="math inline">V^*\otimes V\to K</span> 与 coevaluation <span class="math inline">K\to V\otimes V^*</span> 成为 <span class="math inline">A</span>-linear maps；第二种结构则对应另一侧的 duality。换言之，antipode 是 cup 与 cap 可以被解释为 <span class="math inline">A</span>-linear morphisms 的代数原因。</p>
+<p>这里的 <span class="math inline">A</span>-linearity 可以直接检查。把 <span class="math inline">K</span> 看成 counit 给出的平凡 <span class="math inline">A</span>-module，即 <span class="math inline">a\cdot c=\varepsilon(a)c</span>。令 <span class="math display">d_V:V^*\otimes V\to K,\qquad d_V(f\otimes x)=f(x).</span> 则 <span class="math display">\begin{aligned}
+  d_V\bigl(a\cdot(f\otimes x)\bigr)
+  &amp;=\sum d_V(a_{(1)}f\otimes a_{(2)}x)\\
+  &amp;=\sum f\bigl(S(a_{(1)})a_{(2)}x\bigr)
+   =\varepsilon(a)f(x),
+\end{aligned}</span> 所以 <span class="math inline">d_V</span> 是 <span class="math inline">A</span>-linear。若 <span class="math inline">\{e_i\}</span> 是 <span class="math inline">V</span> 的一组基，<span class="math inline">\{e^i\}</span> 是对偶基，则 <span class="math display">b_V:K\to V\otimes V^*,\qquad
+  b_V(1)=\delta_V=\sum_i e_i\otimes e^i</span> 也为 <span class="math inline">A</span>-linear。事实上，将 <span class="math inline">V\otimes V^*</span> 识别为 <span class="math inline">\operatorname{End}_K(V)</span> 时，<span class="math inline">\delta_V</span> 对应 <span class="math inline">\operatorname{id}_V</span>；而 <span class="math inline">a</span> 作用在 <span class="math inline">\delta_V</span> 上对应算子 <span class="math display">z\longmapsto \sum_i e^i(S(a_{(2)})z)\,a_{(1)}e_i
+  =\sum a_{(1)}S(a_{(2)})z
+  =\varepsilon(a)z.</span> 因此 <span class="math inline">a\cdot \delta_V=\varepsilon(a)\delta_V</span>，即 <span class="math inline">b_V(a\cdot 1)=a\cdot b_V(1)</span>。</p>
+<p>需要注意，有限维向量空间的标准映射 <span class="math display">j_V:V\to V^{**},\qquad j_V(x)(f)=f(x)</span> 一般并不是 <span class="math inline">A</span>-module isomorphism。事实上 <span class="math display">(a\cdot j_V(x))(f)
+  =j_V(x)(S(a)f)
+  =f(S^2(a)x)
+  =j_V(S^2(a)x)(f).</span> 因此 <span class="math inline">j_V</span> 只在 <span class="math inline">S^2=\operatorname{id}</span> 的特殊情形下自动是 <span class="math inline">A</span>-linear。若 <span class="math inline">A</span> 是 ribbon Hopf algebra，则 Drinfeld element <span class="math inline">u=m(S\otimes\operatorname{id})(R_{21})</span> 与 universal twist <span class="math inline">v</span> 给出与 quantum trace 相容的 pivotal element <span class="math display">g=uv,\qquad S^2(a)=gag^{-1}.</span> 这时真正的 <span class="math inline">A</span>-module isomorphism <span class="math inline">V\to V^{**}</span> 是 <span class="math display">p_V(x)(f)=f(gx)=j_V(gx)(f).</span> 因为 <span class="math display">\begin{aligned}
+  (a\cdot p_V(x))(f)
+  &amp;=p_V(x)(S(a)f)
+    =f(S^2(a)gx)\\
+  &amp;=f(gax)
+    =p_V(ax)(f).
+\end{aligned}</span> 这也解释了为什么 quantum trace 中会出现同一个因子 <span class="math inline">g=uv</span>。（有些文献把 <span class="math inline">r=v^{-1}</span> 称为 ribbon element，于是同一个因子写成 <span class="math inline">ur^{-1}</span>；为避免来回切换，下文一律用 <span class="math inline">v</span>。）</p>
+<p>左对偶与右对偶的差别来自 evaluation/coevaluation 放在 <span class="math inline">V</span> 的哪一侧。在一般刚性 monoidal category 中，左对偶和右对偶不必相同；在 ribbon Hopf algebra 的表示范畴中，由于 ribbon 结构给出 compatible pivotal structure，左右对偶被系统地联系起来。这就是 framed oriented tangle 中方向反转与对偶颜色可以一致处理的原因。</p>
+<div class="definition">
+<p><strong>定义 10</strong> (quasitriangular Hopf algebra). <em>一个 quasitriangular Hopf algebra 是一个 Hopf algebra <span class="math inline">A</span>，配有可逆元 <span class="math display">R=\sum R^{(1)}\otimes R^{(2)}\in A\otimes A,</span> 称为 universal <span class="math inline">R</span>-matrix，使得 <span class="math display">R\Delta(a)R^{-1}=\Delta^{\operatorname{op}}(a),</span> 并且 <span class="math display">(\Delta\otimes\operatorname{id})(R)=R_{13}R_{23},
+  \qquad
+  (\operatorname{id}\otimes\Delta)(R)=R_{13}R_{12}.</span> 这些恒等式保证 <span class="math inline">R</span> 与 coproduct 相容，并推出 Yang–Baxter equation。</em></p>
+</div>
+<p>若 <span class="math inline">V,W</span> 是 <span class="math inline">A</span>-modules，则 <span class="math inline">R</span> 定义 braiding <span class="math display">c_{V,W}
+  =P\circ(\rho_V\otimes\rho_W)(R):V\otimes W\to W\otimes V,</span> 其中 <span class="math inline">P</span> 是交换两个张量因子的 flip。Yang–Baxter equation 正是 braid relations 的代数形式。因此 universal <span class="math inline">R</span>-matrix 是 crossing 的代数来源。</p>
+<div class="definition">
+<p><strong>定义 11</strong> (ribbon Hopf algebra). <em>一个 ribbon Hopf algebra 是 quasitriangular Hopf algebra <span class="math inline">(A,R)</span>，再配有 central invertible element <span class="math inline">v\in A</span>，Turaev 称之为 universal twist，使它满足 <span class="math display">\Delta(v)=R_{21}R(v\otimes v),\qquad
+  S(v)=v,\qquad
+  \varepsilon(v)=1,</span> 其中 <span class="math inline">R_{21}=P_A(R)</span> 是交换两个张量因子后的 <span class="math inline">R</span>-matrix。如前所述，文献里也常把 <span class="math inline">v^{-1}</span> 称为 ribbon element，那时上面的 coproduct 公式会带一个 <span class="math inline">(R_{21}R)^{-1}</span> 因子。</em></p>
+</div>
+<div class="proposition">
+<p><strong>命题 12</strong>. <em>若 <span class="math inline">A</span> 是 ribbon Hopf algebra，则有限维表示范畴 <span class="math inline">\mathrm{Rep}_{\mathrm{fd}}(A)</span> 是 ribbon category。其 braiding 由 universal <span class="math inline">R</span>-matrix 给出，twist 则由 universal twist 的作用给出： <span class="math display">\theta_V=\rho_V(v):V\to V.</span></em></p>
+</div>
+<p>这说明 Hopf algebra 并不是直接”描述 framed link”，而是通过其表示范畴给出 ribbon category，再由 Turaev 的 graphical calculus 得到 colored framed link invariant。</p>
+<p>现在可以解释几种 trace 的关系。普通 trace <span class="math inline">\operatorname{Tr}_V</span> 是有限维向量空间 <span class="math inline">V</span> 上线性算子的矩阵 trace。quantum trace 则是先用 ribbon Hopf algebra 的 canonical element 把 ordinary trace 修正一下、再取 trace： <span class="math display">\operatorname{tr}_q(f)
+  =
+  \operatorname{Tr}_V\!\left(\rho_V(uv)\circ f\right),</span> 其中 <span class="math inline">u=m(S\otimes\operatorname{id})(R_{21})</span> 是 Drinfeld element。于是 <span class="math display">\dim_q(V)=\operatorname{tr}_q(\operatorname{id}_V)
+  =
+  \operatorname{Tr}_V(\rho_V(uv)).</span> 另一方面，上一节定义的 categorical trace <span class="math inline">\operatorname{tr}_{\mathcal C}(f)</span> 是图形闭合得到的 morphism <span class="math inline">\mathbf 1\to\mathbf 1</span>。当 <span class="math inline">\mathcal C=\mathrm{Rep}_{\mathrm{fd}}(A)</span> 时，把 braiding、duality 和 twist 的具体公式代入 categorical trace，正好得到上面的 quantum trace： <span class="math display">\operatorname{tr}_{\mathrm{Rep}(A)}(f)=\operatorname{tr}_q(f).</span> 因此三种写法并不矛盾：ordinary trace 是线性代数操作；quantum trace 是 Hopf algebra 表示里的 ordinary trace 加权版本；categorical trace 是同一个量的 coordinate-free 图形化定义。</p>
+</section>
+<section id="colored-framed-link-invariant" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Colored framed link invariant</h1>
+<p>设 <span class="math inline">A</span> 是 ribbon Hopf algebra，令 <span class="math inline">\mathcal C=\mathrm{Rep}_{\mathrm{fd}}(A)</span>。给定 oriented framed link <span class="math display">L=L_1\cup\cdots\cup L_m,</span> 并给每个分量 <span class="math inline">L_i</span> 指定一个 color <span class="math inline">V_i\in\mathcal C</span>，Turaev functor 给出标量 <span class="math display">F(L;V_1,\ldots,V_m)\in\operatorname{End}_{\mathcal C}(\mathbf 1).</span> 若 <span class="math inline">\operatorname{End}_{\mathcal C}(\mathbf 1)=K</span>，则这就是 <span class="math inline">K</span> 值的 colored framed link invariant。</p>
+<p>这里必须强调”framed”。在 ribbon category 中，正负 twist 分别由 <span class="math inline">\theta_V</span> 及其逆表示；因此 link component 的 framing 改变会改变 invariant。若采用 blackboard framing，则 diagram 的 writhe 可以用来编码 framing；这正是 framed link 与 ribbon diagram 对应的图示基础。</p>
+</section>
+<section id="sec:surgery" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 从 link invariant 到三维流形不变量</h1>
+<p>上一节得到的 <span class="math inline">F(L;V_1,\ldots,V_m)</span> 只是 colored framed link invariant。要由它定义 <span class="math inline">M_L</span> 的不变量，必须消除 surgery presentation 的非唯一性。按照 Kirby 定理，需要构造一个表达式 <span class="math inline">\tau(L)</span>，使其在 handle slides 与 <span class="math inline">\pm 1</span> moves 下不变。</p>
+<p>实现这一点的结构是 modular category。下文把它写成 <span class="math display">(\mathcal V,\{V_i\}_{i\in I}),</span> 其 ground ring 为 <span class="math inline">K</span>。</p>
+<div class="definition">
+<p><strong>定义 13</strong> (modular category). <em>一个 modular category 是一个 ribbon <span class="math inline">K</span>-linear category <span class="math inline">\mathcal V</span>，连同有限个 simple objects 的代表集 <span class="math inline">\{V_i\}_{i\in I}</span>，满足以下条件：</em></p>
+<ol type="1">
+<li><p><em>单位对象属于这组 simples，即存在 <span class="math inline">0\in I</span> 使得 <span class="math inline">V_0=\mathbf 1</span>；</em></p></li>
+<li><p><em>对偶封闭：对每个 <span class="math inline">i\in I</span>，存在 <span class="math inline">i^*\in I</span> 使得 <span class="math inline">V_{i^*}\cong V_i^*</span>；</em></p></li>
+<li><p><em>domination：每个对象 <span class="math inline">X</span> 的 identity morphism 都可写成有限和 <span class="math display">\operatorname{id}_X=\sum_r f_r g_r,</span> 其中 <span class="math inline">g_r:X\to V_{i(r)}</span>，<span class="math inline">f_r:V_{i(r)}\to X</span>，且 <span class="math inline">i(r)\in I</span>；</em></p></li>
+<li><p><em>Hopf link matrix <span class="math display">S_{ij}=\operatorname{tr}(c_{V_j,V_i}\circ c_{V_i,V_j})</span> 在 <span class="math inline">K</span> 上可逆。</em></p></li>
+</ol>
+</div>
+<p>前三条条件表达”有限 simple colors 足够控制整个范畴”；最后一条 non-degeneracy 条件是 modularity 的核心，它使 Kirby color 具有 handle-slide 不变性。记 <span class="math display">\dim(i)=\dim(V_i),\qquad
+  S_{ij}=\operatorname{tr}(c_{V_j,V_i}\circ c_{V_i,V_j}),</span> 其中 <span class="math inline">S_{ij}</span> 是 Hopf link matrix。若 twist 在 simple object <span class="math inline">V_i</span> 上的标量为 <span class="math inline">v_i</span>，则 Turaev 还引入 <span class="math display">D^2=\sum_{i\in I}\dim(i)^2,\qquad
+  \Delta=\sum_{i\in I}v_i^{-1}\dim(i)^2.</span> 这里 <span class="math inline">D</span> 称为 rank；<span class="math inline">\Delta</span> 是由 twist anomaly 决定的常数。</p>
+<div class="definition">
+<p><strong>定义 14</strong> (Kirby color). <em>Kirby color 是形式线性组合 <span class="math display">\Omega_{\mathcal V}=\sum_{i\in I}\dim(i)V_i.</span> 若 <span class="math inline">L</span> 有 <span class="math inline">m</span> 个分量，把每个分量都染成 <span class="math inline">\Omega_{\mathcal V}</span>，意思是取 Turaev 的加权求和 <span class="math display">\{L\}
+  =
+  \sum_{\lambda\in\operatorname{col}(L)}
+  \left(\prod_{n=1}^m \dim(\lambda(L_n))\right)
+  F(\Gamma(L,\lambda)).</span> 这里 <span class="math inline">\operatorname{col}(L)</span> 是从 <span class="math inline">L</span> 的分量集合到 <span class="math inline">I</span> 的所有 coloring，<span class="math inline">\Gamma(L,\lambda)</span> 是对应的 colored ribbon graph。<span class="math inline">\Omega_{\mathcal V}</span> 不是范畴中的普通对象，而是 surgery coloring sum 的记号。</em></p>
+</div>
+<p>Kirby color 的核心性质是 handle-slide property：一个 strand 在 <span class="math inline">\Omega_{\mathcal V}</span>-colored component 上滑过，不改变整体加权求和。这一性质的代数来源可以理解为 Hopf link <span class="math inline">S</span>-matrix 的非退化性和 quantum dimensions 的配合；几何上，它正是 Kirby handle slide 的不变性。</p>
+<p>设 <span class="math inline">B_L</span> 是 framed link <span class="math inline">L</span> 的 linking matrix。对角元为 framing，非对角元为 pairwise linking numbers。记 <span class="math display">\sigma(L)=\sigma_+(L)-\sigma_-(L)</span> 为 <span class="math inline">B_L</span> 的 signature；等价地，它是 Turaev 的四维 <span class="math inline">W_L</span> 的 intersection form signature。Kirby 的 <span class="math inline">\pm 1</span> move 会改变 signature，因此 <span class="math inline">\{L\}</span> 本身通常不是三维流形不变量。</p>
+<p>T94 Chapter II 的归一化公式是 <span class="math display">\tau_{\mathcal V,D}(M_L)
+  =
+  \Delta^{\sigma(L)}
+  D^{-\sigma(L)-m-1}
+  \{L\}.</span> 这里 <span class="math inline">m</span> 是 surgery link 的分量数。该公式的 normalization 给出 <span class="math inline">\tau_{\mathcal V,D}(S^3)=D^{-1}</span> 和 <span class="math inline">\tau_{\mathcal V,D}(S^1\times S^2)=1</span>。不同文献可能把 <span class="math inline">D</span> 或 <span class="math inline">\Delta</span> 吸收到整体常数中；关键结构事实不变：Kirby color 保证 handle slide 不变性，<span class="math inline">\Delta</span> 与 signature/rank normalization 保证 <span class="math inline">\pm 1</span> move 不变性。</p>
+<div class="theorem">
+<p><strong>定理 15</strong> (Reshetikhin–Turaev invariant). <em>设 <span class="math inline">(\mathcal V,\{V_i\}_{i\in I})</span> 是 modular category，并选定 rank <span class="math inline">D</span>。由 Kirby color 加权求和和 signature 归一化得到的数量 <span class="math inline">\tau_{\mathcal V,D}(M_L)</span> 在 Kirby moves 下不变。因此它只依赖于 closed oriented <span class="math inline">3</span>-manifold <span class="math inline">M_L</span> 的 orientation-preserving homeomorphism class，给出三维流形不变量 <span class="math display">\tau_{\mathcal V,D}(M)\in K.</span> 更一般地，若 closed <span class="math inline">3</span>-manifold <span class="math inline">M</span> 中含有 <span class="math inline">\mathcal V</span>-colored framed ribbon graph <span class="math inline">\Gamma</span>，同样可以定义 pair invariant <span class="math inline">\tau_{\mathcal V,D}(M,\Gamma)</span>。</em></p>
+</div>
+</section>
+<section id="modular-hopf-algebra-与-purification" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Modular Hopf algebra 与 purification</h1>
+<p>T94 Chapter XI 先在 Hopf 代数层面定义 modular Hopf algebra，再通过表示范畴与 purification 得到 modular category。本节记录这一步的具体形式。</p>
+<div class="definition">
+<p><strong>定义 16</strong> (negligible module). <em>设 <span class="math inline">A</span> 是 ribbon Hopf algebra，<span class="math inline">Z</span> 是有限秩 <span class="math inline">A</span>-module。若对任意 <span class="math inline">A</span>-linear endomorphism <span class="math inline">f:Z\to Z</span> 都有 <span class="math display">\operatorname{tr}_q(f)=0,</span> 则称 <span class="math inline">Z</span> 是 negligible module。等价地，<span class="math inline">\operatorname{id}_Z</span> 的 quantum trace 为零，并且经过 <span class="math inline">Z</span> 的 morphisms 在 purification 中会被商掉。</em></p>
+</div>
+<div class="definition">
+<p><strong>定义 17</strong> (modular Hopf algebra). <em>一个 modular Hopf algebra 是一个 ribbon Hopf <span class="math inline">K</span>-algebra <span class="math inline">A</span>，连同一族有限秩 simple <span class="math inline">A</span>-modules <span class="math inline">\{V_i\}_{i\in I}</span>，满足：</em></p>
+<ol type="1">
+<li><p><em>存在 <span class="math inline">0\in I</span>，使 <span class="math inline">V_0=K</span>，其中 <span class="math inline">A</span> 通过 counit 作用在 <span class="math inline">K</span> 上；</em></p></li>
+<li><p><em>对每个 <span class="math inline">i\in I</span>，存在 <span class="math inline">i^*\in I</span>，使 <span class="math inline">V_{i^*}\cong V_i^*</span>；</em></p></li>
+<li><p><em>对任意 <span class="math inline">k,l\in I</span>，张量积 <span class="math inline">V_k\otimes V_l</span> 可分解为有限个 <span class="math inline">V_i</span> 的直和，加上一个 negligible <span class="math inline">A</span>-module；</em></p></li>
+<li><p><em>由 monodromy <span class="math inline">R_{21}R</span> 给出的 Hopf link matrix <span class="math display">S_{ij}=\operatorname{tr}_q\!\left((R_{21}R)|_{V_i\otimes V_j}\right)</span> 在 <span class="math inline">K</span> 上可逆。</em></p></li>
+</ol>
+</div>
+<p>这个定义是 modular category 公理在 Hopf algebra 表示论中的对应版本。单位对象、对偶闭合和 tensor product 分解对应 modular category 的前三条公理；<span class="math inline">S</span>-matrix 可逆对应 non-degeneracy。区别是：在 quantum group at roots of unity 中确实会出现 negligible modules，因此 <span class="math inline">\mathrm{Rep}(A)</span> 的相应子范畴一般首先是 quasimodular category，而不是已经纯粹的 modular category。</p>
+<div class="theorem">
+<p><strong>定理 18</strong> (Turaev). <em>设 <span class="math inline">(A,\{V_i\})</span> 是 modular Hopf algebra。由 <span class="math inline">\{V_i\}</span> quasidominate 的 <span class="math inline">A</span>-modules 构成 <span class="math inline">\mathrm{Rep}(A)</span> 的一个 ribbon 子范畴 <span class="math inline">\mathcal T</span>。则 <span class="math inline">(\mathcal T,\{V_i\})</span> 是 quasimodular category。将 <span class="math inline">\mathcal T</span> 按 negligible morphisms 取 quotient，即 purification，得到 modular category <span class="math inline">\mathcal T_p</span>。于是每个 modular Hopf algebra canonically gives rise to a modular category。</em></p>
+</div>
+<p>因此，在 T94 的层级中，modular Hopf algebra 是产生 quasimodular category 的 Hopf-algebraic input；purification 是从这个 quasimodular category 到 modular category 的一步： <span class="math display">\begin{aligned}
+  \text{modular Hopf algebra}
+  &amp;\longrightarrow \text{quasimodular category}\\
+  &amp;\longrightarrow \text{purified modular category}\\
+  &amp;\longrightarrow \text{RT invariant}.
+\end{aligned}</span></p>
+</section>
+<section id="u_qmathfraksl_2jones-polynomial-与-wrt-invariant" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> <span class="math inline">U_q(\mathfrak{sl}_2)</span>、Jones polynomial 与 WRT invariant</h1>
+<p>最后说明本文主线如何包含 Jones polynomial。这里要区分 generic parameter 与 root of unity 两种情形。T94 Chapter XI §7.5 讨论的是 generic 或 <span class="math inline">h</span>-adic 情形：由 <span class="math inline">U_h\mathfrak g</span> 的 regular finite-rank modules 组成 ribbon category。一个 indecomposable regular module 由最高权标号，而这些最高权等价于 <span class="math inline">m=\operatorname{rank}\mathfrak g</span> 个非负整数。因此，若 <span class="math display">L=L_1\cup\cdots\cup L_s</span> 是 framed oriented link，给每个分量指定一个最高权 <span class="math display">L_j\longmapsto V_{\lambda_j}</span> 就得到一个 colored framed link。把这个 colored link 代入 Chapter I 的 operator invariant <span class="math inline">F</span>，得到 <span class="math display">F(L;V_{\lambda_1},\ldots,V_{\lambda_s})\in \mathbb C[[h]].</span> T94 §7.5 指出，这个不变量实际上是变量 <span class="math display">q=\exp(-h/2)</span> 的 Laurent polynomial。</p>
+<p>当 <span class="math inline">\mathfrak g=\mathfrak{sl}_2(\mathbb C)</span> 时，rank 为 <span class="math inline">1</span>，indecomposable regular modules 由一个非负整数标号： <span class="math display">V_0,V_1,V_2,\ldots .</span> 这里 <span class="math inline">V_n</span> 是最高权为 <span class="math inline">n</span> 的表示，经典维数为 <span class="math inline">n+1</span>。因此，对 knot <span class="math inline">K</span>，每个 <span class="math inline">n\ge 0</span> 都给出一个 framed colored link polynomial <span class="math display">F(K;V_n).</span> 这些就是 colored Jones polynomial 的 quantum-group 来源。特别地，<span class="math inline">V_1</span> 是二维基本表示；T94 §7.5 说明，当 link 的所有分量都染成 <span class="math inline">\mathfrak{sl}_2</span> 的基本表示时，得到的 <span class="math inline">F</span> 是 Jones polynomial 的一个版本。对 <span class="math inline">n&gt;1</span>，得到的是 higher colored Jones polynomials。</p>
+<p>还需注意，operator invariant <span class="math inline">F</span> 首先是 framed link invariant。若从一个普通 oriented link diagram <span class="math inline">D</span> 出发，通常先采用 blackboard framing，把 <span class="math inline">D</span> 看成 framed link diagram，再给每个分量染成 <span class="math inline">V_1</span>，计算 <span class="math display">F(D;V_1,\ldots,V_1).</span> 这个量在 Reidemeister II、III 型变形下表现良好，但 Reidemeister I 会改变 blackboard framing。要得到普通 oriented link invariant，需要用 diagram 的 writhe 做归一化，抵消 twist eigenvalue 带来的 framing dependence。换言之， <span class="math display">\text{Jones polynomial}
+  =
+  \text{writhe-normalized }F(D;V_1,\ldots,V_1),</span> 其中变量替换和整体常数依 convention 而不同。T94 Chapter XII 从 Kauffman bracket viewpoint 给出同一现象：bracket 是 framed link invariant，乘以 writhe 修正因子后得到 ordinary oriented Jones polynomial。</p>
+<p>在 root of unity 情形，需要把允许的 colors 截断到有限的 Weyl alcove simple modules。T94 说明，对于满足相应阶数条件的 <span class="math inline">q</span>，可以从 <span class="math inline">U_q(\mathfrak g)</span> 得到 modular Hopf algebra；经过 purification 得到 modular category 后，再应用第 <a href="#sec:surgery" data-reference-type="ref" data-reference="sec:surgery">6</a> 节所总结的 surgery construction，就得到 Witten–Reshetikhin–Turaev 型 <span class="math inline">3</span>-manifold invariants。</p>
+<p>因此，三者的逻辑关系是：</p>
+<ol type="1">
+<li><p>generic/h-adic 的 <span class="math inline">U_q(\mathfrak{sl}_2)</span> 给出 colored Jones polynomials；</p></li>
+<li><p>颜色 <span class="math inline">V_1</span>，也就是二维基本表示，给出 ordinary Jones polynomial 的一个归一化版本；</p></li>
+<li><p>root of unity 下的有限 modular data 经过 surgery/Kirby normalization 给出 WRT <span class="math inline">3</span>-manifold invariants。</p></li>
+</ol>
+</section>
+<section id="sec:table" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 结构表</h1>
+<table class="caption-top table">
+<caption>从 Hopf 代数结构到拓扑构造的对应关系</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Hopf 代数结构</strong></th>
+<th style="text-align: left;"><strong>代数数据</strong></th>
+<th style="text-align: left;"><strong>表示范畴中的结构</strong></th>
+<th style="text-align: left;"><strong>拓扑解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">algebra</td>
+<td style="text-align: left;">multiplication, unit</td>
+<td style="text-align: left;"><span class="math inline">A</span>-modules 与 <span class="math inline">A</span>-linear maps</td>
+<td style="text-align: left;">只有表示论，还不能自然解释并列 strands</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bialgebra</td>
+<td style="text-align: left;">coproduct, counit</td>
+<td style="text-align: left;">monoidal category</td>
+<td style="text-align: left;">解释 tensor product，即多条线并列</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hopf algebra</td>
+<td style="text-align: left;">antipode</td>
+<td style="text-align: left;">rigid category / duality</td>
+<td style="text-align: left;">解释 cup、cap、orientation reversal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">quasitriangular Hopf algebra</td>
+<td style="text-align: left;">universal <span class="math inline">R</span>-matrix</td>
+<td style="text-align: left;">braided category</td>
+<td style="text-align: left;">解释 crossing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ribbon Hopf algebra</td>
+<td style="text-align: left;">universal twist</td>
+<td style="text-align: left;">ribbon category</td>
+<td style="text-align: left;">解释 twist 与 framing</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">modular Hopf algebra</td>
+<td style="text-align: left;">finite simple colors, quantum dimensions, invertible <span class="math inline">S</span>-matrix, negligible summands</td>
+<td style="text-align: left;">quasimodular category；purification 后为 modular category</td>
+<td style="text-align: left;">通过 Kirby color 与 signature 归一化得到三维流形不变量</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="参考文献" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 参考文献</h1>
+<ol type="1">
+<li>N. Reshetikhin and V. Turaev, <em>Ribbon graphs and their invariants derived from quantum groups</em>, Communications in Mathematical Physics 127 (1990), 1–26.</li>
+<li>N. Reshetikhin and V. Turaev, <em>Invariants of 3-manifolds via link polynomials and quantum groups</em>, Inventiones Mathematicae 103 (1991), 547–597.</li>
+<li>V. G. Turaev, <em>Quantum Invariants of Knots and 3-Manifolds</em>, de Gruyter, 1994.</li>
+<li>R. Kirby, <em>A calculus of framed links in <span class="math inline">S^3</span></em>, Inventiones Mathematicae 45 (1978), 35–56.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
