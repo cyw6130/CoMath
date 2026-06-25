@@ -552,21 +552,30 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#applications" id="toc-applications" class="nav-link active" data-scroll-target="#applications"><span class="header-section-number">1</span> Applications</a>
+  <li><a href="#handle-slides" id="toc-handle-slides" class="nav-link active" data-scroll-target="#handle-slides"><span class="header-section-number">1</span> Handle slides</a>
   <ul class="collapse">
-  <li><a href="#unlock" id="toc-unlock" class="nav-link" data-scroll-target="#unlock"><span class="header-section-number">1.1</span> Unlock</a></li>
-  <li><a href="#unravel-解开缠结" id="toc-unravel-解开缠结" class="nav-link" data-scroll-target="#unravel-解开缠结"><span class="header-section-number">1.2</span> Unravel (解开缠结)</a></li>
+  <li><a href="#handle-slide" id="toc-handle-slide" class="nav-link" data-scroll-target="#handle-slide"><span class="header-section-number">1.1</span> 1-handle slide</a></li>
+  <li><a href="#handle-slide-1" id="toc-handle-slide-1" class="nav-link" data-scroll-target="#handle-slide-1"><span class="header-section-number">1.2</span> 2-handle slide</a>
+  <ul class="collapse">
+  <li><a href="#dim3" id="toc-dim3" class="nav-link" data-scroll-target="#dim3"><span class="header-section-number">1.2.1</span> dim=3</a></li>
+  <li><a href="#dim4" id="toc-dim4" class="nav-link" data-scroll-target="#dim4"><span class="header-section-number">1.2.2</span> dim=4</a></li>
   </ul></li>
-  <li><a href="#handle-cancellation-1" id="toc-handle-cancellation-1" class="nav-link" data-scroll-target="#handle-cancellation-1"><span class="header-section-number">2</span> Handle Cancellation</a>
-  <ul class="collapse">
-  <li><a href="#handle-cancellation-2" id="toc-handle-cancellation-2" class="nav-link" data-scroll-target="#handle-cancellation-2"><span class="header-section-number">2.1</span> 1,2-handle cancellation</a></li>
   </ul></li>
-  <li><a href="#results-in-dimension-3" id="toc-results-in-dimension-3" class="nav-link" data-scroll-target="#results-in-dimension-3"><span class="header-section-number">3</span> Results in Dimension 3</a>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">2</span> Applications</a>
   <ul class="collapse">
-  <li><a href="#recall-surgery" id="toc-recall-surgery" class="nav-link" data-scroll-target="#recall-surgery"><span class="header-section-number">3.1</span> Recall: Surgery</a></li>
-  <li><a href="#dehn-surgery" id="toc-dehn-surgery" class="nav-link" data-scroll-target="#dehn-surgery"><span class="header-section-number">3.2</span> Dehn Surgery</a></li>
-  <li><a href="#surgery-and-closed-3-mfld" id="toc-surgery-and-closed-3-mfld" class="nav-link" data-scroll-target="#surgery-and-closed-3-mfld"><span class="header-section-number">3.3</span> Surgery and Closed 3 mfld</a></li>
-  <li><a href="#calculus-on-dehn-surgery" id="toc-calculus-on-dehn-surgery" class="nav-link" data-scroll-target="#calculus-on-dehn-surgery"><span class="header-section-number">3.4</span> Calculus on Dehn Surgery</a></li>
+  <li><a href="#unlock" id="toc-unlock" class="nav-link" data-scroll-target="#unlock"><span class="header-section-number">2.1</span> Unlock</a></li>
+  <li><a href="#unravel-解开缠结" id="toc-unravel-解开缠结" class="nav-link" data-scroll-target="#unravel-解开缠结"><span class="header-section-number">2.2</span> Unravel (解开缠结)</a></li>
+  </ul></li>
+  <li><a href="#handle-cancellation" id="toc-handle-cancellation" class="nav-link" data-scroll-target="#handle-cancellation"><span class="header-section-number">3</span> Handle Cancellation</a>
+  <ul class="collapse">
+  <li><a href="#handle-cancellation-1" id="toc-handle-cancellation-1" class="nav-link" data-scroll-target="#handle-cancellation-1"><span class="header-section-number">3.1</span> 1,2-handle cancellation</a></li>
+  </ul></li>
+  <li><a href="#results-in-dimension-3" id="toc-results-in-dimension-3" class="nav-link" data-scroll-target="#results-in-dimension-3"><span class="header-section-number">4</span> Results in Dimension 3</a>
+  <ul class="collapse">
+  <li><a href="#recall-surgery" id="toc-recall-surgery" class="nav-link" data-scroll-target="#recall-surgery"><span class="header-section-number">4.1</span> Recall: Surgery</a></li>
+  <li><a href="#dehn-surgery" id="toc-dehn-surgery" class="nav-link" data-scroll-target="#dehn-surgery"><span class="header-section-number">4.2</span> Dehn Surgery</a></li>
+  <li><a href="#surgery-and-closed-3-mfld" id="toc-surgery-and-closed-3-mfld" class="nav-link" data-scroll-target="#surgery-and-closed-3-mfld"><span class="header-section-number">4.3</span> Surgery and Closed 3 mfld</a></li>
+  <li><a href="#calculus-on-dehn-surgery" id="toc-calculus-on-dehn-surgery" class="nav-link" data-scroll-target="#calculus-on-dehn-surgery"><span class="header-section-number">4.4</span> Calculus on Dehn Surgery</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -618,44 +627,82 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>2-handle slide (dim=4)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>在 4 维情形下，2-handle 的 attaching sphere 是 <span class="math inline">S^2</span>，因此 handle slide 需要对球面进行操作。直观上，我们沿着另一个 2-handle 的 attaching sphere 滑动一个 2-handle 的 attaching sphere，类似于在 3 维情形下沿着曲线滑动曲线。</p>
-<p>具体地，假设我们有 2-handle <span class="math inline">h_1^2</span>和<span class="math inline">h_2^2</span>，其 attaching spheres 分别为 <span class="math inline">S_1</span>和<span class="math inline">S_2</span>（均为嵌入在 <span class="math inline">\partial W^2</span>中的 2-球面）。对<span class="math inline">h_1^2</span>做 handle slide over<span class="math inline">h_2^2</span>指的是：我们取一个从<span class="math inline">S_1</span>到<span class="math inline">S_2</span>的管状邻域的平凡化，将<span class="math inline">S_1</span>沿着该管状邻域向<span class="math inline">S_2</span>滑动，得到一个新的 2-球面<span class="math inline">S_1'</span>。这个操作对应于改变 <span class="math inline">h_1^2</span> 的 attaching map，从而得到等价的 handle decomposition。</p>
-<p>在 Kirby diagram 中，2-handle slide 的图示表现为：将代表 2-handle 的纽结（或链环）沿着另一个代表 2-handle 的纽结滑动，过程中可能产生 twist 或 linking 的变化。</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Handle cancellation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<section id="stabilization-dim3" class="level3" data-number="0.0.1">
-<h3 data-number="0.0.1" class="anchored" data-anchor-id="stabilization-dim3"><span class="header-section-number">0.0.1</span> Stabilization (dim=3)</h3>
-<p>Stabilization 指的是在 Heegaard diagram 中添加一对对偶的 1-handle 和 2-handle。具体来说，我们在表面 <span class="math inline">S_g</span> 上选择一个平凡的小圆盘，去掉它并粘上一个 1-handle 和一个 2-handle，使得 genus 增加 1。这一操作不改变流形，因为新添加的 1-handle 和 2-handle 可以互相抵消。</p>
-<p>在 Heegaard diagram 中，stabilization 对应着添加一对不相交的简单闭曲线：一个表示 1-handle 的 meridian，另一个表示 2-handle 的 longitude。</p>
+<p>不特殊说明, 我们总考虑连通, 定向, 光滑, 紧的, (可能) 不闭的情形.</p>
+<ul>
+<li>回顾:
+<ul>
+<li>我们之前提到, 对于闭的 4 mfld, 它上面粘接 (3+4) handle 的方式是唯一的. 于是这些闭的 4 mfld 由它们的 Kirby diagram 唯一确定.</li>
+<li><strong>但是</strong>: 对于任意一个 Kirby diagram, 我们仅考虑 0,1,2 handle. 它给出的带边 4 mfld 的边界未必是 <span class="math inline">S^1\times S^2</span> 的边界连通和, 故它未必能够通过粘接 3,4 handle 得到闭的 4 mfld. 所以, 未必任意的 Kirby diagram 都能给出闭的 4 mfld.
+<ul>
+<li>我们将那些给出闭 4 mfld 的 Kirby diagram 称为闭的 Kirby diagram. 此时我们有满 <span class="math display">
+  \{ \text{closed Kirby diagram} \}\twoheadrightarrow \{ \text{closed 4 mfld} \}
+  </span> 或者说, 我们实际上有交换图表: <img src="images/4.-kirby-calculus-1778498648067.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>Kirby diagram 在 dim=3 时表现为 Heegaard diagram.</li>
+<li>类似的, 我们可以定义 closed Heegaard diagram (边界为若干个 <span class="math inline">S^2</span> 的不交并). 此时我们也可以得到满射: <span class="math display">
+  \{ \text{closed Heegaard diagram} \}\twoheadrightarrow \{ \text{closed 3 mfld} \}
+  </span></li>
+</ul></li>
+</ul></li>
+<li>Cerf 的定理:
+<ul>
+<li>handle 分解: <span class="math inline">(X,\partial X)</span> 的 handle 分解是一些 handle <span class="math inline">h^k_i</span>, 满足 <span class="math inline">X=\partial X\times I+\bigcup_i h_i^k</span>.</li>
+<li>Cerf’s Thm: 两组 handle <span class="math inline">h_i^k,{h'}_j^l</span> 都给出 <span class="math inline">(X,\partial X)</span> 的 handle 分解, 当且仅当它们之间相差有限多个 handle slide, handle cancelling (or its inverse move), isotopy.</li>
+</ul></li>
+</ul>
+<p>根据 Cerf 的定理, 当 dim=3, 利用 Heegaard diagram 和 handle 分解的对应, 我们有直接的推论:</p>
+<ul>
+<li>定理 (Johannson, Reidemeister–Singer)
+<ul>
+<li>两个 Heegaard diagram 给出相同的 3 mfld 当且仅当它们之间差了有限多个 stabilization + 1,2 handle slide,</li>
+<li>用图表来看就是: <img src="images/4.-kirby-calculus-1778502290469.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+<li>注意: closed heegaard diagram 在 stabilization, handle slide 运算下封闭, 此时商才是良定义的.</li>
+<li>证明: 是 Cerf 定理的直接推论.</li>
+</ul></li>
+</ul>
+<p>对于给定的 diagram, 我们需要知道对它做 1,2 handle slide 以及 cancellation (stabilization) 会如何改变原来的 diagram. 下面我们将 dim 3,4 一起处理.</p>
+<p><img src="images/4.-kirby-calculus-1778515873344.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<section id="handle-slides" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Handle slides</h1>
+<ul>
+<li>第一个例子: <img src="images/4.-kirby-calculus-1779110605097.webp" class="img-fluid" loading="lazy" decoding="async"> 注意 slide 过程中两组 <span class="math inline">S^0</span> 之间的 link 情况变化(从 unlink 到 link), 由此看出黄色 1-handle 被 twist 了.</li>
+</ul>
+<section id="handle-slide" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="handle-slide"><span class="header-section-number">1.1</span> 1-handle slide</h2>
+<p>1-handle slide 中, 我们不仅需要知道 1-handle slide 如何改变 1-handle (这是容易的), 还需要知道 1-handle slide 如何影响它上面粘接的那些 2-handle. 在考虑 2-handle 的粘接时, 我们认为: 2-handle <span class="math inline">\partial_-h^2</span> 的嵌入(粘接)方式没变, 但是粘接的表面变了.</p>
+<ul>
+<li>例子:
+<ul>
+<li>1-handle slide, 以及如何影响 2-handle: <img src="images/4.-kirby-calculus-1778330777911.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778330804528.webp" class="img-fluid" loading="lazy" decoding="async"></li>
+</ul></li>
+<li>Question: 假设我们有 handlebody <span class="math inline">h^0+h_1^1+h_2^1+h^2</span>, 当我们对 1-handle 做 handle silde 时, 2-handle <span class="math inline">h_2</span> 如何变化?</li>
+</ul>
+<p>说明: handle slide 本质上会给出一个流形的自同胚, 这个自同胚限制到边界上自然会诱导一个新的粘接映射. <img src="images/4.-kirby-calculus-1778513626869.webp" class="img-fluid" loading="lazy" decoding="async"> 下图展示了 handle slide 如何给出流形上的自同胚, 故也展示了 2-handle 的 attaching sphere 是如何变化的. 直观上, 就体现为我们沿着 1-handle 的 attaching 端点去拉扯这些线段. <img src="images/4.-kirby-calculus-1778330804528.webp" class="img-fluid" loading="lazy" decoding="async"></p>
+<ul>
+<li><p>例子: (这就是上面的反过程) <img src="images/4.-kirby-calculus-1779122384527.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1779163597259.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
+<li><p>同痕 vs handle slide (以 1-handle slide 为例):</p>
+<ul>
+<li>isotopy:
+<ul>
+<li>指的是 Kirby diagram 的 isotopy. 我们将 Kirby diagram 中的 1-handle 的粘接球看作点(小球), 将 2-handle 的粘接纽结看作线, 它们都落在 <span class="math inline">S^3</span> 上, 同痕的含义就是在 <span class="math inline">S^3</span> 上面拉扯这些对象.</li>
+<li>扯动小球的同痕本质上是在 <span class="math inline">S^3</span> 上滑动 1-handle, 它会诱导 <span class="math inline">W^1</span> 上的自同胚. 这些自同胚会诱导新的 2-handle 的粘接位置, 这些新的粘接位置在 <span class="math inline">S^3</span> 上的体现恰好就像我们”扯动”小球诱导的那样.</li>
+</ul></li>
+<li>1-handle slide:
+<ul>
+<li>注意到, 1-handle 会在 <span class="math inline">S^3</span> 上面产生”虫洞”, 所以即使我们可以在”虫洞”隧道中扯动 kirby diagram, 但这个操作并不能体现为 kirby diagram 的同痕.</li>
+<li>所以必须引入新的名词: 1-handle slide.</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
-<section id="cancellation-dim4" class="level3" data-number="0.0.2">
-<h3 data-number="0.0.2" class="anchored" data-anchor-id="cancellation-dim4"><span class="header-section-number">0.0.2</span> Cancellation (dim=4)</h3>
-<p>在 4 维 handle decomposition 中，一个 <span class="math inline">k</span>-handle 与其对偶的 <span class="math inline">(k+1)</span>-handle 可以互相抵消，如果它们的 attaching sphere 在边界上以唯一的方式相遇。例如，一个 1-handle 和一个 2-handle 可以抵消，如果 2-handle 的 attaching sphere 与 1-handle 的 belt sphere 恰好相交一次。</p>
-<p>在 Kirby diagram 中，1-2 handle cancellation 表现为：一个 1-handle 的 attaching 球（两个点）与一个 2-handle 的 attaching 纽结在代数上相交数为 1（即纽结恰好从一个点穿过到另一个点），且没有其他 handle 干扰。</p>
-<p>类似地，2-3 handle cancellation 也可定义，但更少见。</p>
+<section id="handle-slide-1" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="handle-slide-1"><span class="header-section-number">1.2</span> 2-handle slide</h2>
+<section id="dim3" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="dim3"><span class="header-section-number">1.2.1</span> dim=3</h3>
+<p>此时, 每个 2-handle 被一个曲面上的简单闭曲线标识, 这个时候 2-handle slide 就是我们常见的情形.</p>
+<p><img src="images/4.-kirby-calculus-1778330818749.webp" class="img-fluid" loading="lazy" decoding="async"></p>
 </section>
-</div>
-</div>
+<section id="dim4" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="dim4"><span class="header-section-number">1.2.2</span> dim=4</h3>
 <ul>
 <li>此时每个 2-handle 被一个 framed knot 标识, 我们需要回答:
 <ul>
@@ -663,8 +710,8 @@ window.Quarto = {
 <li>slide 之后, 纽结的 framing 怎么变化?</li>
 </ul></li>
 </ul>
-<section id="the-change-of-knot" class="level4" data-number="0.0.2.1">
-<h4 data-number="0.0.2.1" class="anchored" data-anchor-id="the-change-of-knot"><span class="header-section-number">0.0.2.1</span> The change of knot</h4>
+<section id="the-change-of-knot" class="level4" data-number="1.2.2.1">
+<h4 data-number="1.2.2.1" class="anchored" data-anchor-id="the-change-of-knot"><span class="header-section-number">1.2.2.1</span> The change of knot</h4>
 <ul>
 <li>纽结如何变化
 <ul>
@@ -681,11 +728,7 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 <li>例子
 <ul>
 <li>在下面的具体的例子中 (<span class="math inline">K_1,K_2</span> 不 link 到一起的时候), 我们可以把 framing 的变化看出来.</li>
-<li>对于一个 framed knot <span class="math inline">(K_1,K_1')</span>, 我们把 <span class="math inline">K_1,K_1'</span>一起划过<span class="math inline">K_2'</span>, 然后观察 framing 的变化. <img src="images/4.-kirby-calculus-1779721619142.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778516075400.webp" class="img-fluid" loading="lazy" decoding="async"> %% 另一种解释:
-<ul>
-<li>先考虑 <span class="math inline">K_2</span>的 framing 为 blackboard framing 的情形, 此时做连通和不会改变<span class="math inline">K_1</span> 的 framing.</li>
-<li>当 <span class="math inline">K_2</span>的 framing=n 的时候, 可以将<span class="math inline">K_2</span> 写成一个 framing=0 的 knot 上面 %%</li>
-</ul></li>
+<li>对于一个 framed knot <span class="math inline">(K_1,K_1')</span>, 我们把 <span class="math inline">K_1,K_1'</span>一起划过<span class="math inline">K_2'</span>, 然后观察 framing 的变化. <img src="images/4.-kirby-calculus-1779721619142.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778516075400.webp" class="img-fluid" loading="lazy" decoding="async"></li>
 <li>如果两个被 link 到一起了 (good case): <img src="images/4.-kirby-calculus-1779119620341.webp" class="img-fluid" loading="lazy" decoding="async"></li>
 <li>一般公式为: <span class="math display">
 f_1'=f_1+f_2\pm2lk(K_1,K_2)
@@ -716,10 +759,13 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 </ul></li>
 </ul>
 </section>
-<section id="applications" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Applications</h1>
-<section id="unlock" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unlock"><span class="header-section-number">1.1</span> Unlock</h2>
+</section>
+</section>
+</section>
+<section id="applications" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Applications</h1>
+<section id="unlock" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="unlock"><span class="header-section-number">2.1</span> Unlock</h2>
 <ul>
 <li><p>引理(Kirby move): <img src="images/4.-kirby-calculus-1778551800707.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1778551866564.webp" class="img-fluid" loading="lazy" decoding="async"> 最后一个等号: 右侧拉直之后就是左侧.</p></li>
 <li><p>推论: <img src="images/4.-kirby-calculus-1778551958561.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
@@ -733,18 +779,18 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 </ul></li>
 </ul>
 </section>
-<section id="unravel-解开缠结" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="unravel-解开缠结"><span class="header-section-number">1.2</span> Unravel (解开缠结)</h2>
+<section id="unravel-解开缠结" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="unravel-解开缠结"><span class="header-section-number">2.2</span> Unravel (解开缠结)</h2>
 <ul>
 <li><p>定理: <img src="images/4.-kirby-calculus-1779163470376.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1779163487746.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
 <li><p>上面的推广: <img src="images/4.-kirby-calculus-1779163506352.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779163515106.webp" class="img-fluid" loading="lazy" decoding="async"></p></li>
 </ul>
 </section>
 </section>
-<section id="handle-cancellation-1" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Handle Cancellation</h1>
-<section id="handle-cancellation-2" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="handle-cancellation-2"><span class="header-section-number">2.1</span> 1,2-handle cancellation</h2>
+<section id="handle-cancellation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Handle Cancellation</h1>
+<section id="handle-cancellation-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="handle-cancellation-1"><span class="header-section-number">3.1</span> 1,2-handle cancellation</h2>
 <p>如果一个消去 pair 在 Kirby diagram 中是孤立存在的, 我们很容易想象消去后的 new Kirby diagram 是什么样的. 但是, 如果消去 pair 不是孤立的呢? 即如果它们和其他的 handle (的 attaching sphere)相交时, 如何处理? 下面的引理告诉我们, 如果一个 pair 是消去 pair, 则总可以通过做 isotopy 和 handle silde, 将这个消去 pair 孤立出来.</p>
 <ul>
 <li>Recall <img src="images/4.-kirby-calculus-1779721927464.webp" class="img-fluid" loading="lazy" decoding="async"></li>
@@ -752,10 +798,10 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 <p><img src="images/4.-kirby-calculus-1779154898996.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154910024.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154931375.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1779154941389.webp" class="img-fluid" loading="lazy" decoding="async"></p>
 </section>
 </section>
-<section id="results-in-dimension-3" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Results in Dimension 3</h1>
-<section id="recall-surgery" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="recall-surgery"><span class="header-section-number">3.1</span> Recall: Surgery</h2>
+<section id="results-in-dimension-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Results in Dimension 3</h1>
+<section id="recall-surgery" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="recall-surgery"><span class="header-section-number">4.1</span> Recall: Surgery</h2>
 <ul>
 <li>Surgery: <img src="images/4.-kirby-calculus-1778417486829.webp" class="img-fluid" loading="lazy" decoding="async">
 <ul>
@@ -786,8 +832,8 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 </ul></li>
 </ul>
 </section>
-<section id="dehn-surgery" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="dehn-surgery"><span class="header-section-number">3.2</span> Dehn Surgery</h2>
+<section id="dehn-surgery" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="dehn-surgery"><span class="header-section-number">4.2</span> Dehn Surgery</h2>
 <p>后面, 我们的 surgery 都指 dim=3 的 1-surgery. ## Definition</p>
 <ul>
 <li>(Integer) Surgery
@@ -822,8 +868,8 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 </ul>
 <p>我们不仅可以对于 knot 做整的, 有理的 Surgery, 我们也可以对 link 做, 定义为依次对每个 knot 做 surgery (与做 surgery 的顺序无关). 对于 link <span class="math inline">L</span>以及系数<span class="math inline">x_i\in \mathbb{Q}</span>, 我们定义 <span class="math inline">S^3_L(x_i)</span>为从<span class="math inline">S^3</span>出发对 link<span class="math inline">L</span> 做 (有理) Dehn surgery 得到的闭 3 mfld.</p>
 </section>
-<section id="surgery-and-closed-3-mfld" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="surgery-and-closed-3-mfld"><span class="header-section-number">3.3</span> Surgery and Closed 3 mfld</h2>
+<section id="surgery-and-closed-3-mfld" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="surgery-and-closed-3-mfld"><span class="header-section-number">4.3</span> Surgery and Closed 3 mfld</h2>
 <ul>
 <li>定理 1(Lickorish–Wallace): Integer surgery 与 3 mfld.
 <ul>
@@ -924,8 +970,8 @@ f_1'=f_1+f_2\pm2lk(K_1,K_2)
 </ul>
 <p>我们上面提到, Kirby move 有两种表述方式 (第二种是对第一种的”简化”). 下面的命题证明这两种表述方式是等价的. - Prop: <img src="images/4.-kirby-calculus-1780375168914.webp" class="img-fluid" loading="lazy" decoding="async"> <img src="images/4.-kirby-calculus-1780375236491.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375247511.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375283095.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375300243.webp" class="img-fluid" loading="lazy" decoding="async"><img src="images/4.-kirby-calculus-1780375307295.webp" class="img-fluid" loading="lazy" decoding="async"></p>
 </section>
-<section id="calculus-on-dehn-surgery" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="calculus-on-dehn-surgery"><span class="header-section-number">3.4</span> Calculus on Dehn Surgery</h2>
+<section id="calculus-on-dehn-surgery" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="calculus-on-dehn-surgery"><span class="header-section-number">4.4</span> Calculus on Dehn Surgery</h2>
 <p>我们在 integer surgery 上的计算可以延拓到 rational surgery 上去.</p>
 <ul>
 <li><p>Rolfsen twist <img src="images/4.-kirby-calculus-1778507292797.webp" class="img-fluid" loading="lazy" decoding="async"></p>

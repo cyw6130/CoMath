@@ -12,38 +12,77 @@ categories:
 description: "Cerf定理与Kirby演算：闭的四流形由Kirby图唯一确定"
 ---
 
-::: {.callout-note}
-## 2-handle slide (dim=4)
+不特殊说明, 我们总考虑连通, 定向, 光滑, 紧的, (可能) 不闭的情形.
 
-在 4 维情形下，2-handle 的 attaching sphere 是 $S^2$，因此 handle slide 需要对球面进行操作。直观上，我们沿着另一个 2-handle 的 attaching sphere 滑动一个 2-handle 的 attaching sphere，类似于在 3 维情形下沿着曲线滑动曲线。
+- 回顾:
+    - 我们之前提到, 对于闭的 4 mfld, 它上面粘接 (3+4) handle 的方式是唯一的. 于是这些闭的 4 mfld 由它们的 Kirby diagram 唯一确定.
+    - **但是**: 对于任意一个 Kirby diagram, 我们仅考虑 0,1,2 handle. 它给出的带边 4 mfld 的边界未必是 $S^1\times S^2$ 的边界连通和, 故它未必能够通过粘接 3,4 handle 得到闭的 4 mfld. 所以, 未必任意的 Kirby diagram 都能给出闭的 4 mfld.
+        - 我们将那些给出闭 4 mfld 的 Kirby diagram 称为闭的 Kirby diagram. 此时我们有满
+        $$
+        \{ \text{closed Kirby diagram} \}\twoheadrightarrow \{ \text{closed 4 mfld} \}
+        $$
+        或者说, 我们实际上有交换图表: ![](images/4.-kirby-calculus-1778498648067.webp)
+        - Kirby diagram 在 dim=3 时表现为 Heegaard diagram.
+        - 类似的, 我们可以定义 closed Heegaard diagram (边界为若干个 $S^2$ 的不交并). 此时我们也可以得到满射:
+        $$
+        \{ \text{closed Heegaard diagram} \}\twoheadrightarrow \{ \text{closed 3 mfld} \}
+        $$
+- Cerf 的定理:
+    - handle 分解: $(X,\partial X)$ 的 handle 分解是一些 handle $h^k_i$, 满足 $X=\partial X\times I+\bigcup_i h_i^k$.
+    - Cerf's Thm: 两组 handle $h_i^k,{h'}_j^l$ 都给出 $(X,\partial X)$ 的 handle 分解, 当且仅当它们之间相差有限多个 handle slide, handle cancelling (or its inverse move), isotopy.
 
-具体地，假设我们有 2-handle $h_1^2$和$h_2^2$，其 attaching spheres 分别为 $S_1$和$S_2$（均为嵌入在 $\partial W^2$中的 2-球面）。对$h_1^2$做 handle slide over$h_2^2$指的是：我们取一个从$S_1$到$S_2$的管状邻域的平凡化，将$S_1$沿着该管状邻域向$S_2$滑动，得到一个新的 2-球面$S_1'$。这个操作对应于改变 $h_1^2$ 的 attaching map，从而得到等价的 handle decomposition。
+根据 Cerf 的定理, 当 dim=3, 利用 Heegaard diagram 和 handle 分解的对应, 我们有直接的推论:
 
-在 Kirby diagram 中，2-handle slide 的图示表现为：将代表 2-handle 的纽结（或链环）沿着另一个代表 2-handle 的纽结滑动，过程中可能产生 twist 或 linking 的变化。
+- 定理 (Johannson, Reidemeister–Singer)
+    - 两个 Heegaard diagram 给出相同的 3 mfld 当且仅当它们之间差了有限多个 stabilization + 1,2 handle slide,
+    - 用图表来看就是: ![](images/4.-kirby-calculus-1778502290469.webp)
+    - 注意: closed heegaard diagram 在 stabilization, handle slide 运算下封闭, 此时商才是良定义的.
+    - 证明: 是 Cerf 定理的直接推论.
 
-:::
+对于给定的 diagram, 我们需要知道对它做 1,2 handle slide 以及 cancellation (stabilization) 会如何改变原来的 diagram.
+下面我们将 dim 3,4 一起处理.
 
-::: {.callout-note}
-## Handle cancellation
-### Stabilization (dim=3)
+![](images/4.-kirby-calculus-1778515873344.webp)
 
-Stabilization 指的是在 Heegaard diagram 中添加一对对偶的 1-handle 和 2-handle。具体来说，我们在表面 $S_g$ 上选择一个平凡的小圆盘，去掉它并粘上一个 1-handle 和一个 2-handle，使得 genus 增加 1。这一操作不改变流形，因为新添加的 1-handle 和 2-handle 可以互相抵消。
+# Handle slides
 
-在 Heegaard diagram 中，stabilization 对应着添加一对不相交的简单闭曲线：一个表示 1-handle 的 meridian，另一个表示 2-handle 的 longitude。
+- 第一个例子:
+    ![](images/4.-kirby-calculus-1779110605097.webp) 注意 slide 过程中两组 $S^0$ 之间的 link 情况变化(从 unlink 到 link), 由此看出黄色 1-handle 被 twist 了.
 
-### Cancellation (dim=4)
+## 1-handle slide
 
-在 4 维 handle decomposition 中，一个 $k$-handle 与其对偶的 $(k+1)$-handle 可以互相抵消，如果它们的 attaching sphere 在边界上以唯一的方式相遇。例如，一个 1-handle 和一个 2-handle 可以抵消，如果 2-handle 的 attaching sphere 与 1-handle 的 belt sphere 恰好相交一次。
+1-handle slide 中, 我们不仅需要知道 1-handle slide 如何改变 1-handle (这是容易的), 还需要知道 1-handle slide 如何影响它上面粘接的那些 2-handle. 在考虑 2-handle 的粘接时, 我们认为: 2-handle $\partial_-h^2$ 的嵌入(粘接)方式没变, 但是粘接的表面变了.
 
-在 Kirby diagram 中，1-2 handle cancellation 表现为：一个 1-handle 的 attaching 球（两个点）与一个 2-handle 的 attaching 纽结在代数上相交数为 1（即纽结恰好从一个点穿过到另一个点），且没有其他 handle 干扰。
+- 例子:
+    - 1-handle slide, 以及如何影响 2-handle: ![](images/4.-kirby-calculus-1778330777911.webp)![](images/4.-kirby-calculus-1778330804528.webp)
+- Question: 假设我们有 handlebody $h^0+h_1^1+h_2^1+h^2$, 当我们对 1-handle 做 handle silde 时, 2-handle $h_2$ 如何变化?
 
-类似地，2-3 handle cancellation 也可定义，但更少见。
+说明: handle slide 本质上会给出一个流形的自同胚, 这个自同胚限制到边界上自然会诱导一个新的粘接映射. ![](images/4.-kirby-calculus-1778513626869.webp)
+下图展示了 handle slide 如何给出流形上的自同胚, 故也展示了 2-handle 的 attaching sphere 是如何变化的. 直观上, 就体现为我们沿着 1-handle 的 attaching 端点去拉扯这些线段. ![](images/4.-kirby-calculus-1778330804528.webp)
 
-:::
+- 例子: (这就是上面的反过程) ![](images/4.-kirby-calculus-1779122384527.webp) ![](images/4.-kirby-calculus-1779163597259.webp)
 
-- 此时每个 2-handle 被一个 framed knot 标识, 我们需要回答: 
-    - slide 之后, 纽结怎么变化? 
-    - slide 之后, 纽结的 framing 怎么变化? 
+- 同痕 vs handle slide (以 1-handle slide 为例):
+    - isotopy:
+        - 指的是 Kirby diagram 的 isotopy. 我们将 Kirby diagram 中的 1-handle 的粘接球看作点(小球), 将 2-handle 的粘接纽结看作线, 它们都落在 $S^3$ 上, 同痕的含义就是在 $S^3$ 上面拉扯这些对象.
+        - 扯动小球的同痕本质上是在 $S^3$ 上滑动 1-handle, 它会诱导 $W^1$ 上的自同胚. 这些自同胚会诱导新的 2-handle 的粘接位置, 这些新的粘接位置在 $S^3$ 上的体现恰好就像我们"扯动"小球诱导的那样.
+    - 1-handle slide:
+        - 注意到, 1-handle 会在 $S^3$ 上面产生"虫洞", 所以即使我们可以在"虫洞"隧道中扯动 kirby diagram, 但这个操作并不能体现为 kirby diagram 的同痕.
+        - 所以必须引入新的名词: 1-handle slide.
+
+## 2-handle slide
+
+### dim=3
+
+此时, 每个 2-handle 被一个曲面上的简单闭曲线标识, 这个时候 2-handle slide 就是我们常见的情形.
+
+![](images/4.-kirby-calculus-1778330818749.webp)
+
+### dim=4
+
+- 此时每个 2-handle 被一个 framed knot 标识, 我们需要回答:
+    - slide 之后, 纽结怎么变化?
+    - slide 之后, 纽结的 framing 怎么变化?
 
 #### The change of knot
 
@@ -63,9 +102,7 @@ $$
 
 - 例子
     - 在下面的具体的例子中 ($K_1,K_2$ 不 link 到一起的时候), 我们可以把 framing 的变化看出来. 
-    - 对于一个 framed knot $(K_1,K_1')$, 我们把 $K_1,K_1'$一起划过$K_2'$, 然后观察 framing 的变化. ![](images/4.-kirby-calculus-1779721619142.webp)![](images/4.-kirby-calculus-1778516075400.webp) %% 另一种解释: 
-        - 先考虑 $K_2$的 framing 为 blackboard framing 的情形, 此时做连通和不会改变$K_1$ 的 framing. 
-        - 当 $K_2$的 framing=n 的时候, 可以将$K_2$ 写成一个 framing=0 的 knot 上面 %%
+    - 对于一个 framed knot $(K_1,K_1')$, 我们把 $K_1,K_1'$一起划过$K_2'$, 然后观察 framing 的变化. ![](images/4.-kirby-calculus-1779721619142.webp)![](images/4.-kirby-calculus-1778516075400.webp)
     - 如果两个被 link 到一起了 (good case): ![](images/4.-kirby-calculus-1779119620341.webp)
     - 一般公式为: $$
 f_1'=f_1+f_2\pm2lk(K_1,K_2)
