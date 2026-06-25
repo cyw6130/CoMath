@@ -22,8 +22,39 @@ toc: false
 ---
 
 ::: {.callout-note appearance="minimal" icon=false}
-这里收集了我在研究工作流中用到的 AI 工具、Agent，以及把 AI 与数学结合起来的探索性笔记。
+作为一名数学研究者，我把 AI 当作研究工作流里的"放大器"：用 Agent 和工具把检索、解析、整理这些重复劳动自动化，把时间留给真正的思考；同时也好奇 AI 本身的数学原理，尝试把它和数学连接起来。这里收集的就是这两条线上的笔记与工具手册。
 :::
+
+---
+
+## 关注方向
+
+:::: {.columns style="text-align: left; max-width: 1100px; margin: 0 auto;"}
+
+::: {.column width="48%"}
+**AI for Math**
+
+好奇深度学习模型背后的数学，也尝试把 AI 用到数学研究里。比如把一个极简纯 Python 的 [MicroGPT 实现逐行对照其数学原理](../notes/microgpt-math-impl-compare.qmd)，从词嵌入、注意力到 Adam 优化，看清每个数学概念如何落到代码。
+
+**研究工作流自动化**
+
+用 Agent 和 CLI 工具把研究中的重复劳动流水线化：[文献检索](../notes/literature-search-tools.qmd)、[文档 OCR 解析](../notes/mineru-ocr-document-parsing.qmd)、[飞书](../notes/lark-cli-docs.qmd)/[Obsidian](../notes/obsidian-cli-docs.qmd) 读写、[多平台内容检索](../notes/agent-reach-multi-platform-content-retrieval.qmd)。
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+**Agent 与工具链**
+
+围绕 Claude Code 搭建自己的 subagent 与 skill 体系，把"调研 → 蒸馏 → 成文 → 发布"做成可复用的流程。[AI 工具手册](../notes/ai-tools-handbook.qmd)汇总了这套工作流里用到的各类工具。
+
+**模型与 API**
+
+关注国产开源模型与可用 API 的进展，作为工作流的底层引擎。详见 [DeepSeek V4 / MiMo V2.5](../notes/deepseek-v4-mimo-v2.5.qmd)、[Brave Search API](../notes/brave-search-api.qmd) 等笔记。
+:::
+
+::::
 
 ---
 

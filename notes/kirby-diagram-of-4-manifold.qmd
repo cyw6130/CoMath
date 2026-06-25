@@ -13,6 +13,8 @@ description: "介绍4流形的Kirby图及其handle分解"
 
 本节我们总考虑光滑流形.
 
+# Global view
+
 ## Kirby diagram of 4-mfld
 - 在 4 mfld $M$ 上粘接 2-handle:
     - 由边界 $\partial M$ 上的 framed knot 决定.
@@ -81,7 +83,7 @@ handle 分解理论主要有以下结果:
 
 # Handle Decomposition of 4 mfld
 
-### 流形 $X\cup_{\varphi}h$由$(\varphi_0,f)$ 的同痕类决定
+## 流形 $X\cup_{\varphi}h$由$(\varphi_0,f)$ 的同痕类决定
 
 我们考虑粘接后的流形 , 其中 $h=D^k\times D^{n-k},\varphi:\partial D^k\times D^{n-k}\to \partial X$;($\varphi$ 是 embedding)
  1. 首先, 流形 $X\cup_{\varphi}h$由$\varphi$ 的同痕类决定. 
@@ -90,7 +92,7 @@ handle 分解理论主要有以下结果:
 
 我们下面只要讨论 $\varphi_o$的同痕类, 以及$S^{k-1}$ 上的 framing 分别由什么决定.
 
-### $S^{k-1}$ 上的 framing
+## $S^{k-1}$ 上的 framing
 
 - framing 的结构
     - 在我们考虑通过映射 $\varphi$向$X^n$上粘接 handle$h^k$时, 我们默认了$\varphi_0$在$\partial X$上的法丛是平凡的. 于是$\text{im}\varphi_0$ 上的一个 framing 就是这个法丛的一组构成基底的截面.
@@ -104,7 +106,7 @@ handle 分解理论主要有以下结果:
     - $k=2$, $\pi_1(O(2))=\pi_1(SO(2))\cong\mathbb{Z}$, 即 2-handle 的 framing 被一个整数所标记. 
     - $k=n-1,n$, $\pi_{k-1}(O(n-k))=\pi_{n-2}(O(1))\text{ or }\pi_{n-1}(O(0))$, 这两个群都平凡, 故 $n-1$, $n$ handle 上的 framing 都是平凡的. 
 
-###  $\varphi_0$ 的同痕类
+##  $\varphi_0$ 的同痕类
 
 - 同伦与同痕
     - 同伦（homotopy）：指存在连续映射 $F: I \times N \to M$（$I=[0,1]$），使得 $F(0,\cdot)$和$F(1,\cdot)$ 分别为两个嵌入，中间时刻映射仅需连续，允许自交；
