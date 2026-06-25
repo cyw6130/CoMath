@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="飞书官方命令行工具，支持文档和50+资源的CRUD操作。">
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>飞书文档读写 — lark-cli – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -307,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/lark-cli-docs.html">飞书文档读写 — lark-cli</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +478,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -469,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/lark-cli-docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/lark-cli-docs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">飞书文档读写 — lark-cli</span></a>
   </div>
 </li>
@@ -503,21 +539,452 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#概览" id="toc-概览" class="nav-link active" data-scroll-target="#概览"><span class="header-section-number">1</span> 概览</a></li>
+  <li><a href="#安装与认证" id="toc-安装与认证" class="nav-link" data-scroll-target="#安装与认证"><span class="header-section-number">2</span> 安装与认证</a></li>
+  <li><a href="#文档操作" id="toc-文档操作" class="nav-link" data-scroll-target="#文档操作"><span class="header-section-number">3</span> 文档操作</a></li>
+  <li><a href="#其他资源" id="toc-其他资源" class="nav-link" data-scroll-target="#其他资源"><span class="header-section-number">4</span> 其他资源</a></li>
+  <li><a href="#在-agent-中使用" id="toc-在-agent-中使用" class="nav-link" data-scroll-target="#在-agent-中使用"><span class="header-section-number">5</span> 在 Agent 中使用</a></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">6</span> FAQ</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/lark-cli-docs.html">飞书文档读写 — lark-cli</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">飞书文档读写 — lark-cli</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">feishu</div>
+    <div class="quarto-category">cli</div>
+    <div class="quarto-category">document-management</div>
+    <div class="quarto-category">ai-agent</div>
+    <div class="quarto-category">automation</div>
+    <div class="quarto-category">api</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    飞书官方命令行工具，支持文档和50+资源的CRUD操作。
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<section id="概览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 概览</h1>
+<p>lark-cli 的定位与核心能力</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🚀 lark-cli 是飞书官方推出的命令行工具，让你可以通过终端或脚本直接操作飞书生态中的各种资源，无需打开浏览器。</p>
+</div>
+</div>
+<p>lark-cli 的核心定位：</p>
+<ul>
+<li><strong>官方出品</strong>：由飞书开放平台团队维护，API 兼容性有保障，持续更新迭代</li>
+<li><strong>50+ 资源覆盖</strong>：文档（Docs）、表格（Sheets）、多维表格（Bitable）、日历（Calendar）、即时消息（IM）、云盘（Drive）、通讯录（Contact）等飞书核心资源全部可用</li>
+<li><strong>双身份模式</strong>：支持 bot（应用身份）和 user（用户身份）两种认证模式，分别适合自动化场景和个人操作场景</li>
+<li><strong>AI Agent 友好</strong>：命令行接口天然适合被 Agent 通过 shell 调用，返回 JSON 格式结果，便于程序化处理</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🤖 对于 AI Agent 开发者来说，lark-cli 是连接大模型与飞书协作生态的最佳桥梁 —— Agent 可以读取文档内容作为上下文，也可以将生成结果写回飞书文档，实现真正的 AI + 协作闭环。</p>
+</div>
+</div>
+</section>
+<section id="安装与认证" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 安装与认证</h1>
+<p>安装方式、身份模式与权限配置</p>
+<p><strong>安装方式</strong></p>
+<p>通过 npm 全局安装 lark-cli：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @larksuite/cli</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>验证安装成功：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>身份模式</strong></p>
+<p>lark-cli 支持两种身份模式，适用于不同的使用场景：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>特性</th>
+<th>Bot（应用身份）</th>
+<th>User（用户身份）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>适用场景</td>
+<td>自动化、CI/CD、无人值守</td>
+<td>个人操作、交互式使用</td>
+</tr>
+<tr class="even">
+<td>认证方式</td>
+<td>App ID + App Secret</td>
+<td>OAuth 授权登录</td>
+</tr>
+<tr class="odd">
+<td>权限范围</td>
+<td>由应用配置的 Scopes 决定</td>
+<td>继承用户的实际权限</td>
+</tr>
+<tr class="even">
+<td>典型命令</td>
+<td>–as bot</td>
+<td>–as user</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bot 身份配置</strong></p>
+<ol type="1">
+<li>前往 <a href="https://open.feishu.cn/">飞书开放平台</a> 创建企业自建应用</li>
+<li>记录 App ID 和 App Secret</li>
+<li>在应用的「权限管理」页面开通所需的 OAuth Scopes（如 <code>docs:doc:read</code>、<code>docs:doc:write</code> 等）</li>
+<li>配置认证信息并登录</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> auth login <span class="at">--provider</span> feishu <span class="at">--method</span> app-id <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--app-id</span> <span class="st">"cli_xxxxx"</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--app-secret</span> <span class="st">"xxxxxx"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>User 身份配置</strong></p>
+<p>用户身份通过 OAuth 流程授权，浏览器会打开飞书登录页面：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> auth login <span class="at">--provider</span> feishu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Bot 身份需要管理员审批应用权限；User 身份需要在飞书开放平台配置好 OAuth 回调地址。建议开发调试阶段使用 User 身份，部署上线后切换为 Bot 身份。</p>
+</div>
+</div>
+</section>
+<section id="文档操作" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 文档操作</h1>
+<p>创建、读取、编辑飞书文档的完整流程</p>
+<p><strong>核心命令概览</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>创建文档</td>
+<td><code>docs +create</code></td>
+<td>在指定文件夹下创建新文档</td>
+</tr>
+<tr class="even">
+<td>读取文档</td>
+<td><code>docs +fetch</code></td>
+<td>获取文档内容，支持返回 block ID</td>
+</tr>
+<tr class="odd">
+<td>追加内容</td>
+<td><code>docs +update --command append</code></td>
+<td>在文档末尾追加新内容</td>
+</tr>
+<tr class="even">
+<td>插入内容</td>
+<td><code>docs +update --command block_insert_after</code></td>
+<td>在指定 block 之后插入内容</td>
+</tr>
+<tr class="odd">
+<td>替换内容</td>
+<td><code>docs +update --command block_update</code></td>
+<td>更新指定 block 的内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>读取文档</strong></p>
+<p>获取文档内容及所有 block 的 ID（后续编辑需要用到）：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 基础读取</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> docs +fetch <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="at">--doc</span> <span class="st">"DOC_TOKEN"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取详细的 block ID（编辑文档时必须）</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> docs +fetch <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="at">--doc</span> <span class="st">"DOC_TOKEN"</span> <span class="at">--detail</span> with-ids</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>创建文档</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> docs +create <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="at">--folder</span> <span class="st">"FOLDER_TOKEN"</span> <span class="at">--title</span> <span class="st">"新文档标题"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>插入内容</strong></p>
+<p>在指定 block 之后插入新内容，支持丰富的 XML 标签：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> docs +update <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--doc</span> <span class="st">"DOC_TOKEN"</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--command</span> block_insert_after <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--block-id</span> <span class="st">"TARGET_BLOCK_ID"</span> <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--content</span> <span class="st">'&lt;p&gt;这是一段新内容&lt;/p&gt;'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>支持的 XML 标签</strong></p>
+<ul>
+<li><strong>文本</strong>：<code>&lt;p&gt;</code> 段落、<code>&lt;h1&gt;</code>-<code>&lt;h9&gt;</code> 标题</li>
+<li><strong>列表</strong>：<code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>/<code>&lt;li&gt;</code> 有序/无序列表</li>
+<li><strong>表格</strong>：<code>&lt;table&gt;</code>/<code>&lt;thead&gt;</code>/<code>&lt;tbody&gt;</code>/<code>&lt;tr&gt;</code>/<code>&lt;th&gt;</code>/<code>&lt;td&gt;</code></li>
+<li><strong>富组件</strong>：<code>&lt;callout&gt;</code> 高亮块、<code>&lt;grid&gt;</code>/<code>&lt;column&gt;</code> 分栏布局</li>
+<li><strong>代码</strong>：<code>&lt;pre lang="bash" caption="说明"&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></li>
+<li><strong>链接</strong>：<code>&lt;a type="url-preview" href="URL"&gt;标题&lt;/a&gt;</code></li>
+<li><strong>分隔线</strong>：<code>&lt;hr/&gt;</code></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 使用 <code>--detail with-ids</code> 获取的 block ID 是精确编辑文档的关键。每个 block 都有唯一 ID，可以用 <code>block_insert_after</code> 在其后插入新内容，或用 <code>block_update</code> 替换其内容。</p>
+</div>
+</div>
+</section>
+<section id="其他资源" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 其他资源</h1>
+<p>表格、多维表格、日历、消息等操作</p>
+<p>除了文档之外，lark-cli 还覆盖了飞书生态中的大部分资源类型。以下是主要资源的支持情况：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>资源类型</th>
+<th>命令前缀</th>
+<th>核心能力</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>文档</td>
+<td><code>docs</code></td>
+<td>创建、读取、编辑文档；插入媒体、评论</td>
+</tr>
+<tr class="even">
+<td>表格</td>
+<td><code>sheets</code></td>
+<td>读写单元格、设置公式、管理样式、工作表操作</td>
+</tr>
+<tr class="odd">
+<td>多维表格</td>
+<td><code>bitable</code></td>
+<td>记录 CRUD、视图管理、字段配置、自动化</td>
+</tr>
+<tr class="even">
+<td>日历</td>
+<td><code>calendar</code></td>
+<td>日程创建/查询/更新、会议室预约</td>
+</tr>
+<tr class="odd">
+<td>即时消息</td>
+<td><code>im</code></td>
+<td>发送/读取消息、群组管理、消息卡片</td>
+</tr>
+<tr class="even">
+<td>云盘</td>
+<td><code>drive</code></td>
+<td>文件上传/下载、权限管理、文件夹操作</td>
+</tr>
+<tr class="odd">
+<td>通讯录</td>
+<td><code>contact</code></td>
+<td>用户信息查询、部门结构、成员管理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快速示例</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取表格数据</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> sheets +fetch <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="at">--sheet</span> <span class="st">"SHEET_TOKEN"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 查询多维表格记录</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> bitable +query <span class="at">--api-version</span> v2 <span class="at">--as</span> bot <span class="at">--table</span> <span class="st">"TABLE_TOKEN"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 发送消息</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> im +send <span class="at">--as</span> bot <span class="at">--chat</span> <span class="st">"CHAT_ID"</span> <span class="at">--content</span> <span class="st">"Hello from lark-cli!"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传文件到云盘</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ex">lark-cli</span> drive +upload <span class="at">--as</span> bot <span class="at">--file</span> <span class="st">"./report.pdf"</span> <span class="at">--folder</span> <span class="st">"FOLDER_TOKEN"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔗 完整的命令参考请访问 <a href="https://open.feishu.cn/">飞书开放平台文档</a>，每个资源都有详细的 API 说明和示例。</p>
+</div>
+</div>
+</section>
+<section id="在-agent-中使用" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 在 Agent 中使用</h1>
+<p>将 lark-cli 集成到 AI Agent 工作流</p>
+<p>lark-cli 最大的优势之一是天然适配 AI Agent 的工作流。Agent 可以通过 shell 调用 lark-cli 完成各种飞书操作，无需额外的 SDK 集成。</p>
+<p><strong>集成模式</strong></p>
+<ul>
+<li><strong>Shell 调用</strong>：Agent 通过 subprocess 执行 lark-cli 命令，获取标准输出</li>
+<li><strong>JSON 输出</strong>：所有命令均返回结构化 JSON，可用 <code>jq</code> 等工具解析</li>
+<li><strong>错误处理</strong>：非零退出码表示失败，stderr 包含错误详情</li>
+</ul>
+<p><strong>典型 Agent 工作流示例</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess, json</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_doc(doc_token):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""读取飞书文档内容"""</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"lark-cli"</span>, <span class="st">"docs"</span>, <span class="st">"+fetch"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--api-version"</span>, <span class="st">"v2"</span>, <span class="st">"--as"</span>, <span class="st">"bot"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--doc"</span>, doc_token, <span class="st">"--detail"</span>, <span class="st">"with-ids"</span>],</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(result.stdout)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> append_to_doc(doc_token, block_id, xml_content):</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""在指定 block 后插入内容"""</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"lark-cli"</span>, <span class="st">"docs"</span>, <span class="st">"+update"</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--api-version"</span>, <span class="st">"v2"</span>, <span class="st">"--as"</span>, <span class="st">"bot"</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--doc"</span>, doc_token,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--command"</span>, <span class="st">"block_insert_after"</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--block-id"</span>, block_id,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>         <span class="st">"--content"</span>, xml_content],</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(result.stdout)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用示例</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>身份选择建议</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>场景</th>
+<th>推荐身份</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CI/CD 自动化</td>
+<td>Bot</td>
+<td>无需人工交互，Token 持久化</td>
+</tr>
+<tr class="even">
+<td>定时任务</td>
+<td>Bot</td>
+<td>无人值守，长期稳定运行</td>
+</tr>
+<tr class="odd">
+<td>交互式调试</td>
+<td>User</td>
+<td>继承个人权限，方便验证</td>
+</tr>
+<tr class="even">
+<td>权限受限资源</td>
+<td>User</td>
+<td>以用户身份访问其有权限的资源</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔑 Bot 身份下，Agent 操作的文档所有者是应用而非个人。如果需要让文档出现在某人的「与我共享」中，需要额外调用权限接口添加协作者。</p>
+</div>
+</div>
+</section>
+<section id="faq" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> FAQ</h1>
+<p>常见问题与解决方案</p>
+<p>以下是使用 lark-cli 过程中最常见的问题及解决方案：</p>
+<p><strong>Q1: 认证失败怎么办？</strong></p>
+<ul>
+<li>确认 App ID 和 App Secret 是否正确，注意不要有多余的空格</li>
+<li>检查应用是否已发布（企业自建应用需要管理员审核通过）</li>
+<li>尝试重新登录：<code>lark-cli auth login --provider feishu</code></li>
+<li>清除缓存后重试：<code>lark-cli auth logout</code> 然后重新 login</li>
+</ul>
+<p><strong>Q2: 提示权限不足（Permission Denied）？</strong></p>
+<ul>
+<li>Bot 身份：前往飞书开放平台，在应用的「权限管理」中开通对应的 API Scopes，并让管理员审批</li>
+<li>User 身份：确认你的飞书账号对目标资源有读写权限</li>
+<li>部分高级权限（如通讯录写入）需要企业管理员在后台开通</li>
+</ul>
+<p><strong>Q3: API 版本选 v1 还是 v2？</strong></p>
+<ul>
+<li>新项目一律使用 <code>--api-version v2</code>，v2 是当前主推版本，功能更完善</li>
+<li>v1 仅用于兼容旧脚本，新功能只在 v2 上提供</li>
+</ul>
+<p><strong>Q4: 遇到速率限制（Rate Limit）？</strong></p>
+<ul>
+<li>飞书 API 有调用频率限制，Bot 身份的限制通常比 User 身份更宽松</li>
+<li>建议在 Agent 中加入重试逻辑，遇到 429 状态码时等待 1-2 秒后重试</li>
+<li>批量操作建议使用官方提供的批量接口，而非循环调用单条接口</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🆘 如果以上方案都无法解决问题，可以前往 <a href="https://open.feishu.cn/">飞书开放平台</a> 查看官方文档或提交工单。社区中也有大量 lark-cli 的使用案例可以参考。</p>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

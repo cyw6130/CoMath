@@ -1,0 +1,288 @@
+---
+title: "Obsidian 文档读写 — Obsidian CLI"
+categories:
+  - obsidian
+  - cli
+  - command-line
+  - knowledge-management
+  - automation
+  - developer-tools
+  - note-taking
+description: "Obsidian CLI的安装、配置与核心命令教程"
+---
+
+::: {.callout-tip}
+💡 Obsidian CLI 是 Obsidian 官方提供的命令行工具，随桌面版 v1.9.12+ 提供。支持笔记 CRUD、全文搜索、模板、标签、Headless Sync 等功能，可在无 GUI 环境下操作 Obsidian 仓库，是 AI Agent 读写本地知识库的理想接口。
+:::
+
+# 概览
+
+Obsidian CLI 的定位与核心能力
+
+Obsidian CLI 是 Obsidian 官方推出的命令行接口，让开发者和 AI Agent 能够在终端环境中直接操作 Obsidian 知识库，无需打开桌面应用。
+
+::: {.callout-tip}
+🚀 **核心能力一览**
+
+- **笔记 CRUD** — 创建、读取、更新、删除笔记，完整的生命周期管理
+- **全文搜索** — 跨笔记内容检索，支持关键词与标签过滤
+- **模板系统** — 一键应用预设模板，快速生成结构化笔记
+- **标签管理** — 列出、搜索、管理笔记标签
+- **Headless Sync** — 无 GUI 环境下同步仓库，适合服务器/CI 场景
+- **TUI 模式** — 终端内交互式浏览笔记，适合 SSH 远程操作
+:::
+
+随 Obsidian 桌面版 **v1.9.12+** 提供，无需额外安装。开启后即可通过 `obsidian` 命令操作知识库。
+
+# 安装与启用
+
+随桌面版安装、设置启用与环境变量配置
+
+### 前提条件
+
+Obsidian 桌面版 **v1.9.12 或更高版本**。CLI 功能随桌面版捆绑分发，无需单独下载或安装任何额外包。
+
+### 启用步骤
+
+1.  打开 Obsidian 桌面应用
+2.  进入 **设置 → 第三方插件 → CLI**
+
+3.  点击启用开关，首次启用时 Obsidian 会将 `obsidian` 可执行文件注册到系统 PATH
+4.  重新打开终端（或执行 `source ~/.zshrc`）使 PATH 生效
+
+### 验证安装
+
+```bash
+obsidian --version
+# 期望输出: obsidian x.x.x
+```
+
+### 环境变量配置
+
+| 变量名 | 说明 | 示例 |
+|-|-|-|
+| `OBSIDIAN_VAULT_PATH` | 默认仓库路径，省去每次 `--vault` 参数 | `~/Documents/MyVault` |
+| `OBSIDIAN_CONFIG_DIR` | 自定义 `.obsidian` 目录位置 | `~/.config/obsidian` |
+
+```bash
+# 写入 shell 配置
+echo "export OBSIDIAN_VAULT_PATH=\"$HOME/Documents/MyVault\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+::: {.callout-tip}
+💡 如果终端提示 `obsidian: command not found`，请确认：(1) Obsidian 版本 ≥ v1.9.12；(2) CLI 插件已启用；(3) 终端已重启。macOS 用户还可尝试 `export PATH="/Applications/Obsidian.app/Contents/MacOS:$PATH"`。
+:::
+
+# 核心操作
+
+笔记 CRUD、搜索、模板、标签等命令详解
+
+### 命令速查表
+
+| 命令 | 说明 | 示例 |
+|-|-|-|
+| `obsidian note create "标题"` | 创建新笔记 | `obsidian note create "会议记录 2026-06-17"` |
+| `obsidian note read "路径"` | 读取笔记内容 | `obsidian note read "Daily/2026-06-17.md"` |
+| `obsidian note update "路径" --content "..."` | 更新笔记内容 | `obsidian note update "todo.md" --content "# 新内容"` |
+| `obsidian note delete "路径"` | 删除笔记 | `obsidian note delete "tmp/废弃笔记.md"` |
+| `obsidian search "关键词"` | 全文搜索 | `obsidian search "机器学习"` |
+| `obsidian search --tag "#tag"` | 按标签搜索 | `obsidian search --tag "#project"` |
+| `obsidian template apply "模板名"` | 应用模板到当前笔记 | `obsidian template apply "daily-note"` |
+| `obsidian tag list` | 列出仓库所有标签 | `obsidian tag list` |
+
+### 笔记读写示例
+
+```bash
+# 读取笔记内容
+content=$(obsidian note read "Research/paper-notes.md")
+
+# 用脚本处理内容（例如追加新段落）
+echo "$content" > /tmp/note_backup.md
+
+# 写入更新后的内容
+obsidian note update "Research/paper-notes.md" --content "$(cat /tmp/new_content.md)"
+```
+
+### 搜索进阶
+
+```bash
+# 关键词 + 标签组合搜索
+obsidian search "transformer" --tag "#paper"
+
+# 搜索结果输出为 JSON（便于脚本解析）
+obsidian search "架构设计" --format json
+
+# 指定搜索范围（子目录）
+obsidian search "TODO" --path "Daily/"
+```
+
+::: {.callout-tip}
+💡 **路径规范：**所有路径相对于仓库根目录，使用正斜杠 `/` 分隔。文件扩展名 `.md` 可省略。中文路径和标题完全支持。
+:::
+
+# 高级功能
+
+Headless Sync、TUI 模式、批量操作
+
+### Headless Sync
+
+在无 GUI 的服务器或 CI 环境中同步 Obsidian 仓库。配合 Obsidian Sync 或第三方同步插件，可实现自动化知识库同步。
+
+```bash
+# 同步指定仓库
+obsidian sync --vault /path/to/vault
+
+# 指定同步目标（如 iCloud / Git）
+obsidian sync --vault ~/vault --target git
+
+# 后台运行同步守护进程
+nohup obsidian sync --vault ~/vault --daemon &
+```
+
+### TUI 模式
+
+终端内交互式浏览笔记，适合通过 SSH 远程管理知识库，无需图形界面。
+
+```bash
+# 启动交互式终端界面
+obsidian tui
+
+# 指定仓库启动
+obsidian tui --vault ~/Documents/MyVault
+```
+
+::: {.callout-tip}
+💡 **TUI 模式支持的操作：**浏览目录树、查看/编辑笔记内容、搜索笔记、应用模板。使用方向键导航，Enter 打开笔记，`/` 触发搜索，`q` 退出。
+:::
+
+### 批量操作
+
+结合 shell 脚本，可以实现笔记的批量处理，例如批量重命名、批量添加标签、批量导出等。
+
+```bash
+# 遍历所有 .md 文件，添加创建日期 frontmatter
+for file in $(obsidian note list --format json | jq -r ".[].path"); do
+  cdate=$(stat -f "%SB" -t "%Y-%m-%d" "$OBSIDIAN_VAULT_PATH/$file")
+  obsidian note update "$file" \
+    --frontmatter "created: $cdate"
+done
+```
+
+### JSON 输出
+
+所有命令均支持 `--format json` 参数，输出结构化 JSON 数据，便于与 `jq`、Python、Node.js 等工具链集成。
+
+```bash
+# 搜索结果输出为 JSON
+obsidian search "AI" --format json | jq '.results[].title'
+
+# 列出所有笔记的路径
+obsidian note list --format json | jq -r '.[].path'
+```
+
+# 在 Agent 中使用
+
+将 Obsidian CLI 集成到 AI Agent 工作流
+
+Obsidian CLI 是将本地知识库接入 AI Agent 的最佳桥梁。Agent 通过 shell 调用 `obsidian` 命令，即可实现对知识库的完整读写。
+
+### 典型 Agent 工作流
+
+1.  **读取上下文** — Agent 搜索相关笔记，获取历史记录作为上下文
+2.  **分析处理** — 对笔记内容进行总结、扩展、翻译等 AI 处理
+3.  **写回结果** — 将处理结果写入新笔记或更新现有笔记
+4.  **触发后续** — 如设置提醒、创建关联笔记等
+
+### Agent 集成示例
+
+```python
+import subprocess
+import json
+
+def read_note(path: str) -> str:
+    result = subprocess.run(
+        ["obsidian", "note", "read", path, "--format", "json"],
+        capture_output=True, text=True
+    )
+    return json.loads(result.stdout)["content"]
+
+def write_note(path: str, content: str):
+    subprocess.run(
+        ["obsidian", "note", "update", path, "--content", content],
+        check=True
+    )
+
+def search_notes(query: str) -> list:
+    result = subprocess.run(
+        ["obsidian", "search", query, "--format", "json"],
+        capture_output=True, text=True
+    )
+    return json.loads(result.stdout)["results"]
+```
+
+### 结合模板自动生成笔记
+
+```bash
+# 1. 应用日报模板
+obsidian template apply "daily-note" --to "Daily/$(date +%Y-%m-%d).md"
+
+# 2. Agent 追加 AI 生成的内容
+```
+
+将 `execute` 操作替换为实际命令：
+
+```bash
+# 应用日报模板
+obsidian template apply "daily-note" --to "Daily/$(date +%Y-%m-%d).md"
+
+# Agent 追加 AI 生成的内容
+obsidian note update "Daily/$(date +%Y-%m-%d).md" \
+  --append "## AI 总结\n$(generate_summary)"
+```
+
+:::{.callout-note}
+🤖 **最佳实践：**Agent 应优先用 `search` 获取相关笔记作为上下文，而非盲目读取整个仓库。使用 `--format json` 获取结构化输出，便于程序解析。对于长笔记，可指定行范围读取以节省 token。
+:::
+
+# FAQ
+
+常见问题与解决方案
+
+### Q1: 终端提示 `obsidian: command not found`
+
+- 确认 Obsidian 桌面版 ≥ v1.9.12
+- 确认 CLI 插件已在 设置 → 第三方插件 中启用
+- 重启终端，或执行 `hash -r` 清除命令缓存
+- macOS 用户可尝试手动添加 PATH：`export PATH="/Applications/Obsidian.app/Contents/MacOS:$PATH"`
+
+### Q2: 多仓库如何切换？
+
+```bash
+# 方式一：通过 --vault 参数指定
+obsidian note list --vault ~/Vault-A
+obsidian note list --vault ~/Vault-B
+
+# 方式二：通过环境变量切换
+OBSIDIAN_VAULT_PATH=~/Vault-A obsidian note list
+```
+
+### Q3: 同步冲突怎么处理？
+
+- CLI 写入时如果文件已被外部修改，会返回冲突错误而非覆盖
+- 建议在写入前先 `read` 检查内容版本
+- 使用 `--force` 参数可强制覆盖（谨慎使用）
+- Git 同步场景下，建议先 pull 再操作
+
+### Q4: 中文路径和标题支持吗？
+
+**完全支持。** Obsidian CLI 对 Unicode 路径和标题没有限制，中文文件名、中文标题、中文标签均可正常使用。
+
+### Q5: CLI 与 Obsidian 桌面版冲突吗？
+
+**不冲突。** CLI 和桌面版可以同时运行。CLI 的写入会实时反映在桌面版中（通过文件系统监听）。但建议避免同一时刻对同一文件进行双向修改。
+
+:::{.callout-tip}
+📚 **更多信息：**查阅 Obsidian CLI 官方文档获取完整的命令参考和最新更新日志。
+[Obsidian CLI 官方文档](https://obsidian.md/help/cli)
+:::

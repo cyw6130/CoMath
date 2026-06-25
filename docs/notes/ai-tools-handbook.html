@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="汇总7类AI工具，按场景推荐最佳组合方案。">
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>AI 工具手册 — 汇总 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -307,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI 工具手册 — 汇总</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +330,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,16 +443,16 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">AI 工具手册 — 汇总</span></a>
   </div>
 </li>
@@ -503,21 +504,504 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#工具总览" id="toc-工具总览" class="nav-link active" data-scroll-target="#工具总览"><span class="header-section-number">1</span> 工具总览</a></li>
+  <li><a href="#按场景推荐" id="toc-按场景推荐" class="nav-link" data-scroll-target="#按场景推荐"><span class="header-section-number">2</span> 按场景推荐</a>
+  <ul class="collapse">
+  <li><a href="#场景-1学术研究-知识图谱构建" id="toc-场景-1学术研究-知识图谱构建" class="nav-link" data-scroll-target="#场景-1学术研究-知识图谱构建"><span class="header-section-number">2.1</span> 场景 1：学术研究 / 知识图谱构建</a></li>
+  <li><a href="#场景-2团队协作-文档自动化" id="toc-场景-2团队协作-文档自动化" class="nav-link" data-scroll-target="#场景-2团队协作-文档自动化"><span class="header-section-number">2.2</span> 场景 2：团队协作 / 文档自动化</a></li>
+  <li><a href="#场景-3信息监控-舆情分析" id="toc-场景-3信息监控-舆情分析" class="nav-link" data-scroll-target="#场景-3信息监控-舆情分析"><span class="header-section-number">2.3</span> 场景 3：信息监控 / 舆情分析</a></li>
+  <li><a href="#场景-4个人知识管理" id="toc-场景-4个人知识管理" class="nav-link" data-scroll-target="#场景-4个人知识管理"><span class="header-section-number">2.4</span> 场景 4：个人知识管理</a></li>
+  </ul></li>
+  <li><a href="#工具详情索引" id="toc-工具详情索引" class="nav-link" data-scroll-target="#工具详情索引"><span class="header-section-number">3</span> 工具详情索引</a></li>
+  <li><a href="#组合实战" id="toc-组合实战" class="nav-link" data-scroll-target="#组合实战"><span class="header-section-number">4</span> 组合实战</a>
+  <ul class="collapse">
+  <li><a href="#示例自动文献调研并生成飞书报告" id="toc-示例自动文献调研并生成飞书报告" class="nav-link" data-scroll-target="#示例自动文献调研并生成飞书报告"><span class="header-section-number">4.1</span> 示例：自动文献调研并生成飞书报告</a></li>
+  <li><a href="#示例社交媒体竞品监控" id="toc-示例社交媒体竞品监控" class="nav-link" data-scroll-target="#示例社交媒体竞品监控"><span class="header-section-number">4.2</span> 示例：社交媒体竞品监控</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI 工具手册 — 汇总</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">AI 工具手册 — 汇总</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ai-tools</div>
+    <div class="quarto-category">literature-search</div>
+    <div class="quarto-category">document-parsing</div>
+    <div class="quarto-category">knowledge-base</div>
+    <div class="quarto-category">content-retrieval</div>
+    <div class="quarto-category">web-search</div>
+    <div class="quarto-category">llm</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    汇总7类AI工具，按场景推荐最佳组合方案。
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 本系列文档介绍了 7 类可以增强 AI 能力的工具，涵盖文献检索、文档解析、知识库读写、多平台内容获取、网页搜索和国产 AI 模型。本文汇总所有工具，按场景推荐最佳组合方案。</p>
+</div>
+</div>
+<section id="工具总览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 工具总览</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>工具</th>
+<th>核心能力</th>
+<th>适用场景</th>
+<th>文档</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>文献检索</td>
+<td>arXiv / Crossref / OpenAlex / zbMATH</td>
+<td>论文、教材、综述的发现与核验</td>
+<td>学术研究、知识图谱构建</td>
+<td><a href="../notes/literature-search-tools.html">文献检索工具手册</a></td>
+</tr>
+<tr class="even">
+<td>文档解析</td>
+<td>MinerU</td>
+<td>PDF/DOCX/PPTX → Markdown/JSON</td>
+<td>文档内容提取、RAG 数据准备</td>
+<td><a href="../notes/mineru-ocr-document-parsing.html">OCR 文档解析 — MinerU</a></td>
+</tr>
+<tr class="odd">
+<td>飞书读写</td>
+<td>lark-cli</td>
+<td>飞书文档/表格/多维表格 CRUD</td>
+<td>自动化知识管理、团队协作</td>
+<td><a href="../notes/lark-cli-docs.html">飞书文档读写 — lark-cli</a></td>
+</tr>
+<tr class="even">
+<td>Obsidian 读写</td>
+<td>Obsidian CLI</td>
+<td>笔记 CRUD、搜索、模板、同步</td>
+<td>本地知识库管理、个人笔记</td>
+<td><a href="../notes/obsidian-cli-docs.html">Obsidian 文档读写 — Obsidian CLI</a></td>
+</tr>
+<tr class="odd">
+<td>多平台内容</td>
+<td>Agent-Reach</td>
+<td>20+ 平台内容抓取</td>
+<td>舆情监控、竞品分析</td>
+<td><a href="../notes/agent-reach-multi-platform-content-retrieval.html">多平台内容检索 — Agent-Reach</a></td>
+</tr>
+<tr class="even">
+<td>网页搜索</td>
+<td>Brave Search API</td>
+<td>Web/LLM Context/Images/Videos</td>
+<td>实时信息获取、Agent 搜索</td>
+<td><a href="../notes/brave-search-api.html">网页检索 — Brave Search API</a></td>
+</tr>
+<tr class="odd">
+<td>国产 AI</td>
+<td>DeepSeek V4 / MiMo V2.5</td>
+<td>文本推理 / 多模态理解</td>
+<td>AI Agent 核心推理引擎</td>
+<td><a href="../notes/deepseek-v4-mimo-v2.5.html">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</a></td>
+</tr>
+</tbody>
+</table>
+<p>全部 7 类工具一览表</p>
+</section>
+<section id="按场景推荐" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 按场景推荐</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🎯 没有万能工具，关键是按场景组合。以下是最常见的 4 种场景和推荐工具链。</p>
+</div>
+</div>
+<section id="场景-1学术研究-知识图谱构建" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="场景-1学术研究-知识图谱构建"><span class="header-section-number">2.1</span> 场景 1：学术研究 / 知识图谱构建</h2>
+<p>从一个问题出发，检索文献、解析内容、建立知识体系。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>步骤</th>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. 文献发现</td>
+<td>arXiv + Crossref + OpenAlex + zbMATH</td>
+<td>多源检索、交叉核验</td>
+</tr>
+<tr class="even">
+<td>2. 内容提取</td>
+<td>MinerU</td>
+<td>PDF 论文 → 结构化 Markdown</td>
+</tr>
+<tr class="odd">
+<td>3. 知识整理</td>
+<td>Obsidian CLI</td>
+<td>写入本地知识库、建立关联</td>
+</tr>
+<tr class="even">
+<td>4. 推理分析</td>
+<td>DeepSeek V4 / MiMo V2.5</td>
+<td>理解内容、生成摘要、回答问题</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="场景-2团队协作-文档自动化" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="场景-2团队协作-文档自动化"><span class="header-section-number">2.2</span> 场景 2：团队协作 / 文档自动化</h2>
+<p>在飞书中自动创建和更新文档，实现团队知识管理。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>步骤</th>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. 信息采集</td>
+<td>Brave Search API + Agent-Reach</td>
+<td>搜索网页 + 抓取社交平台内容</td>
+</tr>
+<tr class="even">
+<td>2. 内容处理</td>
+<td>MinerU</td>
+<td>解析采集到的文档</td>
+</tr>
+<tr class="odd">
+<td>3. 文档生成</td>
+<td>lark-cli</td>
+<td>自动创建飞书文档、更新表格</td>
+</tr>
+<tr class="even">
+<td>4. 智能分析</td>
+<td>MiMo V2.5</td>
+<td>多模态理解、图表分析</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="场景-3信息监控-舆情分析" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="场景-3信息监控-舆情分析"><span class="header-section-number">2.3</span> 场景 3：信息监控 / 舆情分析</h2>
+<p>持续监控多个平台的公开信息，进行分析和预警。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>步骤</th>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. 实时搜索</td>
+<td>Brave Search API</td>
+<td>获取最新网页信息</td>
+</tr>
+<tr class="even">
+<td>2. 社媒监控</td>
+<td>Agent-Reach</td>
+<td>抓取 Twitter/Reddit/Bilibili 等</td>
+</tr>
+<tr class="odd">
+<td>3. 内容分析</td>
+<td>DeepSeek V4</td>
+<td>情感分析、主题提取、摘要</td>
+</tr>
+<tr class="even">
+<td>4. 报告输出</td>
+<td>lark-cli</td>
+<td>自动生成飞书报告文档</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="场景-4个人知识管理" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="场景-4个人知识管理"><span class="header-section-number">2.4</span> 场景 4：个人知识管理</h2>
+<p>建立个人的第二大脑，让 AI 帮你整理和检索知识。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>步骤</th>
+<th>工具</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. 信息获取</td>
+<td>Brave Search API + MinerU</td>
+<td>搜索 + 解析文档</td>
+</tr>
+<tr class="even">
+<td>2. 笔记管理</td>
+<td>Obsidian CLI</td>
+<td>创建/搜索/整理笔记</td>
+</tr>
+<tr class="odd">
+<td>3. 智能问答</td>
+<td>DeepSeek V4 / MiMo V2.5</td>
+<td>基于笔记库的 RAG 问答</td>
+</tr>
+<tr class="even">
+<td>4. 同步分享</td>
+<td>lark-cli</td>
+<td>将笔记同步到飞书分享给团队</td>
+</tr>
+</tbody>
+</table>
+<p>不同使用场景下的工具组合方案</p>
+</section>
+</section>
+<section id="工具详情索引" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 工具详情索引</h1>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 1：<a href="../notes/literature-search-tools.html">文献检索工具手册</a></strong></p>
+<p>arXiv / Crossref / OpenAlex / zbMATH 四大 API 的完整使用指南，含 curl 示例和参数详解。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 2：<a href="../notes/mineru-ocr-document-parsing.html">OCR 文档解析 — MinerU</a></strong></p>
+<p>高精度文档解析引擎，PDF/DOCX/PPTX → Markdown/JSON，67.8k Star。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 3：<a href="../notes/lark-cli-docs.html">飞书文档读写 — lark-cli</a></strong></p>
+<p>飞书官方 CLI，覆盖 50+ 资源类型的 CRUD 操作。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 4：<a href="../notes/obsidian-cli-docs.html">Obsidian 文档读写 — Obsidian CLI</a></strong></p>
+<p>Obsidian 官方 CLI，笔记 CRUD、搜索、模板、Headless Sync。</p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 5：<a href="../notes/agent-reach-multi-platform-content-retrieval.html">多平台内容检索 — Agent-Reach</a></strong></p>
+<p>20+ 平台内容抓取，无需 API Key，32.3k Star。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 6：<a href="../notes/brave-search-api.html">网页检索 — Brave Search API</a></strong></p>
+<p>独立搜索引擎 API，含专为 AI 设计的 LLM Context 端点。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📄 <strong>篇 7：<a href="../notes/deepseek-v4-mimo-v2.5.html">国产 AI — DeepSeek V4 / MiMo V2.5</a></strong></p>
+<p>DeepSeek V4 极致性价比 + MiMo V2.5 多模态理解。</p>
+</div>
+</div>
+</div>
+</div>
+<p>每篇文档的快速导航</p>
+</section>
+<section id="组合实战" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 组合实战</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔗 以下是一个典型的 AI Agent 工作流，展示如何将多个工具串联起来完成复杂任务。</p>
+</div>
+</div>
+<section id="示例自动文献调研并生成飞书报告" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="示例自动文献调研并生成飞书报告"><span class="header-section-number">4.1</span> 示例：自动文献调研并生成飞书报告</h2>
+<p>目标：给定一个研究课题，自动检索相关文献、解析内容、生成结构化报告并发布到飞书。</p>
+<pre class="text"><code>用户输入: "调研量子群的最新进展"
+    │
+    ▼
+[1] Brave Search API → 搜索最新网页信息
+    │
+    ▼
+[2] arXiv + Crossref + OpenAlex → 检索学术论文
+    │
+    ▼
+[3] MinerU → 解析 PDF 论文为 Markdown
+    │
+    ▼
+[4] DeepSeek V4 Pro → 阅读理解、生成摘要
+    │
+    ▼
+[5] lark-cli → 创建飞书文档，写入报告
+    │
+    ▼
+[6] Obsidian CLI → 同步到本地知识库
+    │
+    ▼
+完成: 飞书报告 + 本地知识库更新</code></pre>
+<hr>
+</section>
+<section id="示例社交媒体竞品监控" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="示例社交媒体竞品监控"><span class="header-section-number">4.2</span> 示例：社交媒体竞品监控</h2>
+<p>目标：持续监控竞品在社交媒体上的动态，自动生成分析报告。</p>
+<pre class="text"><code>定时触发 (每小时)
+    │
+    ▼
+[1] Agent-Reach → 抓取 Twitter/Reddit/Bilibili 内容
+    │
+    ▼
+[2] Brave Search API → 补充搜索引擎结果
+    │
+    ▼
+[3] MiMo V2.5 → 多模态分析（含图片/视频理解）
+    │
+    ▼
+[4] DeepSeek V4 → 情感分析、趋势判断
+    │
+    ▼
+[5] lark-cli → 更新飞书多维表格 + 生成周报
+    │
+    ▼
+完成: 实时监控看板 + 周度分析报告</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>提示：</strong>以上工作流可以用 Python 脚本、n8n、Dify 或任何支持 shell 调用的编排工具实现。每个工具都是独立的 CLI 或 API，可以灵活组合。</p>
+</div>
+</div>
+<p>典型 AI Agent 工作流中的工具链路</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

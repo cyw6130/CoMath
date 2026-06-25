@@ -65,6 +65,17 @@ website:
           - section: "AI for Knot"
             contents:
               - notes/microgpt-math-impl-compare.qmd
+          - section: "AI Tools"
+            contents:
+              - notes/ai-tools-handbook.qmd
+              - notes/literature-search-tools.qmd
+              - notes/mineru-ocr-document-parsing.qmd
+              - notes/lark-cli-docs.qmd
+              - notes/obsidian-cli-docs.qmd
+              - notes/agent-reach-multi-platform-content-retrieval.qmd
+              - notes/brave-search-api.qmd
+              - notes/deepseek-v4-mimo-v2.5.qmd
+
 format:
   html:
     html-math-method: katex

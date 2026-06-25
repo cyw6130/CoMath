@@ -1,0 +1,367 @@
+---
+title: "多平台内容检索 — Agent-Reach"
+categories:
+  - content-retrieval
+  - multi-platform
+  - open-source
+  - ai-tools
+  - web-scraping
+  - integration
+description: "多平台内容读取工具，支持20+平台，零API费用。"
+---
+
+::: {.callout-note}
+💡 Agent-Reach 是一款多平台内容读取工具，支持 Twitter/X、Reddit、YouTube、GitHub、Bilibili、小红书、LinkedIn 等 20+ 平台的内容抓取，无需 API Key，零费用。在 GitHub 上拥有 32.3k+ Star，是 AI Agent 获取跨平台信息的利器。
+:::
+
+# 概览
+
+Agent-Reach 是一款开源的多平台内容读取工具，旨在为 AI Agent 赋予访问互联网公开内容的能力。它不是一个底层爬虫库，而是一个**能力层（capability layer）**——负责选型、安装、体检、路由，让 Agent 能够用一句话就接入 20+ 平台的内容。
+
+::: {.callout-note}
+⭐ GitHub 32.3k+ Star | MIT License | Python 3.10+ | 兼容所有主流 AI Agent（Claude Code、OpenClaw、Cursor、Windsurf 等）
+:::
+
+## 核心价值
+
+-   **零 API 费用** — 所有后端工具均开源免费，唯一可能花钱的是服务器代理（约 \$1/月），本地电脑完全免费
+-   **一句话安装** — 复制一句指令给 Agent，自动完成 CLI 安装、环境检测、搜索引擎配置、SKILL.md 注册
+-   **多后端路由** — 每个平台采用「首选 + 备选」的有序后端列表，某条路失效时自动切换，用户无感
+-   **隐私安全** — Cookie 只存在本地，不上传不外传，代码完全开源可审查
+-   **自带诊断** — `agent-reach doctor` 一条命令告诉你每个渠道的状态、当前走哪条路
+
+## 技术架构
+
+Agent-Reach 的设计理念是**不封装底层读取**，而是作为一个配置和路由层存在。它基于以下技术栈构建：
+
+-   **上游工具**：yt-dlp、twitter-cli、OpenCLI、bili-cli、Jina Reader、Exa 等（均为独立开源项目）
+-   **CLI 入口**：Python 包 `pip install agent-reach`，提供 `install`、`doctor`、`uninstall` 等子命令
+-   **SKILL.md 机制**：在 Agent 的 skills 目录注册使用指南，Agent 遇到相关需求时自动知道该调什么工具
+-   **MCP 协议**：通过 mcporter 接入 Exa 语义搜索、LinkedIn 等需要 MCP 协议的平台
+
+GitHub 仓库：[https://github.com/Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)
+
+Agent-Reach 的定位与核心能力
+
+# 支持平台
+
+Agent-Reach 支持 20+ 平台的内容读取，覆盖社交媒体、代码托管、视频平台、求职网站等主流互联网平台。下表列出已适配的主要平台及支持的数据类型：
+
+| 平台 | 支持状态 | 数据类型 | 默认后端 |
+|-|-|-|-|
+| 🌐 网页 | 装好即用 | 任意网页内容（自动清洗 HTML） | Jina Reader |
+| 🐦 Twitter/X | 装好即用 + Cookie 解锁搜索 | 推文、搜索结果、用户资料、时间线 | twitter-cli ▸ OpenCLI |
+| 📺 YouTube | 装好即用 | 视频字幕、元数据、搜索 | yt-dlp |
+| 📦 GitHub | 装好即用 + Token 解锁私有 | 仓库、Issue、PR、代码、搜索 | gh CLI |
+| 📺 B站 (Bilibili) | 装好即用 + Cookie 解锁字幕 | 视频详情、搜索、评论 | bili-cli ▸ OpenCLI |
+| 📕 小红书 | 需配置 Cookie | 笔记、评论、搜索、用户资料 | OpenCLI ▸ xiaohongshu-mcp |
+| 📖 Reddit | 需配置 Cookie | 帖子、评论、子版块、搜索 | OpenCLI ▸ rdt-cli |
+| 💼 LinkedIn | 装好即用 + Cookie 解锁详情 | 职位、公司页面、个人资料 | linkedin-mcp ▸ Jina Reader |
+| 💻 V2EX | 装好即用 | 热门帖子、节点帖子、用户信息 | 内置 API |
+| 📈 雪球 | 需配置 | 股票行情、搜索、热门帖子 | 内置 API |
+| 🔍 全网搜索 | 自动配置（免费免 Key） | 全网语义搜索结果 | Exa via mcporter |
+| 📡 RSS | 装好即用 | RSS/Atom 订阅源内容 | feedparser |
+| 🎙️ 小宇宙播客 | 需配置 | 播客音频转文字 | Whisper 转录 |
+
+::: {.callout-note}
+💡 **配置很简单**：需要 Cookie 的平台（Twitter、小红书等），用 Chrome 插件 Cookie-Editor 导出浏览器 Cookie，发给 Agent 即可完成配置。不确定怎么配置？直接告诉 Agent「帮我配 XXX」，它会一步步引导你。
+:::
+
+## 后端路由机制
+
+每个平台都是一个独立的 `channels/*.py` 文件，维护「首选 + 备选」的有序后端列表。当首选后端不可用时，自动降级到备选方案：
+
+    channels/
+    ├── web.py          → Jina Reader
+    ├── twitter.py      → twitter-cli ▸ OpenCLI
+    ├── youtube.py      → yt-dlp
+    ├── github.py       → gh CLI
+    ├── bilibili.py     → bili-cli ▸ OpenCLI
+    ├── reddit.py       → OpenCLI ▸ rdt-cli
+    ├── xiaohongshu.py  → OpenCLI ▸ xiaohongshu-mcp ▸ xhs-cli
+    ├── linkedin.py     → linkedin-mcp ▸ Jina Reader
+    ├── rss.py          → feedparser
+    └── exa_search.py   → Exa via mcporter
+
+全平台能力矩阵与数据类型
+
+# 快速上手
+
+Agent-Reach 的安装方式极其简洁——复制一句话给你的 AI Agent，剩下的事情全部自动完成。
+
+## 方式一：一键自动安装（推荐）
+
+复制下面这句话给你的 AI Agent（Claude Code、OpenClaw、Cursor 等任意支持命令行的 Agent）：
+
+    帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
+
+Agent 会自动完成以下所有步骤：
+
+1.  **安装 CLI 工具** — `pip install agent-reach`（自带 yt-dlp、feedparser 依赖）
+2.  **安装系统基建** — 自动检测并安装 Node.js、gh CLI、mcporter
+3.  **配置搜索引擎** — 通过 MCP 接入 Exa（免费，无需 API Key）
+4.  **注册 SKILL.md** — 在 Agent 的 skills 目录安装使用指南
+5.  **环境诊断** — 判断本地/服务器环境，给出配置建议
+
+## 方式二：从源码安装
+
+    git clone https://github.com/Panniantong/Agent-Reach.git
+    cd Agent-Reach
+    pip install -e .
+
+## 方式三：安全模式安装
+
+如果在生产服务器或多人共用的机器上，可以使用安全模式——不会自动修改系统，只告诉你需要什么：
+
+    帮我安装 Agent Reach（安全模式）：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
+    安装时使用 --safe 参数
+
+## 安装后验证
+
+运行诊断命令，一键查看所有渠道的状态：
+
+    agent-reach doctor
+
+输出示例会告诉你每个平台当前在用哪个后端、是否可用、以及修复建议。
+
+::: {.callout-note}
+🔄 **更新也是一句话：**
+帮我更新 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/update.md
+:::
+
+## 装好就能用
+
+零配置渠道（装好即用，无需任何登录）：
+
+-   「帮我看看这个链接」 → Jina Reader 读任意网页
+-   「这个 GitHub 仓库是做什么的」 → `gh repo view owner/repo`
+-   「这个 YouTube 视频讲了什么」 → `yt-dlp` 提取字幕
+-   「B站搜一下 AI 教程」 → `bili search`（无需登录）
+-   「全网搜一下 LLM 框架对比」 → Exa 语义搜索
+-   「订阅这个 RSS」 → `feedparser` 解析
+
+安装、配置与第一个抓取任务
+
+# API 集成
+
+Agent-Reach 本身是一个能力层，不直接提供 Python API。实际的读取由 Agent 调用上游 CLI 工具完成。以下是各平台的 CLI 调用方式，可在 Agent 流水线或脚本中集成。
+
+## Web 网页读取
+
+    # 将任意 URL 转为 Markdown 格式返回
+    curl https://r.jina.ai/https://example.com
+
+## Twitter/X
+
+    # 搜索推文
+    twitter search "关键词" --limit 20
+
+    # 读取单条推文
+    twitter tweet https://x.com/user/status/123456
+
+    # 读取用户时间线
+    twitter timeline @username --limit 10
+
+## YouTube
+
+    # 提取视频元数据（JSON 格式）
+    yt-dlp --dump-json "https://youtube.com/watch?v=xxx"
+
+    # 提取字幕文件
+    yt-dlp --write-sub --skip-download "URL"
+
+    # 提取自动字幕（英文）
+    yt-dlp --write-auto-sub --sub-lang en --skip-download "URL"
+
+## GitHub
+
+    # 查看仓库详情
+    gh repo view owner/repo
+
+    # 搜索仓库
+    gh search repos "LLM framework"
+
+    # 列出 Issue
+    gh issue list --repo owner/repo
+
+    # 查看 PR
+    gh pr view 123 --repo owner/repo
+
+## B站 (Bilibili)
+
+    # 搜索视频（无需登录）
+
+bili search "关键词" --limit 10
+
+    # 获取视频详情
+    bili video BV1xxxxxxxx
+
+    # 获取评论
+    bili comment BV1xxxxxxxx
+
+    ## 小红书
+
+    ```bash
+    # 搜索笔记
+    opencli xiaohongshu search "关键词"
+
+    # 读取单篇笔记
+    opencli xiaohongshu note "笔记URL"
+
+    # 读取用户主页
+    opencli xiaohongshu profile "用户URL"
+    ```
+
+    ## Reddit
+
+    ```bash
+    # 搜索帖子
+    opencli reddit search "关键词" --subreddit programming
+
+    # 读取帖子及评论
+    opencli reddit post "帖子URL"
+
+    # 浏览子版块
+    opencli reddit subreddit programming --sort hot
+    ```
+
+    ## 全网语义搜索 (Exa)
+
+    ```bash
+    # 语义搜索（AI 级别的搜索能力）
+    mcporter exa search "最新 LLM 框架对比 2026"
+
+    # 按域名过滤
+    mcporter exa search "AI agent tools" --include-domain github.com
+    ```
+
+    ::: {.callout-note}
+    💡 **不需要记命令**：安装 Agent-Reach 后，Agent 读了 SKILL.md 会自动知道该调什么工具。你只需要用自然语言告诉 Agent 你想获取什么信息即可。
+    :::
+
+    在 Agent 流水线中调用 Agent-Reach
+
+    # 实战场景
+
+    Agent-Reach 覆盖了 AI Agent 在信息获取场景中的常见需求。以下是四个典型实战场景，展示了如何将多平台内容读取能力融入实际工作流。
+
+    ## 场景一：舆情监控
+
+    监控 Twitter、Reddit、小红书等平台上关于品牌或产品的提及和讨论，实时掌握舆论动态。
+
+    -   **Twitter/X**：`twitter search "品牌名" --limit 50` 定时抓取提及推文
+    -   **Reddit**：`opencli reddit search "品牌名" --sort new` 监控社区讨论
+    -   **小红书**：`opencli xiaohongshu search "品牌名"` 追踪消费者评价
+
+    结合定时任务（如 cron），可自动产出每日舆情简报，标注正面/负面情绪和关键讨论话题。
+
+    ## 场景二：竞品分析
+
+    跨平台抓取竞品的公开社交媒体内容、产品更新和用户反馈，构建竞争情报。
+
+    -   **GitHub**：`gh repo view competitor/repo` 追踪竞品的开源进展
+    -   **Twitter**：`twitter search "竞品名" --limit 30` 了解用户口碑
+    -   **LinkedIn**：`linkedin-mcp` 查看竞品团队扩张和招聘信息
+
+    ::: {.callout-note}
+    🔍 **进阶用法**：让 Agent 跨多个平台收集信息后，自动对比分析并生成竞品报告，省去手动收集整理的时间。
+    :::
+
+    ## 场景三：内容聚合
+
+    跨平台聚合特定话题的优质内容，构建垂直领域知识库。
+
+    -   **全网搜索**：Exa 语义搜索找到相关文章和讨论
+    -   **RSS**：`feedparser` 订阅行业博客和新闻源
+    -   **YouTube**：`yt-dlp` 提取技术演讲的字幕内容
+    -   **B站**：`bili search` 搜索中文技术教程视频
+    -   **Medium**：Jina Reader 读取深度文章
+
+    ## 场景四：学术研究
+
+    收集社交媒体数据用于社会计算、传播学、舆情分析等研究方向。
+
+    -   **数据采集**：通过 Twitter 搜索 API 批量收集特定话题的推文数据
+    -   **Reddit 分析**：抓取特定子版块的帖子和评论，分析社区讨论模式
+    -   **跨平台对比**：比较同一话题在不同平台（Twitter vs Reddit vs 小红书）上的传播差异
+    -   **时间序列**：结合时间范围过滤，追踪话题热度的变化趋势
+
+    ::: {.callout-note}
+    💡 **合规提醒**：学术研究使用时，请遵守各平台的使用条款和数据保护法规。建议使用公开数据，避免大规模自动化抓取，并在论文中注明数据来源。
+    :::
+
+    舆情监控、竞品分析、内容聚合等用例
+
+    # FAQ
+
+    # 实测配置与验证结果
+
+    ::: {.callout-note}
+    ✅ 以下配置于 2026-06-17 在 MacBook Air M4 (macOS) 上验证通过，10/13 渠道可用。
+    :::
+
+    ## 安装方案
+
+    ### 环境准备
+
+    macOS Homebrew Python 受 PEP 668 限制，不能直接 pip install，使用 venv 隔离：
+
+    ### 安装社交平台渠道
+
+    基础渠道装好后，按需解锁 Twitter、Reddit、小红书等：
+
+    ### OpenCLI 浏览器扩展（Reddit / 小红书 / LinkedIn 必需）
+
+    Reddit 和小红书通过 OpenCLI 复用 Chrome 浏览器登录态，需要手动安装一次 Chrome 扩展：
+
+    1.  打开 [Chrome 扩展商店 - OpenCLI](https://chromewebstore.google.com/detail/opencli/ildkmabpimmkaediidaifkhjpohdnifk)
+    2.  点「添加至 Chrome」
+    3.  确保 Chrome 已登录对应网站（reddit.com / xiaohongshu.com）
+    4.  运行 `opencli doctor` 确认 Extension 状态为 `[OK]`
+
+    ## 各渠道实测结果
+
+    | 渠道 | 状态 | 测试命令 | 备注 |
+    |-|-|-|-|
+    | **Jina Reader**（网页） | ✅ 正常 | `curl r.jina.ai/https://example.com` | GitHub、V2EX、通用网页均可用 |
+    | **Twitter/X** | ✅ 正常 | `twitter search "Claude Code"` | 返回推文、作者、指标；无需 API Key |
+    | **YouTube** | ✅ 正常 | `yt-dlp --print title URL` | 标题/时长/字幕均可获取 |
+    | **B站** | ✅ 正常 | `bili search "量子计算" --type video` | 返回标题/播放量/时长 |
+    | **Reddit** | ✅ 正常 | `opencli reddit search "query" -f yaml` | 需 Chrome 登录 reddit.com |
+    | **小红书** | ✅ 正常 | `opencli xiaohongshu search "query" -f yaml` | 需 Chrome 登录 xiaohongshu.com |
+    | **V2EX** | ✅ 正常 | 公开 API 直接调用 | 无需登录 |
+    | **Exa 全网搜索** | ✅ 正常 | mcporter 已配置 | 免费，无需 API Key |
+    | **RSS / GitHub** | ✅ 正常 | 内置支持 | 装好即用 |
+
+    ## 已知限制
+
+    ::: {.callout-note}
+    💡 **Jina Reader 直连社交平台会失败：**Twitter/X 被 Jina 安全策略封禁（451），Reddit 返回 403，B站 SPA 内容抓取不完整。这些平台必须通过各自 CLI 工具（twitter-cli、bili-cli、OpenCLI）访问，不能只靠 Jina Reader。
+    **OpenCLI 渠道依赖 Chrome 登录态：**Reddit、小红书、LinkedIn 需要 Chrome 浏览器已登录对应网站，且 OpenCLI 扩展必须保持连接。如果 Chrome 关闭或扩展断开，这些渠道会暂时不可用。
+    :::
+
+    ## CLI 工具路径参考
+
+| 工具 | 路径 / 命令 |
+|-------|----------------|
+| agent-reach | `~/.agent-reach-venv/bin/agent-reach` |
+| twitter-cli | `~/.local/share/uv/tools/twitter-cli/bin/twitter` |
+| bili-cli | `~/.local/share/uv/tools/bilibili-cli/bin/bili` |
+| opencli | `/opt/homebrew/bin/opencli` |
+| yt-dlp | `/opt/homebrew/bin/yt-dlp` |
+
+| 问题 | 解答 |
+|-------|--------|
+| **反爬策略如何应对？** | Agent-Reach 采用「首选 + 备选」的多后端路由机制。当某个平台更新反爬策略导致当前后端失效时，自动切换到备选方案。例如 2026 年 6 月 B站风控封死 yt-dlp（返回 412），项目立即切换到 bili-cli，用户零操作。运行 `agent-reach doctor` 可实时查看每个平台的状态。 |
+| **速率限制怎么办？** | 各平台对请求频率有不同限制。建议：(1) 避免短时间大量请求，适当加延迟；(2) 使用专用小号而非主账号；(3) 对于批量任务，考虑分时段执行。Agent-Reach 本身不封装请求，速率控制由上游工具和用户自行管理。 |
+| **Cookie 怎么配置？安全吗？** | 需要 Cookie 的平台（Twitter、小红书、Reddit 等），推荐用 Chrome 插件 [Cookie-Editor](https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm) 导出浏览器 Cookie，发给 Agent 即可。Cookie 仅存储在本地 `~/.agent-reach/config.yaml`（文件权限 600），不上传不外传。⚠️ 强烈建议使用专用小号，避免主账号被封风险。 |
+| **法律合规需要注意什么？** | (1) 仅读取公开可访问的内容，不绕过付费墙；(2) 遵守各平台的使用条款（ToS）；(3) 避免大规模高频自动化抓取；(4) 学术研究应在论文中注明数据来源；(5) 爬取的数据不应用于商业转售。具体合规义务因地区和用途而异，建议咨询法律专业人士。 |
+| **兼容哪些 AI Agent？** | 兼容所有能执行 shell 命令的 AI Agent，包括 Claude Code、OpenClaw、Cursor、Windsurf、Codex 等。注意：OpenClaw 用户需先开启 exec 权限：`openclaw config set tools.profile "coding"`。 |
+| **中国大陆网络环境怎么用？** | 本地电脑不需要代理即可使用大多数功能。Reddit、Twitter 等被墙平台需要代理支持（服务器部署约 \$1/月）。可配合 3x-ui 等代理工具使用。RSS、B站、小红书、V2EX 等国内可直接访问的平台不受影响。 |
+| **如何卸载？** | 运行 `agent-reach uninstall` 即可完整卸载，包括 `~/.agent-reach/` 目录（含所有 token/cookie）、各 Agent 的 skill 文件、mcporter 中的 MCP 配置。仅预览可加 `--dry-run`，保留配置可加 `--keep-config`。 |
+
+::: {.callout-note}
+🔗 **更多问题？** 请访问 [GitHub Issues](https://github.com/Panniantong/Agent-Reach/issues) 提交反馈，或通过 [Twitter @Neo_Reidlab](https://x.com/Neo_Reidlab) 联系作者。
+:::
+
+常见问题与解决方案

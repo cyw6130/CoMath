@@ -2,6 +2,14 @@
   {
     "listing": "/pages/notes.html",
     "items": [
+      "/notes/ai-tools-handbook.html",
+      "/notes/literature-search-tools.html",
+      "/notes/mineru-ocr-document-parsing.html",
+      "/notes/lark-cli-docs.html",
+      "/notes/obsidian-cli-docs.html",
+      "/notes/agent-reach-multi-platform-content-retrieval.html",
+      "/notes/brave-search-api.html",
+      "/notes/deepseek-v4-mimo-v2.5.html",
       "/notes/knot-hopf-algebra-and-quantum-invariants.html",
       "/notes/cerf-theorem-and-kirby-calculus.html",
       "/notes/kirby-diagram-of-4-manifold.html",

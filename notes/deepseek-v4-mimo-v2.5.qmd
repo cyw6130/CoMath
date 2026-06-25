@@ -1,0 +1,294 @@
+---
+title: "国产 AI 模型 — DeepSeek V4 / MiMo V2.5"
+categories:
+  - deepseek
+  - mimo
+  - large-language-model
+  - api
+  - artificial-intelligence
+  - china
+  - moe
+description: "介绍DeepSeek V4与MiMo V2.5国产大模型"
+---
+
+::: {.callout-note}
+💡 DeepSeek V4 和 MiMo V2.5 是 2026 年最值得关注的国产大模型。DeepSeek V4 以极致性价比著称；MiMo V2.5 是小米推出的 310B MoE 多模态模型，原生支持图像/视频/文档理解，1M 上下文窗口。
+:::
+
+# DeepSeek V4
+
+模型矩阵、API 接入与最佳实践
+
+::: {.callout-note}
+🔗 平台：[platform.deepseek.com](https://platform.deepseek.com)  |  API：[api.deepseek.com](https://api.deepseek.com)  |  兼容 OpenAI API 格式
+:::
+
+## 模型矩阵
+
+| 模型 | 定位 | 特点 |
+|-|-|-|
+| deepseek-v4-flash | 性价比首选 | 快速响应、低成本，适合高并发场景 |
+| deepseek-v4-pro | 最强能力 | 深度推理、复杂任务，代码和数学推理能力突出 |
+
+::: {.callout-note}
+💡 旧模型名 `deepseek-chat` 和 `deepseek-reasoner` 将于 **2026/07/24** 废弃，请尽快迁移到 v4 系列模型。
+:::
+
+## API 接入
+
+DeepSeek V4 完全兼容 OpenAI API 格式，可以直接使用 OpenAI SDK 通过修改 base_url 接入。以下是两种常见调用方式：
+
+### curl 示例
+
+```bash
+curl https://api.deepseek.com/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $DEEPSEEK_API_KEY" \
+  -d '{
+    "model": "deepseek-v4-flash",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "解释量子纠缠的基本原理"}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 4096
+  }'
+```
+
+### Python 示例
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="your-deepseek-api-key",
+    base_url="https://api.deepseek.com"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-v4-flash",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "用 Python 实现一个 LRU Cache"}
+    ],
+    temperature=0.7,
+    max_tokens=4096,
+)
+
+print(response.choices[0].message.content)
+```
+
+## 最佳实践
+
+- **模型选择**：日常对话和简单任务用 `deepseek-v4-flash`，需要深度推理或复杂代码生成时用 `deepseek-v4-pro`
+- **流式输出**：交互式场景建议开启 `stream: true`，提升用户体验
+- **上下文管理**：虽然支持 128K 上下文，但建议控制在 32K 以内以获得最佳性能和性价比
+- **温度参数**：代码生成建议 0.0-0.3，创意写作 0.7-1.0
+
+模型矩阵、API 接入与最佳实践
+
+# MiMo V2.5
+
+310B MoE 多模态模型、平台接入与能力详解
+
+::: {.callout-note}
+🔗 官网：[mimo.xiaomi.com/mimo-v2-5](https://mimo.xiaomi.com/mimo-v2-5/)  |  平台：[platform.xiaomimimo.com](https://platform.xiaomimimo.com)  |  AI Studio：[aistudio.xiaomimimo.com](https://aistudio.xiaomimimo.com/)
+:::
+
+## 核心参数
+
+:::{.grid}
+:::{.g-col-12 .g-col-md-6}
+::: {.callout-note}
+🧠 **架构**：310B MoE（Mixture of Experts）
+**激活参数**：15B（推理时仅激活约 5% 参数）
+**训练数据**：48T tokens
+:::
+:::
+:::{.g-col-12 .g-col-md-6}
+::: {.callout-note}
+💡 **原生多模态**：图像 / 视频 / 文档理解
+**上下文窗口**：1M tokens
+**开源协议**：Apache 2.0
+:::
+:::
+:::
+
+## 模型变体
+
+| 变体 | 价格倍数 | 定位 | 适用场景 |
+|-|-|-|-|
+| MiMo-V2.5 | 1x | 标准版 | 日常多模态任务，性价比均衡 |
+| MiMo-V2.5-Pro | 2x | 增强版 | 复杂推理、高精度多模态理解 |
+| MiMo-V2.5-Flash | 0.25x | 轻量版 | 高并发、低延迟、简单任务 |
+
+## 能力亮点
+
+- **图像理解**：支持图表解析、OCR 文字识别、视觉问答，可直接理解扫描件和手写笔记
+- **视频理解**：原生处理视频流，支持长视频摘要、关键帧提取、动作识别
+- **文档理解**：1M 上下文窗口可一次性处理整本书或超长报告，支持结构化信息提取
+- **代码能力**：在代码生成和理解任务上表现优秀，支持多语言编程
+- **长推理链**：利用 1M 上下文进行多步复杂推理，适合 Agent 工作流
+
+## 接入方式
+
+```python
+import requests
+
+url = "https://platform.xiaomimimo.com/v1/chat/completions"
+headers = {
+    "Authorization": "Bearer YOUR_MIMO_API_KEY",
+    "Content-Type": "application/json"
+}
+data = {
+    "model": "MiMo-V2.5",
+    "messages": [
+        {"role": "user", "content": [
+            {"type": "text", "text": "请分析这张图片中的数据趋势"},
+            {"type": "image_url", "image_url": {"url": "https://example.com/chart.png"}}
+        ]}
+    ],
+    "max_tokens": 4096
+}
+
+response = requests.post(url, json=data, headers=headers)
+print(response.json()["choices"][0]["message"]["content"])
+```
+
+## 开源资源
+
+- **HuggingFace**：[XiaomiMiMo/MiMo-V2.5](https://huggingface.co/XiaomiMiMo/MiMo-V2.5) — 模型权重、文档和评估结果
+- **AI Studio**：[aistudio.xiaomimimo.com](https://aistudio.xiaomimimo.com/) — 在线体验平台
+- **协议**：Apache 2.0，可商用部署
+
+310B MoE 多模态模型、平台接入与能力详解
+
+# 对比与选型
+
+两者定位、价格、能力的全面对比
+
+## 核心维度对比
+
+| 维度 | DeepSeek V4 | MiMo V2.5 |
+|-|-|-|
+| **厂商** | DeepSeek（幻方量化） | 小米 |
+| **架构** | Dense / MoE 双版本 | 310B MoE（15B active） |
+| **多模态** | 文本为主 | 原生图像/视频/文档理解 |
+| **上下文窗口** | 128K tokens | 1M tokens |
+| **开源** | 部分开源（Dense 模型） | Apache 2.0 全开源 |
+| **API 平台** | platform.deepseek.com | platform.xiaomimimo.com |
+| **价格策略** | 极低单价，业界最便宜之一 | 1x / 2x / 0.25x 三档定价 |
+| **最佳场景** | 文本推理、代码生成、数学 | 多模态理解、长文档、视频分析 |
+
+## 旗舰模型价格对比
+
+以各自旗舰模型对比，价格单位为 **人民币 / 每百万 tokens**：
+
+| 维度 | DeepSeek V4 Pro | MiMo V2.5 Pro | 备注 |
+|-|-|-|-|
+| **输入（缓存命中）** | ¥0.026 | ¥0.025 | 几乎相同，缓存折扣极大 |
+| **输入（缓存未命中）** | ¥3.14 | ¥3.00 | MiMo 略低 ↓ |
+| **输出** | ¥6.27 | ¥6.00 | MiMo 略低 ↓ |
+| **上下文窗口** | 1M tokens | 1M tokens |  |
+| **多模态** | 需另配视觉模型 | 原生图像/视频/文档 | MiMo 无需额外成本 |
+
+---
+
+各档位模型横向对比（**人民币 / 每百万 tokens**）：
+
+<table><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th vertical-align="top">档位</th><th vertical-align="top">模型</th><th vertical-align="top">输入（缓存命中）</th><th vertical-align="top">输入（缓存未命中）</th><th vertical-align="top">输出</th></tr></thead><tbody><tr><td rowspan="2" vertical-align="top"><b>旗舰</b></td><td vertical-align="top">DeepSeek V4 Pro</td><td vertical-align="top">¥0.026</td><td vertical-align="top">¥3.14</td><td vertical-align="top">¥6.27</td></tr><tr><td vertical-align="top">MiMo V2.5 Pro</td><td vertical-align="top">¥0.025</td><td vertical-align="top">¥3.00</td><td vertical-align="top">¥6.00</td></tr><tr><td rowspan="2" vertical-align="top"><b>标准</b></td><td vertical-align="top">DeepSeek V4 Flash</td><td vertical-align="top">¥0.020</td><td vertical-align="top">¥1.01</td><td vertical-align="top">¥2.02</td></tr><tr><td vertical-align="top">MiMo V2.5</td><td vertical-align="top">¥0.020</td><td vertical-align="top">¥1.00</td><td vertical-align="top">¥2.00</td></tr><tr><td vertical-align="top"><b>轻量</b></td><td vertical-align="top">MiMo V2.5 Flash</td><td vertical-align="top">—</td><td vertical-align="top">约 ¥0.25</td><td vertical-align="top">约 ¥0.50</td></tr></tbody></table>
+
+::: {.callout-note}
+💡 **结论**：旗舰和标准档位价格几乎相同，MiMo 在输出价格上略低。两者相比 GPT-4（\$30/\$60 ≈ ¥216/¥432）和 Claude Opus（\$15/\$75 ≈ ¥108/¥540）便宜 **约 70 倍**。如果需要多模态能力，MiMo 的性价比优势更明显——无需额外调用视觉模型。
+:::
+
+以各自最强模型（旗舰）对比，价格单位为美元/每百万 tokens：
+
+### MiMo 月度 / 年度套餐
+
+MiMo 除按量计费外，还提供预付费 Credit 套餐，适合有稳定用量的团队：
+
+**月度套餐**
+
+| 档位 | Lite | Standard | Pro | Max |
+|-|-|-|-|-|
+| **定价** | \$6 / ¥39 | \$16 / ¥99 | \$50 / ¥329 | \$100 / ¥659 |
+| **Credit 额度** | 4.1B | 11B | 38B | 82B |
+
+**年度套餐**（约 8.8 折）
+
+| 档位 | Lite | Standard | Pro | Max |
+|-|-|-|-|-|
+| **定价** | \$63.36 / ¥411.84 | \$168.96 / ¥1045.44 | \$528 / ¥3474.24 | \$1056 / ¥6959.04 |
+| **Credit 额度** | 49.2B | 132B | 456B | 984B |
+
+::: {.callout-note}
+💡 Credit 是 MiMo 的统一计量单位，不同模型消耗倍数不同：MiMo-V2.5 = 1x，MiMo-V2.5-Pro = 2x，MiMo-V2.5-Flash = 0.25x。套餐适合稳定调用量，按量计费更灵活。
+:::
+
+| 维度 | DeepSeek V4 Pro | MiMo V2.5 Pro | 备注 |
+|-|-|-|-|
+| **输入价格** | \$0.435/M tokens | 2x 基准价 | DeepSeek 有缓存命中价 \$0.003625 |
+| **输出价格** | \$0.87/M tokens | 2x 基准价 | MiMo 绝对价格见官方平台 |
+| **缓存命中** | 输入仅 \$0.003625 | 未公布 | DeepSeek 缓存折扣极大（\~99% off） |
+| **上下文窗口** | 128K tokens | 1M tokens | MiMo 是 DeepSeek 的 8 倍 |
+| **多模态** | 需另配视觉模型 | 原生图像/视频/文档 | MiMo 无需额外成本 |
+
+---
+
+各档位模型横向对比：
+
+| 档位 | DeepSeek V4 | MiMo V2.5 | 特点 |
+|-|-|-|-|
+| **旗舰（最强）** | V4 Pro: \$0.435 / \$0.87 | V2.5 Pro: 2x 基准 | 最强能力，复杂推理 |
+| **标准（均衡）** | V4 Flash: \$0.14 / \$0.28 | V2.5: 1x 基准 | 性价比均衡 |
+| **轻量（极速）** | V4 Flash（同上） | V2.5 Flash: 0.25x | 高并发低延迟 |
+
+::: {.callout-note}
+💡 **价格提示**：DeepSeek V4 的定价已确认（来源：api-docs.deepseek.com）。MiMo V2.5 采用相对定价（1x/2x/0.25x），绝对价格请查阅 [platform.xiaomimimo.com](https://platform.xiaomimimo.com)。两者相比 GPT-4（\$30/\$60）和 Claude Opus（\$15/\$75）均便宜 1-2 个数量级。
+:::
+
+## Lite 套餐 vs API 按量：V2.5-Pro 实测对比
+
+::: {.callout-tip}
+🎯 **核心结论：**同样 ¥39，Lite 套餐给的 V2.5-Pro 额度约是 API 按量的 **200+ 倍**。套餐对 Pro 用户极其划算。
+:::
+
+### Lite 套餐：¥39 → 4.1B Credits
+
+MiMo-V2.5-Pro 消耗倍数为 2x，所以实际可用 token：
+
+::: {.callout-warning}
+📊 4.1B Credits ÷ 2 = **20.5 亿 tokens**
+:::
+
+### API 按量：¥39 能买多少 V2.5-Pro？
+
+| 场景 | 单价（¥/M tokens） | ¥39 能买 |
+|-|-|-|
+| 纯输入（未命中缓存） | ¥3.00 | 13.0M tokens |
+| 纯输出 | ¥6.00 | 6.5M tokens |
+| 输入 + 输出 1:1 混合 | ¥4.50 | 8.7M tokens |
+| 输入 + 输出 3:1 混合 | ¥3.75 | 10.4M tokens |
+| 纯输入（命中缓存） | ¥0.025 | 1560M tokens |
+
+### 直接对比
+
+| 方案 | ¥39 获得的 Pro tokens | 差距 |
+|-|-|-|
+| **Lite 套餐** | 2050M（20.5 亿） | — |
+| API 按量（1:1 混合） | 8.7M | **约 235 倍** |
+
+::: {.callout-note}
+💡 **为什么差这么多？**套餐按 Credit 统一定价（约 ¥0.0095/M Credits），而 API 按量按输入/输出分别计费（Pro 输出 ¥6/M tokens），两者差了两个数量级。
+**注意：**4.1B Credits 月底清零。如果你月用量低于约 870 万 Pro tokens（≈ API 按量 ¥39 的等价量），按量反而不浪费；但只要超过这个量，套餐就是纯赚。
+:::
+
+# FAQ
+
+常见问题与解决方案
+
+## Q: 如何申请 API Key？
+
+-   **DeepSeek V4**：访问 [platform.deepseek.com](https://platform.deepseek.com)，注册后在 API Keys 页面创建。新用户通常有免费额度。
+-   **MiMo V2.5**：访问 [platform.xiaomimimo.com](https://platform.xiaomimimo.com)，支持小米账号登录。也可通过 [AI Studio](https://aistudio.xiaomimimo.com/) 在线体验。

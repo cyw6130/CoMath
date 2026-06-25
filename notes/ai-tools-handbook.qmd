@@ -1,0 +1,205 @@
+---
+title: "AI 工具手册 — 汇总"
+categories:
+  - ai-tools
+  - literature-search
+  - document-parsing
+  - knowledge-base
+  - content-retrieval
+  - web-search
+  - llm
+description: "汇总7类AI工具，按场景推荐最佳组合方案。"
+---
+
+::: {.callout-note}
+💡 本系列文档介绍了 7 类可以增强 AI 能力的工具，涵盖文献检索、文档解析、知识库读写、多平台内容获取、网页搜索和国产 AI 模型。本文汇总所有工具，按场景推荐最佳组合方案。
+:::
+
+# 工具总览
+
+| 类别 | 工具 | 核心能力 | 适用场景 | 文档 |
+|---|---|---|---|---|
+| 文献检索 | arXiv / Crossref / OpenAlex / zbMATH | 论文、教材、综述的发现与核验 | 学术研究、知识图谱构建 | [文献检索工具手册](literature-search-tools.qmd) |
+| 文档解析 | MinerU | PDF/DOCX/PPTX → Markdown/JSON | 文档内容提取、RAG 数据准备 | [OCR 文档解析 — MinerU](mineru-ocr-document-parsing.qmd) |
+| 飞书读写 | lark-cli | 飞书文档/表格/多维表格 CRUD | 自动化知识管理、团队协作 | [飞书文档读写 — lark-cli](lark-cli-docs.qmd) |
+| Obsidian 读写 | Obsidian CLI | 笔记 CRUD、搜索、模板、同步 | 本地知识库管理、个人笔记 | [Obsidian 文档读写 — Obsidian CLI](obsidian-cli-docs.qmd) |
+| 多平台内容 | Agent-Reach | 20+ 平台内容抓取 | 舆情监控、竞品分析 | [多平台内容检索 — Agent-Reach](agent-reach-multi-platform-content-retrieval.qmd) |
+| 网页搜索 | Brave Search API | Web/LLM Context/Images/Videos | 实时信息获取、Agent 搜索 | [网页检索 — Brave Search API](brave-search-api.qmd) |
+| 国产 AI | DeepSeek V4 / MiMo V2.5 | 文本推理 / 多模态理解 | AI Agent 核心推理引擎 | [国产 AI 模型 — DeepSeek V4 / MiMo V2.5](deepseek-v4-mimo-v2.5.qmd) |
+
+全部 7 类工具一览表
+
+# 按场景推荐
+
+::: {.callout-note}
+🎯 没有万能工具，关键是按场景组合。以下是最常见的 4 种场景和推荐工具链。
+:::
+
+## 场景 1：学术研究 / 知识图谱构建
+
+从一个问题出发，检索文献、解析内容、建立知识体系。
+
+| 步骤 | 工具 | 作用 |
+|-|-|-|
+| 1. 文献发现 | arXiv + Crossref + OpenAlex + zbMATH | 多源检索、交叉核验 |
+| 2. 内容提取 | MinerU | PDF 论文 → 结构化 Markdown |
+| 3. 知识整理 | Obsidian CLI | 写入本地知识库、建立关联 |
+| 4. 推理分析 | DeepSeek V4 / MiMo V2.5 | 理解内容、生成摘要、回答问题 |
+
+## 场景 2：团队协作 / 文档自动化
+
+在飞书中自动创建和更新文档，实现团队知识管理。
+
+| 步骤 | 工具 | 作用 |
+|-|-|-|
+| 1. 信息采集 | Brave Search API + Agent-Reach | 搜索网页 + 抓取社交平台内容 |
+| 2. 内容处理 | MinerU | 解析采集到的文档 |
+| 3. 文档生成 | lark-cli | 自动创建飞书文档、更新表格 |
+| 4. 智能分析 | MiMo V2.5 | 多模态理解、图表分析 |
+
+## 场景 3：信息监控 / 舆情分析
+
+持续监控多个平台的公开信息，进行分析和预警。
+
+| 步骤 | 工具 | 作用 |
+|-|-|-|
+| 1. 实时搜索 | Brave Search API | 获取最新网页信息 |
+| 2. 社媒监控 | Agent-Reach | 抓取 Twitter/Reddit/Bilibili 等 |
+| 3. 内容分析 | DeepSeek V4 | 情感分析、主题提取、摘要 |
+| 4. 报告输出 | lark-cli | 自动生成飞书报告文档 |
+
+## 场景 4：个人知识管理
+
+建立个人的第二大脑，让 AI 帮你整理和检索知识。
+
+| 步骤 | 工具 | 作用 |
+|-|-|-|
+| 1. 信息获取 | Brave Search API + MinerU | 搜索 + 解析文档 |
+| 2. 笔记管理 | Obsidian CLI | 创建/搜索/整理笔记 |
+| 3. 智能问答 | DeepSeek V4 / MiMo V2.5 | 基于笔记库的 RAG 问答 |
+| 4. 同步分享 | lark-cli | 将笔记同步到飞书分享给团队 |
+
+不同使用场景下的工具组合方案
+
+# 工具详情索引
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.callout-note}
+📄 **篇 1：[文献检索工具手册](literature-search-tools.qmd)**
+
+arXiv / Crossref / OpenAlex / zbMATH 四大 API 的完整使用指南，含 curl 示例和参数详解。
+:::
+
+::: {.callout-note}
+📄 **篇 2：[OCR 文档解析 — MinerU](mineru-ocr-document-parsing.qmd)**
+
+高精度文档解析引擎，PDF/DOCX/PPTX → Markdown/JSON，67.8k Star。
+:::
+
+::: {.callout-note}
+📄 **篇 3：[飞书文档读写 — lark-cli](lark-cli-docs.qmd)**
+
+飞书官方 CLI，覆盖 50+ 资源类型的 CRUD 操作。
+:::
+
+::: {.callout-note}
+📄 **篇 4：[Obsidian 文档读写 — Obsidian CLI](obsidian-cli-docs.qmd)**
+
+Obsidian 官方 CLI，笔记 CRUD、搜索、模板、Headless Sync。
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.callout-note}
+📄 **篇 5：[多平台内容检索 — Agent-Reach](agent-reach-multi-platform-content-retrieval.qmd)**
+
+20+ 平台内容抓取，无需 API Key，32.3k Star。
+:::
+
+::: {.callout-note}
+📄 **篇 6：[网页检索 — Brave Search API](brave-search-api.qmd)**
+
+独立搜索引擎 API，含专为 AI 设计的 LLM Context 端点。
+:::
+
+::: {.callout-note}
+📄 **篇 7：[国产 AI — DeepSeek V4 / MiMo V2.5](deepseek-v4-mimo-v2.5.qmd)**
+
+DeepSeek V4 极致性价比 + MiMo V2.5 多模态理解。
+:::
+:::
+
+:::
+
+每篇文档的快速导航
+
+# 组合实战
+
+::: {.callout-note}
+🔗 以下是一个典型的 AI Agent 工作流，展示如何将多个工具串联起来完成复杂任务。
+:::
+
+## 示例：自动文献调研并生成飞书报告
+
+目标：给定一个研究课题，自动检索相关文献、解析内容、生成结构化报告并发布到飞书。
+
+```text
+用户输入: "调研量子群的最新进展"
+    │
+    ▼
+[1] Brave Search API → 搜索最新网页信息
+    │
+    ▼
+[2] arXiv + Crossref + OpenAlex → 检索学术论文
+    │
+    ▼
+[3] MinerU → 解析 PDF 论文为 Markdown
+    │
+    ▼
+[4] DeepSeek V4 Pro → 阅读理解、生成摘要
+    │
+    ▼
+[5] lark-cli → 创建飞书文档，写入报告
+    │
+    ▼
+[6] Obsidian CLI → 同步到本地知识库
+    │
+    ▼
+完成: 飞书报告 + 本地知识库更新
+```
+
+---
+
+## 示例：社交媒体竞品监控
+
+目标：持续监控竞品在社交媒体上的动态，自动生成分析报告。
+
+```text
+定时触发 (每小时)
+    │
+    ▼
+[1] Agent-Reach → 抓取 Twitter/Reddit/Bilibili 内容
+    │
+    ▼
+[2] Brave Search API → 补充搜索引擎结果
+    │
+    ▼
+[3] MiMo V2.5 → 多模态分析（含图片/视频理解）
+    │
+    ▼
+[4] DeepSeek V4 → 情感分析、趋势判断
+    │
+    ▼
+[5] lark-cli → 更新飞书多维表格 + 生成周报
+    │
+    ▼
+完成: 实时监控看板 + 周度分析报告
+```
+
+::: {.callout-tip}
+💡 **提示：**以上工作流可以用 Python 脚本、n8n、Dify 或任何支持 shell 调用的编排工具实现。每个工具都是独立的 CLI 或 API，可以灵活组合。
+:::
+
+典型 AI Agent 工作流中的工具链路

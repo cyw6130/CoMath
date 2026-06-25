@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="多平台内容读取工具，支持20+平台，零API费用。">
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>多平台内容检索 — Agent-Reach – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -307,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/agent-reach-multi-platform-content-retrieval.html">多平台内容检索 — Agent-Reach</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +330,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +443,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -481,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/agent-reach-multi-platform-content-retrieval.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/agent-reach-multi-platform-content-retrieval.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">多平台内容检索 — Agent-Reach</span></a>
   </div>
 </li>
@@ -503,21 +504,602 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#概览" id="toc-概览" class="nav-link active" data-scroll-target="#概览"><span class="header-section-number">1</span> 概览</a>
+  <ul class="collapse">
+  <li><a href="#核心价值" id="toc-核心价值" class="nav-link" data-scroll-target="#核心价值"><span class="header-section-number">1.1</span> 核心价值</a></li>
+  <li><a href="#技术架构" id="toc-技术架构" class="nav-link" data-scroll-target="#技术架构"><span class="header-section-number">1.2</span> 技术架构</a></li>
+  </ul></li>
+  <li><a href="#支持平台" id="toc-支持平台" class="nav-link" data-scroll-target="#支持平台"><span class="header-section-number">2</span> 支持平台</a>
+  <ul class="collapse">
+  <li><a href="#后端路由机制" id="toc-后端路由机制" class="nav-link" data-scroll-target="#后端路由机制"><span class="header-section-number">2.1</span> 后端路由机制</a></li>
+  </ul></li>
+  <li><a href="#快速上手" id="toc-快速上手" class="nav-link" data-scroll-target="#快速上手"><span class="header-section-number">3</span> 快速上手</a>
+  <ul class="collapse">
+  <li><a href="#方式一一键自动安装推荐" id="toc-方式一一键自动安装推荐" class="nav-link" data-scroll-target="#方式一一键自动安装推荐"><span class="header-section-number">3.1</span> 方式一：一键自动安装（推荐）</a></li>
+  <li><a href="#方式二从源码安装" id="toc-方式二从源码安装" class="nav-link" data-scroll-target="#方式二从源码安装"><span class="header-section-number">3.2</span> 方式二：从源码安装</a></li>
+  <li><a href="#方式三安全模式安装" id="toc-方式三安全模式安装" class="nav-link" data-scroll-target="#方式三安全模式安装"><span class="header-section-number">3.3</span> 方式三：安全模式安装</a></li>
+  <li><a href="#安装后验证" id="toc-安装后验证" class="nav-link" data-scroll-target="#安装后验证"><span class="header-section-number">3.4</span> 安装后验证</a></li>
+  <li><a href="#装好就能用" id="toc-装好就能用" class="nav-link" data-scroll-target="#装好就能用"><span class="header-section-number">3.5</span> 装好就能用</a></li>
+  </ul></li>
+  <li><a href="#api-集成" id="toc-api-集成" class="nav-link" data-scroll-target="#api-集成"><span class="header-section-number">4</span> API 集成</a>
+  <ul class="collapse">
+  <li><a href="#web-网页读取" id="toc-web-网页读取" class="nav-link" data-scroll-target="#web-网页读取"><span class="header-section-number">4.1</span> Web 网页读取</a></li>
+  <li><a href="#twitterx" id="toc-twitterx" class="nav-link" data-scroll-target="#twitterx"><span class="header-section-number">4.2</span> Twitter/X</a></li>
+  <li><a href="#youtube" id="toc-youtube" class="nav-link" data-scroll-target="#youtube"><span class="header-section-number">4.3</span> YouTube</a></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><span class="header-section-number">4.4</span> GitHub</a></li>
+  <li><a href="#b站-bilibili" id="toc-b站-bilibili" class="nav-link" data-scroll-target="#b站-bilibili"><span class="header-section-number">4.5</span> B站 (Bilibili)</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/agent-reach-multi-platform-content-retrieval.html">多平台内容检索 — Agent-Reach</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">多平台内容检索 — Agent-Reach</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">content-retrieval</div>
+    <div class="quarto-category">multi-platform</div>
+    <div class="quarto-category">open-source</div>
+    <div class="quarto-category">ai-tools</div>
+    <div class="quarto-category">web-scraping</div>
+    <div class="quarto-category">integration</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    多平台内容读取工具，支持20+平台，零API费用。
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Agent-Reach 是一款多平台内容读取工具，支持 Twitter/X、Reddit、YouTube、GitHub、Bilibili、小红书、LinkedIn 等 20+ 平台的内容抓取，无需 API Key，零费用。在 GitHub 上拥有 32.3k+ Star，是 AI Agent 获取跨平台信息的利器。</p>
+</div>
+</div>
+<section id="概览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 概览</h1>
+<p>Agent-Reach 是一款开源的多平台内容读取工具，旨在为 AI Agent 赋予访问互联网公开内容的能力。它不是一个底层爬虫库，而是一个<strong>能力层（capability layer）</strong>——负责选型、安装、体检、路由，让 Agent 能够用一句话就接入 20+ 平台的内容。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>⭐ GitHub 32.3k+ Star | MIT License | Python 3.10+ | 兼容所有主流 AI Agent（Claude Code、OpenClaw、Cursor、Windsurf 等）</p>
+</div>
+</div>
+<section id="核心价值" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="核心价值"><span class="header-section-number">1.1</span> 核心价值</h2>
+<ul>
+<li><strong>零 API 费用</strong> — 所有后端工具均开源免费，唯一可能花钱的是服务器代理（约 $1/月），本地电脑完全免费</li>
+<li><strong>一句话安装</strong> — 复制一句指令给 Agent，自动完成 CLI 安装、环境检测、搜索引擎配置、SKILL.md 注册</li>
+<li><strong>多后端路由</strong> — 每个平台采用「首选 + 备选」的有序后端列表，某条路失效时自动切换，用户无感</li>
+<li><strong>隐私安全</strong> — Cookie 只存在本地，不上传不外传，代码完全开源可审查</li>
+<li><strong>自带诊断</strong> — <code>agent-reach doctor</code> 一条命令告诉你每个渠道的状态、当前走哪条路</li>
+</ul>
+</section>
+<section id="技术架构" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="技术架构"><span class="header-section-number">1.2</span> 技术架构</h2>
+<p>Agent-Reach 的设计理念是<strong>不封装底层读取</strong>，而是作为一个配置和路由层存在。它基于以下技术栈构建：</p>
+<ul>
+<li><strong>上游工具</strong>：yt-dlp、twitter-cli、OpenCLI、bili-cli、Jina Reader、Exa 等（均为独立开源项目）</li>
+<li><strong>CLI 入口</strong>：Python 包 <code>pip install agent-reach</code>，提供 <code>install</code>、<code>doctor</code>、<code>uninstall</code> 等子命令</li>
+<li><strong>SKILL.md 机制</strong>：在 Agent 的 skills 目录注册使用指南，Agent 遇到相关需求时自动知道该调什么工具</li>
+<li><strong>MCP 协议</strong>：通过 mcporter 接入 Exa 语义搜索、LinkedIn 等需要 MCP 协议的平台</li>
+</ul>
+<p>GitHub 仓库：<a href="https://github.com/Panniantong/Agent-Reach">https://github.com/Panniantong/Agent-Reach</a></p>
+<p>Agent-Reach 的定位与核心能力</p>
+</section>
+</section>
+<section id="支持平台" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 支持平台</h1>
+<p>Agent-Reach 支持 20+ 平台的内容读取，覆盖社交媒体、代码托管、视频平台、求职网站等主流互联网平台。下表列出已适配的主要平台及支持的数据类型：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>平台</th>
+<th>支持状态</th>
+<th>数据类型</th>
+<th>默认后端</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🌐 网页</td>
+<td>装好即用</td>
+<td>任意网页内容（自动清洗 HTML）</td>
+<td>Jina Reader</td>
+</tr>
+<tr class="even">
+<td>🐦 Twitter/X</td>
+<td>装好即用 + Cookie 解锁搜索</td>
+<td>推文、搜索结果、用户资料、时间线</td>
+<td>twitter-cli ▸ OpenCLI</td>
+</tr>
+<tr class="odd">
+<td>📺 YouTube</td>
+<td>装好即用</td>
+<td>视频字幕、元数据、搜索</td>
+<td>yt-dlp</td>
+</tr>
+<tr class="even">
+<td>📦 GitHub</td>
+<td>装好即用 + Token 解锁私有</td>
+<td>仓库、Issue、PR、代码、搜索</td>
+<td>gh CLI</td>
+</tr>
+<tr class="odd">
+<td>📺 B站 (Bilibili)</td>
+<td>装好即用 + Cookie 解锁字幕</td>
+<td>视频详情、搜索、评论</td>
+<td>bili-cli ▸ OpenCLI</td>
+</tr>
+<tr class="even">
+<td>📕 小红书</td>
+<td>需配置 Cookie</td>
+<td>笔记、评论、搜索、用户资料</td>
+<td>OpenCLI ▸ xiaohongshu-mcp</td>
+</tr>
+<tr class="odd">
+<td>📖 Reddit</td>
+<td>需配置 Cookie</td>
+<td>帖子、评论、子版块、搜索</td>
+<td>OpenCLI ▸ rdt-cli</td>
+</tr>
+<tr class="even">
+<td>💼 LinkedIn</td>
+<td>装好即用 + Cookie 解锁详情</td>
+<td>职位、公司页面、个人资料</td>
+<td>linkedin-mcp ▸ Jina Reader</td>
+</tr>
+<tr class="odd">
+<td>💻 V2EX</td>
+<td>装好即用</td>
+<td>热门帖子、节点帖子、用户信息</td>
+<td>内置 API</td>
+</tr>
+<tr class="even">
+<td>📈 雪球</td>
+<td>需配置</td>
+<td>股票行情、搜索、热门帖子</td>
+<td>内置 API</td>
+</tr>
+<tr class="odd">
+<td>🔍 全网搜索</td>
+<td>自动配置（免费免 Key）</td>
+<td>全网语义搜索结果</td>
+<td>Exa via mcporter</td>
+</tr>
+<tr class="even">
+<td>📡 RSS</td>
+<td>装好即用</td>
+<td>RSS/Atom 订阅源内容</td>
+<td>feedparser</td>
+</tr>
+<tr class="odd">
+<td>🎙️ 小宇宙播客</td>
+<td>需配置</td>
+<td>播客音频转文字</td>
+<td>Whisper 转录</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>配置很简单</strong>：需要 Cookie 的平台（Twitter、小红书等），用 Chrome 插件 Cookie-Editor 导出浏览器 Cookie，发给 Agent 即可完成配置。不确定怎么配置？直接告诉 Agent「帮我配 XXX」，它会一步步引导你。</p>
+</div>
+</div>
+<section id="后端路由机制" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="后端路由机制"><span class="header-section-number">2.1</span> 后端路由机制</h2>
+<p>每个平台都是一个独立的 <code>channels/*.py</code> 文件，维护「首选 + 备选」的有序后端列表。当首选后端不可用时，自动降级到备选方案：</p>
+<pre><code>channels/
+├── web.py          → Jina Reader
+├── twitter.py      → twitter-cli ▸ OpenCLI
+├── youtube.py      → yt-dlp
+├── github.py       → gh CLI
+├── bilibili.py     → bili-cli ▸ OpenCLI
+├── reddit.py       → OpenCLI ▸ rdt-cli
+├── xiaohongshu.py  → OpenCLI ▸ xiaohongshu-mcp ▸ xhs-cli
+├── linkedin.py     → linkedin-mcp ▸ Jina Reader
+├── rss.py          → feedparser
+└── exa_search.py   → Exa via mcporter</code></pre>
+<p>全平台能力矩阵与数据类型</p>
+</section>
+</section>
+<section id="快速上手" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 快速上手</h1>
+<p>Agent-Reach 的安装方式极其简洁——复制一句话给你的 AI Agent，剩下的事情全部自动完成。</p>
+<section id="方式一一键自动安装推荐" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="方式一一键自动安装推荐"><span class="header-section-number">3.1</span> 方式一：一键自动安装（推荐）</h2>
+<p>复制下面这句话给你的 AI Agent（Claude Code、OpenClaw、Cursor 等任意支持命令行的 Agent）：</p>
+<pre><code>帮我安装 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md</code></pre>
+<p>Agent 会自动完成以下所有步骤：</p>
+<ol type="1">
+<li><strong>安装 CLI 工具</strong> — <code>pip install agent-reach</code>（自带 yt-dlp、feedparser 依赖）</li>
+<li><strong>安装系统基建</strong> — 自动检测并安装 Node.js、gh CLI、mcporter</li>
+<li><strong>配置搜索引擎</strong> — 通过 MCP 接入 Exa（免费，无需 API Key）</li>
+<li><strong>注册 SKILL.md</strong> — 在 Agent 的 skills 目录安装使用指南</li>
+<li><strong>环境诊断</strong> — 判断本地/服务器环境，给出配置建议</li>
+</ol>
+</section>
+<section id="方式二从源码安装" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="方式二从源码安装"><span class="header-section-number">3.2</span> 方式二：从源码安装</h2>
+<pre><code>git clone https://github.com/Panniantong/Agent-Reach.git
+cd Agent-Reach
+pip install -e .</code></pre>
+</section>
+<section id="方式三安全模式安装" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="方式三安全模式安装"><span class="header-section-number">3.3</span> 方式三：安全模式安装</h2>
+<p>如果在生产服务器或多人共用的机器上，可以使用安全模式——不会自动修改系统，只告诉你需要什么：</p>
+<pre><code>帮我安装 Agent Reach（安全模式）：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md
+安装时使用 --safe 参数</code></pre>
+</section>
+<section id="安装后验证" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="安装后验证"><span class="header-section-number">3.4</span> 安装后验证</h2>
+<p>运行诊断命令，一键查看所有渠道的状态：</p>
+<pre><code>agent-reach doctor</code></pre>
+<p>输出示例会告诉你每个平台当前在用哪个后端、是否可用、以及修复建议。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔄 <strong>更新也是一句话：</strong> 帮我更新 Agent Reach：https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/update.md</p>
+</div>
+</div>
+</section>
+<section id="装好就能用" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="装好就能用"><span class="header-section-number">3.5</span> 装好就能用</h2>
+<p>零配置渠道（装好即用，无需任何登录）：</p>
+<ul>
+<li>「帮我看看这个链接」 → Jina Reader 读任意网页</li>
+<li>「这个 GitHub 仓库是做什么的」 → <code>gh repo view owner/repo</code></li>
+<li>「这个 YouTube 视频讲了什么」 → <code>yt-dlp</code> 提取字幕</li>
+<li>「B站搜一下 AI 教程」 → <code>bili search</code>（无需登录）</li>
+<li>「全网搜一下 LLM 框架对比」 → Exa 语义搜索</li>
+<li>「订阅这个 RSS」 → <code>feedparser</code> 解析</li>
+</ul>
+<p>安装、配置与第一个抓取任务</p>
+</section>
+</section>
+<section id="api-集成" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> API 集成</h1>
+<p>Agent-Reach 本身是一个能力层，不直接提供 Python API。实际的读取由 Agent 调用上游 CLI 工具完成。以下是各平台的 CLI 调用方式，可在 Agent 流水线或脚本中集成。</p>
+<section id="web-网页读取" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="web-网页读取"><span class="header-section-number">4.1</span> Web 网页读取</h2>
+<pre><code># 将任意 URL 转为 Markdown 格式返回
+curl https://r.jina.ai/https://example.com</code></pre>
+</section>
+<section id="twitterx" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="twitterx"><span class="header-section-number">4.2</span> Twitter/X</h2>
+<pre><code># 搜索推文
+twitter search "关键词" --limit 20
+
+# 读取单条推文
+twitter tweet https://x.com/user/status/123456
+
+# 读取用户时间线
+twitter timeline @username --limit 10</code></pre>
+</section>
+<section id="youtube" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="youtube"><span class="header-section-number">4.3</span> YouTube</h2>
+<pre><code># 提取视频元数据（JSON 格式）
+yt-dlp --dump-json "https://youtube.com/watch?v=xxx"
+
+# 提取字幕文件
+yt-dlp --write-sub --skip-download "URL"
+
+# 提取自动字幕（英文）
+yt-dlp --write-auto-sub --sub-lang en --skip-download "URL"</code></pre>
+</section>
+<section id="github" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="github"><span class="header-section-number">4.4</span> GitHub</h2>
+<pre><code># 查看仓库详情
+gh repo view owner/repo
+
+# 搜索仓库
+gh search repos "LLM framework"
+
+# 列出 Issue
+gh issue list --repo owner/repo
+
+# 查看 PR
+gh pr view 123 --repo owner/repo</code></pre>
+</section>
+<section id="b站-bilibili" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="b站-bilibili"><span class="header-section-number">4.5</span> B站 (Bilibili)</h2>
+<pre><code># 搜索视频（无需登录）</code></pre>
+<p>bili search “关键词” –limit 10</p>
+<pre><code># 获取视频详情
+bili video BV1xxxxxxxx
+
+# 获取评论
+bili comment BV1xxxxxxxx
+
+## 小红书
+
+```bash
+# 搜索笔记
+opencli xiaohongshu search "关键词"
+
+# 读取单篇笔记
+opencli xiaohongshu note "笔记URL"
+
+# 读取用户主页
+opencli xiaohongshu profile "用户URL"
+```
+
+## Reddit
+
+```bash
+# 搜索帖子
+opencli reddit search "关键词" --subreddit programming
+
+# 读取帖子及评论
+opencli reddit post "帖子URL"
+
+# 浏览子版块
+opencli reddit subreddit programming --sort hot
+```
+
+## 全网语义搜索 (Exa)
+
+```bash
+# 语义搜索（AI 级别的搜索能力）
+mcporter exa search "最新 LLM 框架对比 2026"
+
+# 按域名过滤
+mcporter exa search "AI agent tools" --include-domain github.com
+```
+
+::: {.callout-note}
+💡 **不需要记命令**：安装 Agent-Reach 后，Agent 读了 SKILL.md 会自动知道该调什么工具。你只需要用自然语言告诉 Agent 你想获取什么信息即可。
+:::
+
+在 Agent 流水线中调用 Agent-Reach
+
+# 实战场景
+
+Agent-Reach 覆盖了 AI Agent 在信息获取场景中的常见需求。以下是四个典型实战场景，展示了如何将多平台内容读取能力融入实际工作流。
+
+## 场景一：舆情监控
+
+监控 Twitter、Reddit、小红书等平台上关于品牌或产品的提及和讨论，实时掌握舆论动态。
+
+-   **Twitter/X**：`twitter search "品牌名" --limit 50` 定时抓取提及推文
+-   **Reddit**：`opencli reddit search "品牌名" --sort new` 监控社区讨论
+-   **小红书**：`opencli xiaohongshu search "品牌名"` 追踪消费者评价
+
+结合定时任务（如 cron），可自动产出每日舆情简报，标注正面/负面情绪和关键讨论话题。
+
+## 场景二：竞品分析
+
+跨平台抓取竞品的公开社交媒体内容、产品更新和用户反馈，构建竞争情报。
+
+-   **GitHub**：`gh repo view competitor/repo` 追踪竞品的开源进展
+-   **Twitter**：`twitter search "竞品名" --limit 30` 了解用户口碑
+-   **LinkedIn**：`linkedin-mcp` 查看竞品团队扩张和招聘信息
+
+::: {.callout-note}
+🔍 **进阶用法**：让 Agent 跨多个平台收集信息后，自动对比分析并生成竞品报告，省去手动收集整理的时间。
+:::
+
+## 场景三：内容聚合
+
+跨平台聚合特定话题的优质内容，构建垂直领域知识库。
+
+-   **全网搜索**：Exa 语义搜索找到相关文章和讨论
+-   **RSS**：`feedparser` 订阅行业博客和新闻源
+-   **YouTube**：`yt-dlp` 提取技术演讲的字幕内容
+-   **B站**：`bili search` 搜索中文技术教程视频
+-   **Medium**：Jina Reader 读取深度文章
+
+## 场景四：学术研究
+
+收集社交媒体数据用于社会计算、传播学、舆情分析等研究方向。
+
+-   **数据采集**：通过 Twitter 搜索 API 批量收集特定话题的推文数据
+-   **Reddit 分析**：抓取特定子版块的帖子和评论，分析社区讨论模式
+-   **跨平台对比**：比较同一话题在不同平台（Twitter vs Reddit vs 小红书）上的传播差异
+-   **时间序列**：结合时间范围过滤，追踪话题热度的变化趋势
+
+::: {.callout-note}
+💡 **合规提醒**：学术研究使用时，请遵守各平台的使用条款和数据保护法规。建议使用公开数据，避免大规模自动化抓取，并在论文中注明数据来源。
+:::
+
+舆情监控、竞品分析、内容聚合等用例
+
+# FAQ
+
+# 实测配置与验证结果
+
+::: {.callout-note}
+✅ 以下配置于 2026-06-17 在 MacBook Air M4 (macOS) 上验证通过，10/13 渠道可用。
+:::
+
+## 安装方案
+
+### 环境准备
+
+macOS Homebrew Python 受 PEP 668 限制，不能直接 pip install，使用 venv 隔离：
+
+### 安装社交平台渠道
+
+基础渠道装好后，按需解锁 Twitter、Reddit、小红书等：
+
+### OpenCLI 浏览器扩展（Reddit / 小红书 / LinkedIn 必需）
+
+Reddit 和小红书通过 OpenCLI 复用 Chrome 浏览器登录态，需要手动安装一次 Chrome 扩展：
+
+1.  打开 [Chrome 扩展商店 - OpenCLI](https://chromewebstore.google.com/detail/opencli/ildkmabpimmkaediidaifkhjpohdnifk)
+2.  点「添加至 Chrome」
+3.  确保 Chrome 已登录对应网站（reddit.com / xiaohongshu.com）
+4.  运行 `opencli doctor` 确认 Extension 状态为 `[OK]`
+
+## 各渠道实测结果
+
+| 渠道 | 状态 | 测试命令 | 备注 |
+|-|-|-|-|
+| **Jina Reader**（网页） | ✅ 正常 | `curl r.jina.ai/https://example.com` | GitHub、V2EX、通用网页均可用 |
+| **Twitter/X** | ✅ 正常 | `twitter search "Claude Code"` | 返回推文、作者、指标；无需 API Key |
+| **YouTube** | ✅ 正常 | `yt-dlp --print title URL` | 标题/时长/字幕均可获取 |
+| **B站** | ✅ 正常 | `bili search "量子计算" --type video` | 返回标题/播放量/时长 |
+| **Reddit** | ✅ 正常 | `opencli reddit search "query" -f yaml` | 需 Chrome 登录 reddit.com |
+| **小红书** | ✅ 正常 | `opencli xiaohongshu search "query" -f yaml` | 需 Chrome 登录 xiaohongshu.com |
+| **V2EX** | ✅ 正常 | 公开 API 直接调用 | 无需登录 |
+| **Exa 全网搜索** | ✅ 正常 | mcporter 已配置 | 免费，无需 API Key |
+| **RSS / GitHub** | ✅ 正常 | 内置支持 | 装好即用 |
+
+## 已知限制
+
+::: {.callout-note}
+💡 **Jina Reader 直连社交平台会失败：**Twitter/X 被 Jina 安全策略封禁（451），Reddit 返回 403，B站 SPA 内容抓取不完整。这些平台必须通过各自 CLI 工具（twitter-cli、bili-cli、OpenCLI）访问，不能只靠 Jina Reader。
+**OpenCLI 渠道依赖 Chrome 登录态：**Reddit、小红书、LinkedIn 需要 Chrome 浏览器已登录对应网站，且 OpenCLI 扩展必须保持连接。如果 Chrome 关闭或扩展断开，这些渠道会暂时不可用。
+:::
+
+## CLI 工具路径参考</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>工具</th>
+<th>路径 / 命令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>agent-reach</td>
+<td><code>~/.agent-reach-venv/bin/agent-reach</code></td>
+</tr>
+<tr class="even">
+<td>twitter-cli</td>
+<td><code>~/.local/share/uv/tools/twitter-cli/bin/twitter</code></td>
+</tr>
+<tr class="odd">
+<td>bili-cli</td>
+<td><code>~/.local/share/uv/tools/bilibili-cli/bin/bili</code></td>
+</tr>
+<tr class="even">
+<td>opencli</td>
+<td><code>/opt/homebrew/bin/opencli</code></td>
+</tr>
+<tr class="odd">
+<td>yt-dlp</td>
+<td><code>/opt/homebrew/bin/yt-dlp</code></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>解答</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>反爬策略如何应对？</strong></td>
+<td>Agent-Reach 采用「首选 + 备选」的多后端路由机制。当某个平台更新反爬策略导致当前后端失效时，自动切换到备选方案。例如 2026 年 6 月 B站风控封死 yt-dlp（返回 412），项目立即切换到 bili-cli，用户零操作。运行 <code>agent-reach doctor</code> 可实时查看每个平台的状态。</td>
+</tr>
+<tr class="even">
+<td><strong>速率限制怎么办？</strong></td>
+<td>各平台对请求频率有不同限制。建议：(1) 避免短时间大量请求，适当加延迟；(2) 使用专用小号而非主账号；(3) 对于批量任务，考虑分时段执行。Agent-Reach 本身不封装请求，速率控制由上游工具和用户自行管理。</td>
+</tr>
+<tr class="odd">
+<td><strong>Cookie 怎么配置？安全吗？</strong></td>
+<td>需要 Cookie 的平台（Twitter、小红书、Reddit 等），推荐用 Chrome 插件 <a href="https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm">Cookie-Editor</a> 导出浏览器 Cookie，发给 Agent 即可。Cookie 仅存储在本地 <code>~/.agent-reach/config.yaml</code>（文件权限 600），不上传不外传。⚠️ 强烈建议使用专用小号，避免主账号被封风险。</td>
+</tr>
+<tr class="even">
+<td><strong>法律合规需要注意什么？</strong></td>
+<td>(1) 仅读取公开可访问的内容，不绕过付费墙；(2) 遵守各平台的使用条款（ToS）；(3) 避免大规模高频自动化抓取；(4) 学术研究应在论文中注明数据来源；(5) 爬取的数据不应用于商业转售。具体合规义务因地区和用途而异，建议咨询法律专业人士。</td>
+</tr>
+<tr class="odd">
+<td><strong>兼容哪些 AI Agent？</strong></td>
+<td>兼容所有能执行 shell 命令的 AI Agent，包括 Claude Code、OpenClaw、Cursor、Windsurf、Codex 等。注意：OpenClaw 用户需先开启 exec 权限：<code>openclaw config set tools.profile "coding"</code>。</td>
+</tr>
+<tr class="even">
+<td><strong>中国大陆网络环境怎么用？</strong></td>
+<td>本地电脑不需要代理即可使用大多数功能。Reddit、Twitter 等被墙平台需要代理支持（服务器部署约 $1/月）。可配合 3x-ui 等代理工具使用。RSS、B站、小红书、V2EX 等国内可直接访问的平台不受影响。</td>
+</tr>
+<tr class="odd">
+<td><strong>如何卸载？</strong></td>
+<td>运行 <code>agent-reach uninstall</code> 即可完整卸载，包括 <code>~/.agent-reach/</code> 目录（含所有 token/cookie）、各 Agent 的 skill 文件、mcporter 中的 MCP 配置。仅预览可加 <code>--dry-run</code>，保留配置可加 <code>--keep-config</code>。</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔗 <strong>更多问题？</strong> 请访问 <a href="https://github.com/Panniantong/Agent-Reach/issues">GitHub Issues</a> 提交反馈，或通过 <a href="https://x.com/Neo_Reidlab">Twitter <span class="citation" data-cites="Neo_Reidlab">@Neo_Reidlab</span></a> 联系作者。</p>
+</div>
+</div>
+<p>常见问题与解决方案</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

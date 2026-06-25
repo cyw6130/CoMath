@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="MinerU：高精度开源文档解析工具，支持多格式与语言。">
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>OCR 文档解析 — MinerU – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -307,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/mineru-ocr-document-parsing.html">OCR 文档解析 — MinerU</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +478,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -463,7 +499,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/mineru-ocr-document-parsing.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/mineru-ocr-document-parsing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">OCR 文档解析 — MinerU</span></a>
   </div>
 </li>
@@ -503,21 +539,535 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#概览" id="toc-概览" class="nav-link active" data-scroll-target="#概览"><span class="header-section-number">1</span> 概览</a></li>
+  <li><a href="#核心能力" id="toc-核心能力" class="nav-link" data-scroll-target="#核心能力"><span class="header-section-number">2</span> 核心能力</a></li>
+  <li><a href="#快速上手" id="toc-快速上手" class="nav-link" data-scroll-target="#快速上手"><span class="header-section-number">3</span> 快速上手</a>
+  <ul class="collapse">
+  <li><a href="#安装" id="toc-安装" class="nav-link" data-scroll-target="#安装"><span class="header-section-number">3.0.1</span> 安装</a></li>
+  <li><a href="#命令行使用" id="toc-命令行使用" class="nav-link" data-scroll-target="#命令行使用"><span class="header-section-number">3.0.2</span> 命令行使用</a></li>
+  <li><a href="#python-api" id="toc-python-api" class="nav-link" data-scroll-target="#python-api"><span class="header-section-number">3.0.3</span> Python API</a></li>
+  <li><a href="#输出结构" id="toc-输出结构" class="nav-link" data-scroll-target="#输出结构"><span class="header-section-number">3.0.4</span> 输出结构</a></li>
+  </ul></li>
+  <li><a href="#api-集成" id="toc-api-集成" class="nav-link" data-scroll-target="#api-集成"><span class="header-section-number">4</span> API 集成</a>
+  <ul class="collapse">
+  <li><a href="#基础调用" id="toc-基础调用" class="nav-link" data-scroll-target="#基础调用"><span class="header-section-number">4.0.1</span> 基础调用</a></li>
+  <li><a href="#关键参数" id="toc-关键参数" class="nav-link" data-scroll-target="#关键参数"><span class="header-section-number">4.0.2</span> 关键参数</a></li>
+  <li><a href="#读取解析结果" id="toc-读取解析结果" class="nav-link" data-scroll-target="#读取解析结果"><span class="header-section-number">4.0.3</span> 读取解析结果</a></li>
+  </ul></li>
+  <li><a href="#进阶用法" id="toc-进阶用法" class="nav-link" data-scroll-target="#进阶用法"><span class="header-section-number">5</span> 进阶用法</a>
+  <ul class="collapse">
+  <li><a href="#批量处理" id="toc-批量处理" class="nav-link" data-scroll-target="#批量处理"><span class="header-section-number">5.0.1</span> 批量处理</a></li>
+  <li><a href="#ocr-引擎选择" id="toc-ocr-引擎选择" class="nav-link" data-scroll-target="#ocr-引擎选择"><span class="header-section-number">5.0.2</span> OCR 引擎选择</a></li>
+  <li><a href="#输出格式选择" id="toc-输出格式选择" class="nav-link" data-scroll-target="#输出格式选择"><span class="header-section-number">5.0.3</span> 输出格式选择</a></li>
+  <li><a href="#自定义版面模型" id="toc-自定义版面模型" class="nav-link" data-scroll-target="#自定义版面模型"><span class="header-section-number">5.0.4</span> 自定义版面模型</a></li>
+  </ul></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">6</span> FAQ</a>
+  <ul class="collapse">
+  <li><a href="#q-安装时报错缺少依赖怎么办" id="toc-q-安装时报错缺少依赖怎么办" class="nav-link" data-scroll-target="#q-安装时报错缺少依赖怎么办"><span class="header-section-number">6.0.1</span> Q: 安装时报错缺少依赖怎么办？</a></li>
+  <li><a href="#q-支持-gpu-加速吗" id="toc-q-支持-gpu-加速吗" class="nav-link" data-scroll-target="#q-支持-gpu-加速吗"><span class="header-section-number">6.0.2</span> Q: 支持 GPU 加速吗？</a></li>
+  <li><a href="#q-大文件100-页处理很慢怎么办" id="toc-q-大文件100-页处理很慢怎么办" class="nav-link" data-scroll-target="#q-大文件100-页处理很慢怎么办"><span class="header-section-number">6.0.3</span> Q: 大文件（100+ 页）处理很慢怎么办？</a></li>
+  <li><a href="#q-中文识别效果如何" id="toc-q-中文识别效果如何" class="nav-link" data-scroll-target="#q-中文识别效果如何"><span class="header-section-number">6.0.4</span> Q: 中文识别效果如何？</a></li>
+  <li><a href="#q-公式识别准确率如何" id="toc-q-公式识别准确率如何" class="nav-link" data-scroll-target="#q-公式识别准确率如何"><span class="header-section-number">6.0.5</span> Q: 公式识别准确率如何？</a></li>
+  <li><a href="#q-扫描件和数字-pdf-有什么区别处理方式" id="toc-q-扫描件和数字-pdf-有什么区别处理方式" class="nav-link" data-scroll-target="#q-扫描件和数字-pdf-有什么区别处理方式"><span class="header-section-number">6.0.6</span> Q: 扫描件和数字 PDF 有什么区别处理方式？</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/mineru-ocr-document-parsing.html">OCR 文档解析 — MinerU</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">OCR 文档解析 — MinerU</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">open-source</div>
+    <div class="quarto-category">document-parsing</div>
+    <div class="quarto-category">ocr</div>
+    <div class="quarto-category">pdf</div>
+    <div class="quarto-category">markdown</div>
+    <div class="quarto-category">json</div>
+    <div class="quarto-category">ai-tool</div>
+    <div class="quarto-category">nlp</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    MinerU：高精度开源文档解析工具，支持多格式与语言。
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 MinerU 是一款高精度文档解析工具，支持 PDF、DOCX、PPTX、图片等格式，输出结构化 Markdown 或 JSON，兼容 109 种语言。在 GitHub 上拥有 67.8k+ Star，是目前最受欢迎的开源文档解析方案之一。</p>
+</div>
+</div>
+<section id="概览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 概览</h1>
+<p>MinerU 由 OpenDataLab 开发，目标是将非结构化文档（论文、报告、扫描件等）转换为 AI 可直接消费的结构化数据。它结合了版面分析、OCR、表格识别和公式解析，是 AI Agent 获取文档内容的核心基础设施。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🎯 <strong>核心定位：</strong>MinerU 是非结构化文档到结构化数据的桥梁。无论是学术论文、财务报告还是扫描件，MinerU 都能精准提取其中的文字、表格、公式和图片信息，输出 AI 可直接消费的 Markdown 或 JSON。</p>
+</div>
+</div>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<p><strong>技术路线</strong></p>
+<ul>
+<li><strong>版面分析</strong> — 自动识别文档区域类型（标题、段落、图片、表格等）</li>
+<li><strong>OCR 引擎</strong> — 多语言文字识别，覆盖 109 种语言</li>
+<li><strong>表格识别</strong> — 复杂表格结构重建</li>
+<li><strong>公式解析</strong> — 数学公式转 LaTeX</li>
+<li><strong>阅读顺序</strong> — 自动恢复正确的文本流顺序</li>
+</ul>
+</div>
+<div class="g-col-12 g-col-md-6">
+<p><strong>基本信息</strong></p>
+<ul>
+<li><strong>开发者：</strong>OpenDataLab</li>
+<li><strong>开源协议：</strong>AGPL-3.0</li>
+<li><strong>GitHub Stars：</strong>67.8k+</li>
+<li><strong>语言支持：</strong>109 种</li>
+<li><strong>输入格式：</strong>PDF / DOCX / PPTX / 图片</li>
+<li><strong>输出格式：</strong>Markdown / JSON</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>⚡ <strong>为什么选择 MinerU？</strong>相比同类工具，MinerU 在中文文档、含公式的学术论文、复杂表格等场景下表现尤为突出。其版面分析 + OCR + 公式识别的全链路方案，使其成为 RAG 系统和 AI Agent 理想的文档预处理组件。</p>
+</div>
+</div>
+</section>
+<section id="核心能力" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 核心能力</h1>
+<p>能力矩阵与适用场景</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>能力</th>
+<th>说明</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>版面分析</strong></td>
+<td>自动识别文档结构：标题、段落、表格、图片、页眉页脚等区域</td>
+<td>区域坐标 + 类型标签</td>
+</tr>
+<tr class="even">
+<td><strong>OCR 文字识别</strong></td>
+<td>支持 109 种语言，含中文、日文、韩文、阿拉伯文等复杂文字系统</td>
+<td>纯文本 / 带坐标的 JSON</td>
+</tr>
+<tr class="odd">
+<td><strong>表格识别</strong></td>
+<td>自动检测复杂表格（含合并单元格），还原表格结构</td>
+<td>Markdown 表格 / HTML</td>
+</tr>
+<tr class="even">
+<td><strong>公式识别</strong></td>
+<td>行内公式和独立公式块均可识别，转为 LaTeX 格式</td>
+<td>LaTeX 字符串</td>
+</tr>
+<tr class="odd">
+<td><strong>多格式输入</strong></td>
+<td>PDF（含扫描件）、DOCX、PPTX、图片（JPG/PNG/TIFF/BMP）</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>结构化输出</strong></td>
+<td>Markdown（人可读）或 JSON（含坐标、类型等元数据，机器可读）</td>
+<td>.md / .json</td>
+</tr>
+<tr class="odd">
+<td><strong>批量处理</strong></td>
+<td>命令行一次处理整个目录，支持多文件并行</td>
+<td>逐文件输出</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>适用场景：</strong>RAG 知识库构建、学术论文结构化、财务报表数据提取、扫描件数字化、多语言文档翻译预处理。</p>
+</div>
+</div>
+</section>
+<section id="快速上手" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 快速上手</h1>
+<p>安装、配置与第一个解析任务</p>
+<section id="安装" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="安装"><span class="header-section-number">3.0.1</span> 安装</h3>
+<p>推荐使用 pip 安装，MinerU 会自动处理依赖：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install mineru</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>环境要求：</strong>Python 3.8+，推荐 Python 3.10+。如需 GPU 加速，需额外安装 CUDA 版本的依赖。</p>
+</div>
+</div>
+</section>
+<section id="命令行使用" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="命令行使用"><span class="header-section-number">3.0.2</span> 命令行使用</h3>
+<p>最简单的用法 — 将 PDF 转为 Markdown：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mineru</span> <span class="at">-p</span> input.pdf <span class="at">-o</span> output_dir</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>执行后会在 <code>output_dir</code> 下生成同名的 <code>.md</code> 文件和图片资源文件夹。</p>
+</section>
+<section id="python-api" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="python-api"><span class="header-section-number">3.0.3</span> Python API</h3>
+<p>在代码中调用 MinerU：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mineru.cli.common <span class="im">import</span> do_parse</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>do_parse(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"output"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    input_files<span class="op">=</span>[<span class="st">"document.pdf"</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"auto"</span>  <span class="co"># auto | ocr | txt</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>method=“auto”</strong>：自动判断（扫描件走 OCR，数字 PDF 走文本提取）</li>
+<li><strong>method=“ocr”</strong>：强制使用 OCR 模式</li>
+<li><strong>method=“txt”</strong>：仅提取文本层，跳过版面分析</li>
+</ul>
+</section>
+<section id="输出结构" class="level3" data-number="3.0.4">
+<h3 data-number="3.0.4" class="anchored" data-anchor-id="输出结构"><span class="header-section-number">3.0.4</span> 输出结构</h3>
+<p>解析完成后，输出目录结构如下：</p>
+<pre class="text"><code>output/
+├── document.md          # Markdown 格式的解析结果
+├── document_content_list.json  # JSON 格式的结构化数据
+└── images/              # 提取的图片资源
+    ├── img_001.png
+    └── img_002.png</code></pre>
+</section>
+</section>
+<section id="api-集成" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> API 集成</h1>
+<p>在 Agent 流水线中调用 MinerU</p>
+<section id="基础调用" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="基础调用"><span class="header-section-number">4.0.1</span> 基础调用</h3>
+<p>MinerU 提供 Python API，可直接集成到 Agent 流水线或数据处理管道中：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mineru.cli.common <span class="im">import</span> do_parse</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 单文件解析</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>do_parse(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"./output"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    input_files<span class="op">=</span>[<span class="st">"report.pdf"</span>],</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"auto"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 多文件批量解析</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>do_parse(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"./output"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    input_files<span class="op">=</span>[<span class="st">"doc1.pdf"</span>, <span class="st">"doc2.docx"</span>, <span class="st">"image.png"</span>],</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"auto"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="关键参数" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="关键参数"><span class="header-section-number">4.0.2</span> 关键参数</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>output_dir</code></td>
+<td>str</td>
+<td>输出目录路径，不存在时自动创建</td>
+</tr>
+<tr class="even">
+<td><code>input_files</code></td>
+<td>List[str]</td>
+<td>输入文件路径列表，支持 PDF/DOCX/PPTX/图片</td>
+</tr>
+<tr class="odd">
+<td><code>method</code></td>
+<td>str</td>
+<td>解析模式：<code>auto</code>（自动）、<code>ocr</code>（强制 OCR）、<code>txt</code>（仅文本）</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="读取解析结果" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="读取解析结果"><span class="header-section-number">4.0.3</span> 读取解析结果</h3>
+<p>解析完成后，可直接读取 Markdown 或 JSON 结果用于下游任务：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取 Markdown 结果（适合 RAG 分块）</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"output/report.md"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    markdown_content <span class="op">=</span> f.read()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取 JSON 结果（适合精确提取）</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"output/report_content_list.json"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    structured_data <span class="op">=</span> json.load(f)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># JSON 中每个元素包含：</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># - type: 区域类型（text/table/image/title 等）</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># - text: 文本内容</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># - bbox: 边界框坐标</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># - page_idx: 页码</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>Agent 集成建议：</strong>在 RAG 场景中，建议使用 Markdown 输出 + 按段落分块；在需要精确定位的场景（如表格提取、坐标回溯）中，使用 JSON 输出获取元数据。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="进阶用法" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 进阶用法</h1>
+<p>批量处理、自定义模型、性能调优</p>
+<section id="批量处理" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="批量处理"><span class="header-section-number">5.0.1</span> 批量处理</h3>
+<p>对整个目录下的文件进行批量解析，MinerU 会自动识别文件类型并逐个处理：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 解析整个目录</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mineru</span> <span class="at">-p</span> ./documents/ <span class="at">-o</span> ./output/</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定多个文件</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mineru</span> <span class="at">-p</span> file1.pdf <span class="at">-p</span> file2.docx <span class="at">-p</span> image.png <span class="at">-o</span> ./output/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ocr-引擎选择" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="ocr-引擎选择"><span class="header-section-number">5.0.2</span> OCR 引擎选择</h3>
+<p>MinerU 支持多种 OCR 引擎，可根据需求选择：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>引擎</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PaddleOCR</strong></td>
+<td>默认引擎，中文识别效果优秀</td>
+<td>中文文档、中英混排</td>
+</tr>
+<tr class="even">
+<td><strong>Tesseract</strong></td>
+<td>老牌开源 OCR，语言支持广泛</td>
+<td>多语言文档</td>
+</tr>
+<tr class="odd">
+<td><strong>云端 OCR</strong></td>
+<td>支持对接商业 OCR API</td>
+<td>高精度需求</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="输出格式选择" class="level3" data-number="5.0.3">
+<h3 data-number="5.0.3" class="anchored" data-anchor-id="输出格式选择"><span class="header-section-number">5.0.3</span> 输出格式选择</h3>
+<ul>
+<li><strong>Markdown (.md)</strong>：人可读，适合 RAG 分块和文档预览</li>
+<li><strong>JSON (.json)</strong>：机器可读，包含坐标、类型等元数据，适合精确定位和程序化处理</li>
+<li><strong>两者同时输出</strong>：默认行为，无需额外配置</li>
+</ul>
+</section>
+<section id="自定义版面模型" class="level3" data-number="5.0.4">
+<h3 data-number="5.0.4" class="anchored" data-anchor-id="自定义版面模型"><span class="header-section-number">5.0.4</span> 自定义版面模型</h3>
+<p>MinerU 支持替换内置的版面分析模型，可使用自定义训练的模型以适配特定文档类型：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 通过配置文件指定自定义模型路径</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 详见官方文档：https://opendatalab.github.io/MinerU/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔧 <strong>性能提示：</strong>首次运行时 MinerU 会自动下载模型文件（约 1-2 GB），建议提前下载并缓存。GPU 环境下解析速度可提升 5-10 倍。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="faq" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> FAQ</h1>
+<p>常见问题与解决方案</p>
+<section id="q-安装时报错缺少依赖怎么办" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="q-安装时报错缺少依赖怎么办"><span class="header-section-number">6.0.1</span> Q: 安装时报错缺少依赖怎么办？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 MinerU 依赖较多（PaddlePaddle、OpenCV 等），建议在虚拟环境中安装。如果遇到依赖冲突，可尝试 <code>pip install mineru --no-deps</code> 后手动安装缺失包。完整依赖列表见 GitHub 仓库。</p>
+</div>
+</div>
+</section>
+<section id="q-支持-gpu-加速吗" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="q-支持-gpu-加速吗"><span class="header-section-number">6.0.2</span> Q: 支持 GPU 加速吗？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 支持。安装 CUDA 版本的 PaddlePaddle 即可启用 GPU 加速，版面分析和 OCR 速度可提升 5-10 倍。使用 <code>nvidia-smi</code> 确认 CUDA 环境正常后，安装对应的 PaddlePaddle CUDA 版本即可。</p>
+</div>
+</div>
+</section>
+<section id="q-大文件100-页处理很慢怎么办" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="q-大文件100-页处理很慢怎么办"><span class="header-section-number">6.0.3</span> Q: 大文件（100+ 页）处理很慢怎么办？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 建议：(1) 使用 GPU 加速；(2) 拆分大文件后并行处理；(3) 如果文档是数字 PDF（非扫描件），使用 <code>method="txt"</code> 跳过 OCR 可大幅提速。</p>
+</div>
+</div>
+</section>
+<section id="q-中文识别效果如何" class="level3" data-number="6.0.4">
+<h3 data-number="6.0.4" class="anchored" data-anchor-id="q-中文识别效果如何"><span class="header-section-number">6.0.4</span> Q: 中文识别效果如何？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 MinerU 默认使用 PaddleOCR，中文识别效果在开源方案中属于顶级水平。对于扫描件中模糊或倾斜的中文，建议确保扫描分辨率 ≥ 300 DPI 以获得最佳效果。</p>
+</div>
+</div>
+</section>
+<section id="q-公式识别准确率如何" class="level3" data-number="6.0.5">
+<h3 data-number="6.0.5" class="anchored" data-anchor-id="q-公式识别准确率如何"><span class="header-section-number">6.0.5</span> Q: 公式识别准确率如何？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 MinerU 的公式识别基于 UniMERNet 模型，对常见的数学公式（积分、矩阵、分式等）识别准确率较高。复杂嵌套公式或手写公式可能需要人工校对。输出为标准 LaTeX 格式，可直接用于 MathJax 渲染。</p>
+</div>
+</div>
+</section>
+<section id="q-扫描件和数字-pdf-有什么区别处理方式" class="level3" data-number="6.0.6">
+<h3 data-number="6.0.6" class="anchored" data-anchor-id="q-扫描件和数字-pdf-有什么区别处理方式"><span class="header-section-number">6.0.6</span> Q: 扫描件和数字 PDF 有什么区别处理方式？</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 数字 PDF（由 Word/LaTeX 生成）内嵌文字层，MinerU 可直接提取文本；扫描件（图片型 PDF）需要经过 OCR 识别文字。<code>method="auto"</code> 会自动判断文档类型并选择合适的处理方式。</p>
+</div>
+</div>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

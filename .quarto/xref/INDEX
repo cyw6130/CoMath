@@ -225,5 +225,29 @@
   },
   "notes/cerf-theorem-and-kirby-calculus.qmd": {
     "cerf-theorem-and-kirby-calculus.html": "cd59eb69"
+  },
+  "notes/mineru-ocr-document-parsing.qmd": {
+    "mineru-ocr-document-parsing.html": "20078759"
+  },
+  "notes/agent-reach-multi-platform-content-retrieval.qmd": {
+    "agent-reach-multi-platform-content-retrieval.html": "d47507da"
+  },
+  "notes/ai-tools-handbook.qmd": {
+    "ai-tools-handbook.html": "37027dd4"
+  },
+  "notes/obsidian-cli-docs.qmd": {
+    "obsidian-cli-docs.html": "d4f45977"
+  },
+  "notes/brave-search-api.qmd": {
+    "brave-search-api.html": "527d9a16"
+  },
+  "notes/deepseek-v4-mimo-v2.5.qmd": {
+    "deepseek-v4-mimo-v2.5.html": "79157496"
+  },
+  "notes/literature-search-tools.qmd": {
+    "literature-search-tools.html": "6dea2a4b"
+  },
+  "notes/lark-cli-docs.qmd": {
+    "lark-cli-docs.html": "d45f39ab"
   }
 }

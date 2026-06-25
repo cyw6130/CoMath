@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Obsidian CLI的安装、配置与核心命令教程">
+
+<title>Obsidian 文档读写 — Obsidian CLI – Chen 的拓扑笔记</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fc2a8907dc09313ce8e8a88c5be36a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6451e66faf9e2ed79bf37f0f34475d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll("main img, article img, .content img");
+  images.forEach(function (img, idx) {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", idx === 0 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+  });
+});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Chen 的拓扑笔记</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../pages/notes.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/translations.html"> 
+<span class="menu-text">Translations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pages/gallery.html"> 
+<span class="menu-text">Gallery</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:2120240050@nankai.edu.cn"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/obsidian-cli-docs.html">Obsidian 文档读写 — Obsidian CLI</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Quantum Invariants</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/Khovanov_homology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Khovanov 同调与 s-不变量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/knot-hopf-algebra-and-quantum-invariants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knot, Hopf Algebra and Quantum Invariants</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Four Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/poincare-conjecture-and-manifold-topological-classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">庞加莱猜想与怪球</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/intersection-form-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">四维流形的相交形式 (Intersection Form)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/kirby-diagram-of-4-manifold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kirby Diagram</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/cerf-theorem-and-kirby-calculus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kirby Calculus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">High-dimensional Manifolds</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smale 的工作：h-Cobordism 定理与广义庞加莱猜想</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">AI for Knot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MicroGPT 数学原理与实现对照</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">AI Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI 工具手册 — 汇总</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/literature-search-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">文献检索工具手册</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/mineru-ocr-document-parsing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OCR 文档解析 — MinerU</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/lark-cli-docs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">飞书文档读写 — lark-cli</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/obsidian-cli-docs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Obsidian 文档读写 — Obsidian CLI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/agent-reach-multi-platform-content-retrieval.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">多平台内容检索 — Agent-Reach</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/brave-search-api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">网页检索 — Brave Search API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notes/deepseek-v4-mimo-v2.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#概览" id="toc-概览" class="nav-link active" data-scroll-target="#概览"><span class="header-section-number">1</span> 概览</a></li>
+  <li><a href="#安装与启用" id="toc-安装与启用" class="nav-link" data-scroll-target="#安装与启用"><span class="header-section-number">2</span> 安装与启用</a>
+  <ul class="collapse">
+  <li><a href="#前提条件" id="toc-前提条件" class="nav-link" data-scroll-target="#前提条件"><span class="header-section-number">2.0.1</span> 前提条件</a></li>
+  <li><a href="#启用步骤" id="toc-启用步骤" class="nav-link" data-scroll-target="#启用步骤"><span class="header-section-number">2.0.2</span> 启用步骤</a></li>
+  <li><a href="#验证安装" id="toc-验证安装" class="nav-link" data-scroll-target="#验证安装"><span class="header-section-number">2.0.3</span> 验证安装</a></li>
+  <li><a href="#环境变量配置" id="toc-环境变量配置" class="nav-link" data-scroll-target="#环境变量配置"><span class="header-section-number">2.0.4</span> 环境变量配置</a></li>
+  </ul></li>
+  <li><a href="#核心操作" id="toc-核心操作" class="nav-link" data-scroll-target="#核心操作"><span class="header-section-number">3</span> 核心操作</a>
+  <ul class="collapse">
+  <li><a href="#命令速查表" id="toc-命令速查表" class="nav-link" data-scroll-target="#命令速查表"><span class="header-section-number">3.0.1</span> 命令速查表</a></li>
+  <li><a href="#笔记读写示例" id="toc-笔记读写示例" class="nav-link" data-scroll-target="#笔记读写示例"><span class="header-section-number">3.0.2</span> 笔记读写示例</a></li>
+  <li><a href="#搜索进阶" id="toc-搜索进阶" class="nav-link" data-scroll-target="#搜索进阶"><span class="header-section-number">3.0.3</span> 搜索进阶</a></li>
+  </ul></li>
+  <li><a href="#高级功能" id="toc-高级功能" class="nav-link" data-scroll-target="#高级功能"><span class="header-section-number">4</span> 高级功能</a>
+  <ul class="collapse">
+  <li><a href="#headless-sync" id="toc-headless-sync" class="nav-link" data-scroll-target="#headless-sync"><span class="header-section-number">4.0.1</span> Headless Sync</a></li>
+  <li><a href="#tui-模式" id="toc-tui-模式" class="nav-link" data-scroll-target="#tui-模式"><span class="header-section-number">4.0.2</span> TUI 模式</a></li>
+  <li><a href="#批量操作" id="toc-批量操作" class="nav-link" data-scroll-target="#批量操作"><span class="header-section-number">4.0.3</span> 批量操作</a></li>
+  <li><a href="#json-输出" id="toc-json-输出" class="nav-link" data-scroll-target="#json-输出"><span class="header-section-number">4.0.4</span> JSON 输出</a></li>
+  </ul></li>
+  <li><a href="#在-agent-中使用" id="toc-在-agent-中使用" class="nav-link" data-scroll-target="#在-agent-中使用"><span class="header-section-number">5</span> 在 Agent 中使用</a>
+  <ul class="collapse">
+  <li><a href="#典型-agent-工作流" id="toc-典型-agent-工作流" class="nav-link" data-scroll-target="#典型-agent-工作流"><span class="header-section-number">5.0.1</span> 典型 Agent 工作流</a></li>
+  <li><a href="#agent-集成示例" id="toc-agent-集成示例" class="nav-link" data-scroll-target="#agent-集成示例"><span class="header-section-number">5.0.2</span> Agent 集成示例</a></li>
+  <li><a href="#结合模板自动生成笔记" id="toc-结合模板自动生成笔记" class="nav-link" data-scroll-target="#结合模板自动生成笔记"><span class="header-section-number">5.0.3</span> 结合模板自动生成笔记</a></li>
+  </ul></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">6</span> FAQ</a>
+  <ul class="collapse">
+  <li><a href="#q1-终端提示-obsidian-command-not-found" id="toc-q1-终端提示-obsidian-command-not-found" class="nav-link" data-scroll-target="#q1-终端提示-obsidian-command-not-found"><span class="header-section-number">6.0.1</span> Q1: 终端提示 <code>obsidian: command not found</code></a></li>
+  <li><a href="#q2-多仓库如何切换" id="toc-q2-多仓库如何切换" class="nav-link" data-scroll-target="#q2-多仓库如何切换"><span class="header-section-number">6.0.2</span> Q2: 多仓库如何切换？</a></li>
+  <li><a href="#q3-同步冲突怎么处理" id="toc-q3-同步冲突怎么处理" class="nav-link" data-scroll-target="#q3-同步冲突怎么处理"><span class="header-section-number">6.0.3</span> Q3: 同步冲突怎么处理？</a></li>
+  <li><a href="#q4-中文路径和标题支持吗" id="toc-q4-中文路径和标题支持吗" class="nav-link" data-scroll-target="#q4-中文路径和标题支持吗"><span class="header-section-number">6.0.4</span> Q4: 中文路径和标题支持吗？</a></li>
+  <li><a href="#q5-cli-与-obsidian-桌面版冲突吗" id="toc-q5-cli-与-obsidian-桌面版冲突吗" class="nav-link" data-scroll-target="#q5-cli-与-obsidian-桌面版冲突吗"><span class="header-section-number">6.0.5</span> Q5: CLI 与 Obsidian 桌面版冲突吗？</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/obsidian-cli-docs.html">Obsidian 文档读写 — Obsidian CLI</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Obsidian 文档读写 — Obsidian CLI</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">obsidian</div>
+    <div class="quarto-category">cli</div>
+    <div class="quarto-category">command-line</div>
+    <div class="quarto-category">knowledge-management</div>
+    <div class="quarto-category">automation</div>
+    <div class="quarto-category">developer-tools</div>
+    <div class="quarto-category">note-taking</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Obsidian CLI的安装、配置与核心命令教程
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Obsidian CLI 是 Obsidian 官方提供的命令行工具，随桌面版 v1.9.12+ 提供。支持笔记 CRUD、全文搜索、模板、标签、Headless Sync 等功能，可在无 GUI 环境下操作 Obsidian 仓库，是 AI Agent 读写本地知识库的理想接口。</p>
+</div>
+</div>
+<section id="概览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 概览</h1>
+<p>Obsidian CLI 的定位与核心能力</p>
+<p>Obsidian CLI 是 Obsidian 官方推出的命令行接口，让开发者和 AI Agent 能够在终端环境中直接操作 Obsidian 知识库，无需打开桌面应用。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🚀 <strong>核心能力一览</strong></p>
+<ul>
+<li><strong>笔记 CRUD</strong> — 创建、读取、更新、删除笔记，完整的生命周期管理</li>
+<li><strong>全文搜索</strong> — 跨笔记内容检索，支持关键词与标签过滤</li>
+<li><strong>模板系统</strong> — 一键应用预设模板，快速生成结构化笔记</li>
+<li><strong>标签管理</strong> — 列出、搜索、管理笔记标签</li>
+<li><strong>Headless Sync</strong> — 无 GUI 环境下同步仓库，适合服务器/CI 场景</li>
+<li><strong>TUI 模式</strong> — 终端内交互式浏览笔记，适合 SSH 远程操作</li>
+</ul>
+</div>
+</div>
+<p>随 Obsidian 桌面版 <strong>v1.9.12+</strong> 提供，无需额外安装。开启后即可通过 <code>obsidian</code> 命令操作知识库。</p>
+</section>
+<section id="安装与启用" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 安装与启用</h1>
+<p>随桌面版安装、设置启用与环境变量配置</p>
+<section id="前提条件" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="前提条件"><span class="header-section-number">2.0.1</span> 前提条件</h3>
+<p>Obsidian 桌面版 <strong>v1.9.12 或更高版本</strong>。CLI 功能随桌面版捆绑分发，无需单独下载或安装任何额外包。</p>
+</section>
+<section id="启用步骤" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="启用步骤"><span class="header-section-number">2.0.2</span> 启用步骤</h3>
+<ol type="1">
+<li><p>打开 Obsidian 桌面应用</p></li>
+<li><p>进入 <strong>设置 → 第三方插件 → CLI</strong></p></li>
+<li><p>点击启用开关，首次启用时 Obsidian 会将 <code>obsidian</code> 可执行文件注册到系统 PATH</p></li>
+<li><p>重新打开终端（或执行 <code>source ~/.zshrc</code>）使 PATH 生效</p></li>
+</ol>
+</section>
+<section id="验证安装" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="验证安装"><span class="header-section-number">2.0.3</span> 验证安装</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> <span class="at">--version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 期望输出: obsidian x.x.x</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="环境变量配置" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="环境变量配置"><span class="header-section-number">2.0.4</span> 环境变量配置</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>变量名</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>OBSIDIAN_VAULT_PATH</code></td>
+<td>默认仓库路径，省去每次 <code>--vault</code> 参数</td>
+<td><code>~/Documents/MyVault</code></td>
+</tr>
+<tr class="even">
+<td><code>OBSIDIAN_CONFIG_DIR</code></td>
+<td>自定义 <code>.obsidian</code> 目录位置</td>
+<td><code>~/.config/obsidian</code></td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 写入 shell 配置</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"export OBSIDIAN_VAULT_PATH=</span><span class="dt">\"</span><span class="va">$HOME</span><span class="st">/Documents/MyVault</span><span class="dt">\"</span><span class="st">"</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.zshrc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 如果终端提示 <code>obsidian: command not found</code>，请确认：(1) Obsidian 版本 ≥ v1.9.12；(2) CLI 插件已启用；(3) 终端已重启。macOS 用户还可尝试 <code>export PATH="/Applications/Obsidian.app/Contents/MacOS:$PATH"</code>。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="核心操作" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 核心操作</h1>
+<p>笔记 CRUD、搜索、模板、标签等命令详解</p>
+<section id="命令速查表" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="命令速查表"><span class="header-section-number">3.0.1</span> 命令速查表</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>obsidian note create "标题"</code></td>
+<td>创建新笔记</td>
+<td><code>obsidian note create "会议记录 2026-06-17"</code></td>
+</tr>
+<tr class="even">
+<td><code>obsidian note read "路径"</code></td>
+<td>读取笔记内容</td>
+<td><code>obsidian note read "Daily/2026-06-17.md"</code></td>
+</tr>
+<tr class="odd">
+<td><code>obsidian note update "路径" --content "..."</code></td>
+<td>更新笔记内容</td>
+<td><code>obsidian note update "todo.md" --content "# 新内容"</code></td>
+</tr>
+<tr class="even">
+<td><code>obsidian note delete "路径"</code></td>
+<td>删除笔记</td>
+<td><code>obsidian note delete "tmp/废弃笔记.md"</code></td>
+</tr>
+<tr class="odd">
+<td><code>obsidian search "关键词"</code></td>
+<td>全文搜索</td>
+<td><code>obsidian search "机器学习"</code></td>
+</tr>
+<tr class="even">
+<td><code>obsidian search --tag "#tag"</code></td>
+<td>按标签搜索</td>
+<td><code>obsidian search --tag "#project"</code></td>
+</tr>
+<tr class="odd">
+<td><code>obsidian template apply "模板名"</code></td>
+<td>应用模板到当前笔记</td>
+<td><code>obsidian template apply "daily-note"</code></td>
+</tr>
+<tr class="even">
+<td><code>obsidian tag list</code></td>
+<td>列出仓库所有标签</td>
+<td><code>obsidian tag list</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="笔记读写示例" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="笔记读写示例"><span class="header-section-number">3.0.2</span> 笔记读写示例</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取笔记内容</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">content</span><span class="op">=</span><span class="va">$(</span><span class="ex">obsidian</span> note read <span class="st">"Research/paper-notes.md"</span><span class="va">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 用脚本处理内容（例如追加新段落）</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$content</span><span class="st">"</span> <span class="op">&gt;</span> /tmp/note_backup.md</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 写入更新后的内容</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> note update <span class="st">"Research/paper-notes.md"</span> <span class="at">--content</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> /tmp/new_content.md<span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="搜索进阶" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="搜索进阶"><span class="header-section-number">3.0.3</span> 搜索进阶</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 关键词 + 标签组合搜索</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> search <span class="st">"transformer"</span> <span class="at">--tag</span> <span class="st">"#paper"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 搜索结果输出为 JSON（便于脚本解析）</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> search <span class="st">"架构设计"</span> <span class="at">--format</span> json</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定搜索范围（子目录）</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> search <span class="st">"TODO"</span> <span class="at">--path</span> <span class="st">"Daily/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>路径规范：</strong>所有路径相对于仓库根目录，使用正斜杠 <code>/</code> 分隔。文件扩展名 <code>.md</code> 可省略。中文路径和标题完全支持。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="高级功能" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 高级功能</h1>
+<p>Headless Sync、TUI 模式、批量操作</p>
+<section id="headless-sync" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="headless-sync"><span class="header-section-number">4.0.1</span> Headless Sync</h3>
+<p>在无 GUI 的服务器或 CI 环境中同步 Obsidian 仓库。配合 Obsidian Sync 或第三方同步插件，可实现自动化知识库同步。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 同步指定仓库</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> sync <span class="at">--vault</span> /path/to/vault</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定同步目标（如 iCloud / Git）</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> sync <span class="at">--vault</span> ~/vault <span class="at">--target</span> git</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 后台运行同步守护进程</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> obsidian sync <span class="at">--vault</span> ~/vault <span class="at">--daemon</span> <span class="kw">&amp;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="tui-模式" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="tui-模式"><span class="header-section-number">4.0.2</span> TUI 模式</h3>
+<p>终端内交互式浏览笔记，适合通过 SSH 远程管理知识库，无需图形界面。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 启动交互式终端界面</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> tui</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定仓库启动</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> tui <span class="at">--vault</span> ~/Documents/MyVault</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>TUI 模式支持的操作：</strong>浏览目录树、查看/编辑笔记内容、搜索笔记、应用模板。使用方向键导航，Enter 打开笔记，<code>/</code> 触发搜索，<code>q</code> 退出。</p>
+</div>
+</div>
+</section>
+<section id="批量操作" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="批量操作"><span class="header-section-number">4.0.3</span> 批量操作</h3>
+<p>结合 shell 脚本，可以实现笔记的批量处理，例如批量重命名、批量添加标签、批量导出等。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 遍历所有 .md 文件，添加创建日期 frontmatter</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="va">$(</span><span class="ex">obsidian</span> note list <span class="at">--format</span> json <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">".[].path"</span><span class="va">)</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">cdate</span><span class="op">=</span><span class="va">$(</span><span class="fu">stat</span> <span class="at">-f</span> <span class="st">"%SB"</span> <span class="at">-t</span> <span class="st">"%Y-%m-%d"</span> <span class="st">"</span><span class="va">$OBSIDIAN_VAULT_PATH</span><span class="st">/</span><span class="va">$file</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">obsidian</span> note update <span class="st">"</span><span class="va">$file</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--frontmatter</span> <span class="st">"created: </span><span class="va">$cdate</span><span class="st">"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="json-输出" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="json-输出"><span class="header-section-number">4.0.4</span> JSON 输出</h3>
+<p>所有命令均支持 <code>--format json</code> 参数，输出结构化 JSON 数据，便于与 <code>jq</code>、Python、Node.js 等工具链集成。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 搜索结果输出为 JSON</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> search <span class="st">"AI"</span> <span class="at">--format</span> json <span class="kw">|</span> <span class="ex">jq</span> <span class="st">'.results[].title'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 列出所有笔记的路径</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> note list <span class="at">--format</span> json <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[].path'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="在-agent-中使用" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 在 Agent 中使用</h1>
+<p>将 Obsidian CLI 集成到 AI Agent 工作流</p>
+<p>Obsidian CLI 是将本地知识库接入 AI Agent 的最佳桥梁。Agent 通过 shell 调用 <code>obsidian</code> 命令，即可实现对知识库的完整读写。</p>
+<section id="典型-agent-工作流" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="典型-agent-工作流"><span class="header-section-number">5.0.1</span> 典型 Agent 工作流</h3>
+<ol type="1">
+<li><strong>读取上下文</strong> — Agent 搜索相关笔记，获取历史记录作为上下文</li>
+<li><strong>分析处理</strong> — 对笔记内容进行总结、扩展、翻译等 AI 处理</li>
+<li><strong>写回结果</strong> — 将处理结果写入新笔记或更新现有笔记</li>
+<li><strong>触发后续</strong> — 如设置提醒、创建关联笔记等</li>
+</ol>
+</section>
+<section id="agent-集成示例" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="agent-集成示例"><span class="header-section-number">5.0.2</span> Agent 集成示例</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_note(path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"obsidian"</span>, <span class="st">"note"</span>, <span class="st">"read"</span>, path, <span class="st">"--format"</span>, <span class="st">"json"</span>],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(result.stdout)[<span class="st">"content"</span>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_note(path: <span class="bu">str</span>, content: <span class="bu">str</span>):</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    subprocess.run(</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"obsidian"</span>, <span class="st">"note"</span>, <span class="st">"update"</span>, path, <span class="st">"--content"</span>, content],</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        check<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_notes(query: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> subprocess.run(</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"obsidian"</span>, <span class="st">"search"</span>, query, <span class="st">"--format"</span>, <span class="st">"json"</span>],</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(result.stdout)[<span class="st">"results"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="结合模板自动生成笔记" class="level3" data-number="5.0.3">
+<h3 data-number="5.0.3" class="anchored" data-anchor-id="结合模板自动生成笔记"><span class="header-section-number">5.0.3</span> 结合模板自动生成笔记</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 应用日报模板</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> template apply <span class="st">"daily-note"</span> <span class="at">--to</span> <span class="st">"Daily/</span><span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span><span class="st">.md"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Agent 追加 AI 生成的内容</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>将 <code>execute</code> 操作替换为实际命令：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 应用日报模板</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> template apply <span class="st">"daily-note"</span> <span class="at">--to</span> <span class="st">"Daily/</span><span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span><span class="st">.md"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Agent 追加 AI 生成的内容</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> note update <span class="st">"Daily/</span><span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span><span class="st">.md"</span> <span class="dt">\</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--append</span> <span class="st">"## AI 总结\n</span><span class="va">$(</span><span class="ex">generate_summary</span><span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🤖 <strong>最佳实践：</strong>Agent 应优先用 <code>search</code> 获取相关笔记作为上下文，而非盲目读取整个仓库。使用 <code>--format json</code> 获取结构化输出，便于程序解析。对于长笔记，可指定行范围读取以节省 token。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="faq" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> FAQ</h1>
+<p>常见问题与解决方案</p>
+<section id="q1-终端提示-obsidian-command-not-found" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="q1-终端提示-obsidian-command-not-found"><span class="header-section-number">6.0.1</span> Q1: 终端提示 <code>obsidian: command not found</code></h3>
+<ul>
+<li>确认 Obsidian 桌面版 ≥ v1.9.12</li>
+<li>确认 CLI 插件已在 设置 → 第三方插件 中启用</li>
+<li>重启终端，或执行 <code>hash -r</code> 清除命令缓存</li>
+<li>macOS 用户可尝试手动添加 PATH：<code>export PATH="/Applications/Obsidian.app/Contents/MacOS:$PATH"</code></li>
+</ul>
+</section>
+<section id="q2-多仓库如何切换" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="q2-多仓库如何切换"><span class="header-section-number">6.0.2</span> Q2: 多仓库如何切换？</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式一：通过 --vault 参数指定</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> note list <span class="at">--vault</span> ~/Vault-A</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">obsidian</span> note list <span class="at">--vault</span> ~/Vault-B</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 方式二：通过环境变量切换</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="va">OBSIDIAN_VAULT_PATH</span><span class="op">=</span>~/Vault-A <span class="ex">obsidian</span> note list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="q3-同步冲突怎么处理" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="q3-同步冲突怎么处理"><span class="header-section-number">6.0.3</span> Q3: 同步冲突怎么处理？</h3>
+<ul>
+<li>CLI 写入时如果文件已被外部修改，会返回冲突错误而非覆盖</li>
+<li>建议在写入前先 <code>read</code> 检查内容版本</li>
+<li>使用 <code>--force</code> 参数可强制覆盖（谨慎使用）</li>
+<li>Git 同步场景下，建议先 pull 再操作</li>
+</ul>
+</section>
+<section id="q4-中文路径和标题支持吗" class="level3" data-number="6.0.4">
+<h3 data-number="6.0.4" class="anchored" data-anchor-id="q4-中文路径和标题支持吗"><span class="header-section-number">6.0.4</span> Q4: 中文路径和标题支持吗？</h3>
+<p><strong>完全支持。</strong> Obsidian CLI 对 Unicode 路径和标题没有限制，中文文件名、中文标题、中文标签均可正常使用。</p>
+</section>
+<section id="q5-cli-与-obsidian-桌面版冲突吗" class="level3" data-number="6.0.5">
+<h3 data-number="6.0.5" class="anchored" data-anchor-id="q5-cli-与-obsidian-桌面版冲突吗"><span class="header-section-number">6.0.5</span> Q5: CLI 与 Obsidian 桌面版冲突吗？</h3>
+<p><strong>不冲突。</strong> CLI 和桌面版可以同时运行。CLI 的写入会实时反映在桌面版中（通过文件系统监听）。但建议避免同一时刻对同一文件进行双向修改。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📚 <strong>更多信息：</strong>查阅 Obsidian CLI 官方文档获取完整的命令参考和最新更新日志。 <a href="https://obsidian.md/help/cli">Obsidian CLI 官方文档</a></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Chen · 数学与拓扑</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cyw6130">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

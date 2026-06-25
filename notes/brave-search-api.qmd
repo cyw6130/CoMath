@@ -1,0 +1,253 @@
+---
+title: "网页检索 — Brave Search API"
+categories:
+  - search-api
+  - brave-search
+  - ai-agent
+  - web-scraping
+  - llm-context
+description: "Brave Search API 独立索引，AI 原生，隐私友好"
+---
+
+# 概览
+
+Brave Search API 是由 Brave 公司提供的独立搜索引擎 API。与 Google Custom Search 或 Bing Search API 不同，Brave Search 拥有**完全独立的搜索索引**，不依赖任何第三方搜索引擎。
+
+:::{.grid}
+:::{.g-col-12 .g-col-md-4}
+::: {.callout-note}
+🔒 **独立索引**  
+不依赖 Google/Bing，拥有自己的爬虫和索引系统，搜索结果不会被单一搜索引擎的偏见所影响。
+:::
+:::
+:::{.g-col-12 .g-col-md-4}
+::: {.callout-note}
+🤖 **AI 原生设计**  
+LLM Context 端点专为 AI Agent 设计，返回清洗后的结构化文本，可直接注入 LLM 上下文窗口。
+:::
+:::
+:::{.g-col-12 .g-col-md-4}
+::: {.callout-note}
+💡 **隐私友好**  
+Brave 以隐私为核心品牌价值，API 不追踪用户行为，不进行用户画像。
+:::
+:::
+:::
+
+**相关链接**
+
+
+- 官网：[https://brave.com/search/api/](https://brave.com/search/api/)
+- 注册：[https://api-dashboard.search.brave.com/register](https://api-dashboard.search.brave.com/register)
+
+Brave Search API 的定位与核心优势
+
+# 端点与能力
+
+Brave Search API 提供 6 个核心端点，覆盖网页、图片、视频、新闻等搜索场景，以及专为 AI Agent 设计的 LLM Context 端点。
+
+| 端点 | URL 路径 | 说明 |
+|-|-|-|
+| **Web Search** | `/res/v1/web/search` | 网页搜索，返回标题、URL、摘要、深度链接等结构化结果 |
+| **LLM Context** | `/res/v1/llm/context` | 专为 AI 设计，返回清洗后的文本摘要，可直接注入 LLM 上下文窗口 |
+| **Images** | `/res/v1/images/search` | 图片搜索，返回缩略图、原图 URL、尺寸、来源页面 |
+| **Videos** | `/res/v1/videos/search` | 视频搜索，返回视频元数据、缩略图、时长、来源平台 |
+| **News** | `/res/v1/news/search` | 新闻搜索，返回最新新闻文章，支持按时间和相关性排序 |
+| **Suggest** | `/suggest/search` | 搜索建议/自动补全，返回输入联想词列表 |
+
+::: {.callout-note}
+💡 **LLM Context 端点亮点**：这是 Brave 的差异化优势。它直接返回清洗好的纯文本，去除了 HTML 标签、广告、导航栏等噪音，非常适合 RAG（检索增强生成）和 AI Agent 场景。响应格式经过优化，可直接拼接到 LLM 的 prompt 中。
+:::
+
+Web、LLM Context、Images、Videos、News 详解
+
+# 快速上手
+
+**第一步：注册并获取 API Key**
+
+
+1. 访问 [Brave Search API Dashboard](https://api-dashboard.search.brave.com/register)
+2. 使用邮箱注册账号（支持 Google/GitHub 第三方登录）
+3. 登录后进入 Dashboard，在 **API Keys** 页面创建新的 API Key
+4. 复制保存 API Key（注意保密，不要提交到代码仓库）
+
+**第二步：发起第一个查询**
+
+使用 `curl` 命令快速测试：
+
+```bash
+curl -s "https://api.search.brave.com/res/v1/web/search?q=AI+agent+tools" \
+  -H "Accept: application/json" \
+  -H "X-Subscription-Token: YOUR_API_KEY" | jq .
+```
+
+```bash
+curl -s "https://api.search.brave.com/res/v1/llm/context?q=AI+agent+tools&count=5" \
+  -H "Accept: application/json" \
+  -H "X-Subscription-Token: YOUR_API_KEY" | jq .
+```
+
+```bash
+curl -s "https://api.search.brave.com/res/v1/news/search?q=artificial+intelligence&count=10" \
+  -H "Accept: application/json" \
+  -H "X-Subscription-Token: YOUR_API_KEY" | jq .
+```
+
+::: {.callout-note}
+💡 将 `YOUR_API_KEY` 替换为你在 Dashboard 中获取的实际 API Key。建议通过环境变量管理 Key：`export BRAVE_API_KEY="bsk-xxx"`
+:::
+
+**第三步：使用 Python SDK**
+
+```python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+headers = {
+    "Accept": "application/json",
+    "X-Subscription-Token": API_KEY
+}
+
+# Web Search
+resp = requests.get(
+    "https://api.search.brave.com/res/v1/web/search",
+    params={"q": "Brave Search API", "count": 5},
+    headers=headers
+)
+results = resp.json()
+for r in results.get("web", {}).get("results", []):
+    print(f"- {r[title]}: {r[url]}")
+```
+
+注册、获取 API Key 与第一个查询
+
+# 在 Agent 中使用
+
+Brave Search API 特别适合作为 AI Agent 的搜索工具，尤其是其 **LLM Context** 端点，专为大语言模型设计。
+
+**典型使用场景**
+
+
+- **RAG 检索增强生成**：用 LLM Context 端点获取清洗后的文本，直接注入 LLM 的上下文窗口，无需额外的 HTML 解析
+- **Agent 信息收集**：在多步推理中，Agent 动态搜索最新信息来辅助决策
+- **事实核查**：Agent 对生成内容进行搜索验证，降低幻觉率
+- **多模态搜索**：结合 Images/Videos 端点，为 Agent 提供视觉信息
+
+**集成方案**
+
+| 方案 | 适用场景 | 说明 |
+|-|-|-|
+| 直接 HTTP 调用 | 任何语言/框架 | 通过 `requests` / `fetch` / `curl` 直接调用 REST API |
+| LangChain 集成 | LangChain 生态 | 使用 `BraveSearch` 工具类，开箱即用 |
+| OpenAI Function Calling | OpenAI/Claude Agent | 将 Brave API 封装为 Tool/Function，供 LLM 自主调用 |
+| MCP Server | Claude Code / MCP 生态 | 通过 MCP 协议将 Brave Search 暴露为工具 |
+
+**Agent 集成示例（LLM Context）**
+
+```python
+import requests
+
+def brave_search_for_agent(query: str, api_key: str) -> str:
+    """搜索并返回可直接注入 LLM 上下文的清洗文本"""
+    resp = requests.get(
+        "https://api.search.brave.com/res/v1/llm/context",
+        params={"q": query, "count": 5},
+        headers={
+            "Accept": "application/json",
+            "X-Subscription-Token": api_key
+        }
+    )
+    data = resp.json()
+    # LLM Context 端点返回的文本已经过清洗，可直接使用
+    return data.get("results", [{}])[0].get("text", "")
+
+# 在 Agent 推理循环中调用
+context = brave_search_for_agent("latest AI research 2026", API_KEY)
+# 将 context 直接注入 LLM prompt
+prompt = f"Based on the following context:\n{context}\n\nAnswer the question: ..."
+```
+
+::: {.callout-note}
+💡 **最佳实践**：在 Agent 工作流中，优先使用 LLM Context 端点而非 Web Search 端点。LLM Context 返回的文本已经过清洗和摘要处理，不需要额外的 HTML 解析、正文提取等步骤，可以减少 Agent 的处理步骤和 token 消耗。
+:::
+
+将 Brave API 集成到 AI Agent 工作流
+
+# 定价与配额
+
+定价与配额
+
+Brave Search API 采用按量计费模式，免费层提供每月 \$5 额度。
+
+| 层级 | 价格 | 配额/说明 |
+|-|-|-|
+| **Free** | \$0/月 | 每月 \$5 额度（约 1000-2000 次查询），含所有端点 |
+| **Pro (Web Search)** | \$5/1000 请求 | 无月度上限，按实际用量计费 |
+| **Data for AI (LLM Context)** | \$5/1000 请求 | LLM Context 端点专用定价，适合大规模 RAG 场景 |
+
+**各端点单次查询成本**
+
+| 端点 | 单次查询成本 | 免费层约可查询次数/月 |
+|-|-|-|
+| Web Search | \$0.005 | \~1000 次 |
+| LLM Context | \$0.005 | \~1000 次 |
+| Images | \$0.005 | \~1000 次 |
+| Videos | \$0.005 | \~1000 次 |
+| News | \$0.005 | \~1000 次 |
+| Suggest | 免费 | 无限制 |
+
+::: {.callout-note}
+💰 **省钱技巧**：(1) 使用 `count` 参数控制返回结果数量，减少不必要的数据传输；(2) 优先使用 LLM Context 端点，它返回的文本已经过压缩和清洗，后续处理的 token 消耗更低；(3) 对重复查询使用缓存，避免重复计费。
+:::
+
+免费层、付费层与用量优化
+
+# FAQ
+
+**Q1: API Key 如何管理？**
+
+
+- 在 [API Dashboard](https://api-dashboard.search.brave.com) 中可以创建、查看和删除 API Key
+- 建议为不同项目创建不同的 Key，便于独立管理和监控用量
+- 如果 Key 泄露，应立即在 Dashboard 中撤销并重新生成
+- 不要将 API Key 硬编码在代码中，使用环境变量或密钥管理服务
+
+**Q2: 速率限制是多少？**
+
+
+- Free 层：约 1 请求/秒
+- Pro 层：更高的并发限制（具体值请参考官方文档）
+- 超出速率限制会返回 `429 Too Many Requests`，建议实现指数退避重试
+
+**Q3: 搜索结果支持哪些语言和地区？**
+
+
+- 支持全球多种语言的搜索，通过 `search_lang` 参数指定搜索语言
+- 通过 `country` 参数可指定地区偏好（如 `US`、`CN`、`JP`）
+- 结果质量在英文方面表现最佳，中文等其他语言持续改进中
+
+**Q4: 与 Google/Bing 搜索 API 有什么区别？**
+
+| 对比维度 | Brave Search API | Google/Bing API |
+|-|-|-|
+| 索引来源 | 独立索引 | 依赖自家搜索引擎 |
+| AI 端点 | LLM Context（原生支持） | 需自行解析 HTML |
+| 免费额度 | \$5/月 | Google: 100 次/天免费 |
+| 隐私 | 不追踪用户 | 有用户追踪机制 |
+| 搜索质量 | 持续提升中，独立性高 | 成熟稳定 |
+
+**Q5: LLM Context 和 Web Search 端点返回的数据有什么不同？**
+
+
+- **Web Search**：返回完整的搜索结果结构（标题、URL、摘要、深度链接、元数据等），需要自行处理
+- **LLM Context**：返回清洗后的纯文本摘要，去除了 HTML 标签和噪音，可直接拼接到 LLM 的 prompt 中使用
+- 如果需要点击链接跳转到原始页面，用 Web Search；如果只需要文本内容供 LLM 消费，用 LLM Context
+
+**Q6: 支持哪些国家的搜索？**
+
+
+- Brave Search 支持全球搜索，没有地区封锁限制
+- 但搜索质量在英语市场表现最优
+- 可以通过 `country` 和 `search_lang` 参数定制搜索偏好
+
+常见问题与解决方案

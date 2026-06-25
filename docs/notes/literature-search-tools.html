@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-09">
+<meta name="description" content="整理数学文献检索的4个API工具使用手册">
 
-<title>伯努利数、Zeta 函数与怪球 – Chen 的拓扑笔记</title>
+<title>文献检索工具手册 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -88,49 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -351,7 +343,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/literature-search-tools.html">文献检索工具手册</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -446,13 +438,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">High-dimensional Manifolds</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
@@ -461,7 +453,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
@@ -486,13 +478,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -501,7 +493,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/literature-search-tools.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/literature-search-tools.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">文献检索工具手册</span></a>
   </div>
 </li>
@@ -551,16 +543,38 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#伯努利数的定义" id="toc-伯努利数的定义" class="nav-link active" data-scroll-target="#伯努利数的定义"><span class="header-section-number">1</span> 1 伯努利数的定义</a></li>
-  <li><a href="#伯努利数的计算" id="toc-伯努利数的计算" class="nav-link" data-scroll-target="#伯努利数的计算"><span class="header-section-number">2</span> 2 伯努利数的计算</a></li>
-  <li><a href="#伯努利数的分母" id="toc-伯努利数的分母" class="nav-link" data-scroll-target="#伯努利数的分母"><span class="header-section-number">3</span> 3 伯努利数的分母</a></li>
-  <li><a href="#伯努利数和-zeta-函数" id="toc-伯努利数和-zeta-函数" class="nav-link" data-scroll-target="#伯努利数和-zeta-函数"><span class="header-section-number">4</span> 4 伯努利数和 zeta 函数</a></li>
-  <li><a href="#伯努利数与怪球" id="toc-伯努利数与怪球" class="nav-link" data-scroll-target="#伯努利数与怪球"><span class="header-section-number">5</span> 5 伯努利数与怪球</a>
+  <li><a href="#检索流程与工具对照" id="toc-检索流程与工具对照" class="nav-link active" data-scroll-target="#检索流程与工具对照"><span class="header-section-number">1</span> 检索流程与工具对照</a></li>
+  <li><a href="#arxiv-api-论文搜索与核验" id="toc-arxiv-api-论文搜索与核验" class="nav-link" data-scroll-target="#arxiv-api-论文搜索与核验"><span class="header-section-number">2</span> arXiv API — 论文搜索与核验</a>
   <ul class="collapse">
-  <li><a href="#庞加莱猜想和怪球" id="toc-庞加莱猜想和怪球" class="nav-link" data-scroll-target="#庞加莱猜想和怪球"><span class="header-section-number">5.1</span> 5.1 庞加莱猜想和怪球</a></li>
-  <li><a href="#怪球与球面的稳定同伦群" id="toc-怪球与球面的稳定同伦群" class="nav-link" data-scroll-target="#怪球与球面的稳定同伦群"><span class="header-section-number">5.2</span> 5.2 怪球与球面的稳定同伦群</a></li>
-  <li><a href="#计算-怪球和伯努利数" id="toc-计算-怪球和伯努利数" class="nav-link" data-scroll-target="#计算-怪球和伯努利数"><span class="header-section-number">5.3</span> 5.3 计算: 怪球和伯努利数</a></li>
+  <li><a href="#搜索论文" id="toc-搜索论文" class="nav-link" data-scroll-target="#搜索论文"><span class="header-section-number">2.1</span> 搜索论文</a></li>
+  <li><a href="#按-arxiv-id-获取元数据核验用" id="toc-按-arxiv-id-获取元数据核验用" class="nav-link" data-scroll-target="#按-arxiv-id-获取元数据核验用"><span class="header-section-number">2.2</span> 按 arXiv ID 获取元数据（核验用）</a></li>
   </ul></li>
+  <li><a href="#crossref-api-doi-核验" id="toc-crossref-api-doi-核验" class="nav-link" data-scroll-target="#crossref-api-doi-核验"><span class="header-section-number">3</span> Crossref API — DOI 核验</a>
+  <ul class="collapse">
+  <li><a href="#按-doi-查询元数据核验核心" id="toc-按-doi-查询元数据核验核心" class="nav-link" data-scroll-target="#按-doi-查询元数据核验核心"><span class="header-section-number">3.1</span> 按 DOI 查询元数据（核验核心）</a></li>
+  <li><a href="#按关键词搜索" id="toc-按关键词搜索" class="nav-link" data-scroll-target="#按关键词搜索"><span class="header-section-number">3.2</span> 按关键词搜索</a></li>
+  <li><a href="#常见-filter-参数" id="toc-常见-filter-参数" class="nav-link" data-scroll-target="#常见-filter-参数"><span class="header-section-number">3.3</span> 常见 filter 参数</a></li>
+  </ul></li>
+  <li><a href="#openalex-api-引用扩展与影响力" id="toc-openalex-api-引用扩展与影响力" class="nav-link" data-scroll-target="#openalex-api-引用扩展与影响力"><span class="header-section-number">4</span> OpenAlex API — 引用扩展与影响力</a>
+  <ul class="collapse">
+  <li><a href="#按-openalex-work-id-查询" id="toc-按-openalex-work-id-查询" class="nav-link" data-scroll-target="#按-openalex-work-id-查询"><span class="header-section-number">4.1</span> 按 OpenAlex Work ID 查询</a></li>
+  <li><a href="#按-doi-查询推荐核验入口" id="toc-按-doi-查询推荐核验入口" class="nav-link" data-scroll-target="#按-doi-查询推荐核验入口"><span class="header-section-number">4.2</span> 按 DOI 查询（推荐核验入口）</a></li>
+  <li><a href="#关键词搜索" id="toc-关键词搜索" class="nav-link" data-scroll-target="#关键词搜索"><span class="header-section-number">4.3</span> 关键词搜索</a></li>
+  <li><a href="#常用-filter-参数" id="toc-常用-filter-参数" class="nav-link" data-scroll-target="#常用-filter-参数"><span class="header-section-number">4.4</span> 常用 filter 参数</a></li>
+  <li><a href="#引用扩展获取引用被引列表" id="toc-引用扩展获取引用被引列表" class="nav-link" data-scroll-target="#引用扩展获取引用被引列表"><span class="header-section-number">4.5</span> 引用扩展：获取引用/被引列表</a></li>
+  </ul></li>
+  <li><a href="#zbmath-open-数学专用检索" id="toc-zbmath-open-数学专用检索" class="nav-link" data-scroll-target="#zbmath-open-数学专用检索"><span class="header-section-number">5</span> zbMATH Open — 数学专用检索</a>
+  <ul class="collapse">
+  <li><a href="#按-zbl-id-查询核验经典文献" id="toc-按-zbl-id-查询核验经典文献" class="nav-link" data-scroll-target="#按-zbl-id-查询核验经典文献"><span class="header-section-number">5.1</span> 按 Zbl ID 查询（核验经典文献）</a></li>
+  <li><a href="#按关键词搜索-1" id="toc-按关键词搜索-1" class="nav-link" data-scroll-target="#按关键词搜索-1"><span class="header-section-number">5.2</span> 按关键词搜索</a></li>
+  <li><a href="#msc-分类过滤" id="toc-msc-分类过滤" class="nav-link" data-scroll-target="#msc-分类过滤"><span class="header-section-number">5.3</span> MSC 分类过滤</a></li>
+  </ul></li>
+  <li><a href="#组合使用示例" id="toc-组合使用示例" class="nav-link" data-scroll-target="#组合使用示例"><span class="header-section-number">6</span> 组合使用示例</a>
+  <ul class="collapse">
+  <li><a href="#完整核验流程示例" id="toc-完整核验流程示例" class="nav-link" data-scroll-target="#完整核验流程示例"><span class="header-section-number">6.1</span> 完整核验流程示例</a></li>
+  <li><a href="#引用扩展示例" id="toc-引用扩展示例" class="nav-link" data-scroll-target="#引用扩展示例"><span class="header-section-number">6.2</span> 引用扩展示例</a></li>
+  </ul></li>
+  <li><a href="#常见问题" id="toc-常见问题" class="nav-link" data-scroll-target="#常见问题"><span class="header-section-number">7</span> 常见问题</a></li>
   </ul>
 </nav>
 </nav>
@@ -572,28 +586,31 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/literature-search-tools.html">文献检索工具手册</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">伯努利数、Zeta 函数与怪球</h1>
+<h1 class="title">文献检索工具手册</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Number Theory</div>
-    <div class="quarto-category">Exotic Spheres</div>
-    <div class="quarto-category">Differential Topology</div>
-    <div class="quarto-category">High-Dimensional Manifolds</div>
+    <div class="quarto-category">api</div>
+    <div class="quarto-category">literature-search</div>
+    <div class="quarto-category">arxiv</div>
+    <div class="quarto-category">crossref</div>
+    <div class="quarto-category">openalex</div>
+    <div class="quarto-category">zbmath</div>
+    <div class="quarto-category">mathematics</div>
+    <div class="quarto-category">workflow</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    整理数学文献检索的4个API工具使用手册
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 9, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -603,397 +620,535 @@ window.Quarto = {
 </header>
 
 
-<section id="伯努利数的定义" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 1 伯努利数的定义</h1>
-<ul>
-<li>动机：尝试计算 <span class="math inline">S_k(n) = \sum_{m=0}^{n-1} m^k</span> 的通项公式
-<ul>
-<li>当 k=0, 1, 2 时，我们已经知道
-<ul>
-<li><span class="math inline">S_0(n) = n</span></li>
-<li><span class="math inline">S_1(n) = \frac{n(n-1)}{2}</span></li>
-<li><span class="math inline">S_2(n) = \frac{n(n-1)(2n-1)}{6}</span></li>
-</ul></li>
-<li>但对于一般的 k，如何计算 <span class="math inline">S_k(n)</span>？</li>
-</ul></li>
-<li>另一个问题：这个离散求和与积分 <span class="math inline">\int_0^n x^k dx</span> 之间有什么关系？
-<ul>
-<li>我们知道 <span class="math inline">\int_0^n x^k dx = \frac{n^{k+1}}{k+1}</span></li>
-<li>我们能否将 <span class="math inline">S_k(n)</span> 表示为 <span class="math inline">\int_0^n x^k dx</span> 加上一些修正项？</li>
-</ul></li>
-<li>为了回答这些问题，我们引入伯努利数。</li>
-<li>定义：生成函数
-<ul>
-<li>定义：形式幂级数环 <span class="math inline">\mathbb{C}[[x]]</span>。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为： <span class="math display">
-f(x) = \sum_{n=0}^{\infty} a_n x^n
-</span> 其中，<span class="math inline">a_n</span> 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。</li>
-<li>定义：指数生成函数
-<ul>
-<li>给定一个数列 <span class="math inline">\{a_n\}</span>，它的指数生成函数定义为： <span class="math display">
-A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
-</span> 这里，<span class="math inline">t</span> 是一个形式变量。即指数生成函数作为映射：{数列} <span class="math inline">\to</span> {形式幂级数}，给出了数列和形式幂级数之间的一一对应。</li>
-<li>上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果 <span class="math display">
-A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{\infty} b_n \frac{t^n}{n!}
-</span> 那么它们的乘积 <span class="math display">
-C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
-</span> 其中，<span class="math inline">c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}</span>。我们将这个运算称为数列之间的<strong>卷积运算</strong>。</li>
-</ul></li>
-</ul></li>
-<li>定义：伯努利数 <span class="math inline">B_n</span> 由以下生成函数定义 <span class="math display">
-\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
-</span></li>
-<li>虽然直接计算 <span class="math inline">S_k(n)</span> 很困难，但我们可以先计算它的生成函数： <span class="math display">
-\mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
-</span> 对于右边，我们可以将其改写为 <span class="math display">
-\mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
-</span> 对于右边的第一部分，我们有泰勒展开 <span class="math display">
-\frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
-</span> 这个生成函数的系数正是积分项 <span class="math inline">\int_0^n x^k dx = \frac{n^{k+1}}{k+1}</span>。 对于右边的第二部分，根据伯努利数的定义，我们有 <span class="math display">
-\frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
-</span> 于是，我们实际上有：</li>
-</ul>
-<p><span class="math display">
-\underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
-</span></p>
-<p>即伯努利项衡量了离散求和项和积分项之间的偏差。 我们将等式两边展开，得到：</p>
-<p><span class="math display">
-\sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
-</span></p>
-<p>比较等式两边的 <span class="math inline">t^k</span> 系数，我们得到：</p>
-<p><span class="math display">
-S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
-</span></p>
-<p>我们得到了我们想要的通项公式。</p>
-<ul>
-<li><p>如果我们引入伯努利多项式的定义, 它对应于生成函数<span class="math inline">\frac{t}{e^t-1}</span>在平移算子下的平移<span class="math inline">\frac{e^{xt}t}{e^t-1}</span>, 即</p>
-<p><span class="math display">
-\sum_{k=0}^\infty B_k(x) \frac{t^k}{k!} = \frac{t e^{xt}}{e^t - 1} = e^{xt} \cdot \left( \frac{t}{e^t - 1} \right)
-</span></p>
-<p>那么我们可以将上面的结果更简洁地表示为:</p>
-<p><span class="math display">
-S_k(n) = \frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}
-</span></p></li>
-</ul>
-</section>
-<section id="伯努利数的计算" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 2 伯努利数的计算</h1>
-<p>根据伯努利数的定义: <span class="math inline">\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}</span>，两边同乘 <span class="math inline">e^t - 1</span>，我们有:</p>
-<p><span class="math display">
-t = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot (e^t - 1) = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot \left( \sum_{m=1}^{\infty} \frac{t^m}{m!} \right)
-</span></p>
-<p>比较两边 <span class="math inline">t^n</span> 的系数（<span class="math inline">n \geq 2</span> 时左边系数为 0），我们得到:</p>
-<p><span class="math display">
-\sum_{k=0}^n \binom{n}{k} B_k = 0, \quad \text{for } n \geq 2
-</span></p>
-<p>并且 <span class="math inline">B_0 = 1, B_1 = -\frac{1}{2}</span>。由此，我们可以递推地计算出所有的伯努利数，是有理数。</p>
-<p>伯努利数表：</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📚 本文档整理数学地图项目（math-map）文献检索流程中使用的 4 个 API 工具：arXiv、Crossref、OpenAlex、zbMATH。覆盖论文搜索、DOI 核验、引用扩展、数学专用检索等环节，配合「动作分解」流水线的第 0–5 步使用。所有工具均为 REST API，免费开放（zbMATH 需申请 token）。</p>
+</div>
+</div>
+<section id="检索流程与工具对照" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 检索流程与工具对照</h1>
+<pre class="mermaid"><code>flowchart LR
+    A[0. 问题定界] --&gt; B[1. 检索发现]
+    B --&gt; C[2. 来源核验]
+    C --&gt; D[3. 来源分级]
+    D --&gt; E[4. 结构抽取]
+    E --&gt; F[5. 引用扩展]</code></pre>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
-<th><span class="math inline">n</span></th>
-<th><span class="math inline">B_n</span></th>
+<th>步骤</th>
+<th>工具</th>
+<th>用途</th>
+<th>认证</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0</td>
-<td>1</td>
+<td>检索发现</td>
+<td>arXiv API</td>
+<td>搜索预印本、获取元数据</td>
+<td>无需</td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td><span class="math inline">-\frac{1}{2}</span></td>
+<td>检索发现</td>
+<td>Crossref API</td>
+<td>按关键词/DOI 查已发表论文</td>
+<td>无需（建议传邮箱）</td>
 </tr>
 <tr class="odd">
-<td>2</td>
-<td><span class="math inline">\frac{1}{6}</span></td>
+<td>检索发现</td>
+<td>OpenAlex API</td>
+<td>按概念/作者/机构搜索</td>
+<td>无需</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td><span class="math inline">-\frac{1}{30}</span></td>
+<td>检索发现</td>
+<td>zbMATH Open</td>
+<td>数学专用：按 MSC/Zbl 检索</td>
+<td>需申请 token</td>
 </tr>
 <tr class="odd">
-<td>6</td>
-<td><span class="math inline">\frac{1}{42}</span></td>
+<td>来源核验</td>
+<td>Crossref API</td>
+<td>DOI → 元数据核对</td>
+<td>无需</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td><span class="math inline">-\frac{1}{30}</span></td>
+<td>来源核验</td>
+<td>arXiv API</td>
+<td>arXiv ID → 元数据核对</td>
+<td>无需</td>
 </tr>
 <tr class="odd">
-<td>10</td>
-<td><span class="math inline">\frac{5}{66}</span></td>
+<td>来源核验</td>
+<td>zbMATH Open</td>
+<td>Zbl ID → 书目信息</td>
+<td>需 token</td>
 </tr>
 <tr class="even">
-<td>12</td>
-<td><span class="math inline">-\frac{691}{2730}</span></td>
+<td>引用扩展</td>
+<td>OpenAlex API</td>
+<td>cited_by / references 列表</td>
+<td>无需</td>
 </tr>
 </tbody>
 </table>
-<p>同时注意到，<span class="math inline">\frac{t}{e^t - 1} + \frac{t}{2} = \frac{t}{2} \cdot \frac{e^t + 1}{e^t - 1}</span> 是一个偶函数，因此所有奇数项的系数（除了 <span class="math inline">B_1</span>）都为零，即:</p>
-<p><span class="math display">
-B_3 = B_5 = B_7 = \cdots = 0
-</span></p>
-<p>一些计算结果:</p>
-<p>利用递推公式 <span class="math inline">\sum_{k=0}^n \binom{n}{k} B_k = 0</span>，可以计算： - <span class="math inline">S_1(n) = \frac{n(n-1)}{2}</span> - <span class="math inline">S_2(n) = \frac{n(n-1)(2n-1)}{6}</span> - <span class="math inline">S_3(n) = \frac{n^2(n-1)^2}{4}</span></p>
 </section>
-<section id="伯努利数的分母" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 3 伯努利数的分母</h1>
-<ul>
-<li><p>经过上面的计算, 我们发现伯努利数的分母满足:</p>
-<ul>
-<li><p><span class="math inline">B_1: 2=2, B_2: 6=2\times3, B_4: 30=5\times3\times2,B_6: 42=7\times3\times2\cdots</span></p></li>
-<li><p>事实上我们有命题:</p>
-<p><strong>Von Staudt-Clausen 定理</strong>: 对于正偶数 <span class="math inline">k</span>，有 <span class="math display">B_k + \sum_{p-1 | k} \frac{1}{p} \in \mathbb{Z}</span> 其中求和取遍所有满足 <span class="math inline">p-1 | k</span> 的素数 <span class="math inline">p</span>。</p>
-<p>作为它的推论: 伯努利数 <span class="math inline">B_k, k \text{ even or 1}</span> 的分母总可以写成 <span class="math inline">\prod_{p:p-1|k}p</span>.</p></li>
-</ul></li>
-<li><p>p-integers 与局部环</p>
-<ul>
-<li>定义: 局部环
-<ul>
-<li>设 <span class="math inline">p</span> 是一个素数，考虑整数环 <span class="math inline">\mathbb{Z}</span> 中的素理想 <span class="math inline">\mathfrak{p} = (p) = p\mathbb{Z}</span>。定义乘法封闭集 (Multiplicative Set) <span class="math inline">S</span> 为所有不在 <span class="math inline">\mathfrak{p}</span> 中的整数： <span class="math display">
-S = \mathbb{Z} \setminus \mathfrak{p} = \{ n \in \mathbb{Z} \mid p \nmid n \}
-</span> 那么<span class="math inline">\mathbb{Z}_{(p)}</span> 定义为 <span class="math inline">\mathbb{Z}</span> 关于 <span class="math inline">S</span> 的局部化： <span class="math display">
-\mathbb{Z}_{(p)} := S^{-1}\mathbb{Z} = \left\{ \frac{a}{b} \in \mathbb{Q} \;\middle|\; a \in \mathbb{Z}, \, b \in \mathbb{Z}, \, p \nmid b \right\}
-</span></li>
-<li>直观上, 这就是整数环<span class="math inline">\mathbb{Z}</span> 中让那些不是 <span class="math inline">p</span> 的倍数的数可逆.</li>
-<li>定义: p-integers
-<ul>
-<li>对于有理数 <span class="math inline">x\in \mathbb{Q}</span>, 称它是 p-integer 如果 <span class="math inline">x\in \mathbb{Z}_{\left(p\right)}</span>.</li>
-<li>直观的定义: 将 <span class="math inline">x\in \mathbb{Q}</span> 写成既约分数 <span class="math inline">x=\frac{a}{b}</span>, 若 <span class="math inline">b</span> 中不含素因子 <span class="math inline">p</span>, 则称 <span class="math inline">x</span> 是 p-integer.</li>
-</ul></li>
-<li>命题: <span class="math display">
-\mathbb{Z} = \bigcap_{p \text{ is prime}} \mathbb{Z}_{(p)}
-</span></li>
-</ul></li>
-</ul></li>
-</ul>
-<p>利用上面的命题, 要证明</p>
-<p><span class="math display">
-x=B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z},\forall k \text{ even}
-</span></p>
-<p>只要证对于任意的<span class="math inline">p</span> ,<span class="math inline">x</span> 是一个 p-integer.</p>
-<p>利用伯努利多项式的性质, 我们有等式</p>
-<p><span class="math display">
-S_k(X) = \frac{X^{k+1}}{k+1} + B_1 X^k + \dots + \frac{k}{2}B_{k-1}X^2 + B_k X
-</span></p>
-<p><span class="math display">
-p^{-e}S_k(p^e) = \frac{p^{ke}}{k+1} + B_1 p^{(k-1)e} + \dots + B_k
-</span></p>
-<p>我们有:</p>
-<p><span class="math display">
-B_k - p^{-e}S_k(p^e)= - \frac{p^{ke}}{k+1} - B_1 p^{(k-1)e} - \dots - \frac{k}{2} B_{k-1} p^e
-</span></p>
-<p>注意到当 e 充分大时, 等式右边是 p-整的, 故此时</p>
-<p><span class="math display">
-B_k - p^{-e}S_k(p^e) \quad \text{是 } p\text{-整的}
-</span></p>
-<ul>
-<li><p>我们的证明分为如下的步骤:</p>
-<ol type="1">
-<li><p>先证明<span class="math inline">B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}</span></p></li>
-<li><p>然后证明<span class="math inline">p^{-1}S_k(p)</span>的 p整的性质, 组合它们, 我们得到<span class="math inline">B_k</span>是 p 整的.</p></li>
-</ol></li>
-<li><p><span class="math inline">B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}</span></p>
-<ul>
-<li>证明: 先做分解 <span class="math display">
-B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \underbrace{\sum_{d=2}^{e} (A_d - A_{d-1})}_{\text{Part 2: 伸缩项}}
-</span> 这里 <strong><span class="math inline">A_e = p^{-e}S_k(p^e)</span></strong></li>
-</ul></li>
-</ul>
-<p>我们已经知道, 当 <span class="math inline">e</span>充分大, part1是 p 整的. 齐次, 我们可以证明, 对于 part2 中的伸缩项, 每一项都是整数.</p>
-<ul>
-<li>伸缩项是整数:
-<ul>
-<li>我们证明<span class="math inline">p^{-d}S_k(p^d) - p^{-(d-1)}S_k(p^{d-1})</span>是整数.</li>
-<li>将<span class="math inline">S^k(p^d)</span>中的求和指标 <span class="math inline">m</span> 写成 <span class="math inline">r + qp^{d-1}</span> 的形, 我们有:</li>
-<li><span class="math display">S_k(p^d) = \sum_{r=0}^{p^{d-1}-1} \sum_{q=0}^{p-1} (r + qp^{d-1})^k</span></li>
-<li>将求和项用二项式定理展开, 我们有: <span class="math inline">(r + qp^{d-1})^k \equiv r^k + k r^{k-1} q p^{d-1} \pmod{p^{d}}</span>, 对等式右边的第一项求和, 我们得到 <span class="math inline">p S_k(p^{d-1})</span>; 对等式右边的第二项求和, 由于 <span class="math inline">\sum_{q=0}^{p-1} q = \frac{p(p-1)}{2}</span>, 它至少含有 <span class="math inline">p^d</span> 因子, 因此对 <span class="math inline">p^d</span> 取模时, 该项为零.</li>
-<li>我们得到<span class="math display">S_k(p^d) \equiv p S_k(p^{d-1}) \pmod{p^d}</span></li>
-<li>两边同时除以<span class="math inline">p^d</span>, 得到:<span class="math display">\frac{S_k(p^d)}{p^d} - \frac{S_k(p^{d-1})}{p^{d-1}} \in \mathbb{Z}</span></li>
-<li>这说明伸缩项是整数.证毕.</li>
-</ul></li>
-<li>最后, 我们证明<span class="math inline">p^{-1}S_k(p)</span>的 p 整的性质. 设<span class="math display">S_k(p) \equiv \sum_{i=0}^{p-2} (g^k)^i \pmod p</span>
-<ul>
-<li>如果<span class="math inline">p-1 | k</span> :
-<ul>
-<li>由费马小定理, 对于任意的正整数 <span class="math inline">m</span> , 有 <span class="math inline">m^{p-1} \equiv 1 \pmod{p}</span>, 因此当 <span class="math inline">k</span> 满足 <span class="math inline">p-1 | k</span> 时, 有 <span class="math inline">m^k \equiv 1 \pmod{p}</span>.</li>
-<li>我们有: <span class="math display">1/pS_k(p)+1/p =1/p(S_k(p)+1)= 1/p(\sum_{m=0}^{p-1} m^k+1) \in \mathbb{Z}</span></li>
-<li>因此, <span class="math display">\frac{S_k(p)}{p}+1/p \in \mathbb{Z}</span></li>
-</ul></li>
-<li>如果 <span class="math inline">p-1 \nmid k</span>，则公比 <span class="math inline">g^k \not\equiv 1 \pmod p</span>，根据等比求和公式，和为 <span class="math inline">\frac{(g^k)^{p-1}-1}{g^k-1} \equiv 0 \pmod p</span>。<br>
-</li>
-<li>结合上述步骤：若 <span class="math inline">p-1 \nmid k</span>，则 <span class="math inline">B_k - 0</span> 是 <span class="math inline">p</span>-整的 <span class="math inline">\implies B_k \in \mathbb{Z}_p</span>。若 <span class="math inline">p-1 \mid k</span>，则 <span class="math inline">B_k - (-1/p)</span> 是 <span class="math inline">p</span>-整的 <span class="math inline">\implies B_k + \frac{1}{p} \in \mathbb{Z}_p</span></li>
-</ul></li>
-</ul>
-<p>综上,对于任意素数 <span class="math inline">p</span>，都有：<span class="math display">B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}</span>是 p 整数, 最后再利用 <span class="math inline">\mathbb{Z}=\cap \mathbb{Z}_{(p)}</span>, 我们得到: <span class="math display">B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}, \forall k \text{ positive even}</span></p>
+<section id="arxiv-api-论文搜索与核验" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> arXiv API — 论文搜索与核验</h1>
+<p>arXiv 是数学/物理/CS 预印本平台，API 免开放，无需认证。适合检索最新研究、获取论文元数据。</p>
+<section id="搜索论文" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="搜索论文"><span class="header-section-number">2.1</span> 搜索论文</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"http://export.arxiv.org/api/query?search_query=all:quantum+groups&amp;start=0&amp;max_results=5"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>返回 Atom XML，每条含 title、authors、summary、id（arXiv ID）、published、updated。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>search_query</td>
+<td>搜索表达式，支持字段限定</td>
+<td>ti:quantum+groups（标题） <br>au:Lusztig（作者）</td>
+</tr>
+<tr class="even">
+<td>start</td>
+<td>偏移量</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>max_results</td>
+<td>返回数量（上限 30000）</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>sortBy</td>
+<td>排序：relevance / lastUpdatedDate / submittedDate</td>
+<td>relevance</td>
+</tr>
+<tr class="odd">
+<td>sortOrder</td>
+<td>ascending / descending</td>
+<td>descending</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="伯努利数和-zeta-函数" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 4 伯努利数和 zeta 函数</h1>
+<section id="按-arxiv-id-获取元数据核验用" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="按-arxiv-id-获取元数据核验用"><span class="header-section-number">2.2</span> 按 arXiv ID 获取元数据（核验用）</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"http://export.arxiv.org/api/query?id_list=2106.05252"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>返回该论文的完整元数据：标题、作者列表、摘要、版本历史、DOI（如有）。用于核验 SOURCES.md 中的 <span class="citation" data-cites="key">@key</span> 条目。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>math-map 用法</strong>：发现候选论文后，用 id_list 查 arXiv API 取回标题/作者/日期，与人工记忆或搜索结果交叉核对。一致则写入 SOURCES.md 的核验字段。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="crossref-api-doi-核验" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Crossref API — DOI 核验</h1>
+<p>Crossref 是 DOI 注册机构的联合数据库，收录已发表论文、书籍、会议录的元数据。是 DOI 核验的权威来源。</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>❗ 建议在请求中传入 <code>mailto=your@email.com</code>，可进入「polite pool」，速率更高、响应更快。</p>
+</div>
+</div>
+<section id="按-doi-查询元数据核验核心" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="按-doi-查询元数据核验核心"><span class="header-section-number">3.1</span> 按 DOI 查询元数据（核验核心）</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.crossref.org/works/10.1007/978-1-4612-0783-2?mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>返回 JSON，关键字段：title、author（含 given/family）、container-title（期刊/书名）、published-print.date-parts、publisher、ISBN、DOI、type、is-referenced-by-count（被引次数）。</p>
+</section>
+<section id="按关键词搜索" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="按关键词搜索"><span class="header-section-number">3.2</span> 按关键词搜索</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.crossref.org/works?query=quantum+groups+Lusztig&amp;rows=5&amp;mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>query</td>
+<td>自由关键词</td>
+<td>quantum groups categorification</td>
+</tr>
+<tr class="even">
+<td>rows</td>
+<td>返回数量（默认 20，上限 1000）</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>filter</td>
+<td>字段过滤</td>
+<td>from-pub-date:2020（年份） <br>type:book（类型）</td>
+</tr>
+<tr class="even">
+<td>sort</td>
+<td>排序：relevance / is-referenced-by-count</td>
+<td>is-referenced-by-count</td>
+</tr>
+<tr class="odd">
+<td>mailto</td>
+<td>邮箱（进入 polite pool）</td>
+<td>you@example.com</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="常见-filter-参数" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="常见-filter-参数"><span class="header-section-number">3.3</span> 常见 filter 参数</h2>
 <ul>
-<li><p>这一小节, 我们给出伯努利数和 zeta 函数之间的关系, 主要有两个结果:</p>
-<ul>
-<li><span class="math display">\zeta(k) = - \frac{(2\pi i)^k}{2 k!} B_k, \quad (k \ge 2, \text{even})</span></li>
-<li><span class="math display">\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 1)</span></li>
-</ul></li>
-<li><p>定义: zeta 函数</p></li>
-<li><p>定义: Riemann zeta 函数 <span class="math inline">\zeta(s)</span> 定义为:</p>
-<p><span class="math display">
-\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \text{for } \text{Re}(s) &gt; 1.
-</span></p></li>
+<li><code>from-pub-date:YYYY</code> / <code>until-pub-date:YYYY</code> — 年份范围</li>
+<li><code>type:book</code> / <code>type:journal-article</code> / <code>type:proceedings-article</code> — 文献类型</li>
+<li><code>member:</code> — 出版商 ID（如 Springer = 297）</li>
 </ul>
-<p>我们考虑函数 <span class="math inline">\pi z\cot(\pi z)</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>math-map 用法</strong>：拿到候选 DOI 后，查 Crossref works 端点核对 title / author / year / publisher 四字段。全部一致 → 核验通过，写入”核验: Crossref DOI + 取回日期”。字段冲突 → 标”存疑”，不得自动调和。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="openalex-api-引用扩展与影响力" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> OpenAlex API — 引用扩展与影响力</h1>
+<p>OpenAlex 是开放的学术知识图谱，收录 2.5 亿+ 学术作品，含引用关系、概念标签、机构信息。免费开放，无需 API key（可选传邮箱提升速率）。</p>
+<section id="按-openalex-work-id-查询" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="按-openalex-work-id-查询"><span class="header-section-number">4.1</span> 按 OpenAlex Work ID 查询</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works/W2741809807?mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="按-doi-查询推荐核验入口" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="按-doi-查询推荐核验入口"><span class="header-section-number">4.2</span> 按 DOI 查询（推荐核验入口）</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works/doi:10.1007/978-1-4612-0783-2?mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>返回 JSON，关键字段：title、authorships（含 author.display_name + institutions）、publication_year、primary_location（期刊/出版社）、cited_by_count、referenced_works（引用了谁）、cited_by_api_url（被谁引用）、concepts（学科标签）。</p>
+</section>
+<section id="关键词搜索" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="关键词搜索"><span class="header-section-number">4.3</span> 关键词搜索</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works?filter=default.search:quantum%20groups,cited_by_count:%3E50&amp;sort=cited_by_count:desc&amp;per_page=10&amp;mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>default.search</td>
+<td>全文搜索</td>
+<td>quantum groups</td>
+</tr>
+<tr class="even">
+<td>filter</td>
+<td>字段过滤（见下表）</td>
+<td>publication_year:2020</td>
+</tr>
+<tr class="odd">
+<td>sort</td>
+<td>排序</td>
+<td>cited_by_count:desc</td>
+</tr>
+<tr class="even">
+<td>per_page</td>
+<td>每页数量（默认 25，上限 200）</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>select</td>
+<td>只返回指定字段</td>
+<td>id,title,cited_by_count</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="常用-filter-参数" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="常用-filter-参数"><span class="header-section-number">4.4</span> 常用 filter 参数</h2>
 <ul>
-<li><p>它有两种多项式展开:</p>
-<ul>
-<li>留数展开：利用 <span class="math inline">\cot(\pi z) = \frac{\cos(\pi z)}{\sin(\pi z)}</span> 在 <span class="math inline">z = n</span> (<span class="math inline">n \in \mathbb{Z}</span>) 处有单极点，留数为 <span class="math inline">\frac{1}{\pi}</span>，我们有部分分式展开： <span class="math display">\pi \cot(\pi z) = \frac{1}{z} + \sum_{n=1}^{\infty} \left( \frac{1}{z-n} + \frac{1}{z+n} \right) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}</span> 因此 <span class="math display">\pi z \cot(\pi z) = 1 + \sum_{n=1}^{\infty} \frac{2z^2}{z^2 - n^2} = 1 - 2 \sum_{n=1}^{\infty} \frac{z^2}{n^2 - z^2}</span> 将 <span class="math inline">\frac{z^2}{n^2 - z^2} = -\sum_{k=1}^{\infty} \frac{z^{2k}}{n^{2k}}</span> 代入，得到： <span class="math display">\pi z \cot(\pi z) = 1 - 2 \sum_{k=1}^{\infty} \zeta(2k) z^{2k}</span></li>
-<li>指数函数展开：利用 <span class="math inline">\cot(\pi z) = i \frac{e^{i\pi z} + e^{-i\pi z}}{e^{i\pi z} - e^{-i\pi z}} = i \frac{e^{2\pi i z} + 1}{e^{2\pi i z} - 1} = i + \frac{2i}{e^{2\pi i z} - 1}</span>，我们有 <span class="math display">\pi z \cot(\pi z) = \pi i z + \frac{2\pi i z}{e^{2\pi i z} - 1}</span> 由伯努利数的生成函数定义（令 <span class="math inline">t = 2\pi i z</span>），得到： <span class="math display">\pi z \cot(\pi z) = \sum_{k=0}^{\infty} \frac{(2\pi i)^k}{k!} B_k z^k</span></li>
-<li>比较两侧的 <span class="math inline">z^{2k}</span> 系数，我们得到: <span class="math display">\zeta(2k) = - \frac{(2\pi i)^{2k}}{2 (2k)!} B_{2k} = (-1)^{k+1} \frac{(2\pi)^{2k}}{2 (2k)!} B_{2k}, \quad (k \ge 1)</span></li>
-</ul></li>
-<li><p>定义: 完备 zeta 函数</p></li>
-<li><p>定义: 完备 zeta 函数 <span class="math inline">\xi(s)</span> 定义为:</p></li>
-</ul>
-<p><span class="math display">
-  \xi(s) = \pi^{-s/2} \Gamma\left(\frac{s}{2}\right) \zeta(s).
-  </span></p>
-<ul>
-<li>完备 zeta 函数满足函数方程:</li>
-</ul>
-<p><span class="math display">
-  \xi(s) = \xi(1-s).
-  </span> 利用完备 zeta 函数的对称性, 得到: <span class="math display">\zeta(1-s) = 2(2\pi)^{-s} \Gamma(s) \cos\left(\frac{\pi s}{2}\right) \zeta(s)</span> 于是我们容易从上面的结果导出: <span class="math display">\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 2,\text{even})</span></p>
-<p>更强的结果: 该等式对于所有的正整数 <span class="math inline">k \ge 1</span> 都成立. 这个结果依赖于 zeta 函数的解析延拓. - 回顾: zeta 函数的解析延拓.</p>
-<ul>
-<li>对于 <span class="math inline">Re(s) &gt; 1</span>，我们有恒等式：<span class="math display">\Gamma(s) \zeta(s) = \int_{0}^{\infty} \frac{t^s}{e^t - 1} \frac{dt}{t}</span></li>
-<li>为了将 zeta 函数延拓到整个复平面, 使用hankel 围道 <span class="math inline">H_{\epsilon}</span>:
-<ul>
-<li>切割 (Branch Cut)： 沿正实轴 <span class="math inline">[0, +\infty)</span> 切开。</li>
-<li>围道 <span class="math inline">H_{\epsilon}</span>：上岸： 从 <span class="math inline">+\infty</span> 沿实轴上方走到 <span class="math inline">\epsilon</span>（幅角 <span class="math inline">\arg z = 0</span>）。圆环： 绕原点逆时针旋转一周（半径 <span class="math inline">\epsilon \to 0</span>）。下岸： 从 <span class="math inline">\epsilon</span> 沿实轴下方回到 <span class="math inline">+\infty</span>（幅角 <span class="math inline">\arg z = 2\pi</span>）。</li>
-</ul></li>
-<li>我们有:<span class="math display">\zeta(s) = \frac{1}{\Gamma(s)(e^{2\pi i s} - 1)} \int_{H_{\epsilon}} \frac{z^s}{e^z - 1} \frac{dz}{z}</span></li>
-<li>这里, 我们令 <span class="math inline">s\to 1-k</span>, 此时前面的系数 <span class="math inline">\frac{1}{\Gamma(s)(e^{2\pi i s} - 1)}</span> 会出现 “<span class="math inline">0/0</span>” 型极限，利用洛必达法则或极限性质可算得系数极限为：<span class="math display">\frac{(-1)^{k-1}(k-1)!}{2\pi i}</span></li>
-<li>对于积分项, 当 <span class="math inline">s=1-k</span> 是整数时，<span class="math inline">z^s = z^{1-k}</span> 变成了单值函数。射线抵消： 上岸和下岸的积分值完全相同但方向相反，互相抵消 5。圆环贡献： 积分仅剩下绕原点的小圆圈 <span class="math inline">\oint_{|z|=\epsilon}</span>。此时，围道积分退化为计算留数 (Residue)：<span class="math display">\int_{H_\epsilon} \frac{z^{1-k}}{e^z - 1} \frac{dz}{z} = \oint \frac{z^{-k}}{e^z - 1} dz = 2\pi i \cdot \text{Res}_{z=0} \left( \frac{z^{-k}}{e^z - 1} \right)</span></li>
-<li>注意到这个被积函数恰好和伯努利数的生成函数相关: <span class="math inline">\frac{z^{-k}}{e^z-1} = z^{-k-1} \frac{z}{e^z-1}</span> 的 <span class="math inline">z^{-1}</span> 系数正是 <span class="math inline">\frac{B_k}{k!}</span>, 于是我们得到: <span class="math display">\zeta(1-k) = (-1)^{k-1} \frac{B_k}{k}, \quad (k \ge 1)</span></li>
+<li><code>publication_year:2020</code> — 发表年份</li>
+<li><code>cited_by_count:&gt;100</code> — 被引次数下限</li>
+<li><code>concepts.id:C4513</code> — OpenAlex 概念 ID</li>
+<li><code>authorships.author.display_name:Lusztig</code> — 按作者名</li>
 </ul>
 </section>
-<section id="伯努利数与怪球" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 5 伯努利数与怪球</h1>
-<p>现在, 我们转向拓扑学的世界。</p>
-<section id="庞加莱猜想和怪球" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="庞加莱猜想和怪球"><span class="header-section-number">5.1</span> 5.1 庞加莱猜想和怪球</h2>
-<ul>
-<li>拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)</li>
-<li>代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类?
-<ul>
-<li>这就是著名的 (广义) 庞加莱猜想: 设 <span class="math inline">M^n</span> 是闭流形, 若 <span class="math inline">M</span> 是同伦球面 (即同伦等价于 <span class="math inline">S^n</span>), 则 <span class="math inline">M^n</span> 同胚意义下也是球面.
-<ul>
-<li>庞加莱猜想是对的:
-<ul>
-<li><span class="math inline">n\geq5</span>: smale h-cobordism</li>
-<li><span class="math inline">n=4</span>: freedman</li>
-<li><span class="math inline">n=3</span>: perelman</li>
-</ul></li>
-</ul></li>
-<li>更进一步: 光滑庞加莱猜想: 设 <span class="math inline">M^n</span> 是光滑闭流形, 若 <span class="math inline">M</span> 是同伦球面 (由 GPC, 也是同胚球面), 那么 <span class="math inline">M^n</span> 也是光滑球面.
-<ul>
-<li>光滑庞加莱猜想是错的:
-<ul>
-<li>milnor 找到了第一个怪球: 7 维</li>
-<li>既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 <span class="math inline">n</span> 维怪球的集合记为 <span class="math inline">S_n</span></li>
-</ul></li>
-<li><span class="math inline">S_n</span> 是 Abel 群 (<span class="math inline">n\neq4</span>): 利用 h-cobordism 定理 (<span class="math inline">n\neq4</span>), 我们有同构: <span class="math display">\{  S^n \text{上的光滑结构}\}/\{微分同胚\}\longleftrightarrow\{n\text{维同伦球面}\}/\{\text{h-cobordism}\}</span> 注意到右边恰为 <span class="math inline">S_n</span>, 即 <span class="math inline">n</span> 维怪球的集合, 而左边是配边类, 它有群结构:
-<ul>
-<li>乘法: 连通和</li>
-<li>单位元: <span class="math inline">S^n</span> 上的标准光滑结构</li>
-<li>逆元: 反转定向, 记为 <span class="math inline">-\Sigma</span>. 在柱 <span class="math inline">\Sigma\times I</span> 的内部挖去一个 disk <span class="math inline">D^{n+1}</span> 即可得到所需配边.</li>
-<li>这说明 <span class="math inline">S_n</span> 是一个群.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+<section id="引用扩展获取引用被引列表" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="引用扩展获取引用被引列表"><span class="header-section-number">4.5</span> 引用扩展：获取引用/被引列表</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works?filter=cites:W2741809807&amp;sort=cited_by_count:desc&amp;per_page=10&amp;mailto=you@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code># referenced_works 字段直接返回引用的 work ID 列表
+# 也可用 filter=cited_by:WID 查被谁引用</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>math-map 用法</strong>：OpenAlex 是引用扩展的主力工具。拿到种子来源的 work ID 后，查 referenced_works（向前）和 cited_by（向后），用 concepts 过滤离题论文，按 cited_by_count 排序找枢纽节点。引用关系 ≠ 逻辑依赖，需二次判断。</p>
+</div>
+</div>
 </section>
-<section id="怪球与球面的稳定同伦群" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="怪球与球面的稳定同伦群"><span class="header-section-number">5.2</span> 5.2 怪球与球面的稳定同伦群</h2>
-<ul>
-<li>定义: 球面的稳定同伦群
-<ul>
-<li>同伦群的稳定现象: 球面的 suspension thm
-<ul>
-<li><p>当 <span class="math inline">k</span> 充分大时 <span class="math inline">\Sigma:\pi_{n+k}\left(S^k\right)\to \pi_{n+k+1}\left(S^{k+1}\right)</span> 是群同构.</p></li>
-<li><p>球面同伦群的稳定性质: <span class="math inline">\Sigma:\pi_n\left(S^n\right)\to \pi_{n+1}\left(S^{n+1}\right)</span> 是群同构。</p></li>
-<li><p>球面稳定同伦群: 定义为 <span class="math inline">\Pi_n:=\lim_{ k \to \infty }\pi_{n+k}\left(S^{k}\right)</span></p></li>
-</ul></li>
-</ul></li>
-<li>稳定同伦群和 framed cobordism class
-<ul>
-<li>Pontrjagin-Thom 定理: <span class="math inline">\Pi_n \cong \Omega_n^{fr}</span>，即球面稳定同伦群同构于 framed cobordism 群。</li>
-<li>直观理解：一个 <span class="math inline">n</span> 维 framed 流形 <span class="math inline">M^n \subset \mathbb{R}^{n+k}</span>（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 <span class="math inline">S^{n+k} \to S^k</span>。</li>
-</ul></li>
-<li>J-同态 (J-homomorphism)
-<ul>
-<li>定义：J-同态 <span class="math inline">J: \pi_n(SO) \to \Pi_n</span> 定义如下：给定 <span class="math inline">\alpha \in \pi_n(SO)</span>，即一个映射 <span class="math inline">\alpha: S^n \to SO</span>，我们可以用它来”扭转” <span class="math inline">S^n</span> 上的标准 framing，从而得到一个新的 framed <span class="math inline">n</span>-球面，它对应于 <span class="math inline">\Pi_n</span> 中的一个元素。</li>
-<li><span class="math inline">J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)</span> 是 J-同态的像。</li>
-</ul></li>
-<li>正合列 <span class="math inline">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n</span>
-<ul>
-<li>定义: <span class="math inline">S_n\to \Pi_n</span>, 即把 <span class="math inline">S_n</span> 中的同伦球面映射成它所在的 framed cobordism class.</li>
-<li>change of frame: 如果我们选择 <span class="math inline">S_n</span> 上不同的 frame 对应的 framed cobordism class, 那么两个 <span class="math inline">\Pi_n</span> 中的元素会相差 <span class="math inline">J: \pi_n(SO) \rightarrow \Pi_n</span> 的作用, 我们把 <span class="math inline">J</span> 映射的像集记为 <span class="math inline">J_n</span>, 则我们可以定义映射 <span class="math inline">S_n\to \Pi_n/J_n</span></li>
-<li>这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 <span class="math inline">\Pi_n</span> 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 <span class="math inline">S_n^{bp}</span> 为 <span class="math inline">S_n</span> 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 的 kernel.</li>
-<li>至此, 我们得到了正合列 <span class="math inline">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n</span></li>
-</ul></li>
-<li>我们还需要讨论映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 的满射性质, 即是否 <span class="math inline">\Pi_n</span> 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:
-<ul>
-<li>对于 <span class="math inline">n\not\equiv 2 \pmod{4}</span>, 每个 <span class="math inline">\Pi_n</span> 中的元素都可以被同伦球面实现, 即 <span class="math inline">S_n\to\Pi_n/J_n</span> 是满射, 于是我们有正合列: <span class="math display">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0</span></li>
-<li>对于 <span class="math inline">n \equiv 2\pmod{4}</span>, (此时 <span class="math inline">S_n^{bp}=0</span>) 映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 是否为满射由 Kervaire 不变量决定, 即我们有正合列 <span class="math display">0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2</span> 这里多数情况 <span class="math inline">\Phi_k=0</span>, <span class="math inline">\Phi_k\neq0</span> 当且仅当 <span class="math inline">k=1,2,4,8,16,32</span>, 对应的流形维数为 <span class="math inline">2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)</span>.</li>
-</ul></li>
-</ul>
 </section>
-<section id="计算-怪球和伯努利数" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="计算-怪球和伯努利数"><span class="header-section-number">5.3</span> 5.3 计算: 怪球和伯努利数</h2>
+<section id="zbmath-open-数学专用检索" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> zbMATH Open — 数学专用检索</h1>
+<p>zbMATH Open 是数学专用文献数据库，收录 400 万+ 数学文献，含 MSC 分类、Zbl 编号、评论。适合查无 DOI 的经典文献、获取权威书目信息。</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>❗ zbMATH Open API 需要访问 token。免费申请：<a href="https://zbmath.org/api/">https://zbmath.org/api/</a>，注册后即可获得。</p>
+</div>
+</div>
+<section id="按-zbl-id-查询核验经典文献" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="按-zbl-id-查询核验经典文献"><span class="header-section-number">5.1</span> 按 Zbl ID 查询（核验经典文献）</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.zbmath.org/v1/documents/_search?zbmath_id=0788.17010"</span> <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Accept: application/json"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>返回 JSON，关键字段：title、authors、year、source（期刊/出版社）、msc（MSC 分类代码）、doi、review（zbMATH 评论摘要）。</p>
+</section>
+<section id="按关键词搜索-1" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="按关键词搜索-1"><span class="header-section-number">5.2</span> 按关键词搜索</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.zbmath.org/v1/documents/_search?search_request=quantum+groups+Lusztig"</span> <span class="dt">\</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Accept: application/json"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>zbmath_id</td>
+<td>Zbl 编号（精确查询）</td>
+<td>0788.17010</td>
+</tr>
+<tr class="even">
+<td>search_request</td>
+<td>关键词</td>
+<td>categorification quantum</td>
+</tr>
+<tr class="odd">
+<td>page</td>
+<td>页码</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>results_per_page</td>
+<td>每页数量</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="msc-分类过滤" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="msc-分类过滤"><span class="header-section-number">5.3</span> MSC 分类过滤</h2>
+<p>zbMATH 的独特优势是 MSC（Mathematics Subject Classification）分类。搜索时可加 MSC 限定：</p>
 <ul>
-<li><span class="math inline">|J_n|</span> 的计算:</li>
+<li><code>17Bxx</code> — Lie algebras（量子群相关）</li>
+<li><code>16Txx</code> — Hopf algebras</li>
+<li><code>81Rxx</code> — Quantum mechanics / quantum field theory</li>
+<li><code>57Mxx</code> — Low-dimensional topology（纽结不变量）</li>
 </ul>
-<p><span class="math display">
-|J_n| = \begin{cases}
-\text{denominator}\left(\frac{B_{2k}}{4k}\right) &amp; \text{for } n = 4k-1, \\
-2 &amp; \text{for } n \equiv 0, 1 \pmod{8}, \\
-1 &amp; \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
-\end{cases}
-</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>math-map 用法</strong>：zbMATH 用于核验无 DOI 的经典文献（如 1980–90s 的 Springer/Birkhäuser 旧书）。拿到 Zbl ID 后查 zbMATH 确认 title/author/year/publisher。MSC 分类可用于判断一个来源是否属于数学主干还是外部应用分支。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="组合使用示例" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 组合使用示例</h1>
+<section id="完整核验流程示例" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="完整核验流程示例"><span class="header-section-number">6.1</span> 完整核验流程示例</h2>
+<p>以 Kassel《Quantum Groups》(1995) 为例，演示从发现到核验的全流程：</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<p><strong>Step 1: 发现候选</strong> 已知书名和作者，不确定 DOI。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 用 Crossref 搜索</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.crossref.org/works?query=Quantum+Groups+Kassel&amp;rows=3"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回 DOI: 10.1007/978-1-4612-0783-2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<p><strong>Step 2: DOI 核验</strong> 用 DOI 查 Crossref 确认元数据。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.crossref.org/works/10.1007/978-1-4612-0783-2"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认: title="Quantum Groups"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># author="Christian Kassel"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># publisher="Springer New York"</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># year=1995</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<p><strong>Step 3: zbMATH 旁证</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 用 Zbl ID 查 zbMATH</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.zbmath.org/v1/documents/_search?zbmath_id=0667.16003"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认同一本书，MSC: 17B37</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<p><strong>Step 4: OpenAlex 被引</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works/doi:10.1007/978-1-4612-0783-2"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cited_by_count: 1115</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 确认高影响力，角色: 承重</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><strong>最终写入 SOURCES.md：</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### @kassel1995</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>标题: Quantum Groups</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>作者: Christian Kassel</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>出版: Springer New York, 1995</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>类型: 教材</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>角色: 承重</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>链接: https://doi.org/10.1007/978-1-4612-0783-2</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>核验: Crossref API + zbMATH Zbl 0667.16003 + OpenAlex cited_by=1115</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="引用扩展示例" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="引用扩展示例"><span class="header-section-number">6.2</span> 引用扩展示例</h2>
+<p>以 Khovanov-Lauda 2009 范畴化论文为种子，向前扩展：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先拿到 OpenAlex work ID</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works/doi:10.1007/s00031-009-9036-x"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 返回 ID: W2043292457</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 查谁引用了它</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works?filter=cites:W2043292457&amp;sort=cited_by_count:desc&amp;per_page=10"</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 用 concepts 过滤数学主干</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.openalex.org/works?filter=cites:W2043292457,concepts.id:C339234547&amp;per_page=10"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 引用关系 ≠ 逻辑依赖。高被引的论文可能是外部应用（物理、工程），不代表它在数学主干上。必须结合教材/综述的目录结构做二次判断。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="常见问题" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 常见问题</h1>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<p><strong>Q: Crossref 和 OpenAlex 有什么区别？</strong> Crossref 是 DOI 注册机构，元数据权威但不含引用关系。OpenAlex 是学术知识图谱，含完整引用网络和概念标签。核验用 Crossref，引用扩展用 OpenAlex。</p>
+</div>
+<div class="g-col-12 g-col-md-6">
+<p><strong>Q: 没有 DOI 的旧书怎么核验？</strong> 用 zbMATH 的 Zbl ID 核验。1980–90s 的 Springer/Birkhäuser 数学书通常在 zbMATH 有记录。查不到的降级为”存疑”。</p>
+</div>
+</div>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<p><strong>Q: API 有速率限制吗？</strong></p>
 <ul>
-<li><p><span class="math inline">|S_n^{bp}|</span> 的计算:</p>
-<p>对于 <span class="math inline">n \neq 4</span>，群 <span class="math inline">S_n^{bp}</span> 是有限循环群，且有显式的生成元。具体地：</p>
-<ul>
-<li>当 <span class="math inline">n</span> 为偶数时，<span class="math inline">S_n^{bp}</span> 是平凡群；</li>
-<li>当 <span class="math inline">n = 4k - 3</span> 时，<span class="math inline">S_n^{bp}</span> 是平凡群或 2 阶循环群；</li>
-<li>当 <span class="math inline">n = 4k - 1 &gt; 3</span> 时，<span class="math inline">S_n^{bp}</span> 是阶为 <span class="math inline">2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_{2k}}{k}\right)</span> 的循环群。</li>
-</ul></li>
-<li><p>例子: 计算 <span class="math inline">S_7</span></p></li>
+<li><strong>arXiv</strong>：无官方限制，但建议间隔 3 秒</li>
+<li><strong>Crossref</strong>：polite pool 50 req/s，普通 1 req/s</li>
+<li><strong>OpenAlex</strong>：polite pool 100K req/day，普通 10K</li>
+<li><strong>zbMATH</strong>：需 token，限制见官方文档</li>
 </ul>
-<p>让我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">S_7</span>)。</p>
-<ol type="1">
-<li>检查维度：<span class="math inline">n=7 = 4(2)-1</span>，属于第一种情况（<span class="math inline">n \equiv 3 \pmod 4</span>），正合列分裂。</li>
-</ol>
-<p><span class="math display">|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|</span></p>
-<ol start="2" type="1">
-<li><p>计算 <span class="math inline">|S_7^{bp}|</span>：</p>
-<p>代入公式 <span class="math inline">k=2</span>：</p>
-<p><span class="math display">|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)</span></p>
+</div>
+<div class="g-col-12 g-col-md-6">
+<p><strong>Q: 可以用 Python 代替 curl 吗？</strong> 可以。所有 API 都是 REST + JSON，用 <code>requests</code> 库即可。后续 math-map 计划封装为独立的 <code>source_discovery</code> 模块。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>✅ <strong>参考链接</strong></p>
 <ul>
-<li><p>第一部分：<span class="math inline">2^2 (2^3 - 1) = 4 \times 7 = 28</span></p></li>
-<li><p>第二部分：<span class="math inline">B_4 = -1/30</span>，所以 <span class="math inline">\frac{4(1/30)}{2} = \frac{1}{15}</span>。分子是 1。</p></li>
-<li><p>结果：<span class="math inline">|S_7^{bp}| = 28 \times 1 = 28</span>。</p></li>
-</ul></li>
-<li><p><strong>计算 <span class="math inline">|\Pi_7 / J_7|</span></strong>：</p>
-<ul>
-<li><p>查阅同伦群表，<span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>。</p></li>
-<li><p><span class="math inline">J_7</span> 的阶数由 <span class="math inline">\text{denominator}(B_k/4k)</span> 决定（其中 <span class="math inline">n=4k-1</span>，即 <span class="math inline">k=2</span>）。<span class="math inline">B_2 = \frac{1}{30}</span>，所以 <span class="math inline">\frac{B_2}{8} = \frac{1}{240}</span>，分母是 240，因此 <span class="math inline">|J_7| = 240</span>。由于 <span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>，故 <span class="math inline">\Pi_7 = J_7</span>，即 <span class="math inline">\Pi_7/J_7</span> 是平凡群。</p></li>
-<li><p>可以看到对于 <span class="math inline">n=7</span>，<span class="math inline">|S_7|</span> 对应的值就是 <span class="math inline">b_2 = 28</span>。这意味着对于 <span class="math inline">n=7</span>，<span class="math inline">\Pi_7/J_7</span> 是平凡的（或者说 <span class="math inline">\Pi_7 = J_7</span>）。</p></li>
-</ul></li>
-<li><p><strong>最终结果</strong>：<span class="math inline">|S_7| = 28 \times 1 = 28</span>。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。</p></li>
-</ol>
+<li>arXiv API：<a href="https://info.arxiv.org/help/api/">https://info.arxiv.org/help/api/</a></li>
+<li>Crossref API：<a href="https://api.crossref.org/swagger-ui/index.html">https://api.crossref.org/swagger-ui/index.html</a></li>
+<li>OpenAlex API：<a href="https://docs.openalex.org/">https://docs.openalex.org/</a></li>
+<li>zbMATH Open：<a href="https://api.zbmath.org/">https://api.zbmath.org/</a></li>
+</ul>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

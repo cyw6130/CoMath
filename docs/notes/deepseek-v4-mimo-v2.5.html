@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="介绍DeepSeek V4与MiMo V2.5国产大模型">
 
-<title>关于本站 – Chen 的拓扑笔记</title>
+<title>国产 AI 模型 — DeepSeek V4 / MiMo V2.5 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -90,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -307,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">关于本站</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/deepseek-v4-mimo-v2.5.html">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +478,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -493,7 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/deepseek-v4-mimo-v2.5.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/deepseek-v4-mimo-v2.5.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</span></a>
   </div>
 </li>
@@ -503,21 +539,76 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#deepseek-v4" id="toc-deepseek-v4" class="nav-link active" data-scroll-target="#deepseek-v4"><span class="header-section-number">1</span> DeepSeek V4</a>
+  <ul class="collapse">
+  <li><a href="#模型矩阵" id="toc-模型矩阵" class="nav-link" data-scroll-target="#模型矩阵"><span class="header-section-number">1.1</span> 模型矩阵</a></li>
+  <li><a href="#api-接入" id="toc-api-接入" class="nav-link" data-scroll-target="#api-接入"><span class="header-section-number">1.2</span> API 接入</a>
+  <ul class="collapse">
+  <li><a href="#curl-示例" id="toc-curl-示例" class="nav-link" data-scroll-target="#curl-示例"><span class="header-section-number">1.2.1</span> curl 示例</a></li>
+  <li><a href="#python-示例" id="toc-python-示例" class="nav-link" data-scroll-target="#python-示例"><span class="header-section-number">1.2.2</span> Python 示例</a></li>
+  </ul></li>
+  <li><a href="#最佳实践" id="toc-最佳实践" class="nav-link" data-scroll-target="#最佳实践"><span class="header-section-number">1.3</span> 最佳实践</a></li>
+  </ul></li>
+  <li><a href="#mimo-v2.5" id="toc-mimo-v2.5" class="nav-link" data-scroll-target="#mimo-v2.5"><span class="header-section-number">2</span> MiMo V2.5</a>
+  <ul class="collapse">
+  <li><a href="#核心参数" id="toc-核心参数" class="nav-link" data-scroll-target="#核心参数"><span class="header-section-number">2.1</span> 核心参数</a></li>
+  <li><a href="#模型变体" id="toc-模型变体" class="nav-link" data-scroll-target="#模型变体"><span class="header-section-number">2.2</span> 模型变体</a></li>
+  <li><a href="#能力亮点" id="toc-能力亮点" class="nav-link" data-scroll-target="#能力亮点"><span class="header-section-number">2.3</span> 能力亮点</a></li>
+  <li><a href="#接入方式" id="toc-接入方式" class="nav-link" data-scroll-target="#接入方式"><span class="header-section-number">2.4</span> 接入方式</a></li>
+  <li><a href="#开源资源" id="toc-开源资源" class="nav-link" data-scroll-target="#开源资源"><span class="header-section-number">2.5</span> 开源资源</a></li>
+  </ul></li>
+  <li><a href="#对比与选型" id="toc-对比与选型" class="nav-link" data-scroll-target="#对比与选型"><span class="header-section-number">3</span> 对比与选型</a>
+  <ul class="collapse">
+  <li><a href="#核心维度对比" id="toc-核心维度对比" class="nav-link" data-scroll-target="#核心维度对比"><span class="header-section-number">3.1</span> 核心维度对比</a></li>
+  <li><a href="#旗舰模型价格对比" id="toc-旗舰模型价格对比" class="nav-link" data-scroll-target="#旗舰模型价格对比"><span class="header-section-number">3.2</span> 旗舰模型价格对比</a>
+  <ul class="collapse">
+  <li><a href="#mimo-月度-年度套餐" id="toc-mimo-月度-年度套餐" class="nav-link" data-scroll-target="#mimo-月度-年度套餐"><span class="header-section-number">3.2.1</span> MiMo 月度 / 年度套餐</a></li>
+  </ul></li>
+  <li><a href="#lite-套餐-vs-api-按量v2.5-pro-实测对比" id="toc-lite-套餐-vs-api-按量v2.5-pro-实测对比" class="nav-link" data-scroll-target="#lite-套餐-vs-api-按量v2.5-pro-实测对比"><span class="header-section-number">3.3</span> Lite 套餐 vs API 按量：V2.5-Pro 实测对比</a>
+  <ul class="collapse">
+  <li><a href="#lite-套餐39-4.1b-credits" id="toc-lite-套餐39-4.1b-credits" class="nav-link" data-scroll-target="#lite-套餐39-4.1b-credits"><span class="header-section-number">3.3.1</span> Lite 套餐：¥39 → 4.1B Credits</a></li>
+  <li><a href="#api-按量39-能买多少-v2.5-pro" id="toc-api-按量39-能买多少-v2.5-pro" class="nav-link" data-scroll-target="#api-按量39-能买多少-v2.5-pro"><span class="header-section-number">3.3.2</span> API 按量：¥39 能买多少 V2.5-Pro？</a></li>
+  <li><a href="#直接对比" id="toc-直接对比" class="nav-link" data-scroll-target="#直接对比"><span class="header-section-number">3.3.3</span> 直接对比</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">4</span> FAQ</a>
+  <ul class="collapse">
+  <li><a href="#q-如何申请-api-key" id="toc-q-如何申请-api-key" class="nav-link" data-scroll-target="#q-如何申请-api-key"><span class="header-section-number">4.1</span> Q: 如何申请 API Key？</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/deepseek-v4-mimo-v2.5.html">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">关于本站</h1>
-<p class="subtitle lead">数字花园 · 拓扑笔记</p>
-</div>
+<h1 class="title">国产 AI 模型 — DeepSeek V4 / MiMo V2.5</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">deepseek</div>
+    <div class="quarto-category">mimo</div>
+    <div class="quarto-category">large-language-model</div>
+    <div class="quarto-category">api</div>
+    <div class="quarto-category">artificial-intelligence</div>
+    <div class="quarto-category">china</div>
+    <div class="quarto-category">moe</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    介绍DeepSeek V4与MiMo V2.5国产大模型
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -532,87 +623,789 @@ document.addEventListener("DOMContentLoaded", function () {
 </header>
 
 
-<section id="关于本站" class="level2">
-<h2 class="anchored" data-anchor-id="关于本站">关于本站</h2>
-<p>这是我的个人学术网站,用于记录和分享我在拓扑学学习过程中的思考与笔记。</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🌱 vibe mathing 理念
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>我的学习方法是 <strong>vibe mathing</strong>——先用直觉感受数学(the vibe),再用严谨证明(the rigor)。</p>
-<ul>
-<li><strong>vibe</strong>: 直觉、图像、“感觉应该是这样”</li>
-<li><strong>rigor</strong>: 证明、定义、“这就是为什么它成立”</li>
-</ul>
-<p>两者缺一不可。这个网站记录的是我在这两者之间来回穿梭的过程。</p>
-<p>笔记是活的文档——它们会生长、变化,有时会随着理解的深入而完全重写。</p>
+<p>💡 DeepSeek V4 和 MiMo V2.5 是 2026 年最值得关注的国产大模型。DeepSeek V4 以极致性价比著称；MiMo V2.5 是小米推出的 310B MoE 多模态模型，原生支持图像/视频/文档理解，1M 上下文窗口。</p>
 </div>
 </div>
-<hr>
-</section>
-<section id="the-stack" class="level2">
-<h2 class="anchored" data-anchor-id="the-stack">the stack</h2>
-<p>本站使用以下技术构建：</p>
+<section id="deepseek-v4" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> DeepSeek V4</h1>
+<p>模型矩阵、API 接入与最佳实践</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔗 平台：<a href="https://platform.deepseek.com">platform.deepseek.com</a> &nbsp;|&nbsp; API：<a href="https://api.deepseek.com">api.deepseek.com</a> &nbsp;|&nbsp; 兼容 OpenAI API 格式</p>
+</div>
+</div>
+<section id="模型矩阵" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="模型矩阵"><span class="header-section-number">1.1</span> 模型矩阵</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">工具</th>
-<th style="text-align: left;">用途</th>
+<th>模型</th>
+<th>定位</th>
+<th>特点</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://quarto.org">Quarto</a></td>
-<td style="text-align: left;">文档生成系统</td>
+<td>deepseek-v4-flash</td>
+<td>性价比首选</td>
+<td>快速响应、低成本，适合高并发场景</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">LaTeX / KaTeX</td>
-<td style="text-align: left;">数学公式渲染</td>
+<td>deepseek-v4-pro</td>
+<td>最强能力</td>
+<td>深度推理、复杂任务，代码和数学推理能力突出</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 旧模型名 <code>deepseek-chat</code> 和 <code>deepseek-reasoner</code> 将于 <strong>2026/07/24</strong> 废弃，请尽快迁移到 v4 系列模型。</p>
+</div>
+</div>
+</section>
+<section id="api-接入" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="api-接入"><span class="header-section-number">1.2</span> API 接入</h2>
+<p>DeepSeek V4 完全兼容 OpenAI API 格式，可以直接使用 OpenAI SDK 通过修改 base_url 接入。以下是两种常见调用方式：</p>
+<section id="curl-示例" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="curl-示例"><span class="header-section-number">1.2.1</span> curl 示例</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://api.deepseek.com/chat/completions <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Authorization: Bearer </span><span class="va">$DEEPSEEK_API_KEY</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">    "model": "deepseek-v4-flash",</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">    "messages": [</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">      {"role": "system", "content": "You are a helpful assistant."},</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">      {"role": "user", "content": "解释量子纠缠的基本原理"}</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">    ],</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    "temperature": 0.7,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    "max_tokens": 4096</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  }'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="python-示例" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="python-示例"><span class="header-section-number">1.2.2</span> Python 示例</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    api_key<span class="op">=</span><span class="st">"your-deepseek-api-key"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    base_url<span class="op">=</span><span class="st">"https://api.deepseek.com"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"deepseek-v4-flash"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are a helpful assistant."</span>},</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"用 Python 实现一个 LRU Cache"</span>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    temperature<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    max_tokens<span class="op">=</span><span class="dv">4096</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.choices[<span class="dv">0</span>].message.content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="最佳实践" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="最佳实践"><span class="header-section-number">1.3</span> 最佳实践</h2>
+<ul>
+<li><strong>模型选择</strong>：日常对话和简单任务用 <code>deepseek-v4-flash</code>，需要深度推理或复杂代码生成时用 <code>deepseek-v4-pro</code></li>
+<li><strong>流式输出</strong>：交互式场景建议开启 <code>stream: true</code>，提升用户体验</li>
+<li><strong>上下文管理</strong>：虽然支持 128K 上下文，但建议控制在 32K 以内以获得最佳性能和性价比</li>
+<li><strong>温度参数</strong>：代码生成建议 0.0-0.3，创意写作 0.7-1.0</li>
+</ul>
+<p>模型矩阵、API 接入与最佳实践</p>
+</section>
+</section>
+<section id="mimo-v2.5" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> MiMo V2.5</h1>
+<p>310B MoE 多模态模型、平台接入与能力详解</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔗 官网：<a href="https://mimo.xiaomi.com/mimo-v2-5/">mimo.xiaomi.com/mimo-v2-5</a> &nbsp;|&nbsp; 平台：<a href="https://platform.xiaomimimo.com">platform.xiaomimimo.com</a> &nbsp;|&nbsp; AI Studio：<a href="https://aistudio.xiaomimimo.com/">aistudio.xiaomimimo.com</a></p>
+</div>
+</div>
+<section id="核心参数" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="核心参数"><span class="header-section-number">2.1</span> 核心参数</h2>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🧠 <strong>架构</strong>：310B MoE（Mixture of Experts） <strong>激活参数</strong>：15B（推理时仅激活约 5% 参数） <strong>训练数据</strong>：48T tokens</p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>原生多模态</strong>：图像 / 视频 / 文档理解 <strong>上下文窗口</strong>：1M tokens <strong>开源协议</strong>：Apache 2.0</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="模型变体" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="模型变体"><span class="header-section-number">2.2</span> 模型变体</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>变体</th>
+<th>价格倍数</th>
+<th>定位</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MiMo-V2.5</td>
+<td>1x</td>
+<td>标准版</td>
+<td>日常多模态任务，性价比均衡</td>
+</tr>
+<tr class="even">
+<td>MiMo-V2.5-Pro</td>
+<td>2x</td>
+<td>增强版</td>
+<td>复杂推理、高精度多模态理解</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">GitHub Pages</td>
-<td style="text-align: left;">静态网站托管</td>
+<td>MiMo-V2.5-Flash</td>
+<td>0.25x</td>
+<td>轻量版</td>
+<td>高并发、低延迟、简单任务</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="能力亮点" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="能力亮点"><span class="header-section-number">2.3</span> 能力亮点</h2>
+<ul>
+<li><strong>图像理解</strong>：支持图表解析、OCR 文字识别、视觉问答，可直接理解扫描件和手写笔记</li>
+<li><strong>视频理解</strong>：原生处理视频流，支持长视频摘要、关键帧提取、动作识别</li>
+<li><strong>文档理解</strong>：1M 上下文窗口可一次性处理整本书或超长报告，支持结构化信息提取</li>
+<li><strong>代码能力</strong>：在代码生成和理解任务上表现优秀，支持多语言编程</li>
+<li><strong>长推理链</strong>：利用 1M 上下文进行多步复杂推理，适合 Agent 工作流</li>
+</ul>
+</section>
+<section id="接入方式" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="接入方式"><span class="header-section-number">2.4</span> 接入方式</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://platform.xiaomimimo.com/v1/chat/completions"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Authorization"</span>: <span class="st">"Bearer YOUR_MIMO_API_KEY"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Content-Type"</span>: <span class="st">"application/json"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: <span class="st">"MiMo-V2.5"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"messages"</span>: [</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: [</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"type"</span>: <span class="st">"text"</span>, <span class="st">"text"</span>: <span class="st">"请分析这张图片中的数据趋势"</span>},</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"type"</span>: <span class="st">"image_url"</span>, <span class="st">"image_url"</span>: {<span class="st">"url"</span>: <span class="st">"https://example.com/chart.png"</span>}}</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        ]}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"max_tokens"</span>: <span class="dv">4096</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>data, headers<span class="op">=</span>headers)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json()[<span class="st">"choices"</span>][<span class="dv">0</span>][<span class="st">"message"</span>][<span class="st">"content"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="开源资源" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="开源资源"><span class="header-section-number">2.5</span> 开源资源</h2>
+<ul>
+<li><strong>HuggingFace</strong>：<a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.5">XiaomiMiMo/MiMo-V2.5</a> — 模型权重、文档和评估结果</li>
+<li><strong>AI Studio</strong>：<a href="https://aistudio.xiaomimimo.com/">aistudio.xiaomimimo.com</a> — 在线体验平台</li>
+<li><strong>协议</strong>：Apache 2.0，可商用部署</li>
+</ul>
+<p>310B MoE 多模态模型、平台接入与能力详解</p>
+</section>
+</section>
+<section id="对比与选型" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 对比与选型</h1>
+<p>两者定位、价格、能力的全面对比</p>
+<section id="核心维度对比" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="核心维度对比"><span class="header-section-number">3.1</span> 核心维度对比</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>DeepSeek V4</th>
+<th>MiMo V2.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>厂商</strong></td>
+<td>DeepSeek（幻方量化）</td>
+<td>小米</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">SCSS</td>
-<td style="text-align: left;">自定义样式</td>
+<td><strong>架构</strong></td>
+<td>Dense / MoE 双版本</td>
+<td>310B MoE（15B active）</td>
+</tr>
+<tr class="odd">
+<td><strong>多模态</strong></td>
+<td>文本为主</td>
+<td>原生图像/视频/文档理解</td>
+</tr>
+<tr class="even">
+<td><strong>上下文窗口</strong></td>
+<td>128K tokens</td>
+<td>1M tokens</td>
+</tr>
+<tr class="odd">
+<td><strong>开源</strong></td>
+<td>部分开源（Dense 模型）</td>
+<td>Apache 2.0 全开源</td>
+</tr>
+<tr class="even">
+<td><strong>API 平台</strong></td>
+<td>platform.deepseek.com</td>
+<td>platform.xiaomimimo.com</td>
+</tr>
+<tr class="odd">
+<td><strong>价格策略</strong></td>
+<td>极低单价，业界最便宜之一</td>
+<td>1x / 2x / 0.25x 三档定价</td>
+</tr>
+<tr class="even">
+<td><strong>最佳场景</strong></td>
+<td>文本推理、代码生成、数学</td>
+<td>多模态理解、长文档、视频分析</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="旗舰模型价格对比" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="旗舰模型价格对比"><span class="header-section-number">3.2</span> 旗舰模型价格对比</h2>
+<p>以各自旗舰模型对比，价格单位为 <strong>人民币 / 每百万 tokens</strong>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>DeepSeek V4 Pro</th>
+<th>MiMo V2.5 Pro</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>输入（缓存命中）</strong></td>
+<td>¥0.026</td>
+<td>¥0.025</td>
+<td>几乎相同，缓存折扣极大</td>
+</tr>
+<tr class="even">
+<td><strong>输入（缓存未命中）</strong></td>
+<td>¥3.14</td>
+<td>¥3.00</td>
+<td>MiMo 略低 ↓</td>
+</tr>
+<tr class="odd">
+<td><strong>输出</strong></td>
+<td>¥6.27</td>
+<td>¥6.00</td>
+<td>MiMo 略低 ↓</td>
+</tr>
+<tr class="even">
+<td><strong>上下文窗口</strong></td>
+<td>1M tokens</td>
+<td>1M tokens</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>多模态</strong></td>
+<td>需另配视觉模型</td>
+<td>原生图像/视频/文档</td>
+<td>MiMo 无需额外成本</td>
 </tr>
 </tbody>
 </table>
 <hr>
-</section>
-<section id="联系方式" class="level2">
-<h2 class="anchored" data-anchor-id="联系方式">联系方式</h2>
-<p>欢迎交流拓扑、分享想法:</p>
-<ul>
-<li>📧 <strong>Email</strong>: <a href="mailto:your_email@edu.com">your_email@edu.com</a></li>
-<li>🐙 <strong>GitHub</strong>: <a href="https://github.com/cyw6130"><span class="citation" data-cites="cyw6130">@cyw6130</span></a></li>
-</ul>
-<hr>
-</section>
-<section id="致谢" class="level2">
-<h2 class="anchored" data-anchor-id="致谢">致谢</h2>
-<p>感谢所有在学术道路上给予我帮助的老师、同学和朋友,让我看到拓扑学的美。</p>
-<p>感谢开源社区让知识分享变得如此简单。</p>
-<hr>
-<div class="callout callout-style-simple callout-tip no-icon">
-<div class="callout-body d-flex">
+<p>各档位模型横向对比（<strong>人民币 / 每百万 tokens</strong>）：</p>
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th vertical-align="top">
+档位
+</th>
+<th vertical-align="top">
+模型
+</th>
+<th vertical-align="top">
+输入（缓存命中）
+</th>
+<th vertical-align="top">
+输入（缓存未命中）
+</th>
+<th vertical-align="top">
+输出
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2" vertical-align="top">
+<b>旗舰</b>
+</td>
+<td vertical-align="top">
+DeepSeek V4 Pro
+</td>
+<td vertical-align="top">
+¥0.026
+</td>
+<td vertical-align="top">
+¥3.14
+</td>
+<td vertical-align="top">
+¥6.27
+</td>
+</tr>
+<tr>
+<td vertical-align="top">
+MiMo V2.5 Pro
+</td>
+<td vertical-align="top">
+¥0.025
+</td>
+<td vertical-align="top">
+¥3.00
+</td>
+<td vertical-align="top">
+¥6.00
+</td>
+</tr>
+<tr>
+<td rowspan="2" vertical-align="top">
+<b>标准</b>
+</td>
+<td vertical-align="top">
+DeepSeek V4 Flash
+</td>
+<td vertical-align="top">
+¥0.020
+</td>
+<td vertical-align="top">
+¥1.01
+</td>
+<td vertical-align="top">
+¥2.02
+</td>
+</tr>
+<tr>
+<td vertical-align="top">
+MiMo V2.5
+</td>
+<td vertical-align="top">
+¥0.020
+</td>
+<td vertical-align="top">
+¥1.00
+</td>
+<td vertical-align="top">
+¥2.00
+</td>
+</tr>
+<tr>
+<td vertical-align="top">
+<b>轻量</b>
+</td>
+<td vertical-align="top">
+MiMo V2.5 Flash
+</td>
+<td vertical-align="top">
+—
+</td>
+<td vertical-align="top">
+约 ¥0.25
+</td>
+<td vertical-align="top">
+约 ¥0.50
+</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>许可协议</strong>: 除特别注明外,本站内容采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。</p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>结论</strong>：旗舰和标准档位价格几乎相同，MiMo 在输出价格上略低。两者相比 GPT-4（$30/$60 ≈ ¥216/¥432）和 Claude Opus（$15/$75 ≈ ¥108/¥540）便宜 <strong>约 70 倍</strong>。如果需要多模态能力，MiMo 的性价比优势更明显——无需额外调用视觉模型。</p>
 </div>
+</div>
+<p>以各自最强模型（旗舰）对比，价格单位为美元/每百万 tokens：</p>
+<section id="mimo-月度-年度套餐" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="mimo-月度-年度套餐"><span class="header-section-number">3.2.1</span> MiMo 月度 / 年度套餐</h3>
+<p>MiMo 除按量计费外，还提供预付费 Credit 套餐，适合有稳定用量的团队：</p>
+<p><strong>月度套餐</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>档位</th>
+<th>Lite</th>
+<th>Standard</th>
+<th>Pro</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定价</strong></td>
+<td>$6 / ¥39</td>
+<td>$16 / ¥99</td>
+<td>$50 / ¥329</td>
+<td>$100 / ¥659</td>
+</tr>
+<tr class="even">
+<td><strong>Credit 额度</strong></td>
+<td>4.1B</td>
+<td>11B</td>
+<td>38B</td>
+<td>82B</td>
+</tr>
+</tbody>
+</table>
+<p><strong>年度套餐</strong>（约 8.8 折）</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>档位</th>
+<th>Lite</th>
+<th>Standard</th>
+<th>Pro</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定价</strong></td>
+<td>$63.36 / ¥411.84</td>
+<td>$168.96 / ¥1045.44</td>
+<td>$528 / ¥3474.24</td>
+<td>$1056 / ¥6959.04</td>
+</tr>
+<tr class="even">
+<td><strong>Credit 额度</strong></td>
+<td>49.2B</td>
+<td>132B</td>
+<td>456B</td>
+<td>984B</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 Credit 是 MiMo 的统一计量单位，不同模型消耗倍数不同：MiMo-V2.5 = 1x，MiMo-V2.5-Pro = 2x，MiMo-V2.5-Flash = 0.25x。套餐适合稳定调用量，按量计费更灵活。</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>DeepSeek V4 Pro</th>
+<th>MiMo V2.5 Pro</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>输入价格</strong></td>
+<td>$0.435/M tokens</td>
+<td>2x 基准价</td>
+<td>DeepSeek 有缓存命中价 $0.003625</td>
+</tr>
+<tr class="even">
+<td><strong>输出价格</strong></td>
+<td>$0.87/M tokens</td>
+<td>2x 基准价</td>
+<td>MiMo 绝对价格见官方平台</td>
+</tr>
+<tr class="odd">
+<td><strong>缓存命中</strong></td>
+<td>输入仅 $0.003625</td>
+<td>未公布</td>
+<td>DeepSeek 缓存折扣极大（~99% off）</td>
+</tr>
+<tr class="even">
+<td><strong>上下文窗口</strong></td>
+<td>128K tokens</td>
+<td>1M tokens</td>
+<td>MiMo 是 DeepSeek 的 8 倍</td>
+</tr>
+<tr class="odd">
+<td><strong>多模态</strong></td>
+<td>需另配视觉模型</td>
+<td>原生图像/视频/文档</td>
+<td>MiMo 无需额外成本</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>各档位模型横向对比：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>档位</th>
+<th>DeepSeek V4</th>
+<th>MiMo V2.5</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>旗舰（最强）</strong></td>
+<td>V4 Pro: $0.435 / $0.87</td>
+<td>V2.5 Pro: 2x 基准</td>
+<td>最强能力，复杂推理</td>
+</tr>
+<tr class="even">
+<td><strong>标准（均衡）</strong></td>
+<td>V4 Flash: $0.14 / $0.28</td>
+<td>V2.5: 1x 基准</td>
+<td>性价比均衡</td>
+</tr>
+<tr class="odd">
+<td><strong>轻量（极速）</strong></td>
+<td>V4 Flash（同上）</td>
+<td>V2.5 Flash: 0.25x</td>
+<td>高并发低延迟</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>价格提示</strong>：DeepSeek V4 的定价已确认（来源：api-docs.deepseek.com）。MiMo V2.5 采用相对定价（1x/2x/0.25x），绝对价格请查阅 <a href="https://platform.xiaomimimo.com">platform.xiaomimimo.com</a>。两者相比 GPT-4（$30/$60）和 Claude Opus（$15/$75）均便宜 1-2 个数量级。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="lite-套餐-vs-api-按量v2.5-pro-实测对比" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="lite-套餐-vs-api-按量v2.5-pro-实测对比"><span class="header-section-number">3.3</span> Lite 套餐 vs API 按量：V2.5-Pro 实测对比</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🎯 <strong>核心结论：</strong>同样 ¥39，Lite 套餐给的 V2.5-Pro 额度约是 API 按量的 <strong>200+ 倍</strong>。套餐对 Pro 用户极其划算。</p>
+</div>
+</div>
+<section id="lite-套餐39-4.1b-credits" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="lite-套餐39-4.1b-credits"><span class="header-section-number">3.3.1</span> Lite 套餐：¥39 → 4.1B Credits</h3>
+<p>MiMo-V2.5-Pro 消耗倍数为 2x，所以实际可用 token：</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>📊 4.1B Credits ÷ 2 = <strong>20.5 亿 tokens</strong></p>
+</div>
+</div>
+</section>
+<section id="api-按量39-能买多少-v2.5-pro" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="api-按量39-能买多少-v2.5-pro"><span class="header-section-number">3.3.2</span> API 按量：¥39 能买多少 V2.5-Pro？</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>场景</th>
+<th>单价（¥/M tokens）</th>
+<th>¥39 能买</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>纯输入（未命中缓存）</td>
+<td>¥3.00</td>
+<td>13.0M tokens</td>
+</tr>
+<tr class="even">
+<td>纯输出</td>
+<td>¥6.00</td>
+<td>6.5M tokens</td>
+</tr>
+<tr class="odd">
+<td>输入 + 输出 1:1 混合</td>
+<td>¥4.50</td>
+<td>8.7M tokens</td>
+</tr>
+<tr class="even">
+<td>输入 + 输出 3:1 混合</td>
+<td>¥3.75</td>
+<td>10.4M tokens</td>
+</tr>
+<tr class="odd">
+<td>纯输入（命中缓存）</td>
+<td>¥0.025</td>
+<td>1560M tokens</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="直接对比" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="直接对比"><span class="header-section-number">3.3.3</span> 直接对比</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>方案</th>
+<th>¥39 获得的 Pro tokens</th>
+<th>差距</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Lite 套餐</strong></td>
+<td>2050M（20.5 亿）</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>API 按量（1:1 混合）</td>
+<td>8.7M</td>
+<td><strong>约 235 倍</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>为什么差这么多？</strong>套餐按 Credit 统一定价（约 ¥0.0095/M Credits），而 API 按量按输入/输出分别计费（Pro 输出 ¥6/M tokens），两者差了两个数量级。 <strong>注意：</strong>4.1B Credits 月底清零。如果你月用量低于约 870 万 Pro tokens（≈ API 按量 ¥39 的等价量），按量反而不浪费；但只要超过这个量，套餐就是纯赚。</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="faq" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> FAQ</h1>
+<p>常见问题与解决方案</p>
+<section id="q-如何申请-api-key" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="q-如何申请-api-key"><span class="header-section-number">4.1</span> Q: 如何申请 API Key？</h2>
+<ul>
+<li><strong>DeepSeek V4</strong>：访问 <a href="https://platform.deepseek.com">platform.deepseek.com</a>，注册后在 API Keys 页面创建。新用户通常有免费额度。</li>
+<li><strong>MiMo V2.5</strong>：访问 <a href="https://platform.xiaomimimo.com">platform.xiaomimimo.com</a>，支持小米账号登录。也可通过 <a href="https://aistudio.xiaomimimo.com/">AI Studio</a> 在线体验。</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

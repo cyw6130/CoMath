@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Brave Search API 独立索引，AI 原生，隐私友好">
 
-<title>ai – Chen 的拓扑笔记</title>
+<title>网页检索 — Brave Search API – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -307,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/brave-search-api.html">网页检索 — Brave Search API</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -329,13 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -442,13 +478,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">AI Tools</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/ai-tools-handbook.html" class="sidebar-item-text sidebar-link">
@@ -487,7 +523,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/brave-search-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/brave-search-api.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">网页检索 — Brave Search API</span></a>
   </div>
 </li>
@@ -503,21 +539,484 @@ document.addEventListener("DOMContentLoaded", function () {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#概览" id="toc-概览" class="nav-link active" data-scroll-target="#概览"><span class="header-section-number">1</span> 概览</a></li>
+  <li><a href="#端点与能力" id="toc-端点与能力" class="nav-link" data-scroll-target="#端点与能力"><span class="header-section-number">2</span> 端点与能力</a></li>
+  <li><a href="#快速上手" id="toc-快速上手" class="nav-link" data-scroll-target="#快速上手"><span class="header-section-number">3</span> 快速上手</a></li>
+  <li><a href="#在-agent-中使用" id="toc-在-agent-中使用" class="nav-link" data-scroll-target="#在-agent-中使用"><span class="header-section-number">4</span> 在 Agent 中使用</a></li>
+  <li><a href="#定价与配额" id="toc-定价与配额" class="nav-link" data-scroll-target="#定价与配额"><span class="header-section-number">5</span> 定价与配额</a></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">6</span> FAQ</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">Notes</a></li><li class="breadcrumb-item"><a href="../notes/ai-tools-handbook.html">AI Tools</a></li><li class="breadcrumb-item"><a href="../notes/brave-search-api.html">网页检索 — Brave Search API</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">网页检索 — Brave Search API</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">search-api</div>
+    <div class="quarto-category">brave-search</div>
+    <div class="quarto-category">ai-agent</div>
+    <div class="quarto-category">web-scraping</div>
+    <div class="quarto-category">llm-context</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Brave Search API 独立索引，AI 原生，隐私友好
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<section id="概览" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 概览</h1>
+<p>Brave Search API 是由 Brave 公司提供的独立搜索引擎 API。与 Google Custom Search 或 Bing Search API 不同，Brave Search 拥有<strong>完全独立的搜索索引</strong>，不依赖任何第三方搜索引擎。</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🔒 <strong>独立索引</strong><br>
+不依赖 Google/Bing，拥有自己的爬虫和索引系统，搜索结果不会被单一搜索引擎的偏见所影响。</p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🤖 <strong>AI 原生设计</strong><br>
+LLM Context 端点专为 AI Agent 设计，返回清洗后的结构化文本，可直接注入 LLM 上下文窗口。</p>
+</div>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>隐私友好</strong><br>
+Brave 以隐私为核心品牌价值，API 不追踪用户行为，不进行用户画像。</p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>相关链接</strong></p>
+<ul>
+<li>官网：<a href="https://brave.com/search/api/">https://brave.com/search/api/</a></li>
+<li>注册：<a href="https://api-dashboard.search.brave.com/register">https://api-dashboard.search.brave.com/register</a></li>
+</ul>
+<p>Brave Search API 的定位与核心优势</p>
+</section>
+<section id="端点与能力" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 端点与能力</h1>
+<p>Brave Search API 提供 6 个核心端点，覆盖网页、图片、视频、新闻等搜索场景，以及专为 AI Agent 设计的 LLM Context 端点。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>端点</th>
+<th>URL 路径</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Web Search</strong></td>
+<td><code>/res/v1/web/search</code></td>
+<td>网页搜索，返回标题、URL、摘要、深度链接等结构化结果</td>
+</tr>
+<tr class="even">
+<td><strong>LLM Context</strong></td>
+<td><code>/res/v1/llm/context</code></td>
+<td>专为 AI 设计，返回清洗后的文本摘要，可直接注入 LLM 上下文窗口</td>
+</tr>
+<tr class="odd">
+<td><strong>Images</strong></td>
+<td><code>/res/v1/images/search</code></td>
+<td>图片搜索，返回缩略图、原图 URL、尺寸、来源页面</td>
+</tr>
+<tr class="even">
+<td><strong>Videos</strong></td>
+<td><code>/res/v1/videos/search</code></td>
+<td>视频搜索，返回视频元数据、缩略图、时长、来源平台</td>
+</tr>
+<tr class="odd">
+<td><strong>News</strong></td>
+<td><code>/res/v1/news/search</code></td>
+<td>新闻搜索，返回最新新闻文章，支持按时间和相关性排序</td>
+</tr>
+<tr class="even">
+<td><strong>Suggest</strong></td>
+<td><code>/suggest/search</code></td>
+<td>搜索建议/自动补全，返回输入联想词列表</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>LLM Context 端点亮点</strong>：这是 Brave 的差异化优势。它直接返回清洗好的纯文本，去除了 HTML 标签、广告、导航栏等噪音，非常适合 RAG（检索增强生成）和 AI Agent 场景。响应格式经过优化，可直接拼接到 LLM 的 prompt 中。</p>
+</div>
+</div>
+<p>Web、LLM Context、Images、Videos、News 详解</p>
+</section>
+<section id="快速上手" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 快速上手</h1>
+<p><strong>第一步：注册并获取 API Key</strong></p>
+<ol type="1">
+<li>访问 <a href="https://api-dashboard.search.brave.com/register">Brave Search API Dashboard</a></li>
+<li>使用邮箱注册账号（支持 Google/GitHub 第三方登录）</li>
+<li>登录后进入 Dashboard，在 <strong>API Keys</strong> 页面创建新的 API Key</li>
+<li>复制保存 API Key（注意保密，不要提交到代码仓库）</li>
+</ol>
+<p><strong>第二步：发起第一个查询</strong></p>
+<p>使用 <code>curl</code> 命令快速测试：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://api.search.brave.com/res/v1/web/search?q=AI+agent+tools"</span> <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Accept: application/json"</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"X-Subscription-Token: YOUR_API_KEY"</span> <span class="kw">|</span> <span class="ex">jq</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://api.search.brave.com/res/v1/llm/context?q=AI+agent+tools&amp;count=5"</span> <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Accept: application/json"</span> <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"X-Subscription-Token: YOUR_API_KEY"</span> <span class="kw">|</span> <span class="ex">jq</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://api.search.brave.com/res/v1/news/search?q=artificial+intelligence&amp;count=10"</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Accept: application/json"</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"X-Subscription-Token: YOUR_API_KEY"</span> <span class="kw">|</span> <span class="ex">jq</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 将 <code>YOUR_API_KEY</code> 替换为你在 Dashboard 中获取的实际 API Key。建议通过环境变量管理 Key：<code>export BRAVE_API_KEY="bsk-xxx"</code></p>
+</div>
+</div>
+<p><strong>第三步：使用 Python SDK</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Accept"</span>: <span class="st">"application/json"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"X-Subscription-Token"</span>: API_KEY</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Web Search</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> requests.get(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://api.search.brave.com/res/v1/web/search"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>{<span class="st">"q"</span>: <span class="st">"Brave Search API"</span>, <span class="st">"count"</span>: <span class="dv">5</span>},</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    headers<span class="op">=</span>headers</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> resp.json()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> results.get(<span class="st">"web"</span>, {}).get(<span class="st">"results"</span>, []):</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>r[title]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>r[url]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>注册、获取 API Key 与第一个查询</p>
+</section>
+<section id="在-agent-中使用" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 在 Agent 中使用</h1>
+<p>Brave Search API 特别适合作为 AI Agent 的搜索工具，尤其是其 <strong>LLM Context</strong> 端点，专为大语言模型设计。</p>
+<p><strong>典型使用场景</strong></p>
+<ul>
+<li><strong>RAG 检索增强生成</strong>：用 LLM Context 端点获取清洗后的文本，直接注入 LLM 的上下文窗口，无需额外的 HTML 解析</li>
+<li><strong>Agent 信息收集</strong>：在多步推理中，Agent 动态搜索最新信息来辅助决策</li>
+<li><strong>事实核查</strong>：Agent 对生成内容进行搜索验证，降低幻觉率</li>
+<li><strong>多模态搜索</strong>：结合 Images/Videos 端点，为 Agent 提供视觉信息</li>
+</ul>
+<p><strong>集成方案</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方案</th>
+<th>适用场景</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>直接 HTTP 调用</td>
+<td>任何语言/框架</td>
+<td>通过 <code>requests</code> / <code>fetch</code> / <code>curl</code> 直接调用 REST API</td>
+</tr>
+<tr class="even">
+<td>LangChain 集成</td>
+<td>LangChain 生态</td>
+<td>使用 <code>BraveSearch</code> 工具类，开箱即用</td>
+</tr>
+<tr class="odd">
+<td>OpenAI Function Calling</td>
+<td>OpenAI/Claude Agent</td>
+<td>将 Brave API 封装为 Tool/Function，供 LLM 自主调用</td>
+</tr>
+<tr class="even">
+<td>MCP Server</td>
+<td>Claude Code / MCP 生态</td>
+<td>通过 MCP 协议将 Brave Search 暴露为工具</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Agent 集成示例（LLM Context）</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> brave_search_for_agent(query: <span class="bu">str</span>, api_key: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""搜索并返回可直接注入 LLM 上下文的清洗文本"""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    resp <span class="op">=</span> requests.get(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"https://api.search.brave.com/res/v1/llm/context"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        params<span class="op">=</span>{<span class="st">"q"</span>: query, <span class="st">"count"</span>: <span class="dv">5</span>},</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        headers<span class="op">=</span>{</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Accept"</span>: <span class="st">"application/json"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"X-Subscription-Token"</span>: api_key</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> resp.json()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LLM Context 端点返回的文本已经过清洗，可直接使用</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data.get(<span class="st">"results"</span>, [{}])[<span class="dv">0</span>].get(<span class="st">"text"</span>, <span class="st">""</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 在 Agent 推理循环中调用</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>context <span class="op">=</span> brave_search_for_agent(<span class="st">"latest AI research 2026"</span>, API_KEY)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 将 context 直接注入 LLM prompt</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="ss">f"Based on the following context:</span><span class="ch">\n</span><span class="sc">{</span>context<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">Answer the question: ..."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>最佳实践</strong>：在 Agent 工作流中，优先使用 LLM Context 端点而非 Web Search 端点。LLM Context 返回的文本已经过清洗和摘要处理，不需要额外的 HTML 解析、正文提取等步骤，可以减少 Agent 的处理步骤和 token 消耗。</p>
+</div>
+</div>
+<p>将 Brave API 集成到 AI Agent 工作流</p>
+</section>
+<section id="定价与配额" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 定价与配额</h1>
+<p>定价与配额</p>
+<p>Brave Search API 采用按量计费模式，免费层提供每月 $5 额度。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>层级</th>
+<th>价格</th>
+<th>配额/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Free</strong></td>
+<td>$0/月</td>
+<td>每月 $5 额度（约 1000-2000 次查询），含所有端点</td>
+</tr>
+<tr class="even">
+<td><strong>Pro (Web Search)</strong></td>
+<td>$5/1000 请求</td>
+<td>无月度上限，按实际用量计费</td>
+</tr>
+<tr class="odd">
+<td><strong>Data for AI (LLM Context)</strong></td>
+<td>$5/1000 请求</td>
+<td>LLM Context 端点专用定价，适合大规模 RAG 场景</td>
+</tr>
+</tbody>
+</table>
+<p><strong>各端点单次查询成本</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>端点</th>
+<th>单次查询成本</th>
+<th>免费层约可查询次数/月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web Search</td>
+<td>$0.005</td>
+<td>~1000 次</td>
+</tr>
+<tr class="even">
+<td>LLM Context</td>
+<td>$0.005</td>
+<td>~1000 次</td>
+</tr>
+<tr class="odd">
+<td>Images</td>
+<td>$0.005</td>
+<td>~1000 次</td>
+</tr>
+<tr class="even">
+<td>Videos</td>
+<td>$0.005</td>
+<td>~1000 次</td>
+</tr>
+<tr class="odd">
+<td>News</td>
+<td>$0.005</td>
+<td>~1000 次</td>
+</tr>
+<tr class="even">
+<td>Suggest</td>
+<td>免费</td>
+<td>无限制</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💰 <strong>省钱技巧</strong>：(1) 使用 <code>count</code> 参数控制返回结果数量，减少不必要的数据传输；(2) 优先使用 LLM Context 端点，它返回的文本已经过压缩和清洗，后续处理的 token 消耗更低；(3) 对重复查询使用缓存，避免重复计费。</p>
+</div>
+</div>
+<p>免费层、付费层与用量优化</p>
+</section>
+<section id="faq" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> FAQ</h1>
+<p><strong>Q1: API Key 如何管理？</strong></p>
+<ul>
+<li>在 <a href="https://api-dashboard.search.brave.com">API Dashboard</a> 中可以创建、查看和删除 API Key</li>
+<li>建议为不同项目创建不同的 Key，便于独立管理和监控用量</li>
+<li>如果 Key 泄露，应立即在 Dashboard 中撤销并重新生成</li>
+<li>不要将 API Key 硬编码在代码中，使用环境变量或密钥管理服务</li>
+</ul>
+<p><strong>Q2: 速率限制是多少？</strong></p>
+<ul>
+<li>Free 层：约 1 请求/秒</li>
+<li>Pro 层：更高的并发限制（具体值请参考官方文档）</li>
+<li>超出速率限制会返回 <code>429 Too Many Requests</code>，建议实现指数退避重试</li>
+</ul>
+<p><strong>Q3: 搜索结果支持哪些语言和地区？</strong></p>
+<ul>
+<li>支持全球多种语言的搜索，通过 <code>search_lang</code> 参数指定搜索语言</li>
+<li>通过 <code>country</code> 参数可指定地区偏好（如 <code>US</code>、<code>CN</code>、<code>JP</code>）</li>
+<li>结果质量在英文方面表现最佳，中文等其他语言持续改进中</li>
+</ul>
+<p><strong>Q4: 与 Google/Bing 搜索 API 有什么区别？</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>对比维度</th>
+<th>Brave Search API</th>
+<th>Google/Bing API</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>索引来源</td>
+<td>独立索引</td>
+<td>依赖自家搜索引擎</td>
+</tr>
+<tr class="even">
+<td>AI 端点</td>
+<td>LLM Context（原生支持）</td>
+<td>需自行解析 HTML</td>
+</tr>
+<tr class="odd">
+<td>免费额度</td>
+<td>$5/月</td>
+<td>Google: 100 次/天免费</td>
+</tr>
+<tr class="even">
+<td>隐私</td>
+<td>不追踪用户</td>
+<td>有用户追踪机制</td>
+</tr>
+<tr class="odd">
+<td>搜索质量</td>
+<td>持续提升中，独立性高</td>
+<td>成熟稳定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q5: LLM Context 和 Web Search 端点返回的数据有什么不同？</strong></p>
+<ul>
+<li><strong>Web Search</strong>：返回完整的搜索结果结构（标题、URL、摘要、深度链接、元数据等），需要自行处理</li>
+<li><strong>LLM Context</strong>：返回清洗后的纯文本摘要，去除了 HTML 标签和噪音，可直接拼接到 LLM 的 prompt 中使用</li>
+<li>如果需要点击链接跳转到原始页面，用 Web Search；如果只需要文本内容供 LLM 消费，用 LLM Context</li>
+</ul>
+<p><strong>Q6: 支持哪些国家的搜索？</strong></p>
+<ul>
+<li>Brave Search 支持全球搜索，没有地区封锁限制</li>
+<li>但搜索质量在英语市场表现最优</li>
+<li>可以通过 <code>country</code> 和 <code>search_lang</code> 参数定制搜索偏好</li>
+</ul>
+<p>常见问题与解决方案</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
