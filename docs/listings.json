@@ -2,6 +2,9 @@
   {
     "listing": "/pages/notes.html",
     "items": [
+      "/notes/kirby-diagram-of-4-manifold.html",
+      "/notes/cerf-theorem-and-kirby-calculus.html",
+      "/notes/knot-hopf-algebra-and-quantum-invariants.html",
       "/notes/intersection-form-of-4-manifold.html",
       "/notes/poincare-conjecture-and-manifold-topological-classification.html",
       "/notes/microgpt-math-impl-compare.html",
