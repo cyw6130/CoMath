@@ -64,7 +64,7 @@ sidebar: false
 ::: {.column width="48%"}
 **Khovanov Homology**
 
-琼斯多项式的范畴化。通过 Lee homology 定义的 s-invariant 可以限制纽结亏格，进而证明 $\mathbb{R}^4$ 上[存在怪异光滑结构](notes/Khovanov_homology.qmd)。Skein lasagna module 进一步定义了四维流形的光滑不变量，首次区分了怪异对。
+琼斯多项式的范畴化。通过 Lee homology 定义的 s-invariant 可以限制纽结亏格，进而证明 $\mathbb{R}^4$ 上[存在怪异光滑结构](notes/Khovanov_homology.qmd)。Skein lasagna module 进一步定义了四维流形的光滑不变量，首次用组合的方式区分了怪异对。
 
 **Non-Semisimple TQFTs**
 
@@ -79,9 +79,9 @@ sidebar: false
 
 解决广义庞加莱猜想的关键工具。通过 handle 分解与 Whitney trick，研究高维流形的光滑与拓扑分类。详见[笔记](notes/h_cobordism_4.qmd)。
 
-**4-Manifolds & Intersection Form**
+**4-Manifolds & Kirby Calculus**
 
-四维流形的微分结构与规范场论（Gauge Theory）之间的深刻联系。[相交形式](notes/intersection-form-of-4-manifold.qmd)作为同伦不变量，是分类单连通四维流形的核心工具（Freedman, Donaldson）。
+[相交形式](notes/intersection-form-of-4-manifold.qmd)作为同伦不变量，是分类单连通四维流形拓扑型的核心工具（Freedman）。四维流形可以使用 [Kirby diagram](notes/kirby-diagram-of-4-manifold.qmd) 描述, 这揭示了纽结和低维流形的联系。
 :::
 
 ::::
