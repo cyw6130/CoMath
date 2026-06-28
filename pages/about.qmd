@@ -40,7 +40,7 @@ toc: false
 
 欢迎交流拓扑、分享想法:
 
-- 📧 **Email**: [your_email@edu.com](mailto:your_email@edu.com)
+- 📧 **Email**: [2120240050@mail.nankai.edu.cn](mailto:2120240050@mail.nankai.edu.cn)
 - 🐙 **GitHub**: [@cyw6130](https://github.com/cyw6130)
 
 ---
