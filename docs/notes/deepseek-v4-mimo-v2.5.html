@@ -589,12 +589,6 @@ document.addEventListener("DOMContentLoaded", function () {
   <ul class="collapse">
   <li><a href="#mimo-月度-年度套餐" id="toc-mimo-月度-年度套餐" class="nav-link" data-scroll-target="#mimo-月度-年度套餐"><span class="header-section-number">3.2.1</span> MiMo 月度 / 年度套餐</a></li>
   </ul></li>
-  <li><a href="#lite-套餐-vs-api-按量v2.5-pro-实测对比" id="toc-lite-套餐-vs-api-按量v2.5-pro-实测对比" class="nav-link" data-scroll-target="#lite-套餐-vs-api-按量v2.5-pro-实测对比"><span class="header-section-number">3.3</span> Lite 套餐 vs API 按量：V2.5-Pro 实测对比</a>
-  <ul class="collapse">
-  <li><a href="#lite-套餐39-4.1b-credits" id="toc-lite-套餐39-4.1b-credits" class="nav-link" data-scroll-target="#lite-套餐39-4.1b-credits"><span class="header-section-number">3.3.1</span> Lite 套餐：¥39 → 4.1B Credits</a></li>
-  <li><a href="#api-按量39-能买多少-v2.5-pro" id="toc-api-按量39-能买多少-v2.5-pro" class="nav-link" data-scroll-target="#api-按量39-能买多少-v2.5-pro"><span class="header-section-number">3.3.2</span> API 按量：¥39 能买多少 V2.5-Pro？</a></li>
-  <li><a href="#直接对比" id="toc-直接对比" class="nav-link" data-scroll-target="#直接对比"><span class="header-section-number">3.3.3</span> 直接对比</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq"><span class="header-section-number">4</span> FAQ</a>
   <ul class="collapse">
@@ -1301,115 +1295,6 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>💡 <strong>价格提示</strong>：DeepSeek V4 的定价已确认（来源：api-docs.deepseek.com）。MiMo V2.5 采用相对定价（1x/2x/0.25x），绝对价格请查阅 <a href="https://platform.xiaomimimo.com">platform.xiaomimimo.com</a>。两者相比 GPT-4（$30/$60）和 Claude Opus（$15/$75）均便宜 1-2 个数量级。</p>
-</div>
-</div>
-</section>
-</section>
-<section id="lite-套餐-vs-api-按量v2.5-pro-实测对比" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="lite-套餐-vs-api-按量v2.5-pro-实测对比"><span class="header-section-number">3.3</span> Lite 套餐 vs API 按量：V2.5-Pro 实测对比</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>🎯 <strong>核心结论：</strong>同样 ¥39，Lite 套餐给的 V2.5-Pro 额度约是 API 按量的 <strong>200+ 倍</strong>。套餐对 Pro 用户极其划算。</p>
-</div>
-</div>
-<section id="lite-套餐39-4.1b-credits" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="lite-套餐39-4.1b-credits"><span class="header-section-number">3.3.1</span> Lite 套餐：¥39 → 4.1B Credits</h3>
-<p>MiMo-V2.5-Pro 消耗倍数为 2x，所以实际可用 token：</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>📊 4.1B Credits ÷ 2 = <strong>20.5 亿 tokens</strong></p>
-</div>
-</div>
-</section>
-<section id="api-按量39-能买多少-v2.5-pro" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="api-按量39-能买多少-v2.5-pro"><span class="header-section-number">3.3.2</span> API 按量：¥39 能买多少 V2.5-Pro？</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>场景</th>
-<th>单价（¥/M tokens）</th>
-<th>¥39 能买</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>纯输入（未命中缓存）</td>
-<td>¥3.00</td>
-<td>13.0M tokens</td>
-</tr>
-<tr class="even">
-<td>纯输出</td>
-<td>¥6.00</td>
-<td>6.5M tokens</td>
-</tr>
-<tr class="odd">
-<td>输入 + 输出 1:1 混合</td>
-<td>¥4.50</td>
-<td>8.7M tokens</td>
-</tr>
-<tr class="even">
-<td>输入 + 输出 3:1 混合</td>
-<td>¥3.75</td>
-<td>10.4M tokens</td>
-</tr>
-<tr class="odd">
-<td>纯输入（命中缓存）</td>
-<td>¥0.025</td>
-<td>1560M tokens</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="直接对比" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="直接对比"><span class="header-section-number">3.3.3</span> 直接对比</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>方案</th>
-<th>¥39 获得的 Pro tokens</th>
-<th>差距</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Lite 套餐</strong></td>
-<td>2050M（20.5 亿）</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>API 按量（1:1 混合）</td>
-<td>8.7M</td>
-<td><strong>约 235 倍</strong></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💡 <strong>为什么差这么多？</strong>套餐按 Credit 统一定价（约 ¥0.0095/M Credits），而 API 按量按输入/输出分别计费（Pro 输出 ¥6/M tokens），两者差了两个数量级。 <strong>注意：</strong>4.1B Credits 月底清零。如果你月用量低于约 870 万 Pro tokens（≈ API 按量 ¥39 的等价量），按量反而不浪费；但只要超过这个量，套餐就是纯赚。</p>
 </div>
 </div>
 </section>
