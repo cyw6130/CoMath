@@ -67,7 +67,7 @@
     "href": "pages/about.html#联系方式",
     "title": "关于本站",
     "section": "联系方式",
-    "text": "联系方式\n欢迎交流拓扑、分享想法:\n\n📧 Email: your_email@edu.com\n🐙 GitHub: @cyw6130"
+    "text": "联系方式\n欢迎交流拓扑、分享想法:\n\n📧 Email: 2120240050@mail.nankai.edu.cn\n🐙 GitHub: @cyw6130"
   },
   {
     "objectID": "pages/about.html#致谢",
@@ -986,7 +986,7 @@
     "href": "index.html#研究兴趣",
     "title": "Chen",
     "section": "研究兴趣",
-    "text": "研究兴趣\n\n\nKhovanov Homology\n琼斯多项式的范畴化。通过 Lee homology 定义的 s-invariant 可以限制纽结亏格，进而证明 \\mathbb{R}^4 上存在怪异光滑结构。Skein lasagna module 进一步定义了四维流形的光滑不变量，首次区分了怪异对。\nNon-Semisimple TQFTs\n非单模范畴（non-unimodular categories）中的修正轨迹（modified traces）及其在拓扑量子场论中的应用。\n\n\nH-Cobordism & Surgery Theory\n解决广义庞加莱猜想的关键工具。通过 handle 分解与 Whitney trick，研究高维流形的光滑与拓扑分类。详见笔记。\n4-Manifolds & Intersection Form\n四维流形的微分结构与规范场论（Gauge Theory）之间的深刻联系。相交形式作为同伦不变量，是分类单连通四维流形的核心工具（Freedman, Donaldson）。"
+    "text": "研究兴趣\n\n\nKhovanov Homology\n琼斯多项式的范畴化。通过 Lee homology 定义的 s-invariant 可以限制纽结亏格，进而证明 \\mathbb{R}^4 上存在怪异光滑结构。Skein lasagna module 进一步定义了四维流形的光滑不变量，首次用组合的方式区分了怪异对。\nNon-Semisimple TQFTs\n非单模范畴（non-unimodular categories）中的修正轨迹（modified traces）及其在拓扑量子场论中的应用。\n\n\nH-Cobordism & Surgery Theory\n解决广义庞加莱猜想的关键工具。通过 handle 分解与 Whitney trick，研究高维流形的光滑与拓扑分类。详见笔记。\n4-Manifolds & Kirby Calculus\n相交形式作为同伦不变量，是分类单连通四维流形拓扑型的核心工具（Freedman）。四维流形可以使用 Kirby diagram 描述, 这揭示了纽结和低维流形的联系。"
   },
   {
     "objectID": "index.html#最近动态",
@@ -2047,7 +2047,7 @@
     "href": "pages/ai.html#关注方向",
     "title": "AI",
     "section": "关注方向",
-    "text": "关注方向\n\n\nAI for Math\n好奇深度学习模型背后的数学，也尝试把 AI 用到数学研究里。比如把一个极简纯 Python 的 MicroGPT 实现逐行对照其数学原理，从词嵌入、注意力到 Adam 优化，看清每个数学概念如何落到代码。\n研究工作流自动化\n用 Agent 和 CLI 工具把研究中的重复劳动流水线化：文献检索、文档 OCR 解析、飞书/Obsidian 读写、多平台内容检索。\n\n\n\nAgent 与工具链\n围绕 Claude Code 搭建自己的 subagent 与 skill 体系，把”调研 → 蒸馏 → 成文 → 发布”做成可复用的流程。AI 工具手册汇总了这套工作流里用到的各类工具。\n模型与 API\n关注国产开源模型与可用 API 的进展，作为工作流的底层引擎。详见 DeepSeek V4 / MiMo V2.5、Brave Search API 等笔记。",
+    "text": "关注方向\n\n\nLLM 原理\n好奇深度学习模型背后的数学，也尝试把 AI 用到数学研究里。比如把一个极简纯 Python 的 MicroGPT 实现逐行对照其数学原理，从词嵌入、注意力到 Adam 优化，看清每个数学概念如何落到代码。\n研究工作流自动化\n用 Agent 和 CLI 工具把研究中的重复劳动流水线化：文献检索、文档 OCR 解析、飞书/Obsidian 读写、多平台内容检索。\n\n\n\nAgent 与工具链\n围绕 Claude Code 搭建自己的 subagent 与 skill 体系, AI 工具手册汇总了这套工作流里用到的各类工具。\n模型与 API\n关注国产开源模型与可用 API 的进展，作为工作流的底层引擎。详见 DeepSeek V4 / MiMo V2.5、Brave Search API 等笔记。",
     "crumbs": [
       "Home",
       "🤖 AI",
@@ -2059,7 +2059,7 @@
     "href": "pages/ai.html#主题分类",
     "title": "AI",
     "section": "主题分类",
-    "text": "主题分类\n\n\n\n\nAI for Math\n\nMicroGPT 数学原理与实现对照\n\n\n\n\n\n\n\nAI 工具\n\nAI 工具手册 — 汇总\n文献检索工具手册\nOCR 文档解析 — MinerU\n飞书文档读写 — lark-cli\nObsidian 文档读写 — Obsidian CLI\n多平台内容检索 — Agent-Reach\n网页检索 — Brave Search API\n国产 AI 模型 — DeepSeek V4 / MiMo V2.5",
+    "text": "主题分类\n\n\n\n\nLLM 原理\n\nMicroGPT 数学原理与实现对照\n\n\n\n\n\n\n\nAI 工具\n\nAI 工具手册 — 汇总\n文献检索工具手册\nOCR 文档解析 — MinerU\n飞书文档读写 — lark-cli\nObsidian 文档读写 — Obsidian CLI\n多平台内容检索 — Agent-Reach\n网页检索 — Brave Search API\n国产 AI 模型 — DeepSeek V4 / MiMo V2.5",
     "crumbs": [
       "Home",
       "🤖 AI",
