@@ -2,7 +2,7 @@
 title: "MicroGPT 数学原理与实现对照"
 description: "极简纯 Python GPT 的数学原理与代码实现逐节对照，涵盖词嵌入、注意力机制、Adam 优化等核心模块。"
 date: "2026-03-07"
-categories: [Large Language Models, Deep Learning, AI for Math]
+categories: [Large Language Models, Deep Learning, LLM 原理]
 ---
 
 # MicroGPT 数学原理与实现对照
