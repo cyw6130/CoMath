@@ -1,0 +1,277 @@
+---
+title: "REINFORCE 策略梯度算法：数学原理与代码对照"
+date: 2026-06-30
+categories:
+  - reinforcement-learning
+  - policy-gradient
+  - reinforce
+  - monte-carlo
+  - pytorch
+  - machine-learning
+  - deep-learning
+description: "REINFORCE策略梯度算法的数学原理与PyTorch代码对照"
+---
+
+:::{.callout-note}
+来源
+- 实现参考：REINFORCE policy gradient demo（PyTorch）
+- 算法：REINFORCE（policy gradient，蒙特卡洛策略梯度）
+:::
+
+这份笔记把 REINFORCE 算法的数学推导与一份 PyTorch 演示代码逐节对应。代码用一个两层 MLP 策略网络，在一个 5 状态的一维世界（LineWorld）里通过策略梯度学习走到终点。
+
+## 算法结构
+
+- **环境与状态表示**
+    - LineWorld：5 个状态，起点 0，终点 4，到终点 reward=1，否则为 0
+    - one-hot 编码 — $\mathbf{x}_s \in \{0,1\}^5$
+- **策略网络** $\pi_\theta(a|s)$
+    - MLP 输出动作 logits，softmax 得到动作分布 — $\pi_\theta(a|s) = \text{softmax}(f_\theta(\mathbf{x}_s))$
+- **Rollout（采样轨迹）**
+    - 从 $\pi_\theta$中采样动作，记录$\log \pi_\theta(a_t|s_t)$与$r_t$
+- **Discounted Return 计算**
+    - 递推定义 — $G_t = r_t + \gamma G_{t+1}$
+    - Return 标准化（降方差） — $\hat{G}_t = \dfrac{G_t - \mu_G}{\sigma_G + \epsilon}$
+- **REINFORCE 梯度 / Loss**
+    - 策略梯度定理（log-derivative trick） — $\nabla_\theta J(\theta) = \mathbb{E}\left[\nabla_\theta \log \pi_\theta(a_t|s_t)\cdot G_t\right]$
+    - 取负号转为可最小化的 loss — $L(\theta) = -\sum_t \log \pi_\theta(a_t|s_t)\cdot \hat{G}_t$
+- **参数更新**
+    - 反向传播 + Adam 优化器
+- **评估**
+    - 训练后查看各状态下的动作概率分布
+    - 贪心策略（argmax）测试最终路径
+
+## 概览表格
+
+| 算法步骤 | 对应函数/位置 | 简要说明 |
+|---|---|---|
+| 环境 LineWorld | `LineWorld` 类 | 5 状态一维世界，到终点给 reward=1。 |
+| one-hot 状态编码 | `one_hot()` 函数 | 把整数状态映射为 5 维 one-hot 向量。 |
+| 策略网络 | `PolicyNet` 类 | 两层 MLP，输出两个动作的 logits。 |
+| 动作采样 | rollout 循环中的 `Categorical(logits=logits)` | 把 logits 转为分布并采样动作，记录 log_prob。 |
+| Discounted Return 递推 | `for reward in reversed(rewards): G = reward + gamma * G` | 从轨迹末尾往前累加，计算每一步的 $G_t$。 |
+| Return 标准化 | `(returns - returns.mean()) / (returns.std() + 1e-8)` | 对一条轨迹内的 $G_t$ 做减均值除标准差，降低梯度方差。 |
+| REINFORCE loss | `loss += -log_prob * G` | 实现策略梯度定理的负号版本，用于梯度下降。 |
+| 参数更新 | `optimizer.zero_grad(); loss.backward(); optimizer.step()` | 反向传播计算梯度，Adam 更新网络参数。 |
+| 训练后策略可视化 | 训练循环结束后的 `softmax(logits)` 打印 | 查看每个状态下学到的动作概率分布。 |
+| 贪心策略测试 | 末尾 `torch.argmax(probs)` 循环 | 测试时不采样，直接选概率最大的动作，观察最终路径。 |
+
+## 环境与状态表示
+
+:::{.callout-tip}
+数学原理
+状态空间 $\mathcal{S} = \{0,1,2,3,4\}$，动作空间 $\mathcal{A} = \{\text{left}, \text{right}\}$。状态转移是确定性的：left 使状态减 1（下界 0），right 使状态加 1（上界 4，即终点）。奖励函数稀疏：只有到达终点（$s=4$）才给 $r=1$，其余步骤 $r=0$。
+
+神经网络无法直接处理整数状态 id，需要先编码为向量：用 one-hot 表示 $\mathbf{x}_s \in \{0,1\}^5$，第 $s$ 个分量为 1，其余为 0。
+:::
+
+**代码实现**：
+
+```python
+class LineWorld:
+    def __init__(self):
+        self.n_states = 5
+        self.start = 0
+        self.goal = 4
+        self.state = self.start
+
+    def step(self, action):
+        if action == 0:
+            self.state = max(0, self.state - 1)
+        else:
+            self.state = min(self.goal, self.state + 1)
+        done = self.state == self.goal
+        reward = 1.0 if done else 0.0
+        return self.state, reward, done
+
+
+def one_hot(state, n_states):
+    x = torch.zeros(n_states)
+    x[state] = 1.0
+    return x
+```
+
+**对应说明**：`step()` 中的 `max`/`min` 实现了状态转移的边界裁剪，`done`/`reward` 对应稀疏奖励设定。`one_hot()` 函数直接构造长度为 `n_states` 的零向量，把对应位置置 1，实现 $s \mapsto \mathbf{x}_s$ 的映射。
+
+## 策略网络
+
+:::{.callout-tip}
+数学原理
+策略 $\pi_\theta(a|s)$由参数为$\theta$的神经网络$f_\theta$ 给出未归一化的动作分数（logits），再用 softmax 转成概率分布：
+
+$$\pi_\theta(a|s) = \frac{\exp(f_\theta(\mathbf{x}_s)_a)}{\sum_{a'} \exp(f_\theta(\mathbf{x}_s)_{a'})}$$
+:::
+
+**代码实现**：
+
+```python
+class PolicyNet(nn.Module):
+    def __init__(self, n_states, n_actions):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(n_states, 16),
+            nn.ReLU(),
+            nn.Linear(16, n_actions)
+        )
+
+    def forward(self, state_onehot):
+        logits = self.net(state_onehot)
+        return logits
+```
+
+**对应说明**：`self.net` 就是 $f_\theta$，输入 one-hot 状态向量，经过一层隐藏维度为 16 的 MLP（带 ReLU 非线性），输出两个动作的 logits。softmax 归一化这一步并未在 `PolicyNet` 内显式写出，而是交给后面的 `Categorical(logits=logits)` 隐式完成。
+
+## Rollout：采样轨迹
+
+:::{.callout-tip}
+数学原理
+给定当前策略 $\pi_\theta$，从状态 $s_t$出发采样动作$a_t \sim \pi_\theta(\cdot|s_t)$，记录该动作的对数概率 $\log \pi_\theta(a_t|s_t)$，执行后得到下一状态 $s_{t+1}$和奖励$r_t$。重复直到终止（到达终点或步数上限）。这一过程为后续策略梯度估计提供了样本轨迹 $\{(s_t, a_t, \log \pi_\theta(a_t|s_t), r_t)\}$。
+:::
+
+**代码实现**：
+
+```python
+while not done and steps < 20:
+    state_tensor = one_hot(state, env.n_states)
+    logits = policy(state_tensor)
+    dist = Categorical(logits=logits)
+    action = dist.sample()
+    log_prob = dist.log_prob(action)
+
+    next_state, reward, done = env.step(action.item())
+
+    states.append(state)
+    log_probs.append(log_prob)
+    rewards.append(reward)
+
+    state = next_state
+    steps += 1
+```
+
+**对应说明**：`Categorical(logits=logits)` 内部完成了 softmax 归一化并构造出动作分布，对应数学原理中的 $\pi_\theta(\cdot|s_t)$。`dist.sample()` 实现 $a_t \sim \pi_\theta$，`dist.log_prob(action)` 计算 $\log \pi_\theta(a_t|s_t)$。`env.step()` 给出环境转移和奖励，三个列表 `states`、`log_probs`、`rewards` 累积了整条轨迹。
+
+## Discounted Return 计算
+
+::: {.callout-tip}
+## 数学原理
+折扣回报（return）定义为从时刻 $t$ 起未来奖励的折扣加和：
+
+$$G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$$
+
+这等价于递推形式：
+
+$$G_t = r_t + \gamma G_{t+1}$$
+
+从轨迹末尾往前递推可以高效计算出每一步的 $G_t$。$\gamma \in [0,1)$是折扣因子，本例中$\gamma = 0.99$。
+:::
+
+**代码实现**：
+
+```python
+returns = []
+G = 0.0
+
+for reward in reversed(rewards):
+    G = reward + gamma * G
+    returns.insert(0, G)
+
+returns = torch.tensor(returns)
+```
+
+**对应说明**：`for reward in reversed(rewards)` 从轨迹最后一步往前遍历，`G = reward + gamma * G` 正是递推公式 $G_t = r_t + \gamma G_{t+1}$的直接实现（此处变量 `G` 在每次迭代中分别承担$G_{t+1}$和更新后的$G_t$的角色）。`returns.insert(0, G)` 把算出的$G_t$ 按时间顺序插回列表头部，恢复正序排列。
+
+## Return 标准化
+
+::: {.callout-tip}
+## 数学原理
+蒙特卡洛策略梯度估计的方差较大，是 REINFORCE 训练不稳定的主要原因之一。一种常见的方差缩减手段是对一条轨迹内的 return 做标准化（减均值除标准差）：
+
+$$\hat{G}_t = \frac{G_t - \mu_G}{\sigma_G + \epsilon}$$
+
+其中 $\mu_G, \sigma_G$是这条轨迹内所有$G_t$ 的均值和标准差，$\epsilon$ 是防止除零的小常数。这本质上是一种简化的 baseline：用轨迹自身的统计量近似代替更复杂的状态价值函数 baseline。
+:::
+
+**代码实现**：
+
+```python
+if len(returns) > 1:
+    returns = (returns - returns.mean()) / (returns.std() + 1e-8)
+```
+
+**对应说明**：`returns.mean()`、`returns.std()` 分别对应 $\mu_G$、$\sigma_G$，`1e-8` 对应 $\epsilon$。`if len(returns) > 1` 是为了避免单步轨迹时标准差为 0 导致的数值问题。
+
+## REINFORCE 梯度 / Loss
+
+::: {.callout-tip}
+## 数学原理
+策略梯度定理通过 log-derivative trick 把期望回报对参数的梯度，转化为可以用采样轨迹估计的形式：
+
+$$\nabla_\theta J(\theta) = \nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[\sum_t \nabla_\theta \log \pi_\theta(a_t|s_t)\cdot G_t\right]$$
+
+推导关键是利用 $\nabla_\theta \pi_\theta = \pi_\theta \nabla_\theta \log \pi_\theta$（即 $\nabla_\theta \log \pi_\theta = \nabla_\theta \pi_\theta / \pi_\theta$），把对分布求梯度的期望积分转化为对 $\log$ 概率求梯度的期望，从而可以用采样轨迹做蒙特卡洛估计。
+
+由于优化目标是最大化 $J(\theta)$，而常用优化器（如 Adam）执行的是梯度下降（最小化），所以构造一个等价的 loss，使其梯度的负方向就是 $\nabla_\theta J(\theta)$ 的方向：
+
+$$L(\theta) = -\sum_t \log \pi_\theta(a_t|s_t)\cdot \hat{G}_t$$
+:::
+
+**代码实现**：
+
+```python
+loss = 0.0
+
+for log_prob, G in zip(log_probs, returns):
+    loss += -log_prob * G
+```
+
+**对应说明**：`log_prob` 对应 $\log \pi_\theta(a_t|s_t)$，`G` 此处是标准化后的 $\hat{G}_t$（沿用前一步覆写后的 `returns` 变量名）。`loss += -log_prob * G` 逐步累加 $-\log \pi_\theta(a_t|s_t)\cdot \hat{G}_t$，对所有时间步求和后得到 $L(\theta)$，与策略梯度定理的负号版本一一对应。
+
+## 参数更新
+
+::: {.callout-tip}
+## 数学原理
+对 $L(\theta)$求梯度$\nabla_\theta L(\theta)$（由自动微分完成），再用 Adam 优化器沿梯度反方向更新参数 $\theta$，使 $L(\theta)$下降，等价于使原始目标$J(\theta)$ 上升。
+:::
+
+**代码实现**：
+
+```python
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+```
+
+**对应说明**：`loss.backward()` 通过 PyTorch 自动微分计算出 $\nabla_\theta L(\theta)$ 并存入各参数的 `.grad`，`optimizer.step()` 用 Adam 规则更新 `policy` 的参数。`optimizer.zero_grad()` 清空上一步残留的梯度。
+
+## 评估：策略可视化与贪心测试
+
+::: {.callout-tip}
+## 数学原理
+训练收敛后，策略 $\pi_\theta(a|s)$应该在每个状态下都偏向能更快到达终点的动作（本例中应偏向 right）。直接读出每个状态的动作概率分布可以验证这一点。此外，贪心策略$a^* = \arg\max_a \pi_\theta(a|s)$ 去掉了采样的随机性，反映策略网络学到的"确定性最优路径"。
+:::
+
+**代码实现**：
+
+```python
+for s in range(env.n_states):
+    state_tensor = one_hot(s, env.n_states)
+    logits = policy(state_tensor)
+    probs = torch.softmax(logits, dim=0)
+    # 打印 probs[0]（left）、probs[1]（right）
+
+# 贪心测试
+action = torch.argmax(probs).item()
+```
+
+**对应说明**：`torch.softmax(logits, dim=0)` 显式计算出 $\pi_\theta(\cdot|s)$用于查看；末尾测试循环里的 `torch.argmax(probs)` 实现$\arg\max_a \pi_\theta(a|s)$，得到贪心动作并逐步走出最终路径。
+
+## 补充说明
+
+**笔记中未详细覆盖的代码细节**：
+
+- **步数上限（`steps < 20`）**：防止策略尚未学好时陷入死循环（比如一直 left/right 摆动），是工程上的安全网，不属于核心数学推导。
+- **Adam 优化器的具体更新公式**（一阶矩、二阶矩、偏差校正）：代码中直接调用 `optim.Adam`，未手写矩估计的细节，本笔记也未展开推导，只在"参数更新"一节做了概念性说明。
+- **学习率 `lr=0.01` 与折扣因子 `gamma=0.99` 的取值**：是经验超参数，笔记未讨论其调参依据。
+
+---
+*生成日期：2026-06-30*

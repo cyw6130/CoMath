@@ -4,6 +4,7 @@ subtitle: "AI 工具、Agent 与数学的交叉探索"
 listing:
   contents:
     - ../notes/microgpt-math-impl-compare.qmd
+    - ../notes/reinforce-policy-gradient.qmd
     - ../notes/ai-tools-handbook.qmd
     - ../notes/literature-search-tools.qmd
     - ../notes/mineru-ocr-document-parsing.qmd
@@ -34,7 +35,7 @@ toc: false
 ::: {.column width="48%"}
 **LLM 原理**
 
-好奇深度学习模型背后的数学，也尝试把 AI 用到数学研究里。比如把一个极简纯 Python 的 [MicroGPT 实现逐行对照其数学原理](../notes/microgpt-math-impl-compare.qmd)，从词嵌入、注意力到 Adam 优化，看清每个数学概念如何落到代码。
+好奇深度学习模型背后的数学，也尝试把 AI 用到数学研究里。比如把一个极简纯 Python 的 [MicroGPT 实现逐行对照其数学原理](../notes/microgpt-math-impl-compare.qmd)，从词嵌入、注意力到 Adam 优化，看清每个数学概念如何落到代码；也用 [REINFORCE 策略梯度算法](../notes/reinforce-policy-gradient.qmd)的数学推导与代码对照，理解强化学习里策略梯度定理是如何落地的。
 
 **研究工作流自动化**
 
@@ -68,6 +69,7 @@ toc: false
 ###  LLM 原理
 
 - [MicroGPT 数学原理与实现对照](../notes/microgpt-math-impl-compare.qmd)
+- [REINFORCE 策略梯度算法：数学原理与代码对照](../notes/reinforce-policy-gradient.qmd)
 :::
 :::
 :::

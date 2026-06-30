@@ -28,6 +28,7 @@
       "/notes/mineru-ocr-document-parsing.html",
       "/notes/agent-reach-multi-platform-content-retrieval.html",
       "/notes/deepseek-v4-mimo-v2.5.html",
+      "/notes/reinforce-policy-gradient.html",
       "/notes/microgpt-math-impl-compare.html"
     ]
   },
@@ -42,6 +43,7 @@
       "/notes/agent-reach-multi-platform-content-retrieval.html",
       "/notes/brave-search-api.html",
       "/notes/deepseek-v4-mimo-v2.5.html",
+      "/notes/reinforce-policy-gradient.html",
       "/notes/microgpt-math-impl-compare.html"
     ]
   }

@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-09">
+<meta name="dcterms.date" content="2026-06-30">
+<meta name="description" content="REINFORCE策略梯度算法的数学原理与PyTorch代码对照">
 
-<title>伯努利数、Zeta 函数与怪球 – Chen 的拓扑笔记</title>
+<title>REINFORCE 策略梯度算法：数学原理与代码对照 – Chen 的拓扑笔记</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -355,7 +391,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">📐 Math</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/ai.html">🤖 AI</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">LLM 原理</a></li><li class="breadcrumb-item"><a href="../notes/reinforce-policy-gradient.html">REINFORCE 策略梯度算法：数学原理与代码对照</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -377,13 +413,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">📐 Math</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notes.html" class="sidebar-item-text sidebar-link">
@@ -450,13 +486,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">High-dimensional Manifolds</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/h_cobordism_4.html" class="sidebar-item-text sidebar-link">
@@ -465,7 +501,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notes/bernoulli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">伯努利数、Zeta 函数与怪球</span></a>
   </div>
 </li>
@@ -475,13 +511,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">🤖 AI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/ai.html" class="sidebar-item-text sidebar-link">
@@ -490,13 +526,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">LLM 原理</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notes/microgpt-math-impl-compare.html" class="sidebar-item-text sidebar-link">
@@ -505,7 +541,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notes/reinforce-policy-gradient.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/reinforce-policy-gradient.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">REINFORCE 策略梯度算法：数学原理与代码对照</span></a>
   </div>
 </li>
@@ -578,16 +614,17 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#伯努利数的定义" id="toc-伯努利数的定义" class="nav-link active" data-scroll-target="#伯努利数的定义"><span class="header-section-number">1</span> 1 伯努利数的定义</a></li>
-  <li><a href="#伯努利数的计算" id="toc-伯努利数的计算" class="nav-link" data-scroll-target="#伯努利数的计算"><span class="header-section-number">2</span> 2 伯努利数的计算</a></li>
-  <li><a href="#伯努利数的分母" id="toc-伯努利数的分母" class="nav-link" data-scroll-target="#伯努利数的分母"><span class="header-section-number">3</span> 3 伯努利数的分母</a></li>
-  <li><a href="#伯努利数和-zeta-函数" id="toc-伯努利数和-zeta-函数" class="nav-link" data-scroll-target="#伯努利数和-zeta-函数"><span class="header-section-number">4</span> 4 伯努利数和 zeta 函数</a></li>
-  <li><a href="#伯努利数与怪球" id="toc-伯努利数与怪球" class="nav-link" data-scroll-target="#伯努利数与怪球"><span class="header-section-number">5</span> 5 伯努利数与怪球</a>
-  <ul class="collapse">
-  <li><a href="#庞加莱猜想和怪球" id="toc-庞加莱猜想和怪球" class="nav-link" data-scroll-target="#庞加莱猜想和怪球"><span class="header-section-number">5.1</span> 5.1 庞加莱猜想和怪球</a></li>
-  <li><a href="#怪球与球面的稳定同伦群" id="toc-怪球与球面的稳定同伦群" class="nav-link" data-scroll-target="#怪球与球面的稳定同伦群"><span class="header-section-number">5.2</span> 5.2 怪球与球面的稳定同伦群</a></li>
-  <li><a href="#计算-怪球和伯努利数" id="toc-计算-怪球和伯努利数" class="nav-link" data-scroll-target="#计算-怪球和伯努利数"><span class="header-section-number">5.3</span> 5.3 计算: 怪球和伯努利数</a></li>
-  </ul></li>
+  <li><a href="#算法结构" id="toc-算法结构" class="nav-link active" data-scroll-target="#算法结构"><span class="header-section-number">1</span> 算法结构</a></li>
+  <li><a href="#概览表格" id="toc-概览表格" class="nav-link" data-scroll-target="#概览表格"><span class="header-section-number">2</span> 概览表格</a></li>
+  <li><a href="#环境与状态表示" id="toc-环境与状态表示" class="nav-link" data-scroll-target="#环境与状态表示"><span class="header-section-number">3</span> 环境与状态表示</a></li>
+  <li><a href="#策略网络" id="toc-策略网络" class="nav-link" data-scroll-target="#策略网络"><span class="header-section-number">4</span> 策略网络</a></li>
+  <li><a href="#rollout采样轨迹" id="toc-rollout采样轨迹" class="nav-link" data-scroll-target="#rollout采样轨迹"><span class="header-section-number">5</span> Rollout：采样轨迹</a></li>
+  <li><a href="#discounted-return-计算" id="toc-discounted-return-计算" class="nav-link" data-scroll-target="#discounted-return-计算"><span class="header-section-number">6</span> Discounted Return 计算</a></li>
+  <li><a href="#return-标准化" id="toc-return-标准化" class="nav-link" data-scroll-target="#return-标准化"><span class="header-section-number">7</span> Return 标准化</a></li>
+  <li><a href="#reinforce-梯度-loss" id="toc-reinforce-梯度-loss" class="nav-link" data-scroll-target="#reinforce-梯度-loss"><span class="header-section-number">8</span> REINFORCE 梯度 / Loss</a></li>
+  <li><a href="#参数更新" id="toc-参数更新" class="nav-link" data-scroll-target="#参数更新"><span class="header-section-number">9</span> 参数更新</a></li>
+  <li><a href="#评估策略可视化与贪心测试" id="toc-评估策略可视化与贪心测试" class="nav-link" data-scroll-target="#评估策略可视化与贪心测试"><span class="header-section-number">10</span> 评估：策略可视化与贪心测试</a></li>
+  <li><a href="#补充说明" id="toc-补充说明" class="nav-link" data-scroll-target="#补充说明"><span class="header-section-number">11</span> 补充说明</a></li>
   </ul>
 </nav>
 </nav>
@@ -599,17 +636,25 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notes.html">📐 Math</a></li><li class="breadcrumb-item"><a href="../notes/h_cobordism_4.html">High-dimensional Manifolds</a></li><li class="breadcrumb-item"><a href="../notes/bernoulli.html">伯努利数、Zeta 函数与怪球</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/ai.html">🤖 AI</a></li><li class="breadcrumb-item"><a href="../notes/microgpt-math-impl-compare.html">LLM 原理</a></li><li class="breadcrumb-item"><a href="../notes/reinforce-policy-gradient.html">REINFORCE 策略梯度算法：数学原理与代码对照</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">伯努利数、Zeta 函数与怪球</h1>
+<h1 class="title">REINFORCE 策略梯度算法：数学原理与代码对照</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Number Theory</div>
-    <div class="quarto-category">Exotic Spheres</div>
-    <div class="quarto-category">Differential Topology</div>
-    <div class="quarto-category">High-Dimensional Manifolds</div>
+    <div class="quarto-category">reinforcement-learning</div>
+    <div class="quarto-category">policy-gradient</div>
+    <div class="quarto-category">reinforce</div>
+    <div class="quarto-category">monte-carlo</div>
+    <div class="quarto-category">pytorch</div>
+    <div class="quarto-category">machine-learning</div>
+    <div class="quarto-category">deep-learning</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    REINFORCE策略梯度算法的数学原理与PyTorch代码对照
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -618,7 +663,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 9, 2026</p>
+      <p class="date">June 30, 2026</p>
     </div>
   </div>
   
@@ -630,397 +675,367 @@ window.Quarto = {
 </header>
 
 
-<section id="伯努利数的定义" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 1 伯努利数的定义</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>来源 - 实现参考：REINFORCE policy gradient demo（PyTorch） - 算法：REINFORCE（policy gradient，蒙特卡洛策略梯度）</p>
+</div>
+</div>
+<p>这份笔记把 REINFORCE 算法的数学推导与一份 PyTorch 演示代码逐节对应。代码用一个两层 MLP 策略网络，在一个 5 状态的一维世界（LineWorld）里通过策略梯度学习走到终点。</p>
+<section id="算法结构" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="算法结构"><span class="header-section-number">1</span> 算法结构</h2>
 <ul>
-<li>动机：尝试计算 <span class="math inline">S_k(n) = \sum_{m=0}^{n-1} m^k</span> 的通项公式
+<li><strong>环境与状态表示</strong>
 <ul>
-<li>当 k=0, 1, 2 时，我们已经知道
-<ul>
-<li><span class="math inline">S_0(n) = n</span></li>
-<li><span class="math inline">S_1(n) = \frac{n(n-1)}{2}</span></li>
-<li><span class="math inline">S_2(n) = \frac{n(n-1)(2n-1)}{6}</span></li>
+<li>LineWorld：5 个状态，起点 0，终点 4，到终点 reward=1，否则为 0</li>
+<li>one-hot 编码 — <span class="math inline">\mathbf{x}_s \in \{0,1\}^5</span></li>
 </ul></li>
-<li>但对于一般的 k，如何计算 <span class="math inline">S_k(n)</span>？</li>
-</ul></li>
-<li>另一个问题：这个离散求和与积分 <span class="math inline">\int_0^n x^k dx</span> 之间有什么关系？
+<li><strong>策略网络</strong> <span class="math inline">\pi_\theta(a|s)</span>
 <ul>
-<li>我们知道 <span class="math inline">\int_0^n x^k dx = \frac{n^{k+1}}{k+1}</span></li>
-<li>我们能否将 <span class="math inline">S_k(n)</span> 表示为 <span class="math inline">\int_0^n x^k dx</span> 加上一些修正项？</li>
+<li>MLP 输出动作 logits，softmax 得到动作分布 — <span class="math inline">\pi_\theta(a|s) = \text{softmax}(f_\theta(\mathbf{x}_s))</span></li>
 </ul></li>
-<li>为了回答这些问题，我们引入伯努利数。</li>
-<li>定义：生成函数
+<li><strong>Rollout（采样轨迹）</strong>
 <ul>
-<li>定义：形式幂级数环 <span class="math inline">\mathbb{C}[[x]]</span>。它是对多项式环的推广，但是这里我们允许无穷多项式项存在，同时我们不要求这个无穷求和是收敛的。形式幂级数环中的元素被称为形式幂级数，它们的形式为： <span class="math display">
-f(x) = \sum_{n=0}^{\infty} a_n x^n
-</span> 其中，<span class="math inline">a_n</span> 是系数，可以是任意复数。形式幂级数的加法和乘法与多项式类似，但是我们不关心收敛性问题。</li>
-<li>定义：指数生成函数
-<ul>
-<li>给定一个数列 <span class="math inline">\{a_n\}</span>，它的指数生成函数定义为： <span class="math display">
-A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}
-</span> 这里，<span class="math inline">t</span> 是一个形式变量。即指数生成函数作为映射：{数列} <span class="math inline">\to</span> {形式幂级数}，给出了数列和形式幂级数之间的一一对应。</li>
-<li>上述对应将形式幂级数之间的乘法映射为数列之间的运算，即如果 <span class="math display">
-A(t) = \sum_{n=0}^{\infty} a_n \frac{t^n}{n!}, \quad B(t) = \sum_{n=0}^{\infty} b_n \frac{t^n}{n!}
-</span> 那么它们的乘积 <span class="math display">
-C(t) = A(t) \cdot B(t) = \sum_{n=0}^{\infty} c_n \frac{t^n}{n!}
-</span> 其中，<span class="math inline">c_n = \sum_{k=0}^n \binom{n}{k} a_k b_{n-k}</span>。我们将这个运算称为数列之间的<strong>卷积运算</strong>。</li>
+<li>从 <span class="math inline">\pi_\theta</span>中采样动作，记录<span class="math inline">\log \pi_\theta(a_t|s_t)</span>与<span class="math inline">r_t</span></li>
 </ul></li>
-</ul></li>
-<li>定义：伯努利数 <span class="math inline">B_n</span> 由以下生成函数定义 <span class="math display">
-\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}.
-</span></li>
-<li>虽然直接计算 <span class="math inline">S_k(n)</span> 很困难，但我们可以先计算它的生成函数： <span class="math display">
-\mathbb{S}(n,t) = \sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \sum_{m=0}^{n-1} e^{mt} = \frac{e^{nt}-1}{e^t-1}
-</span> 对于右边，我们可以将其改写为 <span class="math display">
-\mathbb{S}(n,t) = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
-</span> 对于右边的第一部分，我们有泰勒展开 <span class="math display">
-\frac{e^{nt}-1}{t} = \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j
-</span> 这个生成函数的系数正是积分项 <span class="math inline">\int_0^n x^k dx = \frac{n^{k+1}}{k+1}</span>。 对于右边的第二部分，根据伯努利数的定义，我们有 <span class="math display">
-\frac{t}{e^t-1} = \sum_{m=0}^{\infty} B_m \frac{t^m}{m!}
-</span> 于是，我们实际上有：</li>
-</ul>
-<p><span class="math display">
-\underbrace{\mathbb{S}(n,t)}_{离散求和项} = \underbrace{\frac{e^{nt}-1}{t}}_{\text{积分项}} \cdot \underbrace{\frac{t}{e^t-1}}_{\text{伯努利项}}
-</span></p>
-<p>即伯努利项衡量了离散求和项和积分项之间的偏差。 我们将等式两边展开，得到：</p>
-<p><span class="math display">
-\sum_{k=0}^{\infty} S_k(n) \frac{t^k}{k!} = \left( \sum_{j=0}^{\infty} \frac{n^{j+1}}{(j+1)!} t^j \right) \cdot \left( \sum_{m=0}^{\infty } B_m \frac{t^m}{m!} \right)
-</span></p>
-<p>比较等式两边的 <span class="math inline">t^k</span> 系数，我们得到：</p>
-<p><span class="math display">
-S_k(n) = \sum_{j=0}^k B_j \frac{n^{k+1-j}}{(k+1 - j)! \cdot j!} \cdot k! = \frac{1}{k+1} \sum_{j=0}^k \binom{k+1}{j} B_j n^{k + 1 - j}
-</span></p>
-<p>我们得到了我们想要的通项公式。</p>
+<li><strong>Discounted Return 计算</strong>
 <ul>
-<li><p>如果我们引入伯努利多项式的定义, 它对应于生成函数<span class="math inline">\frac{t}{e^t-1}</span>在平移算子下的平移<span class="math inline">\frac{e^{xt}t}{e^t-1}</span>, 即</p>
-<p><span class="math display">
-\sum_{k=0}^\infty B_k(x) \frac{t^k}{k!} = \frac{t e^{xt}}{e^t - 1} = e^{xt} \cdot \left( \frac{t}{e^t - 1} \right)
-</span></p>
-<p>那么我们可以将上面的结果更简洁地表示为:</p>
-<p><span class="math display">
-S_k(n) = \frac{B_{k+1}(n) - B_{k+1}(0)}{k+1}
-</span></p></li>
+<li>递推定义 — <span class="math inline">G_t = r_t + \gamma G_{t+1}</span></li>
+<li>Return 标准化（降方差） — <span class="math inline">\hat{G}_t = \dfrac{G_t - \mu_G}{\sigma_G + \epsilon}</span></li>
+</ul></li>
+<li><strong>REINFORCE 梯度 / Loss</strong>
+<ul>
+<li>策略梯度定理（log-derivative trick） — <span class="math inline">\nabla_\theta J(\theta) = \mathbb{E}\left[\nabla_\theta \log \pi_\theta(a_t|s_t)\cdot G_t\right]</span></li>
+<li>取负号转为可最小化的 loss — <span class="math inline">L(\theta) = -\sum_t \log \pi_\theta(a_t|s_t)\cdot \hat{G}_t</span></li>
+</ul></li>
+<li><strong>参数更新</strong>
+<ul>
+<li>反向传播 + Adam 优化器</li>
+</ul></li>
+<li><strong>评估</strong>
+<ul>
+<li>训练后查看各状态下的动作概率分布</li>
+<li>贪心策略（argmax）测试最终路径</li>
+</ul></li>
 </ul>
 </section>
-<section id="伯努利数的计算" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 2 伯努利数的计算</h1>
-<p>根据伯努利数的定义: <span class="math inline">\frac{t}{e^t - 1} = \sum_{n=0}^{\infty} B_n \frac{t^n}{n!}</span>，两边同乘 <span class="math inline">e^t - 1</span>，我们有:</p>
-<p><span class="math display">
-t = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot (e^t - 1) = \left( \sum_{n=0}^{\infty} B_n \frac{t^n}{n!} \right) \cdot \left( \sum_{m=1}^{\infty} \frac{t^m}{m!} \right)
-</span></p>
-<p>比较两边 <span class="math inline">t^n</span> 的系数（<span class="math inline">n \geq 2</span> 时左边系数为 0），我们得到:</p>
-<p><span class="math display">
-\sum_{k=0}^n \binom{n}{k} B_k = 0, \quad \text{for } n \geq 2
-</span></p>
-<p>并且 <span class="math inline">B_0 = 1, B_1 = -\frac{1}{2}</span>。由此，我们可以递推地计算出所有的伯努利数，是有理数。</p>
-<p>伯努利数表：</p>
+<section id="概览表格" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="概览表格"><span class="header-section-number">2</span> 概览表格</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th><span class="math inline">n</span></th>
-<th><span class="math inline">B_n</span></th>
+<th>算法步骤</th>
+<th>对应函数/位置</th>
+<th>简要说明</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0</td>
-<td>1</td>
+<td>环境 LineWorld</td>
+<td><code>LineWorld</code> 类</td>
+<td>5 状态一维世界，到终点给 reward=1。</td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td><span class="math inline">-\frac{1}{2}</span></td>
+<td>one-hot 状态编码</td>
+<td><code>one_hot()</code> 函数</td>
+<td>把整数状态映射为 5 维 one-hot 向量。</td>
 </tr>
 <tr class="odd">
-<td>2</td>
-<td><span class="math inline">\frac{1}{6}</span></td>
+<td>策略网络</td>
+<td><code>PolicyNet</code> 类</td>
+<td>两层 MLP，输出两个动作的 logits。</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td><span class="math inline">-\frac{1}{30}</span></td>
+<td>动作采样</td>
+<td>rollout 循环中的 <code>Categorical(logits=logits)</code></td>
+<td>把 logits 转为分布并采样动作，记录 log_prob。</td>
 </tr>
 <tr class="odd">
-<td>6</td>
-<td><span class="math inline">\frac{1}{42}</span></td>
+<td>Discounted Return 递推</td>
+<td><code>for reward in reversed(rewards): G = reward + gamma * G</code></td>
+<td>从轨迹末尾往前累加，计算每一步的 <span class="math inline">G_t</span>。</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td><span class="math inline">-\frac{1}{30}</span></td>
+<td>Return 标准化</td>
+<td><code>(returns - returns.mean()) / (returns.std() + 1e-8)</code></td>
+<td>对一条轨迹内的 <span class="math inline">G_t</span> 做减均值除标准差，降低梯度方差。</td>
 </tr>
 <tr class="odd">
-<td>10</td>
-<td><span class="math inline">\frac{5}{66}</span></td>
+<td>REINFORCE loss</td>
+<td><code>loss += -log_prob * G</code></td>
+<td>实现策略梯度定理的负号版本，用于梯度下降。</td>
 </tr>
 <tr class="even">
-<td>12</td>
-<td><span class="math inline">-\frac{691}{2730}</span></td>
+<td>参数更新</td>
+<td><code>optimizer.zero_grad(); loss.backward(); optimizer.step()</code></td>
+<td>反向传播计算梯度，Adam 更新网络参数。</td>
+</tr>
+<tr class="odd">
+<td>训练后策略可视化</td>
+<td>训练循环结束后的 <code>softmax(logits)</code> 打印</td>
+<td>查看每个状态下学到的动作概率分布。</td>
+</tr>
+<tr class="even">
+<td>贪心策略测试</td>
+<td>末尾 <code>torch.argmax(probs)</code> 循环</td>
+<td>测试时不采样，直接选概率最大的动作，观察最终路径。</td>
 </tr>
 </tbody>
 </table>
-<p>同时注意到，<span class="math inline">\frac{t}{e^t - 1} + \frac{t}{2} = \frac{t}{2} \cdot \frac{e^t + 1}{e^t - 1}</span> 是一个偶函数，因此所有奇数项的系数（除了 <span class="math inline">B_1</span>）都为零，即:</p>
-<p><span class="math display">
-B_3 = B_5 = B_7 = \cdots = 0
-</span></p>
-<p>一些计算结果:</p>
-<p>利用递推公式 <span class="math inline">\sum_{k=0}^n \binom{n}{k} B_k = 0</span>，可以计算： - <span class="math inline">S_1(n) = \frac{n(n-1)}{2}</span> - <span class="math inline">S_2(n) = \frac{n(n-1)(2n-1)}{6}</span> - <span class="math inline">S_3(n) = \frac{n^2(n-1)^2}{4}</span></p>
 </section>
-<section id="伯努利数的分母" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 3 伯努利数的分母</h1>
-<ul>
-<li><p>经过上面的计算, 我们发现伯努利数的分母满足:</p>
-<ul>
-<li><p><span class="math inline">B_1: 2=2, B_2: 6=2\times3, B_4: 30=5\times3\times2,B_6: 42=7\times3\times2\cdots</span></p></li>
-<li><p>事实上我们有命题:</p>
-<p><strong>Von Staudt-Clausen 定理</strong>: 对于正偶数 <span class="math inline">k</span>，有 <span class="math display">B_k + \sum_{p-1 | k} \frac{1}{p} \in \mathbb{Z}</span> 其中求和取遍所有满足 <span class="math inline">p-1 | k</span> 的素数 <span class="math inline">p</span>。</p>
-<p>作为它的推论: 伯努利数 <span class="math inline">B_k, k \text{ even or 1}</span> 的分母总可以写成 <span class="math inline">\prod_{p:p-1|k}p</span>.</p></li>
-</ul></li>
-<li><p>p-integers 与局部环</p>
-<ul>
-<li>定义: 局部环
-<ul>
-<li>设 <span class="math inline">p</span> 是一个素数，考虑整数环 <span class="math inline">\mathbb{Z}</span> 中的素理想 <span class="math inline">\mathfrak{p} = (p) = p\mathbb{Z}</span>。定义乘法封闭集 (Multiplicative Set) <span class="math inline">S</span> 为所有不在 <span class="math inline">\mathfrak{p}</span> 中的整数： <span class="math display">
-S = \mathbb{Z} \setminus \mathfrak{p} = \{ n \in \mathbb{Z} \mid p \nmid n \}
-</span> 那么<span class="math inline">\mathbb{Z}_{(p)}</span> 定义为 <span class="math inline">\mathbb{Z}</span> 关于 <span class="math inline">S</span> 的局部化： <span class="math display">
-\mathbb{Z}_{(p)} := S^{-1}\mathbb{Z} = \left\{ \frac{a}{b} \in \mathbb{Q} \;\middle|\; a \in \mathbb{Z}, \, b \in \mathbb{Z}, \, p \nmid b \right\}
-</span></li>
-<li>直观上, 这就是整数环<span class="math inline">\mathbb{Z}</span> 中让那些不是 <span class="math inline">p</span> 的倍数的数可逆.</li>
-<li>定义: p-integers
-<ul>
-<li>对于有理数 <span class="math inline">x\in \mathbb{Q}</span>, 称它是 p-integer 如果 <span class="math inline">x\in \mathbb{Z}_{\left(p\right)}</span>.</li>
-<li>直观的定义: 将 <span class="math inline">x\in \mathbb{Q}</span> 写成既约分数 <span class="math inline">x=\frac{a}{b}</span>, 若 <span class="math inline">b</span> 中不含素因子 <span class="math inline">p</span>, 则称 <span class="math inline">x</span> 是 p-integer.</li>
-</ul></li>
-<li>命题: <span class="math display">
-\mathbb{Z} = \bigcap_{p \text{ is prime}} \mathbb{Z}_{(p)}
-</span></li>
-</ul></li>
-</ul></li>
-</ul>
-<p>利用上面的命题, 要证明</p>
-<p><span class="math display">
-x=B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z},\forall k \text{ even}
-</span></p>
-<p>只要证对于任意的<span class="math inline">p</span> ,<span class="math inline">x</span> 是一个 p-integer.</p>
-<p>利用伯努利多项式的性质, 我们有等式</p>
-<p><span class="math display">
-S_k(X) = \frac{X^{k+1}}{k+1} + B_1 X^k + \dots + \frac{k}{2}B_{k-1}X^2 + B_k X
-</span></p>
-<p><span class="math display">
-p^{-e}S_k(p^e) = \frac{p^{ke}}{k+1} + B_1 p^{(k-1)e} + \dots + B_k
-</span></p>
-<p>我们有:</p>
-<p><span class="math display">
-B_k - p^{-e}S_k(p^e)= - \frac{p^{ke}}{k+1} - B_1 p^{(k-1)e} - \dots - \frac{k}{2} B_{k-1} p^e
-</span></p>
-<p>注意到当 e 充分大时, 等式右边是 p-整的, 故此时</p>
-<p><span class="math display">
-B_k - p^{-e}S_k(p^e) \quad \text{是 } p\text{-整的}
-</span></p>
-<ul>
-<li><p>我们的证明分为如下的步骤:</p>
-<ol type="1">
-<li><p>先证明<span class="math inline">B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}</span></p></li>
-<li><p>然后证明<span class="math inline">p^{-1}S_k(p)</span>的 p整的性质, 组合它们, 我们得到<span class="math inline">B_k</span>是 p 整的.</p></li>
-</ol></li>
-<li><p><span class="math inline">B_k - p^{-1}S_k(p) \quad \text{是 } p\text{-整的}</span></p>
-<ul>
-<li>证明: 先做分解 <span class="math display">
-B_k - p^{-1}S_k(p) = \underbrace{(B_k - A_e)}_{\text{Part 1: 极限项}} + \underbrace{\sum_{d=2}^{e} (A_d - A_{d-1})}_{\text{Part 2: 伸缩项}}
-</span> 这里 <strong><span class="math inline">A_e = p^{-e}S_k(p^e)</span></strong></li>
-</ul></li>
-</ul>
-<p>我们已经知道, 当 <span class="math inline">e</span>充分大, part1是 p 整的. 齐次, 我们可以证明, 对于 part2 中的伸缩项, 每一项都是整数.</p>
-<ul>
-<li>伸缩项是整数:
-<ul>
-<li>我们证明<span class="math inline">p^{-d}S_k(p^d) - p^{-(d-1)}S_k(p^{d-1})</span>是整数.</li>
-<li>将<span class="math inline">S^k(p^d)</span>中的求和指标 <span class="math inline">m</span> 写成 <span class="math inline">r + qp^{d-1}</span> 的形, 我们有:</li>
-<li><span class="math display">S_k(p^d) = \sum_{r=0}^{p^{d-1}-1} \sum_{q=0}^{p-1} (r + qp^{d-1})^k</span></li>
-<li>将求和项用二项式定理展开, 我们有: <span class="math inline">(r + qp^{d-1})^k \equiv r^k + k r^{k-1} q p^{d-1} \pmod{p^{d}}</span>, 对等式右边的第一项求和, 我们得到 <span class="math inline">p S_k(p^{d-1})</span>; 对等式右边的第二项求和, 由于 <span class="math inline">\sum_{q=0}^{p-1} q = \frac{p(p-1)}{2}</span>, 它至少含有 <span class="math inline">p^d</span> 因子, 因此对 <span class="math inline">p^d</span> 取模时, 该项为零.</li>
-<li>我们得到<span class="math display">S_k(p^d) \equiv p S_k(p^{d-1}) \pmod{p^d}</span></li>
-<li>两边同时除以<span class="math inline">p^d</span>, 得到:<span class="math display">\frac{S_k(p^d)}{p^d} - \frac{S_k(p^{d-1})}{p^{d-1}} \in \mathbb{Z}</span></li>
-<li>这说明伸缩项是整数.证毕.</li>
-</ul></li>
-<li>最后, 我们证明<span class="math inline">p^{-1}S_k(p)</span>的 p 整的性质. 设<span class="math display">S_k(p) \equiv \sum_{i=0}^{p-2} (g^k)^i \pmod p</span>
-<ul>
-<li>如果<span class="math inline">p-1 | k</span> :
-<ul>
-<li>由费马小定理, 对于任意的正整数 <span class="math inline">m</span> , 有 <span class="math inline">m^{p-1} \equiv 1 \pmod{p}</span>, 因此当 <span class="math inline">k</span> 满足 <span class="math inline">p-1 | k</span> 时, 有 <span class="math inline">m^k \equiv 1 \pmod{p}</span>.</li>
-<li>我们有: <span class="math display">1/pS_k(p)+1/p =1/p(S_k(p)+1)= 1/p(\sum_{m=0}^{p-1} m^k+1) \in \mathbb{Z}</span></li>
-<li>因此, <span class="math display">\frac{S_k(p)}{p}+1/p \in \mathbb{Z}</span></li>
-</ul></li>
-<li>如果 <span class="math inline">p-1 \nmid k</span>，则公比 <span class="math inline">g^k \not\equiv 1 \pmod p</span>，根据等比求和公式，和为 <span class="math inline">\frac{(g^k)^{p-1}-1}{g^k-1} \equiv 0 \pmod p</span>。<br>
-</li>
-<li>结合上述步骤：若 <span class="math inline">p-1 \nmid k</span>，则 <span class="math inline">B_k - 0</span> 是 <span class="math inline">p</span>-整的 <span class="math inline">\implies B_k \in \mathbb{Z}_p</span>。若 <span class="math inline">p-1 \mid k</span>，则 <span class="math inline">B_k - (-1/p)</span> 是 <span class="math inline">p</span>-整的 <span class="math inline">\implies B_k + \frac{1}{p} \in \mathbb{Z}_p</span></li>
-</ul></li>
-</ul>
-<p>综上,对于任意素数 <span class="math inline">p</span>，都有：<span class="math display">B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}</span>是 p 整数, 最后再利用 <span class="math inline">\mathbb{Z}=\cap \mathbb{Z}_{(p)}</span>, 我们得到: <span class="math display">B_k + \sum_{p: p-1 | k} \frac{1}{p} \in \mathbb{Z}, \forall k \text{ positive even}</span></p>
+<section id="环境与状态表示" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="环境与状态表示"><span class="header-section-number">3</span> 环境与状态表示</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>数学原理 状态空间 <span class="math inline">\mathcal{S} = \{0,1,2,3,4\}</span>，动作空间 <span class="math inline">\mathcal{A} = \{\text{left}, \text{right}\}</span>。状态转移是确定性的：left 使状态减 1（下界 0），right 使状态加 1（上界 4，即终点）。奖励函数稀疏：只有到达终点（<span class="math inline">s=4</span>）才给 <span class="math inline">r=1</span>，其余步骤 <span class="math inline">r=0</span>。</p>
+<p>神经网络无法直接处理整数状态 id，需要先编码为向量：用 one-hot 表示 <span class="math inline">\mathbf{x}_s \in \{0,1\}^5</span>，第 <span class="math inline">s</span> 个分量为 1，其余为 0。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LineWorld:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_states <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.start <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.goal <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="va">self</span>.start</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>, action):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.state <span class="op">=</span> <span class="bu">max</span>(<span class="dv">0</span>, <span class="va">self</span>.state <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.state <span class="op">=</span> <span class="bu">min</span>(<span class="va">self</span>.goal, <span class="va">self</span>.state <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        done <span class="op">=</span> <span class="va">self</span>.state <span class="op">==</span> <span class="va">self</span>.goal</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        reward <span class="op">=</span> <span class="fl">1.0</span> <span class="cf">if</span> done <span class="cf">else</span> <span class="fl">0.0</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.state, reward, done</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> one_hot(state, n_states):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> torch.zeros(n_states)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    x[state] <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>step()</code> 中的 <code>max</code>/<code>min</code> 实现了状态转移的边界裁剪，<code>done</code>/<code>reward</code> 对应稀疏奖励设定。<code>one_hot()</code> 函数直接构造长度为 <code>n_states</code> 的零向量，把对应位置置 1，实现 <span class="math inline">s \mapsto \mathbf{x}_s</span> 的映射。</p>
 </section>
-<section id="伯努利数和-zeta-函数" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 4 伯努利数和 zeta 函数</h1>
-<ul>
-<li><p>这一小节, 我们给出伯努利数和 zeta 函数之间的关系, 主要有两个结果:</p>
-<ul>
-<li><span class="math display">\zeta(k) = - \frac{(2\pi i)^k}{2 k!} B_k, \quad (k \ge 2, \text{even})</span></li>
-<li><span class="math display">\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 1)</span></li>
-</ul></li>
-<li><p>定义: zeta 函数</p></li>
-<li><p>定义: Riemann zeta 函数 <span class="math inline">\zeta(s)</span> 定义为:</p>
-<p><span class="math display">
-\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \text{for } \text{Re}(s) &gt; 1.
-</span></p></li>
-</ul>
-<p>我们考虑函数 <span class="math inline">\pi z\cot(\pi z)</span></p>
-<ul>
-<li><p>它有两种多项式展开:</p>
-<ul>
-<li>留数展开：利用 <span class="math inline">\cot(\pi z) = \frac{\cos(\pi z)}{\sin(\pi z)}</span> 在 <span class="math inline">z = n</span> (<span class="math inline">n \in \mathbb{Z}</span>) 处有单极点，留数为 <span class="math inline">\frac{1}{\pi}</span>，我们有部分分式展开： <span class="math display">\pi \cot(\pi z) = \frac{1}{z} + \sum_{n=1}^{\infty} \left( \frac{1}{z-n} + \frac{1}{z+n} \right) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}</span> 因此 <span class="math display">\pi z \cot(\pi z) = 1 + \sum_{n=1}^{\infty} \frac{2z^2}{z^2 - n^2} = 1 - 2 \sum_{n=1}^{\infty} \frac{z^2}{n^2 - z^2}</span> 将 <span class="math inline">\frac{z^2}{n^2 - z^2} = -\sum_{k=1}^{\infty} \frac{z^{2k}}{n^{2k}}</span> 代入，得到： <span class="math display">\pi z \cot(\pi z) = 1 - 2 \sum_{k=1}^{\infty} \zeta(2k) z^{2k}</span></li>
-<li>指数函数展开：利用 <span class="math inline">\cot(\pi z) = i \frac{e^{i\pi z} + e^{-i\pi z}}{e^{i\pi z} - e^{-i\pi z}} = i \frac{e^{2\pi i z} + 1}{e^{2\pi i z} - 1} = i + \frac{2i}{e^{2\pi i z} - 1}</span>，我们有 <span class="math display">\pi z \cot(\pi z) = \pi i z + \frac{2\pi i z}{e^{2\pi i z} - 1}</span> 由伯努利数的生成函数定义（令 <span class="math inline">t = 2\pi i z</span>），得到： <span class="math display">\pi z \cot(\pi z) = \sum_{k=0}^{\infty} \frac{(2\pi i)^k}{k!} B_k z^k</span></li>
-<li>比较两侧的 <span class="math inline">z^{2k}</span> 系数，我们得到: <span class="math display">\zeta(2k) = - \frac{(2\pi i)^{2k}}{2 (2k)!} B_{2k} = (-1)^{k+1} \frac{(2\pi)^{2k}}{2 (2k)!} B_{2k}, \quad (k \ge 1)</span></li>
-</ul></li>
-<li><p>定义: 完备 zeta 函数</p></li>
-<li><p>定义: 完备 zeta 函数 <span class="math inline">\xi(s)</span> 定义为:</p></li>
-</ul>
-<p><span class="math display">
-  \xi(s) = \pi^{-s/2} \Gamma\left(\frac{s}{2}\right) \zeta(s).
-  </span></p>
-<ul>
-<li>完备 zeta 函数满足函数方程:</li>
-</ul>
-<p><span class="math display">
-  \xi(s) = \xi(1-s).
-  </span> 利用完备 zeta 函数的对称性, 得到: <span class="math display">\zeta(1-s) = 2(2\pi)^{-s} \Gamma(s) \cos\left(\frac{\pi s}{2}\right) \zeta(s)</span> 于是我们容易从上面的结果导出: <span class="math display">\zeta(1-k) = (-1)^{k-1}\frac{B_k}{k}, \quad (k \ge 2,\text{even})</span></p>
-<p>更强的结果: 该等式对于所有的正整数 <span class="math inline">k \ge 1</span> 都成立. 这个结果依赖于 zeta 函数的解析延拓. - 回顾: zeta 函数的解析延拓.</p>
-<ul>
-<li>对于 <span class="math inline">Re(s) &gt; 1</span>，我们有恒等式：<span class="math display">\Gamma(s) \zeta(s) = \int_{0}^{\infty} \frac{t^s}{e^t - 1} \frac{dt}{t}</span></li>
-<li>为了将 zeta 函数延拓到整个复平面, 使用hankel 围道 <span class="math inline">H_{\epsilon}</span>:
-<ul>
-<li>切割 (Branch Cut)： 沿正实轴 <span class="math inline">[0, +\infty)</span> 切开。</li>
-<li>围道 <span class="math inline">H_{\epsilon}</span>：上岸： 从 <span class="math inline">+\infty</span> 沿实轴上方走到 <span class="math inline">\epsilon</span>（幅角 <span class="math inline">\arg z = 0</span>）。圆环： 绕原点逆时针旋转一周（半径 <span class="math inline">\epsilon \to 0</span>）。下岸： 从 <span class="math inline">\epsilon</span> 沿实轴下方回到 <span class="math inline">+\infty</span>（幅角 <span class="math inline">\arg z = 2\pi</span>）。</li>
-</ul></li>
-<li>我们有:<span class="math display">\zeta(s) = \frac{1}{\Gamma(s)(e^{2\pi i s} - 1)} \int_{H_{\epsilon}} \frac{z^s}{e^z - 1} \frac{dz}{z}</span></li>
-<li>这里, 我们令 <span class="math inline">s\to 1-k</span>, 此时前面的系数 <span class="math inline">\frac{1}{\Gamma(s)(e^{2\pi i s} - 1)}</span> 会出现 “<span class="math inline">0/0</span>” 型极限，利用洛必达法则或极限性质可算得系数极限为：<span class="math display">\frac{(-1)^{k-1}(k-1)!}{2\pi i}</span></li>
-<li>对于积分项, 当 <span class="math inline">s=1-k</span> 是整数时，<span class="math inline">z^s = z^{1-k}</span> 变成了单值函数。射线抵消： 上岸和下岸的积分值完全相同但方向相反，互相抵消 5。圆环贡献： 积分仅剩下绕原点的小圆圈 <span class="math inline">\oint_{|z|=\epsilon}</span>。此时，围道积分退化为计算留数 (Residue)：<span class="math display">\int_{H_\epsilon} \frac{z^{1-k}}{e^z - 1} \frac{dz}{z} = \oint \frac{z^{-k}}{e^z - 1} dz = 2\pi i \cdot \text{Res}_{z=0} \left( \frac{z^{-k}}{e^z - 1} \right)</span></li>
-<li>注意到这个被积函数恰好和伯努利数的生成函数相关: <span class="math inline">\frac{z^{-k}}{e^z-1} = z^{-k-1} \frac{z}{e^z-1}</span> 的 <span class="math inline">z^{-1}</span> 系数正是 <span class="math inline">\frac{B_k}{k!}</span>, 于是我们得到: <span class="math display">\zeta(1-k) = (-1)^{k-1} \frac{B_k}{k}, \quad (k \ge 1)</span></li>
-</ul>
+<section id="策略网络" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="策略网络"><span class="header-section-number">4</span> 策略网络</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>数学原理 策略 <span class="math inline">\pi_\theta(a|s)</span>由参数为<span class="math inline">\theta</span>的神经网络<span class="math inline">f_\theta</span> 给出未归一化的动作分数（logits），再用 softmax 转成概率分布：</p>
+<p><span class="math display">\pi_\theta(a|s) = \frac{\exp(f_\theta(\mathbf{x}_s)_a)}{\sum_{a'} \exp(f_\theta(\mathbf{x}_s)_{a'})}</span></p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PolicyNet(nn.Module):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_states, n_actions):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.net <span class="op">=</span> nn.Sequential(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            nn.Linear(n_states, <span class="dv">16</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            nn.ReLU(),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            nn.Linear(<span class="dv">16</span>, n_actions)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, state_onehot):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> <span class="va">self</span>.net(state_onehot)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> logits</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>self.net</code> 就是 <span class="math inline">f_\theta</span>，输入 one-hot 状态向量，经过一层隐藏维度为 16 的 MLP（带 ReLU 非线性），输出两个动作的 logits。softmax 归一化这一步并未在 <code>PolicyNet</code> 内显式写出，而是交给后面的 <code>Categorical(logits=logits)</code> 隐式完成。</p>
 </section>
-<section id="伯努利数与怪球" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 5 伯努利数与怪球</h1>
-<p>现在, 我们转向拓扑学的世界。</p>
-<section id="庞加莱猜想和怪球" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="庞加莱猜想和怪球"><span class="header-section-number">5.1</span> 5.1 庞加莱猜想和怪球</h2>
-<ul>
-<li>拓扑学中, 一个核心的问题流形的分类, 最著名的猜想是广义庞加莱猜想 (GPC)</li>
-<li>代数拓扑发展了许多计算同伦不变量的工具, 一般来说, 空间在同伦意义下的分类会是更容易的. 对于简单的流形, 能否使用同伦分类来得到同胚意义下的分类?
-<ul>
-<li>这就是著名的 (广义) 庞加莱猜想: 设 <span class="math inline">M^n</span> 是闭流形, 若 <span class="math inline">M</span> 是同伦球面 (即同伦等价于 <span class="math inline">S^n</span>), 则 <span class="math inline">M^n</span> 同胚意义下也是球面.
-<ul>
-<li>庞加莱猜想是对的:
-<ul>
-<li><span class="math inline">n\geq5</span>: smale h-cobordism</li>
-<li><span class="math inline">n=4</span>: freedman</li>
-<li><span class="math inline">n=3</span>: perelman</li>
-</ul></li>
-</ul></li>
-<li>更进一步: 光滑庞加莱猜想: 设 <span class="math inline">M^n</span> 是光滑闭流形, 若 <span class="math inline">M</span> 是同伦球面 (由 GPC, 也是同胚球面), 那么 <span class="math inline">M^n</span> 也是光滑球面.
-<ul>
-<li>光滑庞加莱猜想是错的:
-<ul>
-<li>milnor 找到了第一个怪球: 7 维</li>
-<li>既然不成立, 那么怪球有多少个? 这是后面微分拓扑领域的主要问题, 我们把 <span class="math inline">n</span> 维怪球的集合记为 <span class="math inline">S_n</span></li>
-</ul></li>
-<li><span class="math inline">S_n</span> 是 Abel 群 (<span class="math inline">n\neq4</span>): 利用 h-cobordism 定理 (<span class="math inline">n\neq4</span>), 我们有同构: <span class="math display">\{  S^n \text{上的光滑结构}\}/\{微分同胚\}\longleftrightarrow\{n\text{维同伦球面}\}/\{\text{h-cobordism}\}</span> 注意到右边恰为 <span class="math inline">S_n</span>, 即 <span class="math inline">n</span> 维怪球的集合, 而左边是配边类, 它有群结构:
-<ul>
-<li>乘法: 连通和</li>
-<li>单位元: <span class="math inline">S^n</span> 上的标准光滑结构</li>
-<li>逆元: 反转定向, 记为 <span class="math inline">-\Sigma</span>. 在柱 <span class="math inline">\Sigma\times I</span> 的内部挖去一个 disk <span class="math inline">D^{n+1}</span> 即可得到所需配边.</li>
-<li>这说明 <span class="math inline">S_n</span> 是一个群.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+<section id="rollout采样轨迹" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="rollout采样轨迹"><span class="header-section-number">5</span> Rollout：采样轨迹</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>数学原理 给定当前策略 <span class="math inline">\pi_\theta</span>，从状态 <span class="math inline">s_t</span>出发采样动作<span class="math inline">a_t \sim \pi_\theta(\cdot|s_t)</span>，记录该动作的对数概率 <span class="math inline">\log \pi_\theta(a_t|s_t)</span>，执行后得到下一状态 <span class="math inline">s_{t+1}</span>和奖励<span class="math inline">r_t</span>。重复直到终止（到达终点或步数上限）。这一过程为后续策略梯度估计提供了样本轨迹 <span class="math inline">\{(s_t, a_t, \log \pi_\theta(a_t|s_t), r_t)\}</span>。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> done <span class="kw">and</span> steps <span class="op">&lt;</span> <span class="dv">20</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    state_tensor <span class="op">=</span> one_hot(state, env.n_states)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> policy(state_tensor)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    dist <span class="op">=</span> Categorical(logits<span class="op">=</span>logits)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> dist.sample()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    log_prob <span class="op">=</span> dist.log_prob(action)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    next_state, reward, done <span class="op">=</span> env.step(action.item())</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    states.append(state)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    log_probs.append(log_prob)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    rewards.append(reward)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    state <span class="op">=</span> next_state</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    steps <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>Categorical(logits=logits)</code> 内部完成了 softmax 归一化并构造出动作分布，对应数学原理中的 <span class="math inline">\pi_\theta(\cdot|s_t)</span>。<code>dist.sample()</code> 实现 <span class="math inline">a_t \sim \pi_\theta</span>，<code>dist.log_prob(action)</code> 计算 <span class="math inline">\log \pi_\theta(a_t|s_t)</span>。<code>env.step()</code> 给出环境转移和奖励，三个列表 <code>states</code>、<code>log_probs</code>、<code>rewards</code> 累积了整条轨迹。</p>
 </section>
-<section id="怪球与球面的稳定同伦群" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="怪球与球面的稳定同伦群"><span class="header-section-number">5.2</span> 5.2 怪球与球面的稳定同伦群</h2>
-<ul>
-<li>定义: 球面的稳定同伦群
-<ul>
-<li>同伦群的稳定现象: 球面的 suspension thm
-<ul>
-<li><p>当 <span class="math inline">k</span> 充分大时 <span class="math inline">\Sigma:\pi_{n+k}\left(S^k\right)\to \pi_{n+k+1}\left(S^{k+1}\right)</span> 是群同构.</p></li>
-<li><p>球面同伦群的稳定性质: <span class="math inline">\Sigma:\pi_n\left(S^n\right)\to \pi_{n+1}\left(S^{n+1}\right)</span> 是群同构。</p></li>
-<li><p>球面稳定同伦群: 定义为 <span class="math inline">\Pi_n:=\lim_{ k \to \infty }\pi_{n+k}\left(S^{k}\right)</span></p></li>
-</ul></li>
-</ul></li>
-<li>稳定同伦群和 framed cobordism class
-<ul>
-<li>Pontrjagin-Thom 定理: <span class="math inline">\Pi_n \cong \Omega_n^{fr}</span>，即球面稳定同伦群同构于 framed cobordism 群。</li>
-<li>直观理解：一个 <span class="math inline">n</span> 维 framed 流形 <span class="math inline">M^n \subset \mathbb{R}^{n+k}</span>（带有法丛的平凡化）可以通过 Pontrjagin-Thom 构造给出一个映射 <span class="math inline">S^{n+k} \to S^k</span>。</li>
-</ul></li>
-<li>J-同态 (J-homomorphism)
-<ul>
-<li>定义：J-同态 <span class="math inline">J: \pi_n(SO) \to \Pi_n</span> 定义如下：给定 <span class="math inline">\alpha \in \pi_n(SO)</span>，即一个映射 <span class="math inline">\alpha: S^n \to SO</span>，我们可以用它来”扭转” <span class="math inline">S^n</span> 上的标准 framing，从而得到一个新的 framed <span class="math inline">n</span>-球面，它对应于 <span class="math inline">\Pi_n</span> 中的一个元素。</li>
-<li><span class="math inline">J_n := \text{Im}(J: \pi_n(SO) \to \Pi_n)</span> 是 J-同态的像。</li>
-</ul></li>
-<li>正合列 <span class="math inline">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n</span>
-<ul>
-<li>定义: <span class="math inline">S_n\to \Pi_n</span>, 即把 <span class="math inline">S_n</span> 中的同伦球面映射成它所在的 framed cobordism class.</li>
-<li>change of frame: 如果我们选择 <span class="math inline">S_n</span> 上不同的 frame 对应的 framed cobordism class, 那么两个 <span class="math inline">\Pi_n</span> 中的元素会相差 <span class="math inline">J: \pi_n(SO) \rightarrow \Pi_n</span> 的作用, 我们把 <span class="math inline">J</span> 映射的像集记为 <span class="math inline">J_n</span>, 则我们可以定义映射 <span class="math inline">S_n\to \Pi_n/J_n</span></li>
-<li>这个映射将怪球群和球面的稳定同伦群联系到了一起, 我们还知道这个映射的 kernel, 注意到 <span class="math inline">\Pi_n</span> 是配边群, 它上面的平凡元素就是高维流形的边界. 我们定义 <span class="math inline">S_n^{bp}</span> 为 <span class="math inline">S_n</span> 中那些 bounds parallelizable manifolds 的同伦球面, 这恰好是映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 的 kernel.</li>
-<li>至此, 我们得到了正合列 <span class="math inline">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n</span></li>
-</ul></li>
-<li>我们还需要讨论映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 的满射性质, 即是否 <span class="math inline">\Pi_n</span> 中的任意配边类都可以被同伦球面实现. 事实上, 我们有如下的结果:
-<ul>
-<li>对于 <span class="math inline">n\not\equiv 2 \pmod{4}</span>, 每个 <span class="math inline">\Pi_n</span> 中的元素都可以被同伦球面实现, 即 <span class="math inline">S_n\to\Pi_n/J_n</span> 是满射, 于是我们有正合列: <span class="math display">0 \rightarrow S_n^{bp} \rightarrow S_n \rightarrow \Pi_n / J_n\to 0</span></li>
-<li>对于 <span class="math inline">n \equiv 2\pmod{4}</span>, (此时 <span class="math inline">S_n^{bp}=0</span>) 映射 <span class="math inline">S_n\to \Pi_n/J_n</span> 是否为满射由 Kervaire 不变量决定, 即我们有正合列 <span class="math display">0 \rightarrow S_{4k-2} \rightarrow \Pi_{4k-2}/J_{4k-2} \xrightarrow{\Phi_k} \mathbb{Z}/2</span> 这里多数情况 <span class="math inline">\Phi_k=0</span>, <span class="math inline">\Phi_k\neq0</span> 当且仅当 <span class="math inline">k=1,2,4,8,16,32</span>, 对应的流形维数为 <span class="math inline">2,6,14,30,62,126\left(126 \text{ by Guozhen Wang}\right)</span>.</li>
-</ul></li>
-</ul>
+<section id="discounted-return-计算" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="discounted-return-计算"><span class="header-section-number">6</span> Discounted Return 计算</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>折扣回报（return）定义为从时刻 <span class="math inline">t</span> 起未来奖励的折扣加和：</p>
+<p><span class="math display">G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}</span></p>
+<p>这等价于递推形式：</p>
+<p><span class="math display">G_t = r_t + \gamma G_{t+1}</span></p>
+<p>从轨迹末尾往前递推可以高效计算出每一步的 <span class="math inline">G_t</span>。<span class="math inline">\gamma \in [0,1)</span>是折扣因子，本例中<span class="math inline">\gamma = 0.99</span>。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>returns <span class="op">=</span> []</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> reward <span class="kw">in</span> <span class="bu">reversed</span>(rewards):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> reward <span class="op">+</span> gamma <span class="op">*</span> G</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    returns.insert(<span class="dv">0</span>, G)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>returns <span class="op">=</span> torch.tensor(returns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>for reward in reversed(rewards)</code> 从轨迹最后一步往前遍历，<code>G = reward + gamma * G</code> 正是递推公式 <span class="math inline">G_t = r_t + \gamma G_{t+1}</span>的直接实现（此处变量 <code>G</code> 在每次迭代中分别承担<span class="math inline">G_{t+1}</span>和更新后的<span class="math inline">G_t</span>的角色）。<code>returns.insert(0, G)</code> 把算出的<span class="math inline">G_t</span> 按时间顺序插回列表头部，恢复正序排列。</p>
 </section>
-<section id="计算-怪球和伯努利数" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="计算-怪球和伯努利数"><span class="header-section-number">5.3</span> 5.3 计算: 怪球和伯努利数</h2>
+<section id="return-标准化" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="return-标准化"><span class="header-section-number">7</span> Return 标准化</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>蒙特卡洛策略梯度估计的方差较大，是 REINFORCE 训练不稳定的主要原因之一。一种常见的方差缩减手段是对一条轨迹内的 return 做标准化（减均值除标准差）：</p>
+<p><span class="math display">\hat{G}_t = \frac{G_t - \mu_G}{\sigma_G + \epsilon}</span></p>
+<p>其中 <span class="math inline">\mu_G, \sigma_G</span>是这条轨迹内所有<span class="math inline">G_t</span> 的均值和标准差，<span class="math inline">\epsilon</span> 是防止除零的小常数。这本质上是一种简化的 baseline：用轨迹自身的统计量近似代替更复杂的状态价值函数 baseline。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(returns) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    returns <span class="op">=</span> (returns <span class="op">-</span> returns.mean()) <span class="op">/</span> (returns.std() <span class="op">+</span> <span class="fl">1e-8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>returns.mean()</code>、<code>returns.std()</code> 分别对应 <span class="math inline">\mu_G</span>、<span class="math inline">\sigma_G</span>，<code>1e-8</code> 对应 <span class="math inline">\epsilon</span>。<code>if len(returns) &gt; 1</code> 是为了避免单步轨迹时标准差为 0 导致的数值问题。</p>
+</section>
+<section id="reinforce-梯度-loss" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="reinforce-梯度-loss"><span class="header-section-number">8</span> REINFORCE 梯度 / Loss</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>策略梯度定理通过 log-derivative trick 把期望回报对参数的梯度，转化为可以用采样轨迹估计的形式：</p>
+<p><span class="math display">\nabla_\theta J(\theta) = \nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[\sum_t \nabla_\theta \log \pi_\theta(a_t|s_t)\cdot G_t\right]</span></p>
+<p>推导关键是利用 <span class="math inline">\nabla_\theta \pi_\theta = \pi_\theta \nabla_\theta \log \pi_\theta</span>（即 <span class="math inline">\nabla_\theta \log \pi_\theta = \nabla_\theta \pi_\theta / \pi_\theta</span>），把对分布求梯度的期望积分转化为对 <span class="math inline">\log</span> 概率求梯度的期望，从而可以用采样轨迹做蒙特卡洛估计。</p>
+<p>由于优化目标是最大化 <span class="math inline">J(\theta)</span>，而常用优化器（如 Adam）执行的是梯度下降（最小化），所以构造一个等价的 loss，使其梯度的负方向就是 <span class="math inline">\nabla_\theta J(\theta)</span> 的方向：</p>
+<p><span class="math display">L(\theta) = -\sum_t \log \pi_\theta(a_t|s_t)\cdot \hat{G}_t</span></p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> log_prob, G <span class="kw">in</span> <span class="bu">zip</span>(log_probs, returns):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">+=</span> <span class="op">-</span>log_prob <span class="op">*</span> G</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>log_prob</code> 对应 <span class="math inline">\log \pi_\theta(a_t|s_t)</span>，<code>G</code> 此处是标准化后的 <span class="math inline">\hat{G}_t</span>（沿用前一步覆写后的 <code>returns</code> 变量名）。<code>loss += -log_prob * G</code> 逐步累加 <span class="math inline">-\log \pi_\theta(a_t|s_t)\cdot \hat{G}_t</span>，对所有时间步求和后得到 <span class="math inline">L(\theta)</span>，与策略梯度定理的负号版本一一对应。</p>
+</section>
+<section id="参数更新" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="参数更新"><span class="header-section-number">9</span> 参数更新</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>对 <span class="math inline">L(\theta)</span>求梯度<span class="math inline">\nabla_\theta L(\theta)</span>（由自动微分完成），再用 Adam 优化器沿梯度反方向更新参数 <span class="math inline">\theta</span>，使 <span class="math inline">L(\theta)</span>下降，等价于使原始目标<span class="math inline">J(\theta)</span> 上升。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>optimizer.zero_grad()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>loss.backward()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>optimizer.step()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>loss.backward()</code> 通过 PyTorch 自动微分计算出 <span class="math inline">\nabla_\theta L(\theta)</span> 并存入各参数的 <code>.grad</code>，<code>optimizer.step()</code> 用 Adam 规则更新 <code>policy</code> 的参数。<code>optimizer.zero_grad()</code> 清空上一步残留的梯度。</p>
+</section>
+<section id="评估策略可视化与贪心测试" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="评估策略可视化与贪心测试"><span class="header-section-number">10</span> 评估：策略可视化与贪心测试</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>数学原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>训练收敛后，策略 <span class="math inline">\pi_\theta(a|s)</span>应该在每个状态下都偏向能更快到达终点的动作（本例中应偏向 right）。直接读出每个状态的动作概率分布可以验证这一点。此外，贪心策略<span class="math inline">a^* = \arg\max_a \pi_\theta(a|s)</span> 去掉了采样的随机性，反映策略网络学到的”确定性最优路径”。</p>
+</div>
+</div>
+<p><strong>代码实现</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(env.n_states):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    state_tensor <span class="op">=</span> one_hot(s, env.n_states)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> policy(state_tensor)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> torch.softmax(logits, dim<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 打印 probs[0]（left）、probs[1]（right）</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 贪心测试</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> torch.argmax(probs).item()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>对应说明</strong>：<code>torch.softmax(logits, dim=0)</code> 显式计算出 <span class="math inline">\pi_\theta(\cdot|s)</span>用于查看；末尾测试循环里的 <code>torch.argmax(probs)</code> 实现<span class="math inline">\arg\max_a \pi_\theta(a|s)</span>，得到贪心动作并逐步走出最终路径。</p>
+</section>
+<section id="补充说明" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="补充说明"><span class="header-section-number">11</span> 补充说明</h2>
+<p><strong>笔记中未详细覆盖的代码细节</strong>：</p>
 <ul>
-<li><span class="math inline">|J_n|</span> 的计算:</li>
+<li><strong>步数上限（<code>steps &lt; 20</code>）</strong>：防止策略尚未学好时陷入死循环（比如一直 left/right 摆动），是工程上的安全网，不属于核心数学推导。</li>
+<li><strong>Adam 优化器的具体更新公式</strong>（一阶矩、二阶矩、偏差校正）：代码中直接调用 <code>optim.Adam</code>，未手写矩估计的细节，本笔记也未展开推导，只在”参数更新”一节做了概念性说明。</li>
+<li><strong>学习率 <code>lr=0.01</code> 与折扣因子 <code>gamma=0.99</code> 的取值</strong>：是经验超参数，笔记未讨论其调参依据。</li>
 </ul>
-<p><span class="math display">
-|J_n| = \begin{cases}
-\text{denominator}\left(\frac{B_{2k}}{4k}\right) &amp; \text{for } n = 4k-1, \\
-2 &amp; \text{for } n \equiv 0, 1 \pmod{8}, \\
-1 &amp; \text{for } n \equiv 2, 4, 5, 6 \pmod{8}.
-\end{cases}
-</span></p>
-<ul>
-<li><p><span class="math inline">|S_n^{bp}|</span> 的计算:</p>
-<p>对于 <span class="math inline">n \neq 4</span>，群 <span class="math inline">S_n^{bp}</span> 是有限循环群，且有显式的生成元。具体地：</p>
-<ul>
-<li>当 <span class="math inline">n</span> 为偶数时，<span class="math inline">S_n^{bp}</span> 是平凡群；</li>
-<li>当 <span class="math inline">n = 4k - 3</span> 时，<span class="math inline">S_n^{bp}</span> 是平凡群或 2 阶循环群；</li>
-<li>当 <span class="math inline">n = 4k - 1 &gt; 3</span> 时，<span class="math inline">S_n^{bp}</span> 是阶为 <span class="math inline">2^{2k-2}(2^{2k-1}-1) \cdot \text{numerator}\left(\frac{4B_{2k}}{k}\right)</span> 的循环群。</li>
-</ul></li>
-<li><p>例子: 计算 <span class="math inline">S_7</span></p></li>
-</ul>
-<p>让我们用这个方法计算一下著名的 7 维怪球数量 (<span class="math inline">S_7</span>)。</p>
-<ol type="1">
-<li>检查维度：<span class="math inline">n=7 = 4(2)-1</span>，属于第一种情况（<span class="math inline">n \equiv 3 \pmod 4</span>），正合列分裂。</li>
-</ol>
-<p><span class="math display">|S_7| = |S_7^{bp}| \cdot |\Pi_7 / J_7|</span></p>
-<ol start="2" type="1">
-<li><p>计算 <span class="math inline">|S_7^{bp}|</span>：</p>
-<p>代入公式 <span class="math inline">k=2</span>：</p>
-<p><span class="math display">|S_7^{bp}| = 2^{2(2)-2}(2^{2(2)-1}-1) \cdot \text{numerator}\left(\frac{4B_2}{2}\right)</span></p>
-<ul>
-<li><p>第一部分：<span class="math inline">2^2 (2^3 - 1) = 4 \times 7 = 28</span></p></li>
-<li><p>第二部分：<span class="math inline">B_4 = -1/30</span>，所以 <span class="math inline">\frac{4(1/30)}{2} = \frac{1}{15}</span>。分子是 1。</p></li>
-<li><p>结果：<span class="math inline">|S_7^{bp}| = 28 \times 1 = 28</span>。</p></li>
-</ul></li>
-<li><p><strong>计算 <span class="math inline">|\Pi_7 / J_7|</span></strong>：</p>
-<ul>
-<li><p>查阅同伦群表，<span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>。</p></li>
-<li><p><span class="math inline">J_7</span> 的阶数由 <span class="math inline">\text{denominator}(B_k/4k)</span> 决定（其中 <span class="math inline">n=4k-1</span>，即 <span class="math inline">k=2</span>）。<span class="math inline">B_2 = \frac{1}{30}</span>，所以 <span class="math inline">\frac{B_2}{8} = \frac{1}{240}</span>，分母是 240，因此 <span class="math inline">|J_7| = 240</span>。由于 <span class="math inline">\Pi_7 \cong \mathbb{Z}_{240}</span>，故 <span class="math inline">\Pi_7 = J_7</span>，即 <span class="math inline">\Pi_7/J_7</span> 是平凡群。</p></li>
-<li><p>可以看到对于 <span class="math inline">n=7</span>，<span class="math inline">|S_7|</span> 对应的值就是 <span class="math inline">b_2 = 28</span>。这意味着对于 <span class="math inline">n=7</span>，<span class="math inline">\Pi_7/J_7</span> 是平凡的（或者说 <span class="math inline">\Pi_7 = J_7</span>）。</p></li>
-</ul></li>
-<li><p><strong>最终结果</strong>：<span class="math inline">|S_7| = 28 \times 1 = 28</span>。这意味着有 28 个微分同胚类，其中 1 个是标准球面，27 个是怪球。</p></li>
-</ol>
+<hr>
+<p><em>生成日期：2026-06-30</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

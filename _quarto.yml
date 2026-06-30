@@ -68,9 +68,10 @@ website:
         contents:
           - href: pages/ai.qmd
             text: "Overview"
-          - section: "AI for Math"
+          - section: "LLM 原理"
             contents:
               - notes/microgpt-math-impl-compare.qmd
+              - notes/reinforce-policy-gradient.qmd
           - section: "AI Tools"
             contents:
               - notes/ai-tools-handbook.qmd
